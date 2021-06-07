@@ -1,7 +1,7 @@
 
 ## How to set up local environment 
 
-In the project directory, you have to add a .env file to config REACT_APP_ENVIRONMENT and REACT_APP_API_URL parameters to run the frontend.
+In the project directory, you have to add a .env file in which you need to add entries like REACT_APP_ENVIRONMENT=dev and REACT_APP_API_URL=http://localhost:3001 to allow the front-end to work properly.
 
 ### `yarn install` or `npm install`
 
