@@ -9,12 +9,13 @@ const NavBar = () => {
     return (
         <nav>
             <NavLink to="/" activeStyle={activeStyle} exact>Home</NavLink>{" | "}
-            <NavLink to="/courses" activeStyle={activeStyle}>Courses</NavLink>{" | "}
-            <NavLink to="/searchCatalog" activeStyle={activeStyle}>Search Catalog</NavLink>{" | "}
-            <NavLink to="/primarySection" activeStyle={activeStyle}>Primary Section</NavLink>{" | "}
-            <NavLink to="/featuredSection" activeStyle={activeStyle}>Featured Section</NavLink>{" | "}
-            <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>{" | "}
-            <NavLink to="/latestUpdates" activeStyle={activeStyle}>Latest Updates</NavLink>
+            {/* <NavLink to="/courses" activeStyle={activeStyle}>Courses</NavLink>{" | "} */}
+            <NavLink to="/SearchCatalog" activeStyle={activeStyle}>Search Catalog</NavLink>{" | "}
+            <NavLink to="/ParticipatingResources" activeStyle={activeStyle}>Participating Resources</NavLink>{" | "}
+            {/* <NavLink to="/FeaturedSection" activeStyle={activeStyle}>Featured Section</NavLink>{" | "} */}
+            {/* <NavLink to="/DatasetDetail" activeStyle={activeStyle}>Data</NavLink>{" | "} */}
+            {/* <NavLink to="/FilterList" activeStyle={activeStyle}>Filtered List</NavLink>{" | "} */}
+            <NavLink to="/About" activeStyle={activeStyle}>About</NavLink>
             
         </nav>
     );
