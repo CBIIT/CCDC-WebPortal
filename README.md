@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ## How to set up local environment 
 
@@ -26,3 +27,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+=======
+# pods-webportal
+>>>>>>> 41d76146c7c8fb16e3af7347253f56dd0a9e2b77
