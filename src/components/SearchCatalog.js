@@ -16,8 +16,6 @@ import {
 
 import "../styles/Search.css";
 
-//import { Breadcrumbs, Link, Typography, Grid } from '@material-ui/core';
-
 const SearchCatalog = () => (
     <div>
 
@@ -55,6 +53,7 @@ const SearchCatalog = () => (
 
             <div class="col-md-3">
 
+                {/* Example filters option on left side panel */}
                 <h4>Filters</h4>
                 <Divider style={{padding: 10, background: 'white' }}/>
 
@@ -138,7 +137,7 @@ const SearchCatalog = () => (
                 <form class="row g-5">
                     <div class="col-md-8">
 
-
+                        {/* Card view list of selected filters being applied in search */}
                         <Card className="info-card">
                             <CardContent>
                                 <Typography variant="h6" component="h2">
@@ -213,10 +212,7 @@ const SearchCatalog = () => (
                 <Divider style={{padding: 10, background: 'white' }}/>
 
 
-                {/* <h3>Search Results</h3>
-                <Divider style={{padding: 10, background: 'white' }}/> */}
-
-
+                {/* Search results list sample in table view */}
                 <table class="table" style={{ width: "700px" }}>
                     <thead>
                         <tr>

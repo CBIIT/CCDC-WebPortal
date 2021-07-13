@@ -20,8 +20,6 @@ import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../index.css';
 
-import FilterList from './FilterList';
-import Filter from './Filter';
 
 export default function App() {
     return (
@@ -44,7 +42,7 @@ export default function App() {
                 <Route path="/DatasetDetail" component={DatasetDetail}/>
                 <Route path="/AdvancedSearch" component={AdvancedSearch}/>
 
-                <Route path="/FilterList" component={FilterList}/>
+                {/* <Route path="/FilterList" component={FilterList}/> */}
                 
 
                 <Route component={PageNotFound}/>

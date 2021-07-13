@@ -1,17 +1,3 @@
-// import React from "react";
-
-// const ResourceDetail = () => (
-//     <div>
-//         Sorry, something went wrooooong.
-//     </div>
-// );
-
-// export default ResourceDetail;
-
-
-
-
-
 
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
@@ -23,7 +9,6 @@ import {
     Grid,
     Typography,
 } from "@material-ui/core";
-import LibraryBooksOutlinedIcon from "@material-ui/icons/LibraryBooksOutlined";
 
 import Header from "./common/Header";
 //import { DataDigestList } from "./DataDigestList";
@@ -34,23 +19,8 @@ import { toProperCase } from "../utilities/toProperCase";
 import parse from "html-react-parser";
 
 export default class ResourceDetail extends Component {
-    // state = {
-    //     result: {},
-    //     id: this.props.location.state.id,
-    //     browseOrSearch: this.props.location.state.browseOrSearch,
-    // };
-
-    // componentDidMount() {
-    //     const searchEndpoint = 'http://localhost:8080/podcat/api/dataResources/' + this.state.id;
-    //     fetch(searchEndpoint)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 result: data,
-    //             });
-    //         })
-    //         .catch(console.log);
-    // }
+    
+    // sample data for resource detail demo 
 
     name = "Genomic Data Commons"
     description = "NCI’s Genomic Data Commons (GDC) is a data sharing platform that promotes precision medicine in oncology. It is not just a database or a tool; it is an expandable knowledge network supporting the import and standardization of genomic and clinical data from cancer research programs. The GDC contains NCI-generated data from some of the largest and most comprehensive cancer genomic datasets, including The Cancer Genome Atlas (TCGA) and Therapeutically Applicable Research to Generate Effective Therapies (TARGET). For the first time, these datasets have been processed using a common set of bioinformatics pipelines, so that the data can be directly compared."
@@ -70,40 +40,20 @@ export default class ResourceDetail extends Component {
 
 
     render() {
-        // if (!this.state.result) return '';
-        // const result = this.state.result;
-        // const contentTypesExists = ((result.hasCellLinesData === "Yes") || 
-        //                             (result.hasClinicalData === "Yes") ||
-        //                             (result.hasImagingData === "Yes") ||
-        //                             (result.hasGenomicsOmics === "Yes") ||
-        //                             (result.hasXenograftData === "Yes"));
-
+   
         return (
             <div className="full-page-container">
                 <div className="core-data-layout">
                     {/* <Header/> */}
+
+                    {/* breadcrum links for resource detail */}
                     <Breadcrumbs separator="›" aria-label="breadcrumb" className="breadcrumb-pad">
-                        
-                        {/* <Link color="inherit" 
-                              href="/" 
-                              onClick={() => {
-                                history.push('/');
-                                sessionStorage.clear();
-                              }}>
-                            Home
-                        </Link> */}
                         
                         <Link to="/"  >Home </Link>
 
-                        {/* <Link color="inherit" 
-                              href={'/' + this.state.browseOrSearch} 
-                              onClick={() => history.push('/' + this.state.browseOrSearch)}>
-                            {(this.state.browseOrSearch === 'browse') ? 'Data Resources' : 'Search'}
-                        </Link> */}
                         <Link to="SearchCatalog"  >Search </Link>
 
                         <Typography color="textPrimary" component="span">
-                            {/* {this.name ? parse(this.name) : this.name} */}
                             Resource Detail
                         </Typography>
                     </Breadcrumbs>
@@ -117,16 +67,7 @@ export default class ResourceDetail extends Component {
                                 {this.name ? parse(this.name) : this?.name}
                                 </Typography>
                             </Grid>
-                            {/* {(result.numberOfDigest > 0) && 
-                                <Grid item xs={1} className="icon-container">
-                                    {(result.autoIngest === "Y") &&
-                                        <AutoIngestIcon status={result.ingestStatus}/>}
-                                    <Typography align="right" title="Dataset Summaries Available">
-                                        <Badge badgeContent={result.numberOfDigest} color="secondary" max={999}>
-                                            <LibraryBooksOutlinedIcon/>
-                                        </Badge>
-                                    </Typography>
-                                </Grid>} */}
+                        
                         </Grid>
 
                         {this.url && 
@@ -278,3 +219,14 @@ export default class ResourceDetail extends Component {
         );
     }
 }
+
+
+// import React from "react";
+
+// const ResourceDetail = () => (
+//     <div>
+//         Sorry, something went wrooooong.
+//     </div>
+// );
+
+// export default ResourceDetail;

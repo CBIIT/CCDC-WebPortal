@@ -23,9 +23,6 @@ import {
 const ParticipatingResourcesPage = () => (
     <div>
         <h2>Participating Resources</h2>
-        <p>
-            {/* This is the participating resources page. */}
-        </p>
 
 		<form>
                 {/* <h5 >Search the Catalog</h5> */}
@@ -40,32 +37,7 @@ const ParticipatingResourcesPage = () => (
             Search
         </Link>
 
-        {/* <Grid container 
-            item
-            xs={3}
-            direction="column"
-            className="flex-col-scroll browse-container overflow-auto">
-        </Grid>
-
-        <Grid container spacing={3} className="catalog-update flex-section">
-			<Grid item xs={4}>
-				<Typography variant="h4" component="h4">
-					Highlighted message identifies new approach for the catalog
-				</Typography>
-			</Grid>
-			<Grid item xs={8}>
-				<Typography variant="body2" component="p">
-					Explanation of new features, new resources, or highlighted user
-					success story. Use this space to explain the purpose of PODCat
-					and goals for the site.
-				</Typography>
-			</Grid>
-		</Grid> */}
-
-
-
-
-
+		{/* List of potential resources being used in card view */}
 		
         <Card className="info-card">
 			<CardContent>

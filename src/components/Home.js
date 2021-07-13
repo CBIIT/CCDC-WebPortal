@@ -50,6 +50,7 @@ export default function HomePage() {
                 </form>
 
                 
+                {/* Button links to search and adv search page */}
 
                 <Link to="SearchCatalog" className="btn btn-primary btn-sm">
                     Search
@@ -61,19 +62,10 @@ export default function HomePage() {
 
 
 
-                {/* <form>
-                    <h1>Hello</h1>
-                    <p>Enter your name:</p>
-                    <input
-                        type="text"
-                    />
-                </form> */}
-
-
-
-
             </div>
 
+
+            {/* List of potential resources being used with links */}
 
             <h3>Resources</h3>
 
