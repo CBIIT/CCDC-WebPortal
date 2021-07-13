@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ## How to set up local environment 
 
@@ -30,3 +31,6 @@ Your app is ready to be deployed!
 =======
 # pods-webportal
 >>>>>>> 41d76146c7c8fb16e3af7347253f56dd0a9e2b77
+=======
+# CCDC-WebPortal
+>>>>>>> b623ec0d2293c95d037b2b245c1f9e2385e62202
