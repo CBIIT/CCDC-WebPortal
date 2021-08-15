@@ -13,9 +13,11 @@ const Logo = styled.img`
 `;
 
 const Header = () => {
-    return <LogoContainer role="banner">
-    <Link to="/"><Logo src={logo} alt="logo"/></Link>
-  </LogoContainer>;
-}
-  
+    return (
+      <LogoContainer role="banner">
+        <Link to="/"><Logo src={logo} alt="logo" /></Link>
+      </LogoContainer>
+  );
+};
+
 export default Header;

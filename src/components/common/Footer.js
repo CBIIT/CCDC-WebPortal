@@ -76,7 +76,6 @@ const Copyright = styled.div`
   }
 `;
 
-
 const Footer = () => {
   return (
     <FooterStyled role="contentinfo">
@@ -105,7 +104,9 @@ const Footer = () => {
                   <Title>NIH Policies</Title>
                   <MenuUl>
                     <MenuLi><a href="https://www.cancer.gov/policies/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a></MenuLi>
-                    <MenuLi><a href="https://www.cancer.gov/policies/accessibility" target="_blank" rel="noopener noreferrer">Accessibility</a></MenuLi>
+                    <MenuLi>
+                      <a href="https://www.cancer.gov/policies/accessibility" target="_blank" rel="noopener noreferrer">Accessibility</a>
+                    </MenuLi>
                     <MenuLi><a href="https://www.cancer.gov/policies/foia" target="_blank" rel="noopener noreferrer">FOIA</a></MenuLi>
                   </MenuUl>
                 </Col>
@@ -115,11 +116,14 @@ const Footer = () => {
         </Menu>
         <Hr />
         <Row>
-          <Col xs={12}> 
+          <Col xs={12}>
             <Caption>
-              <a href="http://www.hhs.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Health and Human Services</a><span>|</span>
-              <a href="http://www.nih.gov/" target="_blank" rel="noopener noreferrer">National Institutes of Health</a><span>|</span>
-              <a href="http://www.cancer.gov/" target="_blank" rel="noopener noreferrer">National Cancer Institute</a><span>|</span>
+              <a href="http://www.hhs.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Health and Human Services</a>
+              <span>|</span>
+              <a href="http://www.nih.gov/" target="_blank" rel="noopener noreferrer">National Institutes of Health</a>
+              <span>|</span>
+              <a href="http://www.cancer.gov/" target="_blank" rel="noopener noreferrer">National Cancer Institute</a>
+              <span>|</span>
               <a href="http://www.usa.gov/" target="_blank" rel="noopener noreferrer">USA.gov</a>
             </Caption>
             <Copyright>
@@ -130,6 +134,6 @@ const Footer = () => {
       </FooterContainer>
     </FooterStyled>
   );
-}
+};
 
 export default Footer;

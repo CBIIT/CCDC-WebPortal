@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
+const TextInput = ({
+  name, label, onChange, placeholder, value, error
+}) => {
   let wrapperClass = "form-group";
   if (error && error.length > 0) {
-    wrapperClass += " " + "has-error";
+    wrapperClass += " has-error";
   }
 
   return (
@@ -32,6 +34,12 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   error: PropTypes.string
+};
+
+TextInput.defaultProps = {
+  placeholder: "",
+  value: "",
+  error: "",
 };
 
 export default TextInput;

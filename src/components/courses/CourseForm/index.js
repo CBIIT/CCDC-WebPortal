@@ -13,7 +13,10 @@ const CourseForm = ({
 }) => {
   return (
     <form onSubmit={onSave}>
-      <h2>{course.id ? "Edit" : "Add"} Course</h2>
+      <h2>
+        {course.id ? "Edit" : "Add"}
+         Course
+      </h2>
       {errors.onSave && (
         <div className="alert alert-danger" role="alert">
           {errors.onSave}
@@ -62,6 +65,11 @@ CourseForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool
+};
+
+CourseForm.defaultProps = {
+  errors: "",
+  saving: "",
 };
 
 export default CourseForm;

@@ -5,7 +5,7 @@ export default function HomePage() {
     return (
         <div className="jumbotron">
             <h1>Welcome to Home Page!</h1>
-            <Link to="about" className="btn btn-primary btn-lg">
+            <Link to="about" class="btn btn-primary btn-lg">
                 Learn more
             </Link>
         </div>
