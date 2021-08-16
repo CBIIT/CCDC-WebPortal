@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import logo from '../../assets/img/nci-logo-full.svg';
 
 const LogoContainer = styled.div`
-  max-width: 80rem;
+  width: 100%;
+  padding: 30px 60px;
   margin: 0 auto;
 `;
 
