@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import Carousel from '../../components/common/Carousel';
+import Carousel from '../../components/Carousel';
 import './landingPage.css';
-
-const carouselCards = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}];
 
 export default function HomePage() {
     return (
@@ -69,7 +67,7 @@ export default function HomePage() {
                 </div>
             </div>
             <div className="cards">
-                <Carousel show={3} cards={carouselCards} />
+                <Carousel />
             </div>
             <div className="infoContainer">
                 <div className="heroImage2" />

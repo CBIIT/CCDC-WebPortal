@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import '../../assets/css/carousel.css';
+import './Carousel.css';
 
-const Carousel = ({ cards }) => {
+const Carousel = ({
+    participatingResources, onLoadLandingParticipatingResources
+}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [length, setLength] = useState(cards.length);
-
     const [touchPosition, setTouchPosition] = useState(null);
 
-    // Set the length to match current children from props
     useEffect(() => {
-        setLength(cards.length);
-    }, [cards]);
+        if (participatingResources.length === 0) {
+            onLoadLandingParticipatingResources().catch(error => {
+                console.log(`Loading landing page participating resources failed ${error}`);
+            });
+        }
+    }, []);
 
     const next = () => {
-        if (currentIndex < (length - 3)) {
+        if (currentIndex < (participatingResources.length - 3)) {
             setCurrentIndex(prevState => prevState + 1);
         }
     };
@@ -51,11 +54,15 @@ const Carousel = ({ cards }) => {
         setTouchPosition(null);
     };
 
-    return (
+    return participatingResources.length === 0
+        ? (
+            <div className="carousel-container">
+                No Participating Resources available.
+            </div>
+        )
+        : (
         <div className="carousel-container">
             <div className="carousel-wrapper">
-                <div className="carousel-cover" />
-                <div className="carousel-cover" />
                 <div className="carousel-action-wrapper">
                 {
                     currentIndex > 0
@@ -73,7 +80,7 @@ const Carousel = ({ cards }) => {
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
                     <div className="carousel-content show-3" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
-                        {cards.map((card) => {
+                        {participatingResources.map((pr) => {
                             return (
                                 <article className="carousel-card">
                                     <div className="cardTitle">
@@ -83,8 +90,7 @@ const Carousel = ({ cards }) => {
                                             </div>
                                             <div className="cardHeader">
                                                 <h3>
-                                                    St Jude Data Pediatric Cloud Studies
-                                                    {card.id}
+                                                    {pr.name}
                                                 </h3>
                                             </div>
                                         </div>
@@ -94,8 +100,7 @@ const Carousel = ({ cards }) => {
                                     </div>
                                     <div className="cardContent">
                                         <h5>
-                                            Descriptive text about a participating resource and their purpose.
-                                            Keep to 3 lines max and linkable to detail page.
+                                            {pr.description}
                                             <span style={{ color: 'goldenrod' }}> READ MORE &#62; </span>
                                         </h5>
                                     </div>
@@ -106,7 +111,7 @@ const Carousel = ({ cards }) => {
                 </div>
                 <div className="carousel-action-wrapper">
                 {
-                    currentIndex < (length - 3)
+                    currentIndex < (participatingResources.length - 3)
                      ? (
                         <button type="button" onClick={next} className="right-arrow">
                             <i className="fas fa-greater-than" />
@@ -125,7 +130,8 @@ const Carousel = ({ cards }) => {
 };
 
 Carousel.propTypes = {
-    cards: PropTypes.array.isRequired,
+    participatingResources: PropTypes.array.isRequired,
+    onLoadLandingParticipatingResources: PropTypes.func.isRequired,
 };
 
 export default Carousel;
