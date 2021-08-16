@@ -29,7 +29,7 @@ export default function HomePage() {
                         <div style={{ padding: 20, background: 'white', opacity: '0.0' }} />
                         <div className="sbExample-1">
                             <div className="search">
-                                <input type="text" className="searchTerm" placeholder="  Search the Catalog" />
+                                <input type="text" className="searchTerm" placeholder="  Search the Catalog " />
                                 <button type="submit" className="searchButton">
                                     <svg
                                       width="30"
@@ -77,38 +77,38 @@ export default function HomePage() {
                     <div className="heroTextWrapper2">
                     <div className="row">
                         <div className="column1">
-                        <div className="headerTitle2">
-                            The CCDC&apos;s Approach to Delivering Data is Simple and Innovative
-                        </div>
-                        <div className="headerContent2">
-                            WHAT CAN YOU EXPECT FROM THE CCDC
-                        </div>
+                            <div className="headerTitle2">
+                                The CCDC&apos;s Approach to Delivering Data is Simple and Innovative
+                            </div>
+                            <div className="headerContent2">
+                                WHAT CAN YOU EXPECT FROM THE CCDC
+                            </div>
                         </div>
                         <div className="column2">
-                        <p className="infoSection">
-                            Explaination of new features, new resources, or highlighted user
-                            success story. Use this space to explain the purpose of the CCDC
-                            and goals for the site.
-                            <br />
-                            <br />
-                            Give the site visitor the context to learn how this might help them,
-                            both now and in the future. What is it that the user can do in the
-                            CCDC that is difficult to do without CCDC?
-                            <br />
-                            <br />
-                            Give the new site visitor some information to make them interested
-                            in the capabilities of CCDC.
-                            <br />
-                            <br />
-                        </p>
-                        <Link to="/about" className="headerLink2">
-                            <Button className="buttonText color-black">
-                                <h6>
-                                    &nbsp;LEARN MORE &emsp;&emsp;&emsp;
-                                    <span style={{ color: 'gold' }}>&#9658;</span>
-                                </h6>
-                            </Button>
-                        </Link>
+                            <p className="infoSection">
+                                Explaination of new features, new resources, or highlighted user
+                                success story. Use this space to explain the purpose of the CCDC
+                                and goals for the site.
+                                <br />
+                                <br />
+                                Give the site visitor the context to learn how this might help them,
+                                both now and in the future. What is it that the user can do in the
+                                CCDC that is difficult to do without CCDC?
+                                <br />
+                                <br />
+                                Give the new site visitor some information to make them interested
+                                in the capabilities of CCDC.
+                                <br />
+                                <br />
+                            </p>
+                            <Link to="/about" className="headerLink2">
+                                <Button className="buttonText color-black">
+                                    <h6>
+                                        &nbsp;LEARN MORE &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;
+                                        <span style={{ color: 'gold' }}>&#9658;</span>
+                                    </h6>
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                     </div>

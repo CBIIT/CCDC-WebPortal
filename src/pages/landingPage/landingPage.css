@@ -24,8 +24,9 @@
 /* Create two equal columns that floats next to each other */
 .column1 {
     float: left;
-    width: 40%;
+    width: 50%;
     padding: 10px;
+    /* padding-right: 10%; */
     height: 300px; /* Should be removed. Only for demonstration */
     /* background-color: goldenrod; */
 }
@@ -33,11 +34,13 @@
 /* Create two equal columns that floats next to each other */
 .column2 {
     float: right;
-    width: 60%;
+    width: 50%;
     padding: 10px;
     padding-top: 100px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 300px;
     /* background-color: gold; */
+    /* padding-left: 50px; */
+    font-size: 90%;
 }
 
 .searchContainer {
@@ -112,6 +115,7 @@
   line-height: 45px;
   color: white;
   letter-spacing: -0px;
+  width: 90%;
 }
 
 .padding-left50 {
@@ -131,13 +135,13 @@
 .headerContent2 {
   color: #2dc799;
   filter: brightness(1.2);
-  font-family: Lato, Raleway;
+  /* font-family: Lato, Raleway; */
   font-size: 20px;
   font-weight: bold;
   line-height: 27px;
   margin-top: 10px;
   margin-bottom: 26px;
-  width: 80%;
+  width: 60%;
   padding-top: 20px;
 }
 
@@ -295,14 +299,14 @@
   float: left;
 }
 
-.contentRightBottom {
+/* .contentRightBottom {
   float: left;
   width: 597px;
   background: #fff;
   background-image: ../../assets/landing/homepage-background.jpg;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 .cases {
   height: 436px;
@@ -368,7 +372,7 @@
   margin-left: 28px;
 }
 
-.mountainMeadowButton {
+/* .mountainMeadowButton {
   padding: 15px 5px 0 0;
   height: 9px;
   width: 71px;
@@ -383,7 +387,7 @@
   &:hover {
     color: #ffffff;
   }
-}
+} */
 
 .padding-bottom50 {
   padding-bottom: 50px;
@@ -407,7 +411,7 @@
   margin: 0 auto;
   left: 0;
   right: 0;
-  width: 1000px;
+  width: 900px;
 }
 
 .textSearch {
@@ -487,7 +491,7 @@
 
 .infoSection {
   color: white;
-  font-size: 130%;
+  font-size: 125%;
 }
 
 .search {
