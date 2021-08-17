@@ -1,46 +1,42 @@
 ::-webkit-input-placeholder { /* Chrome */
-    color: white;
-    /* filter: brightness(2.0); */
-    transition: opacity 250ms ease-in-out;
+  color: white;
+  /* filter: brightness(2.0); */
+  transition: opacity 250ms ease-in-out;
 }
+
 :focus::-webkit-input-placeholder {
-    opacity: 0.5;
+  opacity: 0.5;
 }
+
 .searchIcon {
-    width: 20;
-    height: 20;
-    font-size: 10%;
-    fill: goldenrod;
-    font-weight: bold;
-    padding-top: 10px;
+  width: 20;
+  height: 20;
+  font-size: 10%;
+  fill: goldenrod;
+  font-weight: bold;
+  padding-top: 10px;
 }
 
 .container-grid {
-    display: grid;
-    grid-template-columns: 500px 500px; /*columns widths*/
-    height: 40vh;
+  display: grid;
+  grid-template-columns: 500px 500px; /*columns widths*/
+  height: 40vh;
 }
 
-/* Create two equal columns that floats next to each other */
 .column1 {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    /* padding-right: 10%; */
-    height: 300px; /* Should be removed. Only for demonstration */
-    /* background-color: goldenrod; */
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px;
 }
 
-/* Create two equal columns that floats next to each other */
 .column2 {
-    float: right;
-    width: 50%;
-    padding: 10px;
-    padding-top: 100px;
-    height: 300px;
-    /* background-color: gold; */
-    /* padding-left: 50px; */
-    font-size: 90%;
+  float: right;
+  width: 50%;
+  padding: 10px;
+  padding-top: 100px;
+  height: 300px;
+  font-size: 90%;
 }
 
 .searchContainer {
@@ -63,6 +59,7 @@
   background-image: url("../../assets/img/CCDC.Hero.png");
   border-bottom: 2px solid white;
 }
+
 .heroImage2 {
   width: 100%;
   height: 600px;
@@ -73,13 +70,13 @@
 
 .texture {
   background-size: cover;
-  background: #B6DCFC;
+  background-color: #B6DCFC;
   padding: 120px 0 80px 0;
 }
 
 .whiteSection {
   height: 8px;
-  background: white;
+  background-color: white;
 }
 
 .redButton {
@@ -179,7 +176,7 @@
 
 .DCWords {
   height: 200px;
-  background: #274FA5;
+  background-color: #274FA5;
   color: #FFFFFF;
   font-size: 28px;
   font-weight: bold;
@@ -210,7 +207,7 @@
 }
 
 .aboutContent {
-  background: white;
+  background-color: white;
   min-height: 372px;
   width: 300px;
   padding: 30px 30px 32px 30px;
@@ -222,7 +219,7 @@
 }
 
 .aboutButtonSection {
-  background: white;
+  background-color: white;
   height: 71px;
 }
 
@@ -232,13 +229,13 @@
 
 .aboutButtonLeft {
   float: left;
-  background: #443CBB;
+  background-color: #443cbb;
   height: 45px;
   width: 48px;
 }
 
 .aboutButtonRight {
-  background: #7747FF;
+  background-color: #7747ff;
   float: left;
   height: 45px;
   width: 132px;
@@ -260,14 +257,14 @@
   width: 100%;
   height: 155px;
   overflow-y: auto;
-  background: #fff;
+  background-color: #fff;
   padding-left: 30px;
   padding-top: 5px;
   min-height: 138px;
 }
 
 .contentHeader {
-  color: #033D6F;
+  color: #033d6f;
   font-family: Lato;
   font-size: 28px;
   font-weight: bold;
@@ -291,22 +288,13 @@
 }
 
 .programImg {
-  background: #fff;
+  background-color: #fff;
   height: 249px;
 }
 
 .studies {
   float: left;
 }
-
-/* .contentRightBottom {
-  float: left;
-  width: 597px;
-  background: #fff;
-  background-image: ../../assets/landing/homepage-background.jpg;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 .cases {
   height: 436px;
@@ -317,14 +305,14 @@
 .mountainMeadowButtonSection {
   height: 46px;
   width: 176px;
-  background-color: #10A075;
+  background-color: #10a075;
   margin-top: 20px;
 }
 
 .blueButton {
   height: 45px;
-  background: #0077E3;
-  color: #FFFFFF;
+  background-color: #0077e3;
+  color: #ffffff;
   font-family: Raleway;
   font-size: 12px;
   font-weight: 600;
@@ -344,12 +332,12 @@
   margin-left: 8px;
   font-family: Lato;
   font-size: 14px;
-  color: #fff;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
 .mountainMeadowContentHeader {
-  color: #033D6F;
+  color: #033d6f;
   font-family: Lato;
   font-size: 28px;
   font-weight: bold;
@@ -371,23 +359,6 @@
   margin-top: 12px;
   margin-left: 28px;
 }
-
-/* .mountainMeadowButton {
-  padding: 15px 5px 0 0;
-  height: 9px;
-  width: 71px;
-  color: #FFFFFF;
-  font-family: Raleway;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 19.31px;
-  text-decoration: none;
-  margin-left: 8px;
-  letter-spacing: 1px;
-  &:hover {
-    color: #ffffff;
-  }
-} */
 
 .padding-bottom50 {
   padding-bottom: 50px;
@@ -416,8 +387,8 @@
 
 .textSearch {
   width: 350px;
-  color: #FFFFFF;
-  background: #000000;
+  color: #ffffff;
+  background-color: #000000;
   opacity: 0.5;
   font-weight: bold;
   font-size: 150%;
@@ -481,7 +452,7 @@
   float: left;
   width: 15%;
   padding: 10px;
-  background: #2196F3;
+  background-color: #2196f3;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -505,7 +476,7 @@
   height: 65px;
   border: 2px solid white;
   border-right: none;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
   border-radius: 5px 0 0 5px;
   outline: none;
@@ -519,7 +490,7 @@
   height: 65px;
   border: 2px solid white;
   border-left: none;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
   color: white;
   border-radius: 0 5px 5px 0;
