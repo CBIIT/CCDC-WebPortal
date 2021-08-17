@@ -32,12 +32,10 @@
 .carousel-content {
   display: flex;
   transition: all 250ms linear;
-  -ms-overflow-style: none;  /* hide scrollbar in IE and Edge */
-  scrollbar-width: none;  /* hide scrollbar in Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* hide scrollbar in webkit browser */
-.carousel-content::-webkit-scrollbar,
 .carousel-content::-webkit-scrollbar {
   display: none;
 }
@@ -121,12 +119,12 @@
 }
 
 .cardLabel {
-  width:100%;
+  width: 100%;
 }
 
 .cardHeader {
   color: goldenrod;
-  width:100%;
+  width: 100%;
 }
 
 .cardContent {
