@@ -55,7 +55,7 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../../assets/img/CCDC.Hero.png");
+  background-image: url("../../assets/img/CCDC.Hero.1920x1080.png");
   border-bottom: 2px solid white;
 }
 
@@ -499,4 +499,5 @@
 
 .searchIcon {
   pointer-events: none;
+  margin-bottom: 10px;
 }
