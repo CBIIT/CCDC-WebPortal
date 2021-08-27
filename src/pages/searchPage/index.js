@@ -4,15 +4,12 @@ import {
 } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 // import { Card, CardContent } from '@material-ui/core';
+import "bootstrap";
 import './searchPage.css';
 
 /* eslint-disable */
 const SearchPage = () => (
     <div className="searchPageContainer">
-
-        <Button className="exportButton">
-            Export
-        </Button>
 
         <h2 className="searchHeader">Search Results</h2>
 
@@ -24,16 +21,29 @@ const SearchPage = () => (
             </Button>
         </Link>
 
-        <form className="space20">
+        <Button className="exportButton">
+            Export
+        </Button>
+
+        <form className="space10">
         </form>
 
-        <Link to="/advancedsearch" className="adv-home-search-section" style={{padding: 10, margin: 10, background: 'white' }}>
+        {/* <Link to="/advancedsearch" className="adv-home-search-section" style={{padding: 10, margin: 10, background: 'white' }}>
             Advanced Search
-        </Link>
+        </Link> */}
 
-        <form className="space40">
-            {/* space */}
-        </form>
+        <Link to="/advancedsearch" className="headerLink">
+                                <Button className="buttonText" style={{ color: 'navy', marginTop: "-30px" }}>
+                                    <h6>
+                                    &nbsp;Advanced Search &emsp;
+                                    <span style={{ color: 'navy' }}>&#9658;</span>
+                                    </h6>
+                                </Button>
+                            </Link>
+
+        <div className="space20" />
+
+        <div className="separater1" />
 
         <form className="row g-4">
 
@@ -74,7 +84,7 @@ const SearchPage = () => (
 
                 {/* eslint-disable */}
 
-                <h6 style={{color: 'navy', fontSize: '150%'}}>Resource </h6>
+                <h6 style={{ fontSize: '100%'}}>Resource </h6>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                     <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -106,11 +116,9 @@ const SearchPage = () => (
                     </label>
                 </div>
 
-                <form className="space20">
-                    {/* space */}
-                </form>
+                <div className="separater3" />
 
-                <h6>Research Area </h6>
+                <h6 className="filterHeader">Research Area </h6>
                 <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-headingOne">
@@ -132,26 +140,170 @@ const SearchPage = () => (
                             <div className="accordion-body">Placeholder content </div>
                         </div>
                     </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Anatomic Site Studied
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="separater3" />
+
+                <h6 className="filterHeader">Biospecimen </h6>
+                <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingOne">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Sample Anatomic Site
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Sample Essay Type
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Sample Repository Name
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Disease Diagnoses
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="separater3" />
+
+                <h6 className="filterHeader">Case Demographic </h6>
+                <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingOne">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Case Age
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Case Ethnicity
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Case Race
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item" style={{ width: "220px" }}>
+                        <h2 className="accordion-header" id="flush-headingTwo">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Case Sex
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">Placeholder content </div>
+                        </div>
+                    </div>
                 </div>
 
                 <form className="space20">
                     {/* space */}
                 </form>
 
+
+                {/* <div class="filterAccordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                options
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                options
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                option 3
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
+
+                <form className="space20">
+                    {/* space */}
+                </form>
+                    
             </div>
 
             <div className="col-md-8">
 
                 <form className="row g-5">
                     <div className="col-md-8">
-
                         {/* Card view list of selected filters being applied in search */}
                         {/* <Card className="info-card">
                             <CardContent>
                                 <h6 variant="h6" component="h2">
                                     Filters
                                 </h6>
-
                                 <div className="alert alert-light alert-warning alert-dismissible fade show " role="alert">
                                     Filter 1
                                     <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -160,12 +312,16 @@ const SearchPage = () => (
                                     Filter 2
                                     <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-
                             </CardContent>
-
                         </Card> */}
-
                     </div>
+                </form>
+
+                <form className="space20">
+                    {/* space */}
+                </form>
+
+                <form className="row g-5">
 
                     <div className="col-md-4">
 
@@ -179,35 +335,44 @@ const SearchPage = () => (
                         </div>
 
                     </div>
-                </form>
 
-                <form className="space20">
-                    {/* space */}
-                </form>
-
-                <form className="row g-5">
-
-                    {/* <div className="col-md-8">
-                        <h3>Search Results</h3>
-                    </div> */}
-
-                    <div className="col-md-4">
-
+                    <div className="col-md-4" style={{ fontSize: "80%" }}>
                         <h7>Sort By</h7>
-                        <select className="form-select" aria-label="Default select example" style={{ width: "150px" }}>
-                            <option selected>Data</option>
+                        <select className="form-select" aria-label="Default select example">
+                            <option selected>Date</option>
                             <option value="1">Date</option>
                             <option value="2">Relevance</option>
                             <option value="3">Case #</option>
                         </select>
+                    </div>
 
+                    <div className="row" style={{ marginLeft: "450px" }}>
+                        <div className="col-md-4" style={{ marginRight: "-120px", fontSize: "90%" }}>
+                            <p>Showing 1-25 of 30 </p>
+                        </div>
+                        <div className="col-md-2">
+                            <div class="searchPagination">
+                                <div class="pagination">
+                                    {/* <a href="#">&laquo;</a> */}
+                                    <a href="#">Previous</a>
+                                    {/* <a class="active" href="#">1</a> */}
+                                    <a href="#">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">Next</a>
+                                    {/* <a href="#">&raquo;</a> */}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                 </form>
 
-                <form className="space20">
-                    {/* space */}
-                </form>
+                <div className="space10" />
+
+                <div className="separater2" />
 
                 {/* Search results list sample in table view */}
                 <table className="table" style={{ width: "700px" }}>
@@ -259,22 +424,23 @@ const SearchPage = () => (
                     {/* space */}
                 </form>
 
-                <form className="row" style={{ marginLeft: "280px" }}>
-                    <div className="col-md-4">
-                        <p style={{ fontSize: "90%" }}>Showing 1-25 of 30 </p>
+                <form className="row" style={{ marginLeft: "440px" }}>
+                    <div className="col-md-7" style={{ marginRight: "-50px", fontSize: "90%" }}>
+                        <p>Showing 1-25 of 30 </p>
                     </div>
                     <div className="col-md-2">
                         <div class="searchPagination">
                             <div class="pagination">
-                            {/* <a href="#">&laquo;</a> */}
-                            <a href="#">Previous</a>
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">Next</a>
-                            {/* <a href="#">&raquo;</a> */}
+                                {/* <a href="#">&laquo;</a> */}
+                                <a href="#">Previous</a>
+                                {/* <a class="active" href="#">1</a> */}
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">Next</a>
+                                {/* <a href="#">&raquo;</a> */}
                             </div>
                         </div>
                     </div>

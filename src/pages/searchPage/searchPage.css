@@ -8,11 +8,12 @@
 .exportButton {
     width: 15%;
     background-color: navy;
-    margin-left: 950px;
+    margin-left: 900px;
+    margin-top: -80px;
 }
 .searchBar {
-    width: 900px;
-    height: 50px;
+    width: 600px;
+    height: 40px;
     border: 2px solid black;
     border-right: none;
     padding: 5px;
@@ -21,9 +22,9 @@
 }
 .searchPageSearchButton {
     background-color: blue;
-    width: 10%;
-    height: 50px;
-    margin-bottom: 5px;
+    width: 80px;
+    height: 40px;
+    margin-bottom: 4px;
     margin-left: -5px;
 }
 .chosenFilters {
@@ -31,28 +32,53 @@
     font-size: 80%;
     padding-bottom: 50%;
 }
-.space20 {
-    /* top right bottom left */
-    /* padding: 120px 0px 120px 0px; */
-    padding-bottom: 20px;
+/* .filterAccordion {
+    height: 0;
+    overflow: hidden;
+} */
+.checked {
+    color: red;
 }
-.space40 {
-    /* top right bottom left */
-    /* padding: 120px 0px 120px 0px; */
-    padding-bottom: 40px;
+.form-select {
+    width: 120px;
+    height: 30px;
+    font-size: 90%;
+    margin-bottom: -20px;
 }
 .space10 {
     /* top right bottom left */
     /* padding: 120px 0px 120px 0px; */
     padding-bottom: 10px;
 }
+.space20 {
+    padding-bottom: 20px;
+}
+.space40 {
+    padding-bottom: 40px;
+}
+.separater1 {
+    background-color: lightgray;
+    width: 1200px;
+    height: 2px;
+}
+.separater2 {
+    background-color: lightgray;
+    width: 700px;
+    height: 2px;
+}
+.separater3 {
+    background-color: lightgray;
+    width: 230px;
+    height: 2px;
+    margin-bottom: 10px;
+}
 .searchPagination {
     float: none;
 }
 .pagination a {
-    color: black;
-    float: right;
-    padding: 8px 8px;
+    color: navy;
+    /* float: right; */
+    padding: 4px 6px;
     text-decoration: none;
     transition: background-color .3s;
     font-size: 60%;
@@ -66,4 +92,27 @@
 }  
 .pagination a:hover:not(.active) {
     background-color: #ddd;
+}
+
+/* .filterAccordion {
+} */
+.filterHeader {
+    color: navy;
+    font-size: 120%;
+    font-weight: bold;
+    margin-bottom: -1px;
+}
+.accordion-item {
+    border-color: rgb(0, 183, 255);
+    padding-top: -10px;
+    padding-bottom: -10px;
+}
+.accordion-header {
+    font-size: 50%;
+}
+.accordion-button {
+    font-size: 150%;
+}
+.accordion-body {
+    font-size: 90%;
 }

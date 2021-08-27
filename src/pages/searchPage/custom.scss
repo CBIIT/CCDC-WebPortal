@@ -1,0 +1,53 @@
+@import "../node_modules/bootstrap/scss/vendor";
+
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: $accordion-button-padding-y $accordion-button-padding-x;
+    @include font-size($font-size-base);
+    // color: $accordion-button-color;
+    color: red;
+    text-align: left; // Reset button style
+    background-color: $accordion-button-bg;
+    border: 0;
+    @include border-radius(0);
+    overflow-anchor: none;
+    @include transition($accordion-transition);
+  
+    &:not(.collapsed) {
+      color: $accordion-button-active-color;
+      background-color: $accordion-button-active-bg;
+      box-shadow: inset 0 ($accordion-border-width * -1) 0 $accordion-border-color;
+  
+      &::after {
+        background-image: escape-svg($accordion-button-active-icon);
+        transform: $accordion-icon-transform;
+      }
+    }
+  
+    // Accordion icon
+    &::after {
+      flex-shrink: 0;
+      width: $accordion-icon-width;
+      height: $accordion-icon-width;
+      margin-left: auto;
+      content: "";
+      background-image: escape-svg($accordion-button-icon);
+      background-repeat: no-repeat;
+      background-size: $accordion-icon-width;
+      @include transition($accordion-icon-transition);
+    }
+  
+    &:hover {
+      z-index: 2;
+    }
+  
+    &:focus {
+      z-index: 3;
+      border-color: $accordion-button-focus-border-color;
+      outline: 0;
+      box-shadow: $accordion-button-focus-box-shadow;
+    }
+  }
