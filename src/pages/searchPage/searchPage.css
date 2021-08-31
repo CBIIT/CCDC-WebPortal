@@ -63,12 +63,12 @@
 }
 .separater2 {
     background-color: lightgray;
-    width: 700px;
+    width: 800px;
     height: 2px;
 }
 .separater3 {
     background-color: lightgray;
-    width: 230px;
+    width: 220px;
     height: 2px;
     margin-bottom: 10px;
 }
@@ -106,13 +106,57 @@
     border-color: rgb(0, 183, 255);
     padding-top: -10px;
     padding-bottom: -10px;
+    height: 5%;
 }
 .accordion-header {
     font-size: 50%;
 }
 .accordion-button {
     font-size: 150%;
+    margin-left: -17px;
 }
 .accordion-body {
     font-size: 90%;
+}
+.alert {
+    background-color: lightgray;
+    width: 70%;
+    height: 80px;
+    font-size: 80%;
+    color: black;
+    border-color: gold;
+    border-radius: 16px;
+}
+.xbtn {
+    background-color: lightgray;
+    width: 60%;
+    height: 30px;
+    font-size: 80%;
+    color: black;
+    border-color: gold;
+    border-radius: 16px;
+}
+.xbtn2 {
+    background-color: lightgray;
+    width: 70%;
+    height: 30px;
+    font-size: 80%;
+    color: black;
+    border-color: gold;
+    border-radius: 16px;
+}
+.btn.close {
+    margin-left: 20px;
+    margin-right: -70px;
+    margin-top: -25px;
+    margin-bottom: -20px;
+}
+.btn.close2 {
+    margin-left: 10px;
+    margin-right: -70px;
+    margin-top: -25px;
+    margin-bottom: -20px;
+}
+.xtext {
+    margin-left: -20px;
 }

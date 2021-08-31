@@ -31,7 +31,7 @@ const NavLinkStyled = styled(NavLink)`
 
 const activeStyle = {
     color: "#ffffff",
-    // textDecoration: "underline",
+    textDecoration: "underline",
     textUnderlineOffset: "5px"
 };
 

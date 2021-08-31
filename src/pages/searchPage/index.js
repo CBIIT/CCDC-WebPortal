@@ -27,22 +27,20 @@ const SearchPage = () => (
 
         <form className="space10">
         </form>
-
         {/* <Link to="/advancedsearch" className="adv-home-search-section" style={{padding: 10, margin: 10, background: 'white' }}>
             Advanced Search
         </Link> */}
 
         <Link to="/advancedsearch" className="headerLink">
-                                <Button className="buttonText" style={{ color: 'navy', marginTop: "-30px" }}>
-                                    <h6>
-                                    &nbsp;Advanced Search &emsp;
-                                    <span style={{ color: 'navy' }}>&#9658;</span>
-                                    </h6>
-                                </Button>
-                            </Link>
+            <Button className="buttonText" style={{ color: 'navy', marginTop: "-30px" }}>
+                <h6>
+                    &nbsp;Advanced Search &emsp;
+                    <span style={{ color: 'navy' }}>&#9658;</span>
+                </h6>
+            </Button>
+        </Link>
 
         <div className="space20" />
-
         <div className="separater1" />
 
         <form className="row g-4">
@@ -73,18 +71,33 @@ const SearchPage = () => (
                     </CardContent>
 
                 </Card> */}
+                { /* eslint-enable */}
 
-                {/* <h7>Sort By</h7>
-                <select class="form-select" aria-label="Default select example" style={{ width: "200px" }}>
-                    <option selected>Data</option>
-                    <option value="1">Date</option>
-                    <option value="2">Relevance</option>
-                    <option value="3">Case #</option>
-                </select>
+                {/* <div className="alert alert-success alert-dismissible" role="alert">
+                    <span className="xtext">Cases: 0-1000</span>
+                    <button className="btn close" type="button" data-dismiss="alert" aria-label="Close">
+                        <span className="xclose" aria-hidden="true">×</span>
+                    </button>
+                </div> */}
+                <button className="xbtn2 alert-dismissible" type="button">
+                    <span className="xtext">Cancer Type: Kidney</span>
+                    <button className="btn close2" type="button" data-dismiss="alert" aria-label="Close">
+                        <span className="xclose" aria-hidden="true">×</span>
+                    </button>
+                </button>
+                <button className="xbtn alert-dismissible" type="button">
+                    <span className="xtext">Cases: 0-1000</span>
+                    <button className="btn close" type="button" data-dismiss="alert" aria-label="Close">
+                        <span className="xclose" aria-hidden="true">×</span>
+                    </button>
+                </button>
 
-                {/* eslint-disable */}
+                <div className="space20" />
+                <div className="separater3" />
 
-                <h6 style={{ fontSize: '100%'}}>Resource </h6>
+                { /* eslint-disable */}
+
+                {/* <h6 style={{ fontSize: '100%' }}>Resource </h6>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                     <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -116,38 +129,77 @@ const SearchPage = () => (
                     </label>
                 </div>
 
-                <div className="separater3" />
+                <div className="separater3" /> */}
 
                 <h6 className="filterHeader">Research Area </h6>
                 <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingOne">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h2 className="accordion-header" id="flush-heading1">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
                                 Cancer Type
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse1" className="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion1check1" />
+                                    <label className="form-check-label" htmlFor="accordion1check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion1check2" />
+                                    <label className="form-check-label" htmlFor="accordion1check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading2">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
                                 Disease Diagnoses
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion2check1" />
+                                    <label className="form-check-label" htmlFor="accordion2check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion2check2" />
+                                    <label className="form-check-label" htmlFor="accordion2check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading3">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
                                 Anatomic Site Studied
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse3" className="accordion-collapse collapse" aria-labelledby="flush-heading3" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion3check1" />
+                                    <label className="form-check-label" htmlFor="accordion3check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion3check2" />
+                                    <label className="form-check-label" htmlFor="accordion3check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,43 +209,95 @@ const SearchPage = () => (
                 <h6 className="filterHeader">Biospecimen </h6>
                 <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingOne">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h2 className="accordion-header" id="flush-heading4">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse4" aria-expanded="false" aria-controls="flush-collapse4">
                                 Sample Anatomic Site
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse4" className="accordion-collapse collapse" aria-labelledby="flush-heading4" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion4check1" />
+                                    <label className="form-check-label" htmlFor="accordion4check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion4check2" />
+                                    <label className="form-check-label" htmlFor="accordion4check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading5">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse5" aria-expanded="false" aria-controls="flush-collapse5">
                                 Sample Essay Type
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse5" className="accordion-collapse collapse" aria-labelledby="flush-heading5" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check1" />
+                                    <label className="form-check-label" htmlFor="accordion5check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check2" />
+                                    <label className="form-check-label" htmlFor="accordion5check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading6">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse6" aria-expanded="false" aria-controls="flush-collapse6">
                                 Sample Repository Name
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse6" className="accordion-collapse collapse" aria-labelledby="flush-heading6" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion6check1" />
+                                    <label className="form-check-label" htmlFor="accordion6check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion6check2" />
+                                    <label className="form-check-label" htmlFor="accordion6check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading7">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse7" aria-expanded="false" aria-controls="flush-collapse7">
                                 Disease Diagnoses
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse7" className="accordion-collapse collapse" aria-labelledby="flush-heading7" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion7check1" />
+                                    <label className="form-check-label" htmlFor="accordion7check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion7check2" />
+                                    <label className="form-check-label" htmlFor="accordion7check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,43 +307,95 @@ const SearchPage = () => (
                 <h6 className="filterHeader">Case Demographic </h6>
                 <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingOne">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h2 className="accordion-header" id="flush-heading8">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse8" aria-expanded="false" aria-controls="flush-collapse8">
                                 Case Age
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse8" className="accordion-collapse collapse" aria-labelledby="flush-heading8" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion8check1" />
+                                    <label className="form-check-label" htmlFor="accordion8check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion8check2" />
+                                    <label className="form-check-label" htmlFor="accordion8check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading9">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse9" aria-expanded="false" aria-controls="flush-collapse9">
                                 Case Ethnicity
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse9" className="accordion-collapse collapse" aria-labelledby="flush-heading9" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion9check1" />
+                                    <label className="form-check-label" htmlFor="accordion9check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion9check2" />
+                                    <label className="form-check-label" htmlFor="accordion9check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading10">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse10" aria-expanded="false" aria-controls="flush-collapse10">
                                 Case Race
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse10" className="accordion-collapse collapse" aria-labelledby="flush-heading10" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion10check1" />
+                                    <label className="form-check-label" htmlFor="accordion10check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion10check2" />
+                                    <label className="form-check-label" htmlFor="accordion10check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="accordion-item" style={{ width: "220px" }}>
-                        <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 className="accordion-header" id="flush-heading11">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse11" aria-expanded="false" aria-controls="flush-collapse11">
                                 Case Sex
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div className="accordion-body">Placeholder content </div>
+                        <div id="flush-collapse11" className="accordion-collapse collapse" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
+                            <div className="accordion-body">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion11check1" />
+                                    <label className="form-check-label" htmlFor="accordion11check1">
+                                        Option 1
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion11check2" />
+                                    <label className="form-check-label" htmlFor="accordion11check2">
+                                        Option 2
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,10 +447,10 @@ const SearchPage = () => (
                 <form className="space20">
                     {/* space */}
                 </form>
-                    
+
             </div>
 
-            <div className="col-md-8">
+            <div className="col-md-8" style={{ marginLeft: "-20px" }}>
 
                 <form className="row g-5">
                     <div className="col-md-8">
@@ -346,8 +502,8 @@ const SearchPage = () => (
                         </select>
                     </div>
 
-                    <div className="row" style={{ marginLeft: "450px" }}>
-                        <div className="col-md-4" style={{ marginRight: "-120px", fontSize: "90%" }}>
+                    <div className="row" style={{ marginLeft: "480px" }}>
+                        <div className="col-md-4" style={{ marginRight: "-115px", fontSize: "90%" }}>
                             <p>Showing 1-25 of 30 </p>
                         </div>
                         <div className="col-md-2">
@@ -367,7 +523,7 @@ const SearchPage = () => (
                             </div>
                         </div>
                     </div>
-                    
+
                 </form>
 
                 <div className="space10" />
@@ -375,9 +531,9 @@ const SearchPage = () => (
                 <div className="separater2" />
 
                 {/* Search results list sample in table view */}
-                <table className="table" style={{ width: "700px" }}>
+                <table className="table" style={{ width: "800px" }}>
                     <thead>
-                        <tr style={{color: 'navy' }}>
+                        <tr style={{ color: 'navy' }}>
                             <th scope="col">Project Name</th>
                             <th scope="col">Cases</th>
                             <th scope="col">Data Resource</th>
@@ -385,7 +541,7 @@ const SearchPage = () => (
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr style={{ backgroundColor: "lightgray" }}>
                             {/* <th scope="row">Project Sample 1</th> */}
                             {/* <td scope="row"><Link to="DatasetDetail">Project Sample 1</Link></td> */}
                             <td><Link to="/dataset/:id">Project Sample 1</Link></td>
@@ -393,26 +549,56 @@ const SearchPage = () => (
                             <td>COG</td>
                             <td>PEDC</td>
                         </tr>
-                        <tr>
+                        <tr style={{ backgroundColor: "lightskyblue" }}>
                             <td><Link to="/dataset/:id">Project Sample 2</Link></td>
                             <td>346</td>
                             <td>COG</td>
                             <td>PEDC</td>
                         </tr>
-                        <tr>
+                        <tr style={{ backgroundColor: "lightyellow" }}>
                             <td><Link to="/dataset/:id">Project Sample 3</Link></td>
                             <td>70</td>
                             <td>PEDC</td>
                             <td>SRA</td>
                         </tr>
-                        <tr>
+                        <tr style={{ backgroundColor: "lightgray" }}>
                             <td><Link to="/dataset/:id">Project Sample 4</Link></td>
                             <td>210</td>
                             <td>COG</td>
                             <td>SRA</td>
                         </tr>
-                        <tr>
+                        <tr style={{ backgroundColor: "lightskyblue" }}>
                             <td><Link to="/dataset/:id">Project Sample 5</Link></td>
+                            <td colSpan="1">8</td>
+                            <td>PEDC</td>
+                            <td>SRA</td>
+                        </tr>
+                        <tr style={{ backgroundColor: "lightyellow" }}>
+                            <td><Link to="/dataset/:id">Project Sample 6</Link></td>
+                            <td>580</td>
+                            <td>COG</td>
+                            <td>PEDC</td>
+                        </tr>
+                        <tr style={{ backgroundColor: "lightgray" }}>
+                            <td><Link to="/dataset/:id">Project Sample 7</Link></td>
+                            <td>346</td>
+                            <td>COG</td>
+                            <td>PEDC</td>
+                        </tr>
+                        <tr style={{ backgroundColor: "lightskyblue" }}>
+                            <td><Link to="/dataset/:id">Project Sample 8</Link></td>
+                            <td>70</td>
+                            <td>PEDC</td>
+                            <td>SRA</td>
+                        </tr>
+                        <tr style={{ backgroundColor: "lightyellow" }}>
+                            <td><Link to="/dataset/:id">Project Sample 9</Link></td>
+                            <td>210</td>
+                            <td>COG</td>
+                            <td>SRA</td>
+                        </tr>
+                        <tr style={{ backgroundColor: "lightgray" }}>
+                            <td><Link to="/dataset/:id">Project Sample 10</Link></td>
                             <td colSpan="1">8</td>
                             <td>PEDC</td>
                             <td>SRA</td>
@@ -420,12 +606,11 @@ const SearchPage = () => (
                     </tbody>
                 </table>
 
-                <form className="space40">
-                    {/* space */}
-                </form>
+                <div className="separater2" style={{ marginTop: "-8px" }} />
+                <div className="space20" />
 
-                <form className="row" style={{ marginLeft: "440px" }}>
-                    <div className="col-md-7" style={{ marginRight: "-50px", fontSize: "90%" }}>
+                <form className="row" style={{ marginLeft: "470px" }}>
+                    <div className="col-md-7" style={{ marginRight: "-25px", fontSize: "90%" }}>
                         <p>Showing 1-25 of 30 </p>
                     </div>
                     <div className="col-md-2">
