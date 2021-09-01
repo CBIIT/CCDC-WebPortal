@@ -21,7 +21,7 @@
     /* font-weight: bold; */
 }
 .searchPageSearchButton {
-    background-color: blue;
+    background-color: navy;
     width: 80px;
     height: 40px;
     margin-bottom: 4px;
@@ -107,6 +107,7 @@
     padding-top: -10px;
     padding-bottom: -10px;
     height: 5%;
+    width: 120%;
 }
 .accordion-header {
     font-size: 50%;
@@ -114,9 +115,12 @@
 .accordion-button {
     font-size: 150%;
     margin-left: -17px;
+    width: 110%;
 }
 .accordion-body {
     font-size: 90%;
+    margin-left: -20px;
+    width: 120%;
 }
 .alert {
     background-color: lightgray;
@@ -129,7 +133,7 @@
 }
 .xbtn {
     background-color: lightgray;
-    width: 60%;
+    width: 70%;
     height: 30px;
     font-size: 80%;
     color: black;
@@ -138,7 +142,7 @@
 }
 .xbtn2 {
     background-color: lightgray;
-    width: 70%;
+    width: 80%;
     height: 30px;
     font-size: 80%;
     color: black;

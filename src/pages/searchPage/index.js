@@ -45,7 +45,7 @@ const SearchPage = () => (
 
         <form className="row g-4">
 
-            <div className="col-md-3">
+            <div className="col-md-3" style={{ width: "260px", borderRight: "2px solid lightgray" }}>
 
                 {/* Example filters option on left side panel */}
                 {/* <h4>Filters</h4> */}
@@ -141,7 +141,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse1" className="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion1check1" />
                                     <label className="form-check-label" htmlFor="accordion1check1">
                                         Option 1
@@ -164,7 +164,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion2check1" />
                                     <label className="form-check-label" htmlFor="accordion2check1">
                                         Option 1
@@ -187,7 +187,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse3" className="accordion-collapse collapse" aria-labelledby="flush-heading3" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion3check1" />
                                     <label className="form-check-label" htmlFor="accordion3check1">
                                         Option 1
@@ -216,7 +216,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse4" className="accordion-collapse collapse" aria-labelledby="flush-heading4" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion4check1" />
                                     <label className="form-check-label" htmlFor="accordion4check1">
                                         Option 1
@@ -234,21 +234,45 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading5">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse5" aria-expanded="false" aria-controls="flush-collapse5">
-                                Sample Essay Type
+                                Sample Assay Type
                             </button>
                         </h2>
                         <div id="flush-collapse5" className="accordion-collapse collapse" aria-labelledby="flush-heading5" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion5check1" />
                                     <label className="form-check-label" htmlFor="accordion5check1">
-                                        Option 1
+                                        WGS
                                     </label>
                                 </div>
                                 <div className="form-check">
                                     <input className="form-check-input" type="checkbox" value="" id="accordion5check2" />
                                     <label className="form-check-label" htmlFor="accordion5check2">
-                                        Option 2
+                                        WXS
+                                    </label>
+                                </div>
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check3" />
+                                    <label className="form-check-label" htmlFor="accordion5check3">
+                                        Targeted
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check4" />
+                                    <label className="form-check-label" htmlFor="accordion5check4">
+                                        RNASeq
+                                    </label>
+                                </div>
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check5" />
+                                    <label className="form-check-label" htmlFor="accordion5check5">
+                                        MicroArray
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="accordion5check6" />
+                                    <label className="form-check-label" htmlFor="accordion5check6">
+                                        Miceosatellite
                                     </label>
                                 </div>
                             </div>
@@ -262,7 +286,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse6" className="accordion-collapse collapse" aria-labelledby="flush-heading6" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion6check1" />
                                     <label className="form-check-label" htmlFor="accordion6check1">
                                         Option 1
@@ -285,7 +309,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse7" className="accordion-collapse collapse" aria-labelledby="flush-heading7" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion7check1" />
                                     <label className="form-check-label" htmlFor="accordion7check1">
                                         Option 1
@@ -314,7 +338,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse8" className="accordion-collapse collapse" aria-labelledby="flush-heading8" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion8check1" />
                                     <label className="form-check-label" htmlFor="accordion8check1">
                                         Option 1
@@ -337,7 +361,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse9" className="accordion-collapse collapse" aria-labelledby="flush-heading9" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion9check1" />
                                     <label className="form-check-label" htmlFor="accordion9check1">
                                         Option 1
@@ -360,7 +384,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse10" className="accordion-collapse collapse" aria-labelledby="flush-heading10" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check"style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion10check1" />
                                     <label className="form-check-label" htmlFor="accordion10check1">
                                         Option 1
@@ -383,7 +407,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse11" className="accordion-collapse collapse" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check">
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion11check1" />
                                     <label className="form-check-label" htmlFor="accordion11check1">
                                         Option 1
@@ -450,7 +474,7 @@ const SearchPage = () => (
 
             </div>
 
-            <div className="col-md-8" style={{ marginLeft: "-20px" }}>
+            <div className="col-md-8" style={{ marginLeft: "10px" }}>
 
                 <form className="row g-5">
                     <div className="col-md-8">
@@ -481,18 +505,21 @@ const SearchPage = () => (
 
                     <div className="col-md-4">
 
-                        <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" checked />
-                            <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio1">Table View</label>
+                        <div className="btn-group" role="group" aria-label="Basic radio toggle button group" style={{ marginBottom: "-40px" }}>
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" />
+                            <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio1" style={{ color: "black", borderColor: "white" }}>
+                                <i class="fas fa-table"></i> Table View
+                            </label>
 
                             <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
-                            <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio2">Card View</label>
-
+                            <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio2" style={{ color: "black", borderColor: "white" }}>
+                                <i class="fas fa-th-list"></i> Card View
+                            </label>
                         </div>
 
                     </div>
 
-                    <div className="col-md-4" style={{ fontSize: "80%" }}>
+                    <div className="col-md-4" style={{ fontSize: "80%", marginBottom: "-10px" }}>
                         <h7>Sort By</h7>
                         <select className="form-select" aria-label="Default select example">
                             <option selected>Date</option>
@@ -541,7 +568,7 @@ const SearchPage = () => (
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style={{ backgroundColor: "lightgray" }}>
+                        <tr style={{ backgroundColor: "#E2E2E2" }}>
                             {/* <th scope="row">Project Sample 1</th> */}
                             {/* <td scope="row"><Link to="DatasetDetail">Project Sample 1</Link></td> */}
                             <td><Link to="/dataset/:id">Project Sample 1</Link></td>
@@ -549,7 +576,7 @@ const SearchPage = () => (
                             <td>COG</td>
                             <td>PEDC</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightskyblue" }}>
+                        <tr style={{ backgroundColor: "#DAEEF4" }}>
                             <td><Link to="/dataset/:id">Project Sample 2</Link></td>
                             <td>346</td>
                             <td>COG</td>
@@ -561,13 +588,13 @@ const SearchPage = () => (
                             <td>PEDC</td>
                             <td>SRA</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightgray" }}>
+                        <tr style={{ backgroundColor: "#E2E2E2" }}>
                             <td><Link to="/dataset/:id">Project Sample 4</Link></td>
                             <td>210</td>
                             <td>COG</td>
                             <td>SRA</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightskyblue" }}>
+                        <tr style={{ backgroundColor: "#DAEEF4" }}>
                             <td><Link to="/dataset/:id">Project Sample 5</Link></td>
                             <td colSpan="1">8</td>
                             <td>PEDC</td>
@@ -579,13 +606,13 @@ const SearchPage = () => (
                             <td>COG</td>
                             <td>PEDC</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightgray" }}>
+                        <tr style={{ backgroundColor: "#E2E2E2" }}>
                             <td><Link to="/dataset/:id">Project Sample 7</Link></td>
                             <td>346</td>
                             <td>COG</td>
                             <td>PEDC</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightskyblue" }}>
+                        <tr style={{ backgroundColor: "#DAEEF4" }}>
                             <td><Link to="/dataset/:id">Project Sample 8</Link></td>
                             <td>70</td>
                             <td>PEDC</td>
@@ -597,7 +624,7 @@ const SearchPage = () => (
                             <td>COG</td>
                             <td>SRA</td>
                         </tr>
-                        <tr style={{ backgroundColor: "lightgray" }}>
+                        <tr style={{ backgroundColor: "#E2E2E2" }}>
                             <td><Link to="/dataset/:id">Project Sample 10</Link></td>
                             <td colSpan="1">8</td>
                             <td>PEDC</td>
