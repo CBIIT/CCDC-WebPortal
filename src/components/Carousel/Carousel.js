@@ -82,16 +82,16 @@ const Carousel = ({
                     <div className="carousel-content show-3" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
                         {participatingResources.map((pr) => {
                             return (
-                                <article className="carousel-card">
+                                <div className="carousel-card">
                                     <div className="cardTitle">
                                         <div className="cardInfo">
                                             <div className="cardLabel">
                                                 <span style={{ color: 'gray' }}> Participating Resources </span>
                                             </div>
                                             <div className="cardHeader">
-                                                <h3>
-                                                    {pr.name}
-                                                </h3>
+                                                <h4>
+                                                    {pr.resource_name}
+                                                </h4>
                                             </div>
                                         </div>
                                         <div className="cardIcon">
@@ -100,11 +100,11 @@ const Carousel = ({
                                     </div>
                                     <div className="cardContent">
                                         <h5>
-                                            {pr.description}
+                                            {pr.description.length > 250 ? `${pr.description.substring(0, 250)}...` : pr.description}
                                             <span style={{ color: 'goldenrod' }}> READ MORE &#62; </span>
                                         </h5>
                                     </div>
-                                </article>
+                                </div>
                             );
                         })}
                     </div>
