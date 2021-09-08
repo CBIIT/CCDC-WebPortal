@@ -16,6 +16,7 @@ const FooterContainer = styled(Container)`
   max-width: 80rem;
   // color: var(--white);
   color: white;
+  text-decoration: none;
 `;
 
 const Menu = styled.div`
@@ -47,6 +48,7 @@ const MenuLi = styled.li`
   && a {
     color: var(--white);
     font-size: 0.75rem;
+    text-decoration: none;
   }
 `;
 
@@ -64,6 +66,7 @@ const Caption = styled.div`
     color: var(--white);
     font-size: 0.75rem;
     margin: 0 0.5rem;
+    text-decoration: none;
   }
 `;
 

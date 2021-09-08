@@ -468,7 +468,7 @@ const SearchPage = () => (
 
             </div>
 
-            <div className="col-md-8" style={{ marginLeft: "10px" }}>
+            <div className="col-md-8" style={{ marginLeft: "10px", width: "770px" }}>
 
                 <form className="row g-5">
                     <div className="col-md-8">
@@ -525,7 +525,7 @@ const SearchPage = () => (
                         </select>
                     </div>
 
-                    <div className="row" style={{ marginLeft: "480px" }}>
+                    <div className="row" style={{ marginLeft: "480px", float: "right" }}>
                         <div className="col-md-4" style={{ marginRight: "-115px", fontSize: "90%" }}>
                             <p>Showing 1-25 of 30 </p>
                         </div>
@@ -565,8 +565,6 @@ const SearchPage = () => (
                     </thead>
                     <tbody>
                         <tr style={{ backgroundColor: "#E2E2E2" }}>
-                            {/* <th scope="row">Project Sample 1</th> */}
-                            {/* <td scope="row"><Link to="DatasetDetail">Project Sample 1</Link></td> */}
                             <td><Link to="/dataset/:id">Project Sample 1</Link></td>
                             <td>580</td>
                             <td>COG</td>
@@ -629,31 +627,7 @@ const SearchPage = () => (
                     </tbody>
                 </table>
 
-                <div className="separater2" style={{ marginTop: "-8px" }} />
-                <div className="space20" />
-
-                <form className="row" style={{ marginLeft: "470px" }}>
-                    <div className="col-md-7" style={{ marginRight: "-25px", fontSize: "90%" }}>
-                        <p>Showing 1-25 of 30 </p>
-                    </div>
-                    <div className="col-md-2">
-                        <div className="searchPagination">
-                            <div className="pagination">
-                                {/* <a href="#">&laquo;</a> */}
-                                <a href="#">Previous</a>
-                                {/* <a class="active" href="#">1</a> */}
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">Next</a>
-                                {/* <a href="#">&raquo;</a> */}
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
+                {/* <div className="space10" />
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">
@@ -693,7 +667,74 @@ const SearchPage = () => (
                         </h5>
                         <p className="card-text">search results keywords and description and dataset detail content </p>
                     </div>
+                </div> */}
+
+                {/* <div className="space10" /> */}
+                <div className="separater2" style={{ marginTop: "-8px" }} />
+                <div className="space20" />
+
+                <form className="row" style={{ marginLeft: "00px", float: "right" }}>
+                    <div className="col-md-7" style={{ marginLeft: "70px", marginRight: "-70px", fontSize: "90%" }}>
+                        <p>Showing 1-25 of 30 </p>
+                    </div>
+                    <div className="col-md-2">
+                        <div className="searchPagination">
+                            <div className="pagination">
+                                {/* <a href="#">&laquo;</a> */}
+                                <a href="#">Previous</a>
+                                {/* <a class="active" href="#">1</a> */}
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">Next</a>
+                                {/* <a href="#">&raquo;</a> */}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                {/* <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 1</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
                 </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 2</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 3</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 4</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 5</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div> */}
                 {/* <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">Card title</h5>
