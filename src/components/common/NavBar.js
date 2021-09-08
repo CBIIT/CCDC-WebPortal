@@ -20,6 +20,7 @@ const NavLinkStyled = styled(NavLink)`
     padding-left: 1.5rem;
     font-weight: 600;
     border-radius: 0.3125rem;
+    text-decoration: none;
 
     &&:hover,
     &&:focus {

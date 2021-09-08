@@ -164,3 +164,7 @@
 .xtext {
     margin-left: -20px;
 }
+.card {
+    width: 800px;
+    margin-bottom: 10px;
+}

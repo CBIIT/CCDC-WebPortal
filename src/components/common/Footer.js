@@ -14,7 +14,8 @@ const FooterStyled = styled.footer`
 
 const FooterContainer = styled(Container)`
   max-width: 80rem;
-  color: var(--white);
+  // color: var(--white);
+  color: white;
 `;
 
 const Menu = styled.div`

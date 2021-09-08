@@ -3,11 +3,10 @@ import {
     Link,
 } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-// import { Card, CardContent } from '@material-ui/core';
 import "bootstrap";
 import './searchPage.css';
 
-/* eslint-disable */
+// /* eslint-disable */
 const SearchPage = () => (
     <div className="searchPageContainer">
 
@@ -25,8 +24,7 @@ const SearchPage = () => (
             Export
         </Button>
 
-        <form className="space10">
-        </form>
+        <div className="space10" />
         {/* <Link to="/advancedsearch" className="adv-home-search-section" style={{padding: 10, margin: 10, background: 'white' }}>
             Advanced Search
         </Link> */}
@@ -71,7 +69,6 @@ const SearchPage = () => (
                     </CardContent>
 
                 </Card> */}
-                { /* eslint-enable */}
 
                 {/* <div className="alert alert-success alert-dismissible" role="alert">
                     <span className="xtext">Cases: 0-1000</span>
@@ -94,8 +91,6 @@ const SearchPage = () => (
 
                 <div className="space20" />
                 <div className="separater3" />
-
-                { /* eslint-disable */}
 
                 {/* <h6 style={{ fontSize: '100%' }}>Resource </h6>
                 <div className="form-check">
@@ -384,7 +379,7 @@ const SearchPage = () => (
                         </h2>
                         <div id="flush-collapse10" className="accordion-collapse collapse" aria-labelledby="flush-heading10" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
-                                <div className="form-check"style={{ backgroundColor: "#E2E2E2" }}>
+                                <div className="form-check" style={{ backgroundColor: "#E2E2E2" }}>
                                     <input className="form-check-input" type="checkbox" value="" id="accordion10check1" />
                                     <label className="form-check-label" htmlFor="accordion10check1">
                                         Option 1
@@ -427,7 +422,6 @@ const SearchPage = () => (
                 <form className="space20">
                     {/* space */}
                 </form>
-
 
                 {/* <div class="filterAccordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
@@ -508,12 +502,14 @@ const SearchPage = () => (
                         <div className="btn-group" role="group" aria-label="Basic radio toggle button group" style={{ marginBottom: "-40px" }}>
                             <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" />
                             <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio1" style={{ color: "black", borderColor: "white" }}>
-                                <i class="fas fa-table"></i> Table View
+                                <i className="fas fa-table" />
+                                &nbsp;Table View
                             </label>
 
                             <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
                             <label className="btn btn-outline-primary btn-sm" htmlFor="btnradio2" style={{ color: "black", borderColor: "white" }}>
-                                <i class="fas fa-th-list"></i> Card View
+                                <i className="fas fa-th-list" />
+                                &nbsp; Card View
                             </label>
                         </div>
 
@@ -534,8 +530,8 @@ const SearchPage = () => (
                             <p>Showing 1-25 of 30 </p>
                         </div>
                         <div className="col-md-2">
-                            <div class="searchPagination">
-                                <div class="pagination">
+                            <div className="searchPagination">
+                                <div className="pagination">
                                     {/* <a href="#">&laquo;</a> */}
                                     <a href="#">Previous</a>
                                     {/* <a class="active" href="#">1</a> */}
@@ -641,8 +637,8 @@ const SearchPage = () => (
                         <p>Showing 1-25 of 30 </p>
                     </div>
                     <div className="col-md-2">
-                        <div class="searchPagination">
-                            <div class="pagination">
+                        <div className="searchPagination">
+                            <div className="pagination">
                                 {/* <a href="#">&laquo;</a> */}
                                 <a href="#">Previous</a>
                                 {/* <a class="active" href="#">1</a> */}
@@ -657,6 +653,54 @@ const SearchPage = () => (
                         </div>
                     </div>
                 </form>
+
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 1</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 2</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 3</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 4</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            <Link to="/dataset/:id">Project Sample 5</Link>
+                        </h5>
+                        <p className="card-text">search results keywords and description and dataset detail content </p>
+                    </div>
+                </div>
+                {/* <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title">Card title</h5>
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card&apos;s content.</p>
+                        <a href="/dataset/:id" className="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div> */}
 
                 {/* <form className="row g-4">
                     <div className="col-md-4">
@@ -679,6 +723,4 @@ const SearchPage = () => (
 );
 
 export default SearchPage;
-
-/* eslint-disable */
-/* eslint-enable */
+// { /* eslint-enable */}
