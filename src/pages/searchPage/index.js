@@ -7,7 +7,7 @@ import "bootstrap";
 import './searchPage.css';
 
 // /* eslint-disable */
-const SearchPage = () => (
+const SearchPage = (searchFilters) => (
     <div className="searchPageContainer">
 
         <h2 className="searchHeader">Search Results</h2>
@@ -131,7 +131,7 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading1">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
-                                Cancer Type
+                                Cancer Studied
                             </button>
                         </h2>
                         <div id="flush-collapse1" className="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
@@ -154,7 +154,7 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading2">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
-                                Disease Diagnoses
+                                Disease Diagnosis
                             </button>
                         </h2>
                         <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
@@ -229,7 +229,7 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading5">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse5" aria-expanded="false" aria-controls="flush-collapse5">
-                                Sample Assay Type
+                                Sample Assay Method
                             </button>
                         </h2>
                         <div id="flush-collapse5" className="accordion-collapse collapse" aria-labelledby="flush-heading5" data-bs-parent="#accordionFlushExample">
@@ -299,7 +299,7 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading7">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse7" aria-expanded="false" aria-controls="flush-collapse7">
-                                Disease Diagnoses
+                                Donor Disease
                             </button>
                         </h2>
                         <div id="flush-collapse7" className="accordion-collapse collapse" aria-labelledby="flush-heading7" data-bs-parent="#accordionFlushExample">
@@ -397,7 +397,8 @@ const SearchPage = () => (
                     <div className="accordion-item" style={{ width: "220px" }}>
                         <h2 className="accordion-header" id="flush-heading11">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse11" aria-expanded="false" aria-controls="flush-collapse11">
-                                Case Sex
+                                Case Sex at Birth
+                                {searchFilters.id}
                             </button>
                         </h2>
                         <div id="flush-collapse11" className="accordion-collapse collapse" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">

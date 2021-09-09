@@ -4,4 +4,7 @@ export default {
     participatingResources: {
         landing: [],
     },
+    searchFilters: {
+        search: [],
+    },
 };
