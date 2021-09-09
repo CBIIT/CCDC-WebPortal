@@ -6,12 +6,14 @@ const Nav = styled.div`
     width: 100%;
     display: flex;
     position: relative;
-    padding: 10px 20px;
+    padding: 10px 0;
     background-color: #2dc799;
 `;
 
 const NavContainer = styled.div`
     margin: 0 auto;
+    width: 1200px;
+    text-align: center;
 `;
 
 const NavLinkStyled = styled(NavLink)`

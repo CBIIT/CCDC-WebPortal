@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import "bootstrap";
 import './searchPage.css';
 
-// /* eslint-disable */
+/* eslint-disable */
 const SearchPage = () => (
     <div className="searchPageContainer">
 

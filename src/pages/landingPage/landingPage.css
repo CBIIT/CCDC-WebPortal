@@ -59,8 +59,9 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-image: url("../../assets/img/CCDC.Hero.1920x1080.png");
+  background-image: url("../../assets/img/CCDC.Hero.1920x600\ \(1\).jpg");
   border-bottom: 2px solid white;
+  background-position: center;
 }
 
 .heroImage2 {
@@ -68,7 +69,8 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../../assets/img/Featured-Highlights.grey.png");
+  background-image: url("../../assets/img/Featured-Highlights.grey.1920x557.jpg");
+  background-position: center;
 }
 
 .texture {
@@ -151,6 +153,10 @@
 .headerLink2 {
   text-decoration: none;
   float: right;
+}
+
+.cards {
+  background-color: #212121;
 }
 
 .iconAbout {
@@ -384,7 +390,7 @@
   margin: 0 auto;
   left: 0;
   right: 0;
-  width: 900px;
+  width: 1000px;
 }
 
 .textSearch {

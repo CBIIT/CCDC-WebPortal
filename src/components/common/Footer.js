@@ -13,7 +13,7 @@ const FooterStyled = styled.footer`
 `;
 
 const FooterContainer = styled(Container)`
-  max-width: 80rem;
+  max-width: 1200px;
   // color: var(--white);
   color: white;
   text-decoration: none;

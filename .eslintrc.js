@@ -22,7 +22,7 @@ module.exports = {
     "react/jsx-indent": "off",
     "react/forbid-prop-types": "off",
     "arrow-body-style": "off",
-    "max-len": ["error", { "code": 250 }],
+    "max-len": "off",
     "linebreak-style": "off",
     "quotes": "off",
     "indent": "off",

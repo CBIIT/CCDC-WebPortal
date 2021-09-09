@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
+import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
+import arrowRightGray from '../../assets/img/arrow_right_gray.svg';
 
 const Carousel = ({
     participatingResources, onLoadLandingParticipatingResources
@@ -68,12 +71,12 @@ const Carousel = ({
                     currentIndex > 0
                      ? (
                         <button type="button" onClick={prev} className="left-arrow">
-                            <i className="fas fa-less-than" />
+                            <img src={arrowRightGold} alt="arrow-right" />
                         </button>
                     )
                     : (
-                        <button type="button" className="left-arrow grayed-out" disabled="disabled">
-                            <i className="fas fa-less-than" />
+                        <button type="button" className="left-arrow" disabled="disabled">
+                            <img src={arrowRightGray} alt="arrow-right" />
                         </button>
                     )
                 }
@@ -95,31 +98,31 @@ const Carousel = ({
                                             </div>
                                         </div>
                                         <div className="cardIcon">
-                                            <i className="fas fa-archive" />
+                                          <DataResourceIcons participatingResource={pr.data_resource_id} />
                                         </div>
                                     </div>
                                     <div className="cardContent">
-                                        <h5>
-                                            {pr.description.length > 250 ? `${pr.description.substring(0, 250)}...` : pr.description}
+                                        <div>
+                                            {pr.description.length > 100 ? `${pr.description.substring(0, 100)}...` : pr.description}
                                             <span style={{ color: 'goldenrod' }}> READ MORE &#62; </span>
-                                        </h5>
+                                        </div>
                                     </div>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
-                <div className="carousel-action-wrapper">
+                <div className="carousel-action-wrapper-right">
                 {
                     currentIndex < (participatingResources.length - 3)
                      ? (
                         <button type="button" onClick={next} className="right-arrow">
-                            <i className="fas fa-greater-than" />
+                            <img src={arrowRightGold} alt="arrow-right" />
                         </button>
                      )
                      : (
-                        <button type="button" className="right-arrow grayed-out" disabled="disabled">
-                            <i className="fas fa-greater-than" />
+                        <button type="button" className="right-arrow" disabled="disabled">
+                            <img src={arrowRightGray} alt="arrow-right" />
                         </button>
                      )
                 }
