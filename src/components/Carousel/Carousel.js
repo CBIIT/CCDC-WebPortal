@@ -10,6 +10,7 @@ const Carousel = ({
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchPosition, setTouchPosition] = useState(null);
+    const [transform, setTransform] = useState({ transform: "translateX(0%)" });
 
     useEffect(() => {
         if (participatingResources.length === 0) {
@@ -22,12 +23,16 @@ const Carousel = ({
     const next = () => {
         if (currentIndex < (participatingResources.length - 3)) {
             setCurrentIndex(prevState => prevState + 1);
+            const ts = `translateX(-${(currentIndex + 1) * (100 / 3)}%)`;
+            setTransform({transform: ts});
         }
     };
 
     const prev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prevState => prevState - 1);
+            const ts = `translateX(-${(currentIndex - 1) * (100 / 3)}%)`;
+            setTransform({transform: ts});
         }
     };
 
@@ -82,7 +87,7 @@ const Carousel = ({
                 }
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
-                    <div className="carousel-content show-3" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
+                    <div className="carousel-content show-3" style={transform}>
                         {participatingResources.map((pr) => {
                             return (
                                 <div className="carousel-card">
