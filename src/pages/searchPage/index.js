@@ -6,8 +6,34 @@ import { Button } from 'react-bootstrap';
 import "bootstrap";
 import './searchPage.css';
 
-/* eslint-disable */
+// class Filter extends React.Component {
+//     _isMounted = false;
+
+//     state = {
+//         searchFilters: [],
+//         searchResults: {},
+//         // checkboxes: []
+//     }
+
+//     componentDidMount() {
+//         this.isMounted = true;
+//     }
+
+//     componentWillUnmount() {
+//         this.isMounted = false;
+//     }
+
+//     handleQueryChange = (searchResultsList) => {
+//         if (this.isMounted) {
+//             this.setState({
+//                 searchFilters: [],
+//                 searchResults: searchResultsList,
+//             });
+//         }
+//     };
+// }
 const SearchPage = () => (
+
     <div className="searchPageContainer">
 
         <h2 className="searchHeader">Search Results</h2>
@@ -92,7 +118,7 @@ const SearchPage = () => (
                 <div className="space20" />
                 <div className="separater3" />
 
-                {/* <h6 style={{ fontSize: '100%' }}>Resource </h6>
+                <h6 style={{ fontSize: '100%' }}>Resource </h6>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                     <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -124,7 +150,8 @@ const SearchPage = () => (
                     </label>
                 </div>
 
-                <div className="separater3" /> */}
+                <div className="space10" />
+                <div className="separater3" />
 
                 <h6 className="filterHeader">Research Area </h6>
                 <div className="w-50 accordion accordion-flush" id="accordionFlushExample" style={{ width: "200px" }}>
@@ -412,6 +439,7 @@ const SearchPage = () => (
                                     <input className="form-check-input" type="checkbox" value="" id="accordion11check2" />
                                     <label className="form-check-label" htmlFor="accordion11check2">
                                         Option 2
+                                        this.state.searchFilters.data.name
                                     </label>
                                 </div>
                             </div>
@@ -762,6 +790,5 @@ const SearchPage = () => (
 
     </div>
 );
-
 export default SearchPage;
 // { /* eslint-enable */}
