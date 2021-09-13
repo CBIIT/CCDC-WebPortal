@@ -88,9 +88,10 @@ const Carousel = ({
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
                     <div className="carousel-content show-3" style={transform}>
-                        {participatingResources.map((pr) => {
+                        {participatingResources.map((pr, idx) => {
+                            const key = `carousel_${idx}`;
                             return (
-                                <div className="carousel-card">
+                                <div key={key} className="carousel-card">
                                     <div className="cardTitle">
                                         <div className="cardInfo">
                                             <div className="cardLabel">

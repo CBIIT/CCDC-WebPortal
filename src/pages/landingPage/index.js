@@ -33,10 +33,10 @@ export default function HomePage() {
                                         <svg
                                           width="30"
                                           fontWeight="500"
-                                          ariaHidden="true"
+                                          aria-hidden="true"
                                           focusable="false"
-                                          dataPrefix="fas"
-                                          dataIcon="search"
+                                          data-prefix="fas"
+                                          data-icon="search"
                                           className="searchIcon"
                                           role="img"
                                           xmlns="http://www.w3.org/2000/svg"

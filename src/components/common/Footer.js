@@ -94,14 +94,13 @@ const Footer = () => {
                 <Col xs={4}>
                   <Title>Contact Information</Title>
                   <MenuUl>
-                    <MenuLi><a href="mailto:evssip@mail.nih.gov">Contact Us</a></MenuLi>
+                    <MenuLi><a href="mailto:ccdc@mail.nih.gov">Contact Us</a></MenuLi>
                   </MenuUl>
                 </Col>
                 <Col xs={4}>
                   <Title>More Information</Title>
                   <MenuUl>
-                    <MenuLi><MenuLink to="/about" aria-label="About EVS-SIP">About EVS-SIP</MenuLink></MenuLi>
-                    <MenuLi><MenuLink to="/datamodel" aria-label="Data Models">Data Models</MenuLink></MenuLi>
+                    <MenuLi><MenuLink to="/about" aria-label="About CCDC">About CCDC</MenuLink></MenuLi>
                   </MenuUl>
                 </Col>
                 <Col xs={4}>
