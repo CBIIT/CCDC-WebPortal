@@ -1,7 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: none;
+}
+
 .carousel-container {
-  width: 100%;
+  width: 1200px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .carousel-wrapper {
@@ -19,8 +26,14 @@
 
 .carousel-action-wrapper {
   overflow: hidden;
-  width: 5%;
-  background: #191919;
+  background: #212121;
+}
+
+.carousel-action-wrapper-right {
+  overflow: hidden;
+  background: #212121;
+  z-index: 1;
+  margin-left: -2px;
 }
 
 .carousel-content-wrapper {
@@ -34,6 +47,7 @@
   transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding: 10px 0;
 }
 
 .carousel-content::-webkit-scrollbar {
@@ -59,30 +73,28 @@
 }
 
 .left-arrow, .right-arrow {
-  position: absolute;
   z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
   width: 48px;
-  height: 48px;
+  height: 100px;
   border-radius: 24px;
   background-color: transparent;
   box-shadow: 0 0 0 0 blue;
   border: 0;
   font-size: 50px;
   color: white;
+  margin-top: 65px;
 }
 
 .left-arrow {
   left: 24px;
 }
 
-.right-arrow {
-  right: 24px;
+.left-arrow img {
+  transform: rotate(180deg);
 }
 
-.grayed-out {
-  color:gray !important;
+.right-arrow {
+  right: 24px;
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -93,9 +105,9 @@
 
 .carousel-card {
   display: grid;
-  padding: 10px 30px;
-  background: rgba(0, 0, 0, 0.9);
-  border-right: 1px solid white;
+  padding: 0 25px;
+  background-color: #212121;
+  border-right: 2px double gray;
 }
 
 .carousel-card:last-child {
@@ -104,14 +116,16 @@
 
 .cardTitle {
   display: flex;
+  height: 100px;
 }
 
 .cardInfo {
-  width: 60%;
+  width: 80%;
+  padding-top: 10px;
 }
 
 .cardIcon {
-  width: 40%;
+  width: 20%;
   color: white;
   font-size: 40px;
   text-align: center;
@@ -130,6 +144,6 @@
 .cardContent {
   color: white;
   font-size: 90%;
-  width:90%;
   margin-top: 15px;
+  height: 100px;
 }

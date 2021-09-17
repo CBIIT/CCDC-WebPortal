@@ -1,0 +1,20 @@
+.page-link-ccdc {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: #e8f1f8;
+  color: #4b6a90;
+  border: 0;
+  font-weight: bold;
+  padding: .375rem .75rem;
+}
+
+.page-link-ccdc:hover {
+  background-color: #c6d2db;
+  color: #4b6a90;
+}
+
+.page-item.active .page-link-ccdc {
+  background-color: #014188;
+  color: white;
+}

@@ -22,7 +22,7 @@ module.exports = {
     "react/jsx-indent": "off",
     "react/forbid-prop-types": "off",
     "arrow-body-style": "off",
-    "max-len": ["error", { "code": 150 }],
+    "max-len": "off",
     "linebreak-style": "off",
     "quotes": "off",
     "indent": "off",
@@ -32,6 +32,9 @@ module.exports = {
     "space-before-function-paren": "off",
     "object-curly-spacing": "off",
     "global-require": "off",
-    "no-unused-expressions": "off"
+    "no-unused-expressions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/img-redundant-alt": "off"
   },
 };

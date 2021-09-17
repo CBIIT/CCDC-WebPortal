@@ -1,0 +1,37 @@
+.spanText {
+  padding-right: 10px;
+  display: flex;
+}
+
+.buttonStyle {
+  width: 100px;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  color: white;
+  padding: 10px 0px 10px 200px;
+  text-transform: uppercase;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: right;
+  -webkit-box-align: center;
+  align-items: center;
+  float: right;
+  text-decoration: none;
+}
+
+.buttonStyle:hover {
+  color: lightgray;
+  text-decoration: none;
+}
+
+.buttonStyle::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  border-bottom: 35px solid #00418f;
+  border-left: 35px solid transparent;
+  height: 0;
+  width: 90%;
+}

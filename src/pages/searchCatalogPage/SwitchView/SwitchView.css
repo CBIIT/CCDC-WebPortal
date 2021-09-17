@@ -1,0 +1,15 @@
+.switch-view-content {
+
+}
+
+.switch-view-content .nav-link {
+  color: #8a9296;
+  font-weight: 600;
+  padding: .5rem 1rem .5rem 0;
+}
+
+.switch-view-content .nav-link.active {
+  background-color: transparent;
+  color: #014188;
+  border-radius: 0;
+}

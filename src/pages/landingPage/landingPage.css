@@ -55,8 +55,13 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../../assets/img/CCDC.Hero.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-image: url("../../assets/img/CCDC.Hero.1920x600\ \(1\).jpg");
   border-bottom: 2px solid white;
+  background-position: center;
 }
 
 .heroImage2 {
@@ -64,12 +69,13 @@
   height: 600px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../../assets/img/Featured-Highlights.grey.png");
+  background-image: url("../../assets/img/Featured-Highlights.grey.1920x557.jpg");
+  background-position: center;
 }
 
 .texture {
   background-size: cover;
-  background-color: #B6DCFC;
+  background-color: #b6dcfc;
   padding: 120px 0 80px 0;
 }
 
@@ -80,7 +86,7 @@
 
 .redButton {
   height: 13px;
-  color: #ffffff;
+  color: #fff;
   font-family: Raleway;
   font-size: 16px;
   font-weight: bold;
@@ -110,7 +116,7 @@
   font-weight: 600;
   line-height: 45px;
   color: white;
-  letter-spacing: -0px;
+  letter-spacing: 0;
   width: 90%;
 }
 
@@ -149,6 +155,10 @@
   float: right;
 }
 
+.cards {
+  background-color: #212121;
+}
+
 .iconAbout {
   height: 17px;
   width: 9px;
@@ -175,7 +185,7 @@
 .DCWords {
   height: 200px;
   background-color: #274fa5;
-  color: #ffffff;
+  color: #fff;
   font-size: 28px;
   font-weight: bold;
   text-transform: capitalize;
@@ -240,7 +250,7 @@
 }
 
 .aboutButton {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 12px;
@@ -255,7 +265,7 @@
   width: 100%;
   height: 155px;
   overflow-y: auto;
-  background-color: #ffffff;
+  background-color: #fff;
   padding-left: 30px;
   padding-top: 5px;
   min-height: 138px;
@@ -286,7 +296,7 @@
 }
 
 .programImg {
-  background-color: #ffffff;
+  background-color: #fff;
   height: 249px;
 }
 
@@ -310,7 +320,7 @@
 .blueButton {
   height: 45px;
   background-color: #0077e3;
-  color: #ffffff;
+  color: #fff;
   font-family: Raleway;
   font-size: 12px;
   font-weight: 600;
@@ -330,7 +340,7 @@
   margin-left: 8px;
   font-family: Lato;
   font-size: 14px;
-  color: #ffffff;
+  color: #fff;
   text-transform: uppercase;
 }
 
@@ -380,12 +390,12 @@
   margin: 0 auto;
   left: 0;
   right: 0;
-  width: 900px;
+  width: 1000px;
 }
 
 .textSearch {
   width: 350px;
-  color: #ffffff;
+  color: #fff;
   background-color: #000;
   opacity: 0.5;
   font-weight: bold;
@@ -499,4 +509,5 @@
 
 .searchIcon {
   pointer-events: none;
+  margin-bottom: 10px;
 }

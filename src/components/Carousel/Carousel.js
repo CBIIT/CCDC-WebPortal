@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
+import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
+import arrowRightGray from '../../assets/img/arrow_right_gray.svg';
 
 const Carousel = ({
     participatingResources, onLoadLandingParticipatingResources
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchPosition, setTouchPosition] = useState(null);
+    const [transform, setTransform] = useState({ transform: "translateX(0%)" });
 
     useEffect(() => {
         if (participatingResources.length === 0) {
@@ -19,12 +23,16 @@ const Carousel = ({
     const next = () => {
         if (currentIndex < (participatingResources.length - 3)) {
             setCurrentIndex(prevState => prevState + 1);
+            const ts = `translateX(-${(currentIndex + 1) * (100 / 3)}%)`;
+            setTransform({transform: ts});
         }
     };
 
     const prev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prevState => prevState - 1);
+            const ts = `translateX(-${(currentIndex - 1) * (100 / 3)}%)`;
+            setTransform({transform: ts});
         }
     };
 
@@ -68,58 +76,59 @@ const Carousel = ({
                     currentIndex > 0
                      ? (
                         <button type="button" onClick={prev} className="left-arrow">
-                            <i className="fas fa-less-than" />
+                            <img src={arrowRightGold} alt="arrow-right" />
                         </button>
                     )
                     : (
-                        <button type="button" className="left-arrow grayed-out" disabled="disabled">
-                            <i className="fas fa-less-than" />
+                        <button type="button" className="left-arrow" disabled="disabled">
+                            <img src={arrowRightGray} alt="arrow-right" />
                         </button>
                     )
                 }
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
-                    <div className="carousel-content show-3" style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}>
-                        {participatingResources.map((pr) => {
+                    <div className="carousel-content show-3" style={transform}>
+                        {participatingResources.map((pr, idx) => {
+                            const key = `carousel_${idx}`;
                             return (
-                                <article className="carousel-card">
+                                <div key={key} className="carousel-card">
                                     <div className="cardTitle">
                                         <div className="cardInfo">
                                             <div className="cardLabel">
                                                 <span style={{ color: 'gray' }}> Participating Resources </span>
                                             </div>
                                             <div className="cardHeader">
-                                                <h3>
-                                                    {pr.name}
-                                                </h3>
+                                                <h4>
+                                                    {pr.resource_name}
+                                                </h4>
                                             </div>
                                         </div>
                                         <div className="cardIcon">
-                                            <i className="fas fa-archive" />
+                                          <DataResourceIcons participatingResource={pr.data_resource_id} />
                                         </div>
                                     </div>
                                     <div className="cardContent">
-                                        <h5>
-                                            {pr.description}
+                                        <div>
+                                            {pr.description.length > 100 ? `${pr.description.substring(0, 100)}...` : pr.description}
                                             <span style={{ color: 'goldenrod' }}> READ MORE &#62; </span>
-                                        </h5>
+                                        </div>
                                     </div>
-                                </article>
+                                </div>
                             );
                         })}
                     </div>
                 </div>
-                <div className="carousel-action-wrapper">
+                <div className="carousel-action-wrapper-right">
                 {
                     currentIndex < (participatingResources.length - 3)
                      ? (
                         <button type="button" onClick={next} className="right-arrow">
-                            <i className="fas fa-greater-than" />
+                            <img src={arrowRightGold} alt="arrow-right" />
                         </button>
                      )
                      : (
-                        <button type="button" className="right-arrow grayed-out" disabled="disabled">
-                            <i className="fas fa-greater-than" />
+                        <button type="button" className="right-arrow" disabled="disabled">
+                            <img src={arrowRightGray} alt="arrow-right" />
                         </button>
                      )
                 }
