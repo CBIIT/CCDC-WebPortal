@@ -9,21 +9,27 @@ const Filters = ({
   onLoadSearchFilters
 }) => {
   useEffect(() => {
-      if (Object.keys(searchFilters).length === 0) {
-          onLoadSearchFilters().catch(error => {
-              console.log(`Loading search catalog page filters failed ${error}`);
-          });
-      }
+    if (Object.keys(searchFilters).length === 0) {
+      onLoadSearchFilters().catch(error => {
+        console.log(`Loading search catalog page filters failed ${error}`);
+      });
+    }
   }, []);
 
   return (
     <>
       <div className="filterSummary">
         <div className="advancedSearchBox">
-          <button type="button" className="advancedSearchButton btn btn-outline-secondary">
+          {/* <button type="button" className="advancedSearchButton btn btn-outline-secondary">
             <span><Link to="/advancedsearch">Advanced Search</Link></span>
             <i className="fa fa-arrow-right" />
-          </button>
+          </button> */}
+          <Link to="/advancedsearch">
+            <button type="button" className="advancedSearchButton btn btn-outline-secondary">
+              <span>Advanced Search</span>
+              <i className="fa fa-arrow-right" />
+            </button>
+          </Link>
         </div>
       </div>
       <div className="resourceFilterSection">

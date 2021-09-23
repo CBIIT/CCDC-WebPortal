@@ -53,6 +53,7 @@ const SearchCatalogPage = () => {
             <div className="searchContentFooter">
               <PageInfo />
             </div>
+            <div className="space50" />
           </div>
         </div>
       </div>
