@@ -1,0 +1,80 @@
+.accordion-item-first .accordion-button-ccdc {
+  font-size: 1.4rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-transform: none;
+  color: #043c7a;
+  font-weight: 700;
+}
+
+.accordion-item {
+  border-top: 1px solid #4ba4e3;
+  background-color: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  width: 100%;
+}
+
+.accordion-item:first-of-type {
+  border-radius: 0;
+}
+
+.accordion-item:not(:first-of-type) {
+  border-top: 1px solid #4ba4e3;
+}
+
+.accordion-header {
+  padding: 0 10px;
+}
+.accordion-button-ccdc {
+  padding: 10px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #8a9296;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+
+.accordion-button-ccdc:focus {
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+  color: #8a9296;
+}
+
+.accordion-item-first .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+  color: #043c7a;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
+  transform: rotate(-180deg);
+}
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 0;
+  display: inline-block;
+  vertical-align: .5em;
+  content: "";
+  border-top: .6em solid;
+  border-right: .5em solid transparent;
+  border-bottom: 0;
+  border-left: .5em solid transparent;
+  font-size: 1rem;
+  background-image: none;
+  transition: transform .2s ease-in-out;
+  color: #4ba4e3;
+}
+
+.accordion-body {
+  padding: 0;
+}

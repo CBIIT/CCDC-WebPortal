@@ -1,0 +1,121 @@
+.advancedSearchBarContainer {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+.advancedSearchBarArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+}
+
+.advancedSearchBarLabel {
+  padding: 20px 0 10px 5px;
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.advancedSearchCatalogContainer {
+  width: 100%;
+}
+
+.advancedSearchArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+}
+
+.advancedSearchFiltersContainer {
+  width: 40%;
+  /* border-left: 1px solid #e0e4e7; */
+  /* border-right: 1px solid #e0e4e7; */
+}
+
+.advancedSearchContentContainer {
+  width: 80%;
+  border-right: 1px solid #e0e4e7;
+  padding: 5px 10px;
+}
+
+.advancedSearchContentHeader {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #a1c0d1;
+}
+
+.contentSwitchArea {
+  width: 50%;
+}
+
+.exportArea {
+  width: 50%;
+}
+
+.advancedSearchDisplayOptionsRow {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 3px solid #c3d5e0;
+}
+
+.advancedSearchSortingArea {
+  width: 30%;
+  display: flex;
+}
+
+.contentPagingArea {
+  width: 70%;
+}
+
+.space50 {
+  padding-top: 50px;
+  /* margin-bottom: 20%; */
+}
+
+.space100 {
+  padding-top: 100px;
+}
+
+.advancedSearchContent {
+  width: 100%;
+}
+
+.advancedSearchContentFooter {
+  width: 100%;
+  padding: 10px 0;
+  border-top: 3px solid #c3d5e0;
+}
+
+.advancedSearchSubmitBox {
+  margin: 20px;
+}
+
+.advancedSearchSubmitButton {
+  /* background-color: #07368b; */
+  background-color: black;
+  float: right;
+  width: 10%;
+  color: white;
+  font-weight: bold;
+  border-radius: 0;
+  margin-right: 200px;
+}
+
+.advancedSearchSubmitButton span {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.advancedSearchSubmitButton span a{
+  color: white;
+  text-decoration: none;
+}
+
+.advancedSearchSubmitButton svg {
+  float: right;
+  height: 24px;
+}
