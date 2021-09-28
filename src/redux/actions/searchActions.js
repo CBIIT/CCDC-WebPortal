@@ -11,7 +11,6 @@ export function runFullTextSearch(searchText) {
 
 export function handleSelectionRemove(selection) {
   if (selection.field === "search_text") {
-    console.log("here!");
     return { type: types.RUN_FULL_TEXT_SEARCH, searchText: ""};
   }
   return { type: types.CLICK_SEARCH_FILTER_SUCCESS, filter: {name: selection.field, value: selection.value} };
@@ -30,7 +29,7 @@ export function switchView(viewType) {
 }
 
 export function initialLoadSearchResults() {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
     const { datasets } = getState();
     return searchApi.searchCatalog(datasets.searchCriteria)
       .then(datesets => {
@@ -40,10 +39,11 @@ export function initialLoadSearchResults() {
           throw error;
       });
   };
+  return func;
 }
 
 export function startFullTextSearch(searchText) {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
       dispatch(runFullTextSearch(searchText));
       dispatch(switchPage({page: 1, pageSize: 10}));
       const { datasets } = getState();
@@ -55,10 +55,11 @@ export function startFullTextSearch(searchText) {
           throw error;
       });
   };
+  return func;
 }
 
 export function bubbleRemoveClick(selection) {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
       dispatch(handleSelectionRemove(selection));
       dispatch(switchPage({page: 1, pageSize: 10}));
       const { datasets } = getState();
@@ -70,10 +71,11 @@ export function bubbleRemoveClick(selection) {
           throw error;
       });
   };
+  return func;
 }
 
 export function changeSorting(sorting) {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
       dispatch(switchSorting(sorting));
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
@@ -84,10 +86,11 @@ export function changeSorting(sorting) {
           throw error;
       });
   };
+  return func;
 }
 
 export function pageSelect(pageInfo) {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
       dispatch(switchPage(pageInfo));
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
@@ -98,10 +101,12 @@ export function pageSelect(pageInfo) {
           throw error;
       });
   };
+  return func;
 }
 
 export function switchDataView(viewType) {
-  return function(dispatch) {
+  const func = function func(dispatch) {
     return dispatch(switchView(viewType));
   };
+  return func;
 }

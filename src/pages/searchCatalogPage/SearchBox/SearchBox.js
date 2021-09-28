@@ -28,8 +28,6 @@ const SearchBox = ({
     }
   };
 
-  console.log(localText);
-
   return (
     <>
       <InputGroup className="searchBoxInputGroup">

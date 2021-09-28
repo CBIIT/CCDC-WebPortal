@@ -11,7 +11,7 @@ const Filters = ({
   useEffect(() => {
     if (Object.keys(searchFilters).length === 0) {
       onLoadSearchFilters().catch(error => {
-        console.log(`Loading search catalog page filters failed ${error}`);
+        throw new Error(`Loading search catalog page filters failed ${error}`);
       });
     }
   }, []);

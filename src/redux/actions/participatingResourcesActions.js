@@ -6,13 +6,14 @@ export function loadLandingParticipatingResourcesSuccess(participatingResources)
 }
 
 export function loadLandingParticipatingResources() {
-    return function(dispatch) {
-        return participatingResourcesApi.getLandingParticipatingResources()
-        .then(participatingResources => {
-            dispatch(loadLandingParticipatingResourcesSuccess(participatingResources.data));
-        })
-        .catch(error => {
-            throw error;
-        });
-    };
+  const func = function func(dispatch) {
+      return participatingResourcesApi.getLandingParticipatingResources()
+      .then(participatingResources => {
+          dispatch(loadLandingParticipatingResourcesSuccess(participatingResources.data));
+      })
+      .catch(error => {
+          throw error;
+      });
+  };
+  return func;
 }

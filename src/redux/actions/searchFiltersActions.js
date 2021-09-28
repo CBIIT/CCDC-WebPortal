@@ -12,7 +12,7 @@ export function clickSearchFilterSuccess(filter) {
 }
 
 export function loadSearchFilters() {
-  return function(dispatch) {
+  const func = function func(dispatch) {
     return searchFiltersApi.getSearchFilters()
       .then(searchResults => {
           dispatch(loadSearchFiltersSuccess(searchResults.data));
@@ -21,10 +21,11 @@ export function loadSearchFilters() {
           throw error;
       });
   };
+  return func;
 }
 
 export function clickSearchFilter(filter) {
-  return function(dispatch, getState) {
+  const func = function func(dispatch, getState) {
     dispatch(clickSearchFilterSuccess(filter));
     dispatch(switchPage({page: 1, pageSize: 10}));
     const afterState = getState();
@@ -36,4 +37,5 @@ export function clickSearchFilter(filter) {
         throw error;
     });
   };
+  return func;
 }

@@ -11,7 +11,7 @@ const Filters = ({
   useEffect(() => {
     if (Object.keys(searchFilters).length === 0) {
       onLoadSearchFilters().catch(error => {
-        console.log(`Loading search catalog page filters failed ${error}`);
+        throw new Error(`Loading search catalog page filters failed ${error}`);
       });
     }
   }, []);
@@ -95,42 +95,42 @@ const Filters = ({
         <div className="advancedFilterBlock">
           <span className="advancedFilterHeader">NUMBER OF CASES</span>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">0-10 Cases</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">10-100 Cases</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">100-1000 Cases</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">&gt; 1000 Cases</span>
           </OptionContainer>
         </div>
         <div className="advancedFilterBlock4-5">
           <span className="advancedFilterHeader">Case Age at Diagnosis</span>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">0-1 Years</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">1-10 Years</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">10-20 Years</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">20-30 Years</span>
           </OptionContainer>
           <OptionContainer>
-            <input className="form-check-input" onClick type="checkbox" value readOnly />
+            <input className="form-check-input" type="checkbox" value readOnly />
             <span id="inputGroup-sizing-sm">30-39 Years</span>
           </OptionContainer>
         </div>
