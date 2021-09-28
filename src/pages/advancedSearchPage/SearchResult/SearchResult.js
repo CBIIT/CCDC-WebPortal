@@ -102,7 +102,7 @@ const SearchResult = ({
   useEffect(() => {
       if (resultList.length === 0) {
           onPageLoadSearchResults().catch(error => {
-            throw new Error(`Loading search catalog page datasets failed ${error}`);
+              console.log(`Loading search catalog page datasets failed ${error}`);
           });
       }
   }, []);

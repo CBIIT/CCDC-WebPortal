@@ -15,7 +15,7 @@ const Carousel = ({
     useEffect(() => {
         if (participatingResources.length === 0) {
             onLoadLandingParticipatingResources().catch(error => {
-                console.log(`Loading landing page participating resources failed ${error}`);
+              throw new Error(`Loading landing page participating resources failed ${error}`);
             });
         }
     }, []);

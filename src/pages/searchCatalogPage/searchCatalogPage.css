@@ -83,6 +83,10 @@
   width: 70%;
 }
 
+.space50 {
+  padding-top: 50px;
+  /* margin-bottom: 20%; */
+}
 
 .searchContent {
   width: 100%;
