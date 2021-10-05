@@ -1,0 +1,56 @@
+
+.datasetBreadcrumbContainer {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+.datasetDetailHeaderContainer {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+.aboutDatasetContainer {
+  width: 20%;
+  border-left: 1px solid #e0e4e7;
+  border-right: 1px solid #e0e4e7;
+}
+
+.coreDataContainer {
+  width: 100%;
+  display: flex;
+}
+
+.additionalDataContainer {
+  width: 100%;
+}
+
+.searchBarArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+}
+
+.searchBarLabel {
+  padding: 20px 0 10px 5px;
+  color: #07368b;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.searchBoxArea {
+  width: 50%;
+}
+
+.searchArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+}
+
+.searchContentContainer {
+  width: 80%;
+  border-right: 1px solid #e0e4e7;
+  padding: 5px 10px;
+}
