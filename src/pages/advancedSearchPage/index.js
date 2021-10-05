@@ -13,7 +13,6 @@ const AdvancedSearchPage = () => {
   };
 
   const handleSubmit = () => {
-    console.log("submit");
   };
 
   const handleKeyPress = (event) => {
