@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const SelectionOption = styled.li`
+  padding: 10px;
+
+  &:hover {
+    background-color: #f3f8f8;
+    cursor: pointer;
+  }
+
+  & input{
+    margin-right: 10px;
+  }
+`;
 
 const CheckBoxItem = ({
   item, itemClick
@@ -8,19 +22,19 @@ const CheckBoxItem = ({
 
   const handleItemClick = (e) => {
     setChecked(!checked);
-    itemClick({name: item.name, k: item.k, v: item.v}, e);
+    itemClick(item, e);
   };
 
   return (
-    <div onClick={handleItemClick} className="form-check" aria-hidden="true">
-      <input className="form-check-input" type="checkbox" disabled="true" checked={checked} />
-      {item.name}
-    </div>
+    <SelectionOption onClick={handleItemClick} aria-hidden="true">
+      <input type="checkbox" checked={checked} readOnly />
+      {item}
+    </SelectionOption>
   );
 };
 
 CheckBoxItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.string.isRequired,
   itemClick: PropTypes.func.isRequired,
 };
 

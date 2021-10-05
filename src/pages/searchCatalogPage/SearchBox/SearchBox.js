@@ -16,16 +16,12 @@ const SearchBox = ({
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      if (localText.trim() !== "") {
-        onStartFullTextSearch(localText.trim());
-      }
+      onStartFullTextSearch(localText.trim());
     }
   };
 
   const handleSubmit = () => {
-    if (localText.trim() !== "") {
-      onStartFullTextSearch(localText.trim());
-    }
+    onStartFullTextSearch(localText.trim());
   };
 
   return (

@@ -31,9 +31,9 @@ const Accordion = ({
                   {
                     filters[idx] && filters[idx].map((item, pos) => {
                       const filterKey = `filter_item_${pos}`;
-                      const checked = (selection[field] !== undefined && selection[field].indexOf(item) > -1);
+                      const checked = (selection[field] !== undefined && selection[field].indexOf(item.name) > -1);
                       return (
-                        <AccordionItem key={filterKey} name={field} value={item} itemClick={onClickSearchFilter} checked={checked} />
+                        <AccordionItem key={filterKey} name={field} item={item} itemClick={onClickSearchFilter} checked={checked} />
                       );
                     })
                   }

@@ -4,6 +4,8 @@ export default {
     },
     searchFilters: {
     },
+    advancedFilters: {
+    },
     datasets: {
       searchCriteria: {
         search_text: "",
