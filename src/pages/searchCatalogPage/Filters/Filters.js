@@ -42,7 +42,7 @@ const Filters = ({
           <span>Research Area</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Case Disease Diagnosis", "Case Treatment Administered", "Project Anatomic Site Studied", "Project Cancer Studied"]} />
+          <Accordion fields={["Case Disease Diagnosis", "Case Tumor Site", "Case Treatment Administered"]} />
         </div>
       </div>
       <div className="filterSection">
@@ -50,7 +50,7 @@ const Filters = ({
           <span>Biospecimen</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Sample Assay Method", "Sample Anatomic Site", "Sample Composition Type"]} />
+          <Accordion fields={["Sample Assay Method", "Sample Analyte Type", "Sample Composition Type"]} />
         </div>
       </div>
       <div className="filterSection">
@@ -58,7 +58,7 @@ const Filters = ({
           <span>Case Demographic</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Case Age at Diagnosis", "Case Ethnicity", "Case Race", "Case Sex at Birth"]} />
+          <Accordion fields={["Case Age at Diagnosis", "Case Ethnicity", "Case Race", "Case Sex"]} />
         </div>
       </div>
     </>

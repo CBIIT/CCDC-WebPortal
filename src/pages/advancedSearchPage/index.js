@@ -1,23 +1,52 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import {InputGroup, FormControl} from 'react-bootstrap';
 import AdvancedFilters from './advancedFilters';
 import './advancedSearchPage.css';
 
 const AdvancedSearchPage = () => {
-    return (
-      <>
-        <div className="advancedSearchBarContainer">
-          <div className="advancedSearchBarArea">
-            <div className="advancedSearchBarLabel">Advanced Search</div>
-          </div>
+  const [localText, setLocalText] = useState("");
+
+  const handleTextInputChange = (event) => {
+    const text = event.target.value;
+    setLocalText(text);
+  };
+
+  const handleSubmit = () => {
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      if (localText.trim() !== "") {
+        handleSubmit();
+      }
+    }
+  };
+
+  return (
+    <>
+      <div className="advancedSearchBarContainer">
+        <div className="advancedSearchBarArea">
+          <div className="advancedSearchBarLabel">Advanced Search</div>
         </div>
-        <div className="advancedSearchCatalogContainer">
-          <div className="advancedSearchArea">
-            <div className="advancedSearchFiltersContainer">
-              <AdvancedFilters />
-            </div>
+      </div>
+      <div className="advancedSearchCatalogContainer">
+        <div className="advancedSearchArea">
+          <div className="searchBoxArea">
+            <InputGroup className="advancedSearchInputBox">
+              <FormControl
+                placeholder="Search the Catalog"
+                aria-label="Search the Catalog"
+                aria-describedby="basic-addon"
+                value={localText}
+                onChange={(e) => handleTextInputChange(e)}
+                onKeyPress={(e) => handleKeyPress(e)}
+              />
+            </InputGroup>
           </div>
-          <div className="space50" />
+          <div className="advancedSearchFiltersContainer">
+            <AdvancedFilters />
+          </div>
           <div className="advancedSearchSubmitBox">
             <Link to="/search">
               <button type="button" className="advancedSearchSubmitButton btn btn-outline-secondary">
@@ -26,10 +55,10 @@ const AdvancedSearchPage = () => {
               </button>
             </Link>
           </div>
-          <div className="space100" />
         </div>
-      </>
-    );
-  };
+      </div>
+    </>
+  );
+};
 
   export default AdvancedSearchPage;
