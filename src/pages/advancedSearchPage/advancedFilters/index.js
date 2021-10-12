@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import {
-  loadAdvancedSearchFilters,
+  loadAdvancedSearchFilters, clickAdvancedSearchFilter,
 } from '../../../redux/actions/advancedSearchFiltersActions';
 import Filters from './advancedFilters';
 
 const ReduxFilters = (() => {
   const mapStateToProps = (state) => ({
-    advancedFilters: state.advancedFilters,
+    advancedFilters: state.advancedSearch.advancedFilters,
   });
 
   const mapDispatchToProps = {
     onLoadAdvancedSearchFilters: loadAdvancedSearchFilters,
+    onClickAdvancedSearchFilter: clickAdvancedSearchFilter,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(Filters);

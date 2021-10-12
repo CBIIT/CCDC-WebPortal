@@ -22,7 +22,8 @@ const OptionContainer = styled.div`
 
 const Filters = ({
   advancedFilters,
-  onLoadAdvancedSearchFilters
+  onLoadAdvancedSearchFilters,
+  onClickAdvancedSearchFilter,
 }) => {
   useEffect(() => {
     if (Object.keys(advancedFilters).length === 0) {
@@ -32,6 +33,10 @@ const Filters = ({
     }
   }, []);
 
+  const handleItemClick = (item) => {
+    onClickAdvancedSearchFilter(item);
+  };
+
   return (
     <>
       <div className="advancedFilterSection">
@@ -39,14 +44,14 @@ const Filters = ({
           <span>Research Area</span>
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Case Disease Diagnosis" />
+          <SelectionWithCheckBox selectionLabel="Case Disease Diagnosis" selectionField="case_disease_diagnosis" />
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Case Tumor Site" />
-          <SelectionWithCheckBox selectionLabel="Case Treatment Administered" />
+          <SelectionWithCheckBox selectionLabel="Case Tumor Site" selectionField="case_tumor_site" />
+          <SelectionWithCheckBox selectionLabel="Case Treatment Administered" selectionField="case_treatment_administrered" />
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Case Treatment Outcome" />
+          <SelectionWithCheckBox selectionLabel="Case Treatment Outcome" selectionField="case_treatment_outcome" />
         </div>
       </div>
       <div className="advancedFilterSection">
@@ -54,15 +59,15 @@ const Filters = ({
           <span>Sample Characteristic</span>
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Sample Anatomic Site" />
-          <SelectionWithCheckBox selectionLabel="Sample Analyte Type" />
+          <SelectionWithCheckBox selectionLabel="Sample Anatomic Site" selectionField="sample_anatomic_site" />
+          <SelectionWithCheckBox selectionLabel="Sample Analyte Type" selectionField="sample_analyte_type" />
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Sample Assay Method" />
-          <SelectionWithCheckBox selectionLabel="Sample Composition Type" />
+          <SelectionWithCheckBox selectionLabel="Sample Assay Method" selectionField="sample_assay_method" />
+          <SelectionWithCheckBox selectionLabel="Sample Composition Type" selectionField="sample_composition_type" />
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Sample Is Normal" />
+          <SelectionWithCheckBox selectionLabel="Sample Is Normal" selectionField="sample_is_normal" />
         </div>
       </div>
       <div className="advancedFilterSection">
@@ -70,9 +75,9 @@ const Filters = ({
           <span>Case Demographic</span>
         </div>
         <div className="advancedFilterBlock">
-          <SelectionWithCheckBox selectionLabel="Case Sex" />
-          <SelectionWithCheckBox selectionLabel="Case Race" />
-          <SelectionWithCheckBox selectionLabel="Case Ethnicity" />
+          <SelectionWithCheckBox selectionLabel="Case Sex" selectionField="case_sex" />
+          <SelectionWithCheckBox selectionLabel="Case Race" selectionField="case_race" />
+          <SelectionWithCheckBox selectionLabel="Case Ethnicity" selectionField="case_ethnicity" />
         </div>
         <div className="advancedFilterBlock">
           <div className="advancedFilterArea">
@@ -82,7 +87,7 @@ const Filters = ({
                 const key = `caad_${idx}`;
                 return (
                   <OptionContainer key={key}>
-                    <input className="form-check-input" type="checkbox" value readOnly />
+                    <input className="form-check-input" type="checkbox" value readOnly onClick={() => handleItemClick({name: "case_age_at_diagnosis", value: item})} />
                     <span id="inputGroup-sizing-sm">{item}</span>
                   </OptionContainer>
                 );
@@ -96,7 +101,7 @@ const Filters = ({
                 const key = `noc_${idx}`;
                 return (
                   <OptionContainer key={key}>
-                    <input className="form-check-input" type="checkbox" value readOnly />
+                    <input className="form-check-input" type="checkbox" value readOnly onClick={() => handleItemClick({name: "number_of_cases", value: item})} />
                     <span id="inputGroup-sizing-sm">{item}</span>
                   </OptionContainer>
                 );
@@ -110,7 +115,7 @@ const Filters = ({
                 const key = `nos_${idx}`;
                 return (
                   <OptionContainer key={key}>
-                    <input className="form-check-input" type="checkbox" value readOnly />
+                    <input className="form-check-input" type="checkbox" value readOnly onClick={() => handleItemClick({name: "number_of_samples", value: item})} />
                     <span id="inputGroup-sizing-sm">{item}</span>
                   </OptionContainer>
                 );
@@ -126,6 +131,7 @@ const Filters = ({
 Filters.propTypes = {
   advancedFilters: PropTypes.object.isRequired,
   onLoadAdvancedSearchFilters: PropTypes.func.isRequired,
+  onClickAdvancedSearchFilter: PropTypes.func.isRequired,
 };
 
 export default Filters;

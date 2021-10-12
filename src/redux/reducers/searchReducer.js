@@ -17,6 +17,18 @@ const insertOrDeleteFilter = (filters, action) => {
 
 export default function searchReducer(state = initialState.datasets, action) {
     switch (action.type) {
+        case types.LOAD_SEARCH_FILTERS_SELECTION_SUCCESS: {
+          return {
+            ...state,
+            searchCriteria: {
+              ...state.searchCriteria,
+              facet_filters: {
+                ...state.searchCriteria.facet_filters,
+                ...action.filters,
+              },
+            },
+          };
+        }
         case types.LOAD_SEARCH_RESULTS_SUCCESS: {
           return {
             ...state,
