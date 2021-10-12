@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ReactHtmlParser from "react-html-parser";
 import CheckBoxItem from './CheckBoxItem';
 
 const SelectionContainer = styled.div`
@@ -21,7 +22,7 @@ const SelectionLabel = styled.div`
 const SelectionButton = styled.button`
   position: relative;
   width: 100%;
-  padding: 5px 5px 5px 15px;
+  padding: 5px 30px 5px 15px;
   text-align: left;
   box-shadow: 0 1px 1px rgba(50,50,50,0.1);
   cursor: pointer;
@@ -42,6 +43,10 @@ const SelectionButton = styled.button`
 
   &:focus {
     background-color: #c6d2db;
+  }
+
+  &.selectedFilter {
+    font-weight: bold;
   }
 `;
 
@@ -88,7 +93,9 @@ const useOutsideAlerter = (ref) => {
 
 const SelectionWithCheckBox = ({
   selectionLabel,
-  advancedFilter
+  selectionField,
+  advancedFilter,
+  onClickAdvancedSearchFilter,
 }) => {
   const [currentValue, setCurrentValue] = useState([]);
   const dropdownSelection = useRef(null);
@@ -96,20 +103,20 @@ const SelectionWithCheckBox = ({
 
   const handleOptionClick = (item, event) => {
     event.stopPropagation();
-    dropdownSelection.current.classList.remove('active');
     const idx = currentValue.indexOf(item);
     if (idx === -1) {
       setCurrentValue([...currentValue, item]);
     } else {
       setCurrentValue(currentValue.filter(element => element !== item));
     }
+    onClickAdvancedSearchFilter({name: selectionField, value: item});
   };
 
   return (
     <SelectionContainer ref={dropdownSelection} className="dropdown">
       <SelectionLabel>{selectionLabel}</SelectionLabel>
       <SelectionButton type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        {currentValue.length === 0 ? "Please select ..." : currentValue.join(",")}
+        {currentValue.length === 0 ? "Please select ..." : ReactHtmlParser(`<b>${currentValue.join(", ")}</b>`)}
       </SelectionButton>
       <SelectionItems className="dropdown-menu">
         {
@@ -127,7 +134,9 @@ const SelectionWithCheckBox = ({
 
 SelectionWithCheckBox.propTypes = {
   selectionLabel: PropTypes.string.isRequired,
+  selectionField: PropTypes.string.isRequired,
   advancedFilter: PropTypes.array.isRequired,
+  onClickAdvancedSearchFilter: PropTypes.func.isRequired,
 };
 
 export default SelectionWithCheckBox;

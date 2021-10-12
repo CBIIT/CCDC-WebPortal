@@ -42,8 +42,9 @@ const AccordionItem = ({
 }) => {
   const handleItemClick = () => {
     const value = item.name;
+    const field = name.toLowerCase().replaceAll(' ', '_');
     itemClick({
-      name,
+      name: field,
       value,
     });
   };

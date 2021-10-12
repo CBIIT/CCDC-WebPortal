@@ -4,7 +4,11 @@ export default {
     },
     searchFilters: {
     },
-    advancedFilters: {
+    advancedSearch: {
+      advancedFilters: {
+      },
+      advanced_facet_filters: {
+      },
     },
     datasets: {
       searchCriteria: {

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -97,16 +97,7 @@ const SearchResultContainer = styled.div`
 const SearchResult = ({
   resultList,
   viewType,
-  onPageLoadSearchResults,
 }) => {
-  useEffect(() => {
-      if (resultList.length === 0) {
-          onPageLoadSearchResults().catch(error => {
-            throw new Error(`Loading search catalog page datasets failed ${error}`);
-          });
-      }
-  }, []);
-
   return (
     <>
       <SearchResultContainer>
@@ -332,28 +323,19 @@ const SearchResult = ({
                 {
                   rst.highlight && (
                     Object.keys(rst.highlight).map((hl, hlidx) => {
-                      if (hl === "desc") {
-                        return <></>;
-                      }
-                      if (hl === "projects.p_k") {
-                        return <></>;
-                      }
-                      if (hl === "case_disease_diagnosis.k") {
-                        return <></>;
-                      }
-                      if (hl === "sample_assay_method.k") {
-                        return <></>;
-                      }
-                      const hlKey = `hl_${hl}_${hlidx}`;
-                      return (
-                        <div key={hlKey} className="row align-items-start footerRow">
-                          <div className="col">
-                            {hl}
-                            :
-                            {ReactHtmlParser(rst.highlight[hl])}
+                      if (hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "sample_assay_method.k") {
+                        const hlKey = `hl_${hl}_${hlidx}`;
+                        return (
+                          <div key={hlKey} className="row align-items-start footerRow">
+                            <div className="col">
+                              {hl}
+                              :
+                              {ReactHtmlParser(rst.highlight[hl])}
+                            </div>
                           </div>
-                        </div>
-                      );
+                        );
+                      }
+                      return <></>;
                     })
                   )
                 }
@@ -366,6 +348,7 @@ const SearchResult = ({
                   <tr style={{ color: 'navy' }}>
                       <th scope="col">Dataset Name</th>
                       <th scope="col">Cases</th>
+                      <th scope="col">Samples</th>
                       <th scope="col">Resource Name</th>
                       <th scope="col">Dataset Type</th>
                       <th scope="col">Update Date</th>
@@ -379,6 +362,7 @@ const SearchResult = ({
                       <tr key={key} className="datasetTableRow">
                         <td><Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link></td>
                         <td>{rst.content.case_id}</td>
+                        <td>{rst.content.sample_id}</td>
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
                         <td>{rst.content.primary_dataset_scope}</td>
                         <td>{rst.content.digest_date.substring(0, 10)}</td>
@@ -398,7 +382,6 @@ const SearchResult = ({
 SearchResult.propTypes = {
   resultList: PropTypes.array.isRequired,
   viewType: PropTypes.string.isRequired,
-  onPageLoadSearchResults: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

@@ -9,6 +9,10 @@ export function clickAdvancedSearchFilterSuccess(advancedFilter) {
   return { type: types.CLICK_ADVANCED_SEARCH_FILTER_SUCCESS, advancedFilter };
 }
 
+export function clearAdvancedSearchSelectionSuccess() {
+  return {type: types.CLEAR_ADVANCED_SEARCH_SELECTION_SUCCESS};
+}
+
 export function loadAdvancedSearchFilters() {
   const func = function func(dispatch) {
     return searchFiltersApi.getAdvancedSearchFilters()
@@ -25,6 +29,13 @@ export function loadAdvancedSearchFilters() {
 export function clickAdvancedSearchFilter(filter) {
   const func = function func(dispatch) {
     dispatch(clickAdvancedSearchFilterSuccess(filter));
+  };
+  return func;
+}
+
+export function clearAdvancedSearchSelection() {
+  const func = function func(dispatch) {
+    dispatch(clearAdvancedSearchSelectionSuccess());
   };
   return func;
 }
