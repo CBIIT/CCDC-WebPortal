@@ -6,8 +6,9 @@ import SelectionWithCheckBox from './SelectionWithCheckBox';
 
 const ReduxSelectionWithCheckBox = (() => {
   const mapStateToProps = (state, ownProps) => ({
-    advancedFilter: state.advancedFilters[ownProps.selectionLabel] ? state.advancedFilters[ownProps.selectionLabel] : [],
+    advancedFilter: state.advancedSearch.advancedFilters[ownProps.selectionLabel] ? state.advancedSearch.advancedFilters[ownProps.selectionLabel] : [],
     selectionLabel: ownProps.selectionLabel,
+    selectionField: ownProps.selectionField,
   });
 
   const mapDispatchToProps = {

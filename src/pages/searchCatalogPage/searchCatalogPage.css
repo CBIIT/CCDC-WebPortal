@@ -23,14 +23,6 @@
   display: flex;
 }
 
-.searchBoxArea {
-  width: 50%;
-}
-
-.selectionBubbleArea {
-  width: 50%;
-}
-
 .searchCatalogContainer {
   width: 100%;
 }

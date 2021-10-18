@@ -13,7 +13,7 @@ const Accordion = ({
     <>
       <div className="accordion">
         {fields.map((field, idx) => {
-          const str = field.replaceAll(' ', '_');
+          const str = field.toLowerCase().replaceAll(' ', '_');
           const key = `filters_${idx}`;
           const stayOpenID = `so-${str}-${idx}`;
           const collapseOneID = `co-${str}-${idx}`;
@@ -31,7 +31,7 @@ const Accordion = ({
                   {
                     filters[idx] && filters[idx].map((item, pos) => {
                       const filterKey = `filter_item_${pos}`;
-                      const checked = (selection[field] !== undefined && selection[field].indexOf(item.name) > -1);
+                      const checked = (selection[str] !== undefined && selection[str].indexOf(item.name) > -1);
                       return (
                         <AccordionItem key={filterKey} name={field} item={item} itemClick={onClickSearchFilter} checked={checked} />
                       );
