@@ -104,29 +104,21 @@ const HomePage = () => {
                       </div>
                       <div className="column2">
                           <p className="infoSection">
-                              {/* Explaination of new features, new resources, or highlighted user
-                              success story. Use this space to explain the purpose of the CCDC
-                              and goals for the site. */}
                               The CCDI Childhood Cancer Data Catalog is a searchable database of
                               National Cancer Institute and other  pediatric cancer resources.
                               <br />
                               <br />
-                              {/* Give the site visitor the context to learn how this might help them,
-                              both now and in the future. What is it that the user can do in the
-                              CCDC that is difficult to do without CCDC? */}
                               Resources include repositories, registries, data commons, web sites,
                               and catalogs that either manage or refer to data. Users can browse
                               and filter the list of data resources or enter search terms to identify
                               data of interest.
                               <br />
                               <br />
-                              {/* Give the new site visitor some information to make them interested
-                              in the capabilities of CCDC. */}
                               Links to those data resources are provided in the browse or search results.
                               <br />
                               <br />
                           </p>
-                          <Link to="/about" className="headerLink2">
+                          <Link to="/search" className="headerLink2">
                               <Button className="buttonText color-black">
                                   <h6>
                                       &nbsp;EXPLORE THE CATALOG &emsp;&emsp;&emsp;
