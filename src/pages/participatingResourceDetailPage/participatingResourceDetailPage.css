@@ -1,0 +1,200 @@
+
+.prBreadcrumbContainer {
+  padding: 5px 0 0px 30px;
+  width: 100%;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+/* Style the list */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  /* background-color: #eee; */
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: goldenrod;
+  content: ">";
+  /* content: "/\00a0"; */
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: goldenrod;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
+.prDetailHeaderContainer {
+  /* padding: 0px 0 20px 20px; */
+  padding: 20px 0 10px 0px;
+  width: 100%;
+  background-color: #07368b;
+  margin-left: 30px;;
+  /* border-bottom: 1px solid lightgray; */
+}
+
+.prDetailHeaderLabel {
+  padding: 0px 0 40px 30px;
+  background-color: #07368b;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.prDetailHeaderContent {
+  padding: 0px 0 5px 30px;
+  background-color: #07368b;
+  color: white;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.prDetailHeaderText {
+  /* padding: 0px 0 5px 30px; */
+  /* background-color: #07368b; */
+  color: #2dc799;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  text-decoration: none;
+}
+
+.prAboutContentContainer {
+  padding: 20px 0 10px 20px;
+  border: 1px solid lightgray;
+  /* border-bottom: 1px solid gray; */
+}
+
+.prAboutResourceContainer {
+  padding: 5px 0 10px 20px;
+  background-color: rgb(248, 248, 248);
+  /* border-top: 1px solid gray; */
+  /* border-bottom: 1px solid gray; */
+}
+
+.prAboutResourceLabel {
+  padding: 5px 0 10px 10px;
+  color: rgb(180, 180, 180);
+  font-size: 26px;
+  /* font-weight: bold; */
+  text-transform: uppercase;
+  /* border-bottom: 2px solid rgb(163, 163, 163); */
+  border-bottom: 2px solid lightgray;
+}
+
+.prAboutResourceContent {
+  padding: 30px 0px 30px 10px;
+  /* color: rgb(180, 180, 180); */
+  /* font-size: 26px; */
+  /* font-weight: bold; */
+  /* text-transform: uppercase; */
+  /* border-bottom: 2px solid rgb(163, 163, 163); */
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 2px solid lightgray;
+  /* width: 90%; */
+}
+
+.prCoreDataContainer {
+  padding: 00px 0 10px 20px;
+  width: 45%;
+  height: 300px;
+  /* border-right: 1px solid #e0e4e7; */
+  border-right: 1px solid lightgray;
+  /* display: flex; */
+  /* display: inline-block; */
+  /* position: relative; */
+  display: inline-table;
+}
+.prResourceToolsContainer {
+  padding: 00px 0 10px 20px;
+  width: 45%;
+  height: 200px;
+  /* border-right: 1px solid #e0e4e7; */
+  border-right: 1px solid lightgray;
+  /* display: flex; */
+  /* display: inline-block; */
+  /* position: relative; */
+  display: inline-table;
+}
+
+.prCoreDataLabel {
+  padding: 20px 0 10px 0px;
+  color: #07368b;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #07368b;
+  width: 95%;
+}
+
+.prDataAccessContainer {
+  padding: 0px 0 10px 20px;
+  width: 45%;
+  display: inline-table;
+}
+
+.prAdditionalDataLabel {
+  padding: 20px 0 10px 0px;
+  color: #07368b;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #07368b;
+  width: 95%;
+}
+
+.prDataElementLabel {
+  padding: 30px 0 10px 0px;
+  color: #2dc799;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.searchBarArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+}
+
+.searchBarLabel {
+  padding: 20px 0 10px 5px;
+  color: #07368b;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+
+.searchBoxArea {
+  width: 50%;
+}
+
+.searchArea {
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+}
+
+.searchContentContainer {
+  width: 80%;
+  border-right: 1px solid #e0e4e7;
+  padding: 5px 10px;
+}
