@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import DataResourceIcons from '../../components/DataResourceIcons';
 import './datasetDetailPage.css';
 
 const DatasetResultContainer = styled.div``;
@@ -24,41 +25,11 @@ const DatasetDetail = ({
 
   return (
     <>
-            {/* <table className="table table-striped">
-              <thead>
-                  <tr style={{ color: 'navy' }}>
-                      <th scope="col">Dataset Name</th>
-                      <th scope="col">Cases</th>
-                      <th scope="col">Resource Name</th>
-                      <th scope="col">Dataset Type</th>
-                      <th scope="col">Update Date</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  {
-                  resultList.map((rst, idx) => {
-                    const key = `dataset_table_${idx}`;
-                    return (
-                      <tr key={key} className="datasetTableRow">
-                        <td><Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_id}</Link></td>
-                        <td>{rst.content.case_id}</td>
-                        <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
-                        <td>{rst.content.primary_dataset_scope}</td>
-                        <td>{rst.content.digest_date.substring(0, 10)}</td>
-                      </tr>
-                    );
-                  })
-                  }
-              </tbody>
-            </table> */}
         <DatasetResultContainer>
         {
             resultList.map((rst, idx) => {
                 const key = `sr${idx}`;
-                // console.log("asdfasddfasfasf");
-                // document.write(page);
                 if (rst.content.dataset_id === page) {
-                  // console.log("asdfasddfasfasfƒƒff");
                   return (
                     <div key={key}>
                       <div className="datasetBreadcrumbContainer">
@@ -71,6 +42,9 @@ const DatasetDetail = ({
                       </div>
                       <div className="datasetDetailHeaderContainer">
                         <div className="datasetDetailHeaderLabel">{rst.content.dataset_name}</div>
+                        <div className="datasetIcon">
+                          <DataResourceIcons participatingResource={rst.data_resource_id} />
+                        </div>
                         <div className="datasetDetailHeaderContent">
                           Data Resource: &nbsp;
                           <span className="datasetDetailHeaderText">{rst.content.data_resource_id}</span>
