@@ -1,8 +1,6 @@
 
 .datasetBreadcrumbContainer {
-  padding: 5px 0 0px 30px;
-  width: 100%;
-  display: grid;
+  padding: 5px 0px 0px 0px;
 }
 
 /* Style the list */
@@ -44,10 +42,7 @@ ul.breadcrumb li a:hover {
   width: 100%;
   /* background-color: #07368b; */
   background: linear-gradient(to right, #3060b8,#05296b);
-  margin-left: 30px;;
   /* border-bottom: 1px solid lightgray; */
-  width: 100%;
-  display: grid;
 }
 
 .datasetDetailHeaderLabel {
@@ -77,18 +72,27 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetIcon {
-  width: 50%;
-  color: white;
-  font-size: 40px;
-  text-align: right;
-  margin-left: 1000px;
+  /* width: 50%; */
+  /* font-size: 40px; */
+  background-size: 100px;
+  margin-left: 90%;
   margin-top: -80px;
   /* padding-top: 10px; */
 }
 
+.datasetTypeButton {
+  /* width: 50%; */
+  /* font-size: 100%; */
+  font-size: 15px;
+  background-color: white;
+  margin-left: 88%;
+  margin-bottom: -80px;
+  /* margin-top: 10px; */
+}
+
 .aboutContentContainer {
-  padding: 20px 0 10px 20px;
-  border: 1px solid lightgray;
+  padding: 20px 0px 0px 0px;
+  /* border: 1px solid lightgray; */
   /* border-bottom: 1px solid gray; */
   width: 100%;
   display: grid;
@@ -112,7 +116,7 @@ ul.breadcrumb li a:hover {
 }
 
 .coreDataContainer {
-  padding: 00px 0 10px 20px;
+  padding: 0px 50px 10px 20px;
   width: 48%;
   height: 300px;
   /* border-right: 1px solid #e0e4e7; */
@@ -130,7 +134,7 @@ ul.breadcrumb li a:hover {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: 1px solid #07368b;
-  width: 95%;
+  width: 100%;
 }
 
 .additionalDataContainer {
@@ -157,14 +161,3 @@ ul.breadcrumb li a:hover {
   text-transform: uppercase;
 }
 
-.searchArea {
-  margin: 0 auto;
-  width: 1200px;
-  display: flex;
-}
-
-.searchContentContainer {
-  width: 80%;
-  border-right: 1px solid #e0e4e7;
-  padding: 5px 10px;
-}
