@@ -34,7 +34,7 @@ const Filters = ({
       </div>
       <div className="resourceFilterSection">
         <div className="filterBlock">
-          <Accordion fields={["Resource"]} />
+          <Accordion domain="dataset" fields={["Resource"]} />
         </div>
       </div>
       <div className="filterSection">
@@ -42,7 +42,7 @@ const Filters = ({
           <span>Research Area</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Case Disease Diagnosis", "Case Tumor Site", "Case Treatment Administered"]} />
+          <Accordion domain="dataset" fields={["Case Disease Diagnosis", "Case Tumor Site", "Case Treatment Administered"]} />
         </div>
       </div>
       <div className="filterSection">
@@ -50,7 +50,7 @@ const Filters = ({
           <span>Biospecimen</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Sample Assay Method", "Sample Analyte Type", "Sample Composition Type"]} />
+          <Accordion domain="dataset" fields={["Sample Assay Method", "Sample Analyte Type", "Sample Composition Type"]} />
         </div>
       </div>
       <div className="filterSection">
@@ -58,7 +58,7 @@ const Filters = ({
           <span>Case Demographic</span>
         </div>
         <div className="filterBlock">
-          <Accordion fields={["Case Age at Diagnosis", "Case Ethnicity", "Case Race", "Case Sex"]} />
+          <Accordion domain="dataset" fields={["Case Age at Diagnosis", "Case Ethnicity", "Case Race", "Case Sex"]} />
         </div>
       </div>
     </>

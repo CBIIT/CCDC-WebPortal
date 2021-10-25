@@ -6,24 +6,25 @@
   font-weight: 700;
 }
 
-.accordion-item {
+.accordion-item .accordion-header {
   border-top: 1px solid #4ba4e3;
+}
+
+.accordion-item {
+  border-top: 0;
   background-color: transparent;
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
+  padding-bottom: 2px;
 }
 
 .accordion-item:first-of-type {
   border-radius: 0;
 }
 
-.accordion-item:not(:first-of-type) {
-  border-top: 1px solid #4ba4e3;
-}
-
 .accordion-header {
-  padding: 0 10px;
+  margin: 0 10px;
 }
 .accordion-button-ccdc {
   padding: 10px 0;

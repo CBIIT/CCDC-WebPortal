@@ -1,9 +1,19 @@
-import React from "react";
+import { connect } from 'react-redux';
+import DatasetDetail from './DatasetDetail';
+import {
+  loadDatasetDetail
+} from '../../redux/actions/searchActions';
 
-const DatasetDetailPage = () => (
-    <div>
-        <h2>Dataset Detail Page Content</h2>
-    </div>
-);
+const ReduxSearchResult = (() => {
+  const mapStateToProps = (state) => ({
+    details: state.datasets.details,
+  });
 
-export default DatasetDetailPage;
+  const mapDispatchToProps = {
+    onPageLoadDatasetDetail: loadDatasetDetail,
+  };
+
+  return connect(mapStateToProps, mapDispatchToProps)(DatasetDetail);
+})();
+
+export default ReduxSearchResult;

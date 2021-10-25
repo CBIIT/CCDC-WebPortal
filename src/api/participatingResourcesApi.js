@@ -8,4 +8,19 @@ export function getLandingParticipatingResources() {
     .catch(handleError);
 }
 
+export function getSearchFilters() {
+  return fetch(`${baseUrl}/filters`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+export function searchParticipatingResources(body) {
+  return fetch(`${baseUrl}/search`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  }).then(handleResponse)
+    .catch(handleError);
+}
+
 export default getLandingParticipatingResources;
