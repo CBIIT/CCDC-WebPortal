@@ -44,7 +44,7 @@ const DatasetDetail = ({
                     <DataResourceIcons participatingResource={content.data_resource_id} />
                   </div>
                   <button type="button" className="datasetTypeButton btn">
-                    <span>{content.desc}</span>
+                    {content.primary_dataset_scope}
                   </button>
                   <div className="datasetDetailHeaderContent">
                     Data Resource: &nbsp;
@@ -53,10 +53,9 @@ const DatasetDetail = ({
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
-                      {content.primary_dataset_scope}
-                      , &nbsp;
                       {content.poc}
-                      &nbsp;
+                      , &nbsp;
+                      {content.poc_email}
                     </span>
                   </div>
                 </div>
@@ -102,8 +101,8 @@ const DatasetDetail = ({
                           })
                         }
                       <div className="dataElementLabel">Sample Assay Method</div>
-                        {/* {
-                          content.sample_assay_method.map((sam, samidx) => {
+                        {
+                          content.sample_assay_method ? content.sample_assay_method.map((sam, samidx) => {
                             const samkey = `sam_${samidx}`;
                             return (
                               <span key={samkey} className="itemSpan">
@@ -112,7 +111,15 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
-                        } */}
+                          : content.case_sex.map((sam, samidx) => {
+                            const samkey = `sam_${samidx}`;
+                            return (
+                              <span key={samkey} className="itemSpan">
+                                {/* &nbsp; */}
+                              </span>
+                            );
+                          })
+                        }
                       <div className="dataElementLabel">Case Race</div>
                         {
                           content.case_race.map((cr, cridx) => {
