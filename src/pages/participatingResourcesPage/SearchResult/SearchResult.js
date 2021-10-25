@@ -141,9 +141,10 @@ const DatasetsSummary = styled.div`
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
 
-  span {
+  a {
     color: white;
     margin-left: 100px;
+    text-decoration: inherit;
   }
 `;
 
@@ -189,6 +190,7 @@ const SearchResult = ({
             const key = `sr_${idx}`;
             const mailto = `mailto:${rst.poc_email}`;
             const linkto = `/resource/${rst.data_resource_id}`;
+            const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
             return (
               <ResourceCard key={key}>
                 <ResourceHeader>
@@ -223,11 +225,11 @@ const SearchResult = ({
                   <SummaryIcon>
                     <img src={datasetsIcon} alt="datasets" />
                   </SummaryIcon>
-                  <span>
+                  <Link to={linktoDatasetSummaries}>
                     DATASET SUMMARIES (
                     {rst.datasets_total}
                     )
-                  </span>
+                  </Link>
                 </DatasetsSummary>
               </ResourceCard>
             );

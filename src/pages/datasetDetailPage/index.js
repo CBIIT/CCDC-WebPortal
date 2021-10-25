@@ -6,7 +6,7 @@ import {
 
 const ReduxSearchResult = (() => {
   const mapStateToProps = (state) => ({
-    detail: state.datasets.details,
+    details: state.datasets.details,
   });
 
   const mapDispatchToProps = {

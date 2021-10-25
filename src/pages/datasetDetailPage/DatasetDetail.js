@@ -11,11 +11,11 @@ const DatasetResultContainer = styled.div`
 `;
 
 const DatasetDetail = ({
-  detail,
+  details,
   onPageLoadDatasetDetail,
 }) => {
-  const {id} = useParams();
-  const content = detail[id];
+  const { id } = useParams();
+  const content = details[id];
 
   useEffect(() => {
     if (!content) {
@@ -160,7 +160,7 @@ const DatasetDetail = ({
 };
 
 DatasetDetail.propTypes = {
-  detail: PropTypes.object.isRequired,
+  details: PropTypes.object.isRequired,
   onPageLoadDatasetDetail: PropTypes.func.isRequired,
 };
 
