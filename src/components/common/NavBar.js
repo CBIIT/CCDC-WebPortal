@@ -24,18 +24,23 @@ const NavLinkStyled = styled(NavLink)`
     border-radius: 0.3125rem;
     text-decoration: none;
 
-    &&:hover,
+    &&:hover {
+      color: #ffffff;
+    }
+
     &&:focus {
         color: #ffffff;
         text-decoration: underline;
         text-underline-offset: 5px;
+        text-decoration-thickness: 3px;
     }
 `;
 
 const activeStyle = {
     color: "#ffffff",
     textDecoration: "underline",
-    textUnderlineOffset: "5px"
+    textUnderlineOffset: "5px",
+    textDecorationThickness: "3px",
 };
 
 const NavBar = () => {

@@ -28,6 +28,12 @@ export function switchView(viewType) {
   return { type: types.SWITCH_VIEW, viewType};
 }
 
+export function loadDatasetDetailSuccess(id, data) {
+  const tmp = {};
+  tmp[id] = data;
+  return { type: types.LOAD_DATASET_DETAIL_SUCCESS, dataset: tmp};
+}
+
 export function initialLoadSearchResults() {
   const func = function func(dispatch, getState) {
     const { datasets } = getState();
@@ -107,6 +113,19 @@ export function pageSelect(pageInfo) {
 export function switchDataView(viewType) {
   const func = function func(dispatch) {
     return dispatch(switchView(viewType));
+  };
+  return func;
+}
+
+export function loadDatasetDetail(id) {
+  const func = function func(dispatch) {
+    return searchApi.getDatasetById(id)
+    .then(searchResults => {
+      dispatch(loadDatasetDetailSuccess(id, searchResults.data));
+    })
+    .catch(error => {
+        throw error;
+    });
   };
   return func;
 }

@@ -1,9 +1,19 @@
-import React from "react";
+import { connect } from 'react-redux';
+import {
+  loadFromUrlQuery,
+} from '../../redux/actions/participatingResourcesActions';
+import ParticipatingResourcesPage from './ParticipatingResourcesPage';
 
-const ParticipatingResourcesPage = () => (
-    <div>
-        <h2>Participating Resources Page Content</h2>
-    </div>
-);
+const ReduxParticipatingResourcesPage = (() => {
+  const mapStateToProps = (state) => ({
+    total: state.participatingResources.searchCriteria.pageInfo.total,
+  });
 
-export default ParticipatingResourcesPage;
+  const mapDispatchToProps = {
+    onLoadFromUrlQuery: loadFromUrlQuery,
+  };
+
+  return connect(mapStateToProps, mapDispatchToProps)(ParticipatingResourcesPage);
+})();
+
+export default ReduxParticipatingResourcesPage;

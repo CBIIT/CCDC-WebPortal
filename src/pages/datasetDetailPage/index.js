@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import DatasetDetail from './DatasetDetail';
 import {
-  initialLoadSearchResults
+  loadDatasetDetail
 } from '../../redux/actions/searchActions';
 
 const ReduxSearchResult = (() => {
   const mapStateToProps = (state) => ({
-    resultList: state.datasets.searchResults,
+    detail: state.datasets.details,
   });
 
   const mapDispatchToProps = {
-    onPageLoadSearchResults: initialLoadSearchResults,
+    onPageLoadDatasetDetail: loadDatasetDetail,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(DatasetDetail);

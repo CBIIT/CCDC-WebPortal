@@ -1,6 +1,17 @@
 export default {
     participatingResources: {
-        landing: [],
+      searchFilters: {
+      },
+      landing: [],
+      searchCriteria: {
+        facet_filters: {},
+        pageInfo: {
+          page: 1,
+          pageSize: 15,
+          total: 0,
+        }
+      },
+      searchResults: [],
     },
     searchFilters: {
     },
@@ -27,5 +38,6 @@ export default {
       },
       searchResults: [],
       viewType: "card",
+      details: {},
     },
 };

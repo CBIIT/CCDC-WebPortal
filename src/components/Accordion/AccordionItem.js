@@ -38,7 +38,7 @@ const OptionCount = styled.span`
 `;
 
 const AccordionItem = ({
-  name, item, itemClick, checked,
+  name, item, itemClick, checked, displayCount,
 }) => {
   const handleItemClick = () => {
     const value = item.name;
@@ -55,9 +55,13 @@ const AccordionItem = ({
       <OptionLabel>
         {item.name}
       </OptionLabel>
-      <OptionCount>
-        {item.count === -1 ? "" : item.count}
-      </OptionCount>
+      {
+        displayCount && (
+          <OptionCount>
+            {item.count === -1 ? "" : item.count}
+          </OptionCount>
+        )
+      }
     </OptionContainer>
   );
 };
@@ -67,6 +71,7 @@ AccordionItem.propTypes = {
   item: PropTypes.object.isRequired,
   itemClick: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
+  displayCount: PropTypes.bool.isRequired,
 };
 
 export default AccordionItem;
