@@ -59,7 +59,7 @@ ul.breadcrumb li a:hover {
   color: white;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 80%;
 }
 
 .datasetDetailHeaderText {
@@ -81,12 +81,13 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetTypeButton {
-  /* width: 50%; */
-  /* font-size: 100%; */
+  width: 8%;
   font-size: 15px;
   background-color: white;
   margin-left: 88%;
   margin-bottom: -80px;
+  border: 2px solid white;
+  border-radius: 15px 15px 15px 15px;
   /* margin-top: 10px; */
 }
 
@@ -159,5 +160,14 @@ ul.breadcrumb li a:hover {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
+}
+
+.dataElementContent {
+  /* font-size: 16px; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* text-transform: uppercase; */
+  /* height: 100px; */
+  max-height: 200px;
+  overflow: auto;
 }
 

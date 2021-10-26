@@ -64,9 +64,14 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
-                      <div className="dataElementLabel">Case Age</div>
+                      {/* <div className="dataElementLabel">Case Age</div> */}
+                        {content.case_age_at_diagnosis
+                          ? <div className="dataElementLabel">Case Age</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.case_age_at_diagnosis.map((cad, cadidx) => {
+                          content.case_age_at_diagnosis
+                          ? content.case_age_at_diagnosis.map((cad, cadidx) => {
                             const cadkey = `cad_${cadidx}`;
                             return (
                               <span key={cadkey} className="itemSpan">
@@ -75,10 +80,16 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
+                          : null
                         }
-                      <div className="dataElementLabel">Case Ethnicity</div>
+                      </div>
+                        {content.case_ethnicity
+                          ? <div className="dataElementLabel">Case Ethnicity</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.case_ethnicity.map((ce, ceidx) => {
+                          content.case_ethnicity
+                          ? content.case_ethnicity.map((ce, ceidx) => {
                             const cekey = `ce_${ceidx}`;
                             return (
                               <span key={cekey} className="itemSpan">
@@ -87,10 +98,16 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
+                          : null
                         }
-                      <div className="dataElementLabel">Case Disease Diagnosis</div>
+                      </div>
+                        {content.case_ethnicity
+                          ? <div className="dataElementLabel">Case Disease Diagnosis</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.case_disease_diagnosis.map((cdd, cddidx) => {
+                          content.case_disease_diagnosis
+                          ? content.case_disease_diagnosis.map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
                             return (
                               <span key={cddkey} className="itemSpan">
@@ -99,10 +116,17 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
+                          : null
                         }
-                      <div className="dataElementLabel">Sample Assay Method</div>
+                      </div>
+                      {/* <div className="dataElementLabel">Sample Assay Method</div> */}
+                        {content.sample_assay_method
+                          ? <div className="dataElementLabel">Sample Assay Method</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.sample_assay_method ? content.sample_assay_method.map((sam, samidx) => {
+                          content.sample_assay_method
+                          ? content.sample_assay_method.map((sam, samidx) => {
                             const samkey = `sam_${samidx}`;
                             return (
                               <span key={samkey} className="itemSpan">
@@ -111,18 +135,16 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
-                          : content.case_sex.map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {/* &nbsp; */}
-                              </span>
-                            );
-                          })
+                          : null
                         }
-                      <div className="dataElementLabel">Case Race</div>
+                      </div>
+                        {content.case_race
+                          ? <div className="dataElementLabel">Case Race</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.case_race.map((cr, cridx) => {
+                          content.case_race
+                          ? content.case_race.map((cr, cridx) => {
                             const crkey = `cr_${cridx}`;
                             return (
                               <span key={crkey} className="itemSpan">
@@ -131,10 +153,16 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
+                          : null
                         }
-                      <div className="dataElementLabel">Case Sex</div>
+                      </div>
+                        {content.case_sex
+                          ? <div className="dataElementLabel">Case Sex</div>
+                          : null}
+                      <div className="dataElementContent">
                         {
-                          content.case_sex.map((cs, csidx) => {
+                          content.case_sex
+                          ? content.case_sex.map((cs, csidx) => {
                             const cskey = `cdd_${csidx}`;
                             return (
                               <span key={cskey} className="itemSpan">
@@ -143,11 +171,29 @@ const DatasetDetail = ({
                               </span>
                             );
                           })
+                          : null
                         }
-                      <div className="dataElementLabel">Number of Cases</div>
-                        {content.case_id}
-                      <div className="dataElementLabel">Number of Samples</div>
-                        {content.sample_id}
+                      </div>
+                        {content.case_id
+                          ? <div className="dataElementLabel">Number of Cases</div>
+                          : null}
+                        {
+                          content.case_id
+                          ? content.case_id
+                          : null
+                        }
+                      {/* <div className="dataElementLabel">Number of Cases</div>
+                        {content.case_id} */}
+                        {content.sample_id
+                          ? <div className="dataElementLabel">Number of Samples</div>
+                          : null}
+                        {
+                          content.sample_id
+                          ? content.sample_id
+                          : null
+                        }
+                      {/* <div className="dataElementLabel">Number of Samples</div>
+                        {content.sample_id} */}
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
