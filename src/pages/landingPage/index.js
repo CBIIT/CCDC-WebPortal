@@ -28,7 +28,7 @@ const HomePage = () => {
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
                       <div className="headerTitle">
-                          Explore the Childhood Cancer Dataset Catalog
+                          Explore the Childhood Cancer Dataset Catalog (CCDC)
                       </div>
                       <div className="headerButtonSection">
                           <Link to="/about" className="headerLink">
