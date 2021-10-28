@@ -93,6 +93,14 @@ export default function participatingResourcesReducer(state = initialState.parti
               pageInfo: action.pageInfo,
               },
           };
+        case types.LOAD_DATARESOURCE_DETAIL_SUCCESS:
+          return {
+            ...state,
+            details: {
+              ...state.details,
+              ...action.dataresource,
+            }
+          };
         default:
             return state;
     }

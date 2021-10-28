@@ -12,6 +12,7 @@ export default {
         }
       },
       searchResults: [],
+      details: {},
     },
     searchFilters: {
     },
