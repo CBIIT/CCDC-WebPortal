@@ -16,22 +16,21 @@ const DataLink = styled.li`
   list-style-type: none;
 `;
 
-// const PrType = styled.div`
-//   // width: 30%;
-//   // text-align: right;
-//   // padding-right: 10px;
+const ResourceType = styled.div`
+  width: 96%;
+  text-align: right;
+  margin-top: -30px;
+  // padding-top: 50px;
+  // padding-right: 10px;
 
-//   // margin-left: 88%;
-//   // margin-right: 1%;
-//   // margin-bottom: -80px;
-
-//   span {
-//     border-radius: 20px;
-//     border: 1px solid gold;
-//     padding: 5px 10px;
-//     line-height: 52px;
-//   }
-// `;
+  span {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid gold;
+    padding: 5px 10px;
+    line-height: 52px;
+  }
+`;
 
 const DatasetsSummary = styled.div`
   margin-top: 10px;  
@@ -105,25 +104,26 @@ const ParticipatingResourceDetail = ({
                   <div className="prIcon">
                     <DataResourceIcons participatingResource={content.data_resource_id} />
                   </div>
-                  <button type="button" className="prTypeButton btn">
+                  {/* <button type="button" className="prTypeButton btn">
                     {content.resource_type}
-                  </button>
+                  </button> */}
                   {/* <PrType>
                     <span>{content.resource_type}</span>
                   </PrType> */}
                   <div className="prDetailHeaderContent">
-                    <Link to={content.resource_uri} className="prDetailHeaderText">{content.resource_uri}</Link>
+                    <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="prDetailHeaderText">
                       {content.poc}
                       , &nbsp;
-                      <Link to={content.poc_email} className="prDetailHeaderText">{content.poc_email}</Link>
-                      &nbsp;
-                      {content.data_content_type}
+                      <Link to={content.poc_email} className="prDetailHeaderLink">{content.poc_email}</Link>
                     </span>
                   </div>
+                  <ResourceType>
+                    <span>{content.resource_type}</span>
+                  </ResourceType>
                 </div>
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
@@ -137,6 +137,7 @@ const ParticipatingResourceDetail = ({
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Resource Data Content Types</div>
+                        <br />
                         {content.data_content_type}
                               {/* <p />
                               {content.has_genomics_omics > 0 ? 'Omics Data' : ''}
