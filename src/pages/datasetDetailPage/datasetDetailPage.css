@@ -171,3 +171,9 @@ ul.breadcrumb li a:hover {
   overflow: auto;
 }
 
+.additionalDataContent {
+  margin-top: 10px;
+  color: black;
+  text-transform: none;
+}
+

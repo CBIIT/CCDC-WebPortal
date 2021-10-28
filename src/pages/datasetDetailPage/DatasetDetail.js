@@ -76,7 +76,9 @@ const DatasetDetail = ({
                             return (
                               <span key={cadkey} className="itemSpan">
                                 {cad.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {cad.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -94,7 +96,9 @@ const DatasetDetail = ({
                             return (
                               <span key={cekey} className="itemSpan">
                                 {ce.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {ce.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -112,7 +116,9 @@ const DatasetDetail = ({
                             return (
                               <span key={cddkey} className="itemSpan">
                                 {cdd.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {cdd.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -131,7 +137,9 @@ const DatasetDetail = ({
                             return (
                               <span key={samkey} className="itemSpan">
                                 {sam.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {sam.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -149,7 +157,9 @@ const DatasetDetail = ({
                             return (
                               <span key={crkey} className="itemSpan">
                                 {cr.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {cr.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -163,11 +173,13 @@ const DatasetDetail = ({
                         {
                           content.case_sex
                           ? content.case_sex.map((cs, csidx) => {
-                            const cskey = `cdd_${csidx}`;
+                            const cskey = `cs_${csidx}`;
                             return (
                               <span key={cskey} className="itemSpan">
                                 {cs.n}
-                                &#59; &nbsp;
+                                &nbsp;(
+                                {cs.v}
+                                )&#59; &nbsp;
                               </span>
                             );
                           })
@@ -197,10 +209,35 @@ const DatasetDetail = ({
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
-                      <div className="dataElementLabel">File Type</div>
+                      <div className="additionalDataContent">
+                        <div>
+                        {
+                          content.additional
+                          ? content.additional.map((ade, adeidx) => {
+                            const adekey = `ade_${adeidx}`;
+                            return (
+                              <div key={adekey} className="dataElementLabel">
+                                {ade.attr_name}
+                                <br />
+                                {ade.attr_set.map((adee, adeeidx) => {
+                                  const adeekey = `adee_${adeeidx}`;
+                                  return (
+                                    <div key={adeekey} className="additionalDataContent">
+                                      {adee.k}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })
+                          : <p>Not Available</p>
+                        }
+                        </div>
+                      </div>
+                      {/* <div className="dataElementLabel">File Type</div>
                         Unknown
                       <div className="dataElementLabel">Sample Type</div>
-                        Unknown
+                        Unknown &nbsp; */}
                     </div>
                   </div>
                 </div>
