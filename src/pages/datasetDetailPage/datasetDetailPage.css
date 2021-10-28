@@ -46,12 +46,12 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLabel {
-  padding: 0px 0 40px 30px;
+  padding: 0px 0 50px 30px;
   color: white;
   font-size: 32px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 95%;
 }
 
 .datasetDetailHeaderContent {
@@ -59,7 +59,7 @@ ul.breadcrumb li a:hover {
   color: white;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 80%;
 }
 
 .datasetDetailHeaderText {
@@ -69,24 +69,38 @@ ul.breadcrumb li a:hover {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
+  /* text-decoration: none; */
+}
+
+.datasetDetailHeaderLink {
+  color: #2dc799;
+  /* text-decoration-line: underline; */
+}
+
+.datasetDetailHeaderLink:hover {
+  color: lightblue;
 }
 
 .datasetIcon {
   /* width: 50%; */
   /* font-size: 40px; */
   background-size: 100px;
-  margin-left: 90%;
+  text-align: right;
   margin-top: -80px;
+  padding-right: 50px;
+  /* margin-left: -30px; */
   /* padding-top: 10px; */
 }
 
 .datasetTypeButton {
-  /* width: 50%; */
-  /* font-size: 100%; */
-  font-size: 15px;
+  /* width: 100%; */
+  /* font-size: 15px; */
   background-color: white;
   margin-left: 88%;
-  margin-bottom: -80px;
+  /* margin-bottom: -50px; */
+  margin-top: 50px;
+  border: 2px solid gold;
+  border-radius: 20px 20px 20px 20px;
   /* margin-top: 10px; */
 }
 
@@ -159,5 +173,20 @@ ul.breadcrumb li a:hover {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
+}
+
+.dataElementContent {
+  /* font-size: 16px; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* text-transform: uppercase; */
+  /* height: 100px; */
+  max-height: 200px;
+  overflow: auto;
+}
+
+.additionalDataContent {
+  margin-top: 10px;
+  color: black;
+  text-transform: none;
 }
 

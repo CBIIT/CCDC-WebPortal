@@ -23,4 +23,10 @@ export function searchParticipatingResources(body) {
     .catch(handleError);
 }
 
+export function getDataresourceById(id) {
+  return fetch(`${baseUrl}/${id}`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export default getLandingParticipatingResources;

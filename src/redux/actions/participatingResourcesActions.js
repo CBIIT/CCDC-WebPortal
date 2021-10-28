@@ -5,6 +5,12 @@ export function loadLandingParticipatingResourcesSuccess(participatingResources)
     return { type: types.LOAD_LANDING_PARTICIPATING_RESOURCES_SUCCESS, participatingResources };
 }
 
+export function loadDataresourceDetailSuccess(id, data) {
+  const tmp = {};
+  tmp[id] = data;
+  return { type: types.LOAD_DATARESOURCE_DETAIL_SUCCESS, dataresource: tmp};
+}
+
 export function loadSearchFiltersSuccess(data) {
   return { type: types.LOAD_PARTICIPATING_RESOURCES_SEARCH_FILTERS_SUCCESS, searchFilters: data.searchFilters };
 }
@@ -38,6 +44,19 @@ export function loadLandingParticipatingResources() {
       .catch(error => {
           throw error;
       });
+  };
+  return func;
+}
+
+export function loadDataresourceDetail(id) {
+  const func = function func(dispatch) {
+    return participatingResourcesApi.getDataresourceById(id)
+    .then(participatingResources => {
+      dispatch(loadDataresourceDetailSuccess(id, participatingResources.data));
+    })
+    .catch(error => {
+        throw error;
+    });
   };
   return func;
 }

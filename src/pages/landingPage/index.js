@@ -28,7 +28,7 @@ const HomePage = () => {
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
                       <div className="headerTitle">
-                          Explore the Childhood Cancer Dataset Catalog
+                          Explore the Childhood Cancer Dataset Catalog (CCDC)
                       </div>
                       <div className="headerButtonSection">
                           <Link to="/about" className="headerLink">
@@ -119,7 +119,7 @@ const HomePage = () => {
                               <br />
                           </p>
                           <Link to="/search" className="headerLink2">
-                              <Button className="buttonText color-black">
+                              <Button className="buttonText color-white">
                                   <h6>
                                       &nbsp;EXPLORE THE CATALOG &emsp;&emsp;&emsp;
                                       <span style={{ color: 'gold' }}>&#9658;</span>

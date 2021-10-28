@@ -1,6 +1,6 @@
 
 .prBreadcrumbContainer {
-  padding: 5px 0 0px 30px;
+  padding: 5px 0px 0px 0px;
   width: 100%;
   /* border-bottom: 1px solid lightgray; */
 }
@@ -42,14 +42,12 @@ ul.breadcrumb li a:hover {
   /* padding: 0px 0 20px 20px; */
   padding: 20px 0 10px 0px;
   width: 100%;
-  background-color: #07368b;
-  margin-left: 30px;;
+  background: linear-gradient(to right, #05296b,#79291b,#e78709);
   /* border-bottom: 1px solid lightgray; */
 }
 
 .prDetailHeaderLabel {
-  padding: 0px 0 40px 30px;
-  background-color: #07368b;
+  padding: 0px 0 50px 30px;
   color: white;
   font-size: 32px;
   font-weight: bold;
@@ -59,11 +57,10 @@ ul.breadcrumb li a:hover {
 
 .prDetailHeaderContent {
   padding: 0px 0 5px 30px;
-  background-color: #07368b;
   color: white;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 80%;
 }
 
 .prDetailHeaderText {
@@ -73,12 +70,44 @@ ul.breadcrumb li a:hover {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
-  text-decoration: none;
+  /* text-decoration: none; */
+}
+
+.prDetailHeaderLink {
+  color: #2dc799;
+  /* text-decoration: none; */
+}
+
+.prDetailHeaderLink:hover {
+  color: lightblue;
+}
+
+.prIcon {
+  /* width: 50%; */
+  /* font-size: 40px; */
+  background-size: 100px;
+  text-align: right;
+  margin-top: -80px;
+  padding-right: 50px;
+  /* margin-left: -30px; */
+  /* padding-top: 10px; */
+}
+
+.prTypeButton {
+  width: 10%;
+  font-size: 15px;
+  background-color: white;
+  margin-left: 88%;
+  margin-right: 1%;
+  margin-bottom: -80px;
+  border: 2px solid gold;
+  border-radius: 20px 20px 20px 20px;
+  /* margin-top: 10px; */
 }
 
 .prAboutContentContainer {
-  padding: 20px 0 10px 20px;
-  border: 1px solid lightgray;
+  padding: 20px 0px 10px 0px;
+  /* border: 1px solid lightgray; */
   /* border-bottom: 1px solid gray; */
 }
 
@@ -168,33 +197,3 @@ ul.breadcrumb li a:hover {
   text-transform: uppercase;
 }
 
-.searchBarArea {
-  margin: 0 auto;
-  width: 1200px;
-  display: grid;
-}
-
-.searchBarLabel {
-  padding: 20px 0 10px 5px;
-  color: #07368b;
-  font-size: 32px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
-}
-
-.searchBoxArea {
-  width: 50%;
-}
-
-.searchArea {
-  margin: 0 auto;
-  width: 1200px;
-  display: flex;
-}
-
-.searchContentContainer {
-  width: 80%;
-  border-right: 1px solid #e0e4e7;
-  padding: 5px 10px;
-}

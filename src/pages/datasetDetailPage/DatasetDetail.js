@@ -10,6 +10,22 @@ const DatasetResultContainer = styled.div`
   width: 1200px;
 `;
 
+const ResourceType = styled.div`
+  width: 96%;
+  text-align: right;
+  margin-top: -30px;
+  // padding-top: 50px;
+  // padding-right: 10px;
+
+  span {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid gold;
+    padding: 5px 10px;
+    line-height: 52px;
+  }
+`;
+
 const DatasetDetail = ({
   details,
   onPageLoadDatasetDetail,
@@ -43,111 +59,236 @@ const DatasetDetail = ({
                   <div className="datasetIcon">
                     <DataResourceIcons participatingResource={content.data_resource_id} />
                   </div>
-                  <button type="button" className="datasetTypeButton btn">
-                    <span>{content.desc}</span>
-                  </button>
+                  {/* <ResourceType>
+                    <span>{content.primary_dataset_scope}</span>
+                  </ResourceType> */}
+                  {/* <span className="datasetTypeButton">
+                    {content.primary_dataset_scope}
+                  </span> */}
                   <div className="datasetDetailHeaderContent">
                     Data Resource: &nbsp;
-                    <span className="datasetDetailHeaderText">{content.data_resource_id}</span>
+                    {/* <span className="datasetDetailHeaderText">{content.data_resource_id}</span> */}
+                    <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
                   </div>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
-                      {content.primary_dataset_scope}
-                      , &nbsp;
                       {content.poc}
-                      &nbsp;
+                      , &nbsp;
+                      <Link to={content.poc_email} className="datasetDetailHeaderLink">{content.poc_email}</Link>
                     </span>
                   </div>
+                  <ResourceType>
+                    <span>{content.primary_dataset_scope}</span>
+                  </ResourceType>
                 </div>
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
-                      <div className="dataElementLabel">Case Age</div>
+                      {/* <div className="dataElementLabel">Case Age</div> */}
+                        {content.case_age_at_diagnosis
+                          ? <div className="dataElementLabel">Case Age</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age_at_diagnosis
+                            ? content.case_age_at_diagnosis.map((cad, cadidx) => {
+                              const cadkey = `cad_${cadidx}`;
+                              return (
+                                <span key={cadkey} className="itemSpan">
+                                  {cad.n}
+                                  &nbsp;(
+                                  {cad.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_ethnicity
+                          ? <div className="dataElementLabel">Case Ethnicity</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_ethnicity
+                            ? content.case_ethnicity.map((ce, ceidx) => {
+                              const cekey = `ce_${ceidx}`;
+                              return (
+                                <span key={cekey} className="itemSpan">
+                                  {ce.n}
+                                  &nbsp;(
+                                  {ce.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_ethnicity
+                          ? <div className="dataElementLabel">Case Disease Diagnosis</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_disease_diagnosis
+                            ? content.case_disease_diagnosis.map((cdd, cddidx) => {
+                              const cddkey = `cdd_${cddidx}`;
+                              return (
+                                <span key={cddkey} className="itemSpan">
+                                  {cdd.n}
+                                  &nbsp;(
+                                  {cdd.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {/* <div className="dataElementLabel">Sample Assay Method</div> */}
+                        {content.sample_assay_method
+                          ? <div className="dataElementLabel">Sample Assay Method</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_assay_method
+                            ? content.sample_assay_method.map((sam, samidx) => {
+                              const samkey = `sam_${samidx}`;
+                              return (
+                                <span key={samkey} className="itemSpan">
+                                  {sam.n}
+                                  &nbsp;(
+                                  {sam.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_race
+                          ? <div className="dataElementLabel">Case Race</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_race
+                            ? content.case_race.map((cr, cridx) => {
+                              const crkey = `cr_${cridx}`;
+                              return (
+                                <span key={crkey} className="itemSpan">
+                                  {cr.n}
+                                  &nbsp;(
+                                  {cr.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_sex
+                          ? <div className="dataElementLabel">Case Sex</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_sex
+                            ? content.case_sex.map((cs, csidx) => {
+                              const cskey = `cs_${csidx}`;
+                              return (
+                                <span key={cskey} className="itemSpan">
+                                  {cs.n}
+                                  &nbsp;(
+                                  {cs.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_id
+                          ? <div className="dataElementLabel">Number of Cases</div>
+                          : null}
                         {
-                          content.case_age_at_diagnosis.map((cad, cadidx) => {
-                            const cadkey = `cad_${cadidx}`;
-                            return (
-                              <span key={cadkey} className="itemSpan">
-                                {cad.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
+                          content.case_id
+                          ? content.case_id
+                          : null
                         }
-                      <div className="dataElementLabel">Case Ethnicity</div>
+                        {/* <div className="dataElementLabel">Number of Cases</div>
+                        {content.case_id} */}
+                        {content.sample_id
+                          ? <div className="dataElementLabel">Number of Samples</div>
+                          : null}
                         {
-                          content.case_ethnicity.map((ce, ceidx) => {
-                            const cekey = `ce_${ceidx}`;
-                            return (
-                              <span key={cekey} className="itemSpan">
-                                {ce.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
+                          content.sample_id
+                          ? content.sample_id
+                          : null
                         }
-                      <div className="dataElementLabel">Case Disease Diagnosis</div>
-                        {
-                          content.case_disease_diagnosis.map((cdd, cddidx) => {
-                            const cddkey = `cdd_${cddidx}`;
-                            return (
-                              <span key={cddkey} className="itemSpan">
-                                {cdd.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
-                        }
-                      <div className="dataElementLabel">Sample Assay Method</div>
-                        {/* {
-                          content.sample_assay_method.map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {sam.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
-                        } */}
-                      <div className="dataElementLabel">Case Race</div>
-                        {
-                          content.case_race.map((cr, cridx) => {
-                            const crkey = `cr_${cridx}`;
-                            return (
-                              <span key={crkey} className="itemSpan">
-                                {cr.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
-                        }
-                      <div className="dataElementLabel">Case Sex</div>
-                        {
-                          content.case_sex.map((cs, csidx) => {
-                            const cskey = `cdd_${csidx}`;
-                            return (
-                              <span key={cskey} className="itemSpan">
-                                {cs.n}
-                                &#59; &nbsp;
-                              </span>
-                            );
-                          })
-                        }
-                      <div className="dataElementLabel">Number of Cases</div>
-                        {content.case_id}
-                      <div className="dataElementLabel">Number of Samples</div>
-                        {content.sample_id}
+                      {/* <div className="dataElementLabel">Number of Samples</div>
+                        {content.sample_id} */}
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
-                      <div className="dataElementLabel">File Type</div>
+                      {content.case_treatment_administered
+                          ? <div className="dataElementLabel">Case Treatment Administered</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_treatment_administered
+                            ? content.case_treatment_administered.map((cta, ctaidx) => {
+                              const ctakey = `cta_${ctaidx}`;
+                              return (
+                                <span key={ctakey} className="itemSpan">
+                                  {cta.n}
+                                  &nbsp;(
+                                  {cta.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.published_in
+                          ? <div className="dataElementLabel">Published In</div>
+                          : null}
+                        {
+                          content.published_in
+                          ? <Link to={content.published_in}>{content.published_in}</Link>
+                          : null
+                        }
+                      <div className="additionalDataContent">
+                        <div>
+                        {
+                          content.additional
+                          ? content.additional.map((ade, adeidx) => {
+                            const adekey = `ade_${adeidx}`;
+                            return (
+                              <div key={adekey} className="dataElementLabel">
+                                {ade.attr_name}
+                                <br />
+                                {ade.attr_set.map((adee, adeeidx) => {
+                                  const adeekey = `adee_${adeeidx}`;
+                                  return (
+                                    <div key={adeekey} className="additionalDataContent">
+                                      {adee.k}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })
+                          : null
+                        }
+                        </div>
+                      </div>
+                      {/* <div className="dataElementLabel">File Type</div>
                         Unknown
                       <div className="dataElementLabel">Sample Type</div>
-                        Unknown
+                        Unknown &nbsp; */}
                     </div>
                   </div>
                 </div>
