@@ -402,9 +402,7 @@ const DatasetDetail = ({
                               return (
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n}
-                                  &nbsp;(
-                                  {srn.v}
-                                  )&#59; &nbsp;
+                                  &#59; &nbsp;
                                 </span>
                               );
                             })
@@ -614,9 +612,15 @@ const DatasetDetail = ({
                                     return (
                                       <div key={adeekey} className="additionalDataContent">
                                         {adee.k}
-                                        &nbsp;(
-                                        {adee.v}
-                                        )&#59; &nbsp;
+                                        {adee.v === -1
+                                          ? null
+                                          : (
+                                              <span key={adeekey} className="itemSpan">
+                                                &nbsp;(
+                                                {adee.v}
+                                                )&#59; &nbsp;
+                                              </span>
+                                            )}
                                       </div>
                                     );
                                   })}
