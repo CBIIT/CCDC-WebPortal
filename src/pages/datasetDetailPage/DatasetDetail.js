@@ -75,7 +75,7 @@ const DatasetDetail = ({
                     <span className="datasetDetailHeaderText">
                       {content.poc}
                       , &nbsp;
-                      <Link to={content.poc_email} className="datasetDetailHeaderLink">{content.poc_email}</Link>
+                      <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink">{content.poc_email}</a>
                     </span>
                   </div>
                   <ResourceType>

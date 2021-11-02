@@ -29,4 +29,10 @@ export function getDataresourceById(id) {
     .catch(handleError);
 }
 
+export function getDatasetsById(id) {
+  return fetch(`${baseUrl}/${id}/datasets`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export default getLandingParticipatingResources;
