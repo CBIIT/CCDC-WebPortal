@@ -61,6 +61,19 @@ export function loadDataresourceDetail(id) {
   return func;
 }
 
+export function loadDataresourceDetailDatasets(id) {
+  const func = function func(dispatch) {
+    return participatingResourcesApi.getDatasetsById(id)
+    .then(participatingResources => {
+      dispatch(loadDataresourceDetailSuccess(id, participatingResources.data));
+    })
+    .catch(error => {
+        throw error;
+    });
+  };
+  return func;
+}
+
 export function loadSearchFilters() {
   const func = function func(dispatch) {
     return participatingResourcesApi.getSearchFilters()

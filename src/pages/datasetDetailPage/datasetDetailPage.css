@@ -132,7 +132,8 @@ ul.breadcrumb li a:hover {
 .coreDataContainer {
   padding: 0px 50px 10px 20px;
   width: 48%;
-  height: 300px;
+  /* height: 300px; */
+  /* height: auto; */
   /* border-right: 1px solid #e0e4e7; */
   border-right: 1px solid lightgray;
   /* display: flex; */
@@ -154,6 +155,7 @@ ul.breadcrumb li a:hover {
 .additionalDataContainer {
   padding: 0px 0 10px 20px;
   width: 48%;
+  /* border-left: 1px solid lightgray; */
   display: inline-table;
 }
 

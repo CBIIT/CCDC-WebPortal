@@ -75,7 +75,7 @@ const DatasetDetail = ({
                     <span className="datasetDetailHeaderText">
                       {content.poc}
                       , &nbsp;
-                      <Link to={content.poc_email} className="datasetDetailHeaderLink">{content.poc_email}</Link>
+                      <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink">{content.poc_email}</a>
                     </span>
                   </div>
                   <ResourceType>
@@ -88,8 +88,28 @@ const DatasetDetail = ({
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
-                        {content.case_age_at_diagnosis
+                      {content.case_age
                           ? <div className="dataElementLabel">Case Age</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age
+                            ? content.case_age.map((ca, caidx) => {
+                              const cakey = `ca_${caidx}`;
+                              return (
+                                <span key={cakey} className="itemSpan">
+                                  {ca.n}
+                                  &nbsp;(
+                                  {ca.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_age_at_diagnosis
+                          ? <div className="dataElementLabel">Case Age At Diagnosis</div>
                           : null}
                         <div className="dataElementContent">
                           {
@@ -101,6 +121,26 @@ const DatasetDetail = ({
                                   {cad.n}
                                   &nbsp;(
                                   {cad.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_age_at_trial
+                          ? <div className="dataElementLabel">Case Age At Trial</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age_at_trial
+                            ? content.case_age_at_trial.map((caat, caatidx) => {
+                              const caatkey = `caat_${caatidx}`;
+                              return (
+                                <span key={caatkey} className="itemSpan">
+                                  {caat.n}
+                                  &nbsp;(
+                                  {caat.v}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -128,7 +168,7 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                        {content.case_ethnicity
+                        {content.case_disease_diagnosis
                           ? <div className="dataElementLabel">Case Disease Diagnosis</div>
                           : null}
                         <div className="dataElementContent">
@@ -209,8 +249,68 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
+                        {content.case_sex_at_birth
+                          ? <div className="dataElementLabel">Case Sex At Birth</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_sex_at_birth
+                            ? content.case_sex_at_birth.map((csab, csabidx) => {
+                              const csabkey = `csab_${csabidx}`;
+                              return (
+                                <span key={csabkey} className="itemSpan">
+                                  {csab.n}
+                                  &nbsp;(
+                                  {csab.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_gender
+                          ? <div className="dataElementLabel">Case Gender</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_gender
+                            ? content.case_gender.map((cg, cgidx) => {
+                              const cgkey = `cg_${cgidx}`;
+                              return (
+                                <span key={cgkey} className="itemSpan">
+                                  {cg.n}
+                                  &nbsp;(
+                                  {cg.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_proband
+                          ? <div className="dataElementLabel">Case Proband</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_proband
+                            ? content.case_proband.map((cp, cpidx) => {
+                              const cpkey = `cp_${cpidx}`;
+                              return (
+                                <span key={cpkey} className="itemSpan">
+                                  {cp.n}
+                                  &nbsp;(
+                                  {cp.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
                         {content.case_id
-                          ? <div className="dataElementLabel">Number of Cases</div>
+                          ? <div className="dataElementLabel">Case ID</div>
                           : null}
                         {
                           content.case_id
@@ -220,19 +320,156 @@ const DatasetDetail = ({
                         {/* <div className="dataElementLabel">Number of Cases</div>
                         {content.case_id} */}
                         {content.sample_id
-                          ? <div className="dataElementLabel">Number of Samples</div>
+                          ? <div className="dataElementLabel">Sample ID</div>
                           : null}
                         {
                           content.sample_id
                           ? content.sample_id
                           : null
                         }
-                      {/* <div className="dataElementLabel">Number of Samples</div>
-                        {content.sample_id} */}
-                    </div>
-                    <div className="additionalDataContainer">
-                      <div className="additionalDataLabel">Additional Data Elements</div>
-                      {content.case_treatment_administered
+                        {content.program_name
+                          ? <div className="dataElementLabel">Program Name</div>
+                          : null}
+                        {
+                          content.program_name
+                          ? content.program_name
+                          : null
+                        }
+                        {content.project_name
+                          ? <div className="dataElementLabel">Project Name</div>
+                          : null}
+                        {
+                          content.project_name
+                          ? content.project_name
+                          : null
+                        }
+                        {content.program_id
+                          ? <div className="dataElementLabel">Program ID</div>
+                          : null}
+                        {
+                          content.program_id
+                          ? content.program_id
+                          : null
+                        }
+                        {content.donor_age
+                          ? <div className="dataElementLabel">Donor Age</div>
+                          : null}
+                        {
+                          content.donor_age
+                          ? content.donor_age
+                          : null
+                        }
+                        {content.donor_disease
+                          ? <div className="dataElementLabel">Donor Disease</div>
+                          : null}
+                        {
+                          content.donor_disease
+                          ? content.donor_disease
+                          : null
+                        }
+                        {content.donor_sex
+                          ? <div className="dataElementLabel">Donor Sex</div>
+                          : null}
+                        {
+                          content.donor_sex
+                          ? content.donor_sex
+                          : null
+                        }
+                        {content.donor_id
+                          ? <div className="dataElementLabel">Donor ID</div>
+                          : null}
+                        {
+                          content.donor_id
+                          ? content.donor_id
+                          : null
+                        }
+                        {content.cell_line_id
+                          ? <div className="dataElementLabel">Cell Line ID</div>
+                          : null}
+                        {
+                          content.cell_line_id
+                          ? content.cell_line_id
+                          : null
+                        }
+                        {content.sample_repository_name
+                          ? <div className="dataElementLabel">Sample Repository Name</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_repository_name
+                            ? content.sample_repository_name.map((srn, srnidx) => {
+                              const srnkey = `srn_${srnidx}`;
+                              return (
+                                <span key={srnkey} className="itemSpan">
+                                  {srn.n}
+                                  &#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_analyte_type
+                          ? <div className="dataElementLabel">Sample Analyte Type</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_analyte_type
+                            ? content.sample_analyte_type.map((sat, satidx) => {
+                              const satkey = `sat_${satidx}`;
+                              return (
+                                <span key={satkey} className="itemSpan">
+                                  {sat.n}
+                                  &nbsp;(
+                                  {sat.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_anatomic_site
+                          ? <div className="dataElementLabel">Sample Anatomic Type</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_anatomic_site
+                            ? content.sample_anatomic_site.map((sat, satidx) => {
+                              const satkey = `sat_${satidx}`;
+                              return (
+                                <span key={satkey} className="itemSpan">
+                                  {sat.n}
+                                  &nbsp;(
+                                  {sat.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_composition_type
+                          ? <div className="dataElementLabel">Sample Composition Type</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_composition_type
+                            ? content.sample_composition_type.map((sct, sctidx) => {
+                              const sctkey = `sct_${sctidx}`;
+                              return (
+                                <span key={sctkey} className="itemSpan">
+                                  {sct.n}
+                                  &nbsp;(
+                                  {sct.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_treatment_administered
                           ? <div className="dataElementLabel">Case Treatment Administered</div>
                           : null}
                         <div className="dataElementContent">
@@ -252,37 +489,146 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                        {content.published_in
-                          ? <div className="dataElementLabel">Published In</div>
+                        {content.case_treatment_outcome
+                          ? <div className="dataElementLabel">Case Treatment Outcome</div>
                           : null}
-                        {
-                          content.published_in
-                          ? <Link to={content.published_in}>{content.published_in}</Link>
-                          : null
-                        }
+                        <div className="dataElementContent">
+                          {
+                            content.case_treatment_outcome
+                            ? content.case_treatment_outcome.map((cto, ctoidx) => {
+                              const ctokey = `cto_${ctoidx}`;
+                              return (
+                                <span key={ctokey} className="itemSpan">
+                                  {cto.n}
+                                  &nbsp;(
+                                  {cto.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_tumor_site
+                          ? <div className="dataElementLabel">Case Tumor Site</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_tumor_site
+                            ? content.case_tumor_site.map((cts, ctsidx) => {
+                              const ctskey = `cts_${ctsidx}`;
+                              return (
+                                <span key={ctskey} className="itemSpan">
+                                  {cts.n}
+                                  &nbsp;(
+                                  {cts.v}
+                                  )&#59; &nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_is_normal
+                          ? <div className="dataElementLabel">Sample Is Normal</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_is_normal
+                            ? content.sample_is_normal.map((sin, sinidx) => {
+                              const sinkey = `sin_${sinidx}`;
+                              return (
+                                <span key={sinkey} className="itemSpan">
+                                  {sin.n > 0 ? 'YES ' : 'NO '}
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_is_xenograft
+                          ? <div className="dataElementLabel">Sample Is Xenograft</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_is_xenograft
+                            ? content.sample_is_xenograft.map((six, sixidx) => {
+                              const sixkey = `six_${sixidx}`;
+                              return (
+                                <span key={sixkey} className="itemSpan">
+                                  {six.n > 0 ? 'YES' : 'NO'}
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                      {/* <div className="dataElementLabel">Number of Samples</div>
+                        {content.sample_id} */}
+                    </div>
+                    <div className="additionalDataContainer">
+                      <div className="additionalDataLabel">Additional Data Elements</div>
+                        {content.projects
+                          ? <div className="dataElementLabel">Projects</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.projects
+                            ? content.projects.map((pro, proidx) => {
+                              const prokey = `pro_${proidx}`;
+                              return (
+                                <span key={prokey} className="itemSpan">
+                                  {pro.p_k}
+                                  , &nbsp;
+                                  {pro.p_v.map((prov, providx) => {
+                                    const provkey = `prov_${providx}`;
+                                    return (
+                                      <span key={provkey} className="itemSpan">
+                                        {prov.k}
+                                        &nbsp;(
+                                        {prov.v}
+                                        )&#59; &nbsp;
+                                      </span>
+                                    );
+                                  })}
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
                       <div className="additionalDataContent">
                         <div>
-                        {
-                          content.additional
-                          ? content.additional.map((ade, adeidx) => {
-                            const adekey = `ade_${adeidx}`;
-                            return (
-                              <div key={adekey} className="dataElementLabel">
-                                {ade.attr_name}
-                                <br />
-                                {ade.attr_set.map((adee, adeeidx) => {
-                                  const adeekey = `adee_${adeeidx}`;
-                                  return (
-                                    <div key={adeekey} className="additionalDataContent">
-                                      {adee.k}
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            );
-                          })
-                          : null
-                        }
+                          {
+                            content.additional
+                            ? content.additional.map((ade, adeidx) => {
+                              const adekey = `ade_${adeidx}`;
+                              return (
+                                <div key={adekey} className="dataElementLabel">
+                                  {ade.attr_name}
+                                  <br />
+                                  {ade.attr_set.map((adee, adeeidx) => {
+                                    const adeekey = `adee_${adeeidx}`;
+                                    return (
+                                      <div key={adeekey} className="additionalDataContent">
+                                        {adee.k}
+                                        {adee.v === -1
+                                          ? null
+                                          : (
+                                              <span key={adeekey} className="itemSpan">
+                                                &nbsp;(
+                                                {adee.v}
+                                                )&#59; &nbsp;
+                                              </span>
+                                            )}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              );
+                            })
+                            : null
+                          }
                         </div>
                       </div>
                       {/* <div className="dataElementLabel">File Type</div>
@@ -291,6 +637,7 @@ const DatasetDetail = ({
                         Unknown &nbsp; */}
                     </div>
                   </div>
+                  <br />
                 </div>
               </div>
             )
