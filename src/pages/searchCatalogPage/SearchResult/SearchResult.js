@@ -87,6 +87,10 @@ const SearchResultContainer = styled.div`
     margin-bottom: 5px;
   }
 
+  .footerRow label {
+    font-weight: 600;
+  }
+
   .datasetTableRow a{
     color: #6199d0;
     font-weight: 600;
@@ -98,6 +102,64 @@ const SearchResult = ({
   resultList,
   viewType,
 }) => {
+  const caseDiseaseDiagnosisList = resultList.map((rt) => {
+    const tmp = {labels: [], matched: []};
+    if (rt.highlight && rt.highlight["case_disease_diagnosis.k"]) {
+      tmp.labels = rt.highlight["case_disease_diagnosis.k"];
+    }
+
+    if (rt.highlight && rt.highlight["case_disease_diagnosis.s"]) {
+      const syns = [];
+      rt.highlight["case_disease_diagnosis.s"].forEach((syn) => {
+        const syn1 = syn.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        if (syns.indexOf(syn1) === -1) {
+          syns.push(syn1);
+        }
+      });
+      rt.content.case_disease_diagnosis.forEach((item) => {
+        if (item.s) {
+          for (let i = 0; i < syns.length; i += 1) {
+            if (item.s.indexOf(syns[i]) > -1) {
+              tmp.matched.push(item.n);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    // merge matched with labels to remove duplicate items
+    if (tmp.labels.length > 0) {
+      tmp.labels.forEach((phl) => {
+        const orignialText = phl.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        if (tmp.matched.indexOf(orignialText) === -1) {
+          tmp.matched.push(phl);
+        }
+      });
+    }
+
+    const result = rt.content.case_disease_diagnosis ? rt.content.case_disease_diagnosis.map((rst) => rst.n) : [];
+    let matched = [];
+
+    if (tmp.matched.length > 0) {
+      tmp.matched.forEach((item) => {
+        const raw = item.indexOf() > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
+        const idx = result.indexOf(raw);
+        if (idx > -1) {
+          result.splice(idx, 1);
+        }
+      });
+      matched = tmp.matched.map((t) => {
+        if (t.indexOf("<b>") === -1) {
+          return `<b>${t}</b>`;
+        }
+        return t;
+      });
+    }
+
+    return matched.concat(result);
+  });
+
   return (
     <>
       <SearchResultContainer>
@@ -119,11 +181,7 @@ const SearchResult = ({
                   <div className="col-sm">
                     <i className="fas fa-file" />
                     &nbsp;
-                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link>
-                  </div>
-                  <div className="col-sm">
-                    Update Date:&nbsp;
-                    {rst.content.digest_date.substring(0, 10)}
+                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_id ? (<b>{rst.content.data_resource_id}</b>) : rst.content.data_resource_id}</Link>
                   </div>
                   <div className="col-sm">
                     <span className="typeBlock">{rst.content.primary_dataset_scope}</span>
@@ -167,35 +225,18 @@ const SearchResult = ({
                   )
                 }
                 {
-                  rst.highlight && rst.highlight["case_disease_diagnosis.k"]
-                  ? (
+                  caseDiseaseDiagnosisList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Cases:</label>
                         {
-                          rst.highlight["case_disease_diagnosis.k"].map((cdd, cddidx) => {
-                            const cddkey = `cdd_${cddidx}`;
-                            return (
-                              <span key={cddkey} className="itemSpan">
-                                {ReactHtmlParser(cdd)}
-                              </span>
-                            );
-                          })
-                        }
-                      </div>
-                    </div>
-                  ) : rst.content.case_disease_diagnosis && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Cases:</label>
-                        {
-                          rst.content.case_disease_diagnosis.length > 10 ? rst.content.case_disease_diagnosis.slice(0, 10).map((cdd, cddidx) => {
+                          caseDiseaseDiagnosisList[idx].length > 10 ? caseDiseaseDiagnosisList[idx].slice(0, 10).map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
                             if (cddidx === 9) {
                               return (
                                 <div key={cddkey}>
                                   <span className="itemSpan">
-                                    {cdd.n}
+                                    {ReactHtmlParser(cdd)}
                                   </span>
                                   <span className="itemContinued">...</span>
                                 </div>
@@ -203,15 +244,15 @@ const SearchResult = ({
                             }
                             return (
                               <span key={cddkey} className="itemSpan">
-                                {cdd.n}
+                                {ReactHtmlParser(cdd)}
                               </span>
                             );
                           })
-                          : rst.content.case_disease_diagnosis.map((cdd, cddidx) => {
+                          : caseDiseaseDiagnosisList[idx].map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
                             return (
                               <span key={cddkey} className="itemSpan">
-                                {cdd.n}
+                                {ReactHtmlParser(cdd)}
                               </span>
                             );
                           })
@@ -323,13 +364,17 @@ const SearchResult = ({
                 {
                   rst.highlight && (
                     Object.keys(rst.highlight).map((hl, hlidx) => {
-                      if (hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "sample_assay_method.k") {
+                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "sample_assay_method.k") {
                         const hlKey = `hl_${hl}_${hlidx}`;
                         return (
                           <div key={hlKey} className="row align-items-start footerRow">
                             <div className="col">
-                              {hl}
-                              :
+                              <label>
+                                Other Match :
+                                &nbsp;
+                                {hl.replace(".k", "").replace(/_/g, " ")}
+                              </label>
+                              :&nbsp;
                               {ReactHtmlParser(rst.highlight[hl])}
                             </div>
                           </div>
