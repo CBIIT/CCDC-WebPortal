@@ -184,10 +184,6 @@ const SearchResult = ({
                     <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_id ? (<b>{rst.content.data_resource_id}</b>) : rst.content.data_resource_id}</Link>
                   </div>
                   <div className="col-sm">
-                    Update Date:&nbsp;
-                    {rst.content.digest_date.substring(0, 10)}
-                  </div>
-                  <div className="col-sm">
                     <span className="typeBlock">{rst.content.primary_dataset_scope}</span>
                   </div>
                 </div>

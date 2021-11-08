@@ -197,6 +197,9 @@ const SearchResult = ({
                   <ResourceTitle>
                     <Link to={linkto}>
                       {rst.resource_name}
+                      &nbsp;(
+                      {rst.data_resource_id}
+                      )
                     </Link>
                   </ResourceTitle>
                   <ResourceLogo>
