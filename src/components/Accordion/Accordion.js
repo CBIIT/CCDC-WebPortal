@@ -11,7 +11,8 @@ const Accordion = ({
   onClickSearchFilter,
   onClickParticipatingResourcesSearchFilter,
 }) => {
-  const displayCount = domain === "dataset";
+  // const displayCount = domain === "dataset";
+  const displayCount = false;
   const clickSearchFilter = domain === "dataset" ? onClickSearchFilter : onClickParticipatingResourcesSearchFilter;
 
   return (
