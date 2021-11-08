@@ -101,6 +101,14 @@ export default function participatingResourcesReducer(state = initialState.parti
               ...action.dataresource,
             }
           };
+        case types.LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS:
+          return {
+            ...state,
+            datasets: {
+              ...state.datasets,
+              ...action.dataresource,
+            }
+          };
         default:
             return state;
     }

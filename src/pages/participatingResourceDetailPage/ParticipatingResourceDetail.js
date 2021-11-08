@@ -128,11 +128,13 @@ const DatasetDesc = styled.div`
 
 const ParticipatingResourceDetail = ({
   details,
+  datasets,
   onPageLoadDataresourceDetail,
   resultList,
 }) => {
   const { id } = useParams();
   const content = details[id];
+  // const datasetscontent = datasets[id];
   // const linktoDatasetSummaries = `/resource/${content.data_resource_id}#dataset_summaries`;
 
   useEffect(() => {
@@ -331,12 +333,44 @@ const ParticipatingResourceDetail = ({
             })
           }
         </DatasetSummaryContainer>
+        <DatasetSummaryContainer id="#dataset_summaries">
+          {
+            datasets.map((rst, idx) => {
+              const key = `sr_${idx}`;
+              return (
+                <DatasetCard key={key}>
+                  <DatasetDesc>
+                    {rst.dataset_name
+                      ? <div className="summaryDataElementLabel">{rst.dataset_name}</div>
+                      : null}
+                    <br />
+                  </DatasetDesc>
+                </DatasetCard>
+              );
+            })
+            // content && (
+            //   <div className="prContainer">
+            //     <br />
+            //     <br />
+            //     <div className="prAboutContentContainer">
+            //       <div className="prAboutResourceContainer">
+            //         <div className="prAboutResourceLabel">About This Resource</div>
+            //         <div className="prAboutResourceContent">{content.resource_name}</div>
+            //       </div>
+            //     </div>
+            //   </div>
+            // )
+
+          }
+        </DatasetSummaryContainer>
     </>
   );
 };
 
 ParticipatingResourceDetail.propTypes = {
   details: PropTypes.object.isRequired,
+  // datasets: PropTypes.object.isRequired,
+  datasets: PropTypes.array.isRequired,
   onPageLoadDataresourceDetail: PropTypes.func.isRequired,
   resultList: PropTypes.array.isRequired,
 };
