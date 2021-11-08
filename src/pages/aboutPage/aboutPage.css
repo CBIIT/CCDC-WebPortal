@@ -1,30 +1,59 @@
 .aboutPageContainer {
-    padding: 3%;
+    margin: 0 auto;
+    width: 1250px;
+    padding: 30px 0px 10px 0px;
 }
 .aboutHeader {
-    padding-bottom: 3%;
-    text-align: center;
-    font-size: 300%;
+    padding: 20px 0px 20px 0px;
+    font-size: 40px;
     color: navy;
+    width: 300px;
+    line-height: 40px;
 }
-.aboutPageContent {
-    padding: 5%;
-    background-color: lightgrey;
-    filter: brightness(1.1);
+.aboutHeaderImage {
+    /* width: 300px; */
+    /* height: 600px; */
+    margin-top: -200px;
+    float: right;
 }
-.aboutSection1 {
+.aboutPageSection1 {
+    /* padding: 5%; */
+    padding: 0px 0px 50px 100px;
+}
+.aboutContent1 {
+    padding: 50px 0px 0px 0px;
     text-align: left;
     margin: 10px;
     margin-left: 100px;
     margin-right: 100px;
 }
-.space10 {
-    /* top right bottom left */
-    /* padding: 120px 0px 120px 0px; */
-    padding-bottom: 10px;
-}
-.space20 {
-    /* top right bottom left */
-    /* padding: 120px 0px 120px 0px; */
+.aboutContentHeader1 {
     padding-bottom: 20px;
+    color: #2dc799;
+    font-weight: 300;
+}
+.aboutContent1 a {
+    color: rgb(0, 150, 255);
+    text-underline-offset: 2px;
+}
+.aboutPageSection2 {
+    /* padding: 5%; */
+    padding: 30px 0px 50px 100px;
+    background-color: rgb(224, 196, 112);
+}
+.aboutContent2 {
+    /* background-color: rgb(209, 176, 93); */
+    text-align: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.aboutContentHeader2 {
+    padding-bottom: 20px;
+    color: rgb(39, 99, 134);
+    /* color: rgb(103, 103, 241); */
+    font-weight: 300;
+}
+.aboutContent2 a {
+    color: white;
+    text-underline-offset: 2px;
 }
