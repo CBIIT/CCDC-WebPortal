@@ -1,8 +1,15 @@
 import React from "react";
+import * as downloadApi from "../../api/downloadApi";
 import aboutHeaderImage from "../../assets/img/About.png";
 import './aboutPage.css';
 
-const AboutPage = () => (
+const AboutPage = () => {
+  const handleDownloadTemplate = (event) => {
+    event.preventDefault();
+    downloadApi.getSubmissionTemplate();
+  };
+
+  return (
     <div className="aboutPageContainer">
         <h2 className="aboutHeader">About Childhood Cancer Data Initiative and the Data Catalog</h2>
         <img className="aboutHeaderImage" src={aboutHeaderImage} alt="about page" />
@@ -45,7 +52,7 @@ const AboutPage = () => (
                 <br />
                 <p>
                     If you would like to include your resource in this data catalog, complete the&nbsp;
-                    <a href="/about">summary submission template</a>
+                    <a href="#" onClick={handleDownloadTemplate}>summary submission template</a>
                     &nbsp;and send it to&nbsp;
                     <br />
                     <a href="/about">Childhood Cancer Data Initiative</a>
@@ -60,8 +67,8 @@ const AboutPage = () => (
                 </p>
             </div>
         </div>
-
     </div>
-);
+  );
+};
 
 export default AboutPage;
