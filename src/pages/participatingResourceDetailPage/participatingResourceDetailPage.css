@@ -44,6 +44,7 @@ ul.breadcrumb li a:hover {
   width: 100%;
   background: linear-gradient(to right, #05296b,#79291b,#e78709);
   /* border-bottom: 1px solid lightgray; */
+  position: relative;
 }
 
 .prDetailHeaderLabel {
@@ -83,14 +84,12 @@ ul.breadcrumb li a:hover {
 }
 
 .prIcon {
-  /* width: 50%; */
-  /* font-size: 40px; */
-  background-size: 100px;
-  text-align: right;
-  margin-top: -80px;
-  padding-right: 50px;
-  /* margin-left: -30px; */
-  /* padding-top: 10px; */
+  width: 130px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 1px solid #FFBF17;
+  padding: 10px;
 }
 
 .prTypeButton {

@@ -161,7 +161,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prDetailHeaderContainer">
                   <div className="prDetailHeaderLabel">{content.resource_name}</div>
                   <div className="prIcon">
-                    <DataResourceIcons participatingResource={content.data_resource_id} />
+                    <DataResourceIcons participatingResource={content.data_resource_id} type="white" />
                   </div>
                   {/* <button type="button" className="prTypeButton btn">
                     {content.resource_type}

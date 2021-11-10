@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import icon from '../../../assets/img/data_resource_icons.png';
 import externalIcon from "../../../assets/img/resource.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
+import DataResourceIcons from '../../../components/DataResourceIcons';
 
 const SearchResultContainer = styled.div`
   width: 100%;
@@ -47,12 +47,9 @@ const ResourceLogo = styled.div`
 `;
 
 const ResourceIcon = styled.div`
-  width: 65px;
-  height: 65px;
-  background-image: url(${icon});
-  background-position: -75px -50px;
-  background-size: 600px 599px;
+  width: 130px;
   margin: 0 auto;
+  padding: 10px;
 `;
 
 const ResourceDesc = styled.div`
@@ -203,7 +200,9 @@ const SearchResult = ({
                     </Link>
                   </ResourceTitle>
                   <ResourceLogo>
-                    <ResourceIcon />
+                    <ResourceIcon>
+                      <DataResourceIcons participatingResource={rst.data_resource_id} type="gold" />
+                    </ResourceIcon>
                   </ResourceLogo>
                 </ResourceHeader>
                 <ResourceDesc>
