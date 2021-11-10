@@ -28,14 +28,23 @@ const HomePage = () => {
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
                       <div className="headerTitle">
-                          Explore the Childhood Cancer Dataset Catalog (CCDC)
+                          Childhood Cancer Dataset Catalog:
+                          <br />
+                          A searchable database
+                          <br />
+                          of pediatric data resources
+                      </div>
+                      <div className="headerDesc">
+                        Sharing clinical care and research data generated
+                        <br />
+                        by the pediatric cancer research community
                       </div>
                       <div className="headerButtonSection">
                           <Link to="/about" className="headerLink">
                               <Button className="buttonText">
                                   <h6>
-                                  &nbsp;About CCDC &emsp;&emsp;&emsp;
-                                  <span style={{ color: 'gold' }}>&#9658;</span>
+                                  &nbsp;About THE CATALOG &emsp;
+                                  <span style={{ color: '#FFBF17' }}>&#9658;</span>
                                   </h6>
                               </Button>
                           </Link>
@@ -43,7 +52,7 @@ const HomePage = () => {
                       <div style={{ padding: 20, background: 'white', opacity: '0.0' }} />
                       <div className="sbExample-1">
                           <div className="search">
-                              <input type="text" className="searchTerm" placeholder="  Search the Catalog " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
+                              <input type="text" className="searchTerm" placeholder="  Search for Datasets " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
                               <Link to={`/search?search_text=${localText}`} className="headerLink">
                                   <button type="submit" className="searchButton">
                                       <svg
@@ -59,7 +68,7 @@ const HomePage = () => {
                                         viewBox="0 0 512 512"
                                       >
                                           <path
-                                            fill="goldenrod"
+                                            fill="#FFBF17"
                                             d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0
                                               208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7
                                               99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7
@@ -75,8 +84,8 @@ const HomePage = () => {
                           <Link to="/advancedsearch" className="headerLink">
                               <Button className="buttonText">
                                   <h6>
-                                  &nbsp;Advanced Search &emsp;
-                                  <span style={{ color: 'gold' }}>&#9658;</span>
+                                  &nbsp;ADVANCED SEARCH &emsp;
+                                  <span style={{ color: '#FFBF17' }}>&#9658;</span>
                                   </h6>
                               </Button>
                           </Link>
@@ -93,13 +102,14 @@ const HomePage = () => {
                   <div className="heroTextWrapper2">
                   <div className="row">
                       <div className="column1">
-                          <div className="headerTitle2">
-                              {/* The CCDC&apos;s Approach to Delivering Data is Simple and Innovative */}
-                              CCDI Childhood Cancer Data Catalog: &emsp; A searchable database of
-                              pediatric data resources
-                          </div>
                           <div className="headerContent2">
-                              WHAT CAN YOU EXPECT FROM THE CCDC
+                              What can
+                              <br />
+                              you expect
+                              <br />
+                              from the
+                              <br />
+                              Data Catalog
                           </div>
                       </div>
                       <div className="column2">
@@ -122,7 +132,7 @@ const HomePage = () => {
                               <Button className="buttonText color-white">
                                   <h6>
                                       &nbsp;EXPLORE THE CATALOG &emsp;&emsp;&emsp;
-                                      <span style={{ color: 'gold' }}>&#9658;</span>
+                                      <span style={{ color: '#FFBF17' }}>&#9658;</span>
                                   </h6>
                               </Button>
                           </Link>

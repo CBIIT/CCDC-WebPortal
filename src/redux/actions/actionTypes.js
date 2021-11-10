@@ -23,6 +23,7 @@ export const SWITCH_PAGE = "switch_page";
 export const SWITCH_VIEW = "switch_view";
 export const LOAD_DATASET_DETAIL_SUCCESS = "load_dataset_detail_success";
 export const LOAD_DATARESOURCE_DETAIL_SUCCESS = "load_dataresource_detail_success";
+export const LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS = "load_dataresource_detail_datasets_success";
 
 export const LOAD_ADVANCED_SEARCH_FILTERS_SUCCESS = "load_advanced_search_filters_success";
 export const CLICK_ADVANCED_SEARCH_FILTER_SUCCESS = "click_advanced_search_filter_success";

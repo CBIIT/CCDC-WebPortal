@@ -57,7 +57,7 @@ const DatasetDetail = ({
                 <div className="datasetDetailHeaderContainer">
                   <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>
                   <div className="datasetIcon">
-                    <DataResourceIcons participatingResource={content.data_resource_id} />
+                    <DataResourceIcons participatingResource={content.data_resource_id} type="white" />
                   </div>
                   {/* <ResourceType>
                     <span>{content.primary_dataset_scope}</span>

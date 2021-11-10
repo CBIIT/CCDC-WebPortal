@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ParticipatingResourceDetail from './ParticipatingResourceDetail';
 import {
   loadDataresourceDetail,
-  // loadDataresourceDetailDatasets
+  loadDataresourceDetailDatasets,
 } from '../../redux/actions/participatingResourcesActions';
 import {
   initialLoadSearchResults
@@ -11,6 +11,7 @@ import {
 const ReduxSearchResult = (() => {
   const mapStateToProps = (state) => ({
     details: state.participatingResources.details,
+    datasets: state.participatingResources.datasets,
     resultList: state.datasets.searchResults,
     // resultList: state.participatingResources.searchResults,
     // prdatasets: state.participatingResources.details,
@@ -18,8 +19,8 @@ const ReduxSearchResult = (() => {
 
   const mapDispatchToProps = {
     onPageLoadDataresourceDetail: loadDataresourceDetail,
+    onPageLoadDataresourceDetailDatasets: loadDataresourceDetailDatasets,
     onPageLoadSearchResults: initialLoadSearchResults,
-    // onPageLoadDataresourceDetailDatasets: loadDataresourceDetailDatasets,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(ParticipatingResourceDetail);
