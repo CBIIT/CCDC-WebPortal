@@ -16,6 +16,7 @@ const DatasetSummaryContainer = styled.div`
   // display: grid;
   margin: 0 auto;
   width: 1120px;
+  margin-bottom: 20px;
 `;
 
 const DataLink = styled.li`
@@ -127,20 +128,20 @@ const DatasetDesc = styled.div`
 // `;
 
 const ParticipatingResourceDetail = ({
-  details,
+  detail,
   datasets,
   onPageLoadDataresourceDetail,
-  resultList,
+  onPageLoadDataresourceDetailDatasets,
 }) => {
   const { id } = useParams();
-  const content = details[id];
-  // const datasetscontent = datasets[id];
-  // const linktoDatasetSummaries = `/resource/${content.data_resource_id}#dataset_summaries`;
-
   useEffect(() => {
-    if (!content) {
+    if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
         throw new Error(`Loading participating resource detail page failed ${error}`);
+      });
+
+      onPageLoadDataresourceDetailDatasets(id).catch(error => {
+        throw new Error(`Loading participating resource detail datasets failed ${error}`);
       });
     }
   }, []);
@@ -149,19 +150,19 @@ const ParticipatingResourceDetail = ({
     <>
         <ParticipatingResourceResultContainer>
         {
-            content && (
+            detail && (
               <div className="prContainer">
                 <div className="prBreadcrumbContainer">
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
                       <li><a href="/search">Search Catalog</a></li>
-                      <li><Link to={`/resource/${content.data_resource_id}`}>{content.data_resource_id}</Link></li>
+                      <li><Link to={`/resource/${detail.data_resource_id}`}>{detail.data_resource_id}</Link></li>
                   </ul>
                 </div>
                 <div className="prDetailHeaderContainer">
-                  <div className="prDetailHeaderLabel">{content.resource_name}</div>
+                  <div className="prDetailHeaderLabel">{detail.resource_name}</div>
                   <div className="prIcon">
-                    <DataResourceIcons participatingResource={content.data_resource_id} type="white" />
+                    <DataResourceIcons participatingResource={detail.data_resource_id} type="white" />
                   </div>
                   {/* <button type="button" className="prTypeButton btn">
                     {content.resource_type}
@@ -171,37 +172,37 @@ const ParticipatingResourceDetail = ({
                   </PrType> */}
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
-                    <DataLink><a className="prDetailHeaderLink" href={content.resource_uri}>{content.resource_uri}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="prDetailHeaderText">
-                      {content.poc}
+                      {detail.poc}
                       , &nbsp;
                       {/* <Link to={content.poc_email} className="prDetailHeaderLink">{content.poc_email}</Link> */}
-                      <DataLink><a className="prDetailHeaderLink" href={`mailto:${content.poc_email}`}>{content.poc_email}</a></DataLink>
+                      <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink>
                       {/* <li><a className="prDetailHeaderLink" href={content.poc_email}>{content.poc_email}</a></li> */}
                       {/* <a href={`mailto:${content.poc_email}`}>{content.poc_email}</a> */}
                     </span>
                   </div>
                   <DatasetType>
-                    <span>{content.resource_type}</span>
+                    <span>{detail.resource_type}</span>
                   </DatasetType>
                 </div>
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
                     <div className="prAboutResourceLabel">About This Resource</div>
-                    <div className="prAboutResourceContent">{content.description}</div>
+                    <div className="prAboutResourceContent">{detail.description}</div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
                       <div className="prDataElementLabel">Data Resource Type</div>
-                        {content.resource_type}
+                        {detail.resource_type}
                       <div className="prDataElementLabel">Specialization</div>
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Resource Data Content Types</div>
                         <br />
-                        {content.data_content_type}
+                        {detail.data_content_type}
                               {/* <p />
                               {content.has_genomics_omics > 0 ? 'Omics Data' : ''}
                               <p />
@@ -216,17 +217,17 @@ const ParticipatingResourceDetail = ({
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>
                       <div className="prDataElementLabel">Visualization Tools</div>
-                        {content.visualization > 0 ? 'YES' : 'NO'}
+                        {detail.visualization > 0 ? 'YES' : 'NO'}
                       <div className="prDataElementLabel">Analytic Tools</div>
-                        {content.analytics > 0 ? 'YES' : 'NO'}
+                        {detail.analytics > 0 ? 'YES' : 'NO'}
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Access</div>
                       {/* <div className="prDataElementLabel">API (Internal)</div> */}
                       <br />
                         {
-                          content.api
-                          ? <DataLink><a href={content.api}>{content.api}</a></DataLink>
+                          detail.api
+                          ? <DataLink><a href={detail.api}>{detail.api}</a></DataLink>
                           : null
                         }
                     </div>
@@ -238,9 +239,9 @@ const ParticipatingResourceDetail = ({
                       <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
                     {/* <Link to={linktoDatasetSummaries}> */}
-                    <Link to={`/resource/${content.data_resource_id}#dataset_summaries`}>
+                    <Link to={`/resource/${detail.data_resource_id}#dataset_summaries`}>
                       DATASET SUMMARIES (
-                      {content.datasets_total}
+                      {detail.datasets_total}
                       )
                     </Link>
                   </DatasetsSummary>
@@ -249,46 +250,46 @@ const ParticipatingResourceDetail = ({
             )
         }
         </ParticipatingResourceResultContainer>
-        <DatasetSummaryContainer id="#dataset_summaries">
+        <DatasetSummaryContainer id="dataset_summaries">
           {
-            resultList.map((rst, idx) => {
+            datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
-              const linkto = `/dataset/${rst.content.dataset_id}`;
+              const linkto = `/dataset/${ds.dataset_id}`;
               return (
                 <DatasetCard key={key}>
                   <DatasetHeader>
                     <DatasetTitle>
                       <Link to={linkto}>
-                        {rst.content.dataset_name}
+                        {ds.dataset_name}
                       </Link>
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
-                    {rst.content.published_in
+                    {ds.published_in
                       ? <div className="summaryDataElementLabel">Published In</div>
                       : null}
                     {
-                      rst.content.published_in
-                      ? <div className="summaryDataElementContent"><DataLink><a href={rst.content.published_in}>{rst.content.published_in}</a></DataLink></div>
+                      ds.published_in
+                      ? <div className="summaryDataElementContent"><DataLink><a href={ds.published_in}>{ds.published_in}</a></DataLink></div>
                       : null
                     }
                     <br />
-                    {rst.content.case_id
+                    {ds.case_id
                       ? <div className="summaryDataElementLabel">Case ID</div>
                       : null}
                     {
-                      rst.content.case_id
-                      ? <div className="summaryDataElementContent">{rst.content.case_id}</div>
+                      ds.case_id
+                      ? <div className="summaryDataElementContent">{ds.case_id}</div>
                       : null
                     }
                     <br />
-                    {rst.content.case_sex
+                    {ds.case_sex
                         ? <div className="summaryDataElementLabel">Case Sex</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
-                          rst.content.case_sex
-                          ? rst.content.case_sex.map((cs, csidx) => {
+                          ds.case_sex
+                          ? ds.case_sex.map((cs, csidx) => {
                             const cskey = `cs_${csidx}`;
                             return (
                               <span key={cskey} className="itemSpan">
@@ -303,13 +304,13 @@ const ParticipatingResourceDetail = ({
                         }
                       </div>
                     <br />
-                    {rst.content.case_age_at_diagnosis
+                    {ds.case_age_at_diagnosis
                         ? <div className="summaryDataElementLabel">Case Age At Diagnosis</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
-                          rst.content.case_age_at_diagnosis
-                          ? rst.content.case_age_at_diagnosis.map((cad, cadidx) => {
+                          ds.case_age_at_diagnosis
+                          ? ds.case_age_at_diagnosis.map((cad, cadidx) => {
                             const cadkey = `cad_${cadidx}`;
                             return (
                               <span key={cadkey} className="itemSpan">
@@ -326,41 +327,11 @@ const ParticipatingResourceDetail = ({
                       <br />
                   </DatasetDesc>
                   <DatasetType>
-                    <span>{rst.content.primary_dataset_scope}</span>
+                    <span>{ds.primary_dataset_scope}</span>
                   </DatasetType>
                 </DatasetCard>
               );
             })
-          }
-        </DatasetSummaryContainer>
-        <DatasetSummaryContainer id="#dataset_summaries">
-          {
-            datasets.map((rst, idx) => {
-              const key = `sr_${idx}`;
-              return (
-                <DatasetCard key={key}>
-                  <DatasetDesc>
-                    {rst.dataset_name
-                      ? <div className="summaryDataElementLabel">{rst.dataset_name}</div>
-                      : null}
-                    <br />
-                  </DatasetDesc>
-                </DatasetCard>
-              );
-            })
-            // content && (
-            //   <div className="prContainer">
-            //     <br />
-            //     <br />
-            //     <div className="prAboutContentContainer">
-            //       <div className="prAboutResourceContainer">
-            //         <div className="prAboutResourceLabel">About This Resource</div>
-            //         <div className="prAboutResourceContent">{content.resource_name}</div>
-            //       </div>
-            //     </div>
-            //   </div>
-            // )
-
           }
         </DatasetSummaryContainer>
     </>
@@ -368,11 +339,10 @@ const ParticipatingResourceDetail = ({
 };
 
 ParticipatingResourceDetail.propTypes = {
-  details: PropTypes.object.isRequired,
-  // datasets: PropTypes.object.isRequired,
+  detail: PropTypes.object.isRequired,
   datasets: PropTypes.array.isRequired,
   onPageLoadDataresourceDetail: PropTypes.func.isRequired,
-  resultList: PropTypes.array.isRequired,
+  onPageLoadDataresourceDetailDatasets: PropTypes.func.isRequired,
 };
 
 export default ParticipatingResourceDetail;

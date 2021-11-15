@@ -32,7 +32,7 @@ const SearchResultContainer = styled.div`
   .container .headerRow .resultTitle {
     color: #046ab2;
     font-weight: bold;
-    padding: 0;
+    padding: 5px 0;
   }
 
   .headerRow .piBlock {
@@ -40,7 +40,7 @@ const SearchResultContainer = styled.div`
     padding: 0;
   }
 
-  .subHeaderRow .typeBlock {
+  .headerRow .typeBlock {
     background-color: #dcdcdc;
     border-radius: 20px;
     padding: 5px 10px;
@@ -172,9 +172,8 @@ const SearchResult = ({
                   <div className="col-sm-8 resultTitle">
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
                   </div>
-                  <div className="col-sm-4 piBlock">
-                    PI:&nbsp;
-                    {rst.content.poc}
+                  <div className="col-sm-4">
+                    <span className="typeBlock">{rst.content.primary_dataset_scope}</span>
                   </div>
                 </div>
                 <div className="row align-items-start subHeaderRow">
@@ -182,9 +181,6 @@ const SearchResult = ({
                     <i className="fas fa-file" />
                     &nbsp;
                     <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_id ? (<b>{rst.content.data_resource_id}</b>) : rst.content.data_resource_id}</Link>
-                  </div>
-                  <div className="col-sm">
-                    <span className="typeBlock">{rst.content.primary_dataset_scope}</span>
                   </div>
                 </div>
                 {
