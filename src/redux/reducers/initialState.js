@@ -12,7 +12,7 @@ export default {
         }
       },
       searchResults: [],
-      details: {},
+      detail: {},
       datasets: [],
     },
     searchFilters: {

@@ -5,16 +5,12 @@ export function loadLandingParticipatingResourcesSuccess(participatingResources)
     return { type: types.LOAD_LANDING_PARTICIPATING_RESOURCES_SUCCESS, participatingResources };
 }
 
-export function loadDataresourceDetailSuccess(id, data) {
-  const tmp = {};
-  tmp[id] = data;
-  return { type: types.LOAD_DATARESOURCE_DETAIL_SUCCESS, dataresource: tmp};
+export function loadDataresourceDetailSuccess(data) {
+  return { type: types.LOAD_DATARESOURCE_DETAIL_SUCCESS, dataresource: data};
 }
 
-export function loadDataresourceDetailDatasetsSuccess(id, data) {
-  const tmp = {};
-  tmp[id] = data;
-  return { type: types.LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS, dataresource: tmp};
+export function loadDataresourceDetailDatasetsSuccess(data) {
+  return { type: types.LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS, datasets: data};
 }
 
 export function loadSearchFiltersSuccess(data) {
@@ -58,7 +54,7 @@ export function loadDataresourceDetail(id) {
   const func = function func(dispatch) {
     return participatingResourcesApi.getDataresourceById(id)
     .then(participatingResources => {
-      dispatch(loadDataresourceDetailSuccess(id, participatingResources.data));
+      dispatch(loadDataresourceDetailSuccess(participatingResources.data));
     })
     .catch(error => {
         throw error;
@@ -70,8 +66,8 @@ export function loadDataresourceDetail(id) {
 export function loadDataresourceDetailDatasets(id) {
   const func = function func(dispatch) {
     return participatingResourcesApi.getDatasetsById(id)
-    .then(participatingResources => {
-      dispatch(loadDataresourceDetailDatasetsSuccess(id, participatingResources.data));
+    .then(datasets => {
+      dispatch(loadDataresourceDetailDatasetsSuccess(datasets.data));
     })
     .catch(error => {
         throw error;

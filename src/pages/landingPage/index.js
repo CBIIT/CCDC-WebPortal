@@ -28,7 +28,7 @@ const HomePage = () => {
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
                       <div className="headerTitle">
-                          Childhood Cancer Dataset Catalog:
+                          Childhood Cancer Data Catalog:
                           <br />
                           A searchable database
                           <br />
