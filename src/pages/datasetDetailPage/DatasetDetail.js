@@ -85,6 +85,7 @@ const DatasetDetail = ({
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
+                    <div className="aboutDatasetContent">{content.desc}</div>
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
