@@ -94,7 +94,7 @@ const Footer = () => {
                 <Col xs={4}>
                   <Title>Contact Information</Title>
                   <MenuUl>
-                    <MenuLi><a href="mailto:ccdc@mail.nih.gov">Contact Us</a></MenuLi>
+                    <MenuLi><a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Contact Us</a></MenuLi>
                   </MenuUl>
                 </Col>
                 <Col xs={4}>

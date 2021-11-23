@@ -32,9 +32,12 @@ const Filters = ({
           </Link>
         </div>
       </div>
-      <div className="resourceFilterSection">
+      <div className="filterSection">
+        <div className="filterLabel">
+          <span>Resource</span>
+        </div>
         <div className="filterBlock">
-          <Accordion domain="dataset" fields={["Resource"]} />
+          <Accordion domain="dataset" fields={["Research Data Repository", "Program", "Catalog", "Registry"]} />
         </div>
       </div>
       <div className="filterSection">
