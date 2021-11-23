@@ -85,6 +85,7 @@ const DatasetDetail = ({
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
+                    <div className="aboutDatasetContent">{content.desc}</div>
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
@@ -568,6 +569,14 @@ const DatasetDetail = ({
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
+                        {content.published_in
+                          ? <div className="dataElementLabel">Published In</div>
+                          : null}
+                        {
+                          content.published_in
+                          ? <a href={content.published_in}>{content.published_in}</a>
+                          : null
+                        }
                         {content.projects
                           ? <div className="dataElementLabel">Projects</div>
                           : null}

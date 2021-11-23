@@ -18,11 +18,11 @@ const AboutPage = () => {
                 <h2 className="aboutContentHeader1">Childhood Cancer Data Initiative</h2>
                 <p>
                     The Childhood Cancer Data Catalog is part of&nbsp;
-                    <a href="/about">NCI’s Childhood Cancer Data Initiative (CCDI)</a>
+                    <a href="https://www.cancer.gov/research/areas/childhood/childhood-cancer-data-initiative">NCI’s Childhood Cancer Data Initiative (CCDI)</a>
                     &nbsp;, which is building a community centered around
                     childhood cancer care and research data. Through enhanced data sharing, we can improve understanding of cancer biology, preventive measures,
                     treatment, quality of life, and survivorship, as well as ensure that researchers learn from every child with cancer.&nbsp;
-                    <a href="/about">Sign-up for email updates</a>
+                    <a href="https://public.govdelivery.com/accounts/USNIHNCI/subscriber/new?topic_id=USNIHNCI_223">Sign-up for email updates</a>
                     &nbsp;from NCI about CCDI.
                 </p>
                 <br />
@@ -55,14 +55,14 @@ const AboutPage = () => {
                     <a href="#" onClick={handleDownloadTemplate}>summary submission template</a>
                     &nbsp;and send it to&nbsp;
                     <br />
-                    <a href="/about">Childhood Cancer Data Initiative</a>
+                    <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
                     &nbsp;. Summaries quantify one or more data element values such as count, minimum, maximum, or average. A data element is a unit of data such as a disease
                     diagnosis, or case age. Each assertion in a summary pertains to a data element and its value or set of values in a dataset.
                 </p>
                 <br />
                 <p>
                     For questions, please contact&nbsp;
-                    <a href="/about">Childhood Cancer Data Initiative</a>
+                    <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
                     .
                 </p>
             </div>

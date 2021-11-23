@@ -119,6 +119,7 @@ const DatasetDesc = styled.div`
     // background-color: red;
   }
   line-height: 32px;
+  inline-size: 1000px;
 `;
 
 // const ResourceContact = styled.div`
@@ -164,12 +165,8 @@ const ParticipatingResourceDetail = ({
                   <div className="prIcon">
                     <DataResourceIcons participatingResource={detail.data_resource_id} type="white" />
                   </div>
-                  {/* <button type="button" className="prTypeButton btn">
-                    {content.resource_type}
-                  </button> */}
-                  {/* <PrType>
-                    <span>{content.resource_type}</span>
-                  </PrType> */}
+                  <span className="badge"><i className="far fa-file-alt" /></span>
+                  <span className="badgeCount">{detail.datasets_total}</span>
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
                     <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink>
@@ -203,16 +200,6 @@ const ParticipatingResourceDetail = ({
                       <div className="prAdditionalDataLabel">Resource Data Content Types</div>
                         <br />
                         {detail.data_content_type}
-                              {/* <p />
-                              {content.has_genomics_omics > 0 ? 'Omics Data' : ''}
-                              <p />
-                              {content.has_imaging_data > 0 ? 'Imaging Data' : ''}
-                              <p />
-                              {content.has_clinical_data > 0 ? 'Clinical Data' : ''}
-                              <p />
-                              {content.has_xenograft_data > 0 ? 'Xenograft Data' : ''}
-                              <p />
-                              {content.has_cell_lines_data > 0 ? 'Cell Lines Data' : ''} */}
                     </div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>
@@ -238,7 +225,6 @@ const ParticipatingResourceDetail = ({
                     <SummaryIcon>
                       <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
-                    {/* <Link to={linktoDatasetSummaries}> */}
                     <Link to={`/resource/${detail.data_resource_id}#dataset_summaries`}>
                       DATASET SUMMARIES (
                       {detail.datasets_total}
@@ -250,7 +236,7 @@ const ParticipatingResourceDetail = ({
             )
         }
         </ParticipatingResourceResultContainer>
-        <DatasetSummaryContainer id="dataset_summaries">
+        <DatasetSummaryContainer id="#dataset_summaries">
           {
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;

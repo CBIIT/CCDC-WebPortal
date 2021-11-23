@@ -23,11 +23,10 @@ const Accordion = ({
           const key = `filters_${idx}`;
           const stayOpenID = `so-${str}-${idx}`;
           const collapseOneID = `co-${str}-${idx}`;
-          const isResource = field === "Resource";
-          const defaultCollapsed = isResource || field === "Data Resource Type";
-          const firstAccordionClass = isResource ? "accordion-item-first" : "accordion-item";
+          const defaultCollapsed = field === "Research Data Repository" || field === "Data Resource Type";
+          // const firstAccordionClass = isResource ? "accordion-item-first" : "accordion-item";
           return (
-            <div key={key} className={firstAccordionClass}>
+            <div key={key} className="accordion-item">
               <h2 className="accordion-header" id={stayOpenID}>
                 <button className={`accordion-button accordion-button-ccdc ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseOneID}`} aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls={collapseOneID}>
                   {field}

@@ -53,6 +53,7 @@ ul.breadcrumb li a:hover {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   width: 95%;
+  inline-size: 950px;
 }
 
 .datasetDetailHeaderContent {
@@ -126,6 +127,14 @@ ul.breadcrumb li a:hover {
   text-transform: uppercase;
   /* border-bottom: 2px solid rgb(163, 163, 163); */
   border-bottom: 2px solid lightgray;
+  inline-size: 1160px;
+}
+
+.aboutDatasetContent {
+  padding: 30px 0px 30px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 2px solid lightgray;
+  inline-size: 1160px;
 }
 
 .coreDataContainer {
