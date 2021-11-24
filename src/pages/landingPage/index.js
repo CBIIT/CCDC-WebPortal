@@ -43,7 +43,7 @@ const HomePage = () => {
                           <Link to="/about" className="headerLink">
                               <Button className="buttonText">
                                   <h6>
-                                  &nbsp;About THE CATALOG &emsp;
+                                  &nbsp;ABOUT THE CATALOG &emsp;
                                   <span style={{ color: '#FFBF17' }}>&#9658;</span>
                                   </h6>
                               </Button>

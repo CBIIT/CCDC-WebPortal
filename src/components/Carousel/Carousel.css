@@ -141,9 +141,14 @@
   width: 100%;
 }
 
+.cardHeader h4{
+  line-height: 18pt;
+}
+
 .cardContent {
   color: white;
   font-size: 90%;
   margin-top: 15px;
   height: 100px;
+  line-height: 18pt;
 }
