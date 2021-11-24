@@ -1,59 +1,78 @@
 .aboutPageContainer {
     margin: 0 auto;
     width: 1250px;
-    padding: 30px 0px 10px 0px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
 }
-.aboutHeader {
-    padding: 20px 0px 20px 0px;
+.aboutPageHeader {
+    /* margin: 0 auto; */
+    /* width: 1250px; */
+    padding: 50px 10px 20px 20px;
+}
+.aboutHeaderText {
     font-size: 40px;
     color: navy;
-    width: 300px;
     line-height: 40px;
 }
 .aboutHeaderImage {
-    /* width: 300px; */
-    /* height: 600px; */
-    margin-top: -200px;
+    margin-top: -185px;
     float: right;
 }
 .aboutPageSection1 {
-    /* padding: 5%; */
-    padding: 0px 0px 50px 100px;
+    margin: 0 auto;
+    width: 1250px;
+    padding: 0px 0px 40px 110px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
 }
 .aboutContent1 {
-    padding: 50px 0px 0px 0px;
+    width: 83%;
+    padding: 40px 0px 0px 0px;
     text-align: left;
-    margin: 10px;
     margin-left: 100px;
     margin-right: 100px;
 }
 .aboutContentHeader1 {
-    padding-bottom: 20px;
-    color: #2dc799;
+    padding-bottom: 10px;
+    /* color: #2dc799; */
+    color: #00a272;
     font-weight: 300;
+    font-size: 33px;
 }
 .aboutContent1 a {
     color: rgb(0, 150, 255);
     text-underline-offset: 2px;
 }
+.aboutPageSection2Container {
+    margin: 0 auto;
+    width: 1250px;
+    padding: 10px 10px 10px 10px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
 .aboutPageSection2 {
-    /* padding: 5%; */
     padding: 30px 0px 50px 100px;
-    background-color: rgb(224, 196, 112);
+    /* background-color: #E6C44E; */
+    background-color: #D6BB5F;
 }
 .aboutContent2 {
-    /* background-color: rgb(209, 176, 93); */
     text-align: left;
     margin-left: 100px;
     margin-right: 100px;
 }
 .aboutContentHeader2 {
-    padding-bottom: 20px;
-    color: rgb(39, 99, 134);
-    /* color: rgb(103, 103, 241); */
+    padding-bottom: 10px;
+    color: #0052b3;
     font-weight: 300;
+    font-size: 33px;
 }
 .aboutContent2 a {
     color: white;
+    /* color: #0052b3; */
+    font-weight: bold;
     text-underline-offset: 2px;
+}
+.grid{
+    color: white;
+    border-bottom: 1px solid lightgray;
 }

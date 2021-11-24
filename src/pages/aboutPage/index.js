@@ -10,9 +10,22 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="aboutPageContainer">
-        <h2 className="aboutHeader">About Childhood Cancer Data Initiative and the Data Catalog</h2>
-        <img className="aboutHeaderImage" src={aboutHeaderImage} alt="about page" />
+    <>
+        <div className="aboutPageContainer">
+            <div className="aboutPageHeader">
+                <h2 className="aboutHeaderText">
+                    About
+                    <br />
+                    Childhood Cancer
+                    <br />
+                    Data Initiative and the
+                    <br />
+                    Data Catalog
+                </h2>
+                <img className="aboutHeaderImage" src={aboutHeaderImage} alt="about page" />
+            </div>
+        </div>
+        <div className="grid" />
         <div className="aboutPageSection1">
             <div className="aboutContent1">
                 <h2 className="aboutContentHeader1">Childhood Cancer Data Initiative</h2>
@@ -27,13 +40,12 @@ const AboutPage = () => {
                 </p>
                 <br />
                 <h2 className="aboutContentHeader1">CCDI Data Catalog</h2>
-                <p>
+                <p style={{ paddingBottom: '10px' }}>
                     The CCDI Childhood Cancer Data Catalog is an inventory of pediatric oncology data resources, including childhood cancer repositories, registries,
                     data commons, web sites, and catalogs that either manage or refer to data. The data catalog is intended to help researchers learn about existing
                     pediatric data resources to develop new biomedical hypothesis or analyze the data for clinical or therapeutic efficacy. While the data catalog does
                     not provide access to the data, it provides summary information that will allow researchers to select the resource(s) relevant to their work.
                 </p>
-                <br />
                 <p>
                     Each data resource summary includes an overview by disease type, number of samples taken and analyzed, availability of molecular and imaging data,
                     and characteristics of the samples studied (e.g., age, phenotype). After reviewing the data resource summaries, researchers can use the provided link
@@ -41,33 +53,34 @@ const AboutPage = () => {
                 </p>
             </div>
         </div>
-        <br />
-        <div className="aboutPageSection2">
-            <div className="aboutContent2">
-                <h2 className="aboutContentHeader2">Contribute to the CCDI Data Catalog</h2>
-                <p>
-                    NCI is interested in expanding this resource. Submit summaries about your data resource makes the existence known to a broader community and helps to
-                    promote the use of the data.
-                </p>
-                <br />
-                <p>
-                    If you would like to include your resource in this data catalog, complete the&nbsp;
-                    <a href="#" onClick={handleDownloadTemplate}>summary submission template</a>
-                    &nbsp;and send it to&nbsp;
-                    <br />
-                    <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
-                    &nbsp;. Summaries quantify one or more data element values such as count, minimum, maximum, or average. A data element is a unit of data such as a disease
-                    diagnosis, or case age. Each assertion in a summary pertains to a data element and its value or set of values in a dataset.
-                </p>
-                <br />
-                <p>
-                    For questions, please contact&nbsp;
-                    <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
-                    .
-                </p>
+        {/* <br /> */}
+        <div className="grid" />
+        <div className="aboutPageSection2Container">
+            <div className="aboutPageSection2">
+                <div className="aboutContent2">
+                    <h2 className="aboutContentHeader2">Contribute to the CCDI Data Catalog</h2>
+                    <p style={{ paddingBottom: '10px' }}>
+                        NCI is interested in expanding this resource. Submit summaries about your data resource makes the existence known to a broader community and helps to
+                        promote the use of the data.
+                    </p>
+                    <p style={{ paddingBottom: '10px' }}>
+                        If you would like to include your resource in this data catalog, complete the&nbsp;
+                        <a href="#" onClick={handleDownloadTemplate}>summary submission template</a>
+                        &nbsp;and send it to&nbsp;
+                        <br />
+                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
+                        &nbsp;. Summaries quantify one or more data element values such as count, minimum, maximum, or average. A data element is a unit of data such as a disease
+                        diagnosis, or case age. Each assertion in a summary pertains to a data element and its value or set of values in a dataset.
+                    </p>
+                    <p>
+                        For questions, please contact&nbsp;
+                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Childhood Cancer Data Initiative</a>
+                        .
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </>
   );
 };
 
