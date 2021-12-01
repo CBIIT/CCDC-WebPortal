@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import drDEFAULT from '../../assets/img/Default/Landing.svg';
 import drDEFAULTList from '../../assets/img/Default/Resource.svg';
+/*
 import drCCSS from '../../assets/img/CCSS/Landing.svg';
 import drCCSSList from '../../assets/img/CCSS/Resource.svg';
 import drCGCI from '../../assets/img/CGCI/Landing.svg';
@@ -18,11 +19,13 @@ import drSTJUDE from '../../assets/img/STJUDE/Landing.svg';
 import drSTJUDEList from '../../assets/img/STJUDE/Resource.svg';
 import drUTAH from '../../assets/img/UTAH/Landing.svg';
 import drUTAHList from '../../assets/img/UTAH/Resource.svg';
+*/
 
 const DataResourceIcons = ({
   participatingResource,
   type,
 }) => {
+  /*
   if (participatingResource === "CCSS") {
     return <img src={type === "gold" ? drCCSSList : drCCSS} alt={participatingResource} />;
   }
@@ -47,6 +50,7 @@ const DataResourceIcons = ({
   if (participatingResource === "UTAH") {
     return <img src={type === "gold" ? drUTAHList : drUTAH} alt={participatingResource} />;
   }
+  */
   return <img src={type === "gold" ? drDEFAULTList : drDEFAULT} alt={participatingResource} />;
 };
 
