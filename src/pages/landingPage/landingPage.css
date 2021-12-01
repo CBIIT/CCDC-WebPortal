@@ -311,64 +311,6 @@
   padding-top: 70px;
 }
 
-.mountainMeadowButtonSection {
-  height: 46px;
-  width: 176px;
-  background-color: #10a075;
-  margin-top: 20px;
-}
-
-.blueButton {
-  height: 45px;
-  background-color: #0077e3;
-  color: #fff;
-  font-family: Raleway;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 25px;
-  padding-left: 8px;
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-.blueButtonLeft {
-  float: left;
-}
-
-.blueButtonRight {
-  float: left;
-  line-height: 44px;
-  margin-left: 8px;
-  font-family: Lato;
-  font-size: 14px;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-.mountainMeadowContentHeader {
-  color: #033d6f;
-  font-family: Lato;
-  font-size: 28px;
-  font-weight: bold;
-  line-height: 32px;
-  padding: 15px 0;
-}
-
-.mountainMeadowContent {
-  height: 143px;
-  width: 230px;
-  color: #010101;
-  font-family: Nunito;
-  font-size: 15px;
-  line-height: 22px;
-}
-
-.mountainMeadowIcon {
-  width: 20px;
-  margin-top: 12px;
-  margin-left: 28px;
-}
-
 .padding-bottom50 {
   padding-bottom: 50px;
 }
@@ -411,7 +353,7 @@
   font-size: 100%;
   caret-color: red;
   text-decoration: underline;
-  text-underline-offset: 5px;
+  text-underline-offset: 8px;
   text-decoration-thickness: 2px;
   background-color: transparent;
   border-color: transparent;
@@ -423,7 +365,7 @@
   background-color: transparent !important;
   border-color: transparent !important;
   text-decoration: underline !important;
-  text-underline-offset: 5px !important;
+  text-underline-offset: 8px !important;
   text-decoration-thickness: 2px !important;
   color: #FFBF17 !important;
   box-shadow:0 0 0 0 #FFBF17 !important;
@@ -431,6 +373,7 @@
 
 .buttonText h6 {
   font-weight: 600;
+  text-shadow: 0.5px 0 currentColor;
 }
 
 .color-black {

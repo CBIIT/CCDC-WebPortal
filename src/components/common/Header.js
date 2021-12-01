@@ -8,7 +8,7 @@ const LogoBanner = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  width: 1200px;
+  width: 1250px;
   margin: 0 auto;
 `;
 
@@ -26,25 +26,29 @@ const SearchArea = styled.div`
   font-size: 1rem;
   font-weight: 400;
   margin-top: 30px;
+  margin-right: 20px;
   line-height: 26.41px;
 `;
 
 const SearchIcon = styled.div`
-  color: #11B886;
+  // color: #11B886;
+  color: #00996b;
   font-size: 1.1rem;
   font-weight: 600;
 `;
 
 const SearchInput = styled.input`
   border: none;
-  color: #11B886;
+  // color: #11B886;
+  color: #00996b;
   font-size: 1rem;
   font-weight: 600;
   width: 250px;
   margin-left: 5px;
 
   ::placeholder {
-    color: #11B886;
+    // color: #11B886;
+    color: #00996b;
     font-size: 1rem;
     font-weight: 600;
   }
