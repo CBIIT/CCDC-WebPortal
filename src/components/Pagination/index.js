@@ -34,7 +34,7 @@ const Pagination = ({
         Showing&nbsp;
         {(pageInfo.page - 1) * pageInfo.pageSize + 1}
         &nbsp;-&nbsp;
-        {pageInfo.page * pageInfo.pageSize}
+        {pageInfo.total < pageInfo.page * pageInfo.pageSize ? pageInfo.total : pageInfo.page * pageInfo.pageSize}
         &nbsp;of&nbsp;
         {pageInfo.total}
       </PageSummary>
