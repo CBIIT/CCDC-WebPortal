@@ -101,7 +101,7 @@ const DatasetDetail = ({
                                 <span key={cakey} className="itemSpan">
                                   {ca.n}
                                   &nbsp;(
-                                  {ca.v}
+                                  {ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -121,7 +121,7 @@ const DatasetDetail = ({
                                 <span key={cadkey} className="itemSpan">
                                   {cad.n}
                                   &nbsp;(
-                                  {cad.v}
+                                  {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -141,7 +141,7 @@ const DatasetDetail = ({
                                 <span key={caatkey} className="itemSpan">
                                   {caat.n}
                                   &nbsp;(
-                                  {caat.v}
+                                  {caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -161,7 +161,7 @@ const DatasetDetail = ({
                                 <span key={cekey} className="itemSpan">
                                   {ce.n}
                                   &nbsp;(
-                                  {ce.v}
+                                  {ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -181,7 +181,7 @@ const DatasetDetail = ({
                                 <span key={cddkey} className="itemSpan">
                                   {cdd.n}
                                   &nbsp;(
-                                  {cdd.v}
+                                  {cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -202,7 +202,7 @@ const DatasetDetail = ({
                                 <span key={samkey} className="itemSpan">
                                   {sam.n}
                                   &nbsp;(
-                                  {sam.v}
+                                  {sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -222,7 +222,7 @@ const DatasetDetail = ({
                                 <span key={crkey} className="itemSpan">
                                   {cr.n}
                                   &nbsp;(
-                                  {cr.v}
+                                  {cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -242,7 +242,7 @@ const DatasetDetail = ({
                                 <span key={cskey} className="itemSpan">
                                   {cs.n}
                                   &nbsp;(
-                                  {cs.v}
+                                  {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -262,7 +262,7 @@ const DatasetDetail = ({
                                 <span key={csabkey} className="itemSpan">
                                   {csab.n}
                                   &nbsp;(
-                                  {csab.v}
+                                  {csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -282,7 +282,7 @@ const DatasetDetail = ({
                                 <span key={cgkey} className="itemSpan">
                                   {cg.n}
                                   &nbsp;(
-                                  {cg.v}
+                                  {cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -302,7 +302,7 @@ const DatasetDetail = ({
                                 <span key={cpkey} className="itemSpan">
                                   {cp.n}
                                   &nbsp;(
-                                  {cp.v}
+                                  {cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -311,21 +311,21 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_id
-                          ? <div className="dataElementLabel">Case ID</div>
+                          ? <div className="dataElementLabel">Number of Cases</div>
                           : null}
                         {
                           content.case_id
-                          ? content.case_id
+                          ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                           : null
                         }
                         {/* <div className="dataElementLabel">Number of Cases</div>
                         {content.case_id} */}
                         {content.sample_id
-                          ? <div className="dataElementLabel">Sample ID</div>
+                          ? <div className="dataElementLabel">Number of Samples</div>
                           : null}
                         {
                           content.sample_id
-                          ? content.sample_id
+                          ? content.sample_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                           : null
                         }
                         {content.program_name
@@ -422,7 +422,7 @@ const DatasetDetail = ({
                                 <span key={satkey} className="itemSpan">
                                   {sat.n}
                                   &nbsp;(
-                                  {sat.v}
+                                  {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -442,7 +442,7 @@ const DatasetDetail = ({
                                 <span key={satkey} className="itemSpan">
                                   {sat.n}
                                   &nbsp;(
-                                  {sat.v}
+                                  {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -462,7 +462,7 @@ const DatasetDetail = ({
                                 <span key={sctkey} className="itemSpan">
                                   {sct.n}
                                   &nbsp;(
-                                  {sct.v}
+                                  {sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -482,7 +482,7 @@ const DatasetDetail = ({
                                 <span key={ctakey} className="itemSpan">
                                   {cta.n}
                                   &nbsp;(
-                                  {cta.v}
+                                  {cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -502,7 +502,7 @@ const DatasetDetail = ({
                                 <span key={ctokey} className="itemSpan">
                                   {cto.n}
                                   &nbsp;(
-                                  {cto.v}
+                                  {cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -522,7 +522,7 @@ const DatasetDetail = ({
                                 <span key={ctskey} className="itemSpan">
                                   {cts.n}
                                   &nbsp;(
-                                  {cts.v}
+                                  {cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                   )&#59; &nbsp;
                                 </span>
                               );
@@ -595,7 +595,7 @@ const DatasetDetail = ({
                                       <span key={provkey} className="itemSpan">
                                         {prov.k}
                                         &nbsp;(
-                                        {prov.v}
+                                        {prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                         )&#59; &nbsp;
                                       </span>
                                     );
@@ -626,7 +626,7 @@ const DatasetDetail = ({
                                           : (
                                               <span key={adeekey} className="itemSpan">
                                                 &nbsp;(
-                                                {adee.v}
+                                                {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                                 )&#59; &nbsp;
                                               </span>
                                             )}

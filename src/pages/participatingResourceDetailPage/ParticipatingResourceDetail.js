@@ -261,11 +261,11 @@ const ParticipatingResourceDetail = ({
                     }
                     <br />
                     {ds.case_id
-                      ? <div className="summaryDataElementLabel">Case ID</div>
+                      ? <div className="summaryDataElementLabel">Number of Cases</div>
                       : null}
                     {
                       ds.case_id
-                      ? <div className="summaryDataElementContent">{ds.case_id}</div>
+                      ? <div className="summaryDataElementContent">{ds.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
                       : null
                     }
                     <br />
@@ -281,7 +281,7 @@ const ParticipatingResourceDetail = ({
                               <span key={cskey} className="itemSpan">
                                 {cs.n}
                                 &nbsp;(
-                                {cs.v}
+                                {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 )&#59; &nbsp;
                               </span>
                             );
@@ -302,7 +302,7 @@ const ParticipatingResourceDetail = ({
                               <span key={cadkey} className="itemSpan">
                                 {cad.n}
                                 &nbsp;(
-                                {cad.v}
+                                {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 )&#59; &nbsp;
                               </span>
                             );
