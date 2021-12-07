@@ -98,9 +98,7 @@ const Carousel = ({
                                                 <span style={{ color: 'gray' }}> Participating Resources </span>
                                             </div>
                                             <div className="cardHeader">
-                                                <h4>
-                                                    {pr.resource_name}
-                                                </h4>
+                                              <a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}><h4>{pr.resource_name}</h4></a>
                                             </div>
                                         </div>
                                         <div className="cardIcon">
