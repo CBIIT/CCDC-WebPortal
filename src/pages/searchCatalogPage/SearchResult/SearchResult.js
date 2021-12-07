@@ -263,7 +263,7 @@ const SearchResult = ({
                       <div className="col">
                         <label>Case Count:</label>
                         <span className="textSpan">
-                          {rst.content.case_id}
+                          {rst.content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
                     </div>
@@ -329,7 +329,7 @@ const SearchResult = ({
                       <div className="col">
                         <label>Sample Count:</label>
                         <span className="textSpan">
-                          {rst.content.sample_id}
+                          {rst.content.sample_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
                     </div>
