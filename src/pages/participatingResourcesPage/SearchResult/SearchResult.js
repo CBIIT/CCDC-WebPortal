@@ -12,6 +12,11 @@ const SearchResultContainer = styled.div`
   display: grid;
 `;
 
+const ResultInfo = styled.div`
+  padding: 20px;
+  font-weight: bold;
+`;
+
 const ResourceCard = styled.div`
   width: 100%;
   display: grid;
@@ -183,7 +188,9 @@ const SearchResult = ({
     <>
       <SearchResultContainer>
         {
-          resultList.map((rst, idx) => {
+          resultList.length === 0 ? (
+            <ResultInfo>Result not found</ResultInfo>
+          ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
             const mailto = `mailto:${rst.poc_email}`;
             const linkto = `/resource/${rst.data_resource_id}`;
