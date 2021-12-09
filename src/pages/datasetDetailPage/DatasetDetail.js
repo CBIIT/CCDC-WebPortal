@@ -336,14 +336,6 @@ const DatasetDetail = ({
                           ? content.program_name
                           : null
                         }
-                        {content.project_name
-                          ? <div className="dataElementLabel">Project Name</div>
-                          : null}
-                        {
-                          content.project_name
-                          ? content.project_name
-                          : null
-                        }
                         {content.program_id
                           ? <div className="dataElementLabel">Program ID</div>
                           : null}
@@ -595,7 +587,7 @@ const DatasetDetail = ({
                                       <span key={provkey} className="itemSpan">
                                         {prov.k}
                                         &nbsp;(
-                                        {prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                        {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                         )&#59; &nbsp;
                                       </span>
                                     );

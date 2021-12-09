@@ -139,6 +139,8 @@
 .cardHeader {
   color: #FFBF17;
   width: 100%;
+  text-decoration: none;
+  /* padding-top: 20px; */
 }
 
 .cardHeader h4{
@@ -151,4 +153,5 @@
   margin-top: 15px;
   height: 100px;
   line-height: 18pt;
+  padding-top: 20px;
 }
