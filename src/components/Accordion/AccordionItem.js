@@ -52,7 +52,7 @@ const AccordionItem = ({
   return (
     <OptionContainer>
       <input className="form-check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
-      <OptionLabel>
+      <OptionLabel title={item.label ? item.label : ""}>
         {item.name}
       </OptionLabel>
       {
