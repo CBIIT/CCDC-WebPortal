@@ -33,6 +33,8 @@ module.exports = {
     "object-curly-spacing": "off",
     "global-require": "off",
     "no-unused-expressions": "off",
+    "no-nested-ternary": "off",
+    "no-constant-condition": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/img-redundant-alt": "off"

@@ -173,7 +173,25 @@ const SearchResult = ({
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
                   </div>
                   <div className="col-sm-4">
-                    <span className="typeBlock">{rst.content.primary_dataset_scope}</span>
+                    {/* <span className="typeBlock">{rst.content.primary_dataset_scope}</span> */}
+                    <span
+                      className="typeBlock"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title={rst.content.primary_dataset_scope === 'Aliquot' ? `Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight. [NCIt C25414]`
+                      : rst.content.primary_dataset_scope === 'Assay' ? `An examination or analysis of material, or of its prior assay, to determine the material's features or components.`
+                      : rst.content.primary_dataset_scope === 'Case' ? `A collection of data related to a specific individual in the context of a specific project.`
+                      : rst.content.primary_dataset_scope === 'Cell Line' ? `A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.`
+                      : rst.content.primary_dataset_scope === 'Collection' ? `A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.`
+                      : rst.content.primary_dataset_scope === 'Donor' ? `A donor is an individual (either human or animal) from which tissue for grafting, tissue for creating a cell line, or tumor sample for studying was taken. In these contexts the datasets are not associated with clinical or project cases. Minimal information about a donor helps describe the grafted tissue, the cell line, or the tumor sample.`
+                      : rst.content.primary_dataset_scope === 'Program' ? `A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.`
+                      : rst.content.primary_dataset_scope === 'Project' ? `Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.`
+                      : rst.content.primary_dataset_scope === 'Sample' ? `Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products. {Based on the GDC definition of Sample. (https://docs.gdc.cancer.gov/Data_Dictionary/viewer/#?view=table-definition-view&id=sample)}`
+                      : rst.content.primary_dataset_scope === 'Xenograft' ? `Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.`
+                      : 'primary dataset scope'}
+                    >
+                      {rst.content.primary_dataset_scope}
+                    </span>
                   </div>
                 </div>
                 <div className="row align-items-start subHeaderRow">
@@ -224,7 +242,7 @@ const SearchResult = ({
                   caseDiseaseDiagnosisList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
-                        <label>Cases:</label>
+                        <label>Case Disease Diagnosis:</label>
                         {
                           caseDiseaseDiagnosisList[idx].length > 10 ? caseDiseaseDiagnosisList[idx].slice(0, 10).map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;

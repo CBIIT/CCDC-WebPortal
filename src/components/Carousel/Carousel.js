@@ -98,7 +98,7 @@ const Carousel = ({
                                                 <span style={{ color: 'gray' }}> Participating Resources </span>
                                             </div>
                                             <div className="cardHeader">
-                                              <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name}</h4></a>
+                                              <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
                                             </div>
                                         </div>
                                         <div className="cardIcon">
