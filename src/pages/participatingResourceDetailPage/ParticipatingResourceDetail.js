@@ -135,6 +135,15 @@ const ParticipatingResourceDetail = ({
   onPageLoadDataresourceDetailDatasets,
 }) => {
   const { id } = useParams();
+  const tooltips = {
+    "Research Data Repository": "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
+    Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
+    Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
+    Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
+    "resource type": "resource type"
+  };
+  const tooltip = tooltips[detail.resource_type];
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
@@ -183,7 +192,14 @@ const ParticipatingResourceDetail = ({
                     </span>
                   </div>
                   <DatasetType>
-                    <span>{detail.resource_type}</span>
+                    <span
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      // title={detail.resource_type === 'Program' ? `asdfasdfasdfasdf` : "resource type"}
+                      title={tooltip}
+                    >
+                      {detail.resource_type}
+                    </span>
                   </DatasetType>
                 </div>
                 <div className="prAboutContentContainer">

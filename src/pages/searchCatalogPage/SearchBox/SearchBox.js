@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
-import './SearchBox.css';
 
 const BubbleContainer = styled.div`
   border-radius: 20px;
@@ -24,8 +23,46 @@ const BubbleContainer = styled.div`
   }
 `;
 
+const SearchIcon = styled.div`
+  position: absolute;
+  color: #004187;
+  right: 135px;
+  z-index: 10;
+  line-height: 50px;
+  font-size: 25px;
+`;
+
 const SearchBoxArea = styled.div`
   width: 50%;
+
+  .searchBoxInputGroup {
+    float: right;
+    padding: 0 0 20px 5px;
+  }
+  
+  .searchBoxInputGroup .form-control {
+    border-radius: 0;
+    border: 2px solid #07368b;
+    color: #07368b;
+    padding-right: 50px;
+    font-size: 25px;
+  }
+  
+  .searchBoxInputGroup .form-control::placeholder {
+    color: #07368b;
+    font-size: 25px;
+  }
+  
+  .searchBoxButton {
+    width: 120px;
+    border-radius: 0;
+    font-weight: bold;
+    color: white;
+    border: 2px solid #07368b;
+    background-color: #07368b;
+    padding: .75rem 1rem;
+    line-height: 26px;
+  }
 `;
 
 const SelectionBubbleArea = styled.div`
@@ -89,8 +126,11 @@ const SearchBox = ({
             onChange={(e) => handleTextInputChange(e)}
             onKeyPress={(e) => handleKeyPress(e)}
           />
+          <SearchIcon>
+            <i className="fas fa-search" />
+          </SearchIcon>
           <InputGroup.Append>
-            <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>Submit</Button>
+            <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
           </InputGroup.Append>
         </InputGroup>
       </SearchBoxArea>

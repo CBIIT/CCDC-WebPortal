@@ -14,43 +14,36 @@ const NavContainer = styled.div`
     margin: 0 auto;
     width: 1200px;
     text-align: center;
-`;
 
-const NavLinkStyled = styled(NavLink)`
-    color: #003626;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    font-weight: 600;
-    border-radius: 0.3125rem;
-    text-decoration: none;
-
-    &&:hover {
-      color: #ffffff;
+    a {
+      color: #003626;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+      font-weight: 600;
+      border-radius: 0.3125rem;
+      text-decoration: none;
     }
 
-    &&:focus {
-        color: #ffffff;
-        text-decoration: underline;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 3px;
+    a:hover {
+      color: #ffffff;
     }
 `;
 
 const activeStyle = {
-    color: "#ffffff",
-    textDecoration: "underline",
-    textUnderlineOffset: "5px",
-    textDecorationThickness: "3px",
+  color: "#ffffff",
+  textDecoration: "underline",
+  textUnderlineOffset: "5px",
+  textDecorationThickness: "3px",
 };
 
 const NavBar = () => {
     return (
         <Nav>
             <NavContainer>
-                <NavLinkStyled to="/" activeStyle={activeStyle} exact>Home</NavLinkStyled>
-                <NavLinkStyled to="/search" activeStyle={activeStyle}>Search Catalog</NavLinkStyled>
-                <NavLinkStyled to="/participatingresources" activeStyle={activeStyle}>Participating Resources</NavLinkStyled>
-                <NavLinkStyled to="/about" activeStyle={activeStyle}>About</NavLinkStyled>
+                <NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>Home</NavLink>
+                <NavLink to="/search" style={({ isActive }) => (isActive ? activeStyle : null)}>Search Catalog</NavLink>
+                <NavLink to="/participatingresources" style={({ isActive }) => (isActive ? activeStyle : null)}>Participating Resources</NavLink>
+                <NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>About</NavLink>
             </NavContainer>
         </Nav>
     );

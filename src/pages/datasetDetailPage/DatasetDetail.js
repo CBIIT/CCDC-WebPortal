@@ -32,6 +32,20 @@ const DatasetDetail = ({
 }) => {
   const { id } = useParams();
   const content = details[id];
+  const tooltips = {
+    Aliquot: "Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight. [NCIt C25414]",
+    Assay: "An examination or analysis of material, or of its prior assay, to determine the material's features or components.",
+    Case: "A collection of data related to a specific individual in the context of a specific project.",
+    "Cell Line": "A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.",
+    Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
+    Donor: "A donor is an individual (either human or animal) from which tissue for grafting, tissue for creating a cell line, or tumor sample for studying was taken. In these contexts the datasets are not associated with clinical or project cases. Minimal information about a donor helps describe the grafted tissue, the cell line, or the tumor sample.",
+    Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
+    Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
+    Sample: "Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products. {Based on the GDC definition of Sample. (https://docs.gdc.cancer.gov/Data_Dictionary/viewer/#?view=table-definition-view&id=sample)}",
+    Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
+    "primary dataset scope": "primary dataset scope"
+  };
+  const tooltip = tooltips[content.primary_dataset_scope];
 
   useEffect(() => {
     if (!content) {
@@ -79,7 +93,13 @@ const DatasetDetail = ({
                     </span>
                   </div>
                   <ResourceType>
-                    <span>{content.primary_dataset_scope}</span>
+                    <span
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title={tooltip}
+                    >
+                      {content.primary_dataset_scope}
+                    </span>
                   </ResourceType>
                 </div>
                 <div className="aboutContentContainer">
@@ -336,14 +356,6 @@ const DatasetDetail = ({
                           ? content.program_name
                           : null
                         }
-                        {content.project_name
-                          ? <div className="dataElementLabel">Project Name</div>
-                          : null}
-                        {
-                          content.project_name
-                          ? content.project_name
-                          : null
-                        }
                         {content.program_id
                           ? <div className="dataElementLabel">Program ID</div>
                           : null}
@@ -595,7 +607,7 @@ const DatasetDetail = ({
                                       <span key={provkey} className="itemSpan">
                                         {prov.k}
                                         &nbsp;(
-                                        {prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                        {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                         )&#59; &nbsp;
                                       </span>
                                     );
