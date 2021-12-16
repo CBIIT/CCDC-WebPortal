@@ -143,7 +143,7 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  const tooltip = tooltips[detail.resource_type];
+
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
@@ -196,7 +196,7 @@ const ParticipatingResourceDetail = ({
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
                       // title={detail.resource_type === 'Program' ? `asdfasdfasdfasdf` : "resource type"}
-                      title={tooltip}
+                      title={tooltips[detail.resource_type]}
                     >
                       {detail.resource_type}
                     </span>
