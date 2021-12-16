@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import Carousel from '../../components/Carousel';
 import './landingPage.css';
 
 const HomePage = () => {
   const [localText, setLocalText] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleTextInputChange = (event) => {
     const text = event.target.value;
@@ -16,7 +16,7 @@ const HomePage = () => {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       if (localText.trim() !== "") {
-        history.push(`/search?search_text=${localText}`);
+        navigate(`/search?search_text=${localText}`);
       }
     }
   };

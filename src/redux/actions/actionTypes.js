@@ -28,3 +28,6 @@ export const LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS = "load_dataresource_deta
 export const LOAD_ADVANCED_SEARCH_FILTERS_SUCCESS = "load_advanced_search_filters_success";
 export const CLICK_ADVANCED_SEARCH_FILTER_SUCCESS = "click_advanced_search_filter_success";
 export const CLEAR_ADVANCED_SEARCH_SELECTION_SUCCESS = "clearAdvancedSearchSelectionSuccess";
+
+export const LOAD_DOCUMENT_SEARCH_RESULTS_SUCCESS = "load_document_search_results_success";
+export const PUT_SEARCH_KEYWORD = "put_search_keyword";

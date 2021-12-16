@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import PropTypes from 'prop-types';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {InputGroup, FormControl} from 'react-bootstrap';
 import AdvancedFilters from './advancedFilters';
 import './advancedSearchPage.css';
@@ -10,7 +10,7 @@ const AdvancedSearchPage = ({
   onClearAdvancedSearchSelection,
 }) => {
   const [localText, setLocalText] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     onClearAdvancedSearchSelection();
@@ -33,7 +33,7 @@ const AdvancedSearchPage = ({
     } else if (queryStr !== "" && filters.length === 0) {
       queryStr = `?${queryStr}`;
     }
-    history.push(`/search${queryStr}`);
+    navigate(`/search${queryStr}`);
   };
 
   return (

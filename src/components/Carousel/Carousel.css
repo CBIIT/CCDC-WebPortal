@@ -143,6 +143,10 @@
   /* padding-top: 20px; */
 }
 
+.cardHeader a:hover {
+  color: #FFBF17;
+}
+
 .cardHeader h4{
   line-height: 18pt;
 }
