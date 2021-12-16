@@ -45,7 +45,6 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
-  const tooltip = tooltips[content.primary_dataset_scope];
 
   useEffect(() => {
     if (!content) {
@@ -96,7 +95,7 @@ const DatasetDetail = ({
                     <span
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
-                      title={tooltip}
+                      title={tooltips[content.primary_dataset_scope]}
                     >
                       {content.primary_dataset_scope}
                     </span>
