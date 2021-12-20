@@ -107,7 +107,7 @@ const Carousel = ({
                                     </div>
                                     <div className="cardContent">
                                         <div>
-                                            {pr.description.length > 100 ? `${pr.description.substring(0, 100)}...` : pr.description}
+                                            {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
                                             {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
                                             <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                         </div>

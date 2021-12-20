@@ -41,6 +41,7 @@
 }
 .aboutContent1 a {
     color: rgb(0, 150, 255);
+    font-weight: bold;
     text-underline-offset: 2px;
 }
 .aboutPageSection2Container {
@@ -68,7 +69,6 @@
 }
 .aboutContent2 a {
     color: white;
-    /* color: #0052b3; */
     font-weight: bold;
     text-underline-offset: 2px;
 }
