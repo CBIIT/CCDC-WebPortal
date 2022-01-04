@@ -33,6 +33,7 @@ export default function searchReducer(state = initialState.datasets, action) {
           return {
             ...state,
             searchResults: action.searchResults.result,
+            searchSourceResults: action.searchResults.aggs,
             searchCriteria: {
               ...state.searchCriteria,
               pageInfo: {

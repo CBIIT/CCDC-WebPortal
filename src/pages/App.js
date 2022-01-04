@@ -3,7 +3,6 @@ import { Routes, Route} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import LandingPage from './landingPage';
 import SearchCatalogPage from './searchCatalogPage';
-import AdvancedSearchPage from './advancedSearchPage';
 import DatasetDetailPage from './datasetDetailPage';
 import ParticipatingResourcesPage from './participatingResourcesPage';
 import ParticipatingResourceDetailPage from './participatingResourceDetailPage';
@@ -25,7 +24,6 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/search" element={<SearchCatalogPage />} />
-        <Route path="/advancedsearch" element={<AdvancedSearchPage />} />
         <Route path="/dataset/:id" element={<DatasetDetailPage />} />
         <Route path="/participatingresources" element={<ParticipatingResourcesPage />} />
         <Route path="/resource/:id" element={<ParticipatingResourceDetailPage />} />

@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as searchFiltersApi from "../../api/searchFiltersApi";
+import * as participatingResourcesApi from "../../api/participatingResourcesApi";
 import * as searchApi from "../../api/searchApi";
 import { runFullTextSearch, switchPage, loadSearchResultsSuccess } from "./searchActions";
 
@@ -13,6 +14,19 @@ export function clickSearchFilterSuccess(filter) {
 
 export function loadSearchFiltersSelectionSuccess(filters) {
   return { type: types.LOAD_SEARCH_FILTERS_SELECTION_SUCCESS, filters };
+}
+
+export function loadSearchDataResources() {
+  const func = function func(dispatch) {
+    return participatingResourcesApi.getAllParticipatingResources()
+      .then(searchResults => {
+          dispatch(loadSearchFiltersSuccess(searchResults.data));
+      })
+      .catch(error => {
+          throw error;
+      });
+  };
+  return func;
 }
 
 export function loadSearchFilters() {

@@ -15,8 +15,8 @@ export default {
       detail: {},
       datasets: [],
     },
-    searchFilters: {
-    },
+    searchFilters: [
+    ],
     advancedSearch: {
       advancedFilters: {
       },
@@ -39,6 +39,7 @@ export default {
         }
       },
       searchResults: [],
+      searchSourceResults: [],
       viewType: "card",
       details: {},
     },
