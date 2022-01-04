@@ -37,6 +37,22 @@ module.exports = {
     "no-constant-condition": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/img-redundant-alt": "off"
+    "jsx-a11y/img-redundant-alt": "off",
+    "one-var-declaration-per-line": "off",
+    "one-var": "off",
+    "no-var": "off",
+    "no-plusplus": "off",
+    "react/button-has-type": "off",
+    "prefer-template": "off",
+    "no-param-reassign": "off",
+    "vars-on-top": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "react/no-unknown-property": "off",
+    "prefer-arrow-callback": "off",
+    "consistent-return": "off",
+    "no-extra-semi": "off",
+    "wrap-iife": "off",
+    "func-names": "off"
   },
 };
