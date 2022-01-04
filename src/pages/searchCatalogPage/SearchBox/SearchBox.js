@@ -47,6 +47,10 @@ const SearchBoxArea = styled.div`
     padding-right: 50px;
     font-size: 25px;
   }
+
+  .searchBoxInputGroup .form-control:focus {
+    box-shadow: none;
+  }
   
   .searchBoxInputGroup .form-control::placeholder {
     color: #07368b;
@@ -63,11 +67,30 @@ const SearchBoxArea = styled.div`
     padding: .75rem 1rem;
     line-height: 26px;
   }
+
+  .buttonDisabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
 `;
 
 const SelectionBubbleArea = styled.div`
   width: 50%;
 `;
+
+const validateSearchText = (searchString) => {
+  let valid = true;
+  if (searchString === "") {
+    valid = false;
+  } else {
+    const termArr = searchString.split(" ");
+    termArr.forEach((term) => {
+      valid = valid && term.trim().length > 2;
+    });
+  }
+  return valid;
+};
 
 const SearchBox = ({
   searchCriteria,
@@ -106,12 +129,16 @@ const SearchBox = ({
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      onStartFullTextSearch(localText.trim());
+      if (validateSearchText(localText.trim())) {
+        onStartFullTextSearch(localText.trim());
+      }
     }
   };
 
   const handleSubmit = () => {
-    onStartFullTextSearch(localText.trim());
+    if (validateSearchText(localText.trim())) {
+      onStartFullTextSearch(localText.trim());
+    }
   };
 
   return (
@@ -130,7 +157,13 @@ const SearchBox = ({
             <i className="fas fa-search" />
           </SearchIcon>
           <InputGroup.Append>
-            <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+            {
+              localText !== "" && localText.length > 2 ? (
+                <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+              ) : (
+                <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
+              )
+            }
           </InputGroup.Append>
         </InputGroup>
       </SearchBoxArea>

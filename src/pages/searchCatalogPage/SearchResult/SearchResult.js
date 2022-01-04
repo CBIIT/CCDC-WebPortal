@@ -8,6 +8,16 @@ const SearchResultContainer = styled.div`
   width: 100%;
   padding-top: 10px;
   
+  .messageContainer {
+    padding: 0 0 10px 0;
+    font-weight: bold;
+  }
+
+  .tableMessageContainer {
+    padding: 10px 0 0 0;
+    font-weight: bold;
+  }
+
   .container {
     padding: 0;
     margin: 0 0 10px 0;
@@ -177,7 +187,10 @@ const SearchResult = ({
     <>
       <SearchResultContainer>
         {
-          viewType === "card" ? resultList.map((rst, idx) => {
+          viewType === "card" ? (
+            resultList.length === 0 ? (
+              <div className="messageContainer">No Result found. Please refine your search.</div>
+            ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
             const tooltip = tooltips[rst.content.primary_dataset_scope];
             return (
@@ -404,7 +417,7 @@ const SearchResult = ({
                 }
               </div>
             );
-          })
+          }))
           : (
             <table className="table table-striped">
               <thead>
@@ -419,7 +432,9 @@ const SearchResult = ({
               </thead>
               <tbody>
                   {
-                  resultList.map((rst, idx) => {
+                  resultList.length === 0 ? (
+                    <div className="tableMessageContainer">No Result found. Please refine your search.</div>
+                  ) : resultList.map((rst, idx) => {
                     const key = `dataset_table_${idx}`;
                     return (
                       <tr key={key} className="datasetTableRow">
