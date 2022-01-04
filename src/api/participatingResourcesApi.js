@@ -8,6 +8,12 @@ export function getLandingParticipatingResources() {
     .catch(handleError);
 }
 
+export function getAllParticipatingResources() {
+  return fetch(`${baseUrl}/all`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export function getSearchFilters() {
   return fetch(`${baseUrl}/filters`)
     .then(handleResponse)

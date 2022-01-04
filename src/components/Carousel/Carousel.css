@@ -107,7 +107,7 @@
   display: grid;
   padding: 0 25px;
   background-color: #212121;
-  border-right: 2px double gray;
+  /* border-right: 2px double gray; */
 }
 
 .carousel-card:last-child {
@@ -140,7 +140,7 @@
   color: #FFBF17;
   width: 100%;
   text-decoration: none;
-  /* padding-top: 20px; */
+  font-size: 90%;
 }
 
 .cardHeader a:hover {
@@ -154,8 +154,9 @@
 .cardContent {
   color: white;
   font-size: 90%;
-  margin-top: 15px;
+  margin-top: 10px;
   height: 100px;
-  line-height: 18pt;
-  padding-top: 20px;
+  /* line-height: 18pt; */
+  padding-top: 16px;
+  max-width: 270px;
 }

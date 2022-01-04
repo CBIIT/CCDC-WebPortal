@@ -30,6 +30,7 @@ const Logo = styled.img`
 const Title = styled.h2`
   font-size: 0.875rem;
   color: var(--white);
+  margin-left: 70px;
 `;
 
 const MenuLink = styled(Link)`
@@ -40,6 +41,7 @@ const MenuLink = styled(Link)`
 const MenuUl = styled.ul`
   padding-left: 0;
   list-style: none;
+  margin-left: 70px;
 `;
 
 const MenuLi = styled.li`
