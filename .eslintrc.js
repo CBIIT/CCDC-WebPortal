@@ -53,6 +53,8 @@ module.exports = {
     "consistent-return": "off",
     "no-extra-semi": "off",
     "wrap-iife": "off",
-    "func-names": "off"
+    "func-names": "off",
+    "no-script-url": "off",
+    "no-restricted-globals": "off"
   },
 };

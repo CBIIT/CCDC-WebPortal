@@ -2,59 +2,72 @@ import React from "react";
 // import * as downloadApi from "../../api/downloadApi";
 import './glossaryPage.css';
 
-// animate content on start
-const items = document.querySelectorAll('.filter-sections div');
-animate(items);
-
-// filter on click
-// each('.filter-links li a', function(el) {
-each('.filter-links a', function(el) {
-  el.addEventListener('click', function(e) {
-    e.preventDefault();
-    filterLinks(el);
-  });
-});
-
-// filter links functions
-function filterLinks(element) {
-  const el = element.textContent,
-    linksTolowerCase = el.toLowerCase();
-  // if all remove all elements
-  if (el === 'All') {
-    // first show all view class
-    each('.view', function(e) {
-      e.classList.remove('view');
-    });
-    // no show init content
-    animate(items);
-  } else {
-    // if not click all remove all elements
-    each('.view', function(e) {
-      e.classList.remove('view');
-    });
-  }
-  // show current elements
-  animate(document.querySelectorAll('.' + linksTolowerCase));
-}
-// forech arrays
-function each(el, callback) {
-  const allDivs = document.querySelectorAll(el),
-    alltoArr = Array.prototype.slice.call(allDivs);
-  Array.prototype.forEach.call(alltoArr, function(selector, index) {
-    if (callback) return callback(selector);
-  });
-};
-function animate(item) {
-  (function show(counter) {
-    setTimeout(function() {
-      item[counter].classList.add('view');
-      counter++;
-      if (counter < item.length) show(counter);
-    }, 50);
-  })(0);
-}
-
 const Glossary = () => {
+  // animate content on start
+  const items = document.querySelectorAll('.filter-sections div');
+  animate(items);
+
+  // filter on click
+  each('.filter-links a', function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      filterLinks(el);
+    });
+  });
+
+  // filter links functions
+  function filterLinks(element) {
+    const el = element.textContent,
+      linksTolowerCase = el.toLowerCase();
+    // if all remove all elements
+    if (el === 'All') {
+      // first show all view class
+      each('.view', function(e) {
+        e.classList.remove('view');
+      });
+      // no show init content
+      animate(items);
+    } else {
+      // if not click all remove all elements
+      each('.view', function(e) {
+        e.classList.remove('view');
+      });
+    }
+    // show current elements
+    animate(document.querySelectorAll('.' + linksTolowerCase));
+  }
+
+  // forech arrays
+  function each(el, callback) {
+    const allDivs = document.querySelectorAll(el),
+      alltoArr = Array.prototype.slice.call(allDivs);
+    Array.prototype.forEach.call(alltoArr, function(selector) {
+      if (callback) return callback(selector);
+    });
+  };
+
+  // function animate(item) {
+  //   (function show(counter) {
+  //     setTimeout(function() {
+  //       if (item[counter]) {
+  //         item[counter].classList.add('view');
+  //         counter++;
+  //       }
+  //       if (counter < item.length) show(counter);
+  //     }, 50);
+  //   })(0);
+  // }
+
+  function animate(item) {
+    (function show(counter) {
+      if (item[counter]) {
+        item[counter].classList.add('view');
+        counter++;
+      }
+      if (counter < item.length) show(counter);
+    })(0);
+  }
+
   return (
     <>
         <div className="glossaryPageContainer">
@@ -66,11 +79,10 @@ const Glossary = () => {
                 <div className="filter-links">
                   <nav className="nav justify-content-center">
                     {/* <a className="nav-link" href="">All</a> */}
-                    {/* <a className="nav-link" href="">A</a> */}
+                    {/* <a className="nav-link" href={window.location.href}>All</a> */}
                     <a className="nav-link" href="">A</a>
                     {/* <a className="nav-link" aria-current="page" href="#A">A</a> */}
                     <a className="nav-link disabled" href="" tabIndex="-1" aria-disabled="true">B</a>
-                    {/* <a className="nav-link" href="#C">C</a> */}
                     <a className="nav-link" href="">C</a>
                     <a className="nav-link" href="">D</a>
                     <a className="nav-link" href="">E</a>
