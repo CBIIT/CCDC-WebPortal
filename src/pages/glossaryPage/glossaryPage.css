@@ -80,7 +80,7 @@
     color: #00a272;
     text-decoration: none;
 }
-.nav {
+.glossaryPageContainer .nav {
     /* width: 100%; */
     width: 1000px;
     height: 40px;
@@ -92,7 +92,7 @@
     background-color: rgb(240, 240, 240);
     border-radius: 20px 20px 20px 20px;
 }
-.nav-link {
+.glossaryPageContainer .nav-link {
     width: 3%;
     color: black;
     position: relative;
@@ -101,7 +101,7 @@
     /* border-radius: 10px 10px 10px 10px; */
     /* background-color: lightgray; */
 }
-.nav-link.active {
+.glossaryPageContainer .nav-link.active {
     color: #00a272;
     text-decoration: underline;
     text-underline-offset: 5px;
