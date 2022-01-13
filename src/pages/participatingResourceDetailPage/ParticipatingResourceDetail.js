@@ -143,6 +143,10 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
+  // let resourseLinks = detail.resource_uri;
+  // resourseLinks = resourseLinks.split(';');
+  let resourseLinks = "" + detail.resource_uri;
+  resourseLinks = resourseLinks.split(';');
 
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
@@ -178,7 +182,9 @@ const ParticipatingResourceDetail = ({
                   <span className="badgeCount">{detail.datasets_total}</span>
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
-                    <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink>
+                    {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]}>{resourseLinks[0]}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]}>{resourseLinks[1]}</a></DataLink>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;

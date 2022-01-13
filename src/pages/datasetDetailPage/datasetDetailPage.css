@@ -191,12 +191,25 @@ ul.breadcrumb li a:hover {
   /* text-transform: uppercase; */
   /* height: 100px; */
   max-height: 200px;
+  max-width: 540px;
   overflow: auto;
+  /* max-inline-size: 90%; */
+  /* inline-size: 540px; */
+  /* max-inline-size: 500px; */
+  /* line-break: auto; */
+  /* max-width: 500px; */
 }
 
 .additionalDataContent {
   margin-top: 10px;
   color: black;
   text-transform: none;
+  /* word-wrap: break-word; */
+  /* overflow-wrap: break-word; */
+  max-width: 95%;
+  word-break: break-all;
+  /* line-break: anywhere; */
+  /* max-inline-size: 80%; */
+  /* overflow-inline: 200px; */
 }
 
