@@ -108,148 +108,15 @@ const DatasetDetail = ({
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
-                      {content.case_age
-                          ? <div className="dataElementLabel">Case Age</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_age
-                            ? content.case_age.map((ca, caidx) => {
-                              const cakey = `ca_${caidx}`;
-                              return (
-                                <span key={cakey} className="itemSpan">
-                                  {ca.n}
-                                  &nbsp;(
-                                  {ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_age_at_diagnosis
-                          ? <div className="dataElementLabel">Case Age At Diagnosis</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_age_at_diagnosis
-                            ? content.case_age_at_diagnosis.map((cad, cadidx) => {
-                              const cadkey = `cad_${cadidx}`;
-                              return (
-                                <span key={cadkey} className="itemSpan">
-                                  {cad.n}
-                                  &nbsp;(
-                                  {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_age_at_trial
-                          ? <div className="dataElementLabel">Case Age At Trial</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_age_at_trial
-                            ? content.case_age_at_trial.map((caat, caatidx) => {
-                              const caatkey = `caat_${caatidx}`;
-                              return (
-                                <span key={caatkey} className="itemSpan">
-                                  {caat.n}
-                                  &nbsp;(
-                                  {caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_ethnicity
-                          ? <div className="dataElementLabel">Case Ethnicity</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_ethnicity
-                            ? content.case_ethnicity.map((ce, ceidx) => {
-                              const cekey = `ce_${ceidx}`;
-                              return (
-                                <span key={cekey} className="itemSpan">
-                                  {ce.n}
-                                  &nbsp;(
-                                  {ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_disease_diagnosis
-                          ? <div className="dataElementLabel">Case Disease Diagnosis</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_disease_diagnosis
-                            ? content.case_disease_diagnosis.map((cdd, cddidx) => {
-                              const cddkey = `cdd_${cddidx}`;
-                              return (
-                                <span key={cddkey} className="itemSpan">
-                                  {cdd.n}
-                                  &nbsp;(
-                                  {cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {/* <div className="dataElementLabel">Sample Assay Method</div> */}
-                        {content.sample_assay_method
-                          ? <div className="dataElementLabel">Sample Assay Method</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.sample_assay_method
-                            ? content.sample_assay_method.map((sam, samidx) => {
-                              const samkey = `sam_${samidx}`;
-                              return (
-                                <span key={samkey} className="itemSpan">
-                                  {sam.n}
-                                  &nbsp;(
-                                  {sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_race
-                          ? <div className="dataElementLabel">Case Race</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_race
-                            ? content.case_race.map((cr, cridx) => {
-                              const crkey = `cr_${cridx}`;
-                              return (
-                                <span key={crkey} className="itemSpan">
-                                  {cr.n}
-                                  &nbsp;(
-                                  {cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_sex
+                      {content.case_id
+                        ? <div className="dataElementLabel">Number of Cases</div>
+                        : null}
+                      {
+                        content.case_id
+                        ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                        : null
+                      }
+                      {content.case_sex
                           ? <div className="dataElementLabel">Case Sex</div>
                           : null}
                         <div className="dataElementContent">
@@ -262,7 +129,7 @@ const DatasetDetail = ({
                                   {cs.n}
                                   &nbsp;(
                                   {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -282,7 +149,7 @@ const DatasetDetail = ({
                                   {csab.n}
                                   &nbsp;(
                                   {csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -302,7 +169,187 @@ const DatasetDetail = ({
                                   {cg.n}
                                   &nbsp;(
                                   {cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                      {content.case_age
+                          ? <div className="dataElementLabel">Case Age</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age
+                            ? content.case_age.map((ca, caidx) => {
+                              const cakey = `ca_${caidx}`;
+                              return (
+                                <span key={cakey} className="itemSpan">
+                                  {ca.n}
+                                  &nbsp;(
+                                  {ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_age_at_diagnosis
+                          ? <div className="dataElementLabel">Case Age At Diagnosis</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age_at_diagnosis
+                            ? content.case_age_at_diagnosis.map((cad, cadidx) => {
+                              const cadkey = `cad_${cadidx}`;
+                              return (
+                                <span key={cadkey} className="itemSpan">
+                                  {cad.n}
+                                  &nbsp;(
+                                  {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_age_at_trial
+                          ? <div className="dataElementLabel">Case Age At Trial</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_age_at_trial
+                            ? content.case_age_at_trial.map((caat, caatidx) => {
+                              const caatkey = `caat_${caatidx}`;
+                              return (
+                                <span key={caatkey} className="itemSpan">
+                                  {caat.n}
+                                  &nbsp;(
+                                  {caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_race
+                          ? <div className="dataElementLabel">Case Race</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_race
+                            ? content.case_race.map((cr, cridx) => {
+                              const crkey = `cr_${cridx}`;
+                              return (
+                                <span key={crkey} className="itemSpan">
+                                  {cr.n}
+                                  &nbsp;(
+                                  {cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_ethnicity
+                          ? <div className="dataElementLabel">Case Ethnicity</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_ethnicity
+                            ? content.case_ethnicity.map((ce, ceidx) => {
+                              const cekey = `ce_${ceidx}`;
+                              return (
+                                <span key={cekey} className="itemSpan">
+                                  {ce.n}
+                                  &nbsp;(
+                                  {ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_disease_diagnosis
+                          ? <div className="dataElementLabel">Case Disease Diagnosis</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_disease_diagnosis
+                            ? content.case_disease_diagnosis.map((cdd, cddidx) => {
+                              const cddkey = `cdd_${cddidx}`;
+                              return (
+                                <span key={cddkey} className="itemSpan">
+                                  {cdd.n}
+                                  &nbsp;(
+                                  {cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_tumor_site
+                          ? <div className="dataElementLabel">Case Tumor Site</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_tumor_site
+                            ? content.case_tumor_site.map((cts, ctsidx) => {
+                              const ctskey = `cts_${ctsidx}`;
+                              return (
+                                <span key={ctskey} className="itemSpan">
+                                  {cts.n}
+                                  &nbsp;(
+                                  {cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_treatment_administered
+                          ? <div className="dataElementLabel">Case Treatment Administered</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_treatment_administered
+                            ? content.case_treatment_administered.map((cta, ctaidx) => {
+                              const ctakey = `cta_${ctaidx}`;
+                              return (
+                                <span key={ctakey} className="itemSpan">
+                                  {cta.n}
+                                  &nbsp;(
+                                  {cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.case_treatment_outcome
+                          ? <div className="dataElementLabel">Case Treatment Outcome</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.case_treatment_outcome
+                            ? content.case_treatment_outcome.map((cto, ctoidx) => {
+                              const ctokey = `cto_${ctoidx}`;
+                              return (
+                                <span key={ctokey} className="itemSpan">
+                                  {cto.n}
+                                  &nbsp;(
+                                  {cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -322,23 +369,13 @@ const DatasetDetail = ({
                                   {cp.n}
                                   &nbsp;(
                                   {cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
                             : null
                           }
                         </div>
-                        {content.case_id
-                          ? <div className="dataElementLabel">Number of Cases</div>
-                          : null}
-                        {
-                          content.case_id
-                          ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                          : null
-                        }
-                        {/* <div className="dataElementLabel">Number of Cases</div>
-                        {content.case_id} */}
                         {content.sample_id
                           ? <div className="dataElementLabel">Number of Samples</div>
                           : null}
@@ -414,7 +451,28 @@ const DatasetDetail = ({
                               return (
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n}
-                                  &#59; &nbsp;
+                                  &#59;&nbsp;
+                                </span>
+                              );
+                            })
+                            : null
+                          }
+                        </div>
+                        {/* <div className="dataElementLabel">Sample Assay Method</div> */}
+                        {content.sample_assay_method
+                          ? <div className="dataElementLabel">Sample Assay Method</div>
+                          : null}
+                        <div className="dataElementContent">
+                          {
+                            content.sample_assay_method
+                            ? content.sample_assay_method.map((sam, samidx) => {
+                              const samkey = `sam_${samidx}`;
+                              return (
+                                <span key={samkey} className="itemSpan">
+                                  {sam.n}
+                                  &nbsp;(
+                                  {sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -434,7 +492,7 @@ const DatasetDetail = ({
                                   {sat.n}
                                   &nbsp;(
                                   {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -454,7 +512,7 @@ const DatasetDetail = ({
                                   {sat.n}
                                   &nbsp;(
                                   {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -474,67 +532,7 @@ const DatasetDetail = ({
                                   {sct.n}
                                   &nbsp;(
                                   {sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_treatment_administered
-                          ? <div className="dataElementLabel">Case Treatment Administered</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_treatment_administered
-                            ? content.case_treatment_administered.map((cta, ctaidx) => {
-                              const ctakey = `cta_${ctaidx}`;
-                              return (
-                                <span key={ctakey} className="itemSpan">
-                                  {cta.n}
-                                  &nbsp;(
-                                  {cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_treatment_outcome
-                          ? <div className="dataElementLabel">Case Treatment Outcome</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_treatment_outcome
-                            ? content.case_treatment_outcome.map((cto, ctoidx) => {
-                              const ctokey = `cto_${ctoidx}`;
-                              return (
-                                <span key={ctokey} className="itemSpan">
-                                  {cto.n}
-                                  &nbsp;(
-                                  {cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
-                                </span>
-                              );
-                            })
-                            : null
-                          }
-                        </div>
-                        {content.case_tumor_site
-                          ? <div className="dataElementLabel">Case Tumor Site</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.case_tumor_site
-                            ? content.case_tumor_site.map((cts, ctsidx) => {
-                              const ctskey = `cts_${ctsidx}`;
-                              return (
-                                <span key={ctskey} className="itemSpan">
-                                  {cts.n}
-                                  &nbsp;(
-                                  {cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59; &nbsp;
+                                  )&#59;&nbsp;
                                 </span>
                               );
                             })
@@ -583,11 +581,13 @@ const DatasetDetail = ({
                         {content.published_in
                           ? <div className="dataElementLabel">Published In</div>
                           : null}
-                        {
-                          content.published_in
-                          ? <a href={content.published_in}>{content.published_in}</a>
-                          : null
-                        }
+                        <div className="dataElementContent">
+                          {
+                            content.published_in
+                            ? <a href={content.published_in}>{content.published_in}</a>
+                            : null
+                          }
+                        </div>
                         {content.projects
                           ? <div className="dataElementLabel">Projects</div>
                           : null}
@@ -599,7 +599,7 @@ const DatasetDetail = ({
                               return (
                                 <span key={prokey} className="itemSpan">
                                   {pro.p_k}
-                                  , &nbsp;
+                                  ,&nbsp;
                                   {pro.p_v.map((prov, providx) => {
                                     const provkey = `prov_${providx}`;
                                     return (
@@ -607,7 +607,7 @@ const DatasetDetail = ({
                                         {prov.k}
                                         &nbsp;(
                                         {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                        )&#59; &nbsp;
+                                        )&#59;&nbsp;
                                       </span>
                                     );
                                   })}

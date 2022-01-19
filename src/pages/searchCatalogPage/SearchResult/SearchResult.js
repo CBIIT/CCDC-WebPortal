@@ -189,7 +189,7 @@ const SearchResult = ({
         {
           viewType === "card" ? (
             resultList.length === 0 ? (
-              <div className="messageContainer">No Result found. Please refine your search.</div>
+              <div className="messageContainer">No result found. Please refine your search.</div>
             ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
             const tooltip = tooltips[rst.content.primary_dataset_scope];
@@ -215,7 +215,7 @@ const SearchResult = ({
                   <div className="col-sm">
                     <i className="fas fa-file" />
                     &nbsp;
-                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_id ? (<b>{rst.content.data_resource_id}</b>) : rst.content.data_resource_id}</Link>
+                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name) : rst.content.data_resource_id}</Link>
                   </div>
                 </div>
                 {
@@ -395,7 +395,7 @@ const SearchResult = ({
                 {
                   rst.highlight && (
                     Object.keys(rst.highlight).map((hl, hlidx) => {
-                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "sample_assay_method.k") {
+                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "data_resource_name" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "sample_assay_method.k") {
                         const hlKey = `hl_${hl}_${hlidx}`;
                         return (
                           <div key={hlKey} className="row align-items-start footerRow">
@@ -427,13 +427,12 @@ const SearchResult = ({
                       <th scope="col">Samples</th>
                       <th scope="col">Resource Name</th>
                       <th scope="col">Dataset Type</th>
-                      <th scope="col">Update Date</th>
                   </tr>
               </thead>
               <tbody>
                   {
                   resultList.length === 0 ? (
-                    <div className="tableMessageContainer">No Result found. Please refine your search.</div>
+                    <div className="tableMessageContainer">No result found. Please refine your search.</div>
                   ) : resultList.map((rst, idx) => {
                     const key = `dataset_table_${idx}`;
                     return (
@@ -443,7 +442,6 @@ const SearchResult = ({
                         <td>{rst.content.sample_id}</td>
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
                         <td>{rst.content.primary_dataset_scope}</td>
-                        <td>{rst.content.digest_date.substring(0, 10)}</td>
                       </tr>
                     );
                   })

@@ -17,6 +17,7 @@ const FooterContainer = styled(Container)`
   // color: var(--white);
   color: white;
   text-decoration: none;
+  position: relative;
 `;
 
 const Menu = styled.div`
@@ -57,6 +58,12 @@ const MenuLi = styled.li`
 const Hr = styled.hr`
   border-top: 1px solid #98D2FF;
   width: 95%;
+`;
+
+const SiteInfo = styled(Row)`
+  position: absolute;
+  font-size: 0.6875rem;
+  top: 200px;
 `;
 
 const Caption = styled.div`
@@ -120,6 +127,17 @@ const Footer = () => {
           </Row>
         </Menu>
         <Hr />
+        <SiteInfo>
+          <div>
+            FE Version: 1.0.0
+          </div>
+          <div>
+            BE Version: 1.0.0
+          </div>
+          <div>
+            Data Version: 1.0.0
+          </div>
+        </SiteInfo>
         <Row>
           <Col xs={12}>
             <Caption>

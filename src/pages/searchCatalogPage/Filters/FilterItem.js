@@ -24,20 +24,41 @@ const OptionContainer = styled.div`
   }
 `;
 
-const OptionLabel = styled.span`
-  width: calc(100% - 50px);
-  color: #004187;
+const SearchableOption = styled.span`
   padding-left: 5px;
+  font-weight: bold;
+  color: #004187;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+`;
+
+const OptionLabel = styled.span`
+  color: lightgray;
+  padding-left: 5px;
+  font-weight: normal;
 `;
 
 const FilterItem = ({
-  key, item, highlight
+  key, item, highlight, onSourceClick
 }) => {
   return (
     <OptionContainer key={key}>
-      <OptionLabel title={`${item.resource_name} , ${item.resource_type}`} style={highlight ? {fontWeight: "bold", color: "#004187"} : {fontWeight: "normal", color: "lightgray"}}>
-        {item.data_resource_id}
-      </OptionLabel>
+      {
+        highlight ? (
+          <SearchableOption title={`${item.resource_name} , ${item.resource_type}`} onClick={onSourceClick}>
+            {item.data_resource_id}
+          </SearchableOption>
+        )
+        : (
+          <OptionLabel title={`${item.resource_name} , ${item.resource_type}`}>
+            {item.data_resource_id}
+          </OptionLabel>
+        )
+      }
     </OptionContainer>
   );
 };
@@ -46,6 +67,7 @@ FilterItem.propTypes = {
   key: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
   highlight: PropTypes.bool.isRequired,
+  onSourceClick: PropTypes.func.isRequired,
 };
 
 export default FilterItem;
