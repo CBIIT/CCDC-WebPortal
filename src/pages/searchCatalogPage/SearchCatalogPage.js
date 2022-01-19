@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   useLocation
 } from "react-router-dom";
@@ -30,16 +30,46 @@ const getFiltersFromQuery = (query) => {
 const SearchCatalogPage = ({
   searchCriteria,
   onLoadFromUrlQuery,
+  onStartFullTextSearch,
+  onBubbleRemoveClick,
 }) => {
   const query = useQuery();
-  const searchText = query.get("search_text") ? query.get("search_text").trim() : searchCriteria.search_text;
-  const filters = getFiltersFromQuery(query);
+  const paramText = query.get("search_text") ? query.get("search_text").trim() : "";
+  const [searchText, setSearchText] = useState(paramText);
+  const [searched, setSearched] = useState(paramText);
 
   useEffect(() => {
-    onLoadFromUrlQuery(searchText, filters).catch(error => {
+    onLoadFromUrlQuery(paramText, {}).catch(error => {
         throw new Error(`Loading search from url query failed: ${error}`);
       });
   }, []);
+
+  const handleBubbleRemoveClick = () => {
+    setSearchText("");
+    setSearched(false);
+    onBubbleRemoveClick({field: "search_text", value: ""});
+  };
+
+  const handleSearchBoxKeyPress = () => {
+    setSearched(true);
+    onStartFullTextSearch(searchText);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearched(true);
+    onStartFullTextSearch(searchText);
+  };
+
+  const handleSearchTextInputChange = (keyword) => {
+    setSearchText(keyword);
+  };
+
+  const handleSourceClick = (event) => {
+    const text = event.target.textContent;
+    setSearchText(text);
+    setSearched(true);
+    onStartFullTextSearch(text);
+  };
 
   return (
     <>
@@ -47,14 +77,21 @@ const SearchCatalogPage = ({
         <div className="searchBarArea">
           <div className="searchBarLabel">Search Results</div>
           <div className="searchBoxContainer">
-            <SearchBox searchText={searchText} />
+            <SearchBox
+              searchText={searchText}
+              searchCriteria={searchCriteria}
+              onBubbleRemoveClick={handleBubbleRemoveClick}
+              onSearchBoxKeyPress={handleSearchBoxKeyPress}
+              onSearchSubmit={handleSearchSubmit}
+              onSearchTextInputChange={handleSearchTextInputChange}
+            />
           </div>
         </div>
       </div>
       <div className="searchCatalogContainer">
         <div className="searchArea">
           <div className="searchFiltersContainer">
-            <Filters />
+            <Filters onSourceClick={handleSourceClick} />
           </div>
           <div className="searchContentContainer">
             <div className="searchContentHeader">
@@ -88,8 +125,10 @@ const SearchCatalogPage = ({
 };
 
 SearchCatalogPage.propTypes = {
-  searchCriteria: PropTypes.object.isRequired,
+  searchCriteria: PropTypes.string.isRequired,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
+  onStartFullTextSearch: PropTypes.func.isRequired,
+  onBubbleRemoveClick: PropTypes.func.isRequired,
 };
 
 export default SearchCatalogPage;

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FilterItem from './FilterItem';
 import './Filters.css';
@@ -6,9 +7,12 @@ import './Filters.css';
 const Filters = ({
   searchFilters,
   sourceFilters,
-  onLoadSearchDataResources
+  onLoadSearchDataResources,
+  onSourceClick
 }) => {
   const sources = sourceFilters.map(sf => sf.key.toLowerCase());
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (searchFilters.length === 0) {
       onLoadSearchDataResources().catch(error => {
@@ -28,7 +32,7 @@ const Filters = ({
             {searchFilters.map((field, idx) => {
               const key = `filters_${idx}`;
               return (
-                <FilterItem key={key} item={field} highlight={sources.indexOf(field.data_resource_id.toLowerCase()) > -1} />
+                <FilterItem key={key} item={field} highlight={sources.indexOf(field.data_resource_id.toLowerCase()) > -1} onSourceClick={onSourceClick} />
               );
             })}
           </div>
@@ -42,6 +46,7 @@ Filters.propTypes = {
   searchFilters: PropTypes.array.isRequired,
   sourceFilters: PropTypes.array.isRequired,
   onLoadSearchDataResources: PropTypes.func.isRequired,
+  onSourceClick: PropTypes.func.isRequired,
 };
 
 export default Filters;

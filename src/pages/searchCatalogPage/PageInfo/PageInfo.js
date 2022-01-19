@@ -7,6 +7,7 @@ const PageInfo = ({
   onPageSelect,
 }) => {
   const pageClick = (page, pageSize) => {
+    window.scrollTo(0, 0);
     onPageSelect({
       page,
       pageSize
