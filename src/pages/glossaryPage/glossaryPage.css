@@ -112,15 +112,11 @@
     float: left;
   } */
 
-  .filter-links a {
-    display: block;
-    /* color: black; */
-    text-decoration: none;
-  }
   .filter-links a:hover {
     color: #00a272;
   }
-  .filter-links a:focus {
+
+  .glossaryPageContainer .nav-link-active {
     color: #00a272;
     font-weight: bold;
     text-decoration: underline;
@@ -134,8 +130,6 @@
     overflow: hidden;
   }
   .filter-sections div {
-    opacity: 0;
-    display: none;
     min-height: 50px;
     margin: 0.5em;
     /* text-align: center; */

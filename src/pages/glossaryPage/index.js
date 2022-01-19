@@ -1,120 +1,58 @@
-import React from "react";
+import React, {useState} from "react";
+import {Tabs, Tab, Sonnet} from 'react-bootstrap';
 // import * as downloadApi from "../../api/downloadApi";
 import './glossaryPage.css';
 
 const Glossary = () => {
-  // animate content on start
-  const items = document.querySelectorAll('.filter-sections div');
-  animate(items);
-
-  // filter on click
-  each('.filter-links a', function(el) {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      filterLinks(el);
-    });
-  });
-
-  // filter links functions
-  function filterLinks(element) {
-    const el = element.textContent,
-      linksTolowerCase = el.toLowerCase();
-    // if all remove all elements
-    if (el === 'All') {
-      // first show all view class
-      each('.view', function(e) {
-        e.classList.remove('view');
-      });
-      // no show init content
-      animate(items);
-    } else {
-      // if not click all remove all elements
-      each('.view', function(e) {
-        e.classList.remove('view');
-      });
-    }
-    // show current elements
-    animate(document.querySelectorAll('.' + linksTolowerCase));
-  }
-
-  // forech arrays
-  function each(el, callback) {
-    const allDivs = document.querySelectorAll(el),
-      alltoArr = Array.prototype.slice.call(allDivs);
-    Array.prototype.forEach.call(alltoArr, function(selector) {
-      if (callback) return callback(selector);
-    });
-  };
-
-  // function animate(item) {
-  //   (function show(counter) {
-  //     setTimeout(function() {
-  //       if (item[counter]) {
-  //         item[counter].classList.add('view');
-  //         counter++;
-  //       }
-  //       if (counter < item.length) show(counter);
-  //     }, 50);
-  //   })(0);
-  // }
-
-  function animate(item) {
-    (function show(counter) {
-      if (item[counter]) {
-        item[counter].classList.add('view');
-        counter++;
-      }
-      if (counter < item.length) show(counter);
-    })(0);
-  }
+  const [key, setKey] = useState('A');
 
   return (
     <>
-        <div className="glossaryPageContainer">
-            <div className="glossaryPageHeader">
-                <h2 className="glossaryHeaderText">
-                    Data Catalog Glossary
-                    <br />
-                </h2>
-                <div className="filter-links">
-                  <nav className="nav justify-content-center">
-                    {/* <a className="nav-link" href="">All</a> */}
-                    {/* <a className="nav-link" href={window.location.href}>All</a> */}
-                    <a className="nav-link" href="">A</a>
-                    {/* <a className="nav-link" aria-current="page" href="#A">A</a> */}
-                    <a className="nav-link disabled" href="" tabIndex="-1" aria-disabled="true">B</a>
-                    <a className="nav-link" href="">C</a>
-                    <a className="nav-link" href="">D</a>
-                    <a className="nav-link" href="">E</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">F</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">G</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">H</a>
-                    <a className="nav-link" href="#I">I</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">J</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">K</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">L</a>
-                    <a className="nav-link" href="">M</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">N</a>
-                    <a className="nav-link" href="">O</a>
-                    <a className="nav-link" href="">P</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">Q</a>
-                    <a className="nav-link" href="">R</a>
-                    <a className="nav-link" href="">S</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">T</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">U</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">V</a>
-                    <a className="nav-link disabled" href="" aria-disabled="true">W</a>
-                    <a className="nav-link" href="">X</a>
-                    <a className="nav-link disabled" href="" tabIndex="-1" aria-disabled="true">Y</a>
-                    <a className="nav-link disabled" href="" tabIndex="-1" disabled="true">Z</a>
-                  </nav>
-                </div>
+      <div className="glossaryPageContainer">
+        <div className="glossaryPageHeader">
+            <h2 className="glossaryHeaderText">
+                Data Catalog Glossary
+                <br />
+            </h2>
+            <div className="filter-links">
+              <nav className="nav justify-content-center">
+                <a className={key === 'A' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('A')}>A</a>
+                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">B</a>
+                <a className={key === 'C' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('C')}>C</a>
+                <a className={key === 'D' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('D')}>D</a>
+                <a className={key === 'E' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('E')}>E</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">F</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">G</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">H</a>
+                <a className={key === 'I' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('I')}>I</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">J</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">K</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">L</a>
+                <a className={key === 'M' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('M')}>M</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">N</a>
+                <a className={key === 'O' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('O')}>O</a>
+                <a className={key === 'P' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('P')}>P</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">Q</a>
+                <a className={key === 'R' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('R')}>R</a>
+                <a className={key === 'S' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('S')}>S</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">T</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">U</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">V</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">W</a>
+                <a className={key === 'X' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('X')}>X</a>
+                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Y</a>
+                <a className="nav-link disabled" href="#" tabIndex="-1" disabled="true">Z</a>
+              </nav>
             </div>
         </div>
-        <div className="grid" />
-        <div className="glossaryPageSection1">
-            <div className="glossaryContent1">
-              <div className="filter-sections">
+      </div>
+      <div className="grid" />
+      <div className="glossaryPageSection1">
+      <div className="glossaryContent1">
+        <div className="filter-sections">
+          {
+            key === 'A' && (
+              <>
                 <div className="a">
                   <h2 className="glossaryItemHeader">Aliquot</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
@@ -139,6 +77,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'C' && (
+              <>
                 <div className="c">
                   <h2 className="glossaryItemHeader">Case</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
@@ -189,6 +133,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'D' && (
+              <>
                 <div className="d">
                   <h2 className="glossaryItemHeader">Dataset Abbreviated Name</h2>
                   <span className="glossaryItemType">Dataset Structure</span>
@@ -231,6 +181,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'E' && (
+              <>
                 <div className="e">
                   <h2 className="glossaryItemHeader">Exact Value</h2>
                   <span className="glossaryItemType">Statistic Type</span>
@@ -238,6 +194,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'I' && (
+              <>
                 <div className="i">
                   <h2 className="glossaryItemHeader">Imaging</h2>
                   <span className="glossaryItemType">Data Content Type</span>
@@ -245,6 +207,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'M' && (
+              <>
                 <div className="m">
                   <h2 className="glossaryItemHeader">Maximum</h2>
                   <span className="glossaryItemType">Statistic Type</span>
@@ -266,6 +234,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'O' && (
+              <>
                 <div className="o">
                   <h2 className="glossaryItemHeader">Omics</h2>
                   <span className="glossaryItemType">Data Content Type</span>
@@ -273,6 +247,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'P' && (
+              <>
                 <div className="p">
                   <h2 className="glossaryItemHeader" id="P">Pediatric Only</h2>
                   <span className="glossaryItemType">Pediatric Specific</span>
@@ -308,6 +288,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'R' && (
+              <>
                 <div className="r">
                   <h2 className="glossaryItemHeader">Reference</h2>
                   <span className="glossaryItemType">Dataset Structure</span>
@@ -385,6 +371,12 @@ const Glossary = () => {
                     <br />
                     <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'S' && (
+              <>
                 <div className="s">
                   <h2 className="glossaryItemHeader">Sample</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
@@ -392,6 +384,12 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
+              </>
+            )
+          }
+          {
+            key === 'X' && (
+              <>
                 <div className="x">
                   <h2 className="glossaryItemHeader">Xenograft</h2>
                   <span className="glossaryItemType">Data Content Type</span>
@@ -406,15 +404,17 @@ const Glossary = () => {
                   <br />
                   <br />
                 </div>
-              </div>
-
-            </div>
+              </>
+            )
+          }
         </div>
-        {/* <br /> */}
-        <div className="grid" />
-        <div className="glossaryPageSection2Container">
-          {/* <br /> */}
-        </div>
+      </div>
+      </div>
+    {/* <br /> */}
+    <div className="grid" />
+    <div className="glossaryPageSection2Container">
+    {/* <br /> */}
+    </div>
     </>
   );
 };
