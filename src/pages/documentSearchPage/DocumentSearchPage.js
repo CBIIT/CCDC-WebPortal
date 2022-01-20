@@ -98,6 +98,7 @@ const PageLogoCover = styled.div`
 
 const SearchContainer = styled.div`
   width: 100%;
+  // padding-bottom: 80px;
 `;
 
 const SearchContent = styled.div`
@@ -107,6 +108,7 @@ const SearchContent = styled.div`
   border-left: 1px solid #BFD3E1;
   border-right: 1px solid #BFD3E1;
   display: grid;
+  padding-bottom: 80px;
 `;
 
 const SearchSummary = styled.div`

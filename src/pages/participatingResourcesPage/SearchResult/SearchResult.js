@@ -10,6 +10,8 @@ import DataResourceIcons from '../../../components/DataResourceIcons';
 const SearchResultContainer = styled.div`
   width: 100%;
   display: grid;
+  // padding-bottom: 50px;
+  padding-bottom: 80px;
 `;
 
 const ResultInfo = styled.div`
@@ -197,7 +199,7 @@ const SearchResult = ({
       <SearchResultContainer>
         {
           resultList.length === 0 ? (
-            <ResultInfo>Result not found</ResultInfo>
+            <ResultInfo>No Results</ResultInfo>
           ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
             const mailto = `mailto:${rst.poc_email}`;

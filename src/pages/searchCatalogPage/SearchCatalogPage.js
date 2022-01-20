@@ -117,6 +117,7 @@ const SearchCatalogPage = ({
               <PageInfo />
             </div>
             <div className="space50" />
+            <div className="space50" />
           </div>
         </div>
       </div>
