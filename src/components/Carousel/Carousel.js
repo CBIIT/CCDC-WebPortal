@@ -91,7 +91,7 @@ const Carousel = ({
                         {participatingResources.map((pr, idx) => {
                             const key = `carousel_${idx}`;
                             return (
-                                <div key={key} className="carousel-card">
+                                <div key={key} className={idx === currentIndex || (idx - 1) === currentIndex ? "carousel-card-with-line" : "carousel-card"}>
                                     <div className="cardTitle">
                                         <div className="cardInfo">
                                             <div className="cardLabel">
@@ -102,7 +102,7 @@ const Carousel = ({
                                             </div>
                                         </div>
                                         <div className="cardIcon">
-                                          <DataResourceIcons participatingResource={pr.data_resource_id} />
+                                          <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
                                         </div>
                                     </div>
                                     <div className="cardContent">

@@ -16,17 +16,6 @@ const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 
-const getFiltersFromQuery = (query) => {
-  const filters = {};
-  query.forEach((value, key) => {
-    if (key === "search_text") {
-      return;
-    }
-    filters[key] = value.split("|");
-  });
-  return filters;
-};
-
 const SearchCatalogPage = ({
   searchCriteria,
   onLoadFromUrlQuery,
@@ -36,7 +25,6 @@ const SearchCatalogPage = ({
   const query = useQuery();
   const paramText = query.get("search_text") ? query.get("search_text").trim() : "";
   const [searchText, setSearchText] = useState(paramText);
-  const [searched, setSearched] = useState(paramText);
 
   useEffect(() => {
     onLoadFromUrlQuery(paramText, {}).catch(error => {
@@ -46,17 +34,14 @@ const SearchCatalogPage = ({
 
   const handleBubbleRemoveClick = () => {
     setSearchText("");
-    setSearched(false);
     onBubbleRemoveClick({field: "search_text", value: ""});
   };
 
   const handleSearchBoxKeyPress = () => {
-    setSearched(true);
     onStartFullTextSearch(searchText);
   };
 
   const handleSearchSubmit = () => {
-    setSearched(true);
     onStartFullTextSearch(searchText);
   };
 
@@ -67,7 +52,6 @@ const SearchCatalogPage = ({
   const handleSourceClick = (event) => {
     const text = event.target.textContent;
     setSearchText(text);
-    setSearched(true);
     onStartFullTextSearch(text);
   };
 

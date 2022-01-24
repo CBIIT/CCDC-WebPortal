@@ -41,7 +41,7 @@ const Glossary = () => {
                 <a className="nav-link disabled" href="#" aria-disabled="true">W</a>
                 <a className={key === 'X' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('X')}>X</a>
                 <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Y</a>
-                <a className="nav-link disabled" href="#" tabIndex="-1" disabled="true">Z</a>
+                <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Z</a>
               </nav>
             </div>
         </div>

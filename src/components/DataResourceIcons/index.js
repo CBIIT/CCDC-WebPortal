@@ -55,8 +55,12 @@ const DataResourceIcons = ({
 };
 
 DataResourceIcons.propTypes = {
-  participatingResource: PropTypes.string.isRequired,
+  participatingResource: PropTypes.string,
   type: PropTypes.string.isRequired,
+};
+
+DataResourceIcons.defaultProps = {
+  participatingResource: "CCSS"
 };
 
 export default DataResourceIcons;
