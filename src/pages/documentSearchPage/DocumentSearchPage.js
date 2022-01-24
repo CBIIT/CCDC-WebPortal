@@ -70,6 +70,12 @@ const SearchBoxArea = styled.div`
     padding: .75rem 1rem;
     line-height: 26px;
   }
+
+  .buttonDisabled {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
 `;
 
 const SearchIcon = styled.div`
@@ -98,6 +104,7 @@ const PageLogoCover = styled.div`
 
 const SearchContainer = styled.div`
   width: 100%;
+  // padding-bottom: 80px;
 `;
 
 const SearchContent = styled.div`
@@ -107,6 +114,7 @@ const SearchContent = styled.div`
   border-left: 1px solid #BFD3E1;
   border-right: 1px solid #BFD3E1;
   display: grid;
+  padding-bottom: 80px;
 `;
 
 const SearchSummary = styled.div`
@@ -118,6 +126,21 @@ const SearchSummary = styled.div`
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
+};
+
+const getSearchableText = (searchString) => {
+  if (searchString.trim() === "") {
+    return true;
+  }
+  const termArr = searchString.trim().split(" ");
+  const result = [];
+  termArr.forEach((term) => {
+    const t = term.trim();
+    if (t.length > 2) {
+      result.push(t);
+    }
+  });
+  return result.length > 0;
 };
 
 const ParticipatingResourcesPage = ({
@@ -143,12 +166,15 @@ const ParticipatingResourcesPage = ({
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      navigate(`/sitesearch?keyword=${localText.trim()}`);
-      onStartDocumentSearch(localText.trim());
+      if (getSearchableText(localText.trim())) {
+        navigate(`/sitesearch?keyword=${localText.trim()}`);
+        onStartDocumentSearch(localText.trim());
+      }
     }
   };
 
   const handleSubmit = () => {
+    navigate(`/sitesearch?keyword=${localText.trim()}`);
     onStartDocumentSearch(localText.trim());
   };
 
@@ -172,7 +198,13 @@ const ParticipatingResourcesPage = ({
                   <i className="fas fa-search" />
                 </SearchIcon>
                 <InputGroup.Append>
-                  <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+                  {
+                    getSearchableText(localText) ? (
+                      <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+                    ) : (
+                      <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
+                    )
+                  }
                 </InputGroup.Append>
               </InputGroup>
             </SearchBoxArea>

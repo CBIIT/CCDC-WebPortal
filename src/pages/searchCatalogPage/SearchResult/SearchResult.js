@@ -187,7 +187,7 @@ const SearchResult = ({
     <>
       <SearchResultContainer>
         {
-          viewType === "card" ? (
+          viewType === "card" && (
             resultList.length === 0 ? (
               <div className="messageContainer">No result found. Please refine your search.</div>
             ) : resultList.map((rst, idx) => {
@@ -418,7 +418,9 @@ const SearchResult = ({
               </div>
             );
           }))
-          : (
+        }
+        {
+          viewType === "table" && (
             <table className="table table-striped">
               <thead>
                   <tr style={{ color: 'navy' }}>

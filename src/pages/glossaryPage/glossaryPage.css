@@ -47,9 +47,9 @@
 .glossaryPageSection2Container {
     margin: 0 auto;
     width: 1250px;
-    padding: 10px 10px 10px 10px;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    padding: 10px 10px 80px 10px;
+    /* border-left: 1px solid lightgray; */
+    /* border-right: 1px solid lightgray; */
 }
 .grid{
     color: white;
@@ -101,49 +101,47 @@
     /* border-radius: 10px 10px 10px 10px; */
     /* background-color: lightgray; */
 }
-.glossaryPageContainer .nav-link.active {
-    color: #00a272;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    text-decoration-thickness: 2px;
-}
   /* .filter-links li {
     display: inline;
     float: left;
   } */
 
-  .filter-links a:hover {
-    color: #00a272;
-  }
-
-  .glossaryPageContainer .nav-link-active {
+.glossaryPageContainer .nav-link-active {
     color: #00a272;
     font-weight: bold;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 3px;
-  }
+}
 
-  .filter-sections {
+.glossaryPageContainer .nav-link.disabled {
+    color: rgb(160, 160, 160);
+}
+
+.filter-links a:hover {
+    color: #00a272;
+}
+
+.filter-sections {
     width: 100%;
     display: block;
     overflow: hidden;
-  }
-  .filter-sections div {
+}
+.filter-sections div {
     min-height: 50px;
     margin: 0.5em;
     /* text-align: center; */
     /* padding: 2em 1em; */
     /* float: left; */
     /* transition: all 500s ease; */
-  }
-  .view {
+}
+.view {
     display: block !important;
     opacity: 1 !important;
     transform: scale(1) rotate(0deg);
     border-radius:4px;
     /* animation: selected 300ms 1 ease-in-out; */
-  }
+}
   /* @keyframes selected {
     0% {
       border-radius:100%;

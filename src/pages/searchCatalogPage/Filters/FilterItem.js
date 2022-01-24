@@ -43,10 +43,10 @@ const OptionLabel = styled.span`
 `;
 
 const FilterItem = ({
-  key, item, highlight, onSourceClick
+  item, highlight, onSourceClick
 }) => {
   return (
-    <OptionContainer key={key}>
+    <OptionContainer>
       {
         highlight ? (
           <SearchableOption title={`${item.resource_name} , ${item.resource_type}`} onClick={onSourceClick}>
@@ -64,7 +64,6 @@ const FilterItem = ({
 };
 
 FilterItem.propTypes = {
-  key: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
   highlight: PropTypes.bool.isRequired,
   onSourceClick: PropTypes.func.isRequired,

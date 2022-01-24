@@ -145,9 +145,8 @@ const ParticipatingResourceDetail = ({
   };
   // let resourseLinks = detail.resource_uri;
   // resourseLinks = resourseLinks.split(';');
-  let resourseLinks = "" + detail.resource_uri;
+  let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
   resourseLinks = resourseLinks.split(';');
-
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {

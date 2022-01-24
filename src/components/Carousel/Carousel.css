@@ -107,7 +107,13 @@
   display: grid;
   padding: 0 25px;
   background-color: #212121;
-  /* border-right: 2px double gray; */
+}
+
+.carousel-card-with-line {
+  display: grid;
+  padding: 0 25px;
+  background-color: #212121;
+  border-right: 2px double gray;
 }
 
 .carousel-card:last-child {

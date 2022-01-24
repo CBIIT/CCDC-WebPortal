@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FilterItem from './FilterItem';
 import './Filters.css';
@@ -11,8 +10,6 @@ const Filters = ({
   onSourceClick
 }) => {
   const sources = sourceFilters.map(sf => sf.key.toLowerCase());
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (searchFilters.length === 0) {
       onLoadSearchDataResources().catch(error => {
