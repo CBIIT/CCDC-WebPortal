@@ -193,6 +193,15 @@ const SearchResult = ({
             ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
             const tooltip = tooltips[rst.content.primary_dataset_scope];
+            let desc = rst.highlight && rst.highlight.desc ? rst.highlight.desc[0] : rst.content.desc;
+            if (desc === null) {
+              desc = "";
+            }
+            if (desc.length > 500) {
+              desc = `${desc.substring(0, 500).replace(/<(?![b/])/g, "&lt;")} ...`;
+            } else {
+              desc = desc.replace(/<(?![b/])/g, "&lt;");
+            }
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
@@ -371,22 +380,12 @@ const SearchResult = ({
                   )
                 }
                 {
-                  rst.highlight && rst.highlight.desc
-                  ? (
+                  desc !== "" && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Description:</label>
                         <span className="textSpan">
-                          {rst.highlight.desc.length > 500 ? ReactHtmlParser(`${rst.highlight.desc.substring(0, 500)} ...`) : ReactHtmlParser(rst.highlight.desc)}
-                        </span>
-                      </div>
-                    </div>
-                  ) : rst.content.desc && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Description:</label>
-                        <span className="textSpan">
-                          {rst.content.desc.length > 500 ? `${rst.content.desc.substring(0, 500)} ...` : rst.content.desc}
+                          {ReactHtmlParser(desc)}
                         </span>
                       </div>
                     </div>
