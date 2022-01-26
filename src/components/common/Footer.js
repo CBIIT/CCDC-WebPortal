@@ -16,6 +16,8 @@ const FooterContainer = styled(Container)`
   max-width: 1200px;
   // color: var(--white);
   color: white;
+  // font-family: Lato;
+  // font-size: 16px;
   text-decoration: none;
   position: relative;
 `;

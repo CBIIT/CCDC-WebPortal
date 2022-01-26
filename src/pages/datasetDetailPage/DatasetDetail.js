@@ -13,15 +13,19 @@ const DatasetResultContainer = styled.div`
 const ResourceType = styled.div`
   width: 96%;
   text-align: right;
-  margin-top: -30px;
+  margin-top: -44px;
+  text-transform: uppercase;
+  font-size: 12px;
+  // font-family: Arial, Helvetica, sans-serif;
+  // font-family: Lato;
   // padding-top: 50px;
   // padding-right: 10px;
 
   span {
     background-color: white;
     border-radius: 20px;
-    border: 1px solid gold;
-    padding: 5px 10px;
+    border: 1px solid #FFBF17;
+    padding: 8px 16px;
     line-height: 52px;
   }
 `;
@@ -101,6 +105,8 @@ const DatasetDetail = ({
                     </span>
                   </ResourceType>
                 </div>
+                <br />
+                <div className="datasetspace" />
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
@@ -279,7 +285,7 @@ const DatasetDetail = ({
                         {content.case_disease_diagnosis
                           ? <div className="dataElementLabel">Case Disease Diagnosis</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContentAllCaps">
                           {
                             content.case_disease_diagnosis
                             ? content.case_disease_diagnosis.map((cdd, cddidx) => {
