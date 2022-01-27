@@ -13,6 +13,7 @@ const NavContainer = styled.div`
     margin: 0 auto;
     width: 1200px;
     text-align: center;
+    padding-right: 50px;
 `;
 
 const UlContainer = styled.ul`
