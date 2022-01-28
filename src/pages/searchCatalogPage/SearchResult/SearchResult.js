@@ -427,7 +427,7 @@ const SearchResult = ({
                       <th scope="col">Cases</th>
                       <th scope="col">Samples</th>
                       <th scope="col">Resource Name</th>
-                      <th scope="col">Dataset Type</th>
+                      <th scope="col">Primary Dataset Scope</th>
                   </tr>
               </thead>
               <tbody>

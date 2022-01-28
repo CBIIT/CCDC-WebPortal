@@ -92,7 +92,7 @@ const DatasetDetail = ({
                     <span className="datasetDetailHeaderText">
                       {content.poc}
                       , &nbsp;
-                      <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink">{content.poc_email}</a>
+                      <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a>
                     </span>
                   </div>
                   <ResourceType>
@@ -590,7 +590,7 @@ const DatasetDetail = ({
                         <div className="dataElementContent">
                           {
                             content.published_in
-                            ? <a href={content.published_in}>{content.published_in}</a>
+                            ? <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a>
                             : null
                           }
                         </div>
@@ -637,7 +637,7 @@ const DatasetDetail = ({
                                     const adeekey = `adee_${adeeidx}`;
                                     return (
                                       <div key={adeekey} className="additionalDataContent">
-                                        {adee.k}
+                                        {adee.k.startsWith("https:") ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
                                         {adee.v === -1
                                           ? null
                                           : (

@@ -205,8 +205,8 @@ const ParticipatingResourceDetail = ({
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
                     {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]}>{resourseLinks[0]}</a></DataLink>
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]}>{resourseLinks[1]}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></DataLink>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -238,14 +238,14 @@ const ParticipatingResourceDetail = ({
                     <div className="prAboutResourceContent">{detail.description}</div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
-                      <div className="prDataElementLabel">Data Resource Type</div>
+                      <div className="prDataElementLabel">Resource Type</div>
                         {detail.resource_type}
                       <div className="prDataElementLabel">Specialization</div>
                       <div className="prDataElementLabel">Data Update Date</div>
                         {detail.update_time}
                     </div>
                     <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Resource Data Content Types</div>
+                      <div className="prAdditionalDataLabel">Data Content Types</div>
                         <br />
                         {detail.data_content_type}
                     </div>
@@ -262,7 +262,7 @@ const ParticipatingResourceDetail = ({
                       <br />
                         {
                           detail.api
-                          ? <DataLink><a href={detail.api}>{detail.api}</a></DataLink>
+                          ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
                           : null
                         }
                     </div>
@@ -306,7 +306,7 @@ const ParticipatingResourceDetail = ({
                       : null}
                     {
                       ds.published_in
-                      ? <div className="summaryDataElementContent"><DataLink><a href={ds.published_in}>{ds.published_in}</a></DataLink></div>
+                      ? <div className="summaryDataElementContent"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div>
                       : null
                     }
                     <br />

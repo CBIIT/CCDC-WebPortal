@@ -57,7 +57,7 @@ const SearchCatalogPage = ({
 
   return (
     <>
-      <div className="searchBarContainer">
+      <div id="top" className="searchBarContainer">
         <div className="searchBarArea">
           <div className="searchBarLabel">Search Results</div>
           <div className="searchBoxContainer">

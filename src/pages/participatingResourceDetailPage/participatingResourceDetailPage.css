@@ -146,6 +146,8 @@
   padding: 0px 0 10px 30px;
   width: 48%;
   display: inline-table;
+  /* max-inline-size: 500px; */
+  word-break: break-all;
 }
 
 .prAdditionalDataLabel {
