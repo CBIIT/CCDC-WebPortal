@@ -131,10 +131,7 @@ const Footer = () => {
         <Hr />
         <SiteInfo>
           <div>
-            FE Version: 1.0.0
-          </div>
-          <div>
-            BE Version: 1.0.0
+            Software Version: 1.0.0
           </div>
           <div>
             Data Version: 1.0.0
