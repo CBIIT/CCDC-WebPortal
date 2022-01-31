@@ -427,7 +427,7 @@ const SearchResult = ({
                       <th scope="col">Cases</th>
                       <th scope="col">Samples</th>
                       <th scope="col">Resource Name</th>
-                      <th scope="col">Dataset Type</th>
+                      <th scope="col">Primary Dataset Scope</th>
                   </tr>
               </thead>
               <tbody>
@@ -436,13 +436,23 @@ const SearchResult = ({
                     <div className="tableMessageContainer">No result found. Please refine your search.</div>
                   ) : resultList.map((rst, idx) => {
                     const key = `dataset_table_${idx}`;
+                    const tooltip = tooltips[rst.content.primary_dataset_scope];
                     return (
                       <tr key={key} className="datasetTableRow">
                         <td><Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link></td>
                         <td>{rst.content.case_id}</td>
                         <td>{rst.content.sample_id}</td>
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
-                        <td>{rst.content.primary_dataset_scope}</td>
+                        <td>
+                          <span
+                            className="typeBlock"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            title={tooltip}
+                          >
+                            {rst.content.primary_dataset_scope}
+                          </span>
+                        </td>
                       </tr>
                     );
                   })

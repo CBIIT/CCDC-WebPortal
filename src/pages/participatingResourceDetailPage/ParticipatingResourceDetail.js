@@ -16,7 +16,7 @@ const DatasetSummaryContainer = styled.div`
   // display: grid;
   margin: 0 auto;
   width: 1120px;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
 `;
 
 const DataLink = styled.li`
@@ -28,6 +28,9 @@ const DataLink = styled.li`
 const DatasetType = styled.div`
   width: 96%;
   text-align: right;
+  margin-top: -36px;
+  text-transform: uppercase;
+  font-size: 12px;
   // margin-top: -10px;
   // padding-top: 50px;
   // padding-right: 10px;
@@ -35,8 +38,25 @@ const DatasetType = styled.div`
   span {
     background-color: white;
     border-radius: 20px;
-    border: 1px solid gold;
-    padding: 5px 10px;
+    border: 1px solid #FFBF17;
+    padding: 8px 16px;
+    line-height: 52px;
+  }
+`;
+
+const SummaryDatasetType = styled.div`
+  width: 98%;
+  text-align: right;
+  margin-top: -30px;
+  margin-bottom: -5px;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  span {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #FFBF17;
+    padding: 8px 16px;
     line-height: 52px;
   }
 `;
@@ -51,6 +71,8 @@ const DatasetsSummary = styled.div`
   background-color: #25b39a;
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
 
   a {
     color: white;
@@ -100,7 +122,8 @@ const DatasetTitle = styled.div`
   // font-weight: 600;
   font-size: 1.3rem;
   height: 40px;
-  border-bottom: 2px solid #255b96;
+  // border-bottom: 2px solid #255b96;
+  text-decoration: underline;
 
   a {
     color: inherit;
@@ -111,7 +134,7 @@ const DatasetTitle = styled.div`
 const DatasetDesc = styled.div`
   width: 100%;
   // display: inline;
-  // margin-top: 15px;
+  margin-top: -15px;
   word-wrap: break-word;
   hyphens: auto;
   div {
@@ -143,7 +166,7 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  // let resourseLinks = detail.resource_uri;
+  // let resourseLinks = `${detail.resource_uri}`;
   // resourseLinks = resourseLinks.split(';');
   let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
   resourseLinks = resourseLinks.split(';');
@@ -182,8 +205,8 @@ const ParticipatingResourceDetail = ({
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
                     {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]}>{resourseLinks[0]}</a></DataLink>
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]}>{resourseLinks[1]}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></DataLink>
+                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></DataLink>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -207,18 +230,22 @@ const ParticipatingResourceDetail = ({
                     </span>
                   </DatasetType>
                 </div>
+                <br />
+                <div className="prspace" />
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
                     <div className="prAboutResourceLabel">About This Resource</div>
                     <div className="prAboutResourceContent">{detail.description}</div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
-                      <div className="prDataElementLabel">Data Resource Type</div>
+                      <div className="prDataElementLabel">Resource Type</div>
                         {detail.resource_type}
                       <div className="prDataElementLabel">Specialization</div>
+                      <div className="prDataElementLabel">Data Update Date</div>
+                        {detail.update_time}
                     </div>
                     <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Resource Data Content Types</div>
+                      <div className="prAdditionalDataLabel">Data Content Types</div>
                         <br />
                         {detail.data_content_type}
                     </div>
@@ -235,12 +262,14 @@ const ParticipatingResourceDetail = ({
                       <br />
                         {
                           detail.api
-                          ? <DataLink><a href={detail.api}>{detail.api}</a></DataLink>
+                          ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
                           : null
                         }
                     </div>
                   </div>
                 </div>
+                <div className="prspace" />
+                <br />
                 <div className="prDatasetSummaryContainer">
                   <DatasetsSummary>
                     <SummaryIcon>
@@ -277,7 +306,7 @@ const ParticipatingResourceDetail = ({
                       : null}
                     {
                       ds.published_in
-                      ? <div className="summaryDataElementContent"><DataLink><a href={ds.published_in}>{ds.published_in}</a></DataLink></div>
+                      ? <div className="summaryDataElementContent"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div>
                       : null
                     }
                     <br />
@@ -333,9 +362,9 @@ const ParticipatingResourceDetail = ({
                       </div>
                       <br />
                   </DatasetDesc>
-                  <DatasetType>
+                  <SummaryDatasetType>
                     <span>{ds.primary_dataset_scope}</span>
-                  </DatasetType>
+                  </SummaryDatasetType>
                 </DatasetCard>
               );
             })

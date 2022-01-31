@@ -21,30 +21,28 @@ const PageHeaderArea = styled.div`
 `;
 
 const PageLabelArea = styled.div`
-  width: 40%;
+  width: 500px;
 `;
 
 const PageLabel = styled.div`
   color: #07368b;
-  font-size: 32px;
+  font-size: 42px;
+  line-height: 42px;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 `;
 
 const PageLabelMore = styled.div`
   color: #9fb4c2;
-  font-size: 20px;
+  font-size: 29px;
+  line-height: 42px;
 `;
 
 const PageLogoArea = styled.div`
-  width: 85%;
-  height: 150px;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-size: cover;
+  width: 700px;
+  height: 202px;
+  background-size: auto;
   background-image: url(${img});
-  border-bottom: 2px solid white;
-  background-position: center;
 `;
 
 const SearchContainer = styled.div`

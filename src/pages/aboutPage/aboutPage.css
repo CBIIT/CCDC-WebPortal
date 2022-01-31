@@ -47,6 +47,8 @@
 .aboutPageSection2Container {
     margin: 0 auto;
     width: 1250px;
+    /* overflow-wrap: break-word; */
+    /* max-inline-size: 1250px; */
     padding: 10px 10px 80px 10px;
     border-left: 1px solid lightgray;
     border-right: 1px solid lightgray;

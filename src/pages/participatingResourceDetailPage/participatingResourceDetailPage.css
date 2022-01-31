@@ -1,46 +1,14 @@
 
 .prBreadcrumbContainer {
-  padding: 5px 0px 0px 0px;
-  width: 100%;
-  /* border-bottom: 1px solid lightgray; */
-}
-
-/* Style the list */
-ul.breadcrumb {
-  padding: 10px 16px;
-  list-style: none;
-  /* background-color: #eee; */
-}
-
-/* Display list items side by side */
-ul.breadcrumb li {
-  display: inline;
-  font-size: 18px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb li+li:before {
-  padding: 8px;
-  color: goldenrod;
-  content: ">";
-  /* content: "/\00a0"; */
-}
-
-/* Add a color to all links inside the list */
-ul.breadcrumb li a {
-  color: goldenrod;
-  text-decoration: none;
-}
-
-/* Add a color on mouse-over */
-ul.breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
+  /* padding: 5px 0px 0px 0px; */
+  /* width: 100%; */
+  padding: 10px 0px 0px 0px;
+  margin-bottom: -5px;
 }
 
 .prDetailHeaderContainer {
   /* padding: 0px 0 20px 20px; */
-  padding: 20px 0 10px 0px;
+  padding: 16px 0 10px 0px;
   width: 100%;
   background: linear-gradient(to right, #05296b,#79291b,#e78709);
   /* border-bottom: 1px solid lightgray; */
@@ -48,12 +16,12 @@ ul.breadcrumb li a:hover {
 }
 
 .prDetailHeaderLabel {
-  padding: 0px 0 50px 30px;
+  padding: 0px 0 50px 26px;
   color: white;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 35px;
+  /* font-weight: bold; */
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
+  width: 95%;
   inline-size: 950px;
 }
 
@@ -61,7 +29,7 @@ ul.breadcrumb li a:hover {
   padding: 0px 0 5px 30px;
   color: white;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   width: 80%;
 }
 
@@ -69,7 +37,7 @@ ul.breadcrumb li a:hover {
   /* padding: 0px 0 5px 30px; */
   /* color: #2dc799; */
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   width: 100%;
   /* text-decoration: none; */
 }
@@ -91,6 +59,7 @@ ul.breadcrumb li a:hover {
   top: 30px;
   border: 1px solid #FFBF17;
   padding: 10px;
+  height: 106px;
 }
 
 .prTypeButton {
@@ -105,10 +74,23 @@ ul.breadcrumb li a:hover {
   /* margin-top: 10px; */
 }
 
+.prspace {
+  /* padding: 10px; */
+  border-bottom: 1px solid #BFD3E1;
+  margin-left: -1000px;
+  width: 10000px;
+}
+
 .prAboutContentContainer {
-  padding: 20px 0px 10px 0px;
+  /* padding: 20px 0px 10px 0px; */
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #BFD3E1;
+  border-top: none;
+  border-bottom: none;
   /* border: 1px solid lightgray; */
   /* border-bottom: 1px solid gray; */
+  width: 1220px;
+  margin-left: -10px;
 }
 
 .prAboutResourceContainer {
@@ -120,44 +102,30 @@ ul.breadcrumb li a:hover {
 
 .prAboutResourceLabel {
   padding: 5px 0 10px 10px;
-  color: rgb(180, 180, 180);
+  /* color: rgb(180, 180, 180); */
+  color: #99AFBE;
   font-size: 26px;
   /* font-weight: bold; */
   text-transform: uppercase;
   /* border-bottom: 2px solid rgb(163, 163, 163); */
-  border-bottom: 2px solid lightgray;
+  border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
 }
 
 .prAboutResourceContent {
   padding: 30px 0px 30px 10px;
-  /* color: rgb(180, 180, 180); */
-  /* font-size: 26px; */
-  /* font-weight: bold; */
-  /* text-transform: uppercase; */
   /* border-bottom: 2px solid rgb(163, 163, 163); */
-  font-family: Arial, Helvetica, sans-serif;
-  border-bottom: 2px solid lightgray;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
 }
 
-.prCoreDataContainer {
-  padding: 00px 0 10px 20px;
-  width: 45%;
-  height: 300px;
-  /* border-right: 1px solid #e0e4e7; */
-  border-right: 1px solid lightgray;
-  /* display: flex; */
-  /* display: inline-block; */
-  /* position: relative; */
-  display: inline-table;
-}
 .prResourceToolsContainer {
-  padding: 00px 0 10px 20px;
-  width: 45%;
+  padding: 0px 30px 10px 20px;
+  width: 48%;
   height: 200px;
   /* border-right: 1px solid #e0e4e7; */
-  border-right: 1px solid lightgray;
+  border-right: 1px solid #BFD3E1;
   /* display: flex; */
   /* display: inline-block; */
   /* position: relative; */
@@ -166,18 +134,20 @@ ul.breadcrumb li a:hover {
 
 .prCoreDataLabel {
   padding: 20px 0 10px 0px;
-  color: #07368b;
+  color: #004187;
   font-size: 22px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   border-bottom: 1px solid #07368b;
-  width: 95%;
+  width: 100%;
 }
 
 .prDataAccessContainer {
-  padding: 0px 0 10px 20px;
-  width: 45%;
+  padding: 0px 0 10px 30px;
+  width: 48%;
   display: inline-table;
+  /* max-inline-size: 500px; */
+  word-break: break-all;
 }
 
 .prAdditionalDataLabel {
@@ -187,21 +157,23 @@ ul.breadcrumb li a:hover {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   border-bottom: 1px solid #07368b;
-  width: 95%;
+  /* width: 95%; */
 }
 
 .prDataElementLabel {
   padding: 30px 0 10px 0px;
-  color: #2dc799;
+  /* color: #2dc799; */
+  color: #25b39a;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   text-transform: uppercase;
 }
 
 .summaryDataElementLabel {
   padding: 20px 20px 10px 0px;
   display: inline;
-  color: #2dc799;
+  /* color: #2dc799; */
+  color: #25b39a;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;

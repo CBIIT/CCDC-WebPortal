@@ -13,6 +13,7 @@ const NavContainer = styled.div`
     margin: 0 auto;
     width: 1200px;
     text-align: center;
+    padding-right: 50px;
 `;
 
 const UlContainer = styled.ul`
@@ -104,7 +105,7 @@ const NavBar = () => {
           <NavContainer>
               <UlContainer>
                 <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>Home</NavLink></LiSection>
-                <LiSection><NavLink to="/search" style={({ isActive }) => (isActive ? activeStyle : null)}>Search Catalog</NavLink></LiSection>
+                <LiSection><NavLink to="/search" style={path.startsWith("/dataset") || path.startsWith("/resource") ? {color: "#ffffff"} : ({ isActive }) => (isActive ? activeStyle : null)}>Search Catalog</NavLink></LiSection>
                 <LiSection><NavLink to="/participatingresources" style={({ isActive }) => (isActive ? activeStyle : null)}>Participating Resources</NavLink></LiSection>
                 <LiSection>
                     <span style={path === "/about" || path === "/glossary" ? {color: "#ffffff"} : null}>

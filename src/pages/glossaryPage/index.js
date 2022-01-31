@@ -57,21 +57,21 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Aliquot</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.</p>
-                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases">https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases</a></p>
+                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases</a></p>
                   <br />
                 </div>
                 <div className="a">
                   <h2 className="glossaryItemHeader">Any</h2>
                   <span className="glossaryItemType">Statistic Type</span>
                   <p className="glossaryItemDescription">One, some, every, or all without specification. This term means that the statistic value applies to the set of all values in the digest partition for the data element summarized.</p>
-                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf">https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf</a></p>
+                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf</a></p>
                   <br />
                 </div>
                 <div className="a">
                   <h2 className="glossaryItemHeader">Average</h2>
                   <span className="glossaryItemType">Statistic Type</span>
                   <p className="glossaryItemDescription">A statistical calculation describing the central tendency of a set of numbers.</p>
-                  <p className="glossaryItemLink"><a href="https://grants.nih.gov/grants/glossary.htm#P">https://grants.nih.gov/grants/glossary.htm#P</a></p>
+                  <p className="glossaryItemLink"><a href="https://grants.nih.gov/grants/glossary.htm#P" target="_blank" rel="noreferrer noopener">https://grants.nih.gov/grants/glossary.htm#P</a></p>
                   <br />
                   <br />
                 </div>
@@ -91,7 +91,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Catalog</h2>
                   <span className="glossaryItemType">Resource Type</span>
                   <p className="glossaryItemDescription">A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.</p>
-                  <p className="glossaryItemLink"><a href="https://seer.cancer.gov/registries/cancer_registry/index.html">https://seer.cancer.gov/registries/cancer_registry/index.html</a></p>
+                  <p className="glossaryItemLink"><a href="https://seer.cancer.gov/registries/cancer_registry/index.html" target="_blank" rel="noreferrer noopener">https://seer.cancer.gov/registries/cancer_registry/index.html</a></p>
                   <br />
                 </div>
                 <div className="c">

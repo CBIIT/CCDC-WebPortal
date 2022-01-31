@@ -130,14 +130,14 @@ const HomePage = () => {
                               <br />
                               <br />
                           </p>
-                          <Link to="/search" className="headerLink2">
+                          <a href="/search#top" className="headerLink2">
                               <Button className="buttonText color-white">
                                   <h6>
                                       EXPLORE THE CATALOG &emsp;&emsp;&emsp;
                                       <span style={{ color: '#FFBF17' }}>&#9658;</span>
                                   </h6>
                               </Button>
-                          </Link>
+                          </a>
                       </div>
                   </div>
                   </div>

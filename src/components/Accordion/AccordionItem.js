@@ -27,7 +27,8 @@ const OptionContainer = styled.div`
 const OptionLabel = styled.span`
   width: calc(100% - 50px);
   color: #004187;
-  padding-left: 5px;
+  padding-left: 8px;
+  line-height: 18px;
 `;
 
 const OptionCount = styled.span`

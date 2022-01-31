@@ -16,6 +16,8 @@ const FooterContainer = styled(Container)`
   max-width: 1200px;
   // color: var(--white);
   color: white;
+  // font-family: Lato;
+  // font-size: 16px;
   text-decoration: none;
   position: relative;
 `;
@@ -129,10 +131,7 @@ const Footer = () => {
         <Hr />
         <SiteInfo>
           <div>
-            FE Version: 1.0.0
-          </div>
-          <div>
-            BE Version: 1.0.0
+            Software Version: 1.0.0
           </div>
           <div>
             Data Version: 1.0.0
