@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   useLocation
 } from "react-router-dom";
+import { OverlayTrigger } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import SearchBox from './SearchBox';
 import ExportButton from './ExportButton';
@@ -59,7 +60,42 @@ const SearchCatalogPage = ({
     <>
       <div id="top" className="searchBarContainer">
         <div className="searchBarArea">
-          <div className="searchBarLabel">Search Results</div>
+          <div className="searchBarLabel">
+            <span>
+              Search Results
+            </span>
+            <div className="searchTooltip">
+              <OverlayTrigger
+                placement="right-start"
+                overlay={
+                  (
+                  <div className="searchTooltipBox">
+                    <p>
+                      <strong>Search Rules</strong>
+                      :
+                    </p>
+                    <ul>
+                      <li>
+                        A minimum of 3 character are needed for a term search.
+                      </li>
+                      <li>
+                        Searches will return both full and partial word results (i.e. leuk will returns results for leukemia).
+                      </li>
+                      <li>
+                        If you search multiple terms (i.e lymphocytic survivors) the search results will return sources that contain all the specified terms (AND Boolean operator).
+                      </li>
+                      <li>
+                        Selecting a resource Source (i.e. Kids First) will automatically create a search for the selected source.
+                      </li>
+                    </ul>
+                  </div>
+                  )
+                }
+              >
+                <button type="button" aria-label="searchTooltip" className="searchTooltipButton"><i className="fas fa-question-circle" /></button>
+              </OverlayTrigger>
+            </div>
+          </div>
           <div className="searchBoxContainer">
             <SearchBox
               searchText={searchText}
