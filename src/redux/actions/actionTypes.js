@@ -31,3 +31,5 @@ export const CLEAR_ADVANCED_SEARCH_SELECTION_SUCCESS = "clearAdvancedSearchSelec
 
 export const LOAD_DOCUMENT_SEARCH_RESULTS_SUCCESS = "load_document_search_results_success";
 export const PUT_SEARCH_KEYWORD = "put_search_keyword";
+
+export const LOAD_APPLICATION_VERSION_INFO_SUCCESS = "load_application_version_info_success";

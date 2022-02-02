@@ -23,7 +23,7 @@ const Accordion = ({
           const key = `filters_${idx}`;
           const stayOpenID = `so-${str}-${idx}`;
           const collapseOneID = `co-${str}-${idx}`;
-          const defaultCollapsed = field === "Research Data Repository" || field === "Data Resource Type";
+          const defaultCollapsed = "show";
           // const firstAccordionClass = isResource ? "accordion-item-first" : "accordion-item";
           return (
             <div key={key} className="accordion-item">

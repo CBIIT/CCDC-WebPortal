@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import logo from '../../assets/img/nih-white-logo.png';
+import logo from '../../../assets/img/nih-white-logo.png';
 
 const FooterStyled = styled.footer`
   background-color: #283247;
@@ -91,7 +92,16 @@ const Copyright = styled.div`
   }
 `;
 
-const Footer = () => {
+const Footer = ({
+  versionInfo,
+  onLoadApplicationVersionInfo,
+}) => {
+  useEffect(() => {
+    onLoadApplicationVersionInfo().catch(error => {
+      throw new Error(`Loading application version info failed ${error}`);
+    });
+  }, []);
+
   return (
     <FooterStyled role="contentinfo">
       <FooterContainer>
@@ -131,10 +141,12 @@ const Footer = () => {
         <Hr />
         <SiteInfo>
           <div>
-            Software Version: 1.0.0
+            Software Version:&nbsp;
+            {versionInfo.softwareVersion}
           </div>
           <div>
-            Data Version: 1.0.0
+            Site Data Update:&nbsp;
+            {versionInfo.siteDataUpdate}
           </div>
         </SiteInfo>
         <Row>
@@ -156,6 +168,11 @@ const Footer = () => {
       </FooterContainer>
     </FooterStyled>
   );
+};
+
+Footer.propTypes = {
+  versionInfo: PropTypes.object.isRequired,
+  onLoadApplicationVersionInfo: PropTypes.func.isRequired,
 };
 
 export default Footer;
