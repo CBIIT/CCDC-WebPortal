@@ -134,8 +134,10 @@ const DatasetDetail = ({
                                 <span key={cskey} className="itemSpan">
                                   {cs.n}
                                   &nbsp;(
+                                  {/* {" ("} */}
                                   {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {csidx === content.case_sex.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -155,7 +157,8 @@ const DatasetDetail = ({
                                   {csab.n}
                                   &nbsp;(
                                   {csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {csabidx === content.case_sex_at_birth.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -175,7 +178,8 @@ const DatasetDetail = ({
                                   {cg.n}
                                   &nbsp;(
                                   {cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {cgidx === content.case_gender.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -195,7 +199,8 @@ const DatasetDetail = ({
                                   {ca.n}
                                   &nbsp;(
                                   {ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {caidx === content.case_age.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -215,7 +220,8 @@ const DatasetDetail = ({
                                   {cad.n}
                                   &nbsp;(
                                   {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -235,7 +241,8 @@ const DatasetDetail = ({
                                   {caat.n}
                                   &nbsp;(
                                   {caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {caatidx === content.case_age_at_trial.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -255,7 +262,8 @@ const DatasetDetail = ({
                                   {cr.n}
                                   &nbsp;(
                                   {cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {cridx === content.case_race.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -275,7 +283,8 @@ const DatasetDetail = ({
                                   {ce.n}
                                   &nbsp;(
                                   {ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {ceidx === content.case_ethnicity.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -295,7 +304,8 @@ const DatasetDetail = ({
                                   {cdd.n}
                                   &nbsp;(
                                   {cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -315,7 +325,8 @@ const DatasetDetail = ({
                                   {cts.n}
                                   &nbsp;(
                                   {cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {ctsidx === content.case_tumor_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -335,7 +346,8 @@ const DatasetDetail = ({
                                   {cta.n}
                                   &nbsp;(
                                   {cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -355,7 +367,8 @@ const DatasetDetail = ({
                                   {cto.n}
                                   &nbsp;(
                                   {cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -375,7 +388,8 @@ const DatasetDetail = ({
                                   {cp.n}
                                   &nbsp;(
                                   {cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -457,7 +471,8 @@ const DatasetDetail = ({
                               return (
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n}
-                                  &#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {srnidx === content.case_gender.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -478,7 +493,8 @@ const DatasetDetail = ({
                                   {sam.n}
                                   &nbsp;(
                                   {sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {samidx === content.sample_assay_method.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -498,7 +514,8 @@ const DatasetDetail = ({
                                   {sat.n}
                                   &nbsp;(
                                   {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {satidx === content.sample_analyte_type.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -518,7 +535,8 @@ const DatasetDetail = ({
                                   {sat.n}
                                   &nbsp;(
                                   {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {satidx === content.sample_anatomic_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -538,7 +556,8 @@ const DatasetDetail = ({
                                   {sct.n}
                                   &nbsp;(
                                   {sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                  )&#59;&nbsp;
+                                  {/* )&#59;&nbsp; */}
+                                  {sctidx === content.sample_composition_type.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -586,7 +605,7 @@ const DatasetDetail = ({
                       <div className="additionalDataLabel">Additional Data Elements</div>
                         {content.published_in
                           ? <div className="dataElementLabel">Published In</div>
-                          : null}
+                          : <div className="additionalDataExtraSpace" />}
                         <div className="dataElementContent">
                           {
                             content.published_in
@@ -613,7 +632,8 @@ const DatasetDetail = ({
                                         {prov.k}
                                         &nbsp;(
                                         {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                        )&#59;&nbsp;
+                                        {/* )&#59;&nbsp; */}
+                                        {proidx === content.projects.length - 1 ? ")" : "); "}
                                       </span>
                                     );
                                   })}
@@ -637,7 +657,7 @@ const DatasetDetail = ({
                                     const adeekey = `adee_${adeeidx}`;
                                     return (
                                       <div key={adeekey} className="additionalDataContent">
-                                        {adee.k.startsWith("https:") ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
+                                        {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
                                         {adee.v === -1
                                           ? null
                                           : (

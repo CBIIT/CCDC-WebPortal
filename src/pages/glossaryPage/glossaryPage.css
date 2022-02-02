@@ -1,8 +1,8 @@
 .glossaryPageContainer {
     margin: 0 auto;
     width: 1250px;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    /* border-left: 1px solid lightgray; */
+    /* border-right: 1px solid lightgray; */
 }
 .glossaryPageHeader {
     /* margin: 0 auto; */
@@ -27,7 +27,7 @@
 }
 .glossaryContent1 {
     width: 83%;
-    padding: 40px 0px 0px 0px;
+    padding: 40px 0px 60px 0px;
     text-align: left;
     margin-left: 100px;
     margin-right: 100px;
@@ -47,7 +47,7 @@
 .glossaryPageSection2Container {
     margin: 0 auto;
     width: 1250px;
-    padding: 10px 10px 80px 10px;
+    /* padding: 10px 10px 80px 10px; */
     /* border-left: 1px solid lightgray; */
     /* border-right: 1px solid lightgray; */
 }

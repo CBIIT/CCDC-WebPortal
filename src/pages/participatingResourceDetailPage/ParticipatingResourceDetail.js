@@ -191,7 +191,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prBreadcrumbContainer">
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
-                      <li><a href="/search">Search Catalog</a></li>
+                      <li><a href="/participatingresources">Participating Rescources</a></li>
                       <li><Link to={`/resource/${detail.data_resource_id}`}>{detail.data_resource_id}</Link></li>
                   </ul>
                 </div>
@@ -270,12 +270,12 @@ const ParticipatingResourceDetail = ({
                 </div>
                 <div className="prspace" />
                 <br />
-                <div className="prDatasetSummaryContainer">
+                <div className="prDatasetSummaryContainer" id="dataset_summaries">
                   <DatasetsSummary>
                     <SummaryIcon>
                       <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
-                    <Link to={`/resource/${detail.data_resource_id}#dataset_summaries`}>
+                    <Link to={`/resource/${detail.data_resource_id}`}>
                       DATASET SUMMARIES (
                       {detail.datasets_total}
                       )
@@ -286,7 +286,7 @@ const ParticipatingResourceDetail = ({
             )
         }
         </ParticipatingResourceResultContainer>
-        <DatasetSummaryContainer id="#dataset_summaries">
+        <DatasetSummaryContainer>
           {
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
@@ -295,9 +295,9 @@ const ParticipatingResourceDetail = ({
                 <DatasetCard key={key}>
                   <DatasetHeader>
                     <DatasetTitle>
-                      <Link to={linkto}>
+                      <a href={linkto}>
                         {ds.dataset_name}
-                      </Link>
+                      </a>
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
@@ -332,7 +332,8 @@ const ParticipatingResourceDetail = ({
                                 {cs.n}
                                 &nbsp;(
                                 {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                )&#59; &nbsp;
+                                {/* )&#59;&nbsp; */}
+                                {csidx === ds.case_sex.length - 1 ? ")" : "); "}
                               </span>
                             );
                           })
@@ -353,7 +354,8 @@ const ParticipatingResourceDetail = ({
                                 {cad.n}
                                 &nbsp;(
                                 {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                )&#59; &nbsp;
+                                {/* )&#59;&nbsp; */}
+                                {cadidx === ds.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                               </span>
                             );
                           })

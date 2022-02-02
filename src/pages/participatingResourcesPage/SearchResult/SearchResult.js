@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import externalIcon from "../../../assets/img/resource.svg";
@@ -210,12 +210,12 @@ const SearchResult = ({
               <ResourceCard key={key}>
                 <ResourceHeader>
                   <ResourceTitle>
-                    <Link to={linkto}>
+                    <a href={linkto}>
                       {rst.resource_name}
                       &nbsp;(
                       {rst.data_resource_id}
                       )
-                    </Link>
+                    </a>
                   </ResourceTitle>
                   <ResourceLogo>
                     <ResourceIcon>
@@ -252,11 +252,11 @@ const SearchResult = ({
                   <SummaryIcon>
                     <img src={datasetsIcon} alt="datasets" />
                   </SummaryIcon>
-                  <Link to={linktoDatasetSummaries}>
+                  <a href={linktoDatasetSummaries}>
                     DATASET SUMMARIES (
                     {rst.datasets_total}
                     )
-                  </Link>
+                  </a>
                 </DatasetsSummary>
               </ResourceCard>
             );
