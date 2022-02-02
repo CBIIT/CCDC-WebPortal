@@ -20,22 +20,22 @@ const Glossary = () => {
                 <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">B</a>
                 <a className={key === 'C' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('C')}>C</a>
                 <a className={key === 'D' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('D')}>D</a>
-                <a className={key === 'E' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('E')}>E</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">F</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">G</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">H</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">E</a>
+                <a className={key === 'F' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('F')}>F</a>
+                <a className={key === 'G' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('G')}>G</a>
+                <a className={key === 'H' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('H')}>H</a>
                 <a className={key === 'I' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('I')}>I</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">J</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">K</a>
+                <a className={key === 'K' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('K')}>K</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">L</a>
                 <a className={key === 'M' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('M')}>M</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">N</a>
-                <a className={key === 'O' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('O')}>O</a>
+                <a className={key === 'N' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('N')}>N</a>
+                <a className="nav-link disabled" href="#" aria-disabled="true">O</a>
                 <a className={key === 'P' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('P')}>P</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">Q</a>
                 <a className={key === 'R' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('R')}>R</a>
                 <a className={key === 'S' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('S')}>S</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">T</a>
+                <a className={key === 'T' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('T')}>T</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">U</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">V</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">W</a>
@@ -57,21 +57,21 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Aliquot</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.</p>
-                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases</a></p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414</a></p>
                   <br />
                 </div>
-                <div className="a">
+                {/* <div className="a">
                   <h2 className="glossaryItemHeader">Any</h2>
                   <span className="glossaryItemType">Statistic Type</span>
                   <p className="glossaryItemDescription">One, some, every, or all without specification. This term means that the statistic value applies to the set of all values in the digest partition for the data element summarized.</p>
                   <p className="glossaryItemLink"><a href="https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf</a></p>
                   <br />
-                </div>
+                </div> */}
                 <div className="a">
-                  <h2 className="glossaryItemHeader">Average</h2>
-                  <span className="glossaryItemType">Statistic Type</span>
-                  <p className="glossaryItemDescription">A statistical calculation describing the central tendency of a set of numbers.</p>
-                  <p className="glossaryItemLink"><a href="https://grants.nih.gov/grants/glossary.htm#P" target="_blank" rel="noreferrer noopener">https://grants.nih.gov/grants/glossary.htm#P</a></p>
+                  <h2 className="glossaryItemHeader">Assay</h2>
+                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <p className="glossaryItemDescription">A laboratory test to find and measure the amount of a specific substance.</p>
+                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay</a></p>
                   <br />
                   <br />
                 </div>
@@ -95,33 +95,60 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="c">
-                  <h2 className="glossaryItemHeader">Cell Line</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
-                  <p className="glossaryItemDescription">A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.</p>
+                  <h2 className="glossaryItemHeader">CCDC</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Childhood Cancer Data Catalog</p>
                   <br />
                 </div>
                 <div className="c">
-                  <h2 className="glossaryItemHeader">Cell Lines</h2>
+                  <h2 className="glossaryItemHeader">CCDI</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Childhood Cancer Data Initiative</p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">CCSS</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Childhood Cancer Survivor Study</p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">Cell Line</h2>
                   <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">Data associated with primary or immortalized cell lines. Usually from human but animal models Includes omics data, intervention responses, histology.</p>
+                  <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403</a></p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">Cell Line</h2>
+                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403</a></p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">CGCI</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Cancer Genome Characterization Initiative</p>
                   <br />
                 </div>
                 <div className="c">
                   <h2 className="glossaryItemHeader">Clinical</h2>
                   <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">Structured data used for research, deidentified, but not genomics data, imaging data, or mere demographic data. This includes clinical interventions (treatments or surgery), biopsy reports/analyses, pathology/histology reports, medical histories, family history, etc. Can be from research or point of care. Note: Different from demographic data.</p>
+                  <p className="glossaryItemDescription">Relating to the examination and treatment of patients dependent on direct observation.</p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398</a></p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">COG</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Children&apos;s Oncology Group</p>
                   <br />
                 </div>
                 <div className="c">
                   <h2 className="glossaryItemHeader">Collection</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.</p>
-                  <br />
-                </div>
-                <div className="c">
-                  <h2 className="glossaryItemHeader">Count</h2>
-                  <span className="glossaryItemType">Statistic Type</span>
-                  <p className="glossaryItemDescription">The number or amount of something.</p>
                   <br />
                   <br />
                 </div>
@@ -132,39 +159,16 @@ const Glossary = () => {
             key === 'D' && (
               <>
                 <div className="d">
-                  <h2 className="glossaryItemHeader">Dataset Abbreviated Name</h2>
-                  <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">Dataset abbreviation or acronym. </p>
-                  <br />
-                </div>
-                <div className="d">
-                  <h2 className="glossaryItemHeader">Dataset Description</h2>
-                  <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">General information about the dataset.</p>
-                  <br />
-                </div>
-                <div className="d">
-                  <h2 className="glossaryItemHeader">Dataset ID</h2>
-                  <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">An identifier of the dataset that may be unique within a data resource.</p>
-                  <br />
-                </div>
-                <div className="d">
-                  <h2 className="glossaryItemHeader">Dataset Name</h2>
-                  <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">A name used to refer to the dataset. For example, a project name.</p>
-                  <br />
-                </div>
-                <div className="d">
-                  <h2 className="glossaryItemHeader">Dataset POC</h2>
-                  <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">Point of contact for obtaining access to or more information about this research component, e.g. about a project or case.</p>
+                  <h2 className="glossaryItemHeader">Data Content Type</h2>
+                  <span className="glossaryItemType">Resource Structure</span>
+                  <p className="glossaryItemDescription">A classification of the type of the data hosted in the data resource’s own repository and which corresponds to the research purpose the data serves or from what part of the research process the data were generated.</p>
                   <br />
                 </div>
                 <div className="d">
                   <h2 className="glossaryItemHeader">Donor</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
-                  <p className="glossaryItemDescription">A donor is an individual (either human or animal) from which tissue for grafting, tissue for creating a cell line, or tumor sample for studying was taken. In these contexts the datasets are not associated with clinical or project cases. Minimal information about a donor helps describe the grafted tissue, the cell line, or the tumor sample.</p>
+                  <p className="glossaryItemDescription">A person who gives blood, cells, tissue, or an organ for use in another person, such as in a blood transfusion or an organ transplant.</p>
+                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/donor" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/donor</a></p>
                   <br />
                   <br />
                 </div>
@@ -172,12 +176,44 @@ const Glossary = () => {
             )
           }
           {
-            key === 'E' && (
+            key === 'F' && (
               <>
                 <div className="e">
-                  <h2 className="glossaryItemHeader">Exact Value</h2>
-                  <span className="glossaryItemType">Statistic Type</span>
-                  <p className="glossaryItemDescription">Rather than a summary, this statistic term indicates that the summarized data element value and the statistic value are the same, which happens when the digest partition corresponds to one instance rather than a set of instances. </p>
+                  <h2 className="glossaryItemHeader">FOIA</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">General Abbreviation</p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'G' && (
+              <>
+                <div className="g">
+                  <h2 className="glossaryItemHeader">GDC</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Resource Abbreviation</p>
+                  <br />
+                </div>
+                <div className="g">
+                  <h2 className="glossaryItemHeader">Genomics/Omics</h2>
+                  <span className="glossaryItemType">Data Content Type</span>
+                  <p className="glossaryItemDescription">Includes DNA/RNA sequence data, proteomic data, transcriptomic data, etc.</p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'H' && (
+              <>
+                <div className="h">
+                  <h2 className="glossaryItemHeader">HTAN</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Human Tumor Atlas Network</p>
                   <br />
                   <br />
                 </div>
@@ -190,7 +226,28 @@ const Glossary = () => {
                 <div className="i">
                   <h2 className="glossaryItemHeader">Imaging</h2>
                   <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">Includes radiology images or other types of images.</p>
+                  <p className="glossaryItemDescription">A process that makes pictures of areas inside the body. Imaging uses methods such as x-rays (high-energy radiation), ultrasound (high-energy sound waves), and radio waves.</p>
+                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging</a></p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'K' && (
+              <>
+                <div className="k">
+                  <h2 className="glossaryItemHeader">KF</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Kids First</p>
+                  <br />
+                </div>
+                <div className="k">
+                  <h2 className="glossaryItemHeader">Knowledgebase </h2>
+                  <span className="glossaryItemType">Resource Type</span>
+                  <p className="glossaryItemDescription">Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.</p>
+                  <p className="glossaryItemLink"><a href="https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases</a></p>
                   <br />
                   <br />
                 </div>
@@ -201,21 +258,15 @@ const Glossary = () => {
             key === 'M' && (
               <>
                 <div className="m">
-                  <h2 className="glossaryItemHeader">Maximum</h2>
-                  <span className="glossaryItemType">Statistic Type</span>
-                  <p className="glossaryItemDescription">The largest possible value.</p>
-                  <br />
-                </div>
-                <div className="m">
-                  <h2 className="glossaryItemHeader">Minimum</h2>
-                  <span className="glossaryItemType">Statistic Type</span>
-                  <p className="glossaryItemDescription">The smallest possible value.</p>
-                  <br />
-                </div>
-                <div className="m">
                   <h2 className="glossaryItemHeader">Mixed</h2>
                   <span className="glossaryItemType">Pediatric Specific</span>
                   <p className="glossaryItemDescription">A data resource hosts pediatric, young adult, and adult oncology research data</p>
+                  <br />
+                </div>
+                <div className="m">
+                  <h2 className="glossaryItemHeader">MyPart</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">My Pediatric and Adult Rare Tumor network</p>
                   <br />
                   <br />
                 </div>
@@ -223,12 +274,24 @@ const Glossary = () => {
             )
           }
           {
-            key === 'O' && (
+            key === 'N' && (
               <>
-                <div className="o">
-                  <h2 className="glossaryItemHeader">Omics</h2>
-                  <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">Includes sequence data, proteomic data, or transcriptomic data.</p>
+                <div className="n">
+                  <h2 className="glossaryItemHeader">NCCR</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">National Childhood Cancer Registry</p>
+                  <br />
+                </div>
+                <div className="n">
+                  <h2 className="glossaryItemHeader">NCI</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">National Cancer Institute</p>
+                  <br />
+                </div>
+                <div className="n">
+                  <h2 className="glossaryItemHeader">NIH</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">National Institutes of Health </p>
                   <br />
                   <br />
                 </div>
@@ -239,9 +302,51 @@ const Glossary = () => {
             key === 'P' && (
               <>
                 <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PCAT</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">PDX for Childhood Cancer Therapeutics</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PCDC</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Pediatric Cancer Data Commons</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PDX</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Patient Derived Xenograft</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PEDC</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">PedcBioPortal for Integrated Childhood Cancer Genomics</p>
+                  <br />
+                </div>
+                <div className="p">
                   <h2 className="glossaryItemHeader" id="P">Pediatric Only</h2>
                   <span className="glossaryItemType">Pediatric Specific</span>
-                  <p className="glossaryItemDescription">A data resource exclusively hosts pediatric and young adult (lesssssss40 years old) oncology research data</p>
+                  <p className="glossaryItemDescription">A data resource exclusively hosts pediatric and young adult (&#60; 40 years old) oncology research data</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PedMATCH</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Pediatric Molecular Analysis for Therapy Choice</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PGDI</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Pediatric Genomic Data Inventory</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PPTC</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Pediatric Preclinical Testing Consortium</p>
                   <br />
                 </div>
                 <div className="p">
@@ -252,14 +357,20 @@ const Glossary = () => {
                 </div>
                 <div className="p">
                   <h2 className="glossaryItemHeader">Program</h2>
-                  <span className="glossaryItemType">Resource Type</span>
+                  <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization&apos;s mission or some specific program-related aspect of that mission.</p>
                   <br />
                 </div>
                 <div className="p">
                   <h2 className="glossaryItemHeader">Program</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <span className="glossaryItemType">Resource Type</span>
                   <p className="glossaryItemDescription">A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization&apos;s mission or some specific program-related aspect of that mission.</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader">Project</h2>
+                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <p className="glossaryItemDescription">Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial. </p>
                   <br />
                 </div>
                 <div className="p">
@@ -296,7 +407,8 @@ const Glossary = () => {
                 <div className="r">
                   <h2 className="glossaryItemHeader">Research Dataset</h2>
                   <span className="glossaryItemType">Dataset Structure</span>
-                  <p className="glossaryItemDescription">An administrative research construct to which data are directly associated and which aligns with components of research practice. </p>
+                  <p className="glossaryItemDescription">A collection of related data records.</p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C47824" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C47824</a></p>
                   <br />
                 </div>
                 <div className="r">
@@ -306,39 +418,9 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="r">
-                  <h2 className="glossaryItemHeader">Resource Description</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">Textual information about a resource.</p>
-                  <br />
-                </div>
-                <div className="r">
-                  <h2 className="glossaryItemHeader">Resource ID</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">A technical key to uniquely identify a data resource construct within a data catalog. </p>
-                  <br />
-                </div>
-                <div className="r">
-                  <h2 className="glossaryItemHeader">Resource Name</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">A name used to refer to a resource.</p>
-                  <br />
-                </div>
-                <div className="r">
-                  <h2 className="glossaryItemHeader">Resource POC</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">Point of contact for obtaining access to or more information about this resource. The source information may call this author or owner or POC.</p>
-                  <br />
-                </div>
-                <div className="r">
                   <h2 className="glossaryItemHeader">Resource Type</h2>
                   <span className="glossaryItemType">Resource Structure</span>
                   <p className="glossaryItemDescription">A classification based on the selection or purpose of information in the resource. Types of systems are: Registry, Research Data Repository, Catalog, or Program.</p>
-                  <br />
-                </div>
-                <div className="r">
-                  <h2 className="glossaryItemHeader">Resource URI</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">A unique identifier for the resource</p>
                   <br />
                   <br />
                 </div>
@@ -352,6 +434,32 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Sample</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products.</p>
+                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C70699" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C70699</a></p>
+                  <br />
+                </div>
+                <div className="s">
+                  <h2 className="glossaryItemHeader">SRA</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Sequence Read Archive</p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'T' && (
+              <>
+                <div className="t">
+                  <h2 className="glossaryItemHeader">TARGET</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Therapeutically Applicable Research to Generate Effective Treatments</p>
+                  <br />
+                </div>
+                <div className="t">
+                  <h2 className="glossaryItemHeader">TCIA</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">The Cancer Imaging Archive</p>
                   <br />
                   <br />
                 </div>
@@ -364,13 +472,15 @@ const Glossary = () => {
                 <div className="x">
                   <h2 className="glossaryItemHeader">Xenograft</h2>
                   <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">Includes omics data, whole-body imaging, intervention responses, and histology data derived from a xenograft.</p>
+                  <p className="glossaryItemDescription">The transplant of an organ, tissue, or cells to an individual of another species.</p>
+                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft</a></p>
                   <br />
                 </div>
                 <div className="x">
                   <h2 className="glossaryItemHeader">Xenograft</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
-                  <p className="glossaryItemDescription">Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.</p>
+                  <p className="glossaryItemDescription">The transplant of an organ, tissue, or cells to an individual of another species.</p>
+                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft</a></p>
                   <br />
                   <br />
                 </div>
