@@ -332,7 +332,8 @@ const ParticipatingResourceDetail = ({
                                 {cs.n}
                                 &nbsp;(
                                 {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                )&#59; &nbsp;
+                                {/* )&#59;&nbsp; */}
+                                {csidx === ds.case_sex.length - 1 ? ")" : "); "}
                               </span>
                             );
                           })
@@ -353,7 +354,8 @@ const ParticipatingResourceDetail = ({
                                 {cad.n}
                                 &nbsp;(
                                 {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                )&#59; &nbsp;
+                                {/* )&#59;&nbsp; */}
+                                {cadidx === ds.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                               </span>
                             );
                           })
