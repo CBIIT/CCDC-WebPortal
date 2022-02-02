@@ -148,7 +148,7 @@ const SearchBox = ({
       </SearchBoxArea>
       <SelectionBubbleArea>
         {
-          searchCriteria !== "" && (
+          getSearchableText(searchCriteria) !== "" && (
             <BubbleContainer>
               search text
               :&nbsp;
