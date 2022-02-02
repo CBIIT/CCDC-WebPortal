@@ -222,6 +222,10 @@ ul.breadcrumb li a:hover {
   overflow: auto;
 }
 
+.additionalDataExtraSpace {
+  margin-top: -10px;
+}
+
 .additionalDataContent {
   margin-top: 10px;
   color: black;

@@ -586,7 +586,7 @@ const DatasetDetail = ({
                       <div className="additionalDataLabel">Additional Data Elements</div>
                         {content.published_in
                           ? <div className="dataElementLabel">Published In</div>
-                          : null}
+                          : <div className="additionalDataExtraSpace" />}
                         <div className="dataElementContent">
                           {
                             content.published_in
