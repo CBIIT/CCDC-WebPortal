@@ -423,10 +423,10 @@ const SearchResult = ({
             <table className="table table-striped">
               <thead>
                   <tr style={{ color: 'navy' }}>
-                      <th scope="col">Dataset Name</th>
+                      <th scope="col">Dataset</th>
                       <th scope="col">Cases</th>
                       <th scope="col">Samples</th>
-                      <th scope="col">Resource Name</th>
+                      <th scope="col">Resource</th>
                       <th scope="col">Primary Dataset Scope</th>
                   </tr>
               </thead>

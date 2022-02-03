@@ -144,13 +144,12 @@ const getSearchableText = (searchString) => {
 };
 
 const ParticipatingResourcesPage = ({
-  searchKeyword,
   pageInfo,
   onStartDocumentSearch,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
-  const searchText = query.get("keyword") ? query.get("keyword").trim() : searchKeyword;
+  const searchText = query.get("keyword") ? query.get("keyword").trim() : "";
   const [localText, setLocalText] = useState(searchText);
 
   useEffect(() => {
@@ -228,7 +227,6 @@ const ParticipatingResourcesPage = ({
 };
 
 ParticipatingResourcesPage.propTypes = {
-  searchKeyword: PropTypes.string.isRequired,
   pageInfo: PropTypes.object.isRequired,
   onStartDocumentSearch: PropTypes.func.isRequired,
 };

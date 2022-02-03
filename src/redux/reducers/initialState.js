@@ -33,7 +33,7 @@ export default {
             total: 0,
         },
         sort: {
-          name: "Resource Name",
+          name: "Resource",
           k: "data_resource_id",
           v: "asc"
         }

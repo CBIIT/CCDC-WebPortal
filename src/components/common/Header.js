@@ -31,10 +31,14 @@ const SearchArea = styled.div`
 `;
 
 const SearchIcon = styled.div`
-  // color: #11B886;
   color: #00996b;
   font-size: 1.1rem;
   font-weight: 600;
+  cursor: pointer;
+
+  svg:hover {
+    color: #11B886;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -75,6 +79,11 @@ const Header = () => {
     }
   };
 
+  const handleSearch = () => {
+    navigate(`/sitesearch?keyword=${localText.trim()}`);
+    setLocalText("");
+  };
+
   return (
     <>
     <LogoBanner role="banner">
@@ -85,7 +94,7 @@ const Header = () => {
           && (
           <SearchArea>
             <SearchInput type="text" value={localText} placeholder="Documentation Search" onChange={handleTextInputChange} onKeyPress={handleKeyPress} />
-            <SearchIcon>
+            <SearchIcon onClick={handleSearch}>
               <i className="fas fa-search" />
             </SearchIcon>
           </SearchArea>
