@@ -30,6 +30,25 @@ const ResourceType = styled.div`
   }
 `;
 
+const sortingAdditionalElement = (content) => {
+  if (content === undefined) {
+    return [];
+  }
+  const result = [];
+  if (content.published_in) {
+    result.push("published in");
+  }
+  if (content.projects) {
+    result.push("projects");
+  }
+  if (content.additional) {
+    content.additional.forEach((ade) => {
+      result.push(ade.attr_name.toLowerCase());
+    });
+  }
+  return result.sort();
+};
+
 const DatasetDetail = ({
   details,
   onPageLoadDatasetDetail,
@@ -49,6 +68,13 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
+  const additionalDict = {};
+  if (content && content.additional) {
+    content.additional.forEach((adt) => {
+      additionalDict[adt.attr_name.toLowerCase()] = adt.attr_set;
+    });
+  }
+  const sortedAdditonals = sortingAdditionalElement(content);
 
   useEffect(() => {
     if (!content) {
@@ -76,15 +102,8 @@ const DatasetDetail = ({
                   <div className="datasetIcon">
                     <DataResourceIcons participatingResource={content.data_resource_id} type="white" />
                   </div>
-                  {/* <ResourceType>
-                    <span>{content.primary_dataset_scope}</span>
-                  </ResourceType> */}
-                  {/* <span className="datasetTypeButton">
-                    {content.primary_dataset_scope}
-                  </span> */}
                   <div className="datasetDetailHeaderContent">
                     Data Resource: &nbsp;
-                    {/* <span className="datasetDetailHeaderText">{content.data_resource_id}</span> */}
                     <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
                   </div>
                   <div className="datasetDetailHeaderContent">
@@ -611,84 +630,75 @@ const DatasetDetail = ({
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
-                        {content.published_in
-                          ? <div className="dataElementLabel">Published In</div>
-                          : <div className="additionalDataExtraSpace" />}
-                        <div className="dataElementContent">
-                          {
-                            content.published_in
-                            ? <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a>
-                            : null
-                          }
-                        </div>
-                        {content.projects
-                          ? <div className="dataElementLabel">Projects</div>
-                          : null}
-                        <div className="dataElementContent">
-                          {
-                            content.projects
-                            ? content.projects.map((pro, proidx) => {
-                              const prokey = `pro_${proidx}`;
+                        {
+                          sortedAdditonals.map((ad, adIdx) => {
+                            const adkey = `ad_${adIdx}`;
+                            if (ad === "published in") {
                               return (
-                                <span key={prokey} className="itemSpan">
-                                  {pro.p_k}
-                                  ,&nbsp;
-                                  {pro.p_v.map((prov, providx) => {
-                                    const provkey = `prov_${providx}`;
-                                    return (
-                                      <span key={provkey} className="itemSpan">
-                                        {prov.k}
-                                        &nbsp;(
-                                        {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                        {/* )&#59;&nbsp; */}
-                                        {proidx === content.projects.length - 1 ? ")" : "); "}
-                                      </span>
-                                    );
-                                  })}
-                                </span>
+                                <>
+                                  <div className="dataElementLabel">Published In</div>
+                                  <div className="dataElementContent">
+                                    <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a>
+                                  </div>
+                                </>
                               );
-                            })
-                            : null
-                          }
-                        </div>
-                      <div className="additionalDataContent">
-                        <div>
-                          {
-                            content.additional
-                            ? content.additional.map((ade, adeidx) => {
-                              const adekey = `ade_${adeidx}`;
+                            }
+                            if (ad === "projects") {
                               return (
-                                <div key={adekey} className="dataElementLabel">
-                                  {ade.attr_name}
-                                  <br />
-                                  {ade.attr_set.map((adee, adeeidx) => {
-                                    const adeekey = `adee_${adeeidx}`;
-                                    return (
-                                      <div key={adeekey} className="additionalDataContent">
-                                        {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
-                                        {adee.v === -1
-                                          ? null
-                                          : (
-                                              <span key={adeekey} className="itemSpan">
-                                                &nbsp;(
-                                                {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                                )&#59; &nbsp;
-                                              </span>
-                                            )}
-                                      </div>
-                                    );
-                                  })}
-                                </div>
+                                <>
+                                  <div className="dataElementLabel">Projects</div>
+                                  <div className="dataElementContent">
+                                    {
+                                      content.projects.map((pro, proidx) => {
+                                        const prokey = `pro_${proidx}`;
+                                        return (
+                                          <span key={prokey} className="itemSpan">
+                                            {pro.p_k}
+                                            ,&nbsp;
+                                            {pro.p_v.map((prov, providx) => {
+                                              const provkey = `prov_${providx}`;
+                                              return (
+                                                <span key={provkey} className="itemSpan">
+                                                  {prov.k}
+                                                  &nbsp;(
+                                                  {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                  {proidx === content.projects.length - 1 ? ")" : "); "}
+                                                </span>
+                                              );
+                                            })}
+                                          </span>
+                                        );
+                                      })
+                                    }
+                                  </div>
+                                </>
                               );
-                            })
-                            : null
-                          }
-                        </div>
-                      </div>
-                      {/* <div className="dataElementLabel">File Type</div>
-                        Unknown
-                      <div className="dataElementLabel">Sample Type</div>
-                        Unknown &nbsp; */}
+                            }
+                            return (
+                              <div key={adkey} className="dataElementLabel">
+                                {ad.toUpperCase()}
+                                <br />
+                                {additionalDict[ad].map((adee, adeeidx) => {
+                                  const adeekey = `adee_${adeeidx}`;
+                                  return (
+                                    <div key={adeekey} className="additionalDataContent">
+                                      {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
+                                      {adee.v === -1
+                                        ? null
+                                        : (
+                                            <span key={adeekey} className="itemSpan">
+                                              &nbsp;(
+                                              {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                              )&#59; &nbsp;
+                                            </span>
+                                          )}
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })
+                        }
                     </div>
                   </div>
                   <br />

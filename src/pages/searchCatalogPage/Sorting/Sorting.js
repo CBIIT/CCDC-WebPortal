@@ -24,7 +24,7 @@ const Sorting = ({
         <SortingLabel>
           SORT BY
         </SortingLabel>
-        <SelectionInput value={sort} items={[{name: "Dataset Type", k: "primary_dataset_scope", v: "asc"}, {name: "Resource Name", k: "data_resource_id", v: "asc"}]} onChangeSorting={onChangeSorting} />
+        <SelectionInput value={sort} items={[{name: "Dataset", k: "dataset_name.raw", v: "asc"}, {name: "Primary Dataset Scope", k: "primary_dataset_scope", v: "asc"}, {name: "Resource", k: "data_resource_id", v: "asc"}]} onChangeSorting={onChangeSorting} />
       </SortingContainer>
     </>
   );
