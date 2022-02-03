@@ -22,7 +22,7 @@ const Filters = ({
     <>
       <div className="filterSection">
         <div className="filterLabel">
-          <span>Sources</span>
+          <span>Resources</span>
         </div>
         <div className="filterBlock">
           <div className="accordion">

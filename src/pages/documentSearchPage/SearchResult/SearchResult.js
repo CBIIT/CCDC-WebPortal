@@ -87,7 +87,7 @@ const SearchResult = ({
             return (
               <DocumentCard key={key}>
                 <DocumentHeader>
-                  <Link to={content.link} target="_blank">
+                  <Link to={content.link}>
                     {ReactHtmlParser(title)}
                   </Link>
                 </DocumentHeader>
@@ -95,7 +95,7 @@ const SearchResult = ({
                   {ReactHtmlParser(desc)}
                 </DocumentDesc>
                 <DocumentLink>
-                  <Link to={content.link} target="_blank">
+                  <Link to={content.link}>
                     {ReactHtmlParser(link)}
                   </Link>
                 </DocumentLink>
