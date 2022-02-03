@@ -491,7 +491,7 @@ const DatasetDetail = ({
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n}
                                   {/* )&#59;&nbsp; */}
-                                  {srnidx === content.case_gender.length - 1 ? ")" : "); "}
+                                  {srnidx === content.sample_repository_name.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
