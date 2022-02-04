@@ -166,8 +166,8 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  // let resourseLinks = `${detail.resource_uri}`;
-  // resourseLinks = resourseLinks.split(';');
+  let dataContentTypes = detail.data_content_type === undefined ? "" : detail.data_content_type;
+  dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
   resourseLinks = resourseLinks.split(';');
   useEffect(() => {
@@ -247,7 +247,7 @@ const ParticipatingResourceDetail = ({
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Content Types</div>
                         <br />
-                        {detail.data_content_type.toString().replace(/,/g, ", ")}
+                        {dataContentTypes}
                     </div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>
