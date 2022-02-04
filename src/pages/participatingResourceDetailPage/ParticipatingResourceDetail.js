@@ -247,7 +247,7 @@ const ParticipatingResourceDetail = ({
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Content Types</div>
                         <br />
-                        {detail.data_content_type}
+                        {detail.data_content_type.toString().replace(/,/g, ", ")}
                     </div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>

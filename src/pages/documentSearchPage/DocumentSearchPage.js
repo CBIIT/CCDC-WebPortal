@@ -19,8 +19,8 @@ const PageHeaderArea = styled.div`
   width: 1200px;
   display: flex;
   position: relative;
-  border-left: 1px solid #BFD3E1;
-  border-right: 1px solid #BFD3E1;
+  // border-left: 1px solid #BFD3E1;
+  // border-right: 1px solid #BFD3E1;
   padding: 20px;
 `;
 
