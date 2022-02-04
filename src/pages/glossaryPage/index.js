@@ -114,14 +114,7 @@ const Glossary = () => {
                 </div>
                 <div className="c">
                   <h2 className="glossaryItemHeader">Cell Line</h2>
-                  <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
-                  <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403</a></p>
-                  <br />
-                </div>
-                <div className="c">
-                  <h2 className="glossaryItemHeader">Cell Line</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403</a></p>
                   <br />
@@ -357,25 +350,13 @@ const Glossary = () => {
                 </div>
                 <div className="p">
                   <h2 className="glossaryItemHeader">Program</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
-                  <p className="glossaryItemDescription">A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization&apos;s mission or some specific program-related aspect of that mission.</p>
-                  <br />
-                </div>
-                <div className="p">
-                  <h2 className="glossaryItemHeader">Program</h2>
-                  <span className="glossaryItemType">Resource Type</span>
+                  <span className="glossaryItemType">Primary Dataset Scope, Resource Type</span>
                   <p className="glossaryItemDescription">A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization&apos;s mission or some specific program-related aspect of that mission.</p>
                   <br />
                 </div>
                 <div className="p">
                   <h2 className="glossaryItemHeader">Project</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
-                  <p className="glossaryItemDescription">Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial. </p>
-                  <br />
-                </div>
-                <div className="p">
-                  <h2 className="glossaryItemHeader">Project</h2>
-                  <span className="glossaryItemType">Resource Type</span>
+                  <span className="glossaryItemType">Primary Dataset Scope, Resource Type</span>
                   <p className="glossaryItemDescription">Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial. </p>
                   <br />
                   <br />
@@ -471,14 +452,7 @@ const Glossary = () => {
               <>
                 <div className="x">
                   <h2 className="glossaryItemHeader">Xenograft</h2>
-                  <span className="glossaryItemType">Data Content Type</span>
-                  <p className="glossaryItemDescription">The transplant of an organ, tissue, or cells to an individual of another species.</p>
-                  <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft</a></p>
-                  <br />
-                </div>
-                <div className="x">
-                  <h2 className="glossaryItemHeader">Xenograft</h2>
-                  <span className="glossaryItemType">Primary Dataset Scope</span>
+                  <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">The transplant of an organ, tissue, or cells to an individual of another species.</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft</a></p>
                   <br />

@@ -31,6 +31,7 @@ ul.breadcrumb li a {
   color: goldenrod;
   text-decoration: none;
   font-size: 16px;
+  font-family: Lato;
 }
 
 /* Add a color on mouse-over */
@@ -54,16 +55,16 @@ ul.breadcrumb li a:hover {
   color: white;
   font-size: 35px;
   /* font-weight: bold; */
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter;
   width: 95%;
-  inline-size: 950px;
+  inline-size: 960px;
 }
 
 .datasetDetailHeaderContent {
   padding: 0px 0 5px 30px;
   color: white;
   font-size: 16px;
-  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Lato;
   width: 80%;
 }
 
@@ -71,7 +72,7 @@ ul.breadcrumb li a:hover {
   /* padding: 0px 0 5px 30px; */
   /* color: #2dc799; */
   font-size: 16px;
-  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Lato;
   width: 100%;
   /* text-decoration: none; */
 }
@@ -138,6 +139,7 @@ ul.breadcrumb li a:hover {
   /* color: rgb(180, 180, 180); */
   color: #99AFBE;
   font-size: 26px;
+  font-family: Inter;
   /* font-weight: bold; */
   text-transform: uppercase;
   /* border-bottom: 2px solid rgb(163, 163, 163); */
@@ -147,8 +149,7 @@ ul.breadcrumb li a:hover {
 
 .aboutDatasetContent {
   padding: 30px 0px 30px 10px;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  /* font-family: sans-serif; */
+  font-family: Lato;
   border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
 }
@@ -171,7 +172,7 @@ ul.breadcrumb li a:hover {
   color: #004187;
   font-size: 22px;
   font-weight: bold;
-  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Lato;
   border-bottom: 1px solid #07368b;
   width: 100%;
 }
@@ -188,7 +189,7 @@ ul.breadcrumb li a:hover {
   color: #07368b;
   font-size: 22px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Lato;
   border-bottom: 1px solid #07368b;
   /* width: 95%; */
   width: 520px;
@@ -199,13 +200,13 @@ ul.breadcrumb li a:hover {
   /* color: #2dc799; */
   color: #25b39a;
   font-size: 16px;
-  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Lato;
   text-transform: uppercase;
 }
 
 .dataElementContent {
   /* font-size: 16px; */
-  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: Lato;
   /* height: 100px; */
   max-height: 200px;
   max-width: 540px;
@@ -216,6 +217,8 @@ ul.breadcrumb li a:hover {
 }
 
 .dataElementContentAllCaps {
+  /* font-size: 16px; */
+  font-family: Lato;
   text-transform: uppercase;
   max-height: 200px;
   max-width: 540px;
@@ -229,6 +232,7 @@ ul.breadcrumb li a:hover {
 .additionalDataContent {
   margin-top: 10px;
   color: black;
+  /* font-family: Lato; */
   text-transform: none;
   /* word-wrap: break-word; */
   /* overflow-wrap: break-word; */

@@ -7,11 +7,13 @@
 .glossaryPageHeader {
     /* margin: 0 auto; */
     /* width: 1250px; */
-    padding: 50px 10px 20px 20px;
+    padding: 50px 10px 20px 30px;
 }
 .glossaryHeaderText {
+    color: #004187;
     font-size: 40px;
-    color: navy;
+    font-family: Inter;
+    font-weight: 600;
     line-height: 40px;
 }
 .glossaryHeaderImage {
@@ -58,17 +60,22 @@
 .glossaryItemHeader {
     /* text-underline-offset: 2px; */
     color: #00a272;
+    font-family: Inter;
+    font-weight: 600;
     margin-bottom: 0px;
 }
 .glossaryItemType {
-    color: gray;
+    color: #838383;
     /* padding-top: 5px; */
     /* margin-top: 2px; */
     font-size: 85%;
-    font-weight: 500;
+    font-family: Inter;
+    font-weight: 600;
 }
 .glossaryItemDescription {
     padding-top: 5px;
+    font-family: Lato;
+    font-size: 17px;
 }
 .glossaryItemLink {
     margin-top: -10px;
@@ -76,16 +83,19 @@
 }
 .glossaryItemLink a {
     margin-top: -10px;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: Lato;
+    font-size: 17px;
     color: #00a272;
     text-decoration: none;
 }
 .glossaryPageContainer .nav {
     /* width: 100%; */
-    width: 1000px;
+    width: 920px;
     height: 40px;
     /* height: 100%; */
-    margin-left: 110px;
+    text-align: center;
+    margin-left: 140px;
     margin-top: 40px;
     margin-bottom: 50px;
     /* padding-bottom: -20px; */

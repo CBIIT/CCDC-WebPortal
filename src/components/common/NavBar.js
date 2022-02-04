@@ -25,11 +25,13 @@ const LiSection = styled.li`
   display: inline-block;
   position: relative;
   line-height: 44px;
-  text-align: left;
+  text-align: center;
   color: #003626;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: Lato;
   text-decoration: none;
 
   a{

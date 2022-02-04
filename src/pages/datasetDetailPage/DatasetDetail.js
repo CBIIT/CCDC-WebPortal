@@ -16,8 +16,7 @@ const ResourceType = styled.div`
   margin-top: -44px;
   text-transform: uppercase;
   font-size: 12px;
-  // font-family: Arial, Helvetica, sans-serif;
-  // font-family: Lato;
+  font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
 
