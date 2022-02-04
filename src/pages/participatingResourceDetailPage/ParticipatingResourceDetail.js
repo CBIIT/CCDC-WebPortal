@@ -31,7 +31,7 @@ const DatasetType = styled.div`
   margin-top: -36px;
   text-transform: uppercase;
   font-size: 12px;
-  // margin-top: -10px;
+  font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
 
@@ -51,6 +51,7 @@ const SummaryDatasetType = styled.div`
   margin-bottom: -5px;
   text-transform: uppercase;
   font-size: 12px;
+  font-family: Inter;
 
   span {
     background-color: white;
@@ -71,8 +72,8 @@ const DatasetsSummary = styled.div`
   background-color: #25b39a;
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
-  font-size: 22px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  font-family: Inter;
 
   a {
     color: white;
@@ -120,7 +121,9 @@ const DatasetTitle = styled.div`
   // width: 85%;
   color: #255b96;
   // font-weight: 600;
-  font-size: 1.3rem;
+  font-family: Lato;
+  // font-size: 1.3rem;
+  font-size: 22px;
   height: 40px;
   // border-bottom: 2px solid #255b96;
   text-decoration: underline;
@@ -166,8 +169,8 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  // let resourseLinks = `${detail.resource_uri}`;
-  // resourseLinks = resourseLinks.split(';');
+  let dataContentTypes = detail.data_content_type === undefined ? "" : detail.data_content_type;
+  dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
   resourseLinks = resourseLinks.split(';');
   useEffect(() => {
@@ -245,9 +248,9 @@ const ParticipatingResourceDetail = ({
                         {detail.data_update_date}
                     </div>
                     <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Content Types</div>
+                      <div className="prAdditionalDataLabel">Data Content Type</div>
                         <br />
-                        {detail.data_content_type.toString().replace(/,/g, ", ")}
+                        {dataContentTypes}
                     </div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>
