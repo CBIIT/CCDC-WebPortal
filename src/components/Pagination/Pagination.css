@@ -9,6 +9,18 @@
   padding: .375rem .75rem;
 }
 
+.page-link-ccdc-inactive {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: lightgray;
+  color: #4b6a90;
+  border: 0;
+  font-weight: bold;
+  padding: .375rem .75rem;
+  cursor: auto;
+}
+
 .page-link-ccdc:hover {
   background-color: #c6d2db;
   color: #4b6a90;
