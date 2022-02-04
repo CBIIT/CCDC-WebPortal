@@ -593,7 +593,11 @@ const DatasetDetail = ({
                               const sinkey = `sin_${sinidx}`;
                               return (
                                 <span key={sinkey} className="itemSpan">
-                                  {sin.n > 0 ? 'YES ' : 'NO '}
+                                  {/* {sin.n > 0 ? 'YES ' : 'NO '} */}
+                                  {sin.n}
+                                  &nbsp;(
+                                  {sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sinidx === content.sample_is_normal.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })
@@ -610,7 +614,11 @@ const DatasetDetail = ({
                               const sixkey = `six_${sixidx}`;
                               return (
                                 <span key={sixkey} className="itemSpan">
-                                  {six.n > 0 ? 'YES' : 'NO'}
+                                  {/* {six.n > 0 ? 'YES' : 'NO'} */}
+                                  {six.n}
+                                  &nbsp;(
+                                  {six.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sixidx === content.sample_is_xenograft.length - 1 ? ")" : "); "}
                                 </span>
                               );
                             })

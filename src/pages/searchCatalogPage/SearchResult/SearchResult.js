@@ -108,6 +108,16 @@ const SearchResultContainer = styled.div`
   }
 `;
 
+const toCapitalize = (str) => {
+  const arr = str.split(" ");
+
+  const result = arr.map((t) => {
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  });
+
+  return result.join(" ");
+};
+
 const SearchResult = ({
   resultList,
   viewType,
@@ -400,9 +410,8 @@ const SearchResult = ({
                           <div key={hlKey} className="row align-items-start footerRow">
                             <div className="col">
                               <label>
-                                Other Match :
-                                &nbsp;
-                                {hl.replace(".k", "").replace(/_/g, " ")}
+                                Other Match:&nbsp;
+                                {toCapitalize(hl.replace(".k", "").replace(/_/g, " "))}
                               </label>
                               :&nbsp;
                               {ReactHtmlParser(rst.highlight[hl])}
