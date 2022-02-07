@@ -48,7 +48,7 @@ const SearchBoxArea = styled.div`
   
   .searchBoxInputGroup .form-control {
     border-radius: 0;
-    border: 2px solid #07368b;
+    border: 2.5px solid #07368b;
     color: #07368b;
     padding-right: 55px;
     font-size: 25px;
@@ -65,7 +65,7 @@ const SearchBoxArea = styled.div`
     border-radius: 0;
     font-weight: bold;
     color: white;
-    border: 2px solid #07368b;
+    border: 2.5px solid #07368b;
     background-color: #07368b;
     padding: .75rem 1rem;
     line-height: 26px;
