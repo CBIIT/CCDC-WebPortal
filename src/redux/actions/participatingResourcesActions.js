@@ -92,7 +92,7 @@ export function loadSearchFilters() {
 export function loadFromUrlQuery(filters) {
   const func = function func(dispatch, getState) {
       dispatch(loadSearchFiltersSelectionSuccess(filters));
-      dispatch(switchPage({page: 1, pageSize: 100}));
+      // dispatch(switchPage({page: 1, pageSize: 100}));
       const { participatingResources } = getState();
       return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
       .then(searchResults => {
@@ -109,7 +109,7 @@ export function clickParticipatingResourcesSearchFilter(filter) {
   const func = function func(dispatch, getState) {
     // console.log(1, filter);
     dispatch(clickSearchFilterSuccess(filter));
-    dispatch(switchPage({page: 1, pageSize: 100}));
+    // dispatch(switchPage({page: 1, pageSize: 100}));
     const { participatingResources } = getState();
     // console.log(participatingResources);
     return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)

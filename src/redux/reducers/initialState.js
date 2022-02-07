@@ -7,7 +7,7 @@ export default {
         facet_filters: {},
         pageInfo: {
           page: 1,
-          pageSize: 15,
+          pageSize: 100,
           total: 0,
         }
       },
