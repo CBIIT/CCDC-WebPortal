@@ -19,6 +19,7 @@ const FooterContainer = styled(Container)`
   color: white;
   font-family: Lato;
   font-size: 16px;
+  font-weight: 400;
   text-decoration: none;
   position: relative;
 `;
@@ -32,20 +33,22 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h2`
-  font-size: 0.875rem;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--white);
-  margin-left: 70px;
+  margin-left: 40px;
 `;
 
 const MenuLink = styled(Link)`
-  font-size: 0.75rem;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--white);
 `;
 
 const MenuUl = styled.ul`
   padding-left: 0;
   list-style: none;
-  margin-left: 70px;
+  margin-left: 40px;
 `;
 
 const MenuLi = styled.li`
@@ -53,7 +56,8 @@ const MenuLi = styled.li`
 
   && a {
     color: var(--white);
-    font-size: 0.75rem;
+    font-size: 16px;
+    font-weight: 400;
     text-decoration: none;
   }
 `;

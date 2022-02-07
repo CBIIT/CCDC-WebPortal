@@ -29,7 +29,7 @@ const LiSection = styled.li`
   color: #003626;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: bold;
   font-family: Lato;
   text-decoration: none;
@@ -56,7 +56,7 @@ const LiSection = styled.li`
   }
 
   ul.dropdown{
-    min-width: 250px;
+    min-width: 280px;
     border: 2px solid #00996B;
     display: none;
     position: absolute;

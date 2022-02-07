@@ -194,7 +194,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prBreadcrumbContainer">
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
-                      <li><a href="/participatingresources">Participating Rescources</a></li>
+                      <li><a href="/participatingresources">Participating Resources</a></li>
                       <li><Link to={`/resource/${detail.data_resource_id}`}>{detail.data_resource_id}</Link></li>
                   </ul>
                 </div>
