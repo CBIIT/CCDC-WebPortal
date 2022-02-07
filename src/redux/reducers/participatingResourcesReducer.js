@@ -45,10 +45,7 @@ export default function participatingResourcesReducer(state = initialState.parti
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              facet_filters: {
-                ...state.searchCriteria.facet_filters,
-                ...action.filters,
-              },
+              facet_filters: action.filters,
             },
           };
         }
