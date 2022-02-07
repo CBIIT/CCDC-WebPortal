@@ -44,7 +44,7 @@ const Filters = ({
         <span>Research Description</span>
       </FilterLabel>
       <FilterBlock>
-        <Accordion domain="dataresource" fields={["Data Resource Type", "Resource Data Content Type"]} />
+        <Accordion domain="dataresource" fields={["Resource Type", "Data Content Type"]} />
       </FilterBlock>
     </FilterSection>
   );

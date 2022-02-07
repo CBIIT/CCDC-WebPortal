@@ -248,7 +248,7 @@ const ParticipatingResourceDetail = ({
                         {detail.data_update_date}
                     </div>
                     <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Content Types</div>
+                      <div className="prAdditionalDataLabel">Data Content Type</div>
                         <br />
                         {dataContentTypes}
                     </div>

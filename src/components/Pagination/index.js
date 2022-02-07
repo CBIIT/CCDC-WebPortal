@@ -41,10 +41,10 @@ const Pagination = ({
       <ReactPaginate
         previousLabel="Previous"
         prevClassName="page-item"
-        previousLinkClassName="page-link-ccdc"
+        previousLinkClassName={pageInfo.page === 1 ? "page-link-ccdc-inactive" : "page-link-ccdc"}
         nextLabel="Next"
         nextClassName="page-item"
-        nextLinkClassName="page-link-ccdc"
+        nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc"}
         breakLabel="..."
         breakClassName="page-item break-me"
         breakLinkClassName="page-link-ccdc"
