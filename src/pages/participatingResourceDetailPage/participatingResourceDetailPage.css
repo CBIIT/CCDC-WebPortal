@@ -74,10 +74,8 @@
 }
 
 .prspace {
-  /* padding: 10px; */
   border-bottom: 1px solid #BFD3E1;
-  margin-left: -1000px;
-  width: 10000px;
+  margin: 0 -9999rem;
 }
 
 .prAboutContentContainer {

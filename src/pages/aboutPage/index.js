@@ -25,7 +25,7 @@ const AboutPage = () => {
                 <img className="aboutHeaderImage" src={aboutHeaderImage} alt="about page" />
             </div>
         </div>
-        <div className="grid" />
+        <div className="aboutGrid" />
         <div className="aboutPageSection1">
             <div className="aboutContent1">
                 <h2 className="aboutContentHeader1">Childhood Cancer Data Initiative</h2>

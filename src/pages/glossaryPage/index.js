@@ -46,7 +46,7 @@ const Glossary = () => {
             </div>
         </div>
       </div>
-      <div className="grid" />
+      <div className="glossaryGrid" />
       <div className="glossaryPageSection1">
       <div className="glossaryContent1">
         <div className="filter-sections">
