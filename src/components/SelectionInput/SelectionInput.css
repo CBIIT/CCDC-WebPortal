@@ -5,16 +5,17 @@
   box-shadow: 0 1px 1px rgba(50,50,50,0.1);
   cursor: pointer;
   outline: none;
-  font-weight: bold;
+  font-weight: 400;
+  font-family: Lato;
+  font-size: 14px;
+  color: #2C5675;
   border-radius: 0;
   border: 1px solid #99a9b1;
   background-color: #e8f1f8;
-  color: #4b6c86;
   background-repeat: no-repeat;
   background-position: right .75rem center;
   background-size: 16px 12px;
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='rgba(75,108,134,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
-  
 }
 
 .wrapper-dropdown span {

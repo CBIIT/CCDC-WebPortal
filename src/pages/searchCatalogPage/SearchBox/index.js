@@ -54,6 +54,8 @@ const SearchBoxArea = styled.div`
   
   .searchBoxInputGroup .form-control::placeholder {
     color: #07368b;
+    font-family: Inter;
+    font-weight: 600;
     font-size: 25px;
   }
   

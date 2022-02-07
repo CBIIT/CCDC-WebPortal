@@ -1,10 +1,8 @@
-.switch-view-content {
-
-}
 
 .switch-view-content .nav-link {
   color: #8a9296;
-  font-weight: 600;
+  font-family: Inter;
+  font-weight: 500;
   padding: .5rem 1rem .5rem 0;
 }
 

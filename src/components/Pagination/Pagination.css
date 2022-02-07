@@ -3,10 +3,12 @@
   display: block;
   text-decoration: none;
   background-color: #e8f1f8;
-  color: #4b6a90;
+  color: #004187;
   border: 0;
   font-weight: bold;
+  font-size: 17px;
   padding: .375rem .75rem;
+  font-family: Lato;
 }
 
 .page-link-ccdc-inactive {
@@ -14,9 +16,11 @@
   display: block;
   text-decoration: none;
   background-color: lightgray;
-  color: #4b6a90;
+  color: #004187;
   border: 0;
   font-weight: bold;
+  font-family: Lato;
+  font-size: 17px;
   padding: .375rem .75rem;
   cursor: auto;
 }
@@ -24,6 +28,10 @@
 .page-link-ccdc:hover {
   background-color: #c6d2db;
   color: #4b6a90;
+}
+
+.page-link-ccdc-inactive:hover {
+  color: #004187;
 }
 
 .page-item.active .page-link-ccdc {

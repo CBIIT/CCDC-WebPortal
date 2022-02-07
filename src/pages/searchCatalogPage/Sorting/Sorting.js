@@ -9,9 +9,12 @@ const SortingContainer = styled.div`
 `;
 
 const SortingLabel = styled.div`
-  padding: .375rem .75rem .375rem 0;
+  line-height: 37.5px;
+  padding-right: 10px;
+  color: #748895;
+  font-size: 13px;
+  font-family: Inter;
   font-weight: 600;
-  color: #8a9296;
 `;
 
 const Sorting = ({

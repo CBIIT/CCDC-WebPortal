@@ -11,8 +11,10 @@ const PaginationContainer = styled.div`
 
 const PageSummary = styled.div`
   padding: .375rem .75rem;
-  color: #6199ce;
-  font-weight: 600;
+  color: #004187;
+  font-weight: 400;
+  font-family: Lato;
+  font-size: 17px;
 `;
 
 const Pagination = ({
