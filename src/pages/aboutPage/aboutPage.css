@@ -80,7 +80,11 @@
     font-weight: bold;
     text-underline-offset: 2px;
 }
-.grid{
+.aboutGrid{
     color: white;
     border-bottom: 1px solid lightgray;
+}
+
+html {
+    overflow-x: hidden;
 }

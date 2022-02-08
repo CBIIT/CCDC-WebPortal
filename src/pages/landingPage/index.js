@@ -15,9 +15,7 @@ const HomePage = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      if (localText.trim() !== "") {
-        navigate(`/search?search_text=${localText}`);
-      }
+      navigate(`/search?search_text=${localText}`);
     }
   };
 
