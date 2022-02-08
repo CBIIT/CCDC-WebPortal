@@ -11,6 +11,11 @@ const ParticipatingResourceResultContainer = styled.div`
   width: 1200px;
 `;
 
+const ParticipatingResourceGridContainer = styled.div`
+  // margin: 100px 0 100px 0;
+  border-top: 1px solid #BFD3E1;
+`;
+
 const DatasetSummaryContainer = styled.div`
   // width: 100%;
   // display: grid;
@@ -234,7 +239,15 @@ const ParticipatingResourceDetail = ({
                   </DatasetType>
                 </div>
                 <br />
-                <div className="prspace" />
+              </div>
+            )
+        }
+        </ParticipatingResourceResultContainer>
+        <ParticipatingResourceGridContainer />
+        <ParticipatingResourceResultContainer>
+        {
+            detail && (
+              <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
                     <div className="prAboutResourceLabel">About This Resource</div>
@@ -271,7 +284,15 @@ const ParticipatingResourceDetail = ({
                     </div>
                   </div>
                 </div>
-                <div className="prspace" />
+              </div>
+            )
+        }
+        </ParticipatingResourceResultContainer>
+        <ParticipatingResourceGridContainer />
+        <ParticipatingResourceResultContainer>
+        {
+            detail && (
+              <div className="prContainer">
                 <br />
                 <div className="prDatasetSummaryContainer" id="dataset_summaries">
                   <DatasetsSummary>

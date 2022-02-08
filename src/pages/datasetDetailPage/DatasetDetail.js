@@ -8,6 +8,12 @@ import './datasetDetailPage.css';
 const DatasetResultContainer = styled.div`
   margin: 0 auto;
   width: 1200px;
+  // overflow-x: hidden;
+`;
+
+const DatasetGridContainer = styled.div`
+  // margin: 100px 0 100px 0;
+  border-top: 1px solid #BFD3E1;
 `;
 
 const ResourceType = styled.div`
@@ -124,7 +130,15 @@ const DatasetDetail = ({
                   </ResourceType>
                 </div>
                 <br />
-                <div className="datasetspace" />
+              </div>
+            )
+        }
+        </DatasetResultContainer>
+        <DatasetGridContainer />
+        <DatasetResultContainer>
+        {
+            content && (
+              <div className="datasetContainer">
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
