@@ -681,7 +681,7 @@ const DatasetDetail = ({
                                   const adeekey = `adee_${adeeidx}`;
                                   return (
                                     <div key={adeekey} className="additionalDataContent">
-                                      {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
+                                      {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
                                       {adee.v === -1
                                         ? null
                                         : (

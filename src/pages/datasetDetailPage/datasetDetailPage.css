@@ -229,6 +229,14 @@ ul.breadcrumb li a:hover {
   margin-top: -10px;
 }
 
+.additionalDataLinks {
+  margin-top: 10px;
+  /* color: black; */
+  text-transform: none;
+  max-width: 95%;
+  word-break: break-all;
+}
+
 .additionalDataContent {
   margin-top: 10px;
   color: black;
@@ -237,7 +245,7 @@ ul.breadcrumb li a:hover {
   /* word-wrap: break-word; */
   /* overflow-wrap: break-word; */
   max-width: 95%;
-  word-break: break-all;
+  /* word-break: break-all; */
   /* line-break: anywhere; */
   /* max-inline-size: 80%; */
   /* overflow-inline: 200px; */
