@@ -389,7 +389,13 @@ const ParticipatingResourceDetail = ({
                       <br />
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <span>{ds.primary_dataset_scope}</span>
+                    <span
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title={tooltips[ds.primary_dataset_scope]}
+                    >
+                      {ds.primary_dataset_scope}
+                    </span>
                   </SummaryDatasetType>
                 </DatasetCard>
               );
