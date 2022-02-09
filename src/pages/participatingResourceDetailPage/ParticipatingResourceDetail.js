@@ -11,6 +11,11 @@ const ParticipatingResourceResultContainer = styled.div`
   width: 1200px;
 `;
 
+const ParticipatingResourceGridContainer = styled.div`
+  // margin: 100px 0 100px 0;
+  border-top: 1px solid #BFD3E1;
+`;
+
 const DatasetSummaryContainer = styled.div`
   // width: 100%;
   // display: grid;
@@ -234,7 +239,15 @@ const ParticipatingResourceDetail = ({
                   </DatasetType>
                 </div>
                 <br />
-                <div className="prspace" />
+              </div>
+            )
+        }
+        </ParticipatingResourceResultContainer>
+        <ParticipatingResourceGridContainer />
+        <ParticipatingResourceResultContainer>
+        {
+            detail && (
+              <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
                     <div className="prAboutResourceLabel">About This Resource</div>
@@ -271,7 +284,15 @@ const ParticipatingResourceDetail = ({
                     </div>
                   </div>
                 </div>
-                <div className="prspace" />
+              </div>
+            )
+        }
+        </ParticipatingResourceResultContainer>
+        <ParticipatingResourceGridContainer />
+        <ParticipatingResourceResultContainer>
+        {
+            detail && (
+              <div className="prContainer">
                 <br />
                 <div className="prDatasetSummaryContainer" id="dataset_summaries">
                   <DatasetsSummary>
@@ -299,7 +320,7 @@ const ParticipatingResourceDetail = ({
                   <DatasetHeader>
                     <DatasetTitle>
                       <a href={linkto}>
-                        {ds.dataset_name}
+                        {ds.dataset_name.length > 100 ? `${ds.dataset_name.substring(0, 100)}...` : ds.dataset_name}
                       </a>
                     </DatasetTitle>
                   </DatasetHeader>
@@ -368,7 +389,13 @@ const ParticipatingResourceDetail = ({
                       <br />
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <span>{ds.primary_dataset_scope}</span>
+                    <span
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title={tooltips[ds.primary_dataset_scope]}
+                    >
+                      {ds.primary_dataset_scope}
+                    </span>
                   </SummaryDatasetType>
                 </DatasetCard>
               );
