@@ -216,6 +216,14 @@ ul.breadcrumb li a:hover {
   /* line-break: auto; */
 }
 
+.dataElementContentPublished {
+  font-family: Lato;
+  max-height: 200px;
+  max-width: 540px;
+  overflow: auto;
+  word-break: break-all;
+}
+
 .dataElementContentAllCaps {
   /* font-size: 16px; */
   font-family: Lato;
