@@ -188,6 +188,16 @@
   overflow: auto;
 }
 
+.summaryDataElementPublished {
+  font-family: Lato;
+  display: inline;
+  max-height: 200px;
+  /* overflow: auto; */
+  word-break: break-all;
+  /* inline-size: 80%; */
+  /* width: 100px; */
+}
+
 .badge {
   display: inline-block;
   /* min-width: 1em; */

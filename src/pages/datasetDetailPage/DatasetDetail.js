@@ -114,8 +114,9 @@ const DatasetDetail = ({
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
-                      {content.poc}
-                      , &nbsp;
+                      {content.poc ? content.poc : null}
+                      {content.poc ? ', ' : null}
+                      &nbsp;
                       <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a>
                     </span>
                   </div>
@@ -142,7 +143,7 @@ const DatasetDetail = ({
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
-                    <div className="aboutDatasetContent">{content.desc}</div>
+                    <div className="aboutDatasetContent">{content.desc ? content.desc : null}</div>
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
@@ -335,7 +336,7 @@ const DatasetDetail = ({
                                 <span key={cddkey} className="itemSpan">
                                   {cdd.n}
                                   &nbsp;(
-                                  {cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
@@ -650,7 +651,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContent">
+                                  <div className="dataElementContentPublished">
                                     <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a>
                                   </div>
                                 </>
