@@ -88,6 +88,7 @@ const getFiltersFromQuery = (query) => {
 const ParticipatingResourcesPage = ({
   total,
   onLoadFromUrlQuery,
+  onCleanUpParticipatingResourceListPage,
 }) => {
   const query = useQuery();
   const filters = getFiltersFromQuery(query);
@@ -96,6 +97,9 @@ const ParticipatingResourcesPage = ({
     onLoadFromUrlQuery(filters).catch(error => {
         throw new Error(`Loading search from url query failed: ${error}`);
       });
+    return () => {
+      onCleanUpParticipatingResourceListPage();
+    };
   }, []);
 
   return (
@@ -131,6 +135,7 @@ const ParticipatingResourcesPage = ({
 ParticipatingResourcesPage.propTypes = {
   total: PropTypes.number.isRequired,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
+  onCleanUpParticipatingResourceListPage: PropTypes.func.isRequired,
 };
 
 export default ParticipatingResourcesPage;

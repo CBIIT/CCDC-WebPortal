@@ -105,6 +105,13 @@ export function loadFromUrlQuery(filters) {
   return func;
 }
 
+export function cleanUpParticipatingResourceListPage() {
+  const func = function func(dispatch) {
+      dispatch(switchPage({page: 1, pageSize: 100, total: 0}));
+  };
+  return func;
+}
+
 export function clickParticipatingResourcesSearchFilter(filter) {
   const func = function func(dispatch, getState) {
     // console.log(1, filter);
