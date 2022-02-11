@@ -176,7 +176,7 @@ const SearchResult = ({
 
     if (tmp.matched.length > 0) {
       tmp.matched.forEach((item) => {
-        const raw = item.indexOf() > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
+        const raw = item.indexOf("<b>") > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
         const idx = result.indexOf(raw);
         if (idx > -1) {
           result.splice(idx, 1);
