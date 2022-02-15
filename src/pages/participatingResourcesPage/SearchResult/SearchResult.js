@@ -24,7 +24,7 @@ const ResourceCard = styled.div`
   display: grid;
   border: 1px solid #b6dffd;
   margin-top: 20px;
-  padding: 15px 20px;
+  padding: 15px 29px;
   box-shadow: 3px 3px 10px lightgray;
 `;
 
