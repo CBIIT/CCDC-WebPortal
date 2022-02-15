@@ -41,6 +41,16 @@
   /* text-decoration: none; */
 }
 
+.prDetailExternalLink {
+  /* color: #25B39A; */
+  color: white;
+  /* display: inline; */
+}
+
+.prDetailExternalLink:hover {
+  color: lightblue;
+}
+
 .prDetailHeaderLink {
   /* color: #2dc799; */
   color: white;
@@ -134,8 +144,8 @@
 .prCoreDataLabel {
   padding: 20px 0 10px 0px;
   color: #004187;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 900;
   font-family: Lato;
   border-bottom: 1px solid #07368b;
   width: 100%;
@@ -152,20 +162,30 @@
 .prAdditionalDataLabel {
   padding: 20px 0 10px 0px;
   color: #07368b;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 900;
   font-family: Lato;
   border-bottom: 1px solid #07368b;
   /* width: 95%; */
 }
 
 .prDataElementLabel {
-  padding: 30px 0 10px 0px;
+  padding: 20px 0 0px 0px;
   /* color: #2dc799; */
   color: #25b39a;
   font-size: 16px;
   font-family: Lato;
   text-transform: uppercase;
+  display: inline-table;
+  width: 50%;
+}
+
+.prDataElementContent {
+  /* padding: 30px 0 10px 0px; */
+  /* color: #25b39a; */
+  font-size: 16px;
+  font-family: Lato;
+  display: inline-table;
 }
 
 .summaryDataElementLabel {

@@ -51,7 +51,7 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLabel {
-  padding: 0px 0px 50px 26px;
+  padding: 0px 0px 60px 26px;
   color: white;
   font-size: 35px;
   /* font-weight: bold; */
@@ -78,7 +78,6 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLink {
-  /* color: #2dc799; */
   color: white;
   /* text-decoration-line: underline; */
 }
@@ -90,8 +89,8 @@ ul.breadcrumb li a:hover {
 .datasetIcon {
   width: 130px;
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 30px;
+  top: 30px;
   border: 1px solid #FFBF17;
   padding: 10px;
   height: 106px;
@@ -170,8 +169,9 @@ ul.breadcrumb li a:hover {
 .coreDataLabel {
   padding: 20px 0 10px 0px;
   color: #004187;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 1px;
   font-family: Lato;
   border-bottom: 1px solid #07368b;
   width: 100%;
@@ -187,12 +187,12 @@ ul.breadcrumb li a:hover {
 .additionalDataLabel {
   padding: 20px 0 10px 0px;
   color: #07368b;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 900;
   font-family: Lato;
   border-bottom: 1px solid #07368b;
   /* width: 95%; */
-  width: 520px;
+  width: 540px;
 }
 
 .dataElementLabel {
