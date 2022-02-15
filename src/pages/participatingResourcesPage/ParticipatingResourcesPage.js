@@ -66,7 +66,7 @@ const SearchFiltersContainer = styled.div`
 const SearchContentContainer = styled.div`
   width: 80%;
   border-right: 1px solid #e0e4e7;
-  padding: 5px 10px;
+  padding: 0 18px;
 `;
 
 const SearchContent = styled.div`
