@@ -5,12 +5,14 @@ import styled from 'styled-components';
 
 const BubbleContainer = styled.div`
   border-radius: 20px;
-  background-color: #e8f1f8;
-  color: #4b6a90;
-  border: 1px solid gold;
-  padding: 0 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  background-color: #EDF0F2;
+  color: #2E5A79;
+  border: 2px solid #ECBD4D;
+  font-size: 13px;
+  font-family: Lato;
+  font-weight: 400;
+  padding: 5px 14px;
+  margin-left: 15px;
   float: left;
 
   .removeBubble {
@@ -37,7 +39,7 @@ const SearchBoxArea = styled.div`
 
   .searchBoxInputGroup {
     float: right;
-    padding: 0 0 20px 5px;
+    padding: 0 0 20px 0;
   }
   
   .searchBoxInputGroup .form-control {
@@ -152,7 +154,7 @@ const SearchBox = ({
         {
           getSearchableText(searchCriteria) !== "" && (
             <BubbleContainer>
-              search text
+              Search Text
               :&nbsp;
               {getSearchableText(searchCriteria)}
               <span className="removeBubble" onClick={() => handleBubbleRemoveClick()} aria-hidden="true">
