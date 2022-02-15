@@ -28,6 +28,7 @@ const SearchableOption = styled.span`
   padding-left: 5px;
   font-weight: bold;
   color: #004187;
+  font-size: 17px;
   cursor: pointer;
 
   &:hover {
