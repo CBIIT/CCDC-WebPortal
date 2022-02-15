@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
+import externalIcon from "../../assets/img/resource-white.svg";
 import './participatingResourceDetailPage.css';
 
 const ParticipatingResourceResultContainer = styled.div`
@@ -14,6 +15,22 @@ const ParticipatingResourceResultContainer = styled.div`
 const ParticipatingResourceGridContainer = styled.div`
   // margin: 100px 0 100px 0;
   border-top: 1px solid #BFD3E1;
+`;
+
+const SiteIcon = styled.div`
+  font-weight: bold;
+  // color: #07468a;
+  font-size: 1.2rem;  
+  background-image: url(${externalIcon});
+  background-repeat: no-repeat;
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  margin-left: -10px;
+  margin-top: -5px;
+  // display: flex;
+  // display: inline flex;
+  margin-bottom: -30px;
 `;
 
 const DatasetSummaryContainer = styled.div`
@@ -28,6 +45,13 @@ const DataLink = styled.li`
   text-decoration: none;
   list-style-type: none;
   display: inline;
+`;
+
+const ExternalLink = styled.li`
+  display: flex;
+  // display: inline;
+  margin-left: 25px;
+  // margin-top: -20px;
 `;
 
 const DatasetType = styled.div`
@@ -80,7 +104,7 @@ const DatasetsSummary = styled.div`
   font-size: 26px;
   font-family: Inter;
 
-  a {
+  span {
     color: white;
     margin-left: 100px;
     text-decoration: inherit;
@@ -214,8 +238,9 @@ const ParticipatingResourceDetail = ({
                   <div className="prDetailHeaderContent">
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
                     {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></DataLink>
-                    <DataLink><a className="prDetailHeaderLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></DataLink>
+                    <SiteIcon />
+                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink>
+                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink>
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -257,10 +282,11 @@ const ParticipatingResourceDetail = ({
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
                       <div className="prDataElementLabel">Resource Type</div>
-                        {detail.resource_type}
-                      <div className="prDataElementLabel">Specialization</div>
+                      <div className="prDataElementContent">{detail.resource_type}</div>
+                      <br />
+                      {/* <div className="prDataElementLabel">Specialization</div> */}
                       <div className="prDataElementLabel">Data Update Date</div>
-                        {detail.data_update_date}
+                      <div className="prDataElementContent">{detail.data_update_date}</div>
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Content Type</div>
@@ -270,9 +296,9 @@ const ParticipatingResourceDetail = ({
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Tools</div>
                       <div className="prDataElementLabel">Visualization Tools</div>
-                        {detail.visualization > 0 ? 'YES' : 'NO'}
+                      <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
                       <div className="prDataElementLabel">Analytic Tools</div>
-                        {detail.analytics > 0 ? 'YES' : 'NO'}
+                      <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Access</div>
@@ -301,11 +327,11 @@ const ParticipatingResourceDetail = ({
                     <SummaryIcon>
                       <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
-                    <Link to={`/resource/${detail.data_resource_id}`}>
+                    <span>
                       DATASET SUMMARIES (
                       {detail.datasets_total}
                       )
-                    </Link>
+                    </span>
                   </DatasetsSummary>
                 </div>
               </div>
