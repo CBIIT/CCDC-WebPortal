@@ -57,6 +57,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Aliquot</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight.</p>
+                  <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414</a></p>
                   <br />
                 </div>
@@ -71,6 +72,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Assay</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A laboratory test to find and measure the amount of a specific substance.</p>
+                  <p className="glossaryItemLink">NCI Dictionary</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay</a></p>
                   <br />
                   <br />
@@ -91,6 +93,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Catalog</h2>
                   <span className="glossaryItemType">Resource Type</span>
                   <p className="glossaryItemDescription">A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.</p>
+                  <p className="glossaryItemLink">NCI SEER</p>
                   <p className="glossaryItemLink"><a href="https://seer.cancer.gov/registries/cancer_registry/index.html" target="_blank" rel="noreferrer noopener">https://seer.cancer.gov/registries/cancer_registry/index.html</a></p>
                   <br />
                 </div>
@@ -116,6 +119,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Cell Line</h2>
                   <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
+                  <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C16403</a></p>
                   <br />
                 </div>
@@ -129,6 +133,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Clinical</h2>
                   <span className="glossaryItemType">Data Content Type</span>
                   <p className="glossaryItemDescription">Relating to the examination and treatment of patients dependent on direct observation.</p>
+                  <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398</a></p>
                   <br />
                 </div>
@@ -161,6 +166,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Donor</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A person who gives blood, cells, tissue, or an organ for use in another person, such as in a blood transfusion or an organ transplant.</p>
+                  <p className="glossaryItemLink">NCI Dictionary</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/donor" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/donor</a></p>
                   <br />
                   <br />
@@ -174,7 +180,7 @@ const Glossary = () => {
                 <div className="e">
                   <h2 className="glossaryItemHeader">FOIA</h2>
                   <span className="glossaryItemType">General Abbreviation</span>
-                  <p className="glossaryItemDescription">General Abbreviation</p>
+                  <p className="glossaryItemDescription">Freedom of Information Act</p>
                   <br />
                   <br />
                 </div>
@@ -187,7 +193,7 @@ const Glossary = () => {
                 <div className="g">
                   <h2 className="glossaryItemHeader">GDC</h2>
                   <span className="glossaryItemType">Resource Abbreviation</span>
-                  <p className="glossaryItemDescription">Resource Abbreviation</p>
+                  <p className="glossaryItemDescription">Genomic Data Commons</p>
                   <br />
                 </div>
                 <div className="g">
@@ -220,6 +226,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Imaging</h2>
                   <span className="glossaryItemType">Data Content Type</span>
                   <p className="glossaryItemDescription">A process that makes pictures of areas inside the body. Imaging uses methods such as x-rays (high-energy radiation), ultrasound (high-energy sound waves), and radio waves.</p>
+                  <p className="glossaryItemLink">NCI Dictionary</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging</a></p>
                   <br />
                   <br />
@@ -240,6 +247,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Knowledgebase </h2>
                   <span className="glossaryItemType">Resource Type</span>
                   <p className="glossaryItemDescription">Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.</p>
+                  <p className="glossaryItemLink">NIH ODSS</p>
                   <p className="glossaryItemLink"><a href="https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/biomedical-data-repositories-and-knowledgebases</a></p>
                   <br />
                   <br />
@@ -389,13 +397,8 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Research Dataset</h2>
                   <span className="glossaryItemType">Dataset Structure</span>
                   <p className="glossaryItemDescription">A collection of related data records.</p>
+                  <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C47824" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C47824</a></p>
-                  <br />
-                </div>
-                <div className="r">
-                  <h2 className="glossaryItemHeader">Resource Data Content Type</h2>
-                  <span className="glossaryItemType">Resource Structure</span>
-                  <p className="glossaryItemDescription">A classification of the type of the data hosted in the data resource’s own repository and which corresponds to the research purpose the data serves or from what part of the research process the data were generated.</p>
                   <br />
                 </div>
                 <div className="r">
@@ -415,6 +418,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Sample</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products.</p>
+                  <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C70699" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C70699</a></p>
                   <br />
                 </div>
@@ -454,6 +458,7 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Xenograft</h2>
                   <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">The transplant of an organ, tissue, or cells to an individual of another species.</p>
+                  <p className="glossaryItemLink">NCI Dictionary</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/xenograft</a></p>
                   <br />
                   <br />
