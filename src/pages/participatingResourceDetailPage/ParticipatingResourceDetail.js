@@ -80,7 +80,7 @@ const DatasetsSummary = styled.div`
   font-size: 26px;
   font-family: Inter;
 
-  a {
+  span {
     color: white;
     margin-left: 100px;
     text-decoration: inherit;
@@ -301,11 +301,11 @@ const ParticipatingResourceDetail = ({
                     <SummaryIcon>
                       <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
-                    <Link to={`/resource/${detail.data_resource_id}`}>
+                    <span>
                       DATASET SUMMARIES (
                       {detail.datasets_total}
                       )
-                    </Link>
+                    </span>
                   </DatasetsSummary>
                 </div>
               </div>
