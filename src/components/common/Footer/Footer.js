@@ -34,7 +34,7 @@ const Logo = styled.img`
 
 const Title = styled.h2`
   font-size: 16px;
-  font-weight: 400;
+  font-weight: bold;
   color: var(--white);
   margin-left: 40px;
 `;
