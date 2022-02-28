@@ -10,7 +10,6 @@ const FooterStyled = styled.footer`
   background-color: #283247;
   bottom: 0;
   width: 100%;
-  height: 18rem;
 `;
 
 const FooterContainer = styled(Container)`
@@ -25,7 +24,7 @@ const FooterContainer = styled(Container)`
 `;
 
 const Menu = styled.div`
-  padding: 2rem 0 1em;
+  padding: 2rem 0 0 0;
 `;
 
 const Logo = styled.img`
@@ -70,7 +69,7 @@ const Hr = styled.hr`
 const SiteInfo = styled(Row)`
   position: absolute;
   font-size: 0.6875rem;
-  top: 200px;
+  top: 260px;
 `;
 
 const Caption = styled.div`
@@ -131,11 +130,13 @@ const Footer = ({
                 <Col xs={4}>
                   <Title>NIH Policies</Title>
                   <MenuUl>
+                    <MenuLi><a href="https://www.cancer.gov/policies" target="_blank" rel="noopener noreferrer">Policies</a></MenuLi>
                     <MenuLi><a href="https://www.cancer.gov/policies/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a></MenuLi>
                     <MenuLi>
                       <a href="https://www.cancer.gov/policies/accessibility" target="_blank" rel="noopener noreferrer">Accessibility</a>
                     </MenuLi>
                     <MenuLi><a href="https://www.cancer.gov/policies/foia" target="_blank" rel="noopener noreferrer">FOIA</a></MenuLi>
+                    <MenuLi><a href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html" target="_blank" rel="noopener noreferrer">HHS Vulnerability Disclosure</a></MenuLi>
                   </MenuUl>
                 </Col>
               </Row>
