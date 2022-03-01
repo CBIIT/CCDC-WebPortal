@@ -129,7 +129,7 @@ const ResourceType = styled.div`
   span {
     border-radius: 20px;
     border: 1px solid #FFBF17;
-    padding: 5px 10px;
+    padding: 5px 10px 7px 10px;
     line-height: 52px;
   }
 `;
