@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Filters from './Filters';
 import SearchResult from './SearchResult';
+import PageInfo from './PageInfo';
 import img from '../../assets/img/Participating_Resources.png';
 
 const PageHeaderContainer = styled.div`
@@ -47,6 +48,7 @@ const PageLogoArea = styled.div`
 
 const SearchContainer = styled.div`
   width: 100%;
+  // padding-bottom: 80px;
 `;
 
 const SearchArea = styled.div`
@@ -67,6 +69,7 @@ const SearchContentContainer = styled.div`
   width: 80%;
   border-right: 1px solid #e0e4e7;
   padding: 0 18px;
+  padding-bottom: 80px;
 `;
 
 const SearchContent = styled.div`
@@ -122,9 +125,11 @@ const ParticipatingResourcesPage = ({
             <Filters />
           </SearchFiltersContainer>
           <SearchContentContainer>
+            <PageInfo />
             <SearchContent>
               <SearchResult />
             </SearchContent>
+            <PageInfo />
           </SearchContentContainer>
         </SearchArea>
       </SearchContainer>

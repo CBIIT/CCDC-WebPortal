@@ -129,3 +129,18 @@ export function clickParticipatingResourcesSearchFilter(filter) {
   };
   return func;
 }
+
+export function pageSelect(pageInfo) {
+  const func = function func(dispatch, getState) {
+      dispatch(switchPage(pageInfo));
+      const { participatingResources } = getState();
+      return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
+      .then(searchResults => {
+        dispatch(loadSearchResultsSuccess(searchResults.data));
+      })
+      .catch(error => {
+          throw error;
+      });
+  };
+  return func;
+}
