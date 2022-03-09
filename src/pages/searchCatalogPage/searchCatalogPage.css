@@ -29,6 +29,8 @@
 .searchTooltipButton {
   line-height: 0;
   padding: 0;
+  margin-left: -5px;
+  position: absolute;
   border: 0;
   color: #6c757d;
   font-size: 22px;
