@@ -68,7 +68,7 @@ const Hr = styled.hr`
 const SiteInfo = styled(Row)`
   position: absolute;
   font-size: 0.6875rem;
-  top: 260px;
+  top: 230px;
 `;
 
 const Caption = styled.div`
