@@ -28,7 +28,7 @@ const OptionLabel = styled.span`
   width: calc(100% - 50px);
   color: #004187;
   padding-left: 8px;
-  line-height: 18px;
+  // line-height: 18px;
 `;
 
 const OptionCount = styled.span`
