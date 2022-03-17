@@ -26,7 +26,7 @@ const PageLabelArea = styled.div`
 `;
 
 const PageLabel = styled.div`
-  color: #07368b;
+  color: #004187;
   font-size: 42px;
   line-height: 42px;
   font-weight: bold;
