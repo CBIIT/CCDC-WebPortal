@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/sitesearch" element={<DocumentSearchPage />} />
         <Route path="/glossary" element={<Glossary />} />
-        <Route element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer autoClose={3000} hideProgressBar />
       <Footer />

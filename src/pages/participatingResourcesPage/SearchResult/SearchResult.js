@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // import { Link } from "react-router-dom";
-import {Button} from 'react-bootstrap';
+// import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import externalIcon from "../../../assets/img/resource.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
@@ -11,7 +11,7 @@ const SearchResultContainer = styled.div`
   width: 100%;
   display: grid;
   // padding-bottom: 50px;
-  padding-bottom: 80px;
+  // padding-bottom: 80px;
 `;
 
 const ResultInfo = styled.div`
@@ -129,7 +129,7 @@ const ResourceType = styled.div`
   span {
     border-radius: 20px;
     border: 1px solid #FFBF17;
-    padding: 5px 10px;
+    padding: 5px 10px 7px 10px;
     line-height: 52px;
   }
 `;
@@ -172,14 +172,14 @@ const SummaryIcon = styled.div`
   }
 `;
 
-const LoadMoreContainer = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-`;
+// const LoadMoreContainer = styled.div`
+//   width: 100%;
+//   margin-top: 20px;
+//   text-align: center;
+// `;
 
 const SearchResult = ({
-  pageInfo,
+  // pageInfo,
   resultList,
 }) => {
   const tooltips = {
@@ -190,9 +190,9 @@ const SearchResult = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  const handleLoadMore = (error) => {
-    throw error;
-  };
+  // const handleLoadMore = (error) => {
+  //   throw error;
+  // };
 
   return (
     <>
@@ -234,7 +234,9 @@ const SearchResult = ({
                     </POCInfo>
                     <SiteInfo>
                       <SiteIcon />
-                      <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">{rst.resource_uri}</a>
+                      <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">
+                        {rst.resource_uri && rst.resource_uri.length > 70 ? `${rst.resource_uri.substring(0, 80)}...` : rst.resource_uri}
+                      </a>
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
@@ -263,7 +265,7 @@ const SearchResult = ({
           })
         }
       </SearchResultContainer>
-      {
+      {/* {
         pageInfo.total !== 0
         && pageInfo.page * pageInfo.pageSize < pageInfo.total
         && (
@@ -271,13 +273,13 @@ const SearchResult = ({
             <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleLoadMore()}>Load More Results</Button>
           </LoadMoreContainer>
         )
-      }
+      } */}
     </>
   );
 };
 
 SearchResult.propTypes = {
-  pageInfo: PropTypes.object.isRequired,
+  // pageInfo: PropTypes.object.isRequired,
   resultList: PropTypes.array.isRequired,
 };
 
