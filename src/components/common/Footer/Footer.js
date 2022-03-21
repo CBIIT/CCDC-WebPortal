@@ -34,8 +34,8 @@ const Logo = styled.img`
 const Title = styled.h2`
   font-size: 16px;
   font-weight: bold;
+  line-height: 13px;
   color: var(--white);
-  margin-left: 40px;
 `;
 
 const MenuLink = styled(Link)`
@@ -47,7 +47,6 @@ const MenuLink = styled(Link)`
 const MenuUl = styled.ul`
   padding-left: 0;
   list-style: none;
-  margin-left: 40px;
 `;
 
 const MenuLi = styled.li`
@@ -69,7 +68,7 @@ const Hr = styled.hr`
 const SiteInfo = styled(Row)`
   position: absolute;
   font-size: 0.6875rem;
-  top: 260px;
+  top: 230px;
 `;
 
 const Caption = styled.div`
@@ -110,24 +109,30 @@ const Footer = ({
       <FooterContainer>
         <Menu>
           <Row>
-            <Col xs={5}>
+            <Col xs={6}>
               <a href="https://www.cancer.gov/" target="_blank" rel="noopener noreferrer"><Logo src={logo} alt="logo-footer" /></a>
             </Col>
-            <Col xs={7}>
+            <Col xs={6}>
               <Row>
-                <Col xs={4}>
-                  <Title>Contact Information</Title>
-                  <MenuUl>
-                    <MenuLi><a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Contact Us</a></MenuLi>
-                  </MenuUl>
+                <Col xs={6}>
+                  <Row className="mb-2 pb-3">
+                    <Col xs={12}>
+                      <Title>Contact Information</Title>
+                      <MenuUl>
+                        <MenuLi><a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Contact Us</a></MenuLi>
+                      </MenuUl>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Title>More Information</Title>
+                      <MenuUl>
+                        <MenuLi><MenuLink to="/about" aria-label="About CCDC">About CCDC</MenuLink></MenuLi>
+                      </MenuUl>
+                    </Col>
+                  </Row>
                 </Col>
-                <Col xs={4}>
-                  <Title>More Information</Title>
-                  <MenuUl>
-                    <MenuLi><MenuLink to="/about" aria-label="About CCDC">About CCDC</MenuLink></MenuLi>
-                  </MenuUl>
-                </Col>
-                <Col xs={4}>
+                <Col xs={6}>
                   <Title>NIH Policies</Title>
                   <MenuUl>
                     <MenuLi><a href="https://www.cancer.gov/policies" target="_blank" rel="noopener noreferrer">Policies</a></MenuLi>
