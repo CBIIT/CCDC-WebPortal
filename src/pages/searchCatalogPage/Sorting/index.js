@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  changeSorting,
+  changeSorting, changeSortingOrder
 } from '../../../redux/actions/searchActions';
 import Sorting from './Sorting';
 
@@ -11,6 +11,7 @@ const ReduxSorting = (() => {
 
   const mapDispatchToProps = {
     onChangeSorting: changeSorting,
+    onChangeSortingOrder: changeSortingOrder,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(Sorting);

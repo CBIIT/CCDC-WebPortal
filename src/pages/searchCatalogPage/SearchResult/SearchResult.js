@@ -108,6 +108,40 @@ const SearchResultContainer = styled.div`
   }
 `;
 
+const TableHead = styled.thead`
+  th{
+    cursor: pointer;
+    user-select: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+
+    &:hover {
+      background-color: #c6d2db;
+    }
+  }
+`;
+
+const SortingOrder = styled.span`
+  margin-top: 5px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='rgba(75,108,134,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+`;
+
+const SortingOrderDesc = styled.span`
+  margin-top: 5px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='rgba(75,108,134,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+  transform: rotate(-180deg);
+`;
+
 const toCapitalize = (str) => {
   const arr = str.split(" ");
 
@@ -120,8 +154,38 @@ const toCapitalize = (str) => {
 
 const SearchResult = ({
   resultList,
+  sort,
   viewType,
+  onChangeSorting,
+  onChangeSortingOrder,
 }) => {
+  const handleSortBy = (column) => {
+    const name = column;
+    if (name === sort.name) {
+      onChangeSortingOrder(sort.v === "asc" ? "desc" : "asc");
+    } else {
+      const toSortBy = {};
+      if (name === "Dataset") {
+        toSortBy.name = "Dataset";
+        toSortBy.k = "dataset_name.raw";
+      } else if (name === "Cases") {
+        toSortBy.name = "Cases";
+        toSortBy.k = "case_id";
+      } else if (name === "Samples") {
+        toSortBy.name = "Samples";
+        toSortBy.k = "sample_id";
+      } else if (name === "Resource") {
+        toSortBy.name = "Resource";
+        toSortBy.k = "data_resource_id";
+      } else {
+        toSortBy.name = "Primary Dataset Scope";
+        toSortBy.k = "primary_dataset_scope";
+      }
+      toSortBy.v = sort.v;
+      onChangeSorting(toSortBy);
+    }
+  };
+
   const tooltips = {
     Aliquot: "Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight. [NCIt C25414]",
     Assay: "An examination or analysis of material, or of its prior assay, to determine the material's features or components.",
@@ -431,15 +495,60 @@ const SearchResult = ({
         {
           viewType === "table" && (
             <table className="table table-striped">
-              <thead>
+              <TableHead>
                   <tr style={{ color: 'navy' }}>
-                      <th scope="col">Dataset</th>
-                      <th scope="col">Cases</th>
-                      <th scope="col">Samples</th>
-                      <th scope="col">Resource</th>
-                      <th scope="col">Primary Dataset Scope</th>
+                      <th scope="col" width="45%" abbr="Dataset" onClick={() => handleSortBy("Dataset")}>
+                        Dataset&nbsp;
+                        {
+                          sort.k === "dataset_name.raw" && (
+                            sort.v === "desc"
+                            ? <SortingOrder />
+                            : <SortingOrderDesc />
+                          )
+                        }
+                      </th>
+                      <th scope="col" width="10%" abbr="Cases" onClick={() => handleSortBy("Cases")}>
+                        Cases&nbsp;
+                        {
+                          sort.k === "case_id" && (
+                            sort.v === "desc"
+                            ? <SortingOrder />
+                            : <SortingOrderDesc />
+                          )
+                        }
+                      </th>
+                      <th scope="col" width="10%" abbr="Samples" onClick={() => handleSortBy("Samples")}>
+                        Samples&nbsp;
+                        {
+                          sort.k === "sample_id" && (
+                            sort.v === "desc"
+                            ? <SortingOrder />
+                            : <SortingOrderDesc />
+                          )
+                        }
+                      </th>
+                      <th scope="col" width="15%" abbr="Resource" onClick={() => handleSortBy("Resource")}>
+                        Resource&nbsp;
+                        {
+                          sort.k === "data_resource_id" && (
+                            sort.v === "desc"
+                            ? <SortingOrder />
+                            : <SortingOrderDesc />
+                          )
+                        }
+                      </th>
+                      <th scope="col" width="20%" abbr="Primary Dataset Scope" onClick={() => handleSortBy("Primary Dataset Scope")}>
+                        Primary Dataset Scope&nbsp;
+                        {
+                          sort.k === "primary_dataset_scope" && (
+                            sort.v === "desc"
+                            ? <SortingOrder />
+                            : <SortingOrderDesc />
+                          )
+                        }
+                      </th>
                   </tr>
-              </thead>
+              </TableHead>
               <tbody>
                   {
                   resultList.length === 0 ? (
@@ -478,7 +587,10 @@ const SearchResult = ({
 
 SearchResult.propTypes = {
   resultList: PropTypes.array.isRequired,
+  sort: PropTypes.object.isRequired,
   viewType: PropTypes.string.isRequired,
+  onChangeSorting: PropTypes.func.isRequired,
+  onChangeSortingOrder: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

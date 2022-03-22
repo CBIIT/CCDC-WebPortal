@@ -19,9 +19,11 @@ export const LOAD_SEARCH_RESULTS_SUCCESS = "load_search_results_success";
 export const CLICK_SEARCH_FILTER_SUCCESS = "click_search_filter_success";
 export const RUN_FULL_TEXT_SEARCH = "run_full_text_search";
 export const SWITCH_SORTING = "switch_sorting";
+export const SWITCH_SORTING_ORDER = "switch_sorting_order";
 export const SWITCH_PAGE = "switch_page";
 export const SWITCH_VIEW = "switch_view";
 export const LOAD_DATASET_DETAIL_SUCCESS = "load_dataset_detail_success";
+export const RESET_SEARCH_CRITERIA = "reset_search_criteria";
 export const LOAD_DATARESOURCE_DETAIL_SUCCESS = "load_dataresource_detail_success";
 export const LOAD_DATARESOURCE_DETAIL_DATASETS_SUCCESS = "load_dataresource_detail_datasets_success";
 

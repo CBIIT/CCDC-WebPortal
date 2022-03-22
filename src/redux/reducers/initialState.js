@@ -33,8 +33,8 @@ export default {
             total: 0,
         },
         sort: {
-          name: "Resource",
-          k: "data_resource_id",
+          name: "Dataset",
+          k: "dataset_name.raw",
           v: "asc"
         }
       },

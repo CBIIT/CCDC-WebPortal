@@ -19,9 +19,11 @@ const useQuery = () => {
 
 const SearchCatalogPage = ({
   searchCriteria,
+  viewType,
   onLoadFromUrlQuery,
   onStartFullTextSearch,
   onBubbleRemoveClick,
+  onCleanUpSearchCriteria,
 }) => {
   const query = useQuery();
   const paramText = query.get("search_text") ? query.get("search_text").trim() : "";
@@ -31,6 +33,9 @@ const SearchCatalogPage = ({
     onLoadFromUrlQuery(paramText, {}).catch(error => {
         throw new Error(`Loading search from url query failed: ${error}`);
       });
+    return () => {
+      onCleanUpSearchCriteria();
+    };
   }, []);
 
   const handleBubbleRemoveClick = () => {
@@ -124,7 +129,9 @@ const SearchCatalogPage = ({
             </div>
             <div className="searchDisplayOptionsRow">
               <div className="searchSortingArea">
-                <Sorting />
+                {
+                  viewType === "card" ? <Sorting /> : ""
+                }
               </div>
               <div className="contentPagingArea">
                 <PageInfo />
@@ -147,9 +154,11 @@ const SearchCatalogPage = ({
 
 SearchCatalogPage.propTypes = {
   searchCriteria: PropTypes.string.isRequired,
+  viewType: PropTypes.string.isRequired,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
   onStartFullTextSearch: PropTypes.func.isRequired,
   onBubbleRemoveClick: PropTypes.func.isRequired,
+  onCleanUpSearchCriteria: PropTypes.func.isRequired,
 };
 
 export default SearchCatalogPage;

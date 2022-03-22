@@ -20,6 +20,10 @@ export function switchSorting(sorting) {
   return { type: types.SWITCH_SORTING, sorting};
 }
 
+export function switchSortingOrder(order) {
+  return { type: types.SWITCH_SORTING_ORDER, order};
+}
+
 export function switchPage(pageInfo) {
   return { type: types.SWITCH_PAGE, pageInfo};
 }
@@ -32,6 +36,10 @@ export function loadDatasetDetailSuccess(id, data) {
   const tmp = {};
   tmp[id] = data;
   return { type: types.LOAD_DATASET_DETAIL_SUCCESS, dataset: tmp};
+}
+
+export function resetSearchCriteria(searchCriteria) {
+  return { type: types.RESET_SEARCH_CRITERIA, searchCriteria};
 }
 
 export function initialLoadSearchResults() {
@@ -95,6 +103,21 @@ export function changeSorting(sorting) {
   return func;
 }
 
+export function changeSortingOrder(order) {
+  const func = function func(dispatch, getState) {
+      dispatch(switchSortingOrder(order));
+      const { datasets } = getState();
+      return searchApi.searchCatalog(datasets.searchCriteria)
+      .then(searchResults => {
+        dispatch(loadSearchResultsSuccess(searchResults.data));
+      })
+      .catch(error => {
+          throw error;
+      });
+  };
+  return func;
+}
+
 export function pageSelect(pageInfo) {
   const func = function func(dispatch, getState) {
       dispatch(switchPage(pageInfo));
@@ -126,6 +149,26 @@ export function loadDatasetDetail(id) {
     .catch(error => {
         throw error;
     });
+  };
+  return func;
+}
+
+export function cleanUpSearchCriteria() {
+  const func = function func(dispatch) {
+    dispatch(resetSearchCriteria({
+      search_text: "",
+      facet_filters: {},
+      pageInfo: {
+          page: 1,
+          pageSize: 10,
+          total: 0,
+      },
+      sort: {
+        name: "Dataset",
+        k: "dataset_name.raw",
+        v: "asc"
+      }
+    }));
   };
   return func;
 }

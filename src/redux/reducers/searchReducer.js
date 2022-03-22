@@ -69,8 +69,23 @@ export default function searchReducer(state = initialState.datasets, action) {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              sort: action.sorting,
+              sort: {
+                ...state.searchCriteria.sort,
+                name: action.sorting.name,
+                k: action.sorting.k,
               },
+              },
+          };
+        case types.SWITCH_SORTING_ORDER:
+          return {
+            ...state,
+            searchCriteria: {
+              ...state.searchCriteria,
+              sort: {
+                ...state.searchCriteria.sort,
+                v: action.order,
+              },
+            },
           };
         case types.SWITCH_PAGE:
           return {
@@ -92,6 +107,11 @@ export default function searchReducer(state = initialState.datasets, action) {
               ...state.details,
               ...action.dataset,
             }
+          };
+        case types.RESET_SEARCH_CRITERIA:
+          return {
+            ...state,
+            searchCriteria: action.searchCriteria,
           };
         default:
             return state;
