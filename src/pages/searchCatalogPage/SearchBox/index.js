@@ -67,14 +67,16 @@ const SearchBoxArea = styled.div`
     font-weight: bold;
     color: white;
     border: 2.5px solid #07368b;
-    background-color: #07368b;
+    // background-color: #07368b;
+    background-color: #2c64a0;
     padding: .75rem 1rem;
     line-height: 26px;
   }
 
   .buttonDisabled {
     color: #fff;
-    background-color: #6c757d;
+    // background-color: #6c757d;
+    background-color: navy;
     border-color: #6c757d;
   }
 `;
