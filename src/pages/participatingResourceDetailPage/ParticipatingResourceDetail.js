@@ -59,7 +59,7 @@ const DatasetType = styled.div`
   text-align: right;
   margin-top: -36px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
@@ -79,7 +79,7 @@ const SummaryDatasetType = styled.div`
   margin-top: -30px;
   margin-bottom: -5px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
 
   span {
@@ -101,7 +101,7 @@ const DatasetsSummary = styled.div`
   background-color: #25b39a;
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
-  font-size: 26px;
+  font-size: 27px;
   font-family: Inter;
 
   span {
@@ -152,7 +152,7 @@ const DatasetTitle = styled.div`
   // font-weight: 600;
   font-family: Lato;
   // font-size: 1.3rem;
-  font-size: 22px;
+  font-size: 23px;
   height: 40px;
   // border-bottom: 2px solid #255b96;
   text-decoration: underline;

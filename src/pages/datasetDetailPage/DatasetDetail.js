@@ -21,7 +21,7 @@ const ResourceType = styled.div`
   text-align: right;
   margin-top: -44px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
