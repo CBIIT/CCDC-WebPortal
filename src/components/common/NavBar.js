@@ -183,7 +183,7 @@ const LiSection = styled.li`
   svg {
     position: absolute;
     font-size: 25px;
-    bottom: 14px;
+    bottom: 17px;
     right: 5px;
   }
 
@@ -357,6 +357,13 @@ const NavBar = () => {
     }
   };
 
+  const handleMobileMenuClick = () => {
+    const toggle = document.querySelector(".mobile-nav-toggle");
+    if (toggle.getAttribute("aria-expanded") === "true") {
+      toggle.click();
+    }
+  };
+
   return (
       <Nav>
           <NavContainer>
@@ -364,9 +371,9 @@ const NavBar = () => {
                 <span className="sr-only">Menu</span>
               </MobileHamburger>
               <MobileUlContainer ref={mobileMenuSelection} id="mobile-navigation" className="mobile-navigation" data-visible={mobileMenuData}>
-                <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" end>Home</NavLink></MobileLiSection>
-                <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search">Search Catalog</NavLink></MobileLiSection>
-                <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources">Participating Resources</NavLink></MobileLiSection>
+                <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
+                <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
+                <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources" onClick={handleMobileMenuClick}>Participating Resources</NavLink></MobileLiSection>
                 <MobileLiSection>
                   <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
                     About&nbsp;
@@ -374,8 +381,8 @@ const NavBar = () => {
                   </MenuHeader>
                 </MobileLiSection>
                 <MobileSubUl data-visible={mobileAboutMenuData}>
-                  <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about">About CCDI Data Catalog</NavLink></MobileLiSection>
-                  <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary">Glossary</NavLink></MobileLiSection>
+                  <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
+                  <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                 </MobileSubUl>
               </MobileUlContainer>
               <UlContainer id="primary-navigation" className="primary-navigation">
