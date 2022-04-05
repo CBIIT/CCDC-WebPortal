@@ -30,6 +30,7 @@ const NavContainer = styled.div`
       .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url(${mobileClose});
         width: 2.5rem;
+        height: 2.5rem;
         top: 5px;
       }
       .mobile-navigation {
@@ -56,6 +57,7 @@ const MobileHamburger = styled.button`
   padding: 0;
   display: none;
   width: 2rem;
+  height: 2rem;
   aspect-ratio: 1;
   z-index: 9999;
   background-image: url(${mobileHamburger});
@@ -229,14 +231,14 @@ const SearchArea = styled.div`
   color: #11B886;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 26.41px;
+  line-height: 26px;
   position: absolute;
   background-color: white;
   top: -70px;
   right: 0;
 
   @media (max-width: 768px) {
-    top: 3.5px;
+    top: 5px;
     input {
       width: 200px;
     }
@@ -256,6 +258,7 @@ const SearchIcon = styled.div`
 
 const SearchInput = styled.input`
   border: none;
+  padding: 0;
   // color: #11B886;
   color: #00996b;
   font-size: 1rem;
@@ -367,9 +370,7 @@ const NavBar = () => {
   return (
       <Nav>
           <NavContainer>
-              <MobileHamburger type="button" className="mobile-nav-toggle" aria-controls="mobile-navigation" aria-expanded={mobileMenuExpanded} onClick={handleHamburgerClick}>
-                <span className="sr-only">Menu</span>
-              </MobileHamburger>
+              <MobileHamburger type="button" className="mobile-nav-toggle" aria-controls="mobile-navigation" aria-expanded={mobileMenuExpanded} onClick={handleHamburgerClick} />
               <MobileUlContainer ref={mobileMenuSelection} id="mobile-navigation" className="mobile-navigation" data-visible={mobileMenuData}>
                 <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
                 <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
