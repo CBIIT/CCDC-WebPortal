@@ -59,7 +59,7 @@ const DatasetType = styled.div`
   text-align: right;
   margin-top: -36px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
@@ -79,7 +79,7 @@ const SummaryDatasetType = styled.div`
   margin-top: -30px;
   margin-bottom: -5px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
 
   span {
@@ -101,7 +101,7 @@ const DatasetsSummary = styled.div`
   background-color: #25b39a;
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
-  font-size: 26px;
+  font-size: 27px;
   font-family: Inter;
 
   span {
@@ -152,7 +152,7 @@ const DatasetTitle = styled.div`
   // font-weight: 600;
   font-family: Lato;
   // font-size: 1.3rem;
-  font-size: 22px;
+  font-size: 23px;
   height: 40px;
   // border-bottom: 2px solid #255b96;
   text-decoration: underline;
@@ -203,7 +203,7 @@ const ParticipatingResourceDetail = ({
   let dataContentTypes = detail.data_content_type === undefined ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
-  resourseLinks = resourseLinks.split(';');
+  if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
@@ -232,7 +232,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prDetailHeaderContainer">
                   <div className="prDetailHeaderLabel">{detail.resource_name}</div>
                   <div className="prIcon">
-                    <DataResourceIcons participatingResource={detail.data_resource_id} type="white" />
+                    {detail.data_resource_id ? <DataResourceIcons participatingResource={detail.data_resource_id} type="white" /> : null}
                   </div>
                   <span className="badge"><i className="far fa-file-alt" /></span>
                   <span className="badgeCount">{detail.datasets_total}</span>
@@ -240,8 +240,8 @@ const ParticipatingResourceDetail = ({
                     {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
                     {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
                     <SiteIcon />
-                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink>
-                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink>
+                    {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
+                    {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -250,7 +250,7 @@ const ParticipatingResourceDetail = ({
                       {detail.poc ? ', ' : null}
                       &nbsp;
                       {/* <Link to={content.poc_email} className="prDetailHeaderLink">{content.poc_email}</Link> */}
-                      <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink>
+                      {detail.poc_email ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink> : null}
                       {/* <li><a className="prDetailHeaderLink" href={content.poc_email}>{content.poc_email}</a></li> */}
                       {/* <a href={`mailto:${content.poc_email}`}>{content.poc_email}</a> */}
                     </span>
@@ -287,7 +287,7 @@ const ParticipatingResourceDetail = ({
                       <br />
                       {/* <div className="prDataElementLabel">Specialization</div> */}
                       <div className="prDataElementLabel">Data Update Date</div>
-                      <div className="prDataElementContent">{detail.data_update_date}</div>
+                      {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
                     </div>
                     <div className="prDataAccessContainer">
                       <div className="prAdditionalDataLabel">Data Content Type</div>
@@ -382,9 +382,9 @@ const ParticipatingResourceDetail = ({
                             const cskey = `cs_${csidx}`;
                             return (
                               <span key={cskey} className="itemSpan">
-                                {cs.n}
+                                {cs.n ? cs.n : null}
                                 &nbsp;(
-                                {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                {cs.v ? cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                 {/* )&#59;&nbsp; */}
                                 {csidx === ds.case_sex.length - 1 ? ")" : "); "}
                               </span>
@@ -404,9 +404,9 @@ const ParticipatingResourceDetail = ({
                             const cadkey = `cad_${cadidx}`;
                             return (
                               <span key={cadkey} className="itemSpan">
-                                {cad.n}
+                                {cad.n ? cad.n : null}
                                 &nbsp;(
-                                {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                 {/* )&#59;&nbsp; */}
                                 {cadidx === ds.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                               </span>
