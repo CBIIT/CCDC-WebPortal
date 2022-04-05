@@ -75,48 +75,49 @@ const HomePage = () => {
               <Carousel />
           </div>
           <div className="infoContainer">
-              <div className="heroImage2" />
-              <div className="heroTextContainer">
-                  <div className="heroTextWrapper2">
-                  <div className="row">
-                      <div className="column1">
-                          <div className="headerContent2">
-                              What can
-                              <br />
-                              you expect
-                              <br />
-                              from the
-                              <br />
-                              Data Catalog
-                          </div>
-                      </div>
-                      <div className="column2">
-                          <p className="infoSection">
-                              The CCDI Childhood Cancer Data Catalog is a searchable database of
-                              National Cancer Institute and other  pediatric cancer resources.
-                              <br />
-                              <br />
-                              Resources include repositories, registries, data commons, web sites,
-                              and catalogs that either manage or refer to data. Users can browse
-                              and filter the list of data resources or enter search terms to identify
-                              data of interest.
-                              <br />
-                              <br />
-                              Links to those data resources are provided in the browse or search results.
-                              <br />
-                              <br />
-                          </p>
-                          <a href="/search#top" className="headerLink2">
-                              <Button className="buttonText color-white">
-                                  <h6>
-                                      EXPLORE THE CATALOG &emsp;&emsp;&emsp;
-                                      <span style={{ color: '#FFBF17' }}>&#9658;</span>
-                                  </h6>
-                              </Button>
-                          </a>
-                      </div>
-                  </div>
-                  </div>
+              <div className="heroImage2">
+                <div className="heroTextContainer2">
+                    <div className="heroTextWrapper2">
+                    <div className="row">
+                        <div className="column1">
+                            <div className="headerContent2">
+                                What can
+                                <br />
+                                you expect
+                                <br />
+                                from the
+                                <br />
+                                Data Catalog
+                            </div>
+                        </div>
+                        <div className="column2">
+                            <p className="infoSection">
+                                The CCDI Childhood Cancer Data Catalog is a searchable database of
+                                National Cancer Institute and other  pediatric cancer resources.
+                                <br />
+                                <br />
+                                Resources include repositories, registries, data commons, web sites,
+                                and catalogs that either manage or refer to data. Users can browse
+                                and filter the list of data resources or enter search terms to identify
+                                data of interest.
+                                <br />
+                                <br />
+                                Links to those data resources are provided in the browse or search results.
+                                <br />
+                                <br />
+                            </p>
+                            <a href="/search#top" className="headerLink2">
+                                <Button className="buttonText color-white">
+                                    <h6>
+                                        EXPLORE THE CATALOG &emsp;&emsp;&emsp;
+                                        <span style={{ color: '#FFBF17' }}>&#9658;</span>
+                                    </h6>
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
               </div>
           </div>
       </>
