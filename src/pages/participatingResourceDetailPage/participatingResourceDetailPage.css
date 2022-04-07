@@ -109,7 +109,7 @@
 }
 
 .prAboutResourceLabel {
-  padding: 5px 0 10px 10px;
+  padding: 5px 0 22px 10px;
   /* color: rgb(180, 180, 180); */
   color: #99AFBE;
   font-size: 26px;
@@ -119,6 +119,16 @@
   /* border-bottom: 2px solid rgb(163, 163, 163); */
   border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
+}
+
+.prAboutResourceArrowSymbol {
+  height: 12px;
+  width: 25px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #7397b0;
+  margin-left: 317px;
+  margin-top: -25px;
 }
 
 .prAboutResourceContent {

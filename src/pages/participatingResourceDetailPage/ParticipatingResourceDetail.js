@@ -278,7 +278,10 @@ const ParticipatingResourceDetail = ({
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
-                    <div className="prAboutResourceLabel">About This Resource</div>
+                    <div className="prAboutResourceLabel">
+                      About This Resource
+                      <div className="prAboutResourceArrowSymbol" />
+                    </div>
                     <div className="prAboutResourceContent">{detail.description}</div>
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
