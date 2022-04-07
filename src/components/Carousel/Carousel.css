@@ -4,8 +4,34 @@
   box-sizing: none;
 }
 
+@media (min-width: 1200px) {
+  .carousel-container {
+    width: 1200px;
+  }
+  .carousel-content-wrapper {
+    width: 1128px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .carousel-content-wrapper {
+    width: calc(100% - 72px);
+  }
+}
+
+@media (max-width: 376px) {
+  .cardLabel {
+    font-size: 0.8rem;
+  }
+  .cardHeader h4 {
+    font-size: 1.1rem;
+  }
+  .cardContent {
+    font-size: 0.8em !important;
+  }
+}
+
 .carousel-container {
-  width: 1200px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -29,16 +55,8 @@
   background: #212121;
 }
 
-.carousel-action-wrapper-right {
-  overflow: hidden;
-  background: #212121;
-  z-index: 1;
-  margin-left: -2px;
-}
-
 .carousel-content-wrapper {
   overflow: hidden;
-  width: 90%;
   height: 100%;
 }
 
@@ -60,6 +78,10 @@
   flex-grow: 1;
 }
 
+.carousel-content.show-1 > * {
+  width: 100%;
+}
+
 .carousel-content.show-2 > * {
   width: 50%;
 }
@@ -68,14 +90,10 @@
   width: calc(100% / 3);
 }
 
-.carousel-content.show-4 > * {
-  width: calc(100% / 4);
-}
-
 .left-arrow, .right-arrow {
   z-index: 1;
-  width: 48px;
-  height: 100px;
+  padding: 0;
+  width: 36px;
   border-radius: 24px;
   background-color: transparent;
   box-shadow: 0 0 0 0 blue;
@@ -85,33 +103,19 @@
   margin-top: 65px;
 }
 
-.left-arrow {
-  left: 24px;
-}
-
 .left-arrow img {
   transform: rotate(180deg);
 }
 
-.right-arrow {
-  right: 24px;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .left-arrow, .right-arrow {
-    display: none;
-  }
-}
-
 .carousel-card {
   display: grid;
-  padding: 0 25px;
+  padding: 0 20px;
   background-color: #212121;
 }
 
 .carousel-card-with-line {
   display: grid;
-  padding: 0 25px;
+  padding: 0 20px;
   background-color: #212121;
   border-right: 2px double gray;
 }
@@ -126,12 +130,12 @@
 }
 
 .cardInfo {
-  width: 80%;
+  width: calc(100% - 64px);
   padding-top: 10px;
 }
 
 .cardIcon {
-  width: 20%;
+  width: 64px;
   color: white;
   font-size: 40px;
   text-align: center;
@@ -164,5 +168,5 @@
   height: 100px;
   /* line-height: 18pt; */
   padding-top: 16px;
-  max-width: 270px;
+  width: 100%;
 }

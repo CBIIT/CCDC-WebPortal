@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-
-import logo from '../../../assets/img/nih-white-logo.png';
+import { Col } from 'react-bootstrap';
 
 const FooterStyled = styled.footer`
   background-color: #283247;
@@ -12,23 +10,54 @@ const FooterStyled = styled.footer`
   width: 100%;
 `;
 
-const FooterContainer = styled(Container)`
-  max-width: 1200px;
-  // color: var(--white);
+const FooterContainer = styled.div`
   color: white;
   font-family: Lato;
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
   position: relative;
+  margin: 0 auto;
+
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
 `;
 
 const Menu = styled.div`
   padding: 2rem 0 0 0;
 `;
 
-const Logo = styled.img`
-  max-width: 15rem;
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+
+  @media (max-width: 640px) {
+    display: grid;
+    text-align: center;
+
+    .col-6 {
+      width: 100%;
+    }
+  }
+`;
+
+const Logo = styled.div`
+  display: block;
+  h1 {
+    font-size: 25px;
+    text-align: left;
+  }
+  h1 span {
+    font-size: 16px;
+    display: block;
+  }
+  @media (max-width: 640px) {
+    padding-bottom: 50px;
+    h1 {
+      text-align: center;
+    }
+  }
 `;
 
 const Title = styled.h2`
@@ -62,13 +91,20 @@ const MenuLi = styled.li`
 
 const Hr = styled.hr`
   border-top: 1px solid #98D2FF;
-  width: 95%;
+  width: 100%;
 `;
 
-const SiteInfo = styled(Row)`
+const SiteInfo = styled.div`
   position: absolute;
   font-size: 0.6875rem;
   top: 230px;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    top: 0;
+    padding-bottom: 15px;
+    text-align: center;
+  }
 `;
 
 const Caption = styled.div`
@@ -81,6 +117,13 @@ const Caption = styled.div`
     font-size: 0.75rem;
     margin: 0 0.5rem;
     text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    display: grid;
+    span {
+      display: none;
+    }
   }
 `;
 
@@ -110,7 +153,12 @@ const Footer = ({
         <Menu>
           <Row>
             <Col xs={6}>
-              <a href="https://www.cancer.gov/" target="_blank" rel="noopener noreferrer"><Logo src={logo} alt="logo-footer" /></a>
+              <Logo>
+                <h1>
+                  National Cancer Institute
+                  <span>at the National Institutes of Health</span>
+                </h1>
+              </Logo>
             </Col>
             <Col xs={6}>
               <Row>
