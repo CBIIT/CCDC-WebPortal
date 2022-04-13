@@ -45,7 +45,7 @@ const SearchBoxArea = styled.div`
   .searchBoxInputGroup .form-control {
     border-radius: 0;
     border: 2.5px solid #07368b;
-    color: #07368b;
+    color: #004187;
     padding-right: 50px;
     font-size: 25px;
   }
@@ -55,7 +55,7 @@ const SearchBoxArea = styled.div`
   }
   
   .searchBoxInputGroup .form-control::placeholder {
-    color: #07368b;
+    color: #004187;
     font-family: Inter;
     font-weight: 600;
     font-size: 25px;
@@ -66,8 +66,8 @@ const SearchBoxArea = styled.div`
     border-radius: 0;
     font-weight: bold;
     color: white;
-    border: 2.5px solid #07368b;
-    // background-color: #07368b;
+    border: 2.5px solid #004187;
+    // background-color: #004187;
     background-color: #2c64a0;
     padding: .75rem 1rem;
     line-height: 26px;
