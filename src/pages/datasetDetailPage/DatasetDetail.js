@@ -649,7 +649,7 @@ const DatasetDetail = ({
                           sortedAdditonals.map((ad, adIdx) => {
                             const adkey = `ad_${adIdx}`;
                             if (ad === "published in") {
-                              let publishedLinks = content.published_in === undefined ? "" : content.published_in;
+                              let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
                               if (content.published_in) { publishedLinks = publishedLinks.split(';'); }
                               return (
                                 <>

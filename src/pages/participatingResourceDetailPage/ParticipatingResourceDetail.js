@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
-import datasetsIcon from "../../assets/img/datasets_icon.svg";
+// import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import externalIcon from "../../assets/img/resource-white.svg";
 import './participatingResourceDetailPage.css';
 
@@ -55,7 +55,7 @@ const ExternalLink = styled.li`
 `;
 
 const DatasetType = styled.div`
-  width: 96%;
+  width: 94.4%;
   text-align: right;
   margin-top: -36px;
   text-transform: uppercase;
@@ -200,9 +200,9 @@ const ParticipatingResourceDetail = ({
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     "resource type": "resource type"
   };
-  let dataContentTypes = detail.data_content_type === undefined ? "" : detail.data_content_type;
+  let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
-  let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
+  let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
@@ -330,7 +330,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prDatasetSummaryContainer" id="dataset_summaries">
                   <DatasetsSummary>
                     <SummaryIcon>
-                      <img src={datasetsIcon} alt="datasets" />
+                      {/* <img src={datasetsIcon} alt="datasets" /> */}
                     </SummaryIcon>
                     <span>
                       DATASET SUMMARIES (
@@ -348,7 +348,7 @@ const ParticipatingResourceDetail = ({
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
               const linkto = `/dataset/${ds.dataset_id}`;
-              let publishedLinks = ds.published_in === undefined ? "" : ds.published_in;
+              let publishedLinks = ds.published_in === undefined || ds.published_in === null ? "" : ds.published_in;
               if (ds.published_in) { publishedLinks = publishedLinks.split(';'); }
               return (
                 <DatasetCard key={key}>
@@ -363,7 +363,7 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in
                       ? <div className="summaryDataElementLabel">Published In</div>
                       : null}
-                    {/* ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null */}
+                    {/* {ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null} */}
                     {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
                     {publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[1]}`}</a></DataLink></div> : null}
                     {publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[2]}`}</a></DataLink></div> : null}
