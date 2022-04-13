@@ -35,30 +35,30 @@
 
 .prDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  /* color: #2dc799; */
+  color: #25B39A;
   font-size: 16px;
   width: 100%;
   /* text-decoration: none; */
 }
 
 .prDetailExternalLink {
-  /* color: #25B39A; */
-  color: white;
+  color: #25B39A;
+  /* color: white; */
   /* display: inline; */
 }
 
 .prDetailExternalLink:hover {
-  color: lightblue;
+  color: #00f5ca;
 }
 
 .prDetailHeaderLink {
-  /* color: #2dc799; */
-  color: white;
+  color: #25B39A;
+  /* color: white; */
   /* text-decoration: none; */
 }
 
 .prDetailHeaderLink:hover {
-  color: lightblue;
+  color: #00f5ca;
 }
 
 .prIcon {

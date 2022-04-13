@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
-// import datasetsIcon from "../../assets/img/datasets_icon.svg";
+import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import externalIcon from "../../assets/img/resource-white.svg";
 import './participatingResourceDetailPage.css';
 
@@ -330,7 +330,7 @@ const ParticipatingResourceDetail = ({
                 <div className="prDatasetSummaryContainer" id="dataset_summaries">
                   <DatasetsSummary>
                     <SummaryIcon>
-                      {/* <img src={datasetsIcon} alt="datasets" /> */}
+                      <img src={datasetsIcon} alt="datasets" />
                     </SummaryIcon>
                     <span>
                       DATASET SUMMARIES (

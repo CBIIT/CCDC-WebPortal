@@ -72,7 +72,7 @@ ul.breadcrumb li a:hover {
 
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  /* color: #2dc799; */
+  color: #25B39A;
   font-size: 16px;
   font-family: Lato;
   width: 100%;
@@ -80,12 +80,12 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLink {
-  color: white;
+  color: #25B39A;
   /* text-decoration-line: underline; */
 }
 
 .datasetDetailHeaderLink:hover {
-  color: lightblue;
+  color: #00f5ca;
 }
 
 .datasetIcon {
