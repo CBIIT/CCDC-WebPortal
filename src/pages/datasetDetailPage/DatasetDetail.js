@@ -649,11 +649,15 @@ const DatasetDetail = ({
                           sortedAdditonals.map((ad, adIdx) => {
                             const adkey = `ad_${adIdx}`;
                             if (ad === "published in") {
+                              let publishedLinks = content.published_in === undefined ? "" : content.published_in;
+                              if (content.published_in) { publishedLinks = publishedLinks.split(';'); }
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
                                   <div className="dataElementContentPublished">
-                                    {content.published_in ? <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a> : null}
+                                    {publishedLinks[0] ? <a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a> : null}
+                                    {publishedLinks[1] ? <a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{` ;${publishedLinks[1]}`}</a> : null}
+                                    {publishedLinks[2] ? <a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{` ;${publishedLinks[2]}`}</a> : null}
                                     {/* <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a> */}
                                   </div>
                                 </>

@@ -242,6 +242,7 @@ const ParticipatingResourceDetail = ({
                     <SiteIcon />
                     {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
                     {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
+                    {resourseLinks[2] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[2]} target="_blank" rel="noreferrer noopener">{resourseLinks[2]}</a></ExternalLink> : null}
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -347,6 +348,8 @@ const ParticipatingResourceDetail = ({
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
               const linkto = `/dataset/${ds.dataset_id}`;
+              let publishedLinks = ds.published_in === undefined ? "" : ds.published_in;
+              if (ds.published_in) { publishedLinks = publishedLinks.split(';'); }
               return (
                 <DatasetCard key={key}>
                   <DatasetHeader>
@@ -360,11 +363,10 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in
                       ? <div className="summaryDataElementLabel">Published In</div>
                       : null}
-                    {
-                      ds.published_in
-                      ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div>
-                      : null
-                    }
+                    {/* ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null */}
+                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
+                    {publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[1]}`}</a></DataLink></div> : null}
+                    {publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[2]}`}</a></DataLink></div> : null}
                     <br />
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
