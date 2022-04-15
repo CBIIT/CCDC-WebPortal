@@ -258,6 +258,56 @@ const SearchResult = ({
     return matched.concat(result);
   });
 
+  const caseTumorSiteList = resultList.map((rt) => {
+    const tmp = {labels: [], matched: []};
+    if (rt.highlight && rt.highlight["case_tumor_site.k"]) {
+      tmp.labels = rt.highlight["case_tumor_site.k"];
+    }
+
+    if (rt.highlight && rt.highlight["case_tumor_site.s"]) {
+      const syns = [];
+      rt.highlight["case_tumor_site.s"].forEach((syn) => {
+        const syn1 = syn.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        if (syns.indexOf(syn1) === -1) {
+          syns.push(syn1);
+        }
+      });
+      rt.content.case_tumor_site.forEach((item) => {
+        if (item.s) {
+          for (let i = 0; i < syns.length; i += 1) {
+            if (item.s.indexOf(syns[i]) > -1) {
+              tmp.matched.push(item.n);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    // merge matched with labels to remove duplicate items
+    if (tmp.labels.length > 0) {
+      tmp.labels.forEach((phl) => {
+        const orignialText = phl.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        if (tmp.matched.indexOf(orignialText) === -1) {
+          tmp.matched.push(phl);
+        }
+      });
+    }
+
+    let matched = [];
+
+    if (tmp.matched.length > 0) {
+      matched = tmp.matched.map((t) => {
+        if (t.indexOf("<b>") === -1) {
+          return `<b>${t}</b>`;
+        }
+        return t;
+      });
+    }
+
+    return matched;
+  });
+
   return (
     <>
       <SearchResultContainer>
@@ -467,9 +517,28 @@ const SearchResult = ({
                   )
                 }
                 {
+                  caseTumorSiteList[idx].length > 0 && (
+                    <div className="row align-items-start bodyRow">
+                      <div className="col">
+                        <label>Other Match:&nbsp;Case Tumor Site:</label>
+                        {
+                          caseTumorSiteList[idx].map((cdd, cddidx) => {
+                            const cddkey = `cdd_${cddidx}`;
+                            return (
+                              <span key={cddkey} className="itemSpan">
+                                {ReactHtmlParser(cdd)}
+                              </span>
+                            );
+                          })
+                        }
+                      </div>
+                    </div>
+                  )
+                }
+                {
                   rst.highlight && (
                     Object.keys(rst.highlight).map((hl, hlidx) => {
-                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "data_resource_name" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "sample_assay_method.k") {
+                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "data_resource_name" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "case_tumor_site.k" && hl !== "case_tumor_site.s" && hl !== "sample_assay_method.k") {
                         const hlKey = `hl_${hl}_${hlidx}`;
                         return (
                           <div key={hlKey} className="row align-items-start footerRow">
