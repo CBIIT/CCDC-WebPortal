@@ -98,12 +98,12 @@
 }
 
 .searchSortingArea {
-  width: 35%;
+  width: 40%;
   display: flex;
 }
 
 .contentPagingArea {
-  width: 65%;
+  width: 60%;
 }
 
 .space50 {

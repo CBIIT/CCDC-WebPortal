@@ -26,7 +26,7 @@ const SortingOrderASC = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${ascActiveImage});
-  margin-left: 5px;
+  margin-left: 13px;
   cursor: pointer;
 `;
 
@@ -35,7 +35,7 @@ const SortingOrderASCInactive = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${ascInActiveImage});
-  margin-left: 5px;
+  margin-left: 13px;
   cursor: pointer;
 `;
 
@@ -44,7 +44,7 @@ const SortingOrderDESC = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${descActiveImage});
-  margin-left: 5px;
+  margin-left: 7px;
   cursor: pointer;
 `;
 
@@ -53,7 +53,7 @@ const SortingOrderDESCInactive = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(${descInActiveImage});
-  margin-left: 5px;
+  margin-left: 7px;
   cursor: pointer;
 `;
 
