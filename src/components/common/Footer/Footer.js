@@ -61,7 +61,7 @@ const Logo = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 13px;
   color: var(--white);
