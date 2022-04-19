@@ -69,10 +69,6 @@ const SearchResultContainer = styled.div`
     color: #6199d0;
   }
 
-  .container .bodyRow {
-    margin-bottom: 5px;
-  }
-
   .bodyRow label {
     font-weight: 600;
   }
@@ -82,6 +78,8 @@ const SearchResultContainer = styled.div`
     background-color: #efe8d9;
     border-radius: 5px;
     padding: 0 5px;
+    display: inline-block;
+    margin-bottom: 5px;
   }
 
   .bodyRow .textSpan {
@@ -399,12 +397,9 @@ const SearchResult = ({
                             const cddkey = `cdd_${cddidx}`;
                             if (cddidx === 9) {
                               return (
-                                <div key={cddkey}>
-                                  <span className="itemSpan">
-                                    {ReactHtmlParser(cdd)}
-                                  </span>
-                                  <span className="itemContinued">...</span>
-                                </div>
+                                <span key={cddkey} className="itemSpan">
+                                  {ReactHtmlParser(cdd)}
+                                </span>
                               );
                             }
                             return (
@@ -421,6 +416,9 @@ const SearchResult = ({
                               </span>
                             );
                           })
+                        }
+                        {
+                          caseDiseaseDiagnosisList[idx].length > 10 && <span className="itemContinued">...</span>
                         }
                       </div>
                     </div>
