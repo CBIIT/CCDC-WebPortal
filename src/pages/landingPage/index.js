@@ -37,7 +37,7 @@ const HomePage = () => {
                         <br />
                         the pediatric cancer research community.
                       </div>
-                      <div style={{ padding: 20, background: 'white', opacity: '0.0' }} />
+                      <div style={{ padding: 30, background: 'white', opacity: '0.0' }} />
                       <div className="heroSearchBox">
                           <div className="search">
                               <input type="text" className="searchTerm" placeholder="  Search for Datasets " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
