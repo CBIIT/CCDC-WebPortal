@@ -55,8 +55,9 @@ const ExternalLink = styled.li`
 `;
 
 const DatasetType = styled.div`
-  width: 94.4%;
-  text-align: right;
+  // width: 90%;
+  text-align: center;
+  margin-left: 980px;
   margin-top: -36px;
   text-transform: uppercase;
   font-size: 11px;
@@ -279,11 +280,20 @@ const ParticipatingResourceDetail = ({
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
-                    <div className="prAboutResourceLabel">
+                    <div className="prAboutResourceLabel" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                       About This Resource
                       <div className="prAboutResourceArrowSymbol" />
                     </div>
-                    <div className="prAboutResourceContent">{detail.description}</div>
+                    <div className="collapse show" id="collapseExample">
+                      <div className="prAboutResourceContent">
+                        {detail.description}
+                      </div>
+                    </div>
+                    {/* <div className="prAboutResourceLabel">
+                      About This Resource
+                      <div className="prAboutResourceArrowSymbol" />
+                    </div>
+                    <div className="prAboutResourceContent">{detail.description}</div> */}
                     <div className="prResourceToolsContainer">
                       <div className="prCoreDataLabel">Resource Description</div>
                       <div className="prDataElementLabel">Resource Type</div>
