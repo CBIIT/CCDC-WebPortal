@@ -11,11 +11,17 @@
   .carousel-content-wrapper {
     width: 1128px;
   }
+  .cardHeader h4 {
+    font-size: 23px;
+  }
 }
 
 @media (max-width: 1200px) {
+  .carousel-wrapper {
+    padding-inline: 18px;
+  }
   .carousel-content-wrapper {
-    width: calc(100% - 72px);
+    width: calc(100% - 36px);
   }
 }
 
@@ -93,14 +99,13 @@
 .left-arrow, .right-arrow {
   z-index: 1;
   padding: 0;
-  width: 36px;
+  width: 18px;
   border-radius: 24px;
   background-color: transparent;
   box-shadow: 0 0 0 0 blue;
   border: 0;
-  font-size: 50px;
   color: white;
-  margin-top: 65px;
+  margin-top: 96px;
 }
 
 .left-arrow img {
@@ -130,12 +135,12 @@
 }
 
 .cardInfo {
-  width: calc(100% - 64px);
+  width: calc(100% - 56px);
   padding-top: 10px;
 }
 
 .cardIcon {
-  width: 64px;
+  width: 56px;
   color: white;
   font-size: 40px;
   text-align: center;
@@ -144,6 +149,7 @@
 
 .cardLabel {
   width: 100%;
+  font-size:14px;
 }
 
 .cardHeader {
@@ -159,6 +165,7 @@
 
 .cardHeader h4{
   line-height: 18pt;
+  font-weight: 900;
 }
 
 .cardContent {
