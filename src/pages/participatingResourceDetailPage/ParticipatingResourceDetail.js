@@ -375,8 +375,8 @@ const ParticipatingResourceDetail = ({
                       : null}
                     {/* {ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null} */}
                     {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
-                    {publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[1]}`}</a></DataLink></div> : null}
-                    {publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`;${publishedLinks[2]}`}</a></DataLink></div> : null}
+                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
+                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
                     <br />
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
