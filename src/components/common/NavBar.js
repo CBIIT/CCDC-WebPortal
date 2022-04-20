@@ -225,7 +225,7 @@ const LiSection = styled.li`
 const SearchArea = styled.div`
   float: right;
   display: flex;
-  border: 2px solid #11B886;
+  border: 2px solid #2DC799;
   border-radius: 18px;
   padding: 5px 10px 5px 15px;
   color: #11B886;
@@ -235,12 +235,13 @@ const SearchArea = styled.div`
   position: absolute;
   background-color: white;
   top: -70px;
-  right: 0;
+  right: 25px;
 
   @media (max-width: 768px) {
-    top: 5px;
+    top: 7px;
+    border: 0;
     input {
-      width: 200px;
+      width: 180px;
     }
   }
 `;
@@ -263,7 +264,7 @@ const SearchInput = styled.input`
   color: #00996b;
   font-size: 1rem;
   font-weight: 600;
-  width: 250px;
+  width: 225px;
   margin-left: 5px;
 
   ::placeholder {

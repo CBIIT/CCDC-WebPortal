@@ -8,17 +8,23 @@ const LogoBanner = styled.div`
 
 const LogoContainer = styled.div`
   margin: 0 auto;
-  background-image: url(${logo});
-  background-repeat: no-repeat;
-  background-position: left;
-  height: 100px;
+  img {
+    width: 473px;
+  }
 
   @media (min-width: 1200px) {
     width: 1200px;
   }
 
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+
   @media (max-width: 473px) {
-    background-position: center;
+    img {
+      width: 300px;
+      padding-left: 10px;
+    }
   }
 `;
 
@@ -26,7 +32,9 @@ const Header = () => {
   return (
     <>
     <LogoBanner role="banner">
-      <LogoContainer />
+      <LogoContainer>
+        <img src={logo} alt="ccdc logo" />
+      </LogoContainer>
     </LogoBanner>
     </>
   );
