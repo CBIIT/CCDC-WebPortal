@@ -377,7 +377,11 @@ const ParticipatingResourceDetail = ({
                     {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
                     <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
                     <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
-                    <br />
+                    {/* {
+                      ds.published_in
+                      ? <br />
+                      : null
+                    } */}
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
                       : null}
@@ -386,7 +390,11 @@ const ParticipatingResourceDetail = ({
                       ? <div className="summaryDataElementContent">{ds.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
                       : null
                     }
-                    <br />
+                    {
+                      ds.case_id
+                      ? <br />
+                      : null
+                    }
                     {ds.case_sex
                         ? <div className="summaryDataElementLabel">Case Sex</div>
                         : null}
@@ -408,7 +416,11 @@ const ParticipatingResourceDetail = ({
                           : null
                         }
                       </div>
-                    <br />
+                    {
+                      ds.case_sex
+                      ? <br />
+                      : null
+                    }
                     {ds.case_age_at_diagnosis
                         ? <div className="summaryDataElementLabel">Case Age At Diagnosis</div>
                         : null}
@@ -430,7 +442,11 @@ const ParticipatingResourceDetail = ({
                           : null
                         }
                       </div>
-                      <br />
+                    {
+                      ds.case_age_at_diagnosis
+                      ? <br />
+                      : null
+                    }
                   </DatasetDesc>
                   <SummaryDatasetType>
                     <span
