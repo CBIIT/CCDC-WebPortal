@@ -34,7 +34,7 @@ const PageLabel = styled.div`
 `;
 
 const PageLabelMore = styled.div`
-  color: #9fb4c2;
+  color: #7699A7;
   font-size: 29px;
   line-height: 42px;
 `;

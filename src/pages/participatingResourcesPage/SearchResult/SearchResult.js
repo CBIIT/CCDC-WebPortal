@@ -92,7 +92,7 @@ const POCInfo = styled.div`
   a {
     margin-left: 5px;
     text-decoration: none;
-    color: #48bea9;
+    color: #00a272;
     font-weight: 500;
   }
 `;
@@ -103,7 +103,7 @@ const SiteInfo = styled.div`
 
   a {
     text-decoration: none;
-    color: #48bea9;
+    color: #00a272;
     font-weight: 500;
   }
 `;
@@ -129,7 +129,7 @@ const ResourceType = styled.div`
   span {
     border-radius: 20px;
     border: 1px solid #FFBF17;
-    padding: 5px 10px 7px 10px;
+    padding: 5px 23px 7px 23px;
     line-height: 52px;
   }
 `;
