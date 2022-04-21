@@ -655,9 +655,9 @@ const DatasetDetail = ({
                                 <>
                                   <div className="dataElementLabel">Published In</div>
                                   <div className="dataElementContentPublished">
-                                    {publishedLinks[0] ? <a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a> : null}
-                                    <div>{publishedLinks[1] ? <a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a> : null}</div>
-                                    <div>{publishedLinks[2] ? <a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a> : null}</div>
+                                    {publishedLinks[0] ? <a href={publishedLinks[0]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a> : null}
+                                    <div>{publishedLinks[1] ? <a href={publishedLinks[1]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a> : null}</div>
+                                    <div>{publishedLinks[2] ? <a href={publishedLinks[2]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a> : null}</div>
                                     {/* <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a> */}
                                   </div>
                                 </>
