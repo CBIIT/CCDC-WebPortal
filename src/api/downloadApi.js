@@ -7,7 +7,7 @@ export function getSubmissionTemplate() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Childhood_Cancer_Data_Catalog_Submission_Template.xlsm';
+        a.download = 'Childhood_Cancer_Data_Catalog_Submission_Template.xlsx';
         a.click();
       });
   });
