@@ -282,6 +282,9 @@ const ParticipatingResourceDetail = ({
                   <div className="prAboutResourceContainer">
                     <div className="prAboutResourceLabel" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                       About This Resource
+                      <span className="prAboutResourceArrowSymbol2">
+                        &nbsp; &#9650;
+                      </span>
                       <div className="prAboutResourceArrowSymbol" />
                     </div>
                     <div className="collapse show" id="collapseExample">
@@ -298,8 +301,9 @@ const ParticipatingResourceDetail = ({
                       <div className="prCoreDataLabel">Resource Description</div>
                       <div className="prDataElementLabel">Resource Type</div>
                       <div className="prDataElementContent">{detail.resource_type}</div>
-                      <br />
                       {/* <div className="prDataElementLabel">Specialization</div> */}
+                      {/* <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div> */}
+                      <br />
                       <div className="prDataElementLabel">Data Update Date</div>
                       {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
                     </div>

@@ -126,9 +126,16 @@
   width: 25px;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-bottom: 12px solid #7397b0;
+  /* border-bottom: 12px solid #7397b0; */
   margin-left: 317px;
   margin-top: -25px;
+}
+
+.prAboutResourceArrowSymbol2 {
+  color: #7397b0;
+  /* margin-bottom: -25px; */
+  display:inline-block;
+  transform: scale(1.1,0.6);
 }
 
 .prAboutResourceContent {
@@ -143,7 +150,6 @@
   padding: 0px 30px 10px 20px;
   width: 48%;
   height: 200px;
-  /* border-right: 1px solid #e0e4e7; */
   border-right: 1px solid #BFD3E1;
   /* display: flex; */
   /* display: inline-block; */
