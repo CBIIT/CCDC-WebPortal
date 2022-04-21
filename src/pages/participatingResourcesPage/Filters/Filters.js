@@ -10,7 +10,7 @@ const FilterSection = styled.div`
 const FilterLabel = styled.div`
   background-color: #f7f8fa;
   margin: 0 5px;
-  padding: 10px 10px 5px 10px;
+  padding: 5px 10px 5px 10px;
   color: #245284;
   font-weight: 700;
   font-size: 1.4rem;
