@@ -8,8 +8,12 @@
   .carousel-container {
     width: 1200px;
   }
+  .left-arrow, .right-arrow {
+    width: 29px;
+    margin-top: 85px;
+  }
   .carousel-content-wrapper {
-    width: 1128px;
+    width: 1142px;
   }
   .cardHeader h4 {
     font-size: 23px;
@@ -17,6 +21,10 @@
 }
 
 @media (max-width: 1200px) {
+  .left-arrow, .right-arrow {
+    width: 18px;
+    margin-top: 96px;
+  }
   .carousel-wrapper {
     padding-inline: 18px;
   }
@@ -99,13 +107,11 @@
 .left-arrow, .right-arrow {
   z-index: 1;
   padding: 0;
-  width: 18px;
   border-radius: 24px;
   background-color: transparent;
   box-shadow: 0 0 0 0 blue;
   border: 0;
   color: white;
-  margin-top: 96px;
 }
 
 .left-arrow img {

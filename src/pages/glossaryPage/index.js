@@ -36,7 +36,7 @@ const Glossary = () => {
                 <a className={key === 'R' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('R')}>R</a>
                 <a className={key === 'S' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('S')}>S</a>
                 <a className={key === 'T' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('T')}>T</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">U</a>
+                <a className={key === 'U' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('U')}>U</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">V</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">W</a>
                 <a className={key === 'X' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('X')}>X</a>
@@ -84,6 +84,12 @@ const Glossary = () => {
             key === 'C' && (
               <>
                 <div className="c">
+                  <h2 className="glossaryItemHeader">CAP</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">College of American Pathologists </p>
+                  <br />
+                </div>
+                <div className="c">
                   <h2 className="glossaryItemHeader">Case</h2>
                   <span className="glossaryItemType">Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A collection of data related to a specific individual in the context of a specific project. </p>
@@ -95,6 +101,12 @@ const Glossary = () => {
                   <p className="glossaryItemDescription">A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.</p>
                   <p className="glossaryItemLink">NCI SEER</p>
                   <p className="glossaryItemLink"><a href="https://seer.cancer.gov/registries/cancer_registry/index.html" target="_blank" rel="noreferrer noopener">https://seer.cancer.gov/registries/cancer_registry/index.html</a></p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">CBTRUS</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Central Brain Tumor Registry of the United States</p>
                   <br />
                 </div>
                 <div className="c">
@@ -116,6 +128,12 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="c">
+                  <h2 className="glossaryItemHeader">CDC</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Centers for Disease Control and Prevention</p>
+                  <br />
+                </div>
+                <div className="c">
                   <h2 className="glossaryItemHeader">Cell Line</h2>
                   <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
                   <p className="glossaryItemDescription">A permanently established cell culture that will proliferate indefinitely given appropriate fresh medium and space.</p>
@@ -130,11 +148,29 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="c">
+                  <h2 className="glossaryItemHeader">CIViC</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Clinical Interpretations of Variants in Cancer</p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">CLIA</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Clinical Laboratory Improvement Amendments</p>
+                  <br />
+                </div>
+                <div className="c">
                   <h2 className="glossaryItemHeader">Clinical</h2>
                   <span className="glossaryItemType">Data Content Type</span>
                   <p className="glossaryItemDescription">Relating to the examination and treatment of patients dependent on direct observation.</p>
                   <p className="glossaryItemLink">NCI Thesaurus</p>
                   <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25398</a></p>
+                  <br />
+                </div>
+                <div className="c">
+                  <h2 className="glossaryItemHeader">CNS</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Central nervous system</p>
                   <br />
                 </div>
                 <div className="c">
@@ -177,7 +213,13 @@ const Glossary = () => {
           {
             key === 'F' && (
               <>
-                <div className="e">
+                <div className="f">
+                  <h2 className="glossaryItemHeader">FDA</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Food and Drug Admistration</p>
+                  <br />
+                </div>
+                <div className="f">
                   <h2 className="glossaryItemHeader">FOIA</h2>
                   <span className="glossaryItemType">General Abbreviation</span>
                   <p className="glossaryItemDescription">Freedom of Information Act</p>
@@ -265,6 +307,12 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="m">
+                  <h2 className="glossaryItemHeader">MTP</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Molecular Targets Platform</p>
+                  <br />
+                </div>
+                <div className="m">
                   <h2 className="glossaryItemHeader">MyPart</h2>
                   <span className="glossaryItemType">Resource Abbreviation</span>
                   <p className="glossaryItemDescription">My Pediatric and Adult Rare Tumor network</p>
@@ -292,7 +340,13 @@ const Glossary = () => {
                 <div className="n">
                   <h2 className="glossaryItemHeader">NIH</h2>
                   <span className="glossaryItemType">General Abbreviation</span>
-                  <p className="glossaryItemDescription">National Institutes of Health </p>
+                  <p className="glossaryItemDescription">National Institutes of Health</p>
+                  <br />
+                </div>
+                <div className="n">
+                  <h2 className="glossaryItemHeader">NPCR</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">National Program of Cancer Registries</p>
                   <br />
                   <br />
                 </div>
@@ -423,6 +477,12 @@ const Glossary = () => {
                   <br />
                 </div>
                 <div className="s">
+                  <h2 className="glossaryItemHeader">SEER</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Surveillance, Epidemiology and End Results Program</p>
+                  <br />
+                </div>
+                <div className="s">
                   <h2 className="glossaryItemHeader">SRA</h2>
                   <span className="glossaryItemType">Resource Abbreviation</span>
                   <p className="glossaryItemDescription">Sequence Read Archive</p>
@@ -445,6 +505,19 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">TCIA</h2>
                   <span className="glossaryItemType">Resource Abbreviation</span>
                   <p className="glossaryItemDescription">The Cancer Imaging Archive</p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'U' && (
+              <>
+                <div className="u">
+                  <h2 className="glossaryItemHeader">USCS</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">United States Cancer Statistics</p>
                   <br />
                   <br />
                 </div>
