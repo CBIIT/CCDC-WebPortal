@@ -108,10 +108,10 @@ const HomePage = () => {
                             </p>
                             <a href="/search#top" className="headerLink2">
                                 <Button className="buttonText color-white">
-                                    <h6>
-                                        EXPLORE THE CATALOG &emsp;&emsp;&emsp;
-                                        <span style={{ color: '#FFBF17' }}>&#9658;</span>
-                                    </h6>
+                                    <span className="buttonLabel">EXPLORE THE CATALOG&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                                    <span className="buttonIcon">
+                                        <i className="fas fa-caret-right" />
+                                    </span>
                                 </Button>
                             </a>
                         </div>

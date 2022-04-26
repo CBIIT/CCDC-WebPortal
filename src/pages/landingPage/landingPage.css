@@ -449,9 +449,12 @@
 
 .buttonText {
   padding: 10px 0;
+  position: relative;
+  width: 259px;
+  text-align: left;
   height: 40px;
   color: white;
-  font-size: 100%;
+  font-size: 15px;
   caret-color: red;
   text-decoration: underline;
   text-underline-offset: 8px;
@@ -472,9 +475,17 @@
   box-shadow:0 0 0 0 #FFBF17 !important;
 }
 
-.buttonText h6 {
-  font-weight: 600;
-  text-shadow: 0.5px 0 currentColor;
+.buttonLabel {
+  font-family: Inter;
+  font-weight: 800;
+}
+
+.buttonIcon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #FFBF17;
+  font-size: 22px;
 }
 
 /* .color-black {
