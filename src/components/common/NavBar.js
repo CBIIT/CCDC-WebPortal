@@ -263,6 +263,7 @@ const SearchInput = styled.input`
   // color: #11B886;
   color: #00996b;
   font-size: 1rem;
+  font-family: Lato;
   font-weight: 600;
   width: 225px;
   margin-left: 5px;
@@ -270,7 +271,7 @@ const SearchInput = styled.input`
   ::placeholder {
     // color: #11B886;
     color: #00996b;
-    font-size: 1rem;
+    font-size: 15px;
     font-weight: 600;
   }
 
