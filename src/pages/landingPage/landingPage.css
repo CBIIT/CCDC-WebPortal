@@ -139,7 +139,39 @@
   display: flex;
 }
 
-.heroImage {
+@media (min-width: 1200px) {
+  .heroImage {
+    width: 100%;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../../assets/img/CCDC.Hero.jpg");
+    border-bottom: 2px solid white;
+    background-position: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .heroImage {
+    width: 100%;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../../assets/img/CCDC.Hero.jpg");
+    border-bottom: 2px solid white;
+    background-position: center;
+  }
+}
+
+/* .heroImage {
   width: 100%;
   height: 600px;
   background-repeat: no-repeat;
@@ -151,7 +183,7 @@
   background-image: url("../../assets/img/CCDC.Hero.jpg");
   border-bottom: 2px solid white;
   background-position: center;
-}
+} */
 
 .heroImage2 {
   width: 100%;
