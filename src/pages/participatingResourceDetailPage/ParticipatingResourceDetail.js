@@ -205,6 +205,7 @@ const ParticipatingResourceDetail = ({
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
+  const defaultCollapsed = "show";
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
@@ -280,54 +281,52 @@ const ParticipatingResourceDetail = ({
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
-                    <div className="prAboutResourceLabel" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
-                      About This Resource
-                      <span className="prAboutResourceArrowSymbol2">
-                        &nbsp; &#9650;
-                      </span>
-                      <div className="prAboutResourceArrowSymbol" />
-                    </div>
-                    <div className="collapse show" id="collapseExample">
-                      <div className="prAboutResourceContent">
-                        {detail.description}
+                    <div className="accordion-item-pr">
+                      <h2 className="accordion-header-pr">
+                        <buttons className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
+                        <span>About This Resource</span>
+                        </buttons>
+                      </h2>
+                      <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
+                        <div className="prAboutResourceContent">
+                          {detail.description}
+                        </div>
                       </div>
                     </div>
-                    {/* <div className="prAboutResourceLabel">
-                      About This Resource
-                      <div className="prAboutResourceArrowSymbol" />
-                    </div>
-                    <div className="prAboutResourceContent">{detail.description}</div> */}
-                    <div className="prResourceToolsContainer">
-                      <div className="prCoreDataLabel">Resource Description</div>
-                      <div className="prDataElementLabel">Resource Type</div>
-                      <div className="prDataElementContent">{detail.resource_type}</div>
-                      {/* <div className="prDataElementLabel">Specialization</div> */}
-                      {/* <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div> */}
-                      <br />
-                      <div className="prDataElementLabel">Data Update Date</div>
-                      {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
-                    </div>
-                    <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Content Type</div>
+                    {/* <div className="collapse show" id="collapseExample"> */}
+                    <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
+                      <div className="prResourceToolsContainer">
+                        <div className="prCoreDataLabel">Resource Description</div>
+                        <div className="prDataElementLabel">Resource Type</div>
+                        <div className="prDataElementContent">{detail.resource_type}</div>
+                        {/* <div className="prDataElementLabel">Specialization</div> */}
+                        {/* <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div> */}
                         <br />
-                        {dataContentTypes}
-                    </div>
-                    <div className="prResourceToolsContainer">
-                      <div className="prCoreDataLabel">Resource Tools</div>
-                      <div className="prDataElementLabel">Visualization Tools</div>
-                      <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                      <div className="prDataElementLabel">Analytic Tools</div>
-                      <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
-                    </div>
-                    <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Access</div>
-                      {/* <div className="prDataElementLabel">API (Internal)</div> */}
-                      <br />
-                        {
-                          detail.api
-                          ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
-                          : null
-                        }
+                        <div className="prDataElementLabel">Data Update Date</div>
+                        {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
+                      </div>
+                      <div className="prDataAccessContainer">
+                        <div className="prAdditionalDataLabel">Data Content Type</div>
+                          <br />
+                          {dataContentTypes}
+                      </div>
+                      <div className="prResourceToolsContainer">
+                        <div className="prCoreDataLabel">Resource Tools</div>
+                        <div className="prDataElementLabel">Visualization Tools</div>
+                        <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
+                        <div className="prDataElementLabel">Analytic Tools</div>
+                        <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
+                      </div>
+                      <div className="prDataAccessContainer">
+                        <div className="prAdditionalDataLabel">Data Access</div>
+                        {/* <div className="prDataElementLabel">API (Internal)</div> */}
+                        <br />
+                          {
+                            detail.api
+                            ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
+                            : null
+                          }
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -381,6 +380,7 @@ const ParticipatingResourceDetail = ({
                     {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
                     <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
                     <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
+                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                     {/* {
                       ds.published_in
                       ? <br />

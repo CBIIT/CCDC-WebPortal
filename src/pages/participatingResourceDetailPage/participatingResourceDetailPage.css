@@ -133,9 +133,69 @@
 
 .prAboutResourceArrowSymbol2 {
   color: #7397b0;
-  /* margin-bottom: -25px; */
   display:inline-block;
   transform: scale(1.1,0.6);
+}
+
+.accordion-header-pr {
+  margin: 0 0 0 0px;
+  /* padding: 5px 0 22px 10px; */
+  font-size: 26px;
+  font-family: Inter;
+  font-weight: 400;
+  text-transform: uppercase;
+  inline-size: 1160px;
+}
+.accordion-button-ccdc-pr {
+  padding: 8px 0 14px 10px;
+  color: #99AFBE;
+  font-size: 26px;
+  font-family: Inter;
+  text-transform: uppercase;
+  border-bottom: 3px solid #BFD3E1;
+  inline-size: 1160px;
+  font-weight: 400;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.accordion-button-ccdc-pr:focus {
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.accordion-button-pr:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.accordion-item-first-pr .accordion-button-pr:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.accordion-button-pr:not(.collapsed)::after {
+  background-image: none;
+  transform: rotate(-180deg);
+}
+
+.accordion-button-pr::after {
+  flex-shrink: 1;
+  margin-left: 20px;
+  /* width: 1.2rem; */
+  /* height: 1.2rem; */
+  display: inline-block;
+  vertical-align: .1em;
+  content: "";
+  border-top: .6em solid;
+  border-right: .5em solid transparent;
+  border-bottom: 0;
+  border-left: .5em solid transparent;
+  font-size: 1.5rem;
+  background-image: none;
+  transition: transform .2s ease-in-out;
+  color: #7397b0;
 }
 
 .prAboutResourceContent {
@@ -231,7 +291,13 @@
   /* overflow: auto; */
   word-break: break-all;
   /* inline-size: 80%; */
-  /* width: 100px; */
+  /* display: inline; */
+}
+
+.summaryPublishedLinkBreak {
+  margin-left: -3px;
+  /* overflow: auto; */
+  display: inline;
 }
 
 .badge {
