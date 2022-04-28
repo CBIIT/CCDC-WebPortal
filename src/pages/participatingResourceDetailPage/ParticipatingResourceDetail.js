@@ -57,7 +57,7 @@ const ExternalLink = styled.li`
 const DatasetType = styled.div`
   // width: 90%;
   text-align: center;
-  margin-left: 980px;
+  margin-left: 972px;
   margin-top: -36px;
   text-transform: uppercase;
   font-size: 11px;
