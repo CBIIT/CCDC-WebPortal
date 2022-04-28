@@ -290,8 +290,8 @@ const activeStyle = {
   paddingLeft: "20px",
   paddingRight: "20px",
   // textDecoration: "underline",
-  textUnderlineOffset: "5px",
-  textDecorationThickness: "3px",
+  // textUnderlineOffset: "5px",
+  // textDecorationThickness: "3px",
 };
 
 const activeStyleMenuItem = {
