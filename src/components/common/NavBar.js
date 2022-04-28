@@ -286,7 +286,10 @@ const mobileActiveStyle = {
 
 const activeStyle = {
   color: "#ffffff",
-  textDecoration: "underline",
+  backgroundColor: "#059268",
+  paddingLeft: "20px",
+  paddingRight: "20px",
+  // textDecoration: "underline",
   textUnderlineOffset: "5px",
   textDecorationThickness: "3px",
 };

@@ -68,8 +68,10 @@ const SearchBoxArea = styled.div`
     color: white;
     border: 2.5px solid #004187;
     // background-color: #004187;
-    background-color: #2c64a0;
+    background-color: navy;
     padding: .75rem 1rem;
+    position: relative;
+    right: 1px;
     line-height: 26px;
   }
 
@@ -77,7 +79,7 @@ const SearchBoxArea = styled.div`
     color: #fff;
     // background-color: #6c757d;
     background-color: navy;
-    border-color: #6c757d;
+    border-color: navy;
   }
 `;
 
@@ -146,7 +148,7 @@ const SearchBox = ({
               searchableText.length > 0 ? (
                 <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
               ) : (
-                <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
+                <button type="button" variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</button>
               )
             }
           </InputGroup.Append>
