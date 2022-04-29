@@ -134,10 +134,13 @@ const SearchCatalogPage = ({
                         Searches will return both full and partial word results (i.e. leuk will returns results for leukemia).
                       </li>
                       <li>
-                        If you search multiple terms (i.e lymphocytic survivors) the search results will return sources that contain all the specified terms (AND Boolean operator).
+                        If you search multiple terms (i.e. lymphocytic survivors) the search results will return sources that contain all the specified terms (AND Boolean operator).
                       </li>
                       <li>
                         Selecting a resource Source (i.e. Kids First) will automatically create a search for the selected source.
+                      </li>
+                      <li>
+                        Anatomical site searches leverage the NCI Thesaurus to display Case Tumor Site synonym matches. For example, a search for ‘eye’ will also return results for ‘orbit’.
                       </li>
                     </ul>
                   </div>
