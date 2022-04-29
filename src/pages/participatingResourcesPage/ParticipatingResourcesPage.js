@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  useLocation
+  useLocation, useSearchParams
 } from "react-router-dom";
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -80,30 +80,35 @@ const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 
-const getFiltersFromQuery = (query) => {
-  const filters = {};
-  query.forEach((value, key) => {
-    filters[key] = value.split("|");
-  });
-  return filters;
-};
-
 const ParticipatingResourcesPage = ({
   total,
   onLoadFromUrlQuery,
   onCleanUpParticipatingResourceListPage,
 }) => {
   const query = useQuery();
-  const filters = getFiltersFromQuery(query);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    onLoadFromUrlQuery(filters).catch(error => {
-        throw new Error(`Loading search from url query failed: ${error}`);
-      });
+    const options = {};
+    if (query.get("resource_type")) {
+      options.resource_type = query.get("resource_type").trim().split("|");
+    }
+    if (query.get("data_content_type")) {
+      options.data_content_type = query.get("data_content_type").trim().split("|");
+    }
+    if (query.get("page")) {
+      options.page = parseInt(query.get("page").trim(), 10);
+    }
+    if (query.get("pageSize")) {
+      options.pageSize = parseInt(query.get("pageSize").trim(), 10);
+    }
+    onLoadFromUrlQuery(options).catch(error => {
+      throw new Error(`Loading search from url query failed: ${error}`);
+    });
     return () => {
       onCleanUpParticipatingResourceListPage();
     };
-  }, []);
+  }, [searchParams]);
 
   return (
     <>
@@ -111,10 +116,12 @@ const ParticipatingResourcesPage = ({
         <PageHeaderArea>
           <PageLabelArea>
             <PageLabel>Participating Resources</PageLabel>
-            <PageLabelMore>
-              {total}
-              &nbsp;Results
-            </PageLabelMore>
+            {total >= 0 && (
+              <PageLabelMore>
+                {total}
+                &nbsp;Results
+              </PageLabelMore>
+            )}
           </PageLabelArea>
           <PageLogoArea />
         </PageHeaderArea>
@@ -138,9 +145,13 @@ const ParticipatingResourcesPage = ({
 };
 
 ParticipatingResourcesPage.propTypes = {
-  total: PropTypes.number.isRequired,
+  total: PropTypes.number,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
   onCleanUpParticipatingResourceListPage: PropTypes.func.isRequired,
+};
+
+ParticipatingResourcesPage.defaultProps = {
+  total: -1
 };
 
 export default ParticipatingResourcesPage;

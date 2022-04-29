@@ -42,23 +42,10 @@ export function resetSearchCriteria(searchCriteria) {
   return { type: types.RESET_SEARCH_CRITERIA, searchCriteria};
 }
 
-export function initialLoadSearchResults() {
-  const func = function func(dispatch, getState) {
-    const { datasets } = getState();
-    return searchApi.searchCatalog(datasets.searchCriteria)
-      .then(datesets => {
-          dispatch(loadSearchResultsSuccess(datesets.data));
-      })
-      .catch(error => {
-          throw error;
-      });
-  };
-  return func;
-}
-
 export function startFullTextSearch(searchText) {
-  const func = function func(dispatch, getState) {
+  const func = function func(dispatch) {
       dispatch(runFullTextSearch(searchText));
+      /*
       dispatch(switchPage({page: 1, pageSize: 10}));
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
@@ -68,13 +55,15 @@ export function startFullTextSearch(searchText) {
       .catch(error => {
           throw error;
       });
+      */
   };
   return func;
 }
 
 export function bubbleRemoveClick(selection) {
-  const func = function func(dispatch, getState) {
+  const func = function func(dispatch) {
       dispatch(handleSelectionRemove(selection));
+      /*
       dispatch(switchPage({page: 1, pageSize: 10}));
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
@@ -84,13 +73,15 @@ export function bubbleRemoveClick(selection) {
       .catch(error => {
           throw error;
       });
+      */
   };
   return func;
 }
 
 export function changeSorting(sorting) {
-  const func = function func(dispatch, getState) {
+  const func = function func(dispatch) {
       dispatch(switchSorting(sorting));
+      /*
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
       .then(searchResults => {
@@ -99,13 +90,15 @@ export function changeSorting(sorting) {
       .catch(error => {
           throw error;
       });
+      */
   };
   return func;
 }
 
 export function changeSortingOrder(order) {
-  const func = function func(dispatch, getState) {
+  const func = function func(dispatch) {
       dispatch(switchSortingOrder(order));
+      /*
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
       .then(searchResults => {
@@ -114,13 +107,15 @@ export function changeSortingOrder(order) {
       .catch(error => {
           throw error;
       });
+      */
   };
   return func;
 }
 
 export function pageSelect(pageInfo) {
-  const func = function func(dispatch, getState) {
+  const func = function func(dispatch) {
       dispatch(switchPage(pageInfo));
+      /*
       const { datasets } = getState();
       return searchApi.searchCatalog(datasets.searchCriteria)
       .then(searchResults => {
@@ -129,6 +124,7 @@ export function pageSelect(pageInfo) {
       .catch(error => {
           throw error;
       });
+      */
   };
   return func;
 }
@@ -161,7 +157,6 @@ export function cleanUpSearchCriteria() {
       pageInfo: {
           page: 1,
           pageSize: 10,
-          total: 0,
       },
       sort: {
         name: "Dataset",

@@ -59,16 +59,6 @@ export default function participatingResourcesReducer(state = initialState.parti
               },
           };
         }
-        case types.ADD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS: {
-          return {
-            ...state,
-            searchResults: [...state.searchResults, ...action.searchResults.result],
-            searchCriteria: {
-              ...state.searchCriteria,
-              pageInfo: action.pageInfo,
-              },
-          };
-        }
         case types.CLICK_PARTICIPATING_RESOURCES_SEARCH_FILTER_SUCCESS: {
           const facetFilter = insertOrDeleteFilter(state.searchCriteria.facet_filters, action);
           return {

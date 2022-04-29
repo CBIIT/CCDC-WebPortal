@@ -34,13 +34,6 @@ export default function searchReducer(state = initialState.datasets, action) {
             ...state,
             searchResults: action.searchResults.result,
             searchSourceResults: action.searchResults.aggs,
-            searchCriteria: {
-              ...state.searchCriteria,
-              pageInfo: {
-                ...state.searchCriteria.pageInfo,
-                total: action.searchResults.pageInfo.total,
-              },
-            },
           };
         }
         case types.CLICK_SEARCH_FILTER_SUCCESS: {
@@ -74,7 +67,7 @@ export default function searchReducer(state = initialState.datasets, action) {
                 name: action.sorting.name,
                 k: action.sorting.k,
               },
-              },
+            },
           };
         case types.SWITCH_SORTING_ORDER:
           return {

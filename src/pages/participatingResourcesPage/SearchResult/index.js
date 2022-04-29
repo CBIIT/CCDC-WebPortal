@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import SearchResult from './SearchResult';
-import {
-  initialLoadSearchResults
-} from '../../../redux/actions/searchActions';
 
 const ReduxSearchResult = (() => {
   const mapStateToProps = (state) => ({
@@ -10,9 +7,7 @@ const ReduxSearchResult = (() => {
     resultList: state.participatingResources.searchResults,
   });
 
-  const mapDispatchToProps = {
-    onPageLoadSearchResults: initialLoadSearchResults,
-  };
+  const mapDispatchToProps = {};
 
   return connect(mapStateToProps, mapDispatchToProps)(SearchResult);
 })();

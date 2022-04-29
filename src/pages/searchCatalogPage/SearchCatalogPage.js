@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  useLocation
+  useLocation,
+  useNavigate,
+  useSearchParams,
 } from "react-router-dom";
 import { OverlayTrigger } from 'react-bootstrap';
 import PropTypes from 'prop-types';
@@ -17,37 +19,80 @@ const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 
+const replaceQueryStr = (query, searchText) => {
+  let str = "";
+  if (searchText.trim() !== "") {
+    str += `&search_text=${searchText.trim()}`;
+  }
+  if (query.get("page")) {
+    str += `&page=${query.get("page")}`;
+  }
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  if (query.get("sortBy")) {
+    str += `&sortBy=${query.get("sortBy")}`;
+  }
+  if (query.get("sortOrder")) {
+    str += `&sortOrder=${query.get("sortOrder")}`;
+  }
+  if (query.get("viewType")) {
+    str += `&viewType=${query.get("viewType")}`;
+  }
+  return str.substring(1);
+};
+
 const SearchCatalogPage = ({
   searchCriteria,
   viewType,
   onLoadFromUrlQuery,
   onStartFullTextSearch,
   onBubbleRemoveClick,
-  onCleanUpSearchCriteria,
 }) => {
   const query = useQuery();
-  const paramText = query.get("search_text") ? query.get("search_text").trim() : "";
-  const [searchText, setSearchText] = useState(paramText);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const searchTerm = query.get("search_text") ? query.get("search_text").trim() : "";
+  const [searchText, setSearchText] = useState(searchTerm);
 
   useEffect(() => {
-    onLoadFromUrlQuery(paramText, {}).catch(error => {
+    const options = {};
+    if (query.get("page")) {
+      options.page = parseInt(query.get("page").trim(), 10);
+    }
+    if (query.get("pageSize")) {
+      options.pageSize = parseInt(query.get("pageSize").trim(), 10);
+    }
+    if (query.get("sortBy")) {
+      options.sortBy = query.get("sortBy").trim();
+    }
+    if (query.get("sortOrder")) {
+      options.sortOrder = query.get("sortOrder").trim();
+    }
+    if (query.get("viewType")) {
+      options.viewType = query.get("viewType").trim();
+    }
+    onLoadFromUrlQuery(searchTerm, options).catch(error => {
         throw new Error(`Loading search from url query failed: ${error}`);
       });
-    return () => {
-      onCleanUpSearchCriteria();
-    };
-  }, []);
+  }, [searchParams]);
 
   const handleBubbleRemoveClick = () => {
     setSearchText("");
+    const queryStr = replaceQueryStr(query, "");
+    navigate(`/search?${queryStr}`);
     onBubbleRemoveClick({field: "search_text", value: ""});
   };
 
   const handleSearchBoxKeyPress = () => {
+    const queryStr = replaceQueryStr(query, searchText);
+    navigate(`/search?${queryStr}`);
     onStartFullTextSearch(searchText);
   };
 
   const handleSearchSubmit = () => {
+    const queryStr = replaceQueryStr(query, searchText);
+    navigate(`/search?${queryStr}`);
     onStartFullTextSearch(searchText);
   };
 
@@ -58,6 +103,8 @@ const SearchCatalogPage = ({
   const handleSourceClick = (event) => {
     const text = event.target.textContent;
     setSearchText(text);
+    const queryStr = replaceQueryStr(query, text);
+    navigate(`/search?${queryStr}`);
     onStartFullTextSearch(text);
   };
 
@@ -158,7 +205,6 @@ SearchCatalogPage.propTypes = {
   onLoadFromUrlQuery: PropTypes.func.isRequired,
   onStartFullTextSearch: PropTypes.func.isRequired,
   onBubbleRemoveClick: PropTypes.func.isRequired,
-  onCleanUpSearchCriteria: PropTypes.func.isRequired,
 };
 
 export default SearchCatalogPage;

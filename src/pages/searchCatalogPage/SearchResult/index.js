@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SearchResult from './SearchResult';
 import {
-  initialLoadSearchResults, changeSorting, changeSortingOrder
+  changeSorting, changeSortingOrder
 } from '../../../redux/actions/searchActions';
 
 const ReduxSearchResult = (() => {
@@ -12,7 +12,6 @@ const ReduxSearchResult = (() => {
   });
 
   const mapDispatchToProps = {
-    onPageLoadSearchResults: initialLoadSearchResults,
     onChangeSorting: changeSorting,
     onChangeSortingOrder: changeSortingOrder,
   };

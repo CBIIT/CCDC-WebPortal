@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import SelectionInput from '../../../components/SelectionInput';
@@ -57,16 +61,48 @@ const SortingOrderDESCInactive = styled.div`
   cursor: pointer;
 `;
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const replaceQueryStr = (query, sortOrder) => {
+  let str = "";
+  if (query.get("search_text")) {
+    str += `&search_text=${query.get("search_text")}`;
+  }
+  if (query.get("page")) {
+    str += `&page=${query.get("page")}`;
+  }
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  if (query.get("sortBy")) {
+    str += `&sortBy=${query.get("sortBy")}`;
+  }
+  str += `&sortOrder=${sortOrder}`;
+  if (query.get("viewType")) {
+    str += `&viewType=${query.get("viewType")}`;
+  }
+  return str.substring(1);
+};
+
 const Sorting = ({
   sort,
   onChangeSorting,
   onChangeSortingOrder,
 }) => {
+  const query = useQuery();
+  const navigate = useNavigate();
+
   const handleASCSorting = () => {
+    const queryStr = replaceQueryStr(query, "asc");
+    navigate(`/search?${queryStr}`);
     onChangeSortingOrder("asc");
   };
 
   const handleDESCSorting = () => {
+    const queryStr = replaceQueryStr(query, "desc");
+    navigate(`/search?${queryStr}`);
     onChangeSortingOrder("desc");
   };
 

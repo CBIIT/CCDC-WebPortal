@@ -18,7 +18,7 @@
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='rgba(75,108,134,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
 }
 
-.wrapper-dropdown span {
+.wrapper-dropdown .dropdownLabel {
   line-height: 34px;
 }
 
@@ -41,7 +41,7 @@
     padding: 0;
 }
 
-.wrapper-dropdown .dropdown li a {
+.wrapper-dropdown .dropdown li span {
     display: block;
     padding: 10px;
     text-decoration: none;
@@ -56,18 +56,18 @@
     color: inherit;
 }
 
-.wrapper-dropdown .dropdown li:first-of-type a {
+.wrapper-dropdown .dropdown li:first-of-type span {
     border-radius: 7px 7px 0 0;
 }
 
-.wrapper-dropdown .dropdown li:last-of-type a {
+.wrapper-dropdown .dropdown li:last-of-type span {
     border-radius: 0 0 7px 7px;
     border: none;
 }
 
 /* Hover state */
 
-.wrapper-dropdown .dropdown li:hover a {
+.wrapper-dropdown .dropdown li:hover span {
     background: #f3f8f8;
 }
 

@@ -25,7 +25,6 @@ const Pagination = ({
   const handlePageClick = (data) => {
     pageClick(data.selected + 1, pageInfo.pageSize);
   };
-
   return (
     <PaginationContainer>
       {
@@ -51,7 +50,7 @@ const Pagination = ({
         breakClassName="page-item break-me"
         breakLinkClassName="page-link-ccdc"
         pageCount={pageCount}
-        initialPage={pageInfo.page - 1}
+        forcePage={pageInfo.page - 1}
         disableInitialCallback
         marginPagesDisplayed={1}
         pageRangeDisplayed={3}

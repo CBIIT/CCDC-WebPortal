@@ -1,5 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  Link,
+} from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
@@ -150,6 +154,29 @@ const toCapitalize = (str) => {
   return result.join(" ");
 };
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const replaceQueryStr = (query, sorting) => {
+  let str = "";
+  if (query.get("search_text")) {
+    str += `&search_text=${query.get("search_text")}`;
+  }
+  if (query.get("page")) {
+    str += `&page=${query.get("page")}`;
+  }
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  str += `&sortBy=${sorting.k}`;
+  str += `&sortOrder=${sorting.v}`;
+  if (query.get("viewType")) {
+    str += `&viewType=${query.get("viewType")}`;
+  }
+  return str.substring(1);
+};
+
 const SearchResult = ({
   resultList,
   sort,
@@ -157,10 +184,33 @@ const SearchResult = ({
   onChangeSorting,
   onChangeSortingOrder,
 }) => {
+  const query = useQuery();
+  const navigate = useNavigate();
+
   const handleSortBy = (column) => {
     const name = column;
     if (name === sort.name) {
-      onChangeSortingOrder(sort.v === "asc" ? "desc" : "asc");
+      const toSortBy = {};
+      if (name === "Dataset") {
+        toSortBy.name = "Dataset";
+        toSortBy.k = "dataset_name.raw";
+      } else if (name === "Cases") {
+        toSortBy.name = "Cases";
+        toSortBy.k = "case_id";
+      } else if (name === "Samples") {
+        toSortBy.name = "Samples";
+        toSortBy.k = "sample_id";
+      } else if (name === "Resource") {
+        toSortBy.name = "Resource";
+        toSortBy.k = "data_resource_id";
+      } else {
+        toSortBy.name = "Primary Dataset Scope";
+        toSortBy.k = "primary_dataset_scope";
+      }
+      toSortBy.v = sort.v === "asc" ? "desc" : "asc";
+      const queryStr = replaceQueryStr(query, toSortBy);
+      navigate(`/search?${queryStr}`);
+      onChangeSortingOrder(toSortBy.v);
     } else {
       const toSortBy = {};
       if (name === "Dataset") {
@@ -180,6 +230,8 @@ const SearchResult = ({
         toSortBy.k = "primary_dataset_scope";
       }
       toSortBy.v = sort.v;
+      const queryStr = replaceQueryStr(query, toSortBy);
+      navigate(`/search?${queryStr}`);
       onChangeSorting(toSortBy);
     }
   };
@@ -324,6 +376,16 @@ const SearchResult = ({
               desc = `${desc.substring(0, 500).replace(/<(?![b/])/g, "&lt;")} ...`;
             } else {
               desc = desc.replace(/<(?![b/])/g, "&lt;");
+            }
+            const otherMatches = [];
+            if (rst.highlight) {
+              Object.keys(rst.highlight).forEach((hl) => {
+                if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "data_resource_name" && hl !== "desc"
+                && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s"
+                && hl !== "case_tumor_site.k" && hl !== "case_tumor_site.s" && hl !== "sample_assay_method.k") {
+                  otherMatches.push(hl);
+                }
+              });
             }
             return (
               <div key={key} className="container">
@@ -534,26 +596,21 @@ const SearchResult = ({
                   )
                 }
                 {
-                  rst.highlight && (
-                    Object.keys(rst.highlight).map((hl, hlidx) => {
-                      if (hl !== "dataset_name" && hl !== "data_resource_id" && hl !== "data_resource_name" && hl !== "desc" && hl !== "projects.p_k" && hl !== "case_disease_diagnosis.k" && hl !== "case_disease_diagnosis.s" && hl !== "case_tumor_site.k" && hl !== "case_tumor_site.s" && hl !== "sample_assay_method.k") {
-                        const hlKey = `hl_${hl}_${hlidx}`;
-                        return (
-                          <div key={hlKey} className="row align-items-start footerRow">
-                            <div className="col">
-                              <label>
-                                Other Match:&nbsp;
-                                {toCapitalize(hl.replace(".k", "").replace(/_/g, " "))}
-                              </label>
-                              :&nbsp;
-                              {ReactHtmlParser(rst.highlight[hl])}
-                            </div>
+                  otherMatches.map((hl, hlidx) => {
+                      const hlKey = `hl_${hl}_${hlidx}`;
+                      return (
+                        <div key={hlKey} className="row align-items-start footerRow">
+                          <div className="col">
+                            <label>
+                              Other Match:&nbsp;
+                              {toCapitalize(hl.replace(".k", "").replace(/_/g, " "))}
+                            </label>
+                            :&nbsp;
+                            {ReactHtmlParser(rst.highlight[hl])}
                           </div>
-                        );
-                      }
-                      return <></>;
+                        </div>
+                      );
                     })
-                  )
                 }
               </div>
             );
@@ -564,7 +621,7 @@ const SearchResult = ({
             <table className="table table-striped">
               <TableHead>
                   <tr style={{ color: 'navy' }}>
-                      <th scope="col" width="45%" abbr="Dataset" onClick={() => handleSortBy("Dataset")}>
+                      <th scope="col" width="40%" abbr="Dataset" onClick={() => handleSortBy("Dataset")}>
                         Dataset&nbsp;
                         {
                           sort.k === "dataset_name.raw" && (
@@ -574,7 +631,7 @@ const SearchResult = ({
                           )
                         }
                       </th>
-                      <th scope="col" width="10%" abbr="Cases" onClick={() => handleSortBy("Cases")}>
+                      <th scope="col" width="12%" abbr="Cases" onClick={() => handleSortBy("Cases")}>
                         Cases&nbsp;
                         {
                           sort.k === "case_id" && (
@@ -584,7 +641,7 @@ const SearchResult = ({
                           )
                         }
                       </th>
-                      <th scope="col" width="10%" abbr="Samples" onClick={() => handleSortBy("Samples")}>
+                      <th scope="col" width="13%" abbr="Samples" onClick={() => handleSortBy("Samples")}>
                         Samples&nbsp;
                         {
                           sort.k === "sample_id" && (
