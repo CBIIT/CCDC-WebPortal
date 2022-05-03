@@ -36,11 +36,11 @@ const ResourceHeader = styled.div`
 
 const ResourceTitle = styled.div`
   width: 85%;
-  color: #255b96;
+  color: #004187;
   font-weight: 600;
   font-size: 1.28rem;
   height: 40px;
-  border-bottom: 3px solid #255b96;
+  border-bottom: 3px solid #004187;;
 
   a {
     color: inherit;
@@ -86,7 +86,7 @@ const POCInfo = styled.div`
 
   label {
     font-weight: bold;
-    color: #07468a;
+    color: #004187;
   }
 
   a {
@@ -110,7 +110,7 @@ const SiteInfo = styled.div`
 
 const SiteIcon = styled.div`
   font-weight: bold;
-  color: #07468a;
+  color: #004187;
   font-size: 1.2rem;  
   background-image: url(${externalIcon});
   background-repeat: no-repeat;
