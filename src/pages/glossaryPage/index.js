@@ -25,7 +25,7 @@ const Glossary = () => {
                 <a className={key === 'G' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('G')}>G</a>
                 <a className={key === 'H' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('H')}>H</a>
                 <a className={key === 'I' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('I')}>I</a>
-                <a className="nav-link disabled" href="#" aria-disabled="true">J</a>
+                <a className={key === 'J' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('J')}>J</a>
                 <a className={key === 'K' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('K')}>K</a>
                 <a className="nav-link disabled" href="#" aria-disabled="true">L</a>
                 <a className={key === 'M' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('M')}>M</a>
@@ -214,6 +214,12 @@ const Glossary = () => {
             key === 'F' && (
               <>
                 <div className="f">
+                  <h2 className="glossaryItemHeader">FAIR</h2>
+                  <span className="glossaryItemType">General Abbreviation</span>
+                  <p className="glossaryItemDescription">Findable, Accessible, Interoperable, and Reusable</p>
+                  <br />
+                </div>
+                <div className="f">
                   <h2 className="glossaryItemHeader">FDA</h2>
                   <span className="glossaryItemType">General Abbreviation</span>
                   <p className="glossaryItemDescription">Food and Drug Admistration</p>
@@ -252,6 +258,12 @@ const Glossary = () => {
             key === 'H' && (
               <>
                 <div className="h">
+                  <h2 className="glossaryItemHeader">HCMI</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Human Cancer Models Initiative</p>
+                  <br />
+                </div>
+                <div className="h">
                   <h2 className="glossaryItemHeader">HTAN</h2>
                   <span className="glossaryItemType">Resource Abbreviation</span>
                   <p className="glossaryItemDescription">Human Tumor Atlas Network</p>
@@ -270,6 +282,19 @@ const Glossary = () => {
                   <p className="glossaryItemDescription">A process that makes pictures of areas inside the body. Imaging uses methods such as x-rays (high-energy radiation), ultrasound (high-energy sound waves), and radio waves.</p>
                   <p className="glossaryItemLink">NCI Dictionary</p>
                   <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/imaging</a></p>
+                  <br />
+                  <br />
+                </div>
+              </>
+            )
+          }
+          {
+            key === 'J' && (
+              <>
+                <div className="j">
+                  <h2 className="glossaryItemHeader">JAX</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">The Jackson Laboratory</p>
                   <br />
                   <br />
                 </div>
@@ -304,6 +329,12 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader">Mixed</h2>
                   <span className="glossaryItemType">Pediatric Specific</span>
                   <p className="glossaryItemDescription">A data resource hosts pediatric, young adult, and adult oncology research data</p>
+                  <br />
+                </div>
+                <div className="m">
+                  <h2 className="glossaryItemHeader">MMHCdb</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">The Mouse Models of Human Cancer database </p>
                   <br />
                 </div>
                 <div className="m">
@@ -372,6 +403,18 @@ const Glossary = () => {
                   <h2 className="glossaryItemHeader" id="P">PDX</h2>
                   <span className="glossaryItemType">General Abbreviation</span>
                   <p className="glossaryItemDescription">Patient Derived Xenograft</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PDXNet</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">PDX Development and Trial Centers Research Network</p>
+                  <br />
+                </div>
+                <div className="p">
+                  <h2 className="glossaryItemHeader" id="P">PDMR</h2>
+                  <span className="glossaryItemType">Resource Abbreviation</span>
+                  <p className="glossaryItemDescription">Patient-Derived Model Repository </p>
                   <br />
                 </div>
                 <div className="p">
