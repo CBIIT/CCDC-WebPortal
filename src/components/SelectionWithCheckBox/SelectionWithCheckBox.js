@@ -12,10 +12,10 @@ const SelectionContainer = styled.div`
 const SelectionLabel = styled.div`
   margin: 10px 0;
   width: 100%;
-  color: #8a9296;
+  // color: #8a9296;
+  color: red;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #8a9296;
   text-transform: uppercase;
 `;
 

@@ -11,7 +11,7 @@ const FilterLabel = styled.div`
   background-color: #f7f8fa;
   margin: 0 5px;
   padding: 5px 10px 5px 10px;
-  color: #245284;
+  color: #004187;
   font-weight: 700;
   font-size: 1.4rem;
 

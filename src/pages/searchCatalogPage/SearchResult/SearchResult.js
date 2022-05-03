@@ -35,7 +35,7 @@ const SearchResultContainer = styled.div`
   }
 
   .container a{
-    color: #046ab2;
+    color: #004187;
     text-decoration: none;
   }
 
@@ -620,7 +620,7 @@ const SearchResult = ({
           viewType === "table" && (
             <table className="table table-striped">
               <TableHead>
-                  <tr style={{ color: 'navy' }}>
+                  <tr style={{ color: '#004187' }}>
                       <th scope="col" width="40%" abbr="Dataset" onClick={() => handleSortBy("Dataset")}>
                         Dataset&nbsp;
                         {

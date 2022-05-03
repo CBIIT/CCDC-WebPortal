@@ -27,7 +27,7 @@
 
 .page-link-ccdc:hover {
   background-color: #c6d2db;
-  color: #4b6a90;
+  color: #004187;
 }
 
 .page-link-ccdc-inactive:hover {
@@ -35,6 +35,6 @@
 }
 
 .page-item.active .page-link-ccdc {
-  background-color: #014188;
+  background-color: #004187;
   color: white;
 }
