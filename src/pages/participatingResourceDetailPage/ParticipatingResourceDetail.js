@@ -299,8 +299,8 @@ const ParticipatingResourceDetail = ({
                         <div className="prCoreDataLabel">Resource Description</div>
                         <div className="prDataElementLabel">Resource Type</div>
                         <div className="prDataElementContent">{detail.resource_type}</div>
-                        {/* <div className="prDataElementLabel">Specialization</div> */}
-                        {/* <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div> */}
+                        <div className="prDataElementLabel">Specialization</div>
+                        <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
                         <br />
                         <div className="prDataElementLabel">Data Update Date</div>
                         {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
