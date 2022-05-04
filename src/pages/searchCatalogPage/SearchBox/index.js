@@ -67,8 +67,7 @@ const SearchBoxArea = styled.div`
     font-weight: bold;
     color: white;
     border: 2.5px solid #004187;
-    // background-color: #004187;
-    background-color: navy;
+    background-color: #2c64a0;
     padding: .75rem 1rem;
     position: relative;
     right: 1px;
