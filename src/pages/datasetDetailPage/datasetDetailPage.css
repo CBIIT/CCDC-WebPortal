@@ -164,7 +164,6 @@ ul.breadcrumb li a:hover {
   width: 48%;
   /* height: 300px; */
   /* height: auto; */
-  /* border-right: 1px solid #e0e4e7; */
   border-right: 1px solid #BFD3E1;
   /* display: flex; */
   /* display: inline-block; */
@@ -187,9 +186,10 @@ ul.breadcrumb li a:hover {
 }
 
 .additionalDataContainer {
-  padding: 0px 0 10px 30px;
+  padding: 0px 0 10px 31px;
+  margin-left: -1px;
   width: 48%;
-  /* border-left: 1px solid lightgray; */
+  border-left: 1px solid #BFD3E1;
   display: inline-table;
 }
 
