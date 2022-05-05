@@ -199,6 +199,7 @@ const ParticipatingResourceDetail = ({
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
+    Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
