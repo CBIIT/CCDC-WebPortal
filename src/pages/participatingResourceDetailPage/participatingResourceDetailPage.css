@@ -223,7 +223,7 @@
   font-size: 23px;
   font-weight: 900;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   width: 100%;
 }
 
@@ -241,7 +241,7 @@
   font-size: 23px;
   font-weight: 900;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   /* width: 95%; */
 }
 
@@ -309,7 +309,7 @@
   border: 2px solid white;
   font-size: 15px;
   text-align: center;
-  background: #0e48b4;
+  background: #004187;
   color: white;
   position: absolute;
   top: 20px;

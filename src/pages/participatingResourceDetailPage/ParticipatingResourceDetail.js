@@ -116,10 +116,10 @@ const SummaryIcon = styled.div`
   position: absolute;
   bottom: 10px;
   left: 20px;
-  color: #07468a;
+  color: #004187;
   font-size: 30px;
   width: 64px;
-  background-color: #1f5487;
+  background-color: #004187;
   border-radius: 70px;
   border: 2px solid white;
   text-align: center;
@@ -149,7 +149,7 @@ const DatasetHeader = styled.div`
 
 const DatasetTitle = styled.div`
   // width: 85%;
-  color: #255b96;
+  color: #004187;
   // font-weight: 600;
   font-family: Lato;
   // font-size: 1.3rem;

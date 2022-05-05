@@ -181,7 +181,7 @@ ul.breadcrumb li a:hover {
   font-weight: 900;
   letter-spacing: 1px;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   width: 100%;
 }
 
@@ -198,11 +198,11 @@ ul.breadcrumb li a:hover {
   bottom: 8px;
   margin-bottom: -10px;
   padding: 20px 0 10px 0px;
-  color: #07368b;
+  color: #004187;
   font-size: 23px;
   font-weight: 900;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   /* width: 95%; */
   width: 540px;
 }
