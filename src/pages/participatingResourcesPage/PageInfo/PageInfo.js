@@ -42,6 +42,7 @@ const PageInfo = ({
   const navigate = useNavigate();
 
   const pageClick = (page, pageSize) => {
+    window.scrollTo(0, 0);
     const queryStr = replaceQueryStr(query, page);
     navigate(`/participatingresources?${queryStr}`);
     onPageSelect({
