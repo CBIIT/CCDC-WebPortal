@@ -67,7 +67,6 @@ const AboutPage = () => {
                 <div className="aboutContent2">
                     <h2 className="aboutContentHeader2">Contribute to the CCDI Data Catalog</h2>
                     <p style={{ paddingBottom: '10px' }}>
-                        NCI is interested in expanding this resource. Submit summaries about your data resource to make it known to a broader community and help
                         The NCI is interested in expanding resources available in the data catalog. Data resource owners are invited to submit summaries about their
                         data resource(s) to the CCDC to make it known to a broader community and help promote the use of the data.
                     </p>
