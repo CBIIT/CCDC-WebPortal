@@ -24,6 +24,44 @@ const replaceQueryStr = (query, searchText) => {
   if (searchText.trim() !== "") {
     str += `&search_text=${searchText.trim()}`;
   }
+  if (query.get("filterByResource")) {
+    str += `&filterByResource=${query.get("filterByResource")}`;
+  }
+  if (query.get("page")) {
+    str += `&page=${query.get("page")}`;
+  }
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  if (query.get("sortBy")) {
+    str += `&sortBy=${query.get("sortBy")}`;
+  }
+  if (query.get("sortOrder")) {
+    str += `&sortOrder=${query.get("sortOrder")}`;
+  }
+  if (query.get("viewType")) {
+    str += `&viewType=${query.get("viewType")}`;
+  }
+  return str.substring(1);
+};
+
+const replaceResourceFilter = (query, filter) => {
+  let str = "";
+  if (query.get("search_text")) {
+    str += `&search_text=${query.get("search_text")}`;
+  }
+  if (filter !== "") {
+    const tmp = query.get("filterByResource") ? query.get("filterByResource").split("|") : [];
+    const idx = tmp.indexOf(filter);
+    if (idx > -1) {
+      tmp.splice(idx, 1);
+    } else {
+      tmp.push(filter);
+    }
+    if (tmp.length > 0) {
+      str += `&filterByResource=${tmp.join("|")}`;
+    }
+  }
   if (query.get("page")) {
     str += `&page=${query.get("page")}`;
   }
@@ -43,11 +81,13 @@ const replaceQueryStr = (query, searchText) => {
 };
 
 const SearchCatalogPage = ({
-  searchCriteria,
+  searchKeyword,
+  resourceFilters,
   viewType,
   onLoadFromUrlQuery,
   onStartFullTextSearch,
-  onBubbleRemoveClick,
+  onBubbleSearchTextRemoveClick,
+  onBubbleResourcesRemoveClick,
 }) => {
   const query = useQuery();
   const [searchParams] = useSearchParams();
@@ -59,6 +99,12 @@ const SearchCatalogPage = ({
     const options = {};
     if (query.get("page")) {
       options.page = parseInt(query.get("page").trim(), 10);
+    }
+    if (query.get("page")) {
+      options.page = parseInt(query.get("page").trim(), 10);
+    }
+    if (query.get("filterByResource")) {
+      options.filterByResource = query.get("filterByResource").trim().split("|");
     }
     if (query.get("pageSize")) {
       options.pageSize = parseInt(query.get("pageSize").trim(), 10);
@@ -77,11 +123,17 @@ const SearchCatalogPage = ({
       });
   }, [searchParams]);
 
-  const handleBubbleRemoveClick = () => {
+  const handleBubbleSearchTextRemoveClick = () => {
     setSearchText("");
     const queryStr = replaceQueryStr(query, "");
     navigate(`/search?${queryStr}`);
-    onBubbleRemoveClick({field: "search_text", value: ""});
+    onBubbleSearchTextRemoveClick();
+  };
+
+  const handleBubbleResourcesRemoveClick = () => {
+    const queryStr = replaceResourceFilter(query, "");
+    navigate(`/search?${queryStr}`);
+    onBubbleResourcesRemoveClick();
   };
 
   const handleSearchBoxKeyPress = () => {
@@ -98,14 +150,6 @@ const SearchCatalogPage = ({
 
   const handleSearchTextInputChange = (keyword) => {
     setSearchText(keyword);
-  };
-
-  const handleSourceClick = (event) => {
-    const text = event.target.textContent;
-    setSearchText(text);
-    const queryStr = replaceQueryStr(query, text);
-    navigate(`/search?${queryStr}`);
-    onStartFullTextSearch(text);
   };
 
   return (
@@ -137,7 +181,7 @@ const SearchCatalogPage = ({
                         If you search multiple terms (i.e. lymphocytic survivors) the search results will return sources that contain all the specified terms (AND Boolean operator).
                       </li>
                       <li>
-                        Selecting a resource Source (i.e. Kids First) will automatically create a search for the selected source.
+                        Results can be filtered by Participating Resource by checking a resource in the Resource column.  Selecting multiple Resources will filter as an OR Boolean operator.
                       </li>
                       <li>
                         Anatomical site searches leverage the NCI Thesaurus to display Case Tumor Site synonym matches. For example, a search for ‘eye’ will also return results for ‘orbit’.
@@ -154,8 +198,10 @@ const SearchCatalogPage = ({
           <div className="searchBoxContainer">
             <SearchBox
               searchText={searchText}
-              searchCriteria={searchCriteria}
-              onBubbleRemoveClick={handleBubbleRemoveClick}
+              searchKeyword={searchKeyword}
+              resourceFilters={resourceFilters}
+              handleBubbleSearchTextRemoveClick={handleBubbleSearchTextRemoveClick}
+              handleBubbleResourcesRemoveClick={handleBubbleResourcesRemoveClick}
               onSearchBoxKeyPress={handleSearchBoxKeyPress}
               onSearchSubmit={handleSearchSubmit}
               onSearchTextInputChange={handleSearchTextInputChange}
@@ -166,7 +212,7 @@ const SearchCatalogPage = ({
       <div className="searchCatalogContainer">
         <div className="searchArea">
           <div className="searchFiltersContainer">
-            <Filters onSourceClick={handleSourceClick} />
+            <Filters />
           </div>
           <div className="searchContentContainer">
             <div className="searchContentHeader">
@@ -203,11 +249,13 @@ const SearchCatalogPage = ({
 };
 
 SearchCatalogPage.propTypes = {
-  searchCriteria: PropTypes.string.isRequired,
+  searchKeyword: PropTypes.string.isRequired,
+  resourceFilters: PropTypes.array.isRequired,
   viewType: PropTypes.string.isRequired,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
   onStartFullTextSearch: PropTypes.func.isRequired,
-  onBubbleRemoveClick: PropTypes.func.isRequired,
+  onBubbleSearchTextRemoveClick: PropTypes.func.isRequired,
+  onBubbleResourcesRemoveClick: PropTypes.func.isRequired,
 };
 
 export default SearchCatalogPage;

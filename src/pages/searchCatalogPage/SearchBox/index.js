@@ -4,6 +4,7 @@ import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
 
 const BubbleContainer = styled.div`
+  max-width: calc(50% - 20px);
   border-radius: 20px;
   background-color: #EDF0F2;
   color: #2E5A79;
@@ -100,17 +101,17 @@ const getSearchableText = (searchString) => {
 
 const SearchBox = ({
   searchText,
-  searchCriteria,
-  onBubbleRemoveClick,
+  searchKeyword,
+  resourceFilters,
+  handleBubbleSearchTextRemoveClick,
+  handleBubbleResourcesRemoveClick,
   onSearchBoxKeyPress,
   onSearchSubmit,
   onSearchTextInputChange,
 }) => {
   const searchableText = getSearchableText(searchText);
-
-  const handleBubbleRemoveClick = () => {
-    onBubbleRemoveClick();
-  };
+  const bubbleSearchKeyword = getSearchableText(searchKeyword);
+  const bubbleResources = resourceFilters.join(" , ");
 
   const handleTextInputChange = (event) => {
     const text = event.target.value;
@@ -155,12 +156,24 @@ const SearchBox = ({
       </SearchBoxArea>
       <SelectionBubbleArea>
         {
-          getSearchableText(searchCriteria) !== "" && (
-            <BubbleContainer>
+          bubbleSearchKeyword !== "" && (
+            <BubbleContainer title={bubbleSearchKeyword}>
               Search Text
               :&nbsp;
-              {getSearchableText(searchCriteria)}
-              <span className="removeBubble" onClick={() => handleBubbleRemoveClick()} aria-hidden="true">
+              {bubbleSearchKeyword.length > 24 ? `${bubbleSearchKeyword.substring(0, 21)}...` : bubbleSearchKeyword}
+              <span className="removeBubble" onClick={() => handleBubbleSearchTextRemoveClick()} aria-hidden="true">
+                <i className="fas fa-times" />
+              </span>
+            </BubbleContainer>
+          )
+        }
+        {
+          bubbleResources.length > 0 && (
+            <BubbleContainer title={bubbleResources}>
+              Resources
+              :&nbsp;
+              {bubbleResources.length > 24 ? `${bubbleResources.substring(0, 21)}...` : bubbleResources}
+              <span className="removeBubble" onClick={() => handleBubbleResourcesRemoveClick()} aria-hidden="true">
                 <i className="fas fa-times" />
               </span>
             </BubbleContainer>
@@ -173,8 +186,10 @@ const SearchBox = ({
 
 SearchBox.propTypes = {
   searchText: PropTypes.string.isRequired,
-  searchCriteria: PropTypes.string.isRequired,
-  onBubbleRemoveClick: PropTypes.func.isRequired,
+  searchKeyword: PropTypes.string.isRequired,
+  resourceFilters: PropTypes.array.isRequired,
+  handleBubbleSearchTextRemoveClick: PropTypes.func.isRequired,
+  handleBubbleResourcesRemoveClick: PropTypes.func.isRequired,
   onSearchBoxKeyPress: PropTypes.func.isRequired,
   onSearchSubmit: PropTypes.func.isRequired,
   onSearchTextInputChange: PropTypes.func.isRequired,

@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import {
-    clickSearchFilter,
-} from '../../redux/actions/searchFiltersActions';
-import {
   clickParticipatingResourcesSearchFilter,
 } from '../../redux/actions/participatingResourcesActions';
 import Accordion from './Accordion';
@@ -25,7 +22,7 @@ const ReduxAccordion = (() => {
   });
 
   const mapDispatchToProps = {
-    onClickSearchFilter: clickSearchFilter,
+    onClickSearchFilter: clickParticipatingResourcesSearchFilter,
     onClickParticipatingResourcesSearchFilter: clickParticipatingResourcesSearchFilter,
   };
 

@@ -15,6 +15,9 @@ const replaceQueryStr = (query, page, pageSize) => {
   if (query.get("search_text")) {
     str += `&search_text=${query.get("search_text")}`;
   }
+  if (query.get("filterByResource")) {
+    str += `&filterByResource=${query.get("filterByResource")}`;
+  }
   str += `&page=${page}`;
   str += `&pageSize=${pageSize}`;
   if (query.get("sortBy")) {

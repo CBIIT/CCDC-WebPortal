@@ -70,6 +70,9 @@ const replaceQueryStr = (query, sortOrder) => {
   if (query.get("search_text")) {
     str += `&search_text=${query.get("search_text")}`;
   }
+  if (query.get("filterByResource")) {
+    str += `&filterByResource=${query.get("filterByResource")}`;
+  }
   if (query.get("page")) {
     str += `&page=${query.get("page")}`;
   }

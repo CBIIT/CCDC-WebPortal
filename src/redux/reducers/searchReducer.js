@@ -1,32 +1,12 @@
 import * as types from "../actions/actionTypes";
 import initialState from './initialState';
 
-const insertOrDeleteFilter = (filters, action) => {
-  const tmp = {};
-  const newArray = filters[action.filter.name] ? filters[action.filter.name].slice() : [];
-  const idx = newArray.indexOf(action.filter.value);
-  if (idx > -1) {
-    newArray.splice(idx, 1);
-    tmp[action.filter.name] = newArray;
-  } else {
-    newArray.push(action.filter.value);
-    tmp[action.filter.name] = newArray;
-  }
-  return tmp;
-};
-
 export default function searchReducer(state = initialState.datasets, action) {
     switch (action.type) {
-        case types.LOAD_SEARCH_FILTERS_SELECTION_SUCCESS: {
+        case types.LOAD_RESOURCES_LIST_SUCCESS: {
           return {
             ...state,
-            searchCriteria: {
-              ...state.searchCriteria,
-              facet_filters: {
-                ...state.searchCriteria.facet_filters,
-                ...action.filters,
-              },
-            },
+            resourcesList: action.resourcesList,
           };
         }
         case types.LOAD_SEARCH_RESULTS_SUCCESS: {
@@ -36,16 +16,12 @@ export default function searchReducer(state = initialState.datasets, action) {
             searchSourceResults: action.searchResults.aggs,
           };
         }
-        case types.CLICK_SEARCH_FILTER_SUCCESS: {
-          const facetFilter = insertOrDeleteFilter(state.searchCriteria.facet_filters, action);
+        case types.UPDATE_RESOURCES_FILTER_SUCCESS: {
           return {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              facet_filters: {
-                ...state.searchCriteria.facet_filters,
-                ...facetFilter,
-              },
+              resources_filter: action.filter,
             },
           };
         }
@@ -100,11 +76,6 @@ export default function searchReducer(state = initialState.datasets, action) {
               ...state.details,
               ...action.dataset,
             }
-          };
-        case types.RESET_SEARCH_CRITERIA:
-          return {
-            ...state,
-            searchCriteria: action.searchCriteria,
           };
         default:
             return state;

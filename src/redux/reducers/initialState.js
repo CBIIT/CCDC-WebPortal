@@ -14,18 +14,10 @@ export default {
       detail: {},
       datasets: [],
     },
-    searchFilters: [
-    ],
-    advancedSearch: {
-      advancedFilters: {
-      },
-      advanced_facet_filters: {
-      },
-    },
     datasets: {
       searchCriteria: {
         search_text: "",
-        facet_filters: {},
+        resources_filter: [],
         pageInfo: {
             page: 1,
             pageSize: 10,
@@ -38,7 +30,8 @@ export default {
         }
       },
       searchResults: [],
-      searchSourceResults: [],
+      searchSourceResults: "all",
+      resourcesList: [],
       viewType: "card",
       details: {},
     },

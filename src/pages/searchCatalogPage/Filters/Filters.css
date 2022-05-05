@@ -53,4 +53,21 @@
   font-weight: 900;
   font-family: Lato;
   font-size: 23px;
+  position: relative;
+}
+
+.clear-all-button {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.clear-all-button:hover {
+  width: 23px;
+  height: 23px;
 }
