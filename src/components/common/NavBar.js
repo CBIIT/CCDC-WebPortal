@@ -195,8 +195,6 @@ const LiSection = styled.li`
 
   ul.dropdown{
     min-width: 280px;
-    // border: 2px solid #00996B;
-    border: 2px solid #2dc799;
     display: none;
     position: absolute;
     z-index: 999;
