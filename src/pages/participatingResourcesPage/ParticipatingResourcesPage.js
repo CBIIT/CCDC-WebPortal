@@ -60,6 +60,7 @@ const SearchArea = styled.div`
 const SearchFiltersContainer = styled.div`
   width: 20%;
   // margin: 0 auto;
+  // padding: 0 0 0 80px;
   padding: 0 0 80px 0;
   border-left: 1px solid #e0e4e7;
   border-right: 1px solid #e0e4e7;
@@ -70,6 +71,7 @@ const SearchContentContainer = styled.div`
   border-right: 1px solid #e0e4e7;
   padding: 0 18px;
   padding-bottom: 80px;
+  // padding: 0 0 0 80px;
 `;
 
 const SearchContent = styled.div`
