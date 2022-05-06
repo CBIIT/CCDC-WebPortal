@@ -2,7 +2,7 @@
   position: relative;
   display: block;
   text-decoration: none;
-  background-color: #e8f1f8;
+  background-color: #F6FBFF;
   color: #004187;
   border: 0;
   font-weight: bold;
@@ -15,9 +15,10 @@
   position: relative;
   display: block;
   text-decoration: none;
-  background-color: lightgray;
-  color: #004187;
-  border: 0;
+  color: gray;
+  border: 1px solid #A0B3C8;
+  background-color: #F6FBFF;
+  /* border: 0; */
   font-weight: bold;
   font-family: Lato;
   font-size: 17px;
@@ -28,13 +29,15 @@
 .page-link-ccdc:hover {
   background-color: #c6d2db;
   color: #004187;
+  border: 1px solid #A0B3C8;
 }
 
 .page-link-ccdc-inactive:hover {
   color: #004187;
+  border: 1px solid #A0B3C8;
 }
 
 .page-item.active .page-link-ccdc {
-  background-color: #004187;
-  color: white;
+  border: 1px solid #A0B3C8;
+  background-color: #BFE3FF;
 }

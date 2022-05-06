@@ -17,6 +17,17 @@ const PageSummary = styled.div`
   font-size: 17px;
 `;
 
+const PageSelect = styled.div`
+  border: 1px solid #A0B3C8;
+  background-color: #F6FBFF;
+`;
+
+const PreviousNextSelect = styled.div`
+  // color: red;
+  margin-top: -4px;
+  font-size: 20px;
+`;
+
 const Pagination = ({
   pageInfo,
   pageClick,
@@ -39,11 +50,12 @@ const Pagination = ({
         &nbsp;of&nbsp;
         {pageInfo.total}
       </PageSummary>
+      <PageSelect>
       <ReactPaginate
-        previousLabel="Previous"
+        previousLabel={<PreviousNextSelect><span>&#60;</span></PreviousNextSelect>}
         prevClassName="page-item"
         previousLinkClassName={pageInfo.page === 1 ? "page-link-ccdc-inactive" : "page-link-ccdc"}
-        nextLabel="Next"
+        nextLabel={<PreviousNextSelect><span>&#62;</span></PreviousNextSelect>}
         nextClassName="page-item"
         nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc"}
         breakLabel="..."
@@ -61,6 +73,7 @@ const Pagination = ({
         subContainerClassName="pages pagination"
         activeClassName="active"
       />
+      </PageSelect>
       </>
       )
       }
