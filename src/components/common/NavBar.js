@@ -212,9 +212,10 @@ const LiSection = styled.li`
     // background-color: #00996B;
     background-color: #2dc799;
     border-radius: 0;
-    line-height: 35px;
+    // line-height: 35px;
+    line-height: 50px;
     text-align: left;
-    padding: 5px 1.5rem;
+    // padding: 5px 1.5rem;
   }
 
   ul.dropdown li:hover {
@@ -299,9 +300,9 @@ const activeStyle = {
   // textDecorationThickness: "3px",
 };
 
-const activeStyleMenuItem = {
-  color: "white",
-};
+// const activeStyleMenuItem = {
+//   color: "white",
+// };
 
 const useOutsideAlerter = (ref) => {
   useEffect(() => {
@@ -409,8 +410,8 @@ const NavBar = () => {
                       <i className="fas fa-sort-down" />
                     </span>
                     <ul className="dropdown">
-                        <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyleMenuItem : null)}>About CCDI Data Catalog</NavLink></li>
-                        <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyleMenuItem : null)}>Glossary</NavLink></li>
+                        <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
+                        <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
                     </ul>
                 </LiSection>
               </UlContainer>
