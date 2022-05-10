@@ -38,6 +38,10 @@ export function switchPage(pageInfo) {
   return { type: types.SWITCH_PAGE, pageInfo};
 }
 
+export function switchSize(pageInfo) {
+  return { type: types.SWITCH_SIZE, pageInfo};
+}
+
 export function switchView(viewType) {
   return { type: types.SWITCH_VIEW, viewType};
 }
@@ -162,6 +166,13 @@ export function changeSortingOrder(order) {
 export function pageSelect(pageInfo) {
   const func = function func(dispatch) {
       dispatch(switchPage(pageInfo));
+  };
+  return func;
+}
+
+export function sizeSelect(pageInfo) {
+  const func = function func(dispatch) {
+      dispatch(switchSize(pageInfo));
   };
   return func;
 }

@@ -25,6 +25,10 @@ export function switchPage(pageInfo) {
   return { type: types.PARTICIPATING_RESOURCES_SWITCH_PAGE, pageInfo};
 }
 
+export function switchSize(pageInfo) {
+  return { type: types.PARTICIPATING_RESOURCES_SWITCH_SIZE, pageInfo};
+}
+
 export function loadSearchResultsSuccess(searchResults) {
   return { type: types.LOAD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS, searchResults };
 }
@@ -89,6 +93,18 @@ export function loadFromUrlQuery(filters) {
   const func = function func(dispatch, getState) {
     if (filters.page || filters.pageSize) {
       dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+      dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+      // if (filters.pageSize && filters.pageSize === 10) {
+      //   dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+      // } else if (filters.pageSize && filters.pageSize === 20) {
+      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 20}));
+      // } else if (filters.pageSize && filters.pageSize === 50) {
+      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 50}));
+      // } else if (filters.pageSize && filters.pageSize === 100) {
+      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 100}));
+      // } else {
+      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+      // }
     }
     if (filters.resource_type || filters.data_content_type) {
       dispatch(loadSearchFiltersSelectionSuccess({resource_type: filters.resource_type ? filters.resource_type : [], data_content_type: filters.data_content_type ? filters.data_content_type : []}));
@@ -123,6 +139,13 @@ export function clickParticipatingResourcesSearchFilter(filter) {
 export function pageSelect(pageInfo) {
   const func = function func(dispatch) {
       dispatch(switchPage(pageInfo));
+  };
+  return func;
+}
+
+export function sizeSelect(pageInfo) {
+  const func = function func(dispatch) {
+      dispatch(switchSize(pageInfo));
   };
   return func;
 }

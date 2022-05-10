@@ -37,6 +37,7 @@ const replaceQueryStr = (query, page) => {
 const PageInfo = ({
   pageInfo,
   onPageSelect,
+  onSizeSelect,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
@@ -51,9 +52,19 @@ const PageInfo = ({
     });
   };
 
+  const sizeClick = (page, pageSize) => {
+    window.scrollTo(0, 0);
+    const queryStr = replaceQueryStr(query, page);
+    navigate(`/participatingresources?${queryStr}`);
+    onSizeSelect({
+      page,
+      pageSize
+    });
+  };
+
   return (
     <PageSection>
-      <Pagination pageInfo={pageInfo} pageClick={pageClick} />
+      <Pagination pageInfo={pageInfo} pageClick={pageClick} sizeClick={sizeClick} />
     </PageSection>
   );
 };
@@ -61,6 +72,7 @@ const PageInfo = ({
 PageInfo.propTypes = {
   pageInfo: PropTypes.object.isRequired,
   onPageSelect: PropTypes.func.isRequired,
+  onSizeSelect: PropTypes.func.isRequired,
 };
 
 export default PageInfo;

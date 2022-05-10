@@ -80,6 +80,14 @@ export default function participatingResourcesReducer(state = initialState.parti
               pageInfo: action.pageInfo,
               },
           };
+        case types.PARTICIPATING_RESOURCES_SWITCH_SIZE:
+          return {
+            ...state,
+            searchCriteria: {
+              ...state.searchCriteria,
+              pageInfo: action.pageInfo,
+              },
+          };
         case types.LOAD_DATARESOURCE_DETAIL_SUCCESS:
           return {
             ...state,
