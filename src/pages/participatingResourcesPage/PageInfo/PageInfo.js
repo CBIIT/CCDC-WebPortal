@@ -34,6 +34,24 @@ const replaceQueryStr = (query, page) => {
   return str.substring(1);
 };
 
+const replaceQueryStrPageSize = (query, pageSize) => {
+  let str = "";
+  if (query.get("search_text")) {
+    str += `&search_text=${query.get("search_text")}`;
+  }
+  if (query.get("resource_type")) {
+    str += `&resource_type=${query.get("resource_type")}`;
+  }
+  if (query.get("data_content_type")) {
+    str += `&data_content_type=${query.get("data_content_type")}`;
+  }
+  if (query.get("page")) {
+    str += `&page=${query.get("page")}`;
+  }
+  str += `&pageSize=${pageSize}`;
+  return str.substring(1);
+};
+
 const PageInfo = ({
   pageInfo,
   onPageSelect,
@@ -52,12 +70,11 @@ const PageInfo = ({
     });
   };
 
-  const sizeClick = (page, pageSize) => {
+  const sizeClick = (pageSize) => {
     window.scrollTo(0, 0);
-    const queryStr = replaceQueryStr(query, page);
+    const queryStr = replaceQueryStrPageSize(query, pageSize);
     navigate(`/participatingresources?${queryStr}`);
     onSizeSelect({
-      page,
       pageSize
     });
   };

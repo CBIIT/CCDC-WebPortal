@@ -172,8 +172,7 @@ export function pageSelect(pageInfo) {
 
 export function sizeSelect(pageInfo) {
   const func = function func(dispatch) {
-      // dispatch(switchSize(pageInfo));
-      dispatch(switchSize({page: pageInfo.page ? pageInfo.page : 1, pageSize: pageInfo.pageSize ? pageInfo.pageSize : 10}));
+      dispatch(switchSize({pageSize: pageInfo.pageSize ? pageInfo.pageSize : 10}));
   };
   return func;
 }

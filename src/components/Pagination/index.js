@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {useLocation} from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 import './Pagination.css';
@@ -28,14 +29,17 @@ const ResultsPerPage = styled.div`
   }
 
   ul{
-    // width: 50px;
+    min-width: 30px;
+    padding: 0 0 0 0;
     border: 1px solid #7CACCF;
     background-color: #DFEEF9;
   }
 
   div.dropdown li a{
-    // width: 50px;
+    min-width: 30px;
+    padding: 1px 8px 1px 8px;
     color: #004187;
+    text-align: center;
   }
 `;
 
@@ -58,22 +62,15 @@ const Pagination = ({
   pageClick,
   sizeClick,
 }) => {
+  const sizePath = useLocation().search;
   const pageCount = Math.ceil(pageInfo.total / pageInfo.pageSize);
   const handlePageClick = (data) => {
-    pageClick(data.selected + 1, pageInfo.pageSize);
+    pageClick(data.selected + 1);
   };
-  const handleSizeClick10 = (data) => {
-    sizeClick(data.selected, 10);
+  const handleSizeClick = (size) => {
+    sizeClick(size);
   };
-  const handleSizeClick20 = (data) => {
-    sizeClick(data.selected, 20);
-  };
-  const handleSizeClick50 = (data) => {
-    sizeClick(data.selected, 50);
-  };
-  const handleSizeClick100 = (data) => {
-    sizeClick(data.selected, 100);
-  };
+
   return (
     <PaginationContainer>
       {
@@ -87,10 +84,10 @@ const Pagination = ({
             {pageInfo.pageSize}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a className="dropdown-item active" aria-hidden="true" onClick={handleSizeClick10}>10</a></li>
-            <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick20}>20</a></li>
-            <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick50}>50</a></li>
-            <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick100}>100</a></li>
+            <li><a className={`dropdown-item ${sizePath === "" || sizePath.endsWith("pageSize=10") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(10)}>10</a></li>
+            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=20") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(20)}>20</a></li>
+            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=50") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(50)}>50</a></li>
+            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=100") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(100)}>100</a></li>
           </ul>
         </div>
       </ResultsPerPage>

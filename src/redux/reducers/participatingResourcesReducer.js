@@ -85,7 +85,10 @@ export default function participatingResourcesReducer(state = initialState.parti
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              pageInfo: action.pageInfo,
+              pageInfo: {
+                ...state.searchCriteria.pageInfo,
+                pageSize: action.pageInfo.pageSize,
+                },
               },
           };
         case types.LOAD_DATARESOURCE_DETAIL_SUCCESS:

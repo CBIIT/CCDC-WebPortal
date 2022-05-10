@@ -69,7 +69,10 @@ export default function searchReducer(state = initialState.datasets, action) {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              pageInfo: action.pageInfo,
+              pageInfo: {
+                ...state.searchCriteria.pageInfo,
+                pageSize: action.pageInfo.pageSize,
+                },
               },
           };
         case types.SWITCH_VIEW:
