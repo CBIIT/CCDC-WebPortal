@@ -81,9 +81,7 @@ const replaceQueryStr = (query, filter) => {
   if (query.get("search_text")) {
     str += `&search_text=${query.get("search_text")}`;
   }
-  if (query.get("page")) {
-    str += `&page=${query.get("page")}`;
-  }
+  str += "&page=1";
   if (query.get("pageSize")) {
     str += `&pageSize=${query.get("pageSize")}`;
   }
