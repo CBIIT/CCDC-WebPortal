@@ -54,29 +54,20 @@ const replaceQueryStrPageSize = (query, pageSize) => {
 
 const PageInfo = ({
   pageInfo,
-  onPageSelect,
-  onSizeSelect,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
 
-  const pageClick = (page, pageSize) => {
+  const pageClick = (page) => {
     window.scrollTo(0, 0);
     const queryStr = replaceQueryStr(query, page);
     navigate(`/participatingresources?${queryStr}`);
-    onPageSelect({
-      page,
-      pageSize
-    });
   };
 
   const sizeClick = (pageSize) => {
     window.scrollTo(0, 0);
     const queryStr = replaceQueryStrPageSize(query, pageSize);
     navigate(`/participatingresources?${queryStr}`);
-    onSizeSelect({
-      pageSize
-    });
   };
 
   return (
@@ -88,8 +79,6 @@ const PageInfo = ({
 
 PageInfo.propTypes = {
   pageInfo: PropTypes.object.isRequired,
-  onPageSelect: PropTypes.func.isRequired,
-  onSizeSelect: PropTypes.func.isRequired,
 };
 
 export default PageInfo;

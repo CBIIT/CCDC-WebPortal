@@ -90,18 +90,26 @@ export function loadSearchFilters() {
 }
 
 export function loadFromUrlQuery(filters) {
-  const func = function func(dispatch, getState) {
-    if (filters.page || filters.pageSize) {
-      dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
-      dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+  const func = function func(dispatch) {
+    const searchCriteria = {};
+    searchCriteria.facet_filters = {};
+    searchCriteria.facet_filters.resource_type = [];
+    searchCriteria.facet_filters.data_content_type = [];
+    if (filters.resource_type) {
+      searchCriteria.facet_filters.resource_type = filters.resource_type;
     }
-    if (filters.resource_type || filters.data_content_type) {
-      dispatch(loadSearchFiltersSelectionSuccess({resource_type: filters.resource_type ? filters.resource_type : [], data_content_type: filters.data_content_type ? filters.data_content_type : []}));
+    if (filters.data_content_type) {
+      searchCriteria.facet_filters.data_content_type = filters.data_content_type;
     }
-    const { participatingResources } = getState();
-    return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
+    searchCriteria.pageInfo = {};
+    searchCriteria.pageInfo.page = filters.page ? filters.page : 1;
+    searchCriteria.pageInfo.pageSize = filters.pageSize ? filters.pageSize : 10;
+    return participatingResourcesApi.searchParticipatingResources(searchCriteria)
     .then(searchResults => {
       dispatch(loadSearchResultsSuccess(searchResults.data));
+      dispatch(loadSearchFiltersSelectionSuccess(searchCriteria.facet_filters));
+      dispatch(switchPage(searchResults.data.pageInfo));
+      dispatch(switchSize(searchResults.data.pageInfo));
     })
     .catch(error => {
         throw error;
