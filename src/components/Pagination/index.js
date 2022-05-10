@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {useLocation} from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 import './Pagination.css';
@@ -62,7 +61,6 @@ const Pagination = ({
   pageClick,
   sizeClick,
 }) => {
-  const sizePath = useLocation().search;
   const pageCount = Math.ceil(pageInfo.total / pageInfo.pageSize);
   const handlePageClick = (data) => {
     pageClick(data.selected + 1);
@@ -84,10 +82,10 @@ const Pagination = ({
             {pageInfo.pageSize}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a className={`dropdown-item ${sizePath === "" || sizePath.endsWith("pageSize=10") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(10)}>10</a></li>
-            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=20") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(20)}>20</a></li>
-            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=50") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(50)}>50</a></li>
-            <li><a className={`dropdown-item ${sizePath.endsWith("pageSize=100") ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(100)}>100</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 10 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(10)}>10</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 20 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(20)}>20</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 50 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(50)}>50</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 100 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(100)}>100</a></li>
           </ul>
         </div>
       </ResultsPerPage>
