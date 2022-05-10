@@ -91,8 +91,6 @@ const replaceQueryStr = (query, sortOrder) => {
 
 const Sorting = ({
   sort,
-  onChangeSorting,
-  onChangeSortingOrder,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
@@ -100,13 +98,11 @@ const Sorting = ({
   const handleASCSorting = () => {
     const queryStr = replaceQueryStr(query, "asc");
     navigate(`/search?${queryStr}`);
-    onChangeSortingOrder("asc");
   };
 
   const handleDESCSorting = () => {
     const queryStr = replaceQueryStr(query, "desc");
     navigate(`/search?${queryStr}`);
-    onChangeSortingOrder("desc");
   };
 
   return (
@@ -115,7 +111,7 @@ const Sorting = ({
         <SortingLabel>
           SORT BY
         </SortingLabel>
-        <SelectionInput value={sort} items={[{name: "Dataset", k: "dataset_name.raw", v: "asc"}, {name: "Cases", k: "case_id", v: "asc"}, {name: "Samples", k: "sample_id", v: "asc"}, {name: "Resource", k: "data_resource_id", v: "asc"}, {name: "Primary Dataset Scope", k: "primary_dataset_scope", v: "asc"}]} onChangeSorting={onChangeSorting} />
+        <SelectionInput value={sort} items={[{name: "Dataset", k: "dataset_name.raw", v: "asc"}, {name: "Cases", k: "case_id", v: "asc"}, {name: "Samples", k: "sample_id", v: "asc"}, {name: "Resource", k: "data_resource_id", v: "asc"}, {name: "Primary Dataset Scope", k: "primary_dataset_scope", v: "asc"}]} />
       </SortingContainer>
       {
         sort.v === "asc"
@@ -138,8 +134,6 @@ const Sorting = ({
 
 Sorting.propTypes = {
   sort: PropTypes.object.isRequired,
-  onChangeSorting: PropTypes.func.isRequired,
-  onChangeSortingOrder: PropTypes.func.isRequired,
 };
 
 export default Sorting;

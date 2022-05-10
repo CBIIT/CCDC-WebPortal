@@ -117,6 +117,7 @@ export function loadFromUrlQuery(searchText, filters) {
         dispatch(runFullTextSearch(searchText));
         dispatch(applyResourcesFilter(searchCriteria.resources_filter));
         dispatch(switchPage(searchResults.data.pageInfo));
+        dispatch(switchSize(searchResults.data.pageInfo));
         dispatch(switchSorting({name: searchResults.data.sort.name, k: searchResults.data.sort.k}));
         dispatch(switchSortingOrder(searchResults.data.sort.v));
         dispatch(switchView(searchCriteria.viewType));

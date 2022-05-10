@@ -63,7 +63,6 @@ const replaceQueryStrPageSize = (query, pageSize) => {
 
 const PageInfo = ({
   pageInfo,
-  onSizeSelect,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
@@ -78,9 +77,6 @@ const PageInfo = ({
     window.scrollTo(0, 0);
     const queryStr = replaceQueryStrPageSize(query, pageSize);
     navigate(`/search?${queryStr}`);
-    onSizeSelect({
-      pageSize
-    });
   };
 
   return (
@@ -92,7 +88,6 @@ const PageInfo = ({
 
 PageInfo.propTypes = {
   pageInfo: PropTypes.object.isRequired,
-  onSizeSelect: PropTypes.func.isRequired,
 };
 
 export default PageInfo;
