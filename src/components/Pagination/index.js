@@ -53,11 +53,6 @@ const PageSelect = styled.div`
   background-color: #F6FBFF;
 `;
 
-// const PreviousNextSelect = styled.div`
-//   // padding: .2rem .2rem;
-//   // font-size: 17px;
-// `;
-
 const Pagination = ({
   pageInfo,
   pageClick,
@@ -86,7 +81,6 @@ const Pagination = ({
       && (
       <>
       <ResultsPerPage>
-        {/* <div>Results per Page:</div> */}
         Results per Page:
         <div className="dropdown">
           <button className="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,7 +91,6 @@ const Pagination = ({
             <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick20}>20</a></li>
             <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick50}>50</a></li>
             <li><a className="dropdown-item" aria-hidden="true" onClick={handleSizeClick100}>100</a></li>
-            {/* <li><a className="dropdown-item" href="#" onClick={handlePageClick}>100</a></li> */}
           </ul>
         </div>
       </ResultsPerPage>

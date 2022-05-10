@@ -209,13 +209,11 @@ const LiSection = styled.li`
 
   ul.dropdown li{
     display: block;
-    // background-color: #00996B;
     background-color: #2dc799;
     border-radius: 0;
     // line-height: 35px;
     line-height: 50px;
     text-align: left;
-    // padding: 5px 1.5rem;
   }
 
   ul.dropdown li:hover {
@@ -223,7 +221,6 @@ const LiSection = styled.li`
   }
 
   ul.dropdown li:not(:first-child) {
-    // border-top: 2px solid #00996B;
     border-top: 2px solid #2dc799;
   }
 `;
@@ -266,7 +263,6 @@ const SearchIcon = styled.div`
 const SearchInput = styled.input`
   border: none;
   padding: 0;
-  // color: #11B886;
   color: #00996b;
   font-size: 1rem;
   font-family: Lato;
@@ -275,7 +271,6 @@ const SearchInput = styled.input`
   margin-left: 5px;
 
   ::placeholder {
-    // color: #11B886;
     color: #00996b;
     font-size: 15px;
     font-weight: 600;
@@ -293,11 +288,6 @@ const mobileActiveStyle = {
 const activeStyle = {
   color: "#ffffff",
   backgroundColor: "#059268",
-  // paddingLeft: "1.5rem",
-  // paddingRight: "1.5rem",
-  // textDecoration: "underline",
-  // textUnderlineOffset: "5px",
-  // textDecorationThickness: "3px",
 };
 
 // const activeStyleMenuItem = {
@@ -398,11 +388,8 @@ const NavBar = () => {
                 </MobileSubUl>
               </MobileUlContainer>
               <UlContainer id="primary-navigation" className="primary-navigation">
-                {/* <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>Home</NavLink></LiSection> */}
                 <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                {/* <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? {color: "#ffffff"} : ({ isActive }) => (isActive ? activeStyle : null)}>Search Catalog</NavLink></LiSection> */}
                 <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                {/* <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? {color: "#ffffff"} : ({ isActive }) => (isActive ? activeStyle : null)}>Participating Resources</NavLink></LiSection> */}
                 <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                 <LiSection>
                     <span style={path === "/about" || path === "/glossary" ? activeStyle : null}>

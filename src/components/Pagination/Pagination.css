@@ -45,7 +45,6 @@
 .dropdown-item.active {
   border: 1px solid #7CACCF;
   background-color: #FFFFFF;
-  /* width: 80px !important; */
 }
 
 .dropdown-menu {

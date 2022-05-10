@@ -94,17 +94,6 @@ export function loadFromUrlQuery(filters) {
     if (filters.page || filters.pageSize) {
       dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
       dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
-      // if (filters.pageSize && filters.pageSize === 10) {
-      //   dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
-      // } else if (filters.pageSize && filters.pageSize === 20) {
-      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 20}));
-      // } else if (filters.pageSize && filters.pageSize === 50) {
-      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 50}));
-      // } else if (filters.pageSize && filters.pageSize === 100) {
-      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 100}));
-      // } else {
-      //   dispatch(switchSize({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
-      // }
     }
     if (filters.resource_type || filters.data_content_type) {
       dispatch(loadSearchFiltersSelectionSuccess({resource_type: filters.resource_type ? filters.resource_type : [], data_content_type: filters.data_content_type ? filters.data_content_type : []}));
