@@ -159,7 +159,7 @@ const SummaryIcon = styled.div`
   color: #07468a;
   font-size: 30px;
   width: 64px;
-  background-color: #1f5487;
+  background-color: #004187;
   border-radius: 70px;
   border: 2px solid white;
   text-align: center;
