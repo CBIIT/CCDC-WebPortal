@@ -89,7 +89,7 @@ const replaceQueryStr = (query, filter) => {
 };
 
 const AccordionItem = ({
-  name, item, itemClick, checked, displayCount,
+  name, item, checked, displayCount,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
@@ -103,7 +103,6 @@ const AccordionItem = ({
     };
     const queryStr = replaceQueryStr(query, filter);
     navigate(`/participatingresources?${queryStr}`);
-    itemClick(filter);
   };
 
   return (
@@ -126,7 +125,6 @@ const AccordionItem = ({
 AccordionItem.propTypes = {
   name: PropTypes.string.isRequired,
   item: PropTypes.object.isRequired,
-  itemClick: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
   displayCount: PropTypes.bool.isRequired,
 };

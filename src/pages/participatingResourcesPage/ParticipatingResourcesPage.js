@@ -85,7 +85,6 @@ const useQuery = () => {
 const ParticipatingResourcesPage = ({
   total,
   onLoadFromUrlQuery,
-  onCleanUpParticipatingResourceListPage,
 }) => {
   const query = useQuery();
   const [searchParams] = useSearchParams();
@@ -107,9 +106,6 @@ const ParticipatingResourcesPage = ({
     onLoadFromUrlQuery(options).catch(error => {
       throw new Error(`Loading search from url query failed: ${error}`);
     });
-    return () => {
-      onCleanUpParticipatingResourceListPage();
-    };
   }, [searchParams]);
 
   return (
@@ -149,7 +145,6 @@ const ParticipatingResourcesPage = ({
 ParticipatingResourcesPage.propTypes = {
   total: PropTypes.number,
   onLoadFromUrlQuery: PropTypes.func.isRequired,
-  onCleanUpParticipatingResourceListPage: PropTypes.func.isRequired,
 };
 
 ParticipatingResourcesPage.defaultProps = {
