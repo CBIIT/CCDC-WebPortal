@@ -68,7 +68,7 @@ const SearchBoxArea = styled.div`
     font-weight: bold;
     color: white;
     border: 2.5px solid #004187;
-    background-color: #2c64a0;
+    background-color: #004187;
     padding: .75rem 1rem;
     position: relative;
     right: 1px;
@@ -77,9 +77,8 @@ const SearchBoxArea = styled.div`
 
   .buttonDisabled {
     color: #fff;
-    // background-color: #6c757d;
-    background-color: navy;
-    border-color: navy;
+    background-color: #6c757d;
+    border-color: #6c757d;
   }
 `;
 
