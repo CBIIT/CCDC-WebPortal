@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import {useLocation, NavLink, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import * as downloadApi from "../../api/downloadApi";
 import mobileHamburger from '../../assets/img/mobile-hamburger.svg';
 import mobileClose from '../../assets/img/mobile-close.svg';
 
@@ -134,7 +135,7 @@ const MobileSubUl = styled.ul`
   transition: all 250ms ease-in;
   background: #e5feff;
   overflow: hidden;
-  max-height: 105px;
+  max-height: 155px;
 
   &[data-visible="false"] {
     transition: all 250ms ease-out;
@@ -209,20 +210,14 @@ const LiSection = styled.li`
 
   ul.dropdown li{
     display: block;
-    // background-color: #00996B;
     background-color: #2dc799;
     border-radius: 0;
-    line-height: 35px;
+    // line-height: 35px;
+    line-height: 50px;
     text-align: left;
-    padding: 5px 1.5rem;
-  }
-
-  ul.dropdown li:hover {
-    color: #00996B;
   }
 
   ul.dropdown li:not(:first-child) {
-    // border-top: 2px solid #00996B;
     border-top: 2px solid #2dc799;
   }
 `;
@@ -265,7 +260,6 @@ const SearchIcon = styled.div`
 const SearchInput = styled.input`
   border: none;
   padding: 0;
-  // color: #11B886;
   color: #00996b;
   font-size: 1rem;
   font-family: Lato;
@@ -274,7 +268,6 @@ const SearchInput = styled.input`
   margin-left: 5px;
 
   ::placeholder {
-    // color: #11B886;
     color: #00996b;
     font-size: 15px;
     font-weight: 600;
@@ -292,16 +285,11 @@ const mobileActiveStyle = {
 const activeStyle = {
   color: "#ffffff",
   backgroundColor: "#059268",
-  // paddingLeft: "1.5rem",
-  // paddingRight: "1.5rem",
-  // textDecoration: "underline",
-  // textUnderlineOffset: "5px",
-  // textDecorationThickness: "3px",
 };
 
-const activeStyleMenuItem = {
-  color: "white",
-};
+// const activeStyleMenuItem = {
+//   color: "white",
+// };
 
 const useOutsideAlerter = (ref) => {
   useEffect(() => {
@@ -377,6 +365,11 @@ const NavBar = () => {
     }
   };
 
+  const handleDownloadUserGuide = (event) => {
+    event.preventDefault();
+    downloadApi.getUserGuide();
+  };
+
   return (
       <Nav>
           <NavContainer>
@@ -394,14 +387,12 @@ const NavBar = () => {
                 <MobileSubUl data-visible={mobileAboutMenuData}>
                   <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                   <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
+                  <MobileLiSection><a href="#" onClick={handleDownloadUserGuide}>User Guide (PDF)</a></MobileLiSection>
                 </MobileSubUl>
               </MobileUlContainer>
               <UlContainer id="primary-navigation" className="primary-navigation">
-                {/* <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>Home</NavLink></LiSection> */}
                 <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                {/* <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? {color: "#ffffff"} : ({ isActive }) => (isActive ? activeStyle : null)}>Search Catalog</NavLink></LiSection> */}
                 <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                {/* <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? {color: "#ffffff"} : ({ isActive }) => (isActive ? activeStyle : null)}>Participating Resources</NavLink></LiSection> */}
                 <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                 <LiSection>
                     <span style={path === "/about" || path === "/glossary" ? activeStyle : null}>
@@ -409,8 +400,9 @@ const NavBar = () => {
                       <i className="fas fa-sort-down" />
                     </span>
                     <ul className="dropdown">
-                        <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyleMenuItem : null)}>About CCDI Data Catalog</NavLink></li>
-                        <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyleMenuItem : null)}>Glossary</NavLink></li>
+                        <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
+                        <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
+                        <li><a href="#" onClick={handleDownloadUserGuide} target="_blank">&nbsp; &nbsp; User Guide (PDF)</a></li>
                     </ul>
                 </LiSection>
               </UlContainer>

@@ -37,7 +37,6 @@ const replaceQueryStr = (query, viewType) => {
 
 const SwitchView = ({
   viewType,
-  onSwitchView,
 }) => {
   const query = useQuery();
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const SwitchView = ({
   const handleSwitchView = (vt) => {
     const queryStr = replaceQueryStr(query, vt);
     navigate(`/search?${queryStr}`);
-    onSwitchView(vt);
   };
 
   return (
@@ -70,7 +68,6 @@ const SwitchView = ({
 
 SwitchView.propTypes = {
   viewType: PropTypes.string.isRequired,
-  onSwitchView: PropTypes.func.isRequired,
 };
 
 export default SwitchView;

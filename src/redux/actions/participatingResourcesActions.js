@@ -25,6 +25,10 @@ export function switchPage(pageInfo) {
   return { type: types.PARTICIPATING_RESOURCES_SWITCH_PAGE, pageInfo};
 }
 
+export function switchSize(pageInfo) {
+  return { type: types.PARTICIPATING_RESOURCES_SWITCH_SIZE, pageInfo};
+}
+
 export function loadSearchResultsSuccess(searchResults) {
   return { type: types.LOAD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS, searchResults };
 }
@@ -86,17 +90,26 @@ export function loadSearchFilters() {
 }
 
 export function loadFromUrlQuery(filters) {
-  const func = function func(dispatch, getState) {
-    if (filters.page || filters.pageSize) {
-      dispatch(switchPage({page: filters.page ? filters.page : 1, pageSize: filters.pageSize ? filters.pageSize : 10}));
+  const func = function func(dispatch) {
+    const searchCriteria = {};
+    searchCriteria.facet_filters = {};
+    searchCriteria.facet_filters.resource_type = [];
+    searchCriteria.facet_filters.data_content_type = [];
+    if (filters.resource_type) {
+      searchCriteria.facet_filters.resource_type = filters.resource_type;
     }
-    if (filters.resource_type || filters.data_content_type) {
-      dispatch(loadSearchFiltersSelectionSuccess({resource_type: filters.resource_type ? filters.resource_type : [], data_content_type: filters.data_content_type ? filters.data_content_type : []}));
+    if (filters.data_content_type) {
+      searchCriteria.facet_filters.data_content_type = filters.data_content_type;
     }
-    const { participatingResources } = getState();
-    return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
+    searchCriteria.pageInfo = {};
+    searchCriteria.pageInfo.page = filters.page ? filters.page : 1;
+    searchCriteria.pageInfo.pageSize = filters.pageSize ? filters.pageSize : 10;
+    return participatingResourcesApi.searchParticipatingResources(searchCriteria)
     .then(searchResults => {
       dispatch(loadSearchResultsSuccess(searchResults.data));
+      dispatch(loadSearchFiltersSelectionSuccess(searchCriteria.facet_filters));
+      dispatch(switchPage(searchResults.data.pageInfo));
+      dispatch(switchSize(searchResults.data.pageInfo));
     })
     .catch(error => {
         throw error;
@@ -123,6 +136,13 @@ export function clickParticipatingResourcesSearchFilter(filter) {
 export function pageSelect(pageInfo) {
   const func = function func(dispatch) {
       dispatch(switchPage(pageInfo));
+  };
+  return func;
+}
+
+export function sizeSelect(pageInfo) {
+  const func = function func(dispatch) {
+      dispatch(switchSize({pageSize: pageInfo.pageSize ? pageInfo.pageSize : 10}));
   };
   return func;
 }

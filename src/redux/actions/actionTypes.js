@@ -13,6 +13,8 @@ export const RUN_FULL_TEXT_SEARCH = "run_full_text_search";
 export const SWITCH_SORTING = "switch_sorting";
 export const SWITCH_SORTING_ORDER = "switch_sorting_order";
 export const SWITCH_PAGE = "switch_page";
+export const PARTICIPATING_RESOURCES_SWITCH_SIZE = "participating_resources_switch_size";
+export const SWITCH_SIZE = "switch_size";
 export const SWITCH_VIEW = "switch_view";
 export const LOAD_DATASET_DETAIL_SUCCESS = "load_dataset_detail_success";
 

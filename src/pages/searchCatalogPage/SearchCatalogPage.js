@@ -27,9 +27,7 @@ const replaceQueryStr = (query, searchText) => {
   if (query.get("filterByResource")) {
     str += `&filterByResource=${query.get("filterByResource")}`;
   }
-  if (query.get("page")) {
-    str += `&page=${query.get("page")}`;
-  }
+  str += "&page=1";
   if (query.get("pageSize")) {
     str += `&pageSize=${query.get("pageSize")}`;
   }
@@ -62,9 +60,7 @@ const replaceResourceFilter = (query, filter) => {
       str += `&filterByResource=${tmp.join("|")}`;
     }
   }
-  if (query.get("page")) {
-    str += `&page=${query.get("page")}`;
-  }
+  str += "&page=1";
   if (query.get("pageSize")) {
     str += `&pageSize=${query.get("pageSize")}`;
   }
@@ -97,9 +93,6 @@ const SearchCatalogPage = ({
 
   useEffect(() => {
     const options = {};
-    if (query.get("page")) {
-      options.page = parseInt(query.get("page").trim(), 10);
-    }
     if (query.get("page")) {
       options.page = parseInt(query.get("page").trim(), 10);
     }

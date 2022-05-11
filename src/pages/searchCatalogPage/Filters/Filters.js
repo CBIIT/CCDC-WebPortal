@@ -32,9 +32,7 @@ const replaceResourceFilter = (query, filter) => {
       str += `&filterByResource=${tmp.join("|")}`;
     }
   }
-  if (query.get("page")) {
-    str += `&page=${query.get("page")}`;
-  }
+  str += "&page=1";
   if (query.get("pageSize")) {
     str += `&pageSize=${query.get("pageSize")}`;
   }

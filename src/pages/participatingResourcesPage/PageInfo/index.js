@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  pageSelect,
+  pageSelect, sizeSelect,
 } from '../../../redux/actions/participatingResourcesActions';
 import PageInfo from './PageInfo';
 
@@ -11,6 +11,7 @@ const ReduxPageInfo = (() => {
 
   const mapDispatchToProps = {
     onPageSelect: pageSelect,
+    onSizeSelect: sizeSelect,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(PageInfo);

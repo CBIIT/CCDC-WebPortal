@@ -58,7 +58,6 @@ const replaceQueryStr = (query, sort) => {
 const SelectionInput = ({
   value,
   items,
-  onChangeSorting
 }) => {
   const [currentValue, setCurrentValue] = useState("Dataset");
   const dropdownSelection = useRef(null);
@@ -84,7 +83,6 @@ const SelectionInput = ({
     setCurrentValue(sort.name);
     const queryStr = replaceQueryStr(query, sort.k);
     navigate(`/search?${queryStr}`);
-    onChangeSorting(sort);
   };
 
   return (
@@ -109,7 +107,6 @@ const SelectionInput = ({
 SelectionInput.propTypes = {
   value: PropTypes.object.isRequired,
   items: PropTypes.array.isRequired,
-  onChangeSorting: PropTypes.func.isRequired,
 };
 
 export default SelectionInput;
