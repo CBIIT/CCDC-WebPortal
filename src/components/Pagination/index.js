@@ -25,6 +25,8 @@ const ResultsPerPage = styled.div`
     display: inline-block;
     margin: -2px 0 0 -3px;
     color: #004187;
+    // background-color: white;
+    // border: none;
   }
 
   ul{
@@ -32,6 +34,7 @@ const ResultsPerPage = styled.div`
     padding: 0 0 0 0;
     border: 1px solid #7CACCF;
     background-color: #DFEEF9;
+    // background-color: red;
   }
 
   div.dropdown li a{
@@ -52,8 +55,8 @@ const PageSummary = styled.div`
 `;
 
 const PageSelect = styled.div`
-  border: 1px solid #A0B3C8;
-  background-color: #F6FBFF;
+  border: .1px solid #A0B3C8;
+  // background-color: #F6FBFF;
 `;
 
 const Pagination = ({
@@ -80,7 +83,7 @@ const Pagination = ({
       <ResultsPerPage>
         Results per Page:
         <div className="dropdown">
-          <button className="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button className="btns btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             {pageInfo.pageSize}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -103,10 +106,10 @@ const Pagination = ({
       <ReactPaginate
         previousLabel="<"
         prevClassName="page-item"
-        previousLinkClassName={pageInfo.page === 1 ? "page-link-ccdc-inactive" : "page-link-ccdc"}
+        previousLinkClassName={pageInfo.page === 1 ? "page-link-ccdc-inactive" : "page-link-ccdc-prev"}
         nextLabel=">"
         nextClassName="page-item"
-        nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc"}
+        nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc-next"}
         breakLabel="..."
         breakClassName="page-item break-me"
         breakLinkClassName="page-link-ccdc"

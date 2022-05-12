@@ -218,7 +218,7 @@ const LiSection = styled.li`
   }
 
   ul.dropdown li:not(:first-child) {
-    border-top: 2px solid #2dc799;
+    // border-top: 2px solid #2dc799;
   }
 `;
 
