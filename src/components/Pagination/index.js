@@ -25,13 +25,14 @@ const ResultsPerPage = styled.div`
     display: inline-block;
     margin: -2px 0 0 -3px;
     color: #004187;
-    // background-color: white;
-    // border: none;
+    background-color: white;
+    border: none;
   }
 
   ul{
     min-width: 30px;
     padding: 0 0 0 0;
+    border-radius: 0px;
     border: 1px solid #7CACCF;
     background-color: #DFEEF9;
     // background-color: red;
@@ -39,7 +40,7 @@ const ResultsPerPage = styled.div`
 
   div.dropdown li a{
     min-width: 30px;
-    padding: 1px 8px 1px 8px;
+    padding: 0px 8px 0px 8px;
     color: #004187;
     text-align: center;
   }
@@ -69,7 +70,9 @@ const Pagination = ({
     pageClick(data.selected + 1);
   };
   const handleSizeClick = (size) => {
-    sizeClick(size);
+    if (pageInfo.pageSize !== size) {
+      sizeClick(size);
+    }
   };
 
   return (

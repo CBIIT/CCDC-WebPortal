@@ -71,10 +71,12 @@
 }
 
 .dropdown-item.active {
-  border: 1px solid #7CACCF;
+  /* border: 1px solid #7CACCF; */
+  border-top: 1px solid #7CACCF;
+  border-bottom: 1px solid #7CACCF;
   background-color: #FFFFFF;
 }
 
-.dropdown-menu {
+.dropdown-menus {
   border: 1px solid #7CACCF;
 }
