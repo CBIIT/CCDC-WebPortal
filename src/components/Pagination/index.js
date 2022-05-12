@@ -66,7 +66,9 @@ const Pagination = ({
     pageClick(data.selected + 1);
   };
   const handleSizeClick = (size) => {
-    sizeClick(size);
+    if (pageInfo.pageSize !== size) {
+      sizeClick(size);
+    }
   };
 
   return (

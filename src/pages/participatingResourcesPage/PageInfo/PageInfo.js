@@ -45,9 +45,7 @@ const replaceQueryStrPageSize = (query, pageSize) => {
   if (query.get("data_content_type")) {
     str += `&data_content_type=${query.get("data_content_type")}`;
   }
-  if (query.get("page")) {
-    str += `&page=${query.get("page")}`;
-  }
+  str += `&page=1`;
   str += `&pageSize=${pageSize}`;
   return str.substring(1);
 };
