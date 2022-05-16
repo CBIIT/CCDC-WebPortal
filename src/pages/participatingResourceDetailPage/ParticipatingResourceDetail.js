@@ -284,9 +284,9 @@ const ParticipatingResourceDetail = ({
                   <div className="prAboutResourceContainer">
                     <div className="accordion-item-pr">
                       <h2 className="accordion-header-pr">
-                        <buttons className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
+                        <div className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
                         <span>About This Resource</span>
-                        </buttons>
+                        </div>
                       </h2>
                       <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
                         <div className="prAboutResourceContent">
