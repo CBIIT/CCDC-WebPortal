@@ -206,6 +206,8 @@ const ParticipatingResourceDetail = ({
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
+  let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
+  if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
   const defaultCollapsed = "show";
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
@@ -240,8 +242,6 @@ const ParticipatingResourceDetail = ({
                   <span className="badge"><i className="far fa-file-alt" /></span>
                   <span className="badgeCount">{detail.datasets_total}</span>
                   <div className="prDetailHeaderContent">
-                    {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
-                    {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
                     <SiteIcon />
                     {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
                     {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
@@ -253,17 +253,18 @@ const ParticipatingResourceDetail = ({
                       {detail.poc ? detail.poc : null}
                       {detail.poc ? ', ' : null}
                       &nbsp;
-                      {/* <Link to={content.poc_email} className="prDetailHeaderLink">{content.poc_email}</Link> */}
-                      {detail.poc_email ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink> : null}
-                      {/* <li><a className="prDetailHeaderLink" href={content.poc_email}>{content.poc_email}</a></li> */}
-                      {/* <a href={`mailto:${content.poc_email}`}>{content.poc_email}</a> */}
+                      {/* {detail.poc_email ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink> : null} */}
+                      {pocLinks[0] && pocLinks[0].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a></DataLink>}
+                      {pocLinks[1] ? ', ' : null}
+                      {pocLinks[1] && pocLinks[1].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a></DataLink>}
+                      {pocLinks[2] ? ', ' : null}
+                      {pocLinks[2] && pocLinks[2].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a></DataLink>}
                     </span>
                   </div>
                   <DatasetType>
                     <span
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
-                      // title={detail.resource_type === 'Program' ? `asdfasdfasdfasdf` : "resource type"}
                       title={tooltips[detail.resource_type]}
                     >
                       {detail.resource_type}
