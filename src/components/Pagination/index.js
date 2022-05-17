@@ -23,10 +23,11 @@ const ResultsPerPage = styled.div`
 
   button{
     display: inline-block;
-    margin: -2px 0 0 -3px;
+    margin: -3px 0 0 -3px;
     color: #004187;
     background-color: white;
     border: none;
+    font-size: 15px;
   }
 
   ul{
@@ -36,6 +37,7 @@ const ResultsPerPage = styled.div`
     border: 1px solid #7CACCF;
     background-color: #DFEEF9;
     // background-color: red;
+    font-size: 15px;
   }
 
   div.dropdown li a{
@@ -88,10 +90,10 @@ const Pagination = ({
             {pageInfo.pageSize}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a className={`dropdown-item ${pageInfo.pageSize === 10 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(10)}>10</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 10 ? "active-top" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(10)}>10</a></li>
             <li><a className={`dropdown-item ${pageInfo.pageSize === 20 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(20)}>20</a></li>
             <li><a className={`dropdown-item ${pageInfo.pageSize === 50 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(50)}>50</a></li>
-            <li><a className={`dropdown-item ${pageInfo.pageSize === 100 ? "active" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(100)}>100</a></li>
+            <li><a className={`dropdown-item ${pageInfo.pageSize === 100 ? "active-bottom" : ""}`} aria-hidden="true" onClick={() => handleSizeClick(100)}>100</a></li>
           </ul>
         </div>
       </ResultsPerPage>

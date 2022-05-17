@@ -77,6 +77,16 @@
   background-color: #FFFFFF;
 }
 
+.dropdown-item.active-top {
+  border-bottom: 1px solid #7CACCF;
+  background-color: #FFFFFF;
+}
+
+.dropdown-item.active-bottom {
+  border-top: 1px solid #7CACCF;
+  background-color: #FFFFFF;
+}
+
 .dropdown-menus {
   border: 1px solid #7CACCF;
 }

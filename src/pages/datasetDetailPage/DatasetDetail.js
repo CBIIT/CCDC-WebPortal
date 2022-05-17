@@ -80,6 +80,8 @@ const DatasetDetail = ({
       additionalDict[adt.attr_name.toLowerCase()] = adt.attr_set;
     });
   }
+  let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
+  if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
 
   useEffect(() => {
@@ -118,7 +120,12 @@ const DatasetDetail = ({
                       {content.poc ? content.poc : null}
                       {content.poc ? ', ' : null}
                       &nbsp;
-                      {content.poc_email ? <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a> : null}
+                      {/* {content.poc_email ? <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a> : null} */}
+                      {pocLinks[0] && pocLinks[0].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a>}
+                      {pocLinks[1] ? ', ' : null}
+                      {pocLinks[1] && pocLinks[1].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a>}
+                      {pocLinks[2] ? ', ' : null}
+                      {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
                   </div>
                   <ResourceType>
