@@ -74,6 +74,7 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
+  window.scrollTo(0, 0);
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
