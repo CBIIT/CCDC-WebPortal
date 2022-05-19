@@ -33,6 +33,10 @@ const OptionLabel = styled.span`
   color: #004187;
   padding-left: 8px;
   // line-height: 18px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const OptionCount = styled.span`
@@ -108,7 +112,7 @@ const AccordionItem = ({
   return (
     <OptionContainer>
       <input className="form-check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
-      <OptionLabel title={item.label ? item.label : ""}>
+      <OptionLabel type="button" title={item.label ? item.label : ""} onClick={handleItemClick} value={item.name} checked={checked} readOnly>
         {item.name}
       </OptionLabel>
       {
