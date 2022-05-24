@@ -47,7 +47,7 @@ const HeaderLinks = styled.div`
 const ResourceBody = styled.div`
   a[target="_blank"] {
     color: #004187;
-    background: url(${externalIcon}) left top no-repeat;
+    background: url(${externalIcon}) left center no-repeat;
     padding-left: 30px;
     margin-left: -5px;
     background-size: 32px;
