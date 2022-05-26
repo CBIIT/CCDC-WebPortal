@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
+import headerExternalIcon from "../../assets/img/dataset-header.svg";
+import externalIcon from "../../assets/img/dataset-body.svg";
 import './datasetDetailPage.css';
 
 const DatasetResultContainer = styled.div`
@@ -14,6 +16,27 @@ const DatasetResultContainer = styled.div`
 const DatasetGridContainer = styled.div`
   // margin: 100px 0 100px 0;
   border-top: 1px solid #BFD3E1;
+`;
+
+const HeaderLinks = styled.div`
+  a[target="_blank"] {
+    background: url(${headerExternalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
+const DatasetBody = styled.div`
+  a[target="_blank"] {
+    // color: #004187;
+    background: url(${externalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -115,6 +138,7 @@ const DatasetDetail = ({
                     Data Resource: &nbsp;
                     <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
                   </div>
+                  <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
@@ -129,6 +153,7 @@ const DatasetDetail = ({
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
                   </div>
+                  </HeaderLinks>
                   <ResourceType>
                     <span
                       data-bs-toggle="tooltip"
@@ -148,6 +173,7 @@ const DatasetDetail = ({
         <DatasetResultContainer>
         {
             content && (
+              <DatasetBody>
               <div className="datasetContainer">
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
@@ -732,6 +758,7 @@ const DatasetDetail = ({
                   <br />
                 </div>
               </div>
+              </DatasetBody>
             )
         }
         </DatasetResultContainer>
