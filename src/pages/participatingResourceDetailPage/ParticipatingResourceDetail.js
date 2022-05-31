@@ -405,7 +405,7 @@ const ParticipatingResourceDetail = ({
                   <DatasetHeader>
                     <DatasetTitle>
                       <a href={linkto}>
-                        {ds.dataset_name.length > 100 ? `${ds.dataset_name.substring(0, 100)}...` : ds.dataset_name}
+                        {ds.dataset_name.length > 90 ? `${ds.dataset_name.substring(0, 90)}...` : ds.dataset_name}
                       </a>
                     </DatasetTitle>
                   </DatasetHeader>
