@@ -1,0 +1,16 @@
+
+@media (min-width: 1200px) {
+  .sticky-nav {
+    width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+  }
+  body {
+    padding-top: 126px;
+  }
+}
