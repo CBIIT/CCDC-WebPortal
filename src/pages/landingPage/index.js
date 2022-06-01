@@ -93,10 +93,10 @@ const HomePage = () => {
                         <div className="column2">
                             <p className="infoSection">
                                 The CCDI Childhood Cancer Data Catalog is a searchable database of
-                                National Cancer Institute and other  pediatric cancer resources.
+                                National Cancer Institute and other pediatric cancer resources.
                                 <br />
                                 <br />
-                                Resources include repositories, registries, data commons, web sites,
+                                Resources include repositories, registries, programs, knowledgebases,
                                 and catalogs that either manage or refer to data. Users can browse
                                 and filter the list of data resources or enter search terms to identify
                                 data of interest.
