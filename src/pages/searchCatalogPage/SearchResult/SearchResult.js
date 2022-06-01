@@ -293,6 +293,12 @@ const SearchResult = ({
     let matched = [];
 
     if (tmp.matched.length > 0) {
+      // sort by alphabetic order first
+      tmp.matched.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
       tmp.matched.forEach((item) => {
         const raw = item.indexOf("<b>") > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
         const idx = result.indexOf(raw);
@@ -350,6 +356,12 @@ const SearchResult = ({
     let matched = [];
 
     if (tmp.matched.length > 0) {
+      // sort by alphabetic order first
+      tmp.matched.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
       matched = tmp.matched.map((t) => {
         if (t.indexOf("<b>") === -1) {
           return `<b>${t}</b>`;
