@@ -1,32 +1,12 @@
 import * as types from "../actions/actionTypes";
 import initialState from './initialState';
 
-const insertOrDeleteFilter = (filters, action) => {
-  const tmp = {};
-  const newArray = filters[action.filter.name] ? filters[action.filter.name].slice() : [];
-  const idx = newArray.indexOf(action.filter.value);
-  if (idx > -1) {
-    newArray.splice(idx, 1);
-    tmp[action.filter.name] = newArray;
-  } else {
-    newArray.push(action.filter.value);
-    tmp[action.filter.name] = newArray;
-  }
-  return tmp;
-};
-
 export default function searchReducer(state = initialState.datasets, action) {
     switch (action.type) {
-        case types.LOAD_SEARCH_FILTERS_SELECTION_SUCCESS: {
+        case types.LOAD_RESOURCES_LIST_SUCCESS: {
           return {
             ...state,
-            searchCriteria: {
-              ...state.searchCriteria,
-              facet_filters: {
-                ...state.searchCriteria.facet_filters,
-                ...action.filters,
-              },
-            },
+            resourcesList: action.resourcesList,
           };
         }
         case types.LOAD_SEARCH_RESULTS_SUCCESS: {
@@ -34,25 +14,14 @@ export default function searchReducer(state = initialState.datasets, action) {
             ...state,
             searchResults: action.searchResults.result,
             searchSourceResults: action.searchResults.aggs,
-            searchCriteria: {
-              ...state.searchCriteria,
-              pageInfo: {
-                ...state.searchCriteria.pageInfo,
-                total: action.searchResults.pageInfo.total,
-              },
-            },
           };
         }
-        case types.CLICK_SEARCH_FILTER_SUCCESS: {
-          const facetFilter = insertOrDeleteFilter(state.searchCriteria.facet_filters, action);
+        case types.UPDATE_RESOURCES_FILTER_SUCCESS: {
           return {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              facet_filters: {
-                ...state.searchCriteria.facet_filters,
-                ...facetFilter,
-              },
+              resources_filter: action.filter,
             },
           };
         }
@@ -69,16 +38,46 @@ export default function searchReducer(state = initialState.datasets, action) {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              sort: action.sorting,
+              sort: {
+                ...state.searchCriteria.sort,
+                name: action.sorting.name,
+                k: action.sorting.k,
               },
+            },
+          };
+        case types.SWITCH_SORTING_ORDER:
+          return {
+            ...state,
+            searchCriteria: {
+              ...state.searchCriteria,
+              sort: {
+                ...state.searchCriteria.sort,
+                v: action.order,
+              },
+            },
           };
         case types.SWITCH_PAGE:
           return {
             ...state,
             searchCriteria: {
               ...state.searchCriteria,
-              pageInfo: action.pageInfo,
+              pageInfo: {
+                ...state.searchCriteria.pageInfo,
+                page: action.pageInfo.page,
+                total: action.pageInfo.total,
               },
+              },
+          };
+        case types.SWITCH_SIZE:
+          return {
+            ...state,
+            searchCriteria: {
+              ...state.searchCriteria,
+              pageInfo: {
+                ...state.searchCriteria.pageInfo,
+                pageSize: action.pageInfo.pageSize,
+              },
+            },
           };
         case types.SWITCH_VIEW:
           return {

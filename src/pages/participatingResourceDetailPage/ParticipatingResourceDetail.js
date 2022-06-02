@@ -55,11 +55,12 @@ const ExternalLink = styled.li`
 `;
 
 const DatasetType = styled.div`
-  width: 96%;
-  text-align: right;
+  // width: 90%;
+  text-align: center;
+  margin-left: 972px;
   margin-top: -36px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
@@ -79,7 +80,7 @@ const SummaryDatasetType = styled.div`
   margin-top: -30px;
   margin-bottom: -5px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
 
   span {
@@ -101,7 +102,7 @@ const DatasetsSummary = styled.div`
   background-color: #25b39a;
   background-image: linear-gradient(to right, #25b39a ,#0c3561); 
   border-radius: 5px;
-  font-size: 26px;
+  font-size: 27px;
   font-family: Inter;
 
   span {
@@ -115,10 +116,10 @@ const SummaryIcon = styled.div`
   position: absolute;
   bottom: 10px;
   left: 20px;
-  color: #07468a;
+  color: #004187;
   font-size: 30px;
   width: 64px;
-  background-color: #1f5487;
+  background-color: #004187;
   border-radius: 70px;
   border: 2px solid white;
   text-align: center;
@@ -148,11 +149,11 @@ const DatasetHeader = styled.div`
 
 const DatasetTitle = styled.div`
   // width: 85%;
-  color: #255b96;
+  color: #004187;
   // font-weight: 600;
   font-family: Lato;
   // font-size: 1.3rem;
-  font-size: 22px;
+  font-size: 23px;
   height: 40px;
   // border-bottom: 2px solid #255b96;
   text-decoration: underline;
@@ -191,18 +192,23 @@ const ParticipatingResourceDetail = ({
 }) => {
   const { id } = useParams();
   const tooltips = {
-    "Research Data Repository": "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Repository: "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
+    Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
+    Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
-  let dataContentTypes = detail.data_content_type === undefined ? "" : detail.data_content_type;
+  let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
-  let resourseLinks = detail.resource_uri === undefined ? "" : detail.resource_uri;
-  resourseLinks = resourseLinks.split(';');
+  let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
+  if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
+  let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
+  if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
+  const defaultCollapsed = "show";
   useEffect(() => {
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
@@ -231,16 +237,15 @@ const ParticipatingResourceDetail = ({
                 <div className="prDetailHeaderContainer">
                   <div className="prDetailHeaderLabel">{detail.resource_name}</div>
                   <div className="prIcon">
-                    <DataResourceIcons participatingResource={detail.data_resource_id} type="white" />
+                    {detail.data_resource_id ? <DataResourceIcons participatingResource={detail.data_resource_id} type="white" /> : null}
                   </div>
                   <span className="badge"><i className="far fa-file-alt" /></span>
                   <span className="badgeCount">{detail.datasets_total}</span>
                   <div className="prDetailHeaderContent">
-                    {/* <Link to={content.resource_uri} className="prDetailHeaderLink">{content.resource_uri}</Link> */}
-                    {/* <DataLink><a className="prDetailHeaderLink" href={detail.resource_uri}>{detail.resource_uri}</a></DataLink> */}
                     <SiteIcon />
-                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink>
-                    <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink>
+                    {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
+                    {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
+                    {resourseLinks[2] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[2]} target="_blank" rel="noreferrer noopener">{resourseLinks[2]}</a></ExternalLink> : null}
                   </div>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
@@ -248,17 +253,18 @@ const ParticipatingResourceDetail = ({
                       {detail.poc ? detail.poc : null}
                       {detail.poc ? ', ' : null}
                       &nbsp;
-                      {/* <Link to={content.poc_email} className="prDetailHeaderLink">{content.poc_email}</Link> */}
-                      <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink>
-                      {/* <li><a className="prDetailHeaderLink" href={content.poc_email}>{content.poc_email}</a></li> */}
-                      {/* <a href={`mailto:${content.poc_email}`}>{content.poc_email}</a> */}
+                      {/* {detail.poc_email ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink> : null} */}
+                      {pocLinks[0] && pocLinks[0].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a></DataLink>}
+                      {pocLinks[1] ? ', ' : null}
+                      {pocLinks[1] && pocLinks[1].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a></DataLink>}
+                      {pocLinks[2] ? ', ' : null}
+                      {pocLinks[2] && pocLinks[2].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a></DataLink>}
                     </span>
                   </div>
                   <DatasetType>
                     <span
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
-                      // title={detail.resource_type === 'Program' ? `asdfasdfasdfasdf` : "resource type"}
                       title={tooltips[detail.resource_type]}
                     >
                       {detail.resource_type}
@@ -277,38 +283,52 @@ const ParticipatingResourceDetail = ({
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
-                    <div className="prAboutResourceLabel">About This Resource</div>
-                    <div className="prAboutResourceContent">{detail.description}</div>
-                    <div className="prResourceToolsContainer">
-                      <div className="prCoreDataLabel">Resource Description</div>
-                      <div className="prDataElementLabel">Resource Type</div>
-                      <div className="prDataElementContent">{detail.resource_type}</div>
-                      <br />
-                      {/* <div className="prDataElementLabel">Specialization</div> */}
-                      <div className="prDataElementLabel">Data Update Date</div>
-                      <div className="prDataElementContent">{detail.data_update_date}</div>
+                    <div className="accordion-item-pr">
+                      <h2 className="accordion-header-pr">
+                        <div className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
+                        <span>About This Resource</span>
+                        </div>
+                      </h2>
+                      <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
+                        <div className="prAboutResourceContent">
+                          {detail.description}
+                        </div>
+                      </div>
                     </div>
-                    <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Content Type</div>
+                    {/* <div className="collapse show" id="collapseExample"> */}
+                    <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
+                      <div className="prResourceToolsContainer">
+                        <div className="prCoreDataLabel">Resource Description</div>
+                        <div className="prDataElementLabel">Resource Type</div>
+                        <div className="prDataElementContent">{detail.resource_type}</div>
+                        <div className="prDataElementLabel">Specialization</div>
+                        <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
                         <br />
-                        {dataContentTypes}
-                    </div>
-                    <div className="prResourceToolsContainer">
-                      <div className="prCoreDataLabel">Resource Tools</div>
-                      <div className="prDataElementLabel">Visualization Tools</div>
-                      <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                      <div className="prDataElementLabel">Analytic Tools</div>
-                      <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
-                    </div>
-                    <div className="prDataAccessContainer">
-                      <div className="prAdditionalDataLabel">Data Access</div>
-                      {/* <div className="prDataElementLabel">API (Internal)</div> */}
-                      <br />
-                        {
-                          detail.api
-                          ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
-                          : null
-                        }
+                        <div className="prDataElementLabel">Data Update Date</div>
+                        {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
+                      </div>
+                      <div className="prDataAccessContainer">
+                        <div className="prAdditionalDataLabel">Data Content Type</div>
+                          <br />
+                          {dataContentTypes}
+                      </div>
+                      <div className="prResourceToolsContainer">
+                        <div className="prCoreDataLabel">Resource Tools</div>
+                        <div className="prDataElementLabel">Visualization Tools</div>
+                        <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
+                        <div className="prDataElementLabel">Analytic Tools</div>
+                        <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
+                      </div>
+                      <div className="prDataAccessContainer">
+                        <div className="prAdditionalDataLabel">Data Access</div>
+                        {/* <div className="prDataElementLabel">API (Internal)</div> */}
+                        <br />
+                          {
+                            detail.api
+                            ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
+                            : null
+                          }
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -343,6 +363,8 @@ const ParticipatingResourceDetail = ({
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
               const linkto = `/dataset/${ds.dataset_id}`;
+              let publishedLinks = ds.published_in === undefined || ds.published_in === null ? "" : ds.published_in;
+              if (ds.published_in) { publishedLinks = publishedLinks.split(';'); }
               return (
                 <DatasetCard key={key}>
                   <DatasetHeader>
@@ -356,12 +378,16 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in
                       ? <div className="summaryDataElementLabel">Published In</div>
                       : null}
-                    {
+                    {/* {ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null} */}
+                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
+                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
+                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
+                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
+                    {/* {
                       ds.published_in
-                      ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div>
+                      ? <br />
                       : null
-                    }
-                    <br />
+                    } */}
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
                       : null}
@@ -370,7 +396,11 @@ const ParticipatingResourceDetail = ({
                       ? <div className="summaryDataElementContent">{ds.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
                       : null
                     }
-                    <br />
+                    {
+                      ds.case_id
+                      ? <br />
+                      : null
+                    }
                     {ds.case_sex
                         ? <div className="summaryDataElementLabel">Case Sex</div>
                         : null}
@@ -381,9 +411,9 @@ const ParticipatingResourceDetail = ({
                             const cskey = `cs_${csidx}`;
                             return (
                               <span key={cskey} className="itemSpan">
-                                {cs.n}
+                                {cs.n ? cs.n : null}
                                 &nbsp;(
-                                {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                {cs.v ? cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                 {/* )&#59;&nbsp; */}
                                 {csidx === ds.case_sex.length - 1 ? ")" : "); "}
                               </span>
@@ -392,7 +422,11 @@ const ParticipatingResourceDetail = ({
                           : null
                         }
                       </div>
-                    <br />
+                    {
+                      ds.case_sex
+                      ? <br />
+                      : null
+                    }
                     {ds.case_age_at_diagnosis
                         ? <div className="summaryDataElementLabel">Case Age At Diagnosis</div>
                         : null}
@@ -403,9 +437,9 @@ const ParticipatingResourceDetail = ({
                             const cadkey = `cad_${cadidx}`;
                             return (
                               <span key={cadkey} className="itemSpan">
-                                {cad.n}
+                                {cad.n ? cad.n : null}
                                 &nbsp;(
-                                {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                 {/* )&#59;&nbsp; */}
                                 {cadidx === ds.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                               </span>
@@ -414,7 +448,11 @@ const ParticipatingResourceDetail = ({
                           : null
                         }
                       </div>
-                      <br />
+                    {
+                      ds.case_age_at_diagnosis
+                      ? <br />
+                      : null
+                    }
                   </DatasetDesc>
                   <SummaryDatasetType>
                     <span

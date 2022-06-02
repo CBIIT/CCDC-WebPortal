@@ -21,7 +21,7 @@ const ResourceType = styled.div`
   text-align: right;
   margin-top: -44px;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
@@ -67,6 +67,7 @@ const DatasetDetail = ({
     "Cell Line": "A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Donor: "A donor is an individual (either human or animal) from which tissue for grafting, tissue for creating a cell line, or tumor sample for studying was taken. In these contexts the datasets are not associated with clinical or project cases. Minimal information about a donor helps describe the grafted tissue, the cell line, or the tumor sample.",
+    Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Sample: "Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products. {Based on the GDC definition of Sample. (https://docs.gdc.cancer.gov/Data_Dictionary/viewer/#?view=table-definition-view&id=sample)}",
@@ -79,6 +80,8 @@ const DatasetDetail = ({
       additionalDict[adt.attr_name.toLowerCase()] = adt.attr_set;
     });
   }
+  let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
+  if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
 
   useEffect(() => {
@@ -105,7 +108,7 @@ const DatasetDetail = ({
                 <div className="datasetDetailHeaderContainer">
                   <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>
                   <div className="datasetIcon">
-                    <DataResourceIcons participatingResource={content.data_resource_id} type="white" />
+                    {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
                   </div>
                   <div className="datasetDetailHeaderContent">
                     Data Resource: &nbsp;
@@ -117,7 +120,12 @@ const DatasetDetail = ({
                       {content.poc ? content.poc : null}
                       {content.poc ? ', ' : null}
                       &nbsp;
-                      <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a>
+                      {/* {content.poc_email ? <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a> : null} */}
+                      {pocLinks[0] && pocLinks[0].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a>}
+                      {pocLinks[1] ? ', ' : null}
+                      {pocLinks[1] && pocLinks[1].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a>}
+                      {pocLinks[2] ? ', ' : null}
+                      {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
                   </div>
                   <ResourceType>
@@ -165,10 +173,10 @@ const DatasetDetail = ({
                               const cskey = `cs_${csidx}`;
                               return (
                                 <span key={cskey} className="itemSpan">
-                                  {cs.n}
+                                  {cs.n ? cs.n : null}
                                   &nbsp;(
                                   {/* {" ("} */}
-                                  {cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cs.v ? cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {csidx === content.case_sex.length - 1 ? ")" : "); "}
                                 </span>
@@ -187,9 +195,9 @@ const DatasetDetail = ({
                               const csabkey = `csab_${csabidx}`;
                               return (
                                 <span key={csabkey} className="itemSpan">
-                                  {csab.n}
+                                  {csab.n ? csab.n : null}
                                   &nbsp;(
-                                  {csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {csab.v ? csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {csabidx === content.case_sex_at_birth.length - 1 ? ")" : "); "}
                                 </span>
@@ -208,9 +216,9 @@ const DatasetDetail = ({
                               const cgkey = `cg_${cgidx}`;
                               return (
                                 <span key={cgkey} className="itemSpan">
-                                  {cg.n}
+                                  {cg.n ? cg.n : null}
                                   &nbsp;(
-                                  {cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cg.v ? cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {cgidx === content.case_gender.length - 1 ? ")" : "); "}
                                 </span>
@@ -219,7 +227,7 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                      {content.case_age
+                        {content.case_age
                           ? <div className="dataElementLabel">Case Age</div>
                           : null}
                         <div className="dataElementContent">
@@ -229,9 +237,9 @@ const DatasetDetail = ({
                               const cakey = `ca_${caidx}`;
                               return (
                                 <span key={cakey} className="itemSpan">
-                                  {ca.n}
+                                  {ca.n ? ca.n : null}
                                   &nbsp;(
-                                  {ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {ca.v ? ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {caidx === content.case_age.length - 1 ? ")" : "); "}
                                 </span>
@@ -250,9 +258,9 @@ const DatasetDetail = ({
                               const cadkey = `cad_${cadidx}`;
                               return (
                                 <span key={cadkey} className="itemSpan">
-                                  {cad.n}
+                                  {cad.n ? cad.n : null}
                                   &nbsp;(
-                                  {cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
@@ -271,9 +279,9 @@ const DatasetDetail = ({
                               const caatkey = `caat_${caatidx}`;
                               return (
                                 <span key={caatkey} className="itemSpan">
-                                  {caat.n}
+                                  {caat.n ? caat.n : null}
                                   &nbsp;(
-                                  {caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {caat.v ? caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {caatidx === content.case_age_at_trial.length - 1 ? ")" : "); "}
                                 </span>
@@ -292,9 +300,9 @@ const DatasetDetail = ({
                               const crkey = `cr_${cridx}`;
                               return (
                                 <span key={crkey} className="itemSpan">
-                                  {cr.n}
+                                  {cr.n ? cr.n : null}
                                   &nbsp;(
-                                  {cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cr.v ? cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {cridx === content.case_race.length - 1 ? ")" : "); "}
                                 </span>
@@ -313,9 +321,9 @@ const DatasetDetail = ({
                               const cekey = `ce_${ceidx}`;
                               return (
                                 <span key={cekey} className="itemSpan">
-                                  {ce.n}
+                                  {ce.n ? ce.n : null}
                                   &nbsp;(
-                                  {ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {ce.v ? ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {ceidx === content.case_ethnicity.length - 1 ? ")" : "); "}
                                 </span>
@@ -334,7 +342,7 @@ const DatasetDetail = ({
                               const cddkey = `cdd_${cddidx}`;
                               return (
                                 <span key={cddkey} className="itemSpan">
-                                  {cdd.n}
+                                  {cdd.n ? cdd.n : null}
                                   &nbsp;(
                                   {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
@@ -355,9 +363,9 @@ const DatasetDetail = ({
                               const ctskey = `cts_${ctsidx}`;
                               return (
                                 <span key={ctskey} className="itemSpan">
-                                  {cts.n}
+                                  {cts.n ? cts.n : null}
                                   &nbsp;(
-                                  {cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cts.v ? cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {ctsidx === content.case_tumor_site.length - 1 ? ")" : "); "}
                                 </span>
@@ -376,9 +384,9 @@ const DatasetDetail = ({
                               const ctakey = `cta_${ctaidx}`;
                               return (
                                 <span key={ctakey} className="itemSpan">
-                                  {cta.n}
+                                  {cta.n ? cta.n : null}
                                   &nbsp;(
-                                  {cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cta.v ? cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); "}
                                 </span>
@@ -397,9 +405,9 @@ const DatasetDetail = ({
                               const ctokey = `cto_${ctoidx}`;
                               return (
                                 <span key={ctokey} className="itemSpan">
-                                  {cto.n}
+                                  {cto.n ? cto.n : null}
                                   &nbsp;(
-                                  {cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cto.v ? cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); "}
                                 </span>
@@ -418,9 +426,9 @@ const DatasetDetail = ({
                               const cpkey = `cp_${cpidx}`;
                               return (
                                 <span key={cpkey} className="itemSpan">
-                                  {cp.n}
+                                  {cp.n ? cp.n : null}
                                   &nbsp;(
-                                  {cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
@@ -503,7 +511,7 @@ const DatasetDetail = ({
                               const srnkey = `srn_${srnidx}`;
                               return (
                                 <span key={srnkey} className="itemSpan">
-                                  {srn.n}
+                                  {srn.n ? srn.n : null}
                                   {/* )&#59;&nbsp; */}
                                   {srnidx === content.sample_repository_name.length - 1 ? ")" : "); "}
                                 </span>
@@ -523,9 +531,9 @@ const DatasetDetail = ({
                               const samkey = `sam_${samidx}`;
                               return (
                                 <span key={samkey} className="itemSpan">
-                                  {sam.n}
+                                  {sam.n ? sam.n : null}
                                   &nbsp;(
-                                  {sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sam.v ? sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {samidx === content.sample_assay_method.length - 1 ? ")" : "); "}
                                 </span>
@@ -544,9 +552,9 @@ const DatasetDetail = ({
                               const satkey = `sat_${satidx}`;
                               return (
                                 <span key={satkey} className="itemSpan">
-                                  {sat.n}
+                                  {sat.n ? sat.n : null}
                                   &nbsp;(
-                                  {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_analyte_type.length - 1 ? ")" : "); "}
                                 </span>
@@ -565,9 +573,9 @@ const DatasetDetail = ({
                               const satkey = `sat_${satidx}`;
                               return (
                                 <span key={satkey} className="itemSpan">
-                                  {sat.n}
+                                  {sat.n ? sat.n : null}
                                   &nbsp;(
-                                  {sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_anatomic_site.length - 1 ? ")" : "); "}
                                 </span>
@@ -586,9 +594,9 @@ const DatasetDetail = ({
                               const sctkey = `sct_${sctidx}`;
                               return (
                                 <span key={sctkey} className="itemSpan">
-                                  {sct.n}
+                                  {sct.n ? sct.n : null}
                                   &nbsp;(
-                                  {sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sct.v ? sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {/* )&#59;&nbsp; */}
                                   {sctidx === content.sample_composition_type.length - 1 ? ")" : "); "}
                                 </span>
@@ -608,9 +616,9 @@ const DatasetDetail = ({
                               return (
                                 <span key={sinkey} className="itemSpan">
                                   {/* {sin.n > 0 ? 'YES ' : 'NO '} */}
-                                  {sin.n}
+                                  {sin.n ? sin.n : null}
                                   &nbsp;(
-                                  {sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {sin.v ? sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {sinidx === content.sample_is_normal.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -629,9 +637,9 @@ const DatasetDetail = ({
                               return (
                                 <span key={sixkey} className="itemSpan">
                                   {/* {six.n > 0 ? 'YES' : 'NO'} */}
-                                  {six.n}
+                                  {six.n ? six.n : null}
                                   &nbsp;(
-                                  {six.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                  {six.v ? six.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {sixidx === content.sample_is_xenograft.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -648,11 +656,16 @@ const DatasetDetail = ({
                           sortedAdditonals.map((ad, adIdx) => {
                             const adkey = `ad_${adIdx}`;
                             if (ad === "published in") {
+                              let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
+                              if (content.published_in) { publishedLinks = publishedLinks.split(';'); }
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
                                   <div className="dataElementContentPublished">
-                                    <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a>
+                                    {publishedLinks[0] ? <a href={publishedLinks[0]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a> : null}
+                                    <div>{publishedLinks[1] ? <a href={publishedLinks[1]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a> : null}</div>
+                                    <div>{publishedLinks[2] ? <a href={publishedLinks[2]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a> : null}</div>
+                                    {/* <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a> */}
                                   </div>
                                 </>
                               );

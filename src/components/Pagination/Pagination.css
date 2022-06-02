@@ -2,39 +2,91 @@
   position: relative;
   display: block;
   text-decoration: none;
-  background-color: #e8f1f8;
+  background-color: #F6FBFF;
   color: #004187;
   border: 0;
   font-weight: bold;
-  font-size: 17px;
-  padding: .375rem .75rem;
   font-family: Lato;
+  font-size: 15px;
+  padding: .275rem .45rem;
 }
 
 .page-link-ccdc-inactive {
   position: relative;
   display: block;
   text-decoration: none;
-  background-color: lightgray;
-  color: #004187;
-  border: 0;
+  color: gray;
+  /* border: 1px solid #A0B3C8; */
+  background-color: #F6FBFF;
   font-weight: bold;
   font-family: Lato;
-  font-size: 17px;
-  padding: .375rem .75rem;
+  font-size: 15px;
+  padding: .275rem .65rem;
   cursor: auto;
+}
+
+.page-link-ccdc-prev {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: #F6FBFF;
+  color: #004187;
+  border-right: 1px solid #A0B3C8;
+  font-weight: bold;
+  font-family: Lato;
+  font-size: 15px;
+  padding: .275rem .65rem;
+}
+
+.page-link-ccdc-next {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  background-color: #F6FBFF;
+  color: #004187;
+  border-left: 1px solid #A0B3C8;
+  font-weight: bold;
+  font-family: Lato;
+  font-size: 15px;
+  padding: .275rem .65rem;
 }
 
 .page-link-ccdc:hover {
   background-color: #c6d2db;
-  color: #4b6a90;
+  color: #004187;
+  border-left: 1px solid #A0B3C8;
+  border-right: 1px solid #A0B3C8;
 }
 
 .page-link-ccdc-inactive:hover {
-  color: #004187;
+  color: gray;
+  /* border: 1px solid #A0B3C8; */
 }
 
 .page-item.active .page-link-ccdc {
-  background-color: #014188;
-  color: white;
+  border-left: 1px solid #A0B3C8;
+  border-right: 1px solid #A0B3C8;
+  background-color: #BFE3FF;
+  padding: .275rem .45rem;
+}
+
+.dropdown-item.active {
+  /* border: 1px solid #7CACCF; */
+  border-top: 1px solid #7CACCF;
+  border-bottom: 1px solid #7CACCF;
+  background-color: #FFFFFF;
+}
+
+.dropdown-item.active-top {
+  border-bottom: 1px solid #7CACCF;
+  background-color: #FFFFFF;
+}
+
+.dropdown-item.active-bottom {
+  border-top: 1px solid #7CACCF;
+  background-color: #FFFFFF;
+}
+
+.dropdown-menus {
+  border: 1px solid #7CACCF;
 }

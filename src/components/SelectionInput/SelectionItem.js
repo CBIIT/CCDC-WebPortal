@@ -10,9 +10,7 @@ const SelectionItem = ({
 
   return (
     <li onClick={handleItemClick} aria-hidden="true">
-      <a href="#">
-        {item.name}
-      </a>
+      <span>{item.name}</span>
     </li>
   );
 };

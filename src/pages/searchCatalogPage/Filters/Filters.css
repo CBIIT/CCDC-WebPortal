@@ -9,7 +9,7 @@
 }
 
 .advancedSearchButton {
-  background-color: #07368b;
+  background-color: #004187;
   width: 100%;
   color: white;
   font-weight: bold;
@@ -49,8 +49,25 @@
   background-color: #f7f8fa;
   margin: 5px 5px 0 5px;
   padding: 10px;
-  color: #245284;
+  color: #004187;
   font-weight: 900;
   font-family: Lato;
   font-size: 23px;
+  position: relative;
+}
+
+.clear-all-button {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.clear-all-button:hover {
+  width: 23px;
+  height: 23px;
 }

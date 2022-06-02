@@ -25,12 +25,12 @@ export function switchPage(pageInfo) {
   return { type: types.PARTICIPATING_RESOURCES_SWITCH_PAGE, pageInfo};
 }
 
-export function loadSearchResultsSuccess(searchResults) {
-  return { type: types.LOAD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS, searchResults };
+export function switchSize(pageInfo) {
+  return { type: types.PARTICIPATING_RESOURCES_SWITCH_SIZE, pageInfo};
 }
 
-export function addSearchResultsSuccess(searchResults) {
-  return { type: types.ADD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS, searchResults };
+export function loadSearchResultsSuccess(searchResults) {
+  return { type: types.LOAD_PARTICIPATING_RESOURCES_SEARCH_RESULTS_SUCCESS, searchResults };
 }
 
 export function clickSearchFilterSuccess(filter) {
@@ -90,42 +90,59 @@ export function loadSearchFilters() {
 }
 
 export function loadFromUrlQuery(filters) {
-  const func = function func(dispatch, getState) {
-      dispatch(loadSearchFiltersSelectionSuccess(filters));
-      // dispatch(switchPage({page: 1, pageSize: 100}));
-      const { participatingResources } = getState();
-      return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
-      .then(searchResults => {
-        dispatch(loadSearchResultsSuccess(searchResults.data));
-      })
-      .catch(error => {
-          throw error;
-      });
+  const func = function func(dispatch) {
+    const searchCriteria = {};
+    searchCriteria.facet_filters = {};
+    searchCriteria.facet_filters.resource_type = [];
+    searchCriteria.facet_filters.data_content_type = [];
+    if (filters.resource_type) {
+      searchCriteria.facet_filters.resource_type = filters.resource_type;
+    }
+    if (filters.data_content_type) {
+      searchCriteria.facet_filters.data_content_type = filters.data_content_type;
+    }
+    searchCriteria.pageInfo = {};
+    searchCriteria.pageInfo.page = filters.page ? filters.page : 1;
+    searchCriteria.pageInfo.pageSize = filters.pageSize ? filters.pageSize : 10;
+    return participatingResourcesApi.searchParticipatingResources(searchCriteria)
+    .then(searchResults => {
+      dispatch(loadSearchResultsSuccess(searchResults.data));
+      dispatch(loadSearchFiltersSelectionSuccess(searchCriteria.facet_filters));
+      dispatch(switchPage(searchResults.data.pageInfo));
+      dispatch(switchSize(searchResults.data.pageInfo));
+    })
+    .catch(error => {
+        throw error;
+    });
   };
   return func;
 }
 
 export function cleanUpParticipatingResourceListPage() {
   const func = function func(dispatch) {
-      dispatch(switchPage({page: 1, pageSize: 100, total: 0}));
+    dispatch(loadSearchFiltersSelectionSuccess({resource_type: [], data_content_type: []}));
+    dispatch(switchPage({page: 1, pageSize: 10}));
   };
   return func;
 }
 
 export function clickParticipatingResourcesSearchFilter(filter) {
-  const func = function func(dispatch, getState) {
-    // console.log(1, filter);
+  const func = function func(dispatch) {
     dispatch(clickSearchFilterSuccess(filter));
-    // dispatch(switchPage({page: 1, pageSize: 100}));
-    const { participatingResources } = getState();
-    // console.log(participatingResources);
-    return participatingResourcesApi.searchParticipatingResources(participatingResources.searchCriteria)
-    .then(searchResults => {
-        dispatch(loadSearchResultsSuccess(searchResults.data));
-    })
-    .catch(error => {
-        throw error;
-    });
+  };
+  return func;
+}
+
+export function pageSelect(pageInfo) {
+  const func = function func(dispatch) {
+      dispatch(switchPage(pageInfo));
+  };
+  return func;
+}
+
+export function sizeSelect(pageInfo) {
+  const func = function func(dispatch) {
+      dispatch(switchSize({pageSize: pageInfo.pageSize ? pageInfo.pageSize : 10}));
   };
   return func;
 }

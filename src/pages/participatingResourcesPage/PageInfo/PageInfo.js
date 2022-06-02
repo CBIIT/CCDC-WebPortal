@@ -4,7 +4,13 @@ import {
   useNavigate,
 } from "react-router-dom";
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Pagination from '../../../components/Pagination';
+
+const PageSection = styled.div`
+  width: 100%;
+  padding: 20px 0;
+`;
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -15,21 +21,15 @@ const replaceQueryStr = (query, page) => {
   if (query.get("search_text")) {
     str += `&search_text=${query.get("search_text")}`;
   }
-  if (query.get("filterByResource")) {
-    str += `&filterByResource=${query.get("filterByResource")}`;
+  if (query.get("resource_type")) {
+    str += `&resource_type=${query.get("resource_type")}`;
+  }
+  if (query.get("data_content_type")) {
+    str += `&data_content_type=${query.get("data_content_type")}`;
   }
   str += `&page=${page}`;
   if (query.get("pageSize")) {
     str += `&pageSize=${query.get("pageSize")}`;
-  }
-  if (query.get("sortBy")) {
-    str += `&sortBy=${query.get("sortBy")}`;
-  }
-  if (query.get("sortOrder")) {
-    str += `&sortOrder=${query.get("sortOrder")}`;
-  }
-  if (query.get("viewType")) {
-    str += `&viewType=${query.get("viewType")}`;
   }
   return str.substring(1);
 };
@@ -47,15 +47,6 @@ const replaceQueryStrPageSize = (query, pageSize) => {
   }
   str += `&page=1`;
   str += `&pageSize=${pageSize}`;
-  if (query.get("sortBy")) {
-    str += `&sortBy=${query.get("sortBy")}`;
-  }
-  if (query.get("sortOrder")) {
-    str += `&sortOrder=${query.get("sortOrder")}`;
-  }
-  if (query.get("viewType")) {
-    str += `&viewType=${query.get("viewType")}`;
-  }
   return str.substring(1);
 };
 
@@ -68,19 +59,19 @@ const PageInfo = ({
   const pageClick = (page) => {
     window.scrollTo(0, 0);
     const queryStr = replaceQueryStr(query, page);
-    navigate(`/search?${queryStr}`);
+    navigate(`/participatingresources?${queryStr}`);
   };
 
   const sizeClick = (pageSize) => {
     window.scrollTo(0, 0);
     const queryStr = replaceQueryStrPageSize(query, pageSize);
-    navigate(`/search?${queryStr}`);
+    navigate(`/participatingresources?${queryStr}`);
   };
 
   return (
-    <>
+    <PageSection>
       <Pagination pageInfo={pageInfo} pageClick={pageClick} sizeClick={sizeClick} />
-    </>
+    </PageSection>
   );
 };
 

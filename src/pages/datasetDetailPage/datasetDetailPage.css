@@ -20,7 +20,8 @@ ul.breadcrumb li {
 /* Add a slash symbol (/) before/behind each list item */
 ul.breadcrumb li+li:before {
   padding: 8px;
-  color: goldenrod;
+  /* color: goldenrod; */
+  color: #1783d8;
   content: ">";
   /* content: "/\00a0"; */
   font-size: 16px;
@@ -28,9 +29,10 @@ ul.breadcrumb li+li:before {
 
 /* Add a color to all links inside the list */
 ul.breadcrumb li a {
-  color: goldenrod;
+  /* color: goldenrod; */
+  color: #1783d8;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Lato;
 }
 
@@ -44,8 +46,8 @@ ul.breadcrumb li a:hover {
   /* padding: 0px 0 20px 20px; */
   padding: 16px 0 10px 0px;
   width: 100%;
-  /* background-color: #07368b; */
-  background: linear-gradient(to right, #3060b8,#05296b);
+  /* background: linear-gradient(to right, #3060b8,#05296b); */
+  background: linear-gradient(.25turn, #0c3561, 66%, #1b83d2);
   /* border-bottom: 1px solid lightgray; */
   position: relative;
 }
@@ -54,7 +56,7 @@ ul.breadcrumb li a:hover {
   padding: 0px 0px 60px 26px;
   color: white;
   font-size: 35px;
-  /* font-weight: bold; */
+  font-weight: medium;
   font-family: Inter;
   width: 95%;
   inline-size: 960px;
@@ -63,27 +65,29 @@ ul.breadcrumb li a:hover {
 .datasetDetailHeaderContent {
   padding: 0px 0 5px 30px;
   color: white;
-  font-size: 16px;
+  font-size: 17px;
+  font-weight: bold;
   font-family: Lato;
   width: 80%;
 }
 
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  /* color: #2dc799; */
-  font-size: 16px;
+  color: #7bcbd9;
+  font-size: 17px;
   font-family: Lato;
   width: 100%;
   /* text-decoration: none; */
 }
 
 .datasetDetailHeaderLink {
-  color: white;
+  color: #7bcbd9;
   /* text-decoration-line: underline; */
 }
 
 .datasetDetailHeaderLink:hover {
-  color: lightblue;
+  color: #7bcbd9;
+  /* font-size: 21px; */
 }
 
 .datasetIcon {
@@ -136,7 +140,8 @@ ul.breadcrumb li a:hover {
 .aboutDatasetLabel {
   padding: 5px 0 10px 10px;
   /* color: rgb(180, 180, 180); */
-  color: #99AFBE;
+  /* color: #99AFBE; */
+  color: #4f85aa;
   font-size: 26px;
   font-family: Inter;
   /* font-weight: bold; */
@@ -147,7 +152,7 @@ ul.breadcrumb li a:hover {
 }
 
 .aboutDatasetContent {
-  padding: 30px 0px 30px 10px;
+  padding: 23px 0px 23px 10px;
   font-family: Lato;
   border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
@@ -155,10 +160,10 @@ ul.breadcrumb li a:hover {
 
 .coreDataContainer {
   padding: 0px 30px 10px 20px;
+  /* margin-top: 10px; */
   width: 48%;
   /* height: 300px; */
   /* height: auto; */
-  /* border-right: 1px solid #e0e4e7; */
   border-right: 1px solid #BFD3E1;
   /* display: flex; */
   /* display: inline-block; */
@@ -167,38 +172,46 @@ ul.breadcrumb li a:hover {
 }
 
 .coreDataLabel {
+  position: relative;
+  bottom: 8px;
+  margin-bottom: -10px;
   padding: 20px 0 10px 0px;
   color: #004187;
   font-size: 23px;
   font-weight: 900;
   letter-spacing: 1px;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   width: 100%;
 }
 
 .additionalDataContainer {
-  padding: 0px 0 10px 30px;
+  padding: 0px 0 10px 31px;
+  margin-left: -1px;
   width: 48%;
-  /* border-left: 1px solid lightgray; */
+  border-left: 1px solid #BFD3E1;
   display: inline-table;
 }
 
 .additionalDataLabel {
+  position: relative;
+  bottom: 8px;
+  margin-bottom: -10px;
   padding: 20px 0 10px 0px;
-  color: #07368b;
+  color: #004187;
   font-size: 23px;
   font-weight: 900;
   font-family: Lato;
-  border-bottom: 1px solid #07368b;
+  border-bottom: 1px solid #004187;
   /* width: 95%; */
   width: 540px;
 }
 
 .dataElementLabel {
-  padding: 30px 0 10px 0px;
-  /* color: #2dc799; */
-  color: #25b39a;
+  padding: 20px 0 0px 0px;
+  color: #b98e2f;
+  /* color: goldenrod; */
+  /* color: #25b39a; */
   font-size: 16px;
   font-family: Lato;
   text-transform: uppercase;
@@ -217,7 +230,9 @@ ul.breadcrumb li a:hover {
 }
 
 .dataElementContentPublished {
+  color: #00a272;
   font-family: Lato;
+  font-weight: normal;
   max-height: 200px;
   max-width: 540px;
   overflow: auto;
@@ -239,6 +254,7 @@ ul.breadcrumb li a:hover {
 
 .additionalDataLinks {
   margin-top: 10px;
+  color: #00a272;
   /* color: black; */
   text-transform: none;
   max-width: 95%;
@@ -246,7 +262,7 @@ ul.breadcrumb li a:hover {
 }
 
 .additionalDataContent {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: black;
   /* font-family: Lato; */
   text-transform: none;

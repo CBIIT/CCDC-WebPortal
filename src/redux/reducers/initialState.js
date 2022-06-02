@@ -7,39 +7,31 @@ export default {
         facet_filters: {},
         pageInfo: {
           page: 1,
-          pageSize: 100,
-          total: 0,
+          pageSize: 10,
         }
       },
       searchResults: [],
       detail: {},
       datasets: [],
     },
-    searchFilters: [
-    ],
-    advancedSearch: {
-      advancedFilters: {
-      },
-      advanced_facet_filters: {
-      },
-    },
     datasets: {
       searchCriteria: {
         search_text: "",
-        facet_filters: {},
+        resources_filter: [],
         pageInfo: {
             page: 1,
             pageSize: 10,
             total: 0,
         },
         sort: {
-          name: "Resource",
-          k: "data_resource_id",
+          name: "Dataset",
+          k: "dataset_name.raw",
           v: "asc"
         }
       },
       searchResults: [],
-      searchSourceResults: [],
+      searchSourceResults: "all",
+      resourcesList: [],
       viewType: "card",
       details: {},
     },

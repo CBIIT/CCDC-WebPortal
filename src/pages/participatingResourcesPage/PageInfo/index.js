@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import {
   pageSelect, sizeSelect,
-} from '../../../redux/actions/searchActions';
+} from '../../../redux/actions/participatingResourcesActions';
 import PageInfo from './PageInfo';
 
 const ReduxPageInfo = (() => {
   const mapStateToProps = (state) => ({
-    pageInfo: state.datasets.searchCriteria.pageInfo,
+    pageInfo: state.participatingResources.searchCriteria.pageInfo,
   });
 
   const mapDispatchToProps = {

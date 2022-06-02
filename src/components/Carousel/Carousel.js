@@ -1,14 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
 import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
 import arrowRightGray from '../../assets/img/arrow_right_gray.svg';
 
+const useShowCount = () => {
+  const [showCount, setShowCount] = useState(3);
+  useLayoutEffect(() => {
+    function updateSize() {
+      const width = window.innerWidth;
+      if (width >= 1200) {
+        setShowCount(3);
+      } else if (width >= 768) {
+        setShowCount(2);
+      } else {
+        setShowCount(1);
+      }
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return showCount;
+};
+
 const Carousel = ({
     participatingResources, onLoadLandingParticipatingResources
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const showCount = useShowCount();
     const [touchPosition, setTouchPosition] = useState(null);
     const [transform, setTransform] = useState({ transform: "translateX(0%)" });
 
@@ -21,9 +42,9 @@ const Carousel = ({
     }, []);
 
     const next = () => {
-        if (currentIndex < (participatingResources.length - 3)) {
+        if (currentIndex < (participatingResources.length - showCount)) {
             setCurrentIndex(prevState => prevState + 1);
-            const ts = `translateX(-${(currentIndex + 1) * (100 / 3)}%)`;
+            const ts = `translateX(-${(currentIndex + 1) * (100 / showCount)}%)`;
             setTransform({transform: ts});
         }
     };
@@ -31,7 +52,7 @@ const Carousel = ({
     const prev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prevState => prevState - 1);
-            const ts = `translateX(-${(currentIndex - 1) * (100 / 3)}%)`;
+            const ts = `translateX(-${(currentIndex - 1) * (100 / showCount)}%)`;
             setTransform({transform: ts});
         }
     };
@@ -87,11 +108,19 @@ const Carousel = ({
                 }
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
-                    <div className="carousel-content show-3" style={transform}>
+                    <div className={`carousel-content show-${showCount}`} style={transform}>
                         {participatingResources.map((pr, idx) => {
                             const key = `carousel_${idx}`;
+                            let withLine = true;
+                            if (showCount === 1) {
+                              withLine = false;
+                            } else if (showCount === 2) {
+                              withLine = idx === currentIndex;
+                            } else {
+                              withLine = idx === currentIndex || (idx - 1) === currentIndex;
+                            }
                             return (
-                                <div key={key} className={idx === currentIndex || (idx - 1) === currentIndex ? "carousel-card-with-line" : "carousel-card"}>
+                                <div key={key} className={withLine ? "carousel-card-with-line" : "carousel-card"}>
                                     <div className="cardTitle">
                                         <div className="cardInfo">
                                             <div className="cardLabel">
@@ -117,9 +146,9 @@ const Carousel = ({
                         })}
                     </div>
                 </div>
-                <div className="carousel-action-wrapper-right">
+                <div className="carousel-action-wrapper">
                 {
-                    currentIndex < (participatingResources.length - 3)
+                    currentIndex < (participatingResources.length - showCount)
                      ? (
                         <button type="button" onClick={next} className="right-arrow">
                             <img src={arrowRightGold} alt="arrow-right" />

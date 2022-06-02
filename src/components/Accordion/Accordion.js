@@ -7,13 +7,8 @@ const Accordion = ({
   filters,
   fields,
   selection,
-  domain,
-  onClickSearchFilter,
-  onClickParticipatingResourcesSearchFilter,
 }) => {
-  // const displayCount = domain === "dataset";
   const displayCount = false;
-  const clickSearchFilter = domain === "dataset" ? onClickSearchFilter : onClickParticipatingResourcesSearchFilter;
 
   return (
     <>
@@ -39,7 +34,7 @@ const Accordion = ({
                       const filterKey = `filter_item_${pos}`;
                       const checked = (selection[str] !== undefined && selection[str].indexOf(item.name) > -1);
                       return (
-                        <AccordionItem key={filterKey} name={field} item={item} itemClick={clickSearchFilter} checked={checked} displayCount={displayCount} />
+                        <AccordionItem key={filterKey} name={field} item={item} checked={checked} displayCount={displayCount} />
                       );
                     })
                   }
@@ -57,9 +52,6 @@ Accordion.propTypes = {
   filters: PropTypes.array.isRequired,
   fields: PropTypes.array.isRequired,
   selection: PropTypes.object.isRequired,
-  domain: PropTypes.string.isRequired,
-  onClickSearchFilter: PropTypes.func.isRequired,
-  onClickParticipatingResourcesSearchFilter: PropTypes.func.isRequired,
 };
 
 export default Accordion;
