@@ -126,11 +126,12 @@ const DatasetDetail = ({
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
                       <li><a href="/search">Search Catalog</a></li>
-                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name}</Link></li>
+                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name.length > 130 ? `${content.dataset_name.substring(0, 130)}...` : content.dataset_name}</Link></li>
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                  <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>
+                {content.dataset_name.length > 200 ? <div className="datasetDetailLongHeaderLabel">{content.dataset_name}</div> : <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>}
+                  {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
                   <div className="datasetIcon">
                     {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
                   </div>
