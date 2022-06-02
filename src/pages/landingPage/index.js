@@ -7,6 +7,7 @@ import './landingPage.css';
 const HomePage = () => {
   const [localText, setLocalText] = useState("");
   const navigate = useNavigate();
+  window.scrollTo(0, 0);
 
   const handleTextInputChange = (event) => {
     const text = event.target.value;

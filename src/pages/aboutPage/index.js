@@ -23,6 +23,7 @@ const AboutPage = () => {
     event.preventDefault();
     downloadApi.getSubmissionTemplate();
   };
+  window.scrollTo(0, 0);
   return (
     <>
         <AboutContainer>

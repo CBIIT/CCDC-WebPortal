@@ -116,6 +116,7 @@ const SearchCatalogPage = ({
       });
   }, [searchParams]);
 
+  window.scrollTo(0, 0);
   const handleBubbleSearchTextRemoveClick = () => {
     setSearchText("");
     const queryStr = replaceQueryStr(query, "");

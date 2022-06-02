@@ -88,6 +88,7 @@ const ParticipatingResourcesPage = ({
 }) => {
   const query = useQuery();
   const [searchParams] = useSearchParams();
+  window.scrollTo(0, 0);
 
   useEffect(() => {
     const options = {};
