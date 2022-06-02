@@ -14,8 +14,8 @@ const GlossaryContainer = styled.div`
 `;
 
 const Glossary = () => {
+  window.scrollTo(0, 0);
   const [key, setKey] = useState('A');
-
   return (
     <>
       <GlossaryContainer>

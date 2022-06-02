@@ -151,6 +151,7 @@ const ParticipatingResourcesPage = ({
   const navigate = useNavigate();
   const searchText = query.get("keyword") ? query.get("keyword").trim() : "";
   const [localText, setLocalText] = useState(searchText);
+  window.scrollTo(0, 0);
 
   useEffect(() => {
     onStartDocumentSearch(searchText).catch(error => {
