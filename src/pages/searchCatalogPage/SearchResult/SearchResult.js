@@ -79,11 +79,18 @@ const SearchResultContainer = styled.div`
 
   .bodyRow .itemSpan {
     margin-left: 5px;
-    background-color: #efe8d9;
-    border-radius: 5px;
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5px;
+  }
+
+  .bodyRow b {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    background-color: #DFEEF9;
+    color: #004187;
   }
 
   .bodyRow .textSpan {
