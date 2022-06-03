@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
-import externalIcon from "../../assets/img/resource-white.svg";
+import headerExternalIcon from "../../assets/img/resource-header.svg";
+import externalIcon from "../../assets/img/resource.svg";
 import './participatingResourceDetailPage.css';
 
 const ParticipatingResourceResultContainer = styled.div`
@@ -21,7 +22,7 @@ const SiteIcon = styled.div`
   font-weight: bold;
   // color: #07468a;
   font-size: 1.2rem;  
-  background-image: url(${externalIcon});
+  background-image: url(${headerExternalIcon});
   background-repeat: no-repeat;
   background-size: 35px 35px;
   width: 35px;
@@ -33,12 +34,41 @@ const SiteIcon = styled.div`
   margin-bottom: -30px;
 `;
 
+const HeaderLinks = styled.div`
+  a[target="_blank"] {
+    background: url(${headerExternalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
+const ResourceBody = styled.div`
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
 const DatasetSummaryContainer = styled.div`
   // width: 100%;
   // display: grid;
   margin: 0 auto;
   width: 1120px;
   margin-bottom: 80px;
+
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) left top no-repeat;
+    padding-left: 30px;
+    background-size: 32px;
+    display: inline-table;
+  }
 `;
 
 const DataLink = styled.li`
@@ -248,6 +278,7 @@ const ParticipatingResourceDetail = ({
                     {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
                     {resourseLinks[2] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[2]} target="_blank" rel="noreferrer noopener">{resourseLinks[2]}</a></ExternalLink> : null}
                   </div>
+                  <HeaderLinks>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="prDetailHeaderText">
@@ -262,6 +293,7 @@ const ParticipatingResourceDetail = ({
                       {pocLinks[2] && pocLinks[2].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a></DataLink>}
                     </span>
                   </div>
+                  </HeaderLinks>
                   <DatasetType>
                     <span
                       data-bs-toggle="tooltip"
@@ -281,6 +313,7 @@ const ParticipatingResourceDetail = ({
         <ParticipatingResourceResultContainer>
         {
             detail && (
+              <ResourceBody>
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
@@ -326,7 +359,7 @@ const ParticipatingResourceDetail = ({
                         <br />
                           {
                             detail.api
-                            ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
+                            ? <a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a>
                             : null
                           }
                       </div>
@@ -334,6 +367,7 @@ const ParticipatingResourceDetail = ({
                   </div>
                 </div>
               </div>
+              </ResourceBody>
             )
         }
         </ParticipatingResourceResultContainer>
@@ -371,7 +405,7 @@ const ParticipatingResourceDetail = ({
                   <DatasetHeader>
                     <DatasetTitle>
                       <a href={linkto}>
-                        {ds.dataset_name.length > 100 ? `${ds.dataset_name.substring(0, 100)}...` : ds.dataset_name}
+                        {ds.dataset_name.length > 90 ? `${ds.dataset_name.substring(0, 90)}...` : ds.dataset_name}
                       </a>
                     </DatasetTitle>
                   </DatasetHeader>

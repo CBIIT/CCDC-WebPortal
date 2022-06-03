@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DataResourceIcons from '../../components/DataResourceIcons';
+import headerExternalIcon from "../../assets/img/dataset-header.svg";
+import externalIcon from "../../assets/img/dataset-body.svg";
 import './datasetDetailPage.css';
 
 const DatasetResultContainer = styled.div`
@@ -14,6 +16,27 @@ const DatasetResultContainer = styled.div`
 const DatasetGridContainer = styled.div`
   // margin: 100px 0 100px 0;
   border-top: 1px solid #BFD3E1;
+`;
+
+const HeaderLinks = styled.div`
+  a[target="_blank"] {
+    background: url(${headerExternalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
+const DatasetBody = styled.div`
+  a[target="_blank"] {
+    // color: #004187;
+    background: url(${externalIcon}) left center no-repeat;
+    padding-left: 30px;
+    margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -103,11 +126,12 @@ const DatasetDetail = ({
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
                       <li><a href="/search">Search Catalog</a></li>
-                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name}</Link></li>
+                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name.length > 130 ? `${content.dataset_name.substring(0, 130)}...` : content.dataset_name}</Link></li>
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                  <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>
+                {content.dataset_name.length > 200 ? <div className="datasetDetailLongHeaderLabel">{content.dataset_name}</div> : <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>}
+                  {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
                   <div className="datasetIcon">
                     {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
                   </div>
@@ -115,6 +139,7 @@ const DatasetDetail = ({
                     Data Resource: &nbsp;
                     <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
                   </div>
+                  <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
@@ -129,6 +154,7 @@ const DatasetDetail = ({
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
                   </div>
+                  </HeaderLinks>
                   <ResourceType>
                     <span
                       data-bs-toggle="tooltip"
@@ -148,6 +174,7 @@ const DatasetDetail = ({
         <DatasetResultContainer>
         {
             content && (
+              <DatasetBody>
               <div className="datasetContainer">
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
@@ -710,7 +737,9 @@ const DatasetDetail = ({
                                   const adeekey = `adee_${adeeidx}`;
                                   return (
                                     <div key={adeekey} className="additionalDataContent">
-                                      {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
+                                      {(adee.k.includes("https:")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                      {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                      {(adee.k.includes("https:") || adee.k.includes("phs00")) ? null : adee.k}
                                       {adee.v === -1
                                         ? null
                                         : (
@@ -732,6 +761,7 @@ const DatasetDetail = ({
                   <br />
                 </div>
               </div>
+              </DatasetBody>
             )
         }
         </DatasetResultContainer>

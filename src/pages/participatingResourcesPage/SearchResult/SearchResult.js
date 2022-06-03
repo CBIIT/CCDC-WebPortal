@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // import { Link } from "react-router-dom";
 // import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import externalIcon from "../../../assets/img/resource.svg";
+import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
 import DataResourceIcons from '../../../components/DataResourceIcons';
 

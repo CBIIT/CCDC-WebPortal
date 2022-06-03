@@ -62,6 +62,17 @@ ul.breadcrumb li a:hover {
   inline-size: 960px;
 }
 
+.datasetDetailLongHeaderLabel {
+  padding: 0px 0px 40px 26px;
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: Inter;
+  width: 95%;
+  inline-size: 960px;
+  line-height: 24px;
+}
+
 .datasetDetailHeaderContent {
   padding: 0px 0 5px 30px;
   color: white;
