@@ -250,6 +250,10 @@ ul.breadcrumb li a:hover {
   word-break: break-all;
 }
 
+.dataElementContentPublished:hover {
+  color: #00a272;
+}
+
 .dataElementContentAllCaps {
   /* font-size: 16px; */
   font-family: Lato;
@@ -270,6 +274,10 @@ ul.breadcrumb li a:hover {
   text-transform: none;
   max-width: 95%;
   word-break: break-all;
+}
+
+.additionalDataLinks:hover {
+  color: #00a272;
 }
 
 .additionalDataContent {

@@ -8,11 +8,11 @@ import './aboutPage.css';
 const AboutContainer = styled.div`
 //   display: inline-flex;
   a[target="_blank"] {
-    color: #0052b3;
+    color: #004187;
     font-weight: bold;
     text-underline-offset: 2px;
-    background: url(${externalIcon}) left center no-repeat;
-    padding-left: 30px;
+    background: url(${externalIcon}) right center no-repeat;
+    padding-right: 30px;
     background-size: 32px;
     display: inline-table;
   }

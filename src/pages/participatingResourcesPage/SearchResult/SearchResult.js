@@ -100,6 +100,7 @@ const POCInfo = styled.div`
 const SiteInfo = styled.div`
   display: flex;
   font-size: 15px;
+  margin-bottom: 10px;
 
   a {
     text-decoration: none;
@@ -116,9 +117,11 @@ const SiteIcon = styled.div`
   background-repeat: no-repeat;
   background-size: 35px 35px;
   width: 35px;
-  height: 35px;
-  margin-left: -10px;
-  margin-top: -5px;
+  height: 30px;
+  margin-left: -2px;
+  margin-top: -10px;
+  margin-bottom: -8px;
+  display: inline-table;
 `;
 
 const ResourceType = styled.div`
@@ -234,9 +237,9 @@ const SearchResult = ({
                       <a href={mailto}>{rst.poc}</a>
                     </POCInfo>
                     <SiteInfo>
-                      <SiteIcon />
                       <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">
                         {rst.resource_uri && rst.resource_uri.length > 70 ? `${rst.resource_uri.substring(0, 80)}...` : rst.resource_uri}
+                        <SiteIcon />
                       </a>
                     </SiteInfo>
                   </ContactInfo>

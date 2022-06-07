@@ -18,27 +18,27 @@ const ParticipatingResourceGridContainer = styled.div`
   border-top: 1px solid #BFD3E1;
 `;
 
-const SiteIcon = styled.div`
-  font-weight: bold;
-  // color: #07468a;
-  font-size: 1.2rem;  
-  background-image: url(${headerExternalIcon});
-  background-repeat: no-repeat;
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
-  margin-left: -10px;
-  margin-top: -5px;
-  // display: flex;
-  // display: inline flex;
-  margin-bottom: -30px;
-`;
+// const SiteIcon = styled.div`
+//   font-weight: bold;
+//   // color: #07468a;
+//   font-size: 1.2rem;
+//   background-image: url(${headerExternalIcon});
+//   background-repeat: no-repeat;
+//   background-size: 35px 35px;
+//   width: 35px;
+//   height: 35px;
+//   margin-left: -10px;
+//   margin-top: -5px;
+//   // display: flex;
+//   // display: inline flex;
+//   margin-bottom: -30px;
+// `;
 
 const HeaderLinks = styled.div`
   a[target="_blank"] {
-    background: url(${headerExternalIcon}) left center no-repeat;
-    padding-left: 30px;
-    margin-left: -5px;
+    background: url(${headerExternalIcon}) right center no-repeat;
+    padding-right: 30px;
+    // margin-left: -5px;
     background-size: 32px;
     display: inline-table;
   }
@@ -47,11 +47,11 @@ const HeaderLinks = styled.div`
 const ResourceBody = styled.div`
   a[target="_blank"] {
     color: #004187;
-    background: url(${externalIcon}) left center no-repeat;
-    padding-left: 30px;
-    margin-left: -5px;
+    background: url(${externalIcon}) right center no-repeat;
+    padding-right: 30px;
+    // margin-left: -5px;
     background-size: 32px;
-    display: inline-table;
+    // display: inline-table;
   }
 `;
 
@@ -64,8 +64,9 @@ const DatasetSummaryContainer = styled.div`
 
   a[target="_blank"] {
     color: #004187;
-    background: url(${externalIcon}) left top no-repeat;
-    padding-left: 30px;
+    background: url(${externalIcon}) right top no-repeat;
+    // padding-left: 30px;
+    padding-right: 30px;
     background-size: 32px;
     display: inline-table;
   }
@@ -80,7 +81,7 @@ const DataLink = styled.li`
 const ExternalLink = styled.li`
   display: flex;
   // display: inline;
-  margin-left: 25px;
+  // margin-left: 25px;
   // margin-top: -20px;
 `;
 
@@ -272,12 +273,14 @@ const ParticipatingResourceDetail = ({
                   </div>
                   <span className="badge"><i className="far fa-file-alt" /></span>
                   <span className="badgeCount">{detail.datasets_total}</span>
+                  <HeaderLinks>
                   <div className="prDetailHeaderContent">
-                    <SiteIcon />
+                    {/* <SiteIcon /> */}
                     {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
                     {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
                     {resourseLinks[2] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[2]} target="_blank" rel="noreferrer noopener">{resourseLinks[2]}</a></ExternalLink> : null}
                   </div>
+                  </HeaderLinks>
                   <HeaderLinks>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
