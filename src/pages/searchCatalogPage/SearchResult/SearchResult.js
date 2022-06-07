@@ -93,6 +93,15 @@ const SearchResultContainer = styled.div`
     color: #004187;
   }
 
+  .footerRow b {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
   .bodyRow .textSpan {
     margin-left: 5px;
   }
