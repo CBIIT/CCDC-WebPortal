@@ -5,9 +5,10 @@ import './glossaryPage.css';
 
 const GlossaryContainer = styled.div`
   a[target="_blank"] {
-    background: url(${externalIcon}) left center no-repeat;
-    padding-left: 30px;
-    margin-left: -7px;
+    background: url(${externalIcon}) right center no-repeat;
+    padding-right: 30px;
+    // padding-left: 30px;
+    // margin-left: -7px;
     background-size: 32px;
     display: inline-table;
   }
