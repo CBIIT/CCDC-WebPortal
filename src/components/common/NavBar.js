@@ -31,6 +31,36 @@ const LogoContainer = styled.div`
   }
 `;
 
+const ReturnToNCILink = styled.div`
+@media (min-width: 1200px) {
+  height: 100%;
+  height: 28px;
+  display: block;
+  line-height: 25px;
+  text-align: center;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(151, 151, 151);
+  margin-top: -4px;
+
+  a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 10px;
+    // font-family: "Noto Sans", Arial, sans-serif;
+    font-family: Inter;
+  }
+
+  a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 1200px) {
+  display: none;
+}
+`;
+
 const Nav = styled.div`
     width: 100%;
     height: 50px;
@@ -398,6 +428,9 @@ const NavBar = () => {
 
   return (
       <div className="sticky-nav">
+        <ReturnToNCILink>
+          <a target="_new" tabIndex="0" rel="noreferrer noopener" id="returnToNCIlink--home" href="https://www.cancer.gov/research/areas/childhood/childhood-cancer-data-initiative?cid=cgovnav_hp_datacatalog-stage.ccdi.cancer.gov">NCI Childhood Cancer Data Initiative</a>
+        </ReturnToNCILink>
         <LogoBanner role="banner">
           <LogoContainer>
             <a href="/"><img src={logo} alt="ccdc logo" /></a>
