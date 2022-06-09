@@ -76,7 +76,6 @@
 
 .carousel-content {
   display: flex;
-  transition: all 250ms linear;
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding: 10px 0;
