@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
 import SearchResult from './SearchResult';
-import PageInfo from './PageInfo';
 
 const PageHeaderContainer = styled.div`
   width: 100%;
@@ -220,7 +219,6 @@ const ParticipatingResourcesPage = ({
             &nbsp;Results
           </SearchSummary>
           <SearchResult />
-          <PageInfo />
         </SearchContent>
       </SearchContainer>
     </>
