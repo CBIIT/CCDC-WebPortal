@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import usePageVisibility from "./PageVisibility";
 import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
 import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
@@ -34,6 +35,7 @@ const Carousel = ({
     const showCount = useShowCount();
     const [touchPosition, setTouchPosition] = useState(null);
     const [transform, setTransform] = useState({ transform: "translateX(0%)" });
+    const isVisible = usePageVisibility();
 
     const startTimer = () => {
         timer = setInterval(() => {
@@ -66,13 +68,16 @@ const Carousel = ({
     };
 
     useEffect(() => {
+        if (!isVisible) {
+            clearInterval(timer);
+        }
         const len = participatingResources.length;
         if (len === 0) {
             onLoadLandingParticipatingResources().catch(error => {
               throw new Error(`Loading landing page participating resources failed ${error}`);
             });
         }
-        if (participatingResources.length !== 0) {
+        if (participatingResources.length !== 0 && isVisible) {
             cardIdx = Math.floor(Math.random() * len) + showCount;
             const initialTs = `translateX(-${cardIdx * (100 / showCount)}%)`;
             setCurrentIndex(cardIdx);
@@ -80,7 +85,7 @@ const Carousel = ({
             startTimer();
         }
         return () => clearInterval(timer);
-    }, [participatingResources]);
+    }, [participatingResources, isVisible]);
 
     const handleTouchStart = (e) => {
         const touchDown = e.touches[0].clientX;
