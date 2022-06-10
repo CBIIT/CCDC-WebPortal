@@ -6,11 +6,19 @@
     width: 100%;
     position: -webkit-sticky;
     position: fixed;
-    top: 0;
+    top: 24px;
     z-index: 100;
     background-color: white;
   }
+
   body {
-    padding-top: 126px;
+    padding-top: 174px;
   }
+
+  iframe {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+
 }
