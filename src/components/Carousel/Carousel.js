@@ -35,6 +35,7 @@ const Carousel = ({
     const showCount = useShowCount();
     const [touchPosition, setTouchPosition] = useState(null);
     const [transform, setTransform] = useState({ transform: "translateX(0%)" });
+    const [btnDisabled, setBtnDisabled] = useState(false);
     const isVisible = usePageVisibility();
 
     const startTimer = () => {
@@ -55,6 +56,12 @@ const Carousel = ({
         resetTimer();
         const ts = `translateX(-${(cardIdx + 1) * (100 / showCount)}%)`;
         cardIdx += 1;
+        if (cardIdx === (participatingResources.length + showCount)) {
+            setBtnDisabled(true);
+            setTimeout(() => {
+                setBtnDisabled(false);
+            }, 500);
+        }
         setCurrentIndex(cardIdx);
         setTransform({transform: ts, transition: "0.5s ease-out"});
     };
@@ -63,6 +70,12 @@ const Carousel = ({
         resetTimer();
         const ts = `translateX(-${(cardIdx - 1) * (100 / showCount)}%)`;
         cardIdx -= 1;
+        if (cardIdx === 0) {
+            setBtnDisabled(true);
+            setTimeout(() => {
+                setBtnDisabled(false);
+            }, 500);
+        }
         setCurrentIndex(cardIdx);
         setTransform({transform: ts, transition: "0.5s ease-out"});
     };
@@ -115,13 +128,13 @@ const Carousel = ({
 
     const handleTransitionEnd = () => {
         if (cardIdx === 0) {
-            cardIdx = 30;
+            cardIdx = participatingResources.length;
             const initialTs = `translateX(-${cardIdx * (100 / showCount)}%)`;
             setCurrentIndex(cardIdx);
             setTransform({transform: initialTs, transition: "none"});
         }
 
-        if (cardIdx === (30 + showCount)) {
+        if (cardIdx === (participatingResources.length + showCount)) {
             cardIdx = showCount;
             const initialTs = `translateX(-${cardIdx * (100 / showCount)}%)`;
             setCurrentIndex(cardIdx);
@@ -139,7 +152,7 @@ const Carousel = ({
         <div className="carousel-container">
             <div className="carousel-wrapper">
                 <div className="carousel-action-wrapper">
-                    <button type="button" onClick={prevSlide} className="left-arrow">
+                    <button type="button" onClick={prevSlide} className="left-arrow" disabled={btnDisabled}>
                         <img src={arrowRightGold} alt="arrow-right" />
                     </button>
                 </div>
@@ -221,9 +234,9 @@ const Carousel = ({
                             if (showCount === 1) {
                                 withLine = false;
                             } else if (showCount === 2) {
-                                withLine = (idx + 30 + showCount) === currentIndex;
+                                withLine = (idx + participatingResources.length + showCount) === currentIndex;
                             } else {
-                                withLine = (idx + 30 + showCount) === currentIndex || (idx + 30 + showCount - 1) === currentIndex;
+                                withLine = (idx + participatingResources.length + showCount) === currentIndex || (idx + participatingResources.length + showCount - 1) === currentIndex;
                             }
                             return (
                                 <div key={key} className={withLine ? "carousel-card-with-line" : "carousel-card"} title={key}>
@@ -253,7 +266,7 @@ const Carousel = ({
                     </div>
                 </div>
                 <div className="carousel-action-wrapper">
-                    <button type="button" onClick={nextSlide} className="right-arrow">
+                    <button type="button" onClick={nextSlide} className="right-arrow" disabled={btnDisabled}>
                         <img src={arrowRightGold} alt="arrow-right" />
                     </button>
                 </div>
