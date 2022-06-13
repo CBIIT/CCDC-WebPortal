@@ -128,7 +128,10 @@ const DatasetDetail = ({
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                {content.dataset_name.length > 200 ? <div className="datasetDetailLongHeaderLabel">{content.dataset_name}</div> : <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>}
+                  {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <div className="datasetDetailHeaderLabel">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 60 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <div className="datasetDetailHeaderLabel3">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 170 ? <div className="datasetDetailHeaderLabel4">{content.dataset_name}</div> : null}
                   {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
                   <div className="datasetIcon">
                     {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
