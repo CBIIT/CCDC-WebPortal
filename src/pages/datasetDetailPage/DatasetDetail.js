@@ -128,7 +128,10 @@ const DatasetDetail = ({
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                {content.dataset_name.length > 200 ? <div className="datasetDetailLongHeaderLabel">{content.dataset_name}</div> : <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>}
+                  {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <div className="datasetDetailHeaderLabel">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 60 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <div className="datasetDetailHeaderLabel3">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 170 ? <div className="datasetDetailHeaderLabel4">{content.dataset_name}</div> : null}
                   {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
                   <div className="datasetIcon">
                     {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
@@ -733,11 +736,15 @@ const DatasetDetail = ({
                                 <br />
                                 {additionalDict[ad].map((adee, adeeidx) => {
                                   const adeekey = `adee_${adeeidx}`;
+                                  let additonalText = adee.k === undefined ? "" : adee.k;
+                                  if (adee.k) { additonalText = additonalText.split(';'); }
                                   return (
                                     <div key={adeekey} className="additionalDataContent">
-                                      {(adee.k.includes("https:")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                      {additonalText[0] && ((additonalText[0].includes("https:")) || (additonalText[0].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[0]} target="_blank" rel="noreferrer noopener">{additonalText[0]}</a></div> : null}
+                                      {additonalText[1] && ((additonalText[1].includes("https:")) || (additonalText[1].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[1]} target="_blank" rel="noreferrer noopener">{additonalText[1]}</a></div> : null}
+                                      {additonalText[2] && ((additonalText[2].includes("https:")) || (additonalText[2].includes("http:"))) ? <a className="additionalDataLinks" href={additonalText[2]} target="_blank" rel="noreferrer noopener">{additonalText[2]}</a> : null}
                                       {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
-                                      {(adee.k.includes("https:") || adee.k.includes("phs00")) ? null : adee.k}
+                                      {(adee.k.includes("https:") || adee.k.includes("http:") || adee.k.includes("phs00")) ? null : adee.k}
                                       {adee.v === -1
                                         ? null
                                         : (

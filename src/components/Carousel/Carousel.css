@@ -104,6 +104,7 @@
 }
 
 .left-arrow, .right-arrow {
+  cursor: pointer !important;
   z-index: 1;
   padding: 0;
   border-radius: 24px;

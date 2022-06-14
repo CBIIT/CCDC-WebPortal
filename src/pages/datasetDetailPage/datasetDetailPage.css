@@ -55,14 +55,36 @@ ul.breadcrumb li a:hover {
 .datasetDetailHeaderLabel {
   padding: 0px 0px 60px 26px;
   color: white;
-  font-size: 35px;
+  font-size: 34px;
   font-weight: medium;
   font-family: Inter;
   width: 95%;
   inline-size: 960px;
 }
 
-.datasetDetailLongHeaderLabel {
+.datasetDetailHeaderLabel2 {
+  padding: 0px 0px 40px 26px;
+  color: white;
+  font-size: 28px;
+  font-weight: 500;
+  font-family: Inter;
+  width: 95%;
+  inline-size: 960px;
+  line-height: 36px;
+}
+
+.datasetDetailHeaderLabel3 {
+  padding: 0px 0px 46px 26px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  font-family: Inter;
+  width: 95%;
+  inline-size: 960px;
+  line-height: 33px;
+}
+
+.datasetDetailHeaderLabel4 {
   padding: 0px 0px 40px 26px;
   color: white;
   font-size: 22px;
