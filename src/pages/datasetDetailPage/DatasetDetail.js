@@ -738,9 +738,9 @@ const DatasetDetail = ({
                                   const adeekey = `adee_${adeeidx}`;
                                   return (
                                     <div key={adeekey} className="additionalDataContent">
-                                      {(adee.k.includes("https:")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                      {(adee.k.includes("https:") || adee.k.includes("http:")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
                                       {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
-                                      {(adee.k.includes("https:") || adee.k.includes("phs00")) ? null : adee.k}
+                                      {(adee.k.includes("https:") || adee.k.includes("http:") || adee.k.includes("phs00")) ? null : adee.k}
                                       {adee.v === -1
                                         ? null
                                         : (
