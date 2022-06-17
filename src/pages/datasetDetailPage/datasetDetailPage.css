@@ -250,6 +250,51 @@ ul.breadcrumb li a:hover {
   text-transform: uppercase;
 }
 
+.grantIDDataContainer {
+  padding: 10px 0 0px 0px;
+  width: 30%;
+  display: inline-table;
+}
+
+.grantNameDataContainer {
+  padding: 10px 0 0px 15px;
+  width: 70%;
+  display: inline-table;
+}
+
+.dataElementLabelGrantID {
+  padding: 0px 0 0px 0px;
+  color: #b98e2f;
+  font-size: 16px;
+  font-family: Lato;
+  text-transform: uppercase;
+}
+
+.dataElementLabelGrantName {
+  padding: 0px 0 0px 0px;
+  color: #b98e2f;
+  font-size: 16px;
+  font-family: Lato;
+  text-transform: uppercase;
+}
+
+.dataElementContentGrantID {
+  padding: 0px 0 20px 0px;
+  text-transform: none;
+}
+
+.dataElementContentGrantName {
+  padding: 0px 0 10px 0px;
+  text-transform: none;
+  width: 100%;
+  inline-size: 360px;
+  /* overflow: scroll; */
+}
+
+.dataElementContentGrantName::-webkit-scrollbar {
+  height: 20px;
+}
+
 .dataElementContent {
   /* font-size: 16px; */
   font-family: Lato;
