@@ -123,7 +123,7 @@
   width: 50%;
   padding: 10px;
   padding-top: 100px;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
   font-size: 90%;
 }
 
@@ -149,7 +149,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-image: url("../../assets/img/CCDC.Hero.jpg");
+    background-image: url("../../assets/img/CCDC.Hero.png");
     border-bottom: 2px solid white;
     background-position: center;
   }
@@ -165,7 +165,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-image: url("../../assets/img/CCDC.Hero.jpg");
+    background-image: url("../../assets/img/CCDC.Hero.png");
     border-bottom: 2px solid white;
     background-position: center;
   }
@@ -222,10 +222,10 @@
 
 .headerTitle {
   padding-top: 104px;
-  font-family: Inter, Raleway, sans-serif;
-  font-size: 38px;
+  font-family: Inter;
+  font-size: 42px;
   font-weight: 600;
-  line-height: 35px;
+  line-height: 38px;
   color: #01FFB3;
   letter-spacing: 0;
 }
@@ -236,9 +236,10 @@
 
 .headerDesc {
   color: #FFFFFF;
-  font-size: 19px;
+  font-family: Lato;
+  font-size: 18px;
   margin: 20px 0;
-  line-height: 23px;
+  line-height: 28px;
   display: grid;
 }
 
@@ -268,11 +269,12 @@
 }
 
 .headerContent2 {
-  margin-top: 100px;
+  margin: 100px 0 0 50px;
   color: #FFFFFF;
+  font-family: Inter;
   font-size: 42px;
   font-weight: 600;
-  line-height: 40px;
+  line-height: 39px;
 }
 
 .headerLink {
@@ -480,14 +482,17 @@
 }
 
 .buttonText {
-  padding: 10px 0;
+  margin: 60px 0 0 240px;
+  padding: 5px 0;
   position: relative;
   width: 259px;
-  text-align: left;
   height: 40px;
-  color: white;
+  text-align: right;
+  color: #FFFFFF;
+  font-family: Inter;
   font-size: 15px;
-  caret-color: red;
+  font-weight: 800;
+  line-height: 26px;
   text-decoration: underline;
   text-underline-offset: 8px;
   text-decoration-thickness: 2px;
@@ -515,7 +520,7 @@
 .buttonIcon {
   position: absolute;
   top: 5px;
-  right: 10px;
+  right: 5px;
   color: #FFBF17;
   font-size: 22px;
 }
@@ -559,10 +564,15 @@
 }
 
 .infoSection {
+  margin: 0px 0 0px 30px;
   color: #FFFFFF;
-  font-size: 19px;
-  letter-spacing: 0;
+  font-family: Lato;
+  font-size: 18px;
   line-height: 28px;
+  height: 294px;
+  width: 474px;
+  text-align: justify;
+  inline-size: 465px;
 }
 
 .search {
