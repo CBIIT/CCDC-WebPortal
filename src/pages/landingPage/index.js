@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import SiteUpdateWidget from './SiteUpdateWidget';
 import Carousel from '../../components/Carousel';
 import './landingPage.css';
 
@@ -68,6 +69,9 @@ const HomePage = () => {
                                   </button>
                               </Link>
                           </div>
+                      </div>
+                      <div className="headerWidget">
+                        <SiteUpdateWidget />
                       </div>
                   </div>
               </div>

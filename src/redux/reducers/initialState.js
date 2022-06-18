@@ -47,5 +47,6 @@ export default {
     application: {
       softwareVersion: "",
       siteDataUpdate: "",
+      widgetUpdates: [],
     },
 };
