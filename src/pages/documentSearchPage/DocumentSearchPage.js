@@ -196,15 +196,13 @@ const ParticipatingResourcesPage = ({
                 <SearchIcon>
                   <i className="fas fa-search" />
                 </SearchIcon>
-                <InputGroup.Append>
-                  {
-                    getSearchableText(localText) ? (
-                      <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
-                    ) : (
-                      <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
-                    )
-                  }
-                </InputGroup.Append>
+                {
+                  getSearchableText(localText) ? (
+                    <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+                  ) : (
+                    <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
+                  )
+                }
               </InputGroup>
             </SearchBoxArea>
           </PageLabelArea>
