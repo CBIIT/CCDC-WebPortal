@@ -413,19 +413,30 @@ const ParticipatingResourceDetail = ({
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
-                    {ds.published_in
-                      ? <div className="summaryDataElementLabel">Published In</div>
-                      : null}
-                    {/* {ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null} */}
-                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
-                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
-                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
-                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
-                    {/* {
-                      ds.published_in
+                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis</div> : null}
+                      <div className="summaryDataElementContent">
+                        {
+                          ds.case_disease_diagnosis
+                          ? ds.case_disease_diagnosis.slice(0, 10).map((cdd, cddidx) => {
+                            const cddkey = `cdd_${cddidx}`;
+                            return (
+                              <span key={cddkey} className="itemSpan">
+                                {cdd.n ? cdd.n : null}
+                                &nbsp;(
+                                {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
+                                {cddidx === 9 || cddidx === ds.case_disease_diagnosis.length - 1 ? ")" : "); "}
+                              </span>
+                            );
+                          })
+                          : null
+                        }
+                      </div>
+                      {/* {ds.case_sex ? <br /> : null } */}
+                    {
+                      ds.case_sex
                       ? <br />
                       : null
-                    } */}
+                    }
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
                       : null}
@@ -491,6 +502,11 @@ const ParticipatingResourceDetail = ({
                       ? <br />
                       : null
                     }
+                    {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
+                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
+                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
+                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
+                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
                   <SummaryDatasetType>
                     <span
