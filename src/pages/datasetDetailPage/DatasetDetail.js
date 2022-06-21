@@ -105,7 +105,29 @@ const DatasetDetail = ({
   let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
   if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
-
+  const grantIDs = [];
+  const grantNames = [];
+  const grants = new Map();
+  if (sortedAdditonals) {
+    sortedAdditonals.forEach((ad) => {
+      if (ad.toUpperCase() === "GRANT ID") {
+        additionalDict[ad].forEach((item, i) => {
+          grantIDs[i] = item.k.substring(0, 13);
+        });
+      }
+      if (ad.toUpperCase() === "GRANT NAME") {
+        additionalDict[ad].forEach((item, i) => {
+          grantNames[i] = item.k;
+        });
+      }
+    });
+  }
+  for (let i = 0; i < grantIDs.length; i += 1) {
+    if (grantNames[i] === null) {
+      grants.set(grantIDs[i], grantNames[i - 1]);
+    }
+    grants.set(grantIDs[i], grantNames[i]);
+  }
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -730,33 +752,64 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad.toUpperCase() === "GRANT ID") {
+                              return (
+                                <>
+                                  <div className="dataElementLabel">Grant Information</div>
+                                  <div>
+                                    {grantIDs.map((item) => {
+                                      return (
+                                        <table className="table table-borderless">
+                                          <tbody>
+                                            <tr>
+                                              {grants.get(item) ? <td><div className="grantIDDataContainer">{item}</div></td> : null}
+                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
+                                              {/* <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> */}
+                                              {/* <td>{item}</td> */}
+                                              {/* <td>{grants.get(item)}</td> */}
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      );
+                                    })}
+                                  </div>
+                                </>
+                              );
+                            }
                             return (
-                              <div key={adkey} className="dataElementLabel">
-                                {ad.toUpperCase()}
-                                <br />
-                                {additionalDict[ad].map((adee, adeeidx) => {
-                                  const adeekey = `adee_${adeeidx}`;
-                                  let additonalText = adee.k === undefined ? "" : adee.k;
-                                  if (adee.k) { additonalText = additonalText.split(';'); }
-                                  return (
-                                    <div key={adeekey} className="additionalDataContent">
-                                      {additonalText[0] && ((additonalText[0].includes("https:")) || (additonalText[0].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[0]} target="_blank" rel="noreferrer noopener">{additonalText[0]}</a></div> : null}
-                                      {additonalText[1] && ((additonalText[1].includes("https:")) || (additonalText[1].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[1]} target="_blank" rel="noreferrer noopener">{additonalText[1]}</a></div> : null}
-                                      {additonalText[2] && ((additonalText[2].includes("https:")) || (additonalText[2].includes("http:"))) ? <a className="additionalDataLinks" href={additonalText[2]} target="_blank" rel="noreferrer noopener">{additonalText[2]}</a> : null}
-                                      {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
-                                      {(adee.k.includes("https:") || adee.k.includes("http:") || adee.k.includes("phs00")) ? null : adee.k}
-                                      {adee.v === -1
-                                        ? null
-                                        : (
-                                            <span key={adeekey} className="itemSpan">
-                                              &nbsp;(
-                                              {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                              )&#59; &nbsp;
-                                            </span>
-                                          )}
-                                    </div>
-                                  );
-                                })}
+                              <div>
+                                <div key={adkey} className="dataElementLabel">
+                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : ad.toUpperCase()}
+                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : <br />}
+                                  {additionalDict[ad].map((adee, adeeidx) => {
+                                    if (ad.toUpperCase() !== "GRANT ID" && ad.toUpperCase() !== "GRANT NAME") {
+                                      const adeekey = `adee_${adeeidx}`;
+                                      let additonalText = adee.k === undefined ? "" : adee.k;
+                                      if (adee.k) { additonalText = additonalText.split(';'); }
+                                      return (
+                                        <div key={adeekey} className="additionalDataContent">
+                                          {additonalText[0] && ((additonalText[0].includes("https:")) || (additonalText[0].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[0]} target="_blank" rel="noreferrer noopener">{additonalText[0]}</a></div> : null}
+                                          {additonalText[1] && ((additonalText[1].includes("https:")) || (additonalText[1].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[1]} target="_blank" rel="noreferrer noopener">{additonalText[1]}</a></div> : null}
+                                          {additonalText[2] && ((additonalText[2].includes("https:")) || (additonalText[2].includes("http:"))) ? <a className="additionalDataLinks" href={additonalText[2]} target="_blank" rel="noreferrer noopener">{additonalText[2]}</a> : null}
+                                          {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                          {(adee.k.includes("https:") || adee.k.includes("http:") || adee.k.includes("phs00")) ? null : adee.k}
+                                          {adee.v === -1
+                                            ? null
+                                            : (
+                                                <span key={adeekey} className="itemSpan">
+                                                  &nbsp;(
+                                                  {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                  )&#59; &nbsp;
+                                                </span>
+                                              )}
+                                        </div>
+                                      );
+                                    }
+                                    return (
+                                      null
+                                    );
+                                  })}
+                                </div>
                               </div>
                             );
                           })

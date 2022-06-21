@@ -196,6 +196,18 @@ const Glossary = () => {
                     <span className="glossaryItemType">Primary Dataset Scope</span>
                     <p className="glossaryItemDescription">A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.</p>
                     <br />
+                  </div>
+                  <div className="c">
+                    <h2 className="glossaryItemHeader">CR</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Computed Radiography</p>
+                    <br />
+                  </div>
+                  <div className="c">
+                    <h2 className="glossaryItemHeader">CT</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Computed Tomography</p>
+                    <br />
                     <br />
                   </div>
                 </>
@@ -350,6 +362,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="m">
+                    <h2 className="glossaryItemHeader">MR</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Magnetic Resonance</p>
+                    <br />
+                  </div>
+                  <div className="m">
                     <h2 className="glossaryItemHeader">MTP</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Molecular Targets Platform</p>
@@ -400,61 +418,67 @@ const Glossary = () => {
               key === 'P' && (
                 <>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PCAT</h2>
+                    <h2 className="glossaryItemHeader">PCAT</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">PDX for Childhood Cancer Therapeutics</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PCDC</h2>
+                    <h2 className="glossaryItemHeader">PCDC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Cancer Data Commons</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PDX</h2>
+                    <h2 className="glossaryItemHeader">PDX</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Patient Derived Xenograft</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PDXNet</h2>
+                    <h2 className="glossaryItemHeader">PDX-AIM</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Patient-Derived Xenograft and Advanced In Vivo Models</p>
+                    <br />
+                  </div>
+                  <div className="p">
+                    <h2 className="glossaryItemHeader">PDXNet</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">PDX Development and Trial Centers Research Network</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PDMR</h2>
+                    <h2 className="glossaryItemHeader">PDMR</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Patient-Derived Model Repository </p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PEDC</h2>
+                    <h2 className="glossaryItemHeader">PEDC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">PedcBioPortal for Integrated Childhood Cancer Genomics</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">Pediatric Only</h2>
+                    <h2 className="glossaryItemHeader">Pediatric Only</h2>
                     <span className="glossaryItemType">Pediatric Specific</span>
                     <p className="glossaryItemDescription">A data resource exclusively hosts pediatric and young adult (&#60; 40 years old) oncology research data</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PedMATCH</h2>
+                    <h2 className="glossaryItemHeader">PedMATCH</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Molecular Analysis for Therapy Choice</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PGDI</h2>
+                    <h2 className="glossaryItemHeader">PGDI</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Genomic Data Inventory</p>
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader" id="P">PPTC</h2>
+                    <h2 className="glossaryItemHeader">PPTC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Preclinical Testing Consortium</p>
                     <br />
@@ -475,6 +499,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Project</h2>
                     <span className="glossaryItemType">Primary Dataset Scope, Resource Type</span>
                     <p className="glossaryItemDescription">Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial. </p>
+                    <br />
+                  </div>
+                  <div className="p">
+                    <h2 className="glossaryItemHeader">PT</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Positrom Emission Tomography (PET)</p>
                     <br />
                     <br />
                   </div>
@@ -514,6 +544,18 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Resource Type</h2>
                     <span className="glossaryItemType">Resource Structure</span>
                     <p className="glossaryItemDescription">A classification based on the selection or purpose of information in the resource. Types of systems are: Registry, Research Data Repository, Catalog, or Program.</p>
+                    <br />
+                  </div>
+                  <div className="r">
+                    <h2 className="glossaryItemHeader">RTIMAGE</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Radiotherapy Image</p>
+                    <br />
+                  </div>
+                  <div className="r">
+                    <h2 className="glossaryItemHeader">RTSTRUCT</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Radiotherapy Structure Set</p>
                     <br />
                     <br />
                   </div>
@@ -569,6 +611,12 @@ const Glossary = () => {
             {
               key === 'U' && (
                 <>
+                  <div className="u">
+                    <h2 className="glossaryItemHeader">US</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Ultrasound</p>
+                    <br />
+                  </div>
                   <div className="u">
                     <h2 className="glossaryItemHeader">USCS</h2>
                     <span className="glossaryItemType">General Abbreviation</span>

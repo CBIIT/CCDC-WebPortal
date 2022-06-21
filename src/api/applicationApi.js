@@ -8,4 +8,10 @@ export function getApplicationVersionInfo() {
     .catch(handleError);
 }
 
+export function getWidgetUpdates() {
+  return fetch(`${baseUrl}/widgetupdate`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export default getApplicationVersionInfo;

@@ -9,6 +9,11 @@ export default function applicationReducer(state = initialState.application, act
             softwareVersion: action.versionInfo.softwareVersion,
             siteDataUpdate: action.versionInfo.siteDataUpdate,
           };
+        case types.LOAD_WIDGET_UPDATE_SUCCESS:
+          return {
+            ...state,
+            widgetUpdates: action.widgetUpdates,
+          };
         default:
             return state;
     }
