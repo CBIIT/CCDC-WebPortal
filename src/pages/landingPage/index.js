@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import SiteUpdateWidget from './SiteUpdateWidget';
 import Carousel from '../../components/Carousel';
 import './landingPage.css';
 
@@ -38,7 +39,6 @@ const HomePage = () => {
                         <br />
                         the pediatric cancer research community.
                       </div>
-                      <div style={{ padding: 30, background: 'white', opacity: '0.0' }} />
                       <div className="heroSearchBox">
                           <div className="search">
                               <input type="text" className="searchTerm" placeholder="  Search for Datasets " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
@@ -68,6 +68,9 @@ const HomePage = () => {
                                   </button>
                               </Link>
                           </div>
+                      </div>
+                      <div className="headerWidget">
+                        <SiteUpdateWidget />
                       </div>
                   </div>
               </div>

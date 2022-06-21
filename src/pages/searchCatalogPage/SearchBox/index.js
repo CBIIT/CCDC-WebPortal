@@ -168,24 +168,20 @@ const SearchBox = ({
           <SearchIcon>
             {/* <i className="fas fa-search" /> */}
           </SearchIcon>
-          <InputGroup.Append>
-            {
-              searchableText.length > 0 ? (
-                <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
-              ) : (
-                <button type="button" variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</button>
-              )
-            }
-          </InputGroup.Append>
-          <InputGroup.Append>
-            {
-              searchText.length > 0 ? null : (
-                <SearchIcon>
-                  <i className="fas fa-search" />
-                </SearchIcon>
-              )
-            }
-          </InputGroup.Append>
+          {
+            searchableText.length > 0 ? (
+              <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+            ) : (
+              <button type="button" variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</button>
+            )
+          }
+          {
+            searchText.length > 0 ? null : (
+              <SearchIcon>
+                <i className="fas fa-search" />
+              </SearchIcon>
+            )
+          }
         </InputGroup>
       </SearchBoxArea>
       <SelectionBubbleArea>
