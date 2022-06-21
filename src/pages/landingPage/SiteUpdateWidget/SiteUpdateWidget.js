@@ -8,12 +8,25 @@ import externalIcon from "../../../assets/img/resource-00a272.svg";
 const WidgetContainer = styled.div`
   box-sizing: border-box;
   display: grid;
-  width: 480px;
   margin-top: 17px;
   background-color: #FFFFFF;
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
-  opacity: 0.9;
-  padding: 6px 25px 12px 25px;
+  opacity: 0.85;
+  padding: 10px 25px 12px 25px;
+  text-align: left;
+
+  @media (max-width: 640px) {
+    margin: 17px auto;
+  }
+
+  @media (min-width: 530px) {
+    width: 480px;
+  }
+  
+  @media (max-width: 530px) {
+    width: calc(100vw - 50px);
+  }
+}
 `;
 
 const WidgetHeader = styled.div`
@@ -22,6 +35,7 @@ const WidgetHeader = styled.div`
     font-size: 13px;
     font-weight: 700;
     line-height: 15px;
+    padding-bottom: 5px;
 `;
 
 const WidgetContent = styled.div`
@@ -63,6 +77,28 @@ const CardTitle = styled.div`
     font-size: 23px;
     font-weight: 900;
     line-height: 25px;
+
+    a {
+        text-decoration: none;
+        color: #00a272;
+        font-weight: 500;
+    }
+`;
+
+const UpdateCardDescription = styled.div`
+    color: #000000;
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 15px;
+    padding-top: 6px;
+    height: 65px;
+    word-break: break-all;
+
+    a {
+        text-decoration: none;
+        color: #00a272;
+        font-weight: 500;
+    }
 `;
 
 const CardDescription = styled.div`
@@ -71,7 +107,8 @@ const CardDescription = styled.div`
     font-size: 14px;
     line-height: 15px;
     padding-top: 6px;
-    height: 80px;
+    height: 65px;
+    word-break: break-all;
 
     a {
         text-decoration: none;
@@ -112,16 +149,35 @@ const SiteUpdateWidget = ({
             <WidgetContent>
                 {
                     widgetUpdates.length > 0 && (
-                        <Carousel controls={showArrows} interval={500000}>
+                        <Carousel controls={showArrows} interval={30000}>
                             {
                                 widgetUpdates.map((item, idx) => {
                                     const itemKey = `update_${idx}`;
+                                    const link = `/siteupdate#post${item.id}`;
+                                    let desc = item.description;
+                                    if (item.log_type === 0) {
+                                        desc = desc.replace(/<a /g, "<a target=\"_blank\" ");
+                                    }
+                                    const hl = `${desc} <a href="${link}">Read More > </a>`;
                                     return (
                                         <Carousel.Item key={itemKey}>
-                                            <WidgetCard>
-                                                <CardTitle>{item.title}</CardTitle>
-                                                <CardDescription>{ReactHtmlParser(item.description)}</CardDescription>
-                                            </WidgetCard>
+                                            {
+                                                item.log_type === 1 ? (
+                                                    <WidgetCard>
+                                                        <CardTitle>
+                                                            <a href={link}>
+                                                                {item.title}
+                                                            </a>
+                                                        </CardTitle>
+                                                        <UpdateCardDescription>{ReactHtmlParser(hl)}</UpdateCardDescription>
+                                                    </WidgetCard>
+                                                ) : (
+                                                    <WidgetCard>
+                                                        <CardTitle>{item.title}</CardTitle>
+                                                        <CardDescription>{ReactHtmlParser(desc)}</CardDescription>
+                                                    </WidgetCard>
+                                                )
+                                            }
                                         </Carousel.Item>
                                     );
                                 })

@@ -48,5 +48,6 @@ export default {
       softwareVersion: "",
       siteDataUpdate: "",
       widgetUpdates: [],
+      siteUpdates: [],
     },
 };
