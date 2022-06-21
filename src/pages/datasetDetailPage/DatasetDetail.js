@@ -730,6 +730,44 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad.toUpperCase() === "GRANT ID") {
+                              return (
+                                <>
+                                  <div className="dataElementLabel">Grant Information</div>
+                                  <div key={adkey} className="grantIDDataContainer">
+                                    {/* <div className="dataElementLabelGrantID">Grant ID</div> */}
+                                    {additionalDict[ad].map((adee, adeeidx) => {
+                                      const adeekey = `adee_${adeeidx}`;
+                                      return (
+                                        <div key={adeekey} className="dataElementContentGrantID">
+                                          {ad.toUpperCase() === "GRANT ID" ? adee.k.substring(0, 13) : null}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </>
+                              );
+                            }
+                            if (ad.toUpperCase() === "GRANT NAME") {
+                              return (
+                                <div key={adkey} className="grantNameDataContainer">
+                                  {/* <div className="dataElementLabelGrantName">Grant Name</div> */}
+                                  {additionalDict[ad].map((adee, adeeidx) => {
+                                    const adeekey = `adee_${adeeidx}`;
+                                    if (ad.toUpperCase() === "GRANT NAME") {
+                                      return (
+                                        <div key={adeekey} className="dataElementContentGrantName">
+                                          {adee.k}
+                                        </div>
+                                      );
+                                    }
+                                    return (
+                                      null
+                                    );
+                                  })}
+                                </div>
+                              );
+                            }
                             return (
                               <div key={adkey} className="dataElementLabel">
                                 {ad.toUpperCase()}
