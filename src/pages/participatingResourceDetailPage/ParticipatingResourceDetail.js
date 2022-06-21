@@ -431,9 +431,8 @@ const ParticipatingResourceDetail = ({
                           : null
                         }
                       </div>
-                      {/* {ds.case_sex ? <br /> : null } */}
                     {
-                      ds.case_sex
+                      ds.case_disease_diagnosis
                       ? <br />
                       : null
                     }
