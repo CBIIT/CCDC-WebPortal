@@ -59,6 +59,33 @@ const SearchResultContainer = styled.div`
     border-radius: 20px;
     padding: 5px 10px;
     float: right;
+    position: relative;
+  }
+  
+  .headerRow .typeBlock .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .headerRow .typeBlock:hover .tooltiptext {
+    visibility: visible;
   }
 
   .container .subHeaderRow {
@@ -430,9 +457,10 @@ const SearchResult = ({
                       className="typeBlock"
                       data-bs-toggle="tooltip"
                       data-bs-placement="bottom"
-                      title={tooltip}
+                      // title={tooltip}
                     >
                       {rst.content.primary_dataset_scope}
+                      <span className="tooltiptext">{tooltip}</span>
                     </span>
                   </div>
                 </div>

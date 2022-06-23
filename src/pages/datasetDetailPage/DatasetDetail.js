@@ -54,6 +54,36 @@ const ResourceType = styled.div`
     padding: 8px 16px;
     line-height: 52px;
   }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+  }
 `;
 
 const sortingAdditionalElement = (content) => {
@@ -179,12 +209,9 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[content.primary_dataset_scope]}
-                    >
+                    <span className="tooltips">
                       {content.primary_dataset_scope}
+                      <span className="tooltiptext">{tooltips[content.primary_dataset_scope]}</span>
                     </span>
                   </ResourceType>
                 </div>
