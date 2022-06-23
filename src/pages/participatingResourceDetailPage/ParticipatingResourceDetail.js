@@ -103,6 +103,36 @@ const DatasetType = styled.div`
     padding: 8px 16px;
     line-height: 52px;
   }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+  }
 `;
 
 const SummaryDatasetType = styled.div`
@@ -120,6 +150,36 @@ const SummaryDatasetType = styled.div`
     border: 1px solid #FFBF17;
     padding: 8px 16px;
     line-height: 52px;
+  }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -298,12 +358,9 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[detail.resource_type]}
-                    >
+                    <span className="tooltips">
                       {detail.resource_type}
+                      <span className="tooltiptext">{tooltips[detail.resource_type]}</span>
                     </span>
                   </DatasetType>
                 </div>
@@ -509,12 +566,9 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[ds.primary_dataset_scope]}
-                    >
+                    <span className="tooltips">
                       {ds.primary_dataset_scope}
+                      <span className="tooltiptext">{tooltips[ds.primary_dataset_scope]}</span>
                     </span>
                   </SummaryDatasetType>
                 </DatasetCard>
