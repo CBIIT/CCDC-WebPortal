@@ -62,6 +62,17 @@ ul.breadcrumb li a:hover {
   inline-size: 960px;
 }
 
+.datasetDetailHeaderLabelLong {
+  padding: 0px 0px 40px 26px;
+  color: white;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: Inter;
+  width: 95%;
+  inline-size: 960px;
+  line-height: 36px;
+}
+
 .datasetDetailHeaderLabel2 {
   padding: 0px 0px 40px 26px;
   color: white;
@@ -262,47 +273,23 @@ ul.breadcrumb li a:hover {
   /* line-break: auto; */
 }
 
+.grantInfoContainer {
+  margin: 0px 0px -36px 0px;
+}
+
 .grantIDDataContainer {
-  margin: 0px 10px 0px -5px;
+  /* margin: 0px 10px 0px -5px; */
+  margin: 0px 0px 0px -8px;
   color: #000000;
   /* width: 30%; */
   display: inline-table;
-  vertical-align: bottom;
 }
 
 .grantNameDataContainer {
-  /* margin: 0px 0 0px 15px; */
+  margin: 0px 0 0px 10px;
   color: #000000;
   /* width: 70%; */
   display: inline-table;
-  vertical-align: bottom;
-}
-
-.dataElementLabelGrantID {
-  padding: 0px 0 0px 0px;
-  color: #b98e2f;
-  font-size: 16px;
-  font-family: Lato;
-  text-transform: uppercase;
-}
-
-.dataElementLabelGrantName {
-  padding: 0px 0 0px 0px;
-  color: #b98e2f;
-  font-size: 16px;
-  font-family: Lato;
-  text-transform: uppercase;
-}
-
-.dataElementContentGrantID {
-  /* padding: 0px 0 20px 0px; */
-  text-transform: none;
-}
-
-.dataElementContentGrantName {
-  /* padding: 0px 0 10px 0px; */
-  inline-size: 360px;
-  /* overflow: scroll; */
 }
 
 .dataElementContentGrantName::-webkit-scrollbar {
