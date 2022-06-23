@@ -350,6 +350,12 @@ const Glossary = () => {
               key === 'M' && (
                 <>
                   <div className="m">
+                    <h2 className="glossaryItemHeader">M3Cs</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">MicroRNA Childhood Cancer Catalog</p>
+                    <br />
+                  </div>
+                  <div className="m">
                     <h2 className="glossaryItemHeader">Mixed</h2>
                     <span className="glossaryItemType">Pediatric Specific</span>
                     <p className="glossaryItemDescription">A data resource hosts pediatric, young adult, and adult oncology research data</p>
