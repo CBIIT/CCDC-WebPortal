@@ -54,6 +54,36 @@ const ResourceType = styled.div`
     padding: 8px 16px;
     line-height: 52px;
   }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+  }
 `;
 
 const sortingAdditionalElement = (content) => {
@@ -112,7 +142,7 @@ const DatasetDetail = ({
     sortedAdditonals.forEach((ad) => {
       if (ad.toUpperCase() === "GRANT ID") {
         additionalDict[ad].forEach((item, i) => {
-          grantIDs[i] = item.k.substring(0, 13);
+          grantIDs[i] = item.k;
         });
       }
       if (ad.toUpperCase() === "GRANT NAME") {
@@ -151,7 +181,8 @@ const DatasetDetail = ({
                 </div>
                 <div className="datasetDetailHeaderContainer">
                   {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <div className="datasetDetailHeaderLabel">{content.dataset_name}</div> : null}
-                  {content.dataset_name.length > 60 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <div className="datasetDetailHeaderLabelLong">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
                   {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <div className="datasetDetailHeaderLabel3">{content.dataset_name}</div> : null}
                   {content.dataset_name.length > 170 ? <div className="datasetDetailHeaderLabel4">{content.dataset_name}</div> : null}
                   {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
@@ -179,12 +210,9 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[content.primary_dataset_scope]}
-                    >
+                    <span className="tooltips">
                       {content.primary_dataset_scope}
+                      <span className="tooltiptext">{tooltips[content.primary_dataset_scope]}</span>
                     </span>
                   </ResourceType>
                 </div>
@@ -755,16 +783,16 @@ const DatasetDetail = ({
                             if (ad.toUpperCase() === "GRANT ID") {
                               return (
                                 <>
+                                  {/* {grantIDs[0] ? <div className="dataElementLabel">Grant Information</div> : null} */}
                                   <div className="dataElementLabel">Grant Information</div>
-                                  <div>
+                                  <div className="grantInfoContainer">
                                     {grantIDs.map((item) => {
                                       return (
                                         <table className="table table-borderless">
                                           <tbody>
                                             <tr>
-                                              {grants.get(item) ? <td><div className="grantIDDataContainer">{item}</div></td> : null}
+                                              {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
                                               {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
-                                              {/* <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> */}
                                               {/* <td>{item}</td> */}
                                               {/* <td>{grants.get(item)}</td> */}
                                             </tr>

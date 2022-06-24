@@ -12,7 +12,7 @@ const WidgetContainer = styled.div`
   background-color: #FFFFFF;
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
   opacity: 0.85;
-  padding: 10px 25px 12px 25px;
+  padding: 11px 25px 12px 25px;
   text-align: left;
 
   @media (max-width: 640px) {
@@ -34,8 +34,8 @@ const WidgetHeader = styled.div`
     font-family: Lato;
     font-size: 13px;
     font-weight: 700;
-    line-height: 15px;
-    padding-bottom: 5px;
+    line-height: 13px;
+    padding-bottom: 3px;
 `;
 
 const WidgetContent = styled.div`
@@ -46,7 +46,7 @@ const WidgetContent = styled.div`
         padding: 0;
         margin: 0;
         right: 0;
-        bottom: -10px;
+        bottom: -7px;
         left: auto;
     }
 
@@ -76,12 +76,13 @@ const CardTitle = styled.div`
     font-family: Lato;
     font-size: 23px;
     font-weight: 900;
-    line-height: 25px;
+    line-height: 23px;
+    height: 28px;
+    overflow-y: auto;
 
     a {
         text-decoration: none;
         color: #00a272;
-        font-weight: 500;
     }
 `;
 
@@ -89,10 +90,16 @@ const UpdateCardDescription = styled.div`
     color: #000000;
     font-family: Lato;
     font-size: 14px;
-    line-height: 15px;
-    padding-top: 6px;
-    height: 65px;
+    line-height: 17px;
     word-break: break-all;
+
+    @media (min-width: 530px) {
+        height: 57px;
+    }
+    
+    @media (max-width: 530px) {
+        height: 74px;
+    }
 
     a {
         text-decoration: none;
@@ -105,10 +112,16 @@ const CardDescription = styled.div`
     color: #000000;
     font-family: Lato;
     font-size: 14px;
-    line-height: 15px;
-    padding-top: 6px;
-    height: 65px;
+    line-height: 17px;
     word-break: break-all;
+
+    @media (min-width: 530px) {
+        height: 57px;
+    }
+    
+    @media (max-width: 530px) {
+        height: 74px;
+    }
 
     a {
         text-decoration: none;
@@ -124,6 +137,7 @@ const CardDescription = styled.div`
         background-repeat: no-repeat;
         background-size: 100%;
         background-position-y: 4px;
+        background-position-x: -2px;
         width: 17px;
         height: 17px;
         display: inline-table;
@@ -157,6 +171,8 @@ const SiteUpdateWidget = ({
                                     let desc = item.description;
                                     if (item.log_type === 0) {
                                         desc = desc.replace(/<a /g, "<a target=\"_blank\" ");
+                                    } else {
+                                        desc = desc.length > 100 ? `${desc.substr(0, 120)}...` : desc;
                                     }
                                     const hl = `${desc} <a href="${link}">Read More > </a>`;
                                     return (
