@@ -189,7 +189,7 @@ const LiSection = styled.li`
   text-align: center;
   color: #003626;
   // padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  // padding-right: 0.5rem;
   font-size: 18px;
   font-weight: bold;
   font-family: Lato;
