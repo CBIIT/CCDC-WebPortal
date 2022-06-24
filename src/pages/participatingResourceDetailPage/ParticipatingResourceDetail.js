@@ -482,7 +482,8 @@ const ParticipatingResourceDetail = ({
                                 &nbsp;(
                                 {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                 {cddidx < 9 && cddidx !== ds.case_disease_diagnosis.length - 1 ? "); " : null}
-                                {cddidx === 9 && cddidx !== ds.case_disease_diagnosis.length - 1 ? ") ..." : ")"}
+                                {cddidx === 9 && cddidx !== ds.case_disease_diagnosis.length - 1 ? ") ..." : null}
+                                {(cddidx < 9 || cddidx === 9) && cddidx === ds.case_disease_diagnosis.length - 1 ? ")" : null}
                               </span>
                             );
                           })
