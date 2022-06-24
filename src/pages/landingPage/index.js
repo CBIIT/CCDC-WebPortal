@@ -41,7 +41,7 @@ const HomePage = () => {
                       </div>
                       <div className="heroSearchBox">
                           <div className="search">
-                              <input type="text" className="searchTerm" placeholder="  Search for Datasets " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
+                              <input type="text" className="searchTerm" placeholder="Search for Datasets" value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
                               <Link to={`/search?search_text=${localText}`} className="headerLink">
                                   <button type="submit" className="searchButton">
                                       <svg
