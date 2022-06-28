@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
 import SearchResult from './SearchResult';
+import xIcon from "../../assets/img/xmark-solid.svg";
 
 const PageHeaderContainer = styled.div`
   width: 100%;
@@ -75,12 +76,38 @@ const SearchBoxArea = styled.div`
     background-color: #6c757d;
     border-color: #6c757d;
   }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    position: relative;
+    right: -35px;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: url(${xIcon}) right center no-repeat;
+    background-image: url(${xIcon}) red;
+    background-size: 20px;
+    cursor: pointer;
+  }
+
+  input[type="search"]:focus::-webkit-search-cancel-button {
+    position: relative;
+    right: -35px;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: url(${xIcon}) right center no-repeat;
+    background-image: url(${xIcon}) red;
+    background-size: 20px;
+    cursor: pointer;
+  }
 `;
 
 const SearchIcon = styled.div`
   position: absolute;
   color: #004187;
-  right: 155px;
+  // right: 155px;
+  right: 160px;
+  top: 2px;
   z-index: 10;
   line-height: 50px;
   font-size: 25px;
@@ -186,6 +213,7 @@ const ParticipatingResourcesPage = ({
             <SearchBoxArea>
               <InputGroup className="searchBoxInputGroup">
                 <FormControl
+                  type="search"
                   placeholder="Type to search"
                   aria-label="Search"
                   aria-describedby="basic-addon"
@@ -193,14 +221,18 @@ const ParticipatingResourcesPage = ({
                   onChange={(e) => handleTextInputChange(e)}
                   onKeyPress={(e) => handleKeyPress(e)}
                 />
-                <SearchIcon>
-                  <i className="fas fa-search" />
-                </SearchIcon>
                 {
                   getSearchableText(localText) ? (
                     <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
                   ) : (
                     <Button variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</Button>
+                  )
+                }
+                {
+                  localText.length > 0 ? null : (
+                    <SearchIcon>
+                      <i className="fas fa-search" />
+                    </SearchIcon>
                   )
                 }
               </InputGroup>
