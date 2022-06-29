@@ -158,6 +158,7 @@ const DatasetDetail = ({
     }
     grants.set(grantIDs[i], grantNames[i]);
   }
+  const sortedGrants = new Map([...grants].sort());
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -713,6 +714,7 @@ const DatasetDetail = ({
                             content.sample_is_xenograft
                             ? content.sample_is_xenograft.map((six, sixidx) => {
                               const sixkey = `six_${sixidx}`;
+                              six.sort();
                               return (
                                 <span key={sixkey} className="itemSpan">
                                   {/* {six.n > 0 ? 'YES' : 'NO'} */}
@@ -736,7 +738,10 @@ const DatasetDetail = ({
                             const adkey = `ad_${adIdx}`;
                             if (ad === "published in") {
                               let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
-                              if (content.published_in) { publishedLinks = publishedLinks.split(';'); }
+                              if (content.published_in) {
+                                publishedLinks = publishedLinks.split(';');
+                                publishedLinks.sort();
+                              }
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
@@ -783,18 +788,15 @@ const DatasetDetail = ({
                             if (ad.toUpperCase() === "GRANT ID") {
                               return (
                                 <>
-                                  {/* {grantIDs[0] ? <div className="dataElementLabel">Grant Information</div> : null} */}
                                   <div className="dataElementLabel">Grant Information</div>
                                   <div className="grantInfoContainer">
-                                    {grantIDs.map((item) => {
+                                    {grantIDs.sort().map((item) => {
                                       return (
                                         <table className="table table-borderless">
                                           <tbody>
                                             <tr>
                                               {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
-                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
-                                              {/* <td>{item}</td> */}
-                                              {/* <td>{grants.get(item)}</td> */}
+                                              {sortedGrants.get(item) ? <td><div className="grantNameDataContainer">{sortedGrants.get(item)}</div></td> : null}
                                             </tr>
                                           </tbody>
                                         </table>

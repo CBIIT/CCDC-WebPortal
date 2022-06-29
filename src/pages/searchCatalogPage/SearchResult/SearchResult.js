@@ -641,7 +641,22 @@ const SearchResult = ({
                       <div className="col">
                         <label>Other Match:&nbsp;Case Tumor Site:</label>
                         {
-                          caseTumorSiteList[idx].map((cdd, cddidx) => {
+                          caseTumorSiteList[idx].length > 10 ? caseTumorSiteList[idx].slice(0, 10).map((cdd, cddidx) => {
+                            const cddkey = `cdd_${cddidx}`;
+                            if (cddidx === 9) {
+                              return (
+                                <span key={cddkey} className="itemSpan">
+                                  {ReactHtmlParser(cdd)}
+                                </span>
+                              );
+                            }
+                            return (
+                              <span key={cddkey} className="itemSpan">
+                                {ReactHtmlParser(cdd)}
+                              </span>
+                            );
+                          })
+                          : caseTumorSiteList[idx].map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
                             return (
                               <span key={cddkey} className="itemSpan">
@@ -650,12 +665,15 @@ const SearchResult = ({
                             );
                           })
                         }
+                        {
+                          caseTumorSiteList[idx].length > 10 && <span className="itemContinued">...</span>
+                        }
                       </div>
                     </div>
                   )
                 }
                 {
-                  otherMatches.map((hl, hlidx) => {
+                  otherMatches.slice(0, 10).map((hl, hlidx) => {
                       const hlKey = `hl_${hl}_${hlidx}`;
                       return (
                         <div key={hlKey} className="row align-items-start footerRow">

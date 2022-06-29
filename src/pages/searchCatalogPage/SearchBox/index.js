@@ -91,6 +91,7 @@ const SearchBoxArea = styled.div`
     background: url(${xIcon}) right center no-repeat;
     background-image: url(${xIcon}) red;
     background-size: 20px;
+    cursor: pointer;
   }
 
   input[type="search"]:focus::-webkit-search-cancel-button {
@@ -102,8 +103,8 @@ const SearchBoxArea = styled.div`
     background: url(${xIcon}) right center no-repeat;
     background-image: url(${xIcon}) red;
     background-size: 20px;
+    cursor: pointer;
   }
-
 
 `;
 
