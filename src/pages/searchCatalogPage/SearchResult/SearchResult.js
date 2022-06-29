@@ -342,18 +342,42 @@ const SearchResult = ({
         const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
         return la < lb ? -1 : 1;
       });
-      tmp.matched.forEach((item) => {
-        const raw = item.indexOf("<b>") > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
-        const idx = result.indexOf(raw);
+      matched = tmp.matched.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
         if (idx > -1) {
           result.splice(idx, 1);
         }
+        return `<b>${rawItem}</b>`;
       });
-      matched = tmp.matched.map((t) => {
-        if (t.indexOf("<b>") === -1) {
-          return `<b>${t}</b>`;
+    }
+
+    return matched.concat(result);
+  });
+
+  const sampleAssayMethodList = resultList.map((rt) => {
+    let tmp = [];
+    let matched = [];
+    if (rt.highlight && rt.highlight["sample_assay_method.k"]) {
+      tmp = rt.highlight["sample_assay_method.k"];
+    }
+
+    const result = rt.content.sample_assay_method ? rt.content.sample_assay_method.map((rst) => rst.n) : [];
+
+    if (tmp.length > 0) {
+      // sort by alphabetic order first
+      tmp.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
+      matched = tmp.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
+        if (idx > -1) {
+          result.splice(idx, 1);
         }
-        return t;
+        return `<b>${rawItem}</b>`;
       });
     }
 
@@ -396,6 +420,11 @@ const SearchResult = ({
       });
     }
 
+    if (tmp.matched.length === 0) {
+      return [];
+    }
+
+    const result = rt.content.case_tumor_site ? rt.content.case_tumor_site.map((rst) => rst.n) : [];
     let matched = [];
 
     if (tmp.matched.length > 0) {
@@ -405,15 +434,17 @@ const SearchResult = ({
         const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
         return la < lb ? -1 : 1;
       });
-      matched = tmp.matched.map((t) => {
-        if (t.indexOf("<b>") === -1) {
-          return `<b>${t}</b>`;
+      matched = tmp.matched.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
+        if (idx > -1) {
+          result.splice(idx, 1);
         }
-        return t;
+        return `<b>${rawItem}</b>`;
       });
     }
 
-    return matched;
+    return matched.concat(result);
   });
 
   return (
@@ -516,13 +547,6 @@ const SearchResult = ({
                         {
                           caseDiseaseDiagnosisList[idx].length > 10 ? caseDiseaseDiagnosisList[idx].slice(0, 10).map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
-                            if (cddidx === 9) {
-                              return (
-                                <span key={cddkey} className="itemSpan">
-                                  {ReactHtmlParser(cdd)}
-                                </span>
-                              );
-                            }
                             return (
                               <span key={cddkey} className="itemSpan">
                                 {ReactHtmlParser(cdd)}
@@ -558,13 +582,20 @@ const SearchResult = ({
                   )
                 }
                 {
-                  rst.highlight && rst.highlight["sample_assay_method.k"]
-                  ? (
+                  sampleAssayMethodList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Sample Assay Method:</label>
                         {
-                          rst.highlight["sample_assay_method.k"].map((sam, samidx) => {
+                          sampleAssayMethodList[idx].length > 10 ? sampleAssayMethodList[idx].slice(0, 10).map((sam, samidx) => {
+                            const samkey = `sam_${samidx}`;
+                            return (
+                              <span key={samkey} className="itemSpan">
+                                {ReactHtmlParser(sam)}
+                              </span>
+                            );
+                          })
+                          : sampleAssayMethodList[idx].map((sam, samidx) => {
                             const samkey = `sam_${samidx}`;
                             return (
                               <span key={samkey} className="itemSpan">
@@ -573,39 +604,8 @@ const SearchResult = ({
                             );
                           })
                         }
-                      </div>
-                    </div>
-                  ) : rst.content.sample_assay_method && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Sample Assay Method:</label>
                         {
-                          rst.content.sample_assay_method.length > 10 ? rst.content.sample_assay_method.slice(0, 10).map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            if (samidx === 9) {
-                              return (
-                                <div key={samkey}>
-                                  <span className="itemSpan">
-                                    {sam.n}
-                                  </span>
-                                  <span className="itemContinued">...</span>
-                                </div>
-                              );
-                            }
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {sam.n}
-                              </span>
-                            );
-                          })
-                          : rst.content.sample_assay_method.map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {sam.n}
-                              </span>
-                            );
-                          })
+                          sampleAssayMethodList[idx].length > 10 && <span className="itemContinued">...</span>
                         }
                       </div>
                     </div>
@@ -643,13 +643,6 @@ const SearchResult = ({
                         {
                           caseTumorSiteList[idx].length > 10 ? caseTumorSiteList[idx].slice(0, 10).map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
-                            if (cddidx === 9) {
-                              return (
-                                <span key={cddkey} className="itemSpan">
-                                  {ReactHtmlParser(cdd)}
-                                </span>
-                              );
-                            }
                             return (
                               <span key={cddkey} className="itemSpan">
                                 {ReactHtmlParser(cdd)}
