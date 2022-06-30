@@ -7,6 +7,7 @@ import {
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
+import externalIcon from "../../../assets/img/resource.svg";
 
 const SearchResultContainer = styled.div`
   width: 100%;
@@ -127,6 +128,25 @@ const SearchResultContainer = styled.div`
     border-radius: 5px;
     background-color: #DFEEF9;
     color: #004187;
+  }
+
+  .footerRow a {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) right center no-repeat #DFEEF9;
+    background-size: 32px;
+    // display: inline-table;
+    padding: 1px 30px 1px 5px;
+    // margin: 0px 0px 0px 0px;
   }
 
   .bodyRow .textSpan {
@@ -503,43 +523,6 @@ const SearchResult = ({
                   </div>
                 </div>
                 {
-                  rst.content.projects && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Projects:</label>
-                        {
-                          rst.content.projects.length > 10 ? rst.content.projects.slice(0, 10).map((pj, pjidx) => {
-                            const pjkey = `pj_${pjidx}`;
-                            if (pjidx === 9) {
-                              return (
-                                <div key={pjkey}>
-                                  <span className="itemSpan">
-                                    {pj.p_k}
-                                  </span>
-                                  <span className="itemContinued">...</span>
-                                </div>
-                              );
-                            }
-                            return (
-                              <span key={pjkey} className="itemSpan">
-                                {pj.p_k}
-                              </span>
-                            );
-                          })
-                          : rst.content.projects.map((pj, pjidx) => {
-                            const pjkey = `pj_${pjidx}`;
-                            return (
-                              <span key={pjkey} className="itemSpan">
-                                {pj.p_k}
-                              </span>
-                            );
-                          })
-                        }
-                      </div>
-                    </div>
-                  )
-                }
-                {
                   caseDiseaseDiagnosisList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
@@ -668,6 +651,9 @@ const SearchResult = ({
                 {
                   otherMatches.slice(0, 10).map((hl, hlidx) => {
                       const hlKey = `hl_${hl}_${hlidx}`;
+                      let otherLinks = `${(rst.highlight[hl])}`;
+                      otherLinks = otherLinks.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                      otherLinks = otherLinks.split(";");
                       return (
                         <div key={hlKey} className="row align-items-start footerRow">
                           <div className="col">
@@ -676,7 +662,18 @@ const SearchResult = ({
                               {toCapitalize(hl.replace(".k", "").replace(/_/g, " "))}
                             </label>
                             :&nbsp;
-                            {ReactHtmlParser(rst.highlight[hl])}
+                            {/* {ReactHtmlParser(rst.highlight[hl])} */}
+                            {
+                              (otherLinks && otherLinks[0].includes("http")) ? otherLinks.map((ol, olidx) => {
+                                const olkey = `cdd_${olidx}`;
+                                return (
+                                  <span key={olkey} className="itemSpan">
+                                    {ol.includes("http") ? <a href={ol} target="_blank" rel="noreferrer noopener">{ol}</a> : ol}
+                                  </span>
+                                );
+                              })
+                              : ReactHtmlParser(rst.highlight[hl])
+                            }
                           </div>
                         </div>
                       );
