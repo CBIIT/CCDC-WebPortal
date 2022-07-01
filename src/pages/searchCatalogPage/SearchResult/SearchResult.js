@@ -121,6 +121,12 @@ const SearchResultContainer = styled.div`
     color: #004187;
   }
 
+  .footerRow .itemSpan {
+    padding: 0 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
   .footerRow b {
     margin: 0 3px 0 3px;
     padding: 1px 5px 1px 5px;
@@ -158,7 +164,7 @@ const SearchResultContainer = styled.div`
     font-weight: 600;
   }
 
-  .container .footerRow {
+  .container .footerRow:last-child {
     margin-bottom: 5px;
   }
 
@@ -496,6 +502,15 @@ const SearchResult = ({
                 }
               });
             }
+            const additionalMatches = [];
+            if (rst.additionalHits) {
+              rst.additionalHits.forEach((add) => {
+                const tmp = {};
+                tmp.name = add.content.attr_name;
+                tmp.matches = add.highlight["additional.attr_set.k"];
+                additionalMatches.push(tmp);
+              });
+            }
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
@@ -678,6 +693,36 @@ const SearchResult = ({
                         </div>
                       );
                     })
+                }
+                {
+                  additionalMatches.length > 0 && additionalMatches.map((am, amidx) => {
+                    const addkey = `add_${amidx}`;
+                    return (
+                      <div key={addkey} className="row align-items-start footerRow">
+                        <div className="col">
+                          <label>
+                            Other Match:&nbsp;
+                            {am.name}
+                            :&nbsp;
+                          </label>
+                          {
+                            am.matches.map((m, midx) => {
+                              const mraw = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                              if (mraw.startsWith("http")) {
+                                const amkey = `am_${midx}`;
+                                return (
+                                  <span key={amkey} className="itemSpan">
+                                    <a href={mraw} target="_blank" rel="noreferrer noopener">{mraw}</a>
+                                  </span>
+                                );
+                              }
+                              return ReactHtmlParser(m);
+                            })
+                          }
+                        </div>
+                      </div>
+                    );
+                  })
                 }
               </div>
             );
