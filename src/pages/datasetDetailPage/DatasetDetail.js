@@ -33,7 +33,6 @@ const DatasetBody = styled.div`
     background: url(${externalIcon}) right no-repeat;
     padding-right: 30px;
     background-size: 32px;
-    // display: inline-table;
   }
 `;
 
@@ -299,7 +298,6 @@ const DatasetDetail = ({
                                   {cg.n ? cg.n : null}
                                   &nbsp;(
                                   {cg.v ? cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cgidx === content.case_gender.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -320,7 +318,6 @@ const DatasetDetail = ({
                                   {ca.n ? ca.n : null}
                                   &nbsp;(
                                   {ca.v ? ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {caidx === content.case_age.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -341,7 +338,6 @@ const DatasetDetail = ({
                                   {cad.n ? cad.n : null}
                                   &nbsp;(
                                   {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -362,7 +358,6 @@ const DatasetDetail = ({
                                   {caat.n ? caat.n : null}
                                   &nbsp;(
                                   {caat.v ? caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {caatidx === content.case_age_at_trial.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -383,7 +378,6 @@ const DatasetDetail = ({
                                   {cr.n ? cr.n : null}
                                   &nbsp;(
                                   {cr.v ? cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cridx === content.case_race.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -404,7 +398,6 @@ const DatasetDetail = ({
                                   {ce.n ? ce.n : null}
                                   &nbsp;(
                                   {ce.v ? ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ceidx === content.case_ethnicity.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -425,7 +418,6 @@ const DatasetDetail = ({
                                   {cdd.n ? cdd.n : null}
                                   &nbsp;(
                                   {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -446,7 +438,6 @@ const DatasetDetail = ({
                                   {cts.n ? cts.n : null}
                                   &nbsp;(
                                   {cts.v ? cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctsidx === content.case_tumor_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -467,7 +458,6 @@ const DatasetDetail = ({
                                   {cta.n ? cta.n : null}
                                   &nbsp;(
                                   {cta.v ? cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -488,7 +478,6 @@ const DatasetDetail = ({
                                   {cto.n ? cto.n : null}
                                   &nbsp;(
                                   {cto.v ? cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -509,7 +498,6 @@ const DatasetDetail = ({
                                   {cp.n ? cp.n : null}
                                   &nbsp;(
                                   {cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -592,7 +580,6 @@ const DatasetDetail = ({
                               return (
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n ? srn.n : null}
-                                  {/* )&#59;&nbsp; */}
                                   {srnidx === content.sample_repository_name.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -635,7 +622,6 @@ const DatasetDetail = ({
                                   {sat.n ? sat.n : null}
                                   &nbsp;(
                                   {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_analyte_type.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -656,7 +642,6 @@ const DatasetDetail = ({
                                   {sat.n ? sat.n : null}
                                   &nbsp;(
                                   {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_anatomic_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -714,7 +699,6 @@ const DatasetDetail = ({
                             content.sample_is_xenograft
                             ? content.sample_is_xenograft.map((six, sixidx) => {
                               const sixkey = `six_${sixidx}`;
-                              six.sort();
                               return (
                                 <span key={sixkey} className="itemSpan">
                                   {/* {six.n > 0 ? 'YES' : 'NO'} */}
@@ -728,8 +712,6 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                      {/* <div className="dataElementLabel">Number of Samples</div>
-                        {content.sample_id} */}
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
