@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import {useLocation, NavLink, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import * as downloadApi from "../../api/downloadApi";
 import mobileHamburger from '../../assets/img/mobile-hamburger.svg';
 import mobileClose from '../../assets/img/mobile-close.svg';
 import logo from '../../assets/img/CCDC_Logo.svg';
@@ -391,11 +390,6 @@ const NavBar = () => {
     }
   };
 
-  const handleDownloadUserGuide = (event) => {
-    event.preventDefault();
-    downloadApi.getUserGuide();
-  };
-
   return (
       <div className="sticky-nav">
         <LogoBanner role="banner">
@@ -419,7 +413,7 @@ const NavBar = () => {
                   <MobileSubUl data-visible={mobileAboutMenuData}>
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="#" onClick={handleDownloadUserGuide}>User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.1.0.pdf">User Guide (PDF)</a></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
                   </MobileSubUl>
                 </MobileUlContainer>
@@ -435,7 +429,7 @@ const NavBar = () => {
                       <ul className="dropdown">
                           <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
-                          <li><a href="#" onClick={handleDownloadUserGuide} target="_blank">&nbsp; &nbsp; User Guide (PDF)</a></li>
+                          <li><a href="/User Guide for CCDC v1.1.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                           <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
                       </ul>
                   </LiSection>
