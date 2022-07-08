@@ -172,10 +172,33 @@ const SearchResultContainer = styled.div`
     font-weight: 600;
   }
 
-  .datasetTableRow a{
+  .datasetTableRow a {
     color: #6199d0;
     font-weight: 600;
     text-decoration: none;
+  }
+
+  .datasetTableRow span .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+
+    position: absolute;
+    z-index: 1;
+    margin: 30px 0px 0px -150px;
+  }
+
+  .datasetTableRow span:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -803,9 +826,9 @@ const SearchResult = ({
                             className="typeBlock"
                             data-bs-toggle="tooltip"
                             data-bs-placement="bottom"
-                            title={tooltip}
                           >
                             {rst.content.primary_dataset_scope}
+                            <span className="tooltiptext">{tooltip}</span>
                           </span>
                         </td>
                       </tr>
