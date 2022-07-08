@@ -113,7 +113,7 @@ const Pagination = ({
         nextLabel=">"
         nextClassName="page-item"
         nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc-next"}
-        breakLabel="..."
+        breakLabel=""
         breakClassName="page-item break-me"
         breakLinkClassName="page-link-ccdc"
         pageCount={pageCount}
@@ -121,7 +121,7 @@ const Pagination = ({
         forcePage={pageInfo.page - 1}
         disableInitialCallback
         marginPagesDisplayed={1}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={pageInfo.page === pageCount - 1 || pageInfo.page === pageCount ? 4 : 3}
         onPageChange={handlePageClick}
         containerClassName="pagination no-margin"
         pageClassName="page-item"
