@@ -408,7 +408,7 @@ const DatasetDetail = ({
                         {content.case_disease_diagnosis
                           ? <div className="dataElementLabel">Case Disease Diagnosis</div>
                           : null}
-                        <div className="dataElementContentAllCaps">
+                        <div className="dataElementContent">
                           {
                             content.case_disease_diagnosis
                             ? content.case_disease_diagnosis.map((cdd, cddidx) => {
