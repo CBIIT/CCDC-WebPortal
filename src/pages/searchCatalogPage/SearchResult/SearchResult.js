@@ -519,6 +519,37 @@ const SearchResult = ({
     return matched.concat(result);
   });
 
+  const projectsList = resultList.map((rt) => {
+    let tmp = [];
+    if (rt.highlight && rt.highlight["projects.p_k"]) {
+      tmp = rt.highlight["projects.p_k"];
+    }
+
+    if (tmp.length === 0) {
+      return [];
+    }
+
+    const result = rt.content.projects ? rt.content.projects.map((rst) => rst.p_k) : [];
+    let matched = [];
+
+    // sort by alphabetic order first
+    tmp.sort((a, b) => {
+      const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+      const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+      return la < lb ? -1 : 1;
+    });
+    matched = tmp.map((item) => {
+      const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+      const idx = result.indexOf(rawItem);
+      if (idx > -1) {
+        result.splice(idx, 1);
+      }
+      return `<b>${rawItem}</b>`;
+    });
+
+    return matched.concat(result);
+  });
+
   return (
     <>
       <SearchResultContainer>
@@ -704,6 +735,36 @@ const SearchResult = ({
                         }
                         {
                           caseTumorSiteList[idx].length > 10 && <span className="itemContinued">...</span>
+                        }
+                      </div>
+                    </div>
+                  )
+                }
+                {
+                  projectsList[idx].length > 0 && (
+                    <div className="row align-items-start bodyRow">
+                      <div className="col">
+                        <label>Other Match:&nbsp;Projects:</label>
+                        {
+                          projectsList[idx].length > 10 ? projectsList[idx].slice(0, 10).map((pl, plidx) => {
+                            const plkey = `pl_${plidx}`;
+                            return (
+                              <span key={plkey} className="itemSpan">
+                                {ReactHtmlParser(pl)}
+                              </span>
+                            );
+                          })
+                          : projectsList[idx].map((pl, plidx) => {
+                            const plkey = `cdd_${plidx}`;
+                            return (
+                              <span key={plkey} className="itemSpan">
+                                {ReactHtmlParser(pl)}
+                              </span>
+                            );
+                          })
+                        }
+                        {
+                          projectsList[idx].length > 10 && <span className="itemContinued">...</span>
                         }
                       </div>
                     </div>
