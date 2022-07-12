@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import externalIcon from "../../../assets/img/resource.svg";
+import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
 const SearchResultContainer = styled.div`
   width: 100%;
@@ -97,6 +98,16 @@ const SearchResultContainer = styled.div`
     padding: 0;
   }
 
+  .subHeaderRow .col-sm img {
+    width: 14pt;
+    margin-top: -5px;
+  }
+
+  .subHeaderRow .col-sm a {
+    font-weight: bold;
+    color: #0075c7;
+  }
+
   .subHeaderRow .fa-file {
     color: #6199d0;
   }
@@ -157,6 +168,18 @@ const SearchResultContainer = styled.div`
 
   .bodyRow .textSpan {
     margin-left: 5px;
+  }
+
+  .bodyRow .caseCountHighlight {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: #625bef;
+  }
+
+  .bodyRow .sampleCountHighlight {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: #11a78b;
   }
 
   .bodyRow .itemContinued {
@@ -555,7 +578,7 @@ const SearchResult = ({
                 </div>
                 <div className="row align-items-start subHeaderRow">
                   <div className="col-sm">
-                    <i className="fas fa-file" />
+                    <img src={dataResourceIcon} alt="data-resource" />
                     &nbsp;
                     <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name) : rst.content.data_resource_id}</Link>
                   </div>
@@ -595,7 +618,7 @@ const SearchResult = ({
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Case Count:</label>
-                        <span className="textSpan">
+                        <span className="textSpan caseCountHighlight">
                           {rst.content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
@@ -637,7 +660,7 @@ const SearchResult = ({
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Sample Count:</label>
-                        <span className="textSpan">
+                        <span className="textSpan sampleCountHighlight">
                           {rst.content.sample_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
