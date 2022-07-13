@@ -722,7 +722,11 @@ const DatasetDetail = ({
                               let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
                               if (content.published_in) {
                                 publishedLinks = publishedLinks.split(';');
-                                publishedLinks.sort();
+                                publishedLinks.sort((a, b) => {
+                                  const la = a.trim().toLowerCase();
+                                  const lb = b.trim().toLowerCase();
+                                  return la < lb ? -1 : 1;
+                                });
                               }
                               return (
                                 <>
