@@ -72,7 +72,6 @@ const WidgetCard = styled.div`
 `;
 
 const CardTitle = styled.div`
-    color: #059268;
     font-family: Lato;
     font-size: 23px;
     font-weight: 900;
