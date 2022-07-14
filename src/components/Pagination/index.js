@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactPaginate from 'react-paginate';
+import BSPagination from 'react-bootstrap/Pagination';
 import styled from 'styled-components';
 import './Pagination.css';
 
@@ -58,9 +58,30 @@ const PageSummary = styled.div`
 `;
 
 const PageSelect = styled.div`
-  border: .1px solid #A0B3C8;
-  // background-color: #F6FBFF;
+  border: 0;
 `;
+
+const getPager = (totalPages, currentPage) => {
+  let startPage = 1;
+  let endPage = totalPages;
+  if (totalPages <= 5) {
+    startPage = 1;
+    endPage = totalPages;
+  } else if (currentPage <= 3) {
+    startPage = 1;
+    endPage = 5;
+  } else if (currentPage + 2 >= totalPages) {
+    startPage = totalPages - 4;
+    endPage = totalPages;
+  } else {
+    startPage = currentPage - 2;
+    endPage = currentPage + 2;
+  }
+
+  const pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
+
+  return pages;
+};
 
 const Pagination = ({
   pageInfo,
@@ -68,8 +89,9 @@ const Pagination = ({
   sizeClick,
 }) => {
   const pageCount = Math.ceil(pageInfo.total / pageInfo.pageSize);
-  const handlePageClick = (data) => {
-    pageClick(data.selected + 1);
+  const pages = getPager(pageCount, pageInfo.page);
+  const handlePageClick = (pageIndex) => {
+    pageClick(pageIndex);
   };
   const handleSizeClick = (size) => {
     if (pageInfo.pageSize !== size) {
@@ -106,29 +128,28 @@ const Pagination = ({
         {pageInfo.total}
       </PageSummary>
       <PageSelect>
-      <ReactPaginate
-        previousLabel="<"
-        prevClassName="page-item"
-        previousLinkClassName={pageInfo.page === 1 ? "page-link-ccdc-inactive" : "page-link-ccdc-prev"}
-        nextLabel=">"
-        nextClassName="page-item"
-        nextLinkClassName={pageInfo.page === pageCount ? "page-link-ccdc-inactive" : "page-link-ccdc-next"}
-        breakLabel=""
-        breakClassName="page-item break-me"
-        breakLinkClassName="page-link-ccdc"
-        pageCount={pageCount}
-        pageSize={handlePageClick}
-        forcePage={pageInfo.page - 1}
-        disableInitialCallback
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={pageInfo.page === pageCount - 1 || pageInfo.page === pageCount ? 4 : 3}
-        onPageChange={handlePageClick}
-        containerClassName="pagination no-margin"
-        pageClassName="page-item"
-        pageLinkClassName="page-link-ccdc"
-        subContainerClassName="pages pagination"
-        activeClassName="active"
-      />
+        <BSPagination className="pagination-ccdc">
+          {
+            pageInfo.page === 1 ? (
+              <BSPagination.Prev className="bspage-link-prev" disabled>&#60;</BSPagination.Prev>
+            ) : (<BSPagination.Prev className="bspage-link-prev" onClick={() => handlePageClick(pageInfo.page - 1)}>&#60;</BSPagination.Prev>)
+          }
+          {
+            pages.map((page, idx) => {
+              const key = `page_${idx}`;
+              return page === pageInfo.page ? (
+                <BSPagination.Item className="bspage-link" key={key} active>{page}</BSPagination.Item>
+              ) : (
+                <BSPagination.Item className="bspage-link" key={key} onClick={() => handlePageClick(page)}>{page}</BSPagination.Item>
+              );
+            })
+          }
+          {
+            pageInfo.page === pageCount ? (
+              <BSPagination.Next className="bspage-link-next" disabled>&#62;</BSPagination.Next>
+            ) : (<BSPagination.Next className="bspage-link-next" onClick={() => handlePageClick(pageInfo.page + 1)}>&#62;</BSPagination.Next>)
+          }
+        </BSPagination>
       </PageSelect>
       </>
       )
