@@ -138,6 +138,10 @@ const SearchResultContainer = styled.div`
     margin-bottom: 5px;
   }
 
+  .footerRow .additionalItemSpan {
+    margin-right: 5px;
+  }
+
   .footerRow b {
     margin: 0 3px 0 3px;
     padding: 1px 5px 1px 5px;
@@ -823,7 +827,9 @@ const SearchResult = ({
                                   </span>
                                 );
                               }
-                              return ReactHtmlParser(m);
+                              return (
+                                <span className="itemSpan additionalItemSpan">{ReactHtmlParser(m)}</span>
+                              );
                             })
                           }
                         </div>
