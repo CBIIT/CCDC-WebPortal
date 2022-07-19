@@ -34,7 +34,7 @@ const Header = () => {
     <>
     <LogoBanner role="banner">
       <LogoContainer>
-        <img src={logo} alt="ccdc logo" />
+        <a href="/"><img src={logo} alt="ccdc logo" /></a>
       </LogoContainer>
     </LogoBanner>
     </>
