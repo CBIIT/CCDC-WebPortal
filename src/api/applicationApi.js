@@ -14,4 +14,10 @@ export function getWidgetUpdates() {
     .catch(handleError);
 }
 
+export function getSiteUpdates() {
+  return fetch(`${baseUrl}/siteupdate`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export default getApplicationVersionInfo;

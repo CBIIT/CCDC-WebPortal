@@ -1,4 +1,7 @@
 import { connect } from 'react-redux';
+import {
+  loadSiteUpdates,
+} from '../../../redux/actions/applicationActions';
 import SiteUpdateResult from './SiteUpdateResult';
 
 const ReduxSiteUpdateResult = (() => {
@@ -6,7 +9,9 @@ const ReduxSiteUpdateResult = (() => {
     siteUpdateList: state.application.siteUpdates,
   });
 
-  const mapDispatchToProps = {};
+  const mapDispatchToProps = {
+    onLoadSiteUpdates: loadSiteUpdates,
+  };
 
   return connect(mapStateToProps, mapDispatchToProps)(SiteUpdateResult);
 })();
