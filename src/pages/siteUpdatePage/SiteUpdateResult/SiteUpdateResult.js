@@ -18,6 +18,7 @@ const ResultInfo = styled.div`
 const SiteUpdateItem = styled.div`
   display: grid;
   margin: 0px 0px 50px 0px;
+  scroll-margin: 200px;
 `;
 
 const SiteUpdateCard = styled.div`
@@ -76,13 +77,21 @@ const SiteUpdateResult = ({
   siteUpdateList,
   onLoadSiteUpdates,
 }) => {
+    const { hash } = window.location;
     useEffect(() => {
       if (siteUpdateList.length === 0) {
         onLoadSiteUpdates().catch(error => {
           throw new Error(`Loading site updates failed: ${error}`);
         });
       }
-    }, []);
+      if (siteUpdateList.length > 0) {
+        if (hash !== '') {
+          const id = hash.replace('#', '');
+          const element = document.getElementById(id);
+          if (element) element.scrollIntoView({ behavior: 'smooth'});
+        }
+      }
+    }, [siteUpdateList]);
 
   return (
     <>
