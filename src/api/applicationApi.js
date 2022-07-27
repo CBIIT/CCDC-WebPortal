@@ -14,9 +14,12 @@ export function getWidgetUpdates() {
     .catch(handleError);
 }
 
-export function getSiteUpdates() {
-  return fetch(`${baseUrl}/siteupdate`)
-    .then(handleResponse)
+export function getSiteUpdates(body) {
+  return fetch(`${baseUrl}/siteupdate`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  }).then(handleResponse)
     .catch(handleError);
 }
 
