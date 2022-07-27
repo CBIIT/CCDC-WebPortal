@@ -14,6 +14,21 @@ export default function applicationReducer(state = initialState.application, act
             ...state,
             widgetUpdates: action.widgetUpdates,
           };
+        case types.LOAD_SITE_UPDATE_SUCCESS:
+          return {
+            ...state,
+            siteUpdates: action.siteUpdates,
+            // pageInfo: action.siteUpdates.pageInfo,
+          };
+        case types.SWITCH_PAGE:
+          return {
+            ...state,
+            pageInfo: {
+              ...state.pageInfo,
+              page: action.pageInfo.page,
+              total: action.pageInfo.total,
+            },
+          };
         default:
             return state;
     }
