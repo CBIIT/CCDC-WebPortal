@@ -54,6 +54,12 @@ const ResourceType = styled.div`
     line-height: 52px;
   }
 
+  a {
+    color: #212529;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .tooltips {
     position: relative;
   }
@@ -210,9 +216,10 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <span className="tooltips">
-                      {content.primary_dataset_scope}
-                      <span className="tooltiptext">{tooltips[content.primary_dataset_scope]}</span>
+                    <span>
+                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[content.primary_dataset_scope]}>
+                        {content.primary_dataset_scope}
+                      </a>
                     </span>
                   </ResourceType>
                 </div>
