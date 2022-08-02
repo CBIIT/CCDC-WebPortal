@@ -104,6 +104,12 @@ const DatasetType = styled.div`
     line-height: 52px;
   }
 
+  a {
+    color: #212529;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .tooltips {
     position: relative;
   }
@@ -150,6 +156,12 @@ const SummaryDatasetType = styled.div`
     border: 1px solid #FFBF17;
     padding: 8px 16px;
     line-height: 52px;
+  }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .tooltips {
@@ -358,9 +370,10 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span className="tooltips">
-                      {detail.resource_type}
-                      <span className="tooltiptext">{tooltips[detail.resource_type]}</span>
+                    <span>
+                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[detail.resource_type]}>
+                        {detail.resource_type}
+                      </a>
                     </span>
                   </DatasetType>
                 </div>
@@ -566,10 +579,17 @@ const ParticipatingResourceDetail = ({
                     <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
-                  <SummaryDatasetType>
+                  {/* <SummaryDatasetType>
                     <span className="tooltips">
                       {ds.primary_dataset_scope}
                       <span className="tooltiptext">{tooltips[ds.primary_dataset_scope]}</span>
+                    </span>
+                  </SummaryDatasetType> */}
+                  <SummaryDatasetType>
+                    <span>
+                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[ds.primary_dataset_scope]}>
+                        {ds.primary_dataset_scope}
+                      </a>
                     </span>
                   </SummaryDatasetType>
                 </DatasetCard>

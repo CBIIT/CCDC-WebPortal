@@ -90,6 +90,12 @@ const SearchResultContainer = styled.div`
     visibility: visible;
   }
 
+  .headerRow .newtooltip {
+    color: #212529;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .container .subHeaderRow {
     margin: 5px 5px 5px 0;
   }
@@ -203,6 +209,13 @@ const SearchResultContainer = styled.div`
     color: #6199d0;
     font-weight: 600;
     text-decoration: none;
+  }
+
+  .datasetTableRow .typeBlock .newtooltip {
+    color: #212529;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .datasetTableRow span .tooltiptext {
@@ -600,14 +613,10 @@ const SearchResult = ({
                   </div>
                   <div className="col-sm-4">
                     {/* <span className="typeBlock">{rst.content.primary_dataset_scope}</span> */}
-                    <span
-                      className="typeBlock"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      // title={tooltip}
-                    >
-                      {rst.content.primary_dataset_scope}
-                      <span className="tooltiptext">{tooltip}</span>
+                    <span className="typeBlock">
+                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltip}>
+                        {rst.content.primary_dataset_scope}
+                      </a>
                     </span>
                   </div>
                 </div>
@@ -912,13 +921,10 @@ const SearchResult = ({
                         <td>{rst.content.sample_id}</td>
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
                         <td>
-                          <span
-                            className="typeBlock"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="bottom"
-                          >
-                            {rst.content.primary_dataset_scope}
-                            <span className="tooltiptext">{tooltip}</span>
+                          <span className="typeBlock">
+                            <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltip}>
+                              {rst.content.primary_dataset_scope}
+                            </a>
                           </span>
                         </td>
                       </tr>

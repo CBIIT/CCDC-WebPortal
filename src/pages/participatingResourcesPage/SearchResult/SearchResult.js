@@ -135,6 +135,12 @@ const ResourceType = styled.div`
     padding: 5px 23px 7px 23px;
     line-height: 52px;
   }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+    cursor: pointer;
+  }
   
   .tooltips {
     position: relative;
@@ -274,10 +280,10 @@ const SearchResult = ({
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
-                    {/* <span>{rst.resource_type}</span> */}
-                    <span className="tooltips">
-                      {rst.resource_type}
-                      <span className="tooltiptext">{tooltip}</span>
+                    <span>
+                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltip}>
+                        {rst.resource_type}
+                      </a>
                     </span>
                   </ResourceType>
                 </ResourceContact>
