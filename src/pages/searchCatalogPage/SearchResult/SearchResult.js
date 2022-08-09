@@ -93,7 +93,6 @@ const SearchResultContainer = styled.div`
   .headerRow .newtooltip {
     color: #212529;
     text-decoration: none;
-    cursor: pointer;
   }
 
   .container .subHeaderRow {
@@ -215,7 +214,6 @@ const SearchResultContainer = styled.div`
     color: #212529;
     font-weight: normal;
     text-decoration: none;
-    cursor: pointer;
   }
 
   .datasetTableRow span .tooltiptext {
