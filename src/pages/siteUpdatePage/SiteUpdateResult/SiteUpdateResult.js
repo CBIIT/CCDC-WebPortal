@@ -180,7 +180,7 @@ const SiteUpdateResult = ({
         margin: [35, 15, 20, 15],
         filename: "siteupdate_export.pdf",
         image: {type: 'jpeg', quality: 1},
-        html2canvas: {dpi: 72, letterRendering: true},
+        html2canvas: {dpi: 72, scale: 4, letterRendering: true},
         jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'}
       };
 
