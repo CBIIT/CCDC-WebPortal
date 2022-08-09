@@ -57,7 +57,6 @@ const ResourceType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-    cursor: pointer;
   }
 
   .tooltips {

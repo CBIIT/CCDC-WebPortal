@@ -81,8 +81,6 @@ const DataLink = styled.li`
 const ExternalLink = styled.li`
   display: flex;
   // display: inline;
-  // margin-left: 25px;
-  // margin-top: -20px;
 `;
 
 const DatasetType = styled.div`
@@ -93,8 +91,6 @@ const DatasetType = styled.div`
   text-transform: uppercase;
   font-size: 11px;
   font-family: Inter;
-  // padding-top: 50px;
-  // padding-right: 10px;
 
   span {
     background-color: white;
@@ -107,7 +103,6 @@ const DatasetType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-    cursor: pointer;
   }
 
   .tooltips {
@@ -161,7 +156,6 @@ const SummaryDatasetType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-    cursor: pointer;
   }
 
   .tooltips {
@@ -273,19 +267,9 @@ const DatasetDesc = styled.div`
   margin-top: -15px;
   word-wrap: break-word;
   hyphens: auto;
-  div {
-    // padding-bottom: 20px;
-    // background-color: red;
-  }
   line-height: 32px;
   inline-size: 1000px;
 `;
-
-// const ResourceContact = styled.div`
-//   width: 100%;
-//   display: flex;
-//   margin-top: 20px;
-// `;
 
 const ParticipatingResourceDetail = ({
   detail,
