@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Link } from "react-router-dom";
-// import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
@@ -10,8 +8,6 @@ import DataResourceIcons from '../../../components/DataResourceIcons';
 const SearchResultContainer = styled.div`
   width: 100%;
   display: grid;
-  // padding-bottom: 50px;
-  // padding-bottom: 80px;
 `;
 
 const ResultInfo = styled.div`
@@ -139,7 +135,6 @@ const ResourceType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-    cursor: pointer;
   }
   
   .tooltips {
