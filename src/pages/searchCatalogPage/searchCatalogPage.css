@@ -104,8 +104,8 @@
 }
 
 .contentPagingArea {
-  position: absolute;
-  right: 0;
+  position: relative;
+  left: 10px;
 }
 
 .space50 {
