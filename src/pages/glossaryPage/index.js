@@ -42,7 +42,7 @@ const Glossary = () => {
                   <a className="nav-link disabled" href="#" aria-disabled="true">L</a>
                   <a className={key === 'M' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('M')}>M</a>
                   <a className={key === 'N' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('N')}>N</a>
-                  <a className="nav-link disabled" href="#" aria-disabled="true">O</a>
+                  <a className={key === 'O' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('O')}>O</a>
                   <a className={key === 'P' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('P')}>P</a>
                   <a className="nav-link disabled" href="#" aria-disabled="true">Q</a>
                   <a className={key === 'R' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('R')}>R</a>
@@ -73,13 +73,6 @@ const Glossary = () => {
                     <p className="glossaryItemLink"><a href="https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414" target="_blank" rel="noreferrer noopener">https://ncithesaurus.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&ns=ncit&code=C25414</a></p>
                     <br />
                   </div>
-                  {/* <div className="a">
-                    <h2 className="glossaryItemHeader">Any</h2>
-                    <span className="glossaryItemType">Statistic Type</span>
-                    <p className="glossaryItemDescription">One, some, every, or all without specification. This term means that the statistic value applies to the set of all values in the digest partition for the data element summarized.</p>
-                    <p className="glossaryItemLink"><a href="https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf" target="_blank" rel="noreferrer noopener">https://datascience.nih.gov/sites/default/files/bd2k/docs/DDI_Workshop_summary.pdf</a></p>
-                    <br />
-                  </div> */}
                   <div className="a">
                     <h2 className="glossaryItemHeader">Assay</h2>
                     <span className="glossaryItemType">Primary Dataset Scope</span>
@@ -223,6 +216,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="d">
+                    <h2 className="glossaryItemHeader">DX</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Digital Radiography</p>
+                    <br />
+                  </div>
+                  <div className="d">
                     <h2 className="glossaryItemHeader">Donor</h2>
                     <span className="glossaryItemType">Primary Dataset Scope</span>
                     <p className="glossaryItemDescription">A person who gives blood, cells, tissue, or an organ for use in another person, such as in a blood transfusion or an organ transplant.</p>
@@ -300,6 +299,18 @@ const Glossary = () => {
             {
               key === 'I' && (
                 <>
+                  <div className="i">
+                    <h2 className="glossaryItemHeader">iCat</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Individualized Cancer Therapy Study</p>
+                    <br />
+                  </div>
+                  <div className="i">
+                    <h2 className="glossaryItemHeader">ICGC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">International Cancer Genome Consortium</p>
+                    <br />
+                  </div>
                   <div className="i">
                     <h2 className="glossaryItemHeader">Imaging</h2>
                     <span className="glossaryItemType">Data Content Type</span>
@@ -411,9 +422,28 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="n">
+                    <h2 className="glossaryItemHeader">NM</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Nuclear Medicine</p>
+                    <br />
+                  </div>
+                  <div className="n">
                     <h2 className="glossaryItemHeader">NPCR</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">National Program of Cancer Registries</p>
+                    <br />
+                    <br />
+                  </div>
+                </>
+              )
+            }
+            {
+              key === 'O' && (
+                <>
+                  <div className="o">
+                    <h2 className="glossaryItemHeader">OT</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Other</p>
                     <br />
                     <br />
                   </div>
@@ -436,6 +466,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
+                    <h2 className="glossaryItemHeader">PDMR</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Patient-Derived Model Repository</p>
+                    <br />
+                  </div>
+                  <div className="p">
                     <h2 className="glossaryItemHeader">PDX</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Patient Derived Xenograft</p>
@@ -454,9 +490,9 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader">PDMR</h2>
+                    <h2 className="glossaryItemHeader">PedBrain</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
-                    <p className="glossaryItemDescription">Patient-Derived Model Repository </p>
+                    <p className="glossaryItemDescription">Pediatric Brain Tumor Project</p>
                     <br />
                   </div>
                   <div className="p">
@@ -580,6 +616,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="s">
+                    <h2 className="glossaryItemHeader">SC</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Secondary Capture for Diagnostic Use</p>
+                    <br />
+                  </div>
+                  <div className="s">
                     <h2 className="glossaryItemHeader">SEER</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Surveillance, Epidemiology and End Results Program</p>
@@ -609,6 +651,12 @@ const Glossary = () => {
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">The Cancer Imaging Archive</p>
                     <br />
+                  </div>
+                  <div className="t">
+                    <h2 className="glossaryItemHeader">TSC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Tuberous Sclerosis Complex</p>
+                    <br />
                     <br />
                   </div>
                 </>
@@ -636,6 +684,12 @@ const Glossary = () => {
             {
               key === 'X' && (
                 <>
+                  <div className="x">
+                    <h2 className="glossaryItemHeader">XA</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">X-Ray Angiography</p>
+                    <br />
+                  </div>
                   <div className="x">
                     <h2 className="glossaryItemHeader">Xenograft</h2>
                     <span className="glossaryItemType">Data Content Type, Primary Dataset Scope</span>
