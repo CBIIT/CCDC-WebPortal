@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
 import ccdcLogoExport from "../../../assets/img/ccdc_logo_export.png";
+import externalIcon from "../../../assets/img/resource-00a272.svg";
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
@@ -111,6 +112,21 @@ const SiteUpdateCardDescription = styled.div`
         text-decoration: none;
         color: #00a272;
         font-weight: 500;
+    }
+
+    a[target="_blank"]::after {
+      content: " ";
+      font-weight: bold;
+      color: #004187;
+      font-size: 14px;
+      background-image: url(${externalIcon});
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position-y: 4px;
+      background-position-x: -2px;
+      width: 17px;
+      height: 17px;
+      display: inline-table;
     }
 `;
 
