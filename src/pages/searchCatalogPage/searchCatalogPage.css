@@ -98,6 +98,14 @@
   position: relative;
 }
 
+.searchDisplayOptionsRowTable {
+  width: 100%;
+  display: flex;
+  padding: 10px 0 48px 0;
+  border-bottom: 3px solid #c3d5e0;
+  position: relative;
+}
+
 .searchSortingArea {
   width: 40%;
   display: flex;
@@ -110,7 +118,6 @@
 
 .space50 {
   padding-top: 50px;
-  /* margin-bottom: 20%; */
 }
 
 .searchContent {

@@ -217,7 +217,7 @@ const SearchCatalogPage = ({
                 <ExportButton />
               </div>
             </div>
-            <div className="searchDisplayOptionsRow">
+            <div className={viewType === "card" ? "searchDisplayOptionsRow" : "searchDisplayOptionsRowTable"}>
               <div className="searchSortingArea">
                 {
                   viewType === "card" ? <Sorting /> : ""
