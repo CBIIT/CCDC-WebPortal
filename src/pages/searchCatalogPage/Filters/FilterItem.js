@@ -18,11 +18,44 @@ const OptionContainer = styled.div`
     background-color: #e9e2bc;
   }
 
-  .form-check-input {
-    border-radius: 0;
-    border: 2px solid #004187;
-    margin-top: 0.3em;
-    margin-left: 2px;
+  .filterCheckBox {
+    position: relative;
+    cursor: pointer;
+    appearance: none;
+    margin-top: 4px;
+    &:before {
+      content: "";
+      display: block;
+      width: 1em;
+      height: 1em;
+      top: 0;
+      left: 0;
+      border: 2px solid #004187;
+      background-color: white;
+    }
+    &:checked:before {
+      content: "";
+      display: block;
+      width: 1em;
+      height: 1em;
+      top: 0;
+      left: 0;
+      background-color: #1E80EF;
+    }
+    &:checked:after {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      position: absolute;
+      top: 2px;
+      left: 6px;
+    }
   }
 
   .checkbox-disabled {
@@ -61,7 +94,7 @@ const FilterItem = ({
       {
         highlight ? (
           <>
-            <input className="form-check-input" onClick={handleResourceClick} type="checkbox" value={item.data_resource_id} checked={checked} readOnly />
+            <input className="filterCheckBox" onClick={handleResourceClick} type="checkbox" value={item.data_resource_id} checked={checked} readOnly />
             <SearchableOption title={`${item.resource_name} , ${item.resource_type}`} onClick={handleResourceClick}>
               {item.data_resource_id}
             </SearchableOption>
@@ -69,7 +102,7 @@ const FilterItem = ({
         )
         : (
           <>
-            <input className="form-check-input checkbox-disabled" type="checkbox" value={item.data_resource_id} checked={checked} disabled="disabled" />
+            <input className="filterCheckBox checkbox-disabled" type="checkbox" value={item.data_resource_id} checked={checked} disabled="disabled" />
             <OptionLabel title={`${item.resource_name} , ${item.resource_type}`}>
               {item.data_resource_id}
             </OptionLabel>
