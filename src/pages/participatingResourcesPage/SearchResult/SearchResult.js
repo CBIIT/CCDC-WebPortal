@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
 import DataResourceIcons from '../../../components/DataResourceIcons';
@@ -275,11 +277,23 @@ const SearchResult = ({
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltip}>
-                        {rst.resource_type}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltip}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{rst.resource_type}</span>
+                    </OverlayTrigger>
                   </ResourceType>
                 </ResourceContact>
                 <DatasetsSummary>

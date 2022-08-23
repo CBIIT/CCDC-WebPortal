@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import headerExternalIcon from "../../assets/img/dataset-header.svg";
 import externalIcon from "../../assets/img/dataset-body.svg";
@@ -215,11 +217,23 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[content.primary_dataset_scope]}>
-                        {content.primary_dataset_scope}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[content.primary_dataset_scope]}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{content.primary_dataset_scope}</span>
+                    </OverlayTrigger>
                   </ResourceType>
                 </div>
                 <br />
