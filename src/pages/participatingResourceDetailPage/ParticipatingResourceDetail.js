@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -354,11 +356,23 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[detail.resource_type]}>
-                        {detail.resource_type}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </DatasetType>
                 </div>
                 <br />
@@ -563,18 +577,24 @@ const ParticipatingResourceDetail = ({
                     <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
-                  {/* <SummaryDatasetType>
-                    <span className="tooltips">
-                      {ds.primary_dataset_scope}
-                      <span className="tooltiptext">{tooltips[ds.primary_dataset_scope]}</span>
-                    </span>
-                  </SummaryDatasetType> */}
                   <SummaryDatasetType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[ds.primary_dataset_scope]}>
-                        {ds.primary_dataset_scope}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </SummaryDatasetType>
                 </DatasetCard>
               );
