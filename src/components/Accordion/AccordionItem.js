@@ -22,43 +22,12 @@ const OptionContainer = styled.div`
     background-color: #e9e2bc;
   }
 
-  .accordionCheckBox {
-    position: relative;
-    cursor: pointer;
-    appearance: none;
-    margin-top: 4px;
-    &:before {
-      content: "";
-      display: block;
-      width: 1em;
-      height: 1em;
-      top: 0;
-      left: 0;
-      border: 2px solid #004187;
-      background-color: white;
-    }
-    &:checked:before {
-      content: "";
-      display: block;
-      width: 1em;
-      height: 1em;
-      top: 0;
-      left: 0;
-      background-color: #1E80EF;
-    }
-    &:checked:after {
-      content: "";
-      display: block;
-      width: 5px;
-      height: 9px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-      position: absolute;
-      top: 2px;
-      left: 6px;
+  .form-check-input {
+    border-radius: 0;
+    border: 2px solid #004187;
+    &:checked {
+      border: 0;
+      background-color: #0776C6;
     }
   }
 `;
@@ -146,7 +115,7 @@ const AccordionItem = ({
 
   return (
     <OptionContainer>
-      <input className="accordionCheckBox" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
+      <input className="form-check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
       <OptionLabel type="button" title={item.label ? item.label : ""} onClick={handleItemClick} value={item.name} checked={checked} readOnly>
         {item.name}
       </OptionLabel>
