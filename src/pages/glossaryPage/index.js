@@ -514,12 +514,6 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader">PGDI</h2>
-                    <span className="glossaryItemType">Resource Abbreviation</span>
-                    <p className="glossaryItemDescription">Pediatric Genomic Data Inventory</p>
-                    <br />
-                  </div>
-                  <div className="p">
                     <h2 className="glossaryItemHeader">PPTC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Preclinical Testing Consortium</p>
