@@ -565,7 +565,7 @@ const Glossary = () => {
                   <div className="r">
                     <h2 className="glossaryItemHeader">Repository</h2>
                     <span className="glossaryItemType">Resource Type</span>
-                    <p className="glossaryItemDescription">Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.</p>
+                    <p className="glossaryItemDescription">Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.</p>
                     <br />
                   </div>
                   <div className="r">
