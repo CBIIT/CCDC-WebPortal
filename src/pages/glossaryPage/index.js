@@ -342,7 +342,7 @@ const Glossary = () => {
                   <div className="k">
                     <h2 className="glossaryItemHeader">KF</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
-                    <p className="glossaryItemDescription">Kids First</p>
+                    <p className="glossaryItemDescription">Kids First Data Resource</p>
                     <br />
                   </div>
                   <div className="k">
