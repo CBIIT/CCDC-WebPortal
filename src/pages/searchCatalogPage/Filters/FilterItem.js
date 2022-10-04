@@ -21,8 +21,10 @@ const OptionContainer = styled.div`
   .form-check-input {
     border-radius: 0;
     border: 2px solid #004187;
-    margin-top: 0.3em;
-    margin-left: 2px;
+    &:checked {
+      border: 0;
+      background-color: #0776C6;
+    }
   }
 
   .checkbox-disabled {
