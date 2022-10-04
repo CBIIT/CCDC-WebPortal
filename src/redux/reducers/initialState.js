@@ -47,5 +47,12 @@ export default {
     application: {
       softwareVersion: "",
       siteDataUpdate: "",
+      widgetUpdates: [],
+      siteUpdates: [],
+      pageInfo: {
+        page: 1,
+        pageSize: 3,
+        total: 0,
+      },
     },
 };

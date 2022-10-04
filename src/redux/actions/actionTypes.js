@@ -25,3 +25,5 @@ export const LOAD_DOCUMENT_SEARCH_RESULTS_SUCCESS = "load_document_search_result
 export const PUT_SEARCH_KEYWORD = "put_search_keyword";
 
 export const LOAD_APPLICATION_VERSION_INFO_SUCCESS = "load_application_version_info_success";
+export const LOAD_WIDGET_UPDATE_SUCCESS = "load_widget_update_success";
+export const LOAD_SITE_UPDATE_SUCCESS = "load_site_update_success";

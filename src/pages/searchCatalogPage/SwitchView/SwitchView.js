@@ -6,6 +6,10 @@ import {
 import {Nav} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import './SwitchView.css';
+import cardViewIcon from "../../../assets/img/CardView.svg";
+import cardViewActiveIcon from "../../../assets/img/CardViewActive.svg";
+import tableViewIcon from "../../../assets/img/TableView.svg";
+import tableViewActiveIcon from "../../../assets/img/TableViewActive.svg";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -51,14 +55,24 @@ const SwitchView = ({
       <Nav variant="pills" activeKey={viewType} className="switch-view-content">
         <Nav.Item onClick={() => handleSwitchView("card")}>
           <Nav.Link eventKey="card">
-            <i className="fas fa-th-list" />
-            &nbsp;Card View
+            {
+              viewType === "card" ? (<img src={cardViewActiveIcon} alt="table-view" />)
+              : (
+                <img src={cardViewIcon} alt="table-view" />
+              )
+            }
+            Card View
           </Nav.Link>
         </Nav.Item>
         <Nav.Item onClick={() => handleSwitchView("table")}>
           <Nav.Link eventKey="table">
-            <i className="fas fa-table" />
-            &nbsp;Table View
+            {
+              viewType === "table" ? (<img src={tableViewActiveIcon} alt="table-view" />)
+              : (
+                <img src={tableViewIcon} alt="table-view" />
+              )
+            }
+            Table View
           </Nav.Link>
         </Nav.Item>
       </Nav>

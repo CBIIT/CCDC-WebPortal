@@ -44,6 +44,10 @@ const Row = styled.div`
 
 const Logo = styled.div`
   display: block;
+  a {
+    color: var(--white);
+    text-decoration: none;
+  }
   h1 {
     font-size: 25px;
     text-align: left;
@@ -154,10 +158,12 @@ const Footer = ({
           <Row>
             <Col xs={6}>
               <Logo>
-                <h1>
-                  National Cancer Institute
-                  <span>at the National Institutes of Health</span>
-                </h1>
+                <a href="https://www.cancer.gov" target="_blank" rel="noopener noreferrer">
+                  <h1>
+                    National Cancer Institute
+                    <span>at the National Institutes of Health</span>
+                  </h1>
+                </a>
               </Logo>
             </Col>
             <Col xs={6}>

@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Link } from "react-router-dom";
-// import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import externalIcon from "../../../assets/img/resource.svg";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
 import DataResourceIcons from '../../../components/DataResourceIcons';
 
 const SearchResultContainer = styled.div`
   width: 100%;
   display: grid;
-  // padding-bottom: 50px;
-  // padding-bottom: 80px;
 `;
 
 const ResultInfo = styled.div`
@@ -100,6 +98,7 @@ const POCInfo = styled.div`
 const SiteInfo = styled.div`
   display: flex;
   font-size: 15px;
+  margin-bottom: 10px;
 
   a {
     text-decoration: none;
@@ -116,9 +115,11 @@ const SiteIcon = styled.div`
   background-repeat: no-repeat;
   background-size: 35px 35px;
   width: 35px;
-  height: 35px;
-  margin-left: -10px;
-  margin-top: -5px;
+  height: 30px;
+  margin-left: -2px;
+  margin-top: -10px;
+  margin-bottom: -8px;
+  display: inline-table;
 `;
 
 const ResourceType = styled.div`
@@ -131,6 +132,41 @@ const ResourceType = styled.div`
     border: 1px solid #FFBF17;
     padding: 5px 23px 7px 23px;
     line-height: 52px;
+  }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+  }
+  
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -183,7 +219,7 @@ const SearchResult = ({
   resultList,
 }) => {
   const tooltips = {
-    Repository: "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
@@ -234,21 +270,30 @@ const SearchResult = ({
                       <a href={mailto}>{rst.poc}</a>
                     </POCInfo>
                     <SiteInfo>
-                      <SiteIcon />
                       <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">
                         {rst.resource_uri && rst.resource_uri.length > 70 ? `${rst.resource_uri.substring(0, 80)}...` : rst.resource_uri}
+                        <SiteIcon />
                       </a>
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
-                    {/* <span>{rst.resource_type}</span> */}
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltip}
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltip}
+                          </Popover>
+                        )
+                      }
                     >
-                      {rst.resource_type}
-                    </span>
+                      <span>{rst.resource_type}</span>
+                    </OverlayTrigger>
                   </ResourceType>
                 </ResourceContact>
                 <DatasetsSummary>

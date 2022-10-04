@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import SiteUpdateWidget from './SiteUpdateWidget';
 import Carousel from '../../components/Carousel';
 import './landingPage.css';
 
 const HomePage = () => {
   const [localText, setLocalText] = useState("");
   const navigate = useNavigate();
+  window.scrollTo(0, 0);
 
   const handleTextInputChange = (event) => {
     const text = event.target.value;
@@ -37,10 +39,9 @@ const HomePage = () => {
                         <br />
                         the pediatric cancer research community.
                       </div>
-                      <div style={{ padding: 30, background: 'white', opacity: '0.0' }} />
                       <div className="heroSearchBox">
                           <div className="search">
-                              <input type="text" className="searchTerm" placeholder="  Search for Datasets " value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
+                              <input type="text" className="searchTerm" placeholder="Search for Datasets" value={localText} onChange={(e) => handleTextInputChange(e)} onKeyPress={(e) => handleKeyPress(e)} />
                               <Link to={`/search?search_text=${localText}`} className="headerLink">
                                   <button type="submit" className="searchButton">
                                       <svg
@@ -68,6 +69,9 @@ const HomePage = () => {
                               </Link>
                           </div>
                       </div>
+                      <div className="headerWidget">
+                        <SiteUpdateWidget />
+                      </div>
                   </div>
               </div>
           </div>
@@ -93,10 +97,10 @@ const HomePage = () => {
                         <div className="column2">
                             <p className="infoSection">
                                 The CCDI Childhood Cancer Data Catalog is a searchable database of
-                                National Cancer Institute and other  pediatric cancer resources.
+                                National Cancer Institute and other pediatric cancer resources.
                                 <br />
                                 <br />
-                                Resources include repositories, registries, data commons, web sites,
+                                Resources include repositories, registries, programs, knowledgebases,
                                 and catalogs that either manage or refer to data. Users can browse
                                 and filter the list of data resources or enter search terms to identify
                                 data of interest.

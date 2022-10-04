@@ -1,9 +1,34 @@
 import React, { useEffect, useState, useRef } from "react";
 import {useLocation, NavLink, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import * as downloadApi from "../../api/downloadApi";
 import mobileHamburger from '../../assets/img/mobile-hamburger.svg';
 import mobileClose from '../../assets/img/mobile-close.svg';
+import logo from '../../assets/img/CCDC_Logo.svg';
+import './NavBar.css';
+
+const LogoBanner = styled.div`
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+`;
+
+const LogoContainer = styled.div`
+  @media (min-width: 1200px) {
+    width: 1200px;
+    margin: 0 auto;
+    img {
+      width: 473px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
+
+  @media (max-width: 473px) {
+    // display: none;
+  }
+`;
 
 const Nav = styled.div`
     width: 100%;
@@ -135,7 +160,7 @@ const MobileSubUl = styled.ul`
   transition: all 250ms ease-in;
   background: #e5feff;
   overflow: hidden;
-  max-height: 155px;
+  max-height: 206px;
 
   &[data-visible="false"] {
     transition: all 250ms ease-out;
@@ -163,7 +188,7 @@ const LiSection = styled.li`
   text-align: center;
   color: #003626;
   // padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  // padding-right: 0.5rem;
   font-size: 18px;
   font-weight: bold;
   font-family: Lato;
@@ -365,60 +390,64 @@ const NavBar = () => {
     }
   };
 
-  const handleDownloadUserGuide = (event) => {
-    event.preventDefault();
-    downloadApi.getUserGuide();
-  };
-
   return (
-      <Nav>
-          <NavContainer>
-              <MobileHamburger type="button" className="mobile-nav-toggle" aria-controls="mobile-navigation" aria-expanded={mobileMenuExpanded} onClick={handleHamburgerClick} />
-              <MobileUlContainer ref={mobileMenuSelection} id="mobile-navigation" className="mobile-navigation" data-visible={mobileMenuData}>
-                <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
-                <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
-                <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources" onClick={handleMobileMenuClick}>Participating Resources</NavLink></MobileLiSection>
-                <MobileLiSection>
-                  <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
-                    About&nbsp;
-                    <i className="fas fa-sort-down" />
-                  </MenuHeader>
-                </MobileLiSection>
-                <MobileSubUl data-visible={mobileAboutMenuData}>
-                  <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
-                  <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
-                  <MobileLiSection><a href="#" onClick={handleDownloadUserGuide}>User Guide (PDF)</a></MobileLiSection>
-                </MobileSubUl>
-              </MobileUlContainer>
-              <UlContainer id="primary-navigation" className="primary-navigation">
-                <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                <LiSection>
-                    <span style={path === "/about" || path === "/glossary" ? activeStyle : null}>
-                      &nbsp; &nbsp; About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <div className="sticky-nav">
+        <LogoBanner role="banner">
+          <LogoContainer>
+            <a href="/"><img src={logo} alt="ccdc logo" /></a>
+          </LogoContainer>
+        </LogoBanner>
+        <Nav>
+            <NavContainer>
+                <MobileHamburger type="button" className="mobile-nav-toggle" aria-controls="mobile-navigation" aria-expanded={mobileMenuExpanded} onClick={handleHamburgerClick} />
+                <MobileUlContainer ref={mobileMenuSelection} id="mobile-navigation" className="mobile-navigation" data-visible={mobileMenuData}>
+                  <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
+                  <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
+                  <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources" onClick={handleMobileMenuClick}>Participating Resources</NavLink></MobileLiSection>
+                  <MobileLiSection>
+                    <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
+                      About&nbsp;
                       <i className="fas fa-sort-down" />
-                    </span>
-                    <ul className="dropdown">
-                        <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
-                        <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
-                        <li><a href="#" onClick={handleDownloadUserGuide} target="_blank">&nbsp; &nbsp; User Guide (PDF)</a></li>
-                    </ul>
-                </LiSection>
-              </UlContainer>
-              {
-                path !== "/sitesearch"
-                && (
-                <SearchArea>
-                  <SearchInput type="text" value={localText} placeholder="Documentation Search" onChange={handleTextInputChange} onKeyPress={handleKeyPress} />
-                  <SearchIcon onClick={handleSearch}>
-                    <i className="fas fa-search" />
-                  </SearchIcon>
-                </SearchArea>
-                )
-              }
-          </NavContainer>
-      </Nav>
+                    </MenuHeader>
+                  </MobileLiSection>
+                  <MobileSubUl data-visible={mobileAboutMenuData}>
+                    <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
+                    <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
+                    <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.2.0.pdf">User Guide (PDF)</a></MobileLiSection>
+                  </MobileSubUl>
+                </MobileUlContainer>
+                <UlContainer id="primary-navigation" className="primary-navigation">
+                  <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection>
+                      <span style={path === "/about" || path === "/glossary" || path === "/siteupdate" ? activeStyle : null}>
+                        &nbsp; &nbsp; About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <i className="fas fa-sort-down" />
+                      </span>
+                      <ul className="dropdown">
+                          <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
+                          <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
+                          <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
+                          <li><a href="/User Guide for CCDC v1.2.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
+                      </ul>
+                  </LiSection>
+                </UlContainer>
+                {
+                  path !== "/sitesearch"
+                  && (
+                  <SearchArea>
+                    <SearchInput type="text" value={localText} placeholder="Documentation Search" onChange={handleTextInputChange} onKeyPress={handleKeyPress} />
+                    <SearchIcon onClick={handleSearch}>
+                      <i className="fas fa-search" />
+                    </SearchIcon>
+                  </SearchArea>
+                  )
+                }
+            </NavContainer>
+        </Nav>
+      </div>
   );
 };
 

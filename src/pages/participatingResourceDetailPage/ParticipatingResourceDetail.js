@@ -2,9 +2,12 @@ import React, {useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
-import externalIcon from "../../assets/img/resource-white.svg";
+import headerExternalIcon from "../../assets/img/resource-header.svg";
+import externalIcon from "../../assets/img/resource.svg";
 import './participatingResourceDetailPage.css';
 
 const ParticipatingResourceResultContainer = styled.div`
@@ -17,20 +20,41 @@ const ParticipatingResourceGridContainer = styled.div`
   border-top: 1px solid #BFD3E1;
 `;
 
-const SiteIcon = styled.div`
-  font-weight: bold;
-  // color: #07468a;
-  font-size: 1.2rem;  
-  background-image: url(${externalIcon});
-  background-repeat: no-repeat;
-  background-size: 35px 35px;
-  width: 35px;
-  height: 35px;
-  margin-left: -10px;
-  margin-top: -5px;
-  // display: flex;
-  // display: inline flex;
-  margin-bottom: -30px;
+// const SiteIcon = styled.div`
+//   font-weight: bold;
+//   // color: #07468a;
+//   font-size: 1.2rem;
+//   background-image: url(${headerExternalIcon});
+//   background-repeat: no-repeat;
+//   background-size: 35px 35px;
+//   width: 35px;
+//   height: 35px;
+//   margin-left: -10px;
+//   margin-top: -5px;
+//   // display: flex;
+//   // display: inline flex;
+//   margin-bottom: -30px;
+// `;
+
+const HeaderLinks = styled.div`
+  a[target="_blank"] {
+    background: url(${headerExternalIcon}) right center no-repeat;
+    padding-right: 30px;
+    // margin-left: -5px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
+const ResourceBody = styled.div`
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) right center no-repeat;
+    padding-right: 30px;
+    // margin-left: -5px;
+    background-size: 32px;
+    // display: inline-table;
+  }
 `;
 
 const DatasetSummaryContainer = styled.div`
@@ -39,6 +63,15 @@ const DatasetSummaryContainer = styled.div`
   margin: 0 auto;
   width: 1120px;
   margin-bottom: 80px;
+
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) right top no-repeat;
+    // padding-left: 30px;
+    padding-right: 30px;
+    background-size: 32px;
+    display: inline-table;
+  }
 `;
 
 const DataLink = styled.li`
@@ -50,8 +83,6 @@ const DataLink = styled.li`
 const ExternalLink = styled.li`
   display: flex;
   // display: inline;
-  margin-left: 25px;
-  // margin-top: -20px;
 `;
 
 const DatasetType = styled.div`
@@ -62,8 +93,6 @@ const DatasetType = styled.div`
   text-transform: uppercase;
   font-size: 11px;
   font-family: Inter;
-  // padding-top: 50px;
-  // padding-right: 10px;
 
   span {
     background-color: white;
@@ -71,6 +100,41 @@ const DatasetType = styled.div`
     border: 1px solid #FFBF17;
     padding: 8px 16px;
     line-height: 52px;
+  }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+  }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -89,6 +153,41 @@ const SummaryDatasetType = styled.div`
     border: 1px solid #FFBF17;
     padding: 8px 16px;
     line-height: 52px;
+  }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+  }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -170,19 +269,9 @@ const DatasetDesc = styled.div`
   margin-top: -15px;
   word-wrap: break-word;
   hyphens: auto;
-  div {
-    // padding-bottom: 20px;
-    // background-color: red;
-  }
   line-height: 32px;
   inline-size: 1000px;
 `;
-
-// const ResourceContact = styled.div`
-//   width: 100%;
-//   display: flex;
-//   margin-top: 20px;
-// `;
 
 const ParticipatingResourceDetail = ({
   detail,
@@ -192,7 +281,7 @@ const ParticipatingResourceDetail = ({
 }) => {
   const { id } = useParams();
   const tooltips = {
-    Repository: "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
@@ -202,6 +291,7 @@ const ParticipatingResourceDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
+  window.scrollTo(0, 0);
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
@@ -241,12 +331,15 @@ const ParticipatingResourceDetail = ({
                   </div>
                   <span className="badge"><i className="far fa-file-alt" /></span>
                   <span className="badgeCount">{detail.datasets_total}</span>
+                  <HeaderLinks>
                   <div className="prDetailHeaderContent">
-                    <SiteIcon />
+                    {/* <SiteIcon /> */}
                     {resourseLinks[0] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[0]} target="_blank" rel="noreferrer noopener">{resourseLinks[0]}</a></ExternalLink> : null}
                     {resourseLinks[1] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[1]} target="_blank" rel="noreferrer noopener">{resourseLinks[1]}</a></ExternalLink> : null}
                     {resourseLinks[2] ? <ExternalLink><a className="prDetailExternalLink" href={resourseLinks[2]} target="_blank" rel="noreferrer noopener">{resourseLinks[2]}</a></ExternalLink> : null}
                   </div>
+                  </HeaderLinks>
+                  <HeaderLinks>
                   <div className="prDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="prDetailHeaderText">
@@ -261,14 +354,25 @@ const ParticipatingResourceDetail = ({
                       {pocLinks[2] && pocLinks[2].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a></DataLink>}
                     </span>
                   </div>
+                  </HeaderLinks>
                   <DatasetType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[detail.resource_type]}
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
                     >
-                      {detail.resource_type}
-                    </span>
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </DatasetType>
                 </div>
                 <br />
@@ -280,6 +384,7 @@ const ParticipatingResourceDetail = ({
         <ParticipatingResourceResultContainer>
         {
             detail && (
+              <ResourceBody>
               <div className="prContainer">
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
@@ -325,7 +430,7 @@ const ParticipatingResourceDetail = ({
                         <br />
                           {
                             detail.api
-                            ? <DataLink><a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a></DataLink>
+                            ? <a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a>
                             : null
                           }
                       </div>
@@ -333,6 +438,7 @@ const ParticipatingResourceDetail = ({
                   </div>
                 </div>
               </div>
+              </ResourceBody>
             )
         }
         </ParticipatingResourceResultContainer>
@@ -370,24 +476,36 @@ const ParticipatingResourceDetail = ({
                   <DatasetHeader>
                     <DatasetTitle>
                       <a href={linkto}>
-                        {ds.dataset_name.length > 100 ? `${ds.dataset_name.substring(0, 100)}...` : ds.dataset_name}
+                        {ds.dataset_name.length > 90 ? `${ds.dataset_name.substring(0, 90)}...` : ds.dataset_name}
                       </a>
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
-                    {ds.published_in
-                      ? <div className="summaryDataElementLabel">Published In</div>
-                      : null}
-                    {/* {ds.published_in ? <div className="summaryDataElementPublished"><DataLink><a href={ds.published_in} target="_blank" rel="noreferrer noopener">{ds.published_in}</a></DataLink></div> : null} */}
-                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
-                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
-                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
-                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
-                    {/* {
-                      ds.published_in
+                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis</div> : null}
+                      <div className="summaryDataElementContent">
+                        {
+                          ds.case_disease_diagnosis
+                          ? ds.case_disease_diagnosis.slice(0, 10).map((cdd, cddidx) => {
+                            const cddkey = `cdd_${cddidx}`;
+                            return (
+                              <span key={cddkey} className="itemSpan">
+                                {cdd.n ? cdd.n : null}
+                                &nbsp;(
+                                {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
+                                {cddidx < 9 && cddidx !== ds.case_disease_diagnosis.length - 1 ? "); " : null}
+                                {cddidx === 9 && cddidx !== ds.case_disease_diagnosis.length - 1 ? ") ..." : null}
+                                {(cddidx < 9 || cddidx === 9) && cddidx === ds.case_disease_diagnosis.length - 1 ? ")" : null}
+                              </span>
+                            );
+                          })
+                          : null
+                        }
+                      </div>
+                    {
+                      ds.case_disease_diagnosis
                       ? <br />
                       : null
-                    } */}
+                    }
                     {ds.case_id
                       ? <div className="summaryDataElementLabel">Number of Cases</div>
                       : null}
@@ -453,15 +571,30 @@ const ParticipatingResourceDetail = ({
                       ? <br />
                       : null
                     }
+                    {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
+                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
+                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
+                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
+                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[ds.primary_dataset_scope]}
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
                     >
-                      {ds.primary_dataset_scope}
-                    </span>
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </SummaryDatasetType>
                 </DatasetCard>
               );

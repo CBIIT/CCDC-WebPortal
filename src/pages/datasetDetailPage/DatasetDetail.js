@@ -2,7 +2,11 @@ import React, {useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import DataResourceIcons from '../../components/DataResourceIcons';
+import headerExternalIcon from "../../assets/img/dataset-header.svg";
+import externalIcon from "../../assets/img/dataset-body.svg";
 import './datasetDetailPage.css';
 
 const DatasetResultContainer = styled.div`
@@ -14,6 +18,24 @@ const DatasetResultContainer = styled.div`
 const DatasetGridContainer = styled.div`
   // margin: 100px 0 100px 0;
   border-top: 1px solid #BFD3E1;
+`;
+
+const HeaderLinks = styled.div`
+  a[target="_blank"] {
+    background: url(${headerExternalIcon}) right center no-repeat;
+    padding-right: 30px;
+    background-size: 32px;
+    display: inline-table;
+  }
+`;
+
+const DatasetBody = styled.div`
+  a[target="_blank"] {
+    // color: #004187;
+    background: url(${externalIcon}) right no-repeat;
+    padding-right: 30px;
+    background-size: 32px;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -32,6 +54,41 @@ const ResourceType = styled.div`
     border: 1px solid #FFBF17;
     padding: 8px 16px;
     line-height: 52px;
+  }
+
+  a {
+    color: #212529;
+    text-decoration: none;
+  }
+
+  .tooltips {
+    position: relative;
+  }
+  
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -74,6 +131,7 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
+  window.scrollTo(0, 0);
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -83,7 +141,30 @@ const DatasetDetail = ({
   let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
   if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
-
+  const grantIDs = [];
+  const grantNames = [];
+  const grants = new Map();
+  if (sortedAdditonals) {
+    sortedAdditonals.forEach((ad) => {
+      if (ad.toUpperCase() === "GRANT ID") {
+        additionalDict[ad].forEach((item, i) => {
+          grantIDs[i] = item.k;
+        });
+      }
+      if (ad.toUpperCase() === "GRANT NAME") {
+        additionalDict[ad].forEach((item, i) => {
+          grantNames[i] = item.k;
+        });
+      }
+    });
+  }
+  for (let i = 0; i < grantIDs.length; i += 1) {
+    if (grantNames[i] === null) {
+      grants.set(grantIDs[i], grantNames[i - 1]);
+    }
+    grants.set(grantIDs[i], grantNames[i]);
+  }
+  const sortedGrants = new Map([...grants].sort());
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -102,11 +183,16 @@ const DatasetDetail = ({
                   <ul className="breadcrumb">
                       <li><a href="/">Home</a></li>
                       <li><a href="/search">Search Catalog</a></li>
-                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name}</Link></li>
+                      <li><Link to={`/dataset/${content.dataset_id}`}>{content.dataset_name.length > 130 ? `${content.dataset_name.substring(0, 130)}...` : content.dataset_name}</Link></li>
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                  <div className="datasetDetailHeaderLabel">{content.dataset_name}</div>
+                  {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <div className="datasetDetailHeaderLabel">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <div className="datasetDetailHeaderLabelLong">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <div className="datasetDetailHeaderLabel3">{content.dataset_name}</div> : null}
+                  {content.dataset_name.length > 170 ? <div className="datasetDetailHeaderLabel4">{content.dataset_name}</div> : null}
+                  {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
                   <div className="datasetIcon">
                     {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
                   </div>
@@ -114,6 +200,7 @@ const DatasetDetail = ({
                     Data Resource: &nbsp;
                     <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
                   </div>
+                  <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
                     <span className="datasetDetailHeaderText">
@@ -128,14 +215,25 @@ const DatasetDetail = ({
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
                   </div>
+                  </HeaderLinks>
                   <ResourceType>
-                    <span
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltips[content.primary_dataset_scope]}
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[content.primary_dataset_scope]}
+                          </Popover>
+                        )
+                      }
                     >
-                      {content.primary_dataset_scope}
-                    </span>
+                      <span>{content.primary_dataset_scope}</span>
+                    </OverlayTrigger>
                   </ResourceType>
                 </div>
                 <br />
@@ -147,6 +245,7 @@ const DatasetDetail = ({
         <DatasetResultContainer>
         {
             content && (
+              <DatasetBody>
               <div className="datasetContainer">
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
@@ -219,7 +318,6 @@ const DatasetDetail = ({
                                   {cg.n ? cg.n : null}
                                   &nbsp;(
                                   {cg.v ? cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cgidx === content.case_gender.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -240,7 +338,6 @@ const DatasetDetail = ({
                                   {ca.n ? ca.n : null}
                                   &nbsp;(
                                   {ca.v ? ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {caidx === content.case_age.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -261,7 +358,6 @@ const DatasetDetail = ({
                                   {cad.n ? cad.n : null}
                                   &nbsp;(
                                   {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -282,7 +378,6 @@ const DatasetDetail = ({
                                   {caat.n ? caat.n : null}
                                   &nbsp;(
                                   {caat.v ? caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {caatidx === content.case_age_at_trial.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -303,7 +398,6 @@ const DatasetDetail = ({
                                   {cr.n ? cr.n : null}
                                   &nbsp;(
                                   {cr.v ? cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cridx === content.case_race.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -324,7 +418,6 @@ const DatasetDetail = ({
                                   {ce.n ? ce.n : null}
                                   &nbsp;(
                                   {ce.v ? ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ceidx === content.case_ethnicity.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -335,7 +428,7 @@ const DatasetDetail = ({
                         {content.case_disease_diagnosis
                           ? <div className="dataElementLabel">Case Disease Diagnosis</div>
                           : null}
-                        <div className="dataElementContentAllCaps">
+                        <div className="dataElementContent">
                           {
                             content.case_disease_diagnosis
                             ? content.case_disease_diagnosis.map((cdd, cddidx) => {
@@ -345,7 +438,6 @@ const DatasetDetail = ({
                                   {cdd.n ? cdd.n : null}
                                   &nbsp;(
                                   {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -366,7 +458,6 @@ const DatasetDetail = ({
                                   {cts.n ? cts.n : null}
                                   &nbsp;(
                                   {cts.v ? cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctsidx === content.case_tumor_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -387,7 +478,6 @@ const DatasetDetail = ({
                                   {cta.n ? cta.n : null}
                                   &nbsp;(
                                   {cta.v ? cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -408,7 +498,6 @@ const DatasetDetail = ({
                                   {cto.n ? cto.n : null}
                                   &nbsp;(
                                   {cto.v ? cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -429,7 +518,6 @@ const DatasetDetail = ({
                                   {cp.n ? cp.n : null}
                                   &nbsp;(
                                   {cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -512,7 +600,6 @@ const DatasetDetail = ({
                               return (
                                 <span key={srnkey} className="itemSpan">
                                   {srn.n ? srn.n : null}
-                                  {/* )&#59;&nbsp; */}
                                   {srnidx === content.sample_repository_name.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -555,7 +642,6 @@ const DatasetDetail = ({
                                   {sat.n ? sat.n : null}
                                   &nbsp;(
                                   {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_analyte_type.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -576,7 +662,6 @@ const DatasetDetail = ({
                                   {sat.n ? sat.n : null}
                                   &nbsp;(
                                   {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
                                   {satidx === content.sample_anatomic_site.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -647,8 +732,6 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                      {/* <div className="dataElementLabel">Number of Samples</div>
-                        {content.sample_id} */}
                     </div>
                     <div className="additionalDataContainer">
                       <div className="additionalDataLabel">Additional Data Elements</div>
@@ -657,7 +740,14 @@ const DatasetDetail = ({
                             const adkey = `ad_${adIdx}`;
                             if (ad === "published in") {
                               let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
-                              if (content.published_in) { publishedLinks = publishedLinks.split(';'); }
+                              if (content.published_in) {
+                                publishedLinks = publishedLinks.split(';');
+                                publishedLinks.sort((a, b) => {
+                                  const la = a.trim().toLowerCase();
+                                  const lb = b.trim().toLowerCase();
+                                  return la < lb ? -1 : 1;
+                                });
+                              }
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
@@ -701,27 +791,61 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad.toUpperCase() === "GRANT ID") {
+                              return (
+                                <>
+                                  <div className="dataElementLabel">Grant Information</div>
+                                  <div className="grantInfoContainer">
+                                    {grantIDs.sort().map((item) => {
+                                      return (
+                                        <table className="table table-borderless">
+                                          <tbody>
+                                            <tr>
+                                              {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
+                                              {sortedGrants.get(item) ? <td><div className="grantNameDataContainer">{sortedGrants.get(item)}</div></td> : null}
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      );
+                                    })}
+                                  </div>
+                                </>
+                              );
+                            }
                             return (
-                              <div key={adkey} className="dataElementLabel">
-                                {ad.toUpperCase()}
-                                <br />
-                                {additionalDict[ad].map((adee, adeeidx) => {
-                                  const adeekey = `adee_${adeeidx}`;
-                                  return (
-                                    <div key={adeekey} className="additionalDataContent">
-                                      {(adee.k.includes("https:") || adee.k.includes(".org") || adee.k.includes(".html")) ? <a className="additionalDataLinks" href={adee.k} target="_blank" rel="noreferrer noopener">{adee.k}</a> : adee.k}
-                                      {adee.v === -1
-                                        ? null
-                                        : (
-                                            <span key={adeekey} className="itemSpan">
-                                              &nbsp;(
-                                              {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                                              )&#59; &nbsp;
-                                            </span>
-                                          )}
-                                    </div>
-                                  );
-                                })}
+                              <div>
+                                <div key={adkey} className="dataElementLabel">
+                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : ad.toUpperCase()}
+                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : <br />}
+                                  {additionalDict[ad].map((adee, adeeidx) => {
+                                    if (ad.toUpperCase() !== "GRANT ID" && ad.toUpperCase() !== "GRANT NAME") {
+                                      const adeekey = `adee_${adeeidx}`;
+                                      let additonalText = adee.k === undefined ? "" : adee.k;
+                                      if (adee.k) { additonalText = additonalText.split(';'); }
+                                      return (
+                                        <div key={adeekey} className="additionalDataContent">
+                                          {additonalText[0] && ((additonalText[0].includes("https:")) || (additonalText[0].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[0]} target="_blank" rel="noreferrer noopener">{additonalText[0]}</a></div> : null}
+                                          {additonalText[1] && ((additonalText[1].includes("https:")) || (additonalText[1].includes("http:"))) ? <div><a className="additionalDataLinks" href={additonalText[1]} target="_blank" rel="noreferrer noopener">{additonalText[1]}</a></div> : null}
+                                          {additonalText[2] && ((additonalText[2].includes("https:")) || (additonalText[2].includes("http:"))) ? <a className="additionalDataLinks" href={additonalText[2]} target="_blank" rel="noreferrer noopener">{additonalText[2]}</a> : null}
+                                          {(adee.k.includes("phs00")) ? <a className="additionalDataLinks" href={`https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=${adee.k}`} target="_blank" rel="noreferrer noopener">{adee.k}</a> : null}
+                                          {(adee.k.includes("https:") || adee.k.includes("http:") || adee.k.includes("phs00")) ? null : adee.k}
+                                          {adee.v === -1
+                                            ? null
+                                            : (
+                                                <span key={adeekey} className="itemSpan">
+                                                  &nbsp;(
+                                                  {adee.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                  )&#59; &nbsp;
+                                                </span>
+                                              )}
+                                        </div>
+                                      );
+                                    }
+                                    return (
+                                      null
+                                    );
+                                  })}
+                                </div>
                               </div>
                             );
                           })
@@ -731,6 +855,7 @@ const DatasetDetail = ({
                   <br />
                 </div>
               </div>
+              </DatasetBody>
             )
         }
         </DatasetResultContainer>

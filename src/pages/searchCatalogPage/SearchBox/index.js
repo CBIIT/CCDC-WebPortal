@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
+import xIcon from "../../../assets/img/xmark-solid.svg";
 
 const BubbleContainer = styled.div`
   max-width: calc(50% - 20px);
@@ -29,9 +30,9 @@ const BubbleContainer = styled.div`
 const SearchIcon = styled.div`
   position: absolute;
   color: #004187;
-  right: 135px;
+  right: 140px;
   z-index: 10;
-  line-height: 50px;
+  line-height: 53px;
   font-size: 25px;
 `;
 
@@ -80,6 +81,31 @@ const SearchBoxArea = styled.div`
     background-color: #6c757d;
     border-color: #6c757d;
   }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    position: relative;
+    right: -30px;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: url(${xIcon}) right center no-repeat;
+    background-image: url(${xIcon}) red;
+    background-size: 20px;
+    cursor: pointer;
+  }
+
+  input[type="search"]:focus::-webkit-search-cancel-button {
+    position: relative;
+    right: -30px;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: url(${xIcon}) right center no-repeat;
+    background-image: url(${xIcon}) red;
+    background-size: 20px;
+    cursor: pointer;
+  }
+
 `;
 
 const SelectionBubbleArea = styled.div`
@@ -132,6 +158,7 @@ const SearchBox = ({
       <SearchBoxArea>
         <InputGroup className="searchBoxInputGroup">
           <FormControl
+            type="search"
             placeholder="Search the Catalog"
             aria-label="Search the Catalog"
             aria-describedby="basic-addon"
@@ -140,17 +167,22 @@ const SearchBox = ({
             onKeyPress={(e) => handleKeyPress(e)}
           />
           <SearchIcon>
-            <i className="fas fa-search" />
+            {/* <i className="fas fa-search" /> */}
           </SearchIcon>
-          <InputGroup.Append>
-            {
-              searchableText.length > 0 ? (
-                <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
-              ) : (
-                <button type="button" variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</button>
-              )
-            }
-          </InputGroup.Append>
+          {
+            searchableText.length > 0 ? (
+              <Button variant="outline-secondary" className="searchBoxButton" onClick={() => handleSubmit()}>SUBMIT</Button>
+            ) : (
+              <button type="button" variant="outline-secondary" className="searchBoxButton buttonDisabled" disabled>SUBMIT</button>
+            )
+          }
+          {
+            searchText.length > 0 ? null : (
+              <SearchIcon>
+                <i className="fas fa-search" />
+              </SearchIcon>
+            )
+          }
         </InputGroup>
       </SearchBoxArea>
       <SelectionBubbleArea>

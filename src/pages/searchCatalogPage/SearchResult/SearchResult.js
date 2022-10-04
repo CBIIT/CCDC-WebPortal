@@ -6,7 +6,11 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import ReactHtmlParser from "react-html-parser";
+import externalIcon from "../../../assets/img/resource.svg";
+import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
 const SearchResultContainer = styled.div`
   width: 100%;
@@ -59,6 +63,38 @@ const SearchResultContainer = styled.div`
     border-radius: 20px;
     padding: 5px 10px;
     float: right;
+    position: relative;
+  }
+  
+  .headerRow .typeBlock .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+    
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: -100%;
+    margin: 10px 0px 0px 0;
+  }
+  
+  .headerRow .typeBlock:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .headerRow .newtooltip {
+    color: #212529;
+    text-decoration: none;
   }
 
   .container .subHeaderRow {
@@ -67,6 +103,16 @@ const SearchResultContainer = styled.div`
 
   .subHeaderRow .col-sm {
     padding: 0;
+  }
+
+  .subHeaderRow .col-sm img {
+    width: 14pt;
+    margin-top: -5px;
+  }
+
+  .subHeaderRow .col-sm a {
+    font-weight: bold;
+    color: #0075c7;
   }
 
   .subHeaderRow .fa-file {
@@ -79,15 +125,72 @@ const SearchResultContainer = styled.div`
 
   .bodyRow .itemSpan {
     margin-left: 5px;
-    background-color: #efe8d9;
-    border-radius: 5px;
     padding: 0 5px;
     display: inline-block;
     margin-bottom: 5px;
   }
 
+  .bodyRow b {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
+  .footerRow .itemSpan {
+    padding: 0 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  .footerRow .additionalItemSpan {
+    margin-right: 5px;
+  }
+
+  .footerRow b {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
+  .footerRow a {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
+  a[target="_blank"] {
+    color: #004187;
+    background: url(${externalIcon}) right center no-repeat #DFEEF9;
+    background-size: 32px;
+    // display: inline-table;
+    padding: 1px 30px 1px 5px;
+    // margin: 0px 0px 0px 0px;
+  }
+
   .bodyRow .textSpan {
     margin-left: 5px;
+  }
+
+  .bodyRow .caseCountHighlight {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: #625bef;
+  }
+
+  .bodyRow .sampleCountHighlight {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: #11a78b;
   }
 
   .bodyRow .itemContinued {
@@ -95,7 +198,7 @@ const SearchResultContainer = styled.div`
     font-weight: 600;
   }
 
-  .container .footerRow {
+  .container .footerRow:last-child {
     margin-bottom: 5px;
   }
 
@@ -103,10 +206,39 @@ const SearchResultContainer = styled.div`
     font-weight: 600;
   }
 
-  .datasetTableRow a{
+  .datasetTableRow a {
     color: #6199d0;
     font-weight: 600;
     text-decoration: none;
+  }
+
+  .datasetTableRow .typeBlock .newtooltip {
+    color: #212529;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  .datasetTableRow span .tooltiptext {
+    visibility: hidden;
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 300px;
+    border: 1px solid #004187;
+    border-radius: 6px;
+    padding: 5px 5px 5px 5px;
+
+    text-align: left;
+    text-transform: none;
+    font-size: 12px;
+    line-height: normal;
+
+    position: absolute;
+    z-index: 1;
+    margin: 30px 0px 0px -150px;
+  }
+
+  .datasetTableRow span:hover .tooltiptext {
+    visibility: visible;
   }
 `;
 
@@ -293,18 +425,48 @@ const SearchResult = ({
     let matched = [];
 
     if (tmp.matched.length > 0) {
-      tmp.matched.forEach((item) => {
-        const raw = item.indexOf("<b>") > -1 ? item.replace(/<b>/g, "").replace(/<\/b>/g, "") : item;
-        const idx = result.indexOf(raw);
+      // sort by alphabetic order first
+      tmp.matched.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
+      matched = tmp.matched.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
         if (idx > -1) {
           result.splice(idx, 1);
         }
+        return `<b>${rawItem}</b>`;
       });
-      matched = tmp.matched.map((t) => {
-        if (t.indexOf("<b>") === -1) {
-          return `<b>${t}</b>`;
+    }
+
+    return matched.concat(result);
+  });
+
+  const sampleAssayMethodList = resultList.map((rt) => {
+    let tmp = [];
+    let matched = [];
+    if (rt.highlight && rt.highlight["sample_assay_method.k"]) {
+      tmp = rt.highlight["sample_assay_method.k"];
+    }
+
+    const result = rt.content.sample_assay_method ? rt.content.sample_assay_method.map((rst) => rst.n) : [];
+
+    if (tmp.length > 0) {
+      // sort by alphabetic order first
+      tmp.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
+      matched = tmp.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
+        if (idx > -1) {
+          result.splice(idx, 1);
         }
-        return t;
+        return `<b>${rawItem}</b>`;
       });
     }
 
@@ -347,18 +509,62 @@ const SearchResult = ({
       });
     }
 
+    if (tmp.matched.length === 0) {
+      return [];
+    }
+
+    const result = rt.content.case_tumor_site ? rt.content.case_tumor_site.map((rst) => rst.n) : [];
     let matched = [];
 
     if (tmp.matched.length > 0) {
-      matched = tmp.matched.map((t) => {
-        if (t.indexOf("<b>") === -1) {
-          return `<b>${t}</b>`;
+      // sort by alphabetic order first
+      tmp.matched.sort((a, b) => {
+        const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+        return la < lb ? -1 : 1;
+      });
+      matched = tmp.matched.map((item) => {
+        const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+        const idx = result.indexOf(rawItem);
+        if (idx > -1) {
+          result.splice(idx, 1);
         }
-        return t;
+        return `<b>${rawItem}</b>`;
       });
     }
 
-    return matched;
+    return matched.concat(result);
+  });
+
+  const projectsList = resultList.map((rt) => {
+    let tmp = [];
+    if (rt.highlight && rt.highlight["projects.p_k"]) {
+      tmp = rt.highlight["projects.p_k"];
+    }
+
+    if (tmp.length === 0) {
+      return [];
+    }
+
+    const result = rt.content.projects ? rt.content.projects.map((rst) => rst.p_k) : [];
+    let matched = [];
+
+    // sort by alphabetic order first
+    tmp.sort((a, b) => {
+      const la = a.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+      const lb = b.replace(/<b>/g, "").replace(/<\/b>/g, "").toLowerCase();
+      return la < lb ? -1 : 1;
+    });
+    matched = tmp.map((item) => {
+      const rawItem = item.replace(/<b>/g, "").replace(/<\/b>/g, "");
+      const idx = result.indexOf(rawItem);
+      if (idx > -1) {
+        result.splice(idx, 1);
+      }
+      return `<b>${rawItem}</b>`;
+    });
+
+    return matched.concat(result);
   });
 
   return (
@@ -390,6 +596,15 @@ const SearchResult = ({
                 }
               });
             }
+            const additionalMatches = [];
+            if (rst.additionalHits) {
+              rst.additionalHits.forEach((add) => {
+                const tmp = {};
+                tmp.name = add.content.attr_name;
+                tmp.matches = add.highlight["additional.attr_set.k"];
+                additionalMatches.push(tmp);
+              });
+            }
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
@@ -397,61 +612,34 @@ const SearchResult = ({
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
                   </div>
                   <div className="col-sm-4">
-                    {/* <span className="typeBlock">{rst.content.primary_dataset_scope}</span> */}
-                    <span
-                      className="typeBlock"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title={tooltip}
-                    >
-                      {rst.content.primary_dataset_scope}
+                    <span className="typeBlock">
+                      <OverlayTrigger
+                        placement="right"
+                        overlay={
+                          (
+                            <Popover
+                              id="tooltip-auto"
+                              style={{
+                                marginLeft: '10px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                              }}
+                            >
+                              {tooltip}
+                            </Popover>
+                          )
+                        }
+                      >
+                        <span>{rst.content.primary_dataset_scope}</span>
+                      </OverlayTrigger>
                     </span>
                   </div>
                 </div>
                 <div className="row align-items-start subHeaderRow">
                   <div className="col-sm">
-                    <i className="fas fa-file" />
+                    <img src={dataResourceIcon} alt="data-resource" />
                     &nbsp;
                     <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name) : rst.content.data_resource_id}</Link>
                   </div>
                 </div>
-                {
-                  rst.content.projects && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Projects:</label>
-                        {
-                          rst.content.projects.length > 10 ? rst.content.projects.slice(0, 10).map((pj, pjidx) => {
-                            const pjkey = `pj_${pjidx}`;
-                            if (pjidx === 9) {
-                              return (
-                                <div key={pjkey}>
-                                  <span className="itemSpan">
-                                    {pj.p_k}
-                                  </span>
-                                  <span className="itemContinued">...</span>
-                                </div>
-                              );
-                            }
-                            return (
-                              <span key={pjkey} className="itemSpan">
-                                {pj.p_k}
-                              </span>
-                            );
-                          })
-                          : rst.content.projects.map((pj, pjidx) => {
-                            const pjkey = `pj_${pjidx}`;
-                            return (
-                              <span key={pjkey} className="itemSpan">
-                                {pj.p_k}
-                              </span>
-                            );
-                          })
-                        }
-                      </div>
-                    </div>
-                  )
-                }
                 {
                   caseDiseaseDiagnosisList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
@@ -460,13 +648,6 @@ const SearchResult = ({
                         {
                           caseDiseaseDiagnosisList[idx].length > 10 ? caseDiseaseDiagnosisList[idx].slice(0, 10).map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
-                            if (cddidx === 9) {
-                              return (
-                                <span key={cddkey} className="itemSpan">
-                                  {ReactHtmlParser(cdd)}
-                                </span>
-                              );
-                            }
                             return (
                               <span key={cddkey} className="itemSpan">
                                 {ReactHtmlParser(cdd)}
@@ -494,7 +675,7 @@ const SearchResult = ({
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Case Count:</label>
-                        <span className="textSpan">
+                        <span className="textSpan caseCountHighlight">
                           {rst.content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
@@ -502,13 +683,20 @@ const SearchResult = ({
                   )
                 }
                 {
-                  rst.highlight && rst.highlight["sample_assay_method.k"]
-                  ? (
+                  sampleAssayMethodList[idx].length > 0 && (
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Sample Assay Method:</label>
                         {
-                          rst.highlight["sample_assay_method.k"].map((sam, samidx) => {
+                          sampleAssayMethodList[idx].length > 10 ? sampleAssayMethodList[idx].slice(0, 10).map((sam, samidx) => {
+                            const samkey = `sam_${samidx}`;
+                            return (
+                              <span key={samkey} className="itemSpan">
+                                {ReactHtmlParser(sam)}
+                              </span>
+                            );
+                          })
+                          : sampleAssayMethodList[idx].map((sam, samidx) => {
                             const samkey = `sam_${samidx}`;
                             return (
                               <span key={samkey} className="itemSpan">
@@ -517,39 +705,8 @@ const SearchResult = ({
                             );
                           })
                         }
-                      </div>
-                    </div>
-                  ) : rst.content.sample_assay_method && (
-                    <div className="row align-items-start bodyRow">
-                      <div className="col">
-                        <label>Sample Assay Method:</label>
                         {
-                          rst.content.sample_assay_method.length > 10 ? rst.content.sample_assay_method.slice(0, 10).map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            if (samidx === 9) {
-                              return (
-                                <div key={samkey}>
-                                  <span className="itemSpan">
-                                    {sam.n}
-                                  </span>
-                                  <span className="itemContinued">...</span>
-                                </div>
-                              );
-                            }
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {sam.n}
-                              </span>
-                            );
-                          })
-                          : rst.content.sample_assay_method.map((sam, samidx) => {
-                            const samkey = `sam_${samidx}`;
-                            return (
-                              <span key={samkey} className="itemSpan">
-                                {sam.n}
-                              </span>
-                            );
-                          })
+                          sampleAssayMethodList[idx].length > 10 && <span className="itemContinued">...</span>
                         }
                       </div>
                     </div>
@@ -560,7 +717,7 @@ const SearchResult = ({
                     <div className="row align-items-start bodyRow">
                       <div className="col">
                         <label>Sample Count:</label>
-                        <span className="textSpan">
+                        <span className="textSpan sampleCountHighlight">
                           {rst.content.sample_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         </span>
                       </div>
@@ -585,7 +742,15 @@ const SearchResult = ({
                       <div className="col">
                         <label>Other Match:&nbsp;Case Tumor Site:</label>
                         {
-                          caseTumorSiteList[idx].map((cdd, cddidx) => {
+                          caseTumorSiteList[idx].length > 10 ? caseTumorSiteList[idx].slice(0, 10).map((cdd, cddidx) => {
+                            const cddkey = `cdd_${cddidx}`;
+                            return (
+                              <span key={cddkey} className="itemSpan">
+                                {ReactHtmlParser(cdd)}
+                              </span>
+                            );
+                          })
+                          : caseTumorSiteList[idx].map((cdd, cddidx) => {
                             const cddkey = `cdd_${cddidx}`;
                             return (
                               <span key={cddkey} className="itemSpan">
@@ -594,13 +759,49 @@ const SearchResult = ({
                             );
                           })
                         }
+                        {
+                          caseTumorSiteList[idx].length > 10 && <span className="itemContinued">...</span>
+                        }
                       </div>
                     </div>
                   )
                 }
                 {
-                  otherMatches.map((hl, hlidx) => {
+                  projectsList[idx].length > 0 && (
+                    <div className="row align-items-start bodyRow">
+                      <div className="col">
+                        <label>Other Match:&nbsp;Projects:</label>
+                        {
+                          projectsList[idx].length > 10 ? projectsList[idx].slice(0, 10).map((pl, plidx) => {
+                            const plkey = `pl_${plidx}`;
+                            return (
+                              <span key={plkey} className="itemSpan">
+                                {ReactHtmlParser(pl)}
+                              </span>
+                            );
+                          })
+                          : projectsList[idx].map((pl, plidx) => {
+                            const plkey = `cdd_${plidx}`;
+                            return (
+                              <span key={plkey} className="itemSpan">
+                                {ReactHtmlParser(pl)}
+                              </span>
+                            );
+                          })
+                        }
+                        {
+                          projectsList[idx].length > 10 && <span className="itemContinued">...</span>
+                        }
+                      </div>
+                    </div>
+                  )
+                }
+                {
+                  otherMatches.slice(0, 10).map((hl, hlidx) => {
                       const hlKey = `hl_${hl}_${hlidx}`;
+                      let otherLinks = `${(rst.highlight[hl])}`;
+                      otherLinks = otherLinks.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                      otherLinks = otherLinks.split(";");
                       return (
                         <div key={hlKey} className="row align-items-start footerRow">
                           <div className="col">
@@ -609,11 +810,54 @@ const SearchResult = ({
                               {toCapitalize(hl.replace(".k", "").replace(/_/g, " "))}
                             </label>
                             :&nbsp;
-                            {ReactHtmlParser(rst.highlight[hl])}
+                            {/* {ReactHtmlParser(rst.highlight[hl])} */}
+                            {
+                              (otherLinks && otherLinks[0].includes("http")) ? otherLinks.map((ol, olidx) => {
+                                const olkey = `cdd_${olidx}`;
+                                return (
+                                  <span key={olkey} className="itemSpan">
+                                    {ol.includes("http") ? <a href={ol} target="_blank" rel="noreferrer noopener">{ol}</a> : ol}
+                                  </span>
+                                );
+                              })
+                              : ReactHtmlParser(rst.highlight[hl])
+                            }
                           </div>
                         </div>
                       );
                     })
+                }
+                {
+                  additionalMatches.length > 0 && additionalMatches.map((am, amidx) => {
+                    const addkey = `add_${amidx}`;
+                    return (
+                      <div key={addkey} className="row align-items-start footerRow">
+                        <div className="col">
+                          <label>
+                            Other Match:&nbsp;
+                            {am.name}
+                            :&nbsp;
+                          </label>
+                          {
+                            am.matches.map((m, midx) => {
+                              const mraw = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                              if (mraw.startsWith("http")) {
+                                const amkey = `am_${midx}`;
+                                return (
+                                  <span key={amkey} className="itemSpan">
+                                    <a href={mraw} target="_blank" rel="noreferrer noopener">{mraw}</a>
+                                  </span>
+                                );
+                              }
+                              return (
+                                <span className="itemSpan additionalItemSpan">{ReactHtmlParser(m)}</span>
+                              );
+                            })
+                          }
+                        </div>
+                      </div>
+                    );
+                  })
                 }
               </div>
             );
@@ -690,13 +934,24 @@ const SearchResult = ({
                         <td>{rst.content.sample_id}</td>
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
                         <td>
-                          <span
-                            className="typeBlock"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="bottom"
-                            title={tooltip}
-                          >
-                            {rst.content.primary_dataset_scope}
+                          <span className="typeBlock">
+                            <OverlayTrigger
+                              placement="right"
+                              overlay={
+                                (
+                                  <Popover
+                                    id="tooltip-auto"
+                                    style={{
+                                      marginLeft: '5px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                                    }}
+                                  >
+                                    {tooltip}
+                                  </Popover>
+                                )
+                              }
+                            >
+                              <span>{rst.content.primary_dataset_scope}</span>
+                            </OverlayTrigger>
                           </span>
                         </td>
                       </tr>
