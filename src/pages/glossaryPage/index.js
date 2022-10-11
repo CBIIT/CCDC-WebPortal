@@ -235,7 +235,7 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="d">
-                    <h2 className="glossaryItemHeader">dbGap</h2>
+                    <h2 className="glossaryItemHeader">dbGaP</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">The database of genotypes and phenotypes</p>
                     <br />
