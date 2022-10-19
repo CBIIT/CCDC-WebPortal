@@ -39,11 +39,8 @@ const replaceQueryStrPageSize = (query, pageSize) => {
   if (query.get("search_text")) {
     str += `&search_text=${query.get("search_text")}`;
   }
-  if (query.get("resource_type")) {
-    str += `&resource_type=${query.get("resource_type")}`;
-  }
-  if (query.get("data_content_type")) {
-    str += `&data_content_type=${query.get("data_content_type")}`;
+  if (query.get("filterByResource")) {
+    str += `&filterByResource=${query.get("filterByResource")}`;
   }
   str += `&page=1`;
   str += `&pageSize=${pageSize}`;

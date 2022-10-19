@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
 import DataResourceIcons from '../../../components/DataResourceIcons';
@@ -217,7 +219,7 @@ const SearchResult = ({
   resultList,
 }) => {
   const tooltips = {
-    Repository: "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
@@ -275,11 +277,23 @@ const SearchResult = ({
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltip}>
-                        {rst.resource_type}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltip}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{rst.resource_type}</span>
+                    </OverlayTrigger>
                   </ResourceType>
                 </ResourceContact>
                 <DatasetsSummary>

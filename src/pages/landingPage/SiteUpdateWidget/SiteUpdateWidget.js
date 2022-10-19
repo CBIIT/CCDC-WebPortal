@@ -162,7 +162,7 @@ const SiteUpdateWidget = ({
             <WidgetContent>
                 {
                     widgetUpdates.length > 0 && (
-                        <Carousel controls={showArrows} interval={30000}>
+                        <Carousel controls={showArrows} interval={20000}>
                             {
                                 widgetUpdates.map((item, idx) => {
                                     const itemKey = `update_${idx}`;

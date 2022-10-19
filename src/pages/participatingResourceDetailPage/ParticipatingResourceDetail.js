@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -279,7 +281,7 @@ const ParticipatingResourceDetail = ({
 }) => {
   const { id } = useParams();
   const tooltips = {
-    Repository: "Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
+    Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
@@ -354,11 +356,23 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[detail.resource_type]}>
-                        {detail.resource_type}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </DatasetType>
                 </div>
                 <br />
@@ -563,18 +577,24 @@ const ParticipatingResourceDetail = ({
                     <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
-                  {/* <SummaryDatasetType>
-                    <span className="tooltips">
-                      {ds.primary_dataset_scope}
-                      <span className="tooltiptext">{tooltips[ds.primary_dataset_scope]}</span>
-                    </span>
-                  </SummaryDatasetType> */}
                   <SummaryDatasetType>
-                    <span>
-                      <a className="newtooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[ds.primary_dataset_scope]}>
-                        {ds.primary_dataset_scope}
-                      </a>
-                    </span>
+                    <OverlayTrigger
+                      placement="right"
+                      overlay={
+                        (
+                          <Popover
+                            id="tooltip-auto"
+                            style={{
+                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
+                            }}
+                          >
+                            {tooltips[detail.resource_type]}
+                          </Popover>
+                        )
+                      }
+                    >
+                      <span>{detail.resource_type}</span>
+                    </OverlayTrigger>
                   </SummaryDatasetType>
                 </DatasetCard>
               );

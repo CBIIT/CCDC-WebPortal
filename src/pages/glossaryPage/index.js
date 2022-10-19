@@ -29,10 +29,10 @@ const Glossary = () => {
               <div className="filter-links">
                 <nav className="nav justify-content-center">
                   <a className={key === 'A' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('A')}>A</a>
-                  <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">B</a>
+                  <a className={key === 'B' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('B')}>B</a>
                   <a className={key === 'C' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('C')}>C</a>
                   <a className={key === 'D' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('D')}>D</a>
-                  <a className="nav-link disabled" href="#" aria-disabled="true">E</a>
+                  <a className={key === 'E' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('E')}>E</a>
                   <a className={key === 'F' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('F')}>F</a>
                   <a className={key === 'G' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('G')}>G</a>
                   <a className={key === 'H' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('H')}>H</a>
@@ -79,6 +79,19 @@ const Glossary = () => {
                     <p className="glossaryItemDescription">A laboratory test to find and measure the amount of a specific substance.</p>
                     <p className="glossaryItemLink">NCI Dictionary</p>
                     <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/cancer-terms/def/assay</a></p>
+                    <br />
+                    <br />
+                  </div>
+                </>
+              )
+            }
+            {
+              key === 'B' && (
+                <>
+                  <div className="b">
+                    <h2 className="glossaryItemHeader">BASIC3</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Baylor College of Medicine Advancing Sequencing in Childhood Cancer Care</p>
                     <br />
                     <br />
                   </div>
@@ -197,6 +210,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="c">
+                    <h2 className="glossaryItemHeader">CSER</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">University of Michigan Clinical Sequencing Exploratory Research</p>
+                    <br />
+                  </div>
+                  <div className="c">
                     <h2 className="glossaryItemHeader">CT</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Computed Tomography</p>
@@ -213,6 +232,18 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Data Content Type</h2>
                     <span className="glossaryItemType">Resource Structure</span>
                     <p className="glossaryItemDescription">A classification of the type of the data hosted in the data resource’s own repository and which corresponds to the research purpose the data serves or from what part of the research process the data were generated.</p>
+                    <br />
+                  </div>
+                  <div className="d">
+                    <h2 className="glossaryItemHeader">dbGaP</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">The database of genotypes and phenotypes</p>
+                    <br />
+                  </div>
+                  <div className="d">
+                    <h2 className="glossaryItemHeader">DIPG</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Functionally-defined Therapeutic Targets in Diffuse Intrinsic Pontine Glioma</p>
                     <br />
                   </div>
                   <div className="d">
@@ -234,6 +265,19 @@ const Glossary = () => {
               )
             }
             {
+              key === 'E' && (
+                <>
+                  <div className="e">
+                    <h2 className="glossaryItemHeader">ES</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Genomic Sequencing of Ewing&apos;s Sarcoma</p>
+                    <br />
+                    <br />
+                  </div>
+                </>
+              )
+            }
+            {
               key === 'F' && (
                 <>
                   <div className="f">
@@ -246,6 +290,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">FDA</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Food and Drug Admistration</p>
+                    <br />
+                  </div>
+                  <div className="f">
+                    <h2 className="glossaryItemHeader">FL-HCC</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Genomic and Transcriptomic Landscape of Fibrolamellar Hepatocellular Carcinoma</p>
                     <br />
                   </div>
                   <div className="f">
@@ -342,7 +392,7 @@ const Glossary = () => {
                   <div className="k">
                     <h2 className="glossaryItemHeader">KF</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
-                    <p className="glossaryItemDescription">Kids First</p>
+                    <p className="glossaryItemDescription">Kids First Data Resource</p>
                     <br />
                   </div>
                   <div className="k">
@@ -441,6 +491,12 @@ const Glossary = () => {
               key === 'O' && (
                 <>
                   <div className="o">
+                    <h2 className="glossaryItemHeader">OG</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Osteosarcoma Genomics</p>
+                    <br />
+                  </div>
+                  <div className="o">
                     <h2 className="glossaryItemHeader">OT</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Other</p>
@@ -514,12 +570,6 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
-                    <h2 className="glossaryItemHeader">PGDI</h2>
-                    <span className="glossaryItemType">Resource Abbreviation</span>
-                    <p className="glossaryItemDescription">Pediatric Genomic Data Inventory</p>
-                    <br />
-                  </div>
-                  <div className="p">
                     <h2 className="glossaryItemHeader">PPTC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Preclinical Testing Consortium</p>
@@ -571,7 +621,7 @@ const Glossary = () => {
                   <div className="r">
                     <h2 className="glossaryItemHeader">Repository</h2>
                     <span className="glossaryItemType">Resource Type</span>
-                    <p className="glossaryItemDescription">Biomedical data repositories accept submission of relevant data from the community to store, organize, validate, archive, preserve and distribute the data, in compliance with the FAIR Data Principles.  A system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.</p>
+                    <p className="glossaryItemDescription">Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.</p>
                     <br />
                   </div>
                   <div className="r">
@@ -586,6 +636,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Resource Type</h2>
                     <span className="glossaryItemType">Resource Structure</span>
                     <p className="glossaryItemDescription">A classification based on the selection or purpose of information in the resource. Types of systems are: Registry, Research Data Repository, Catalog, or Program.</p>
+                    <br />
+                  </div>
+                  <div className="r">
+                    <h2 className="glossaryItemHeader">RMS</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Genomic Sequencing of Pediatric Rhabdomyosarcoma</p>
                     <br />
                   </div>
                   <div className="r">
