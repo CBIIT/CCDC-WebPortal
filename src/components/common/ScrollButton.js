@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
@@ -41,7 +41,9 @@ const ScrollButton = () => {
         });
     };
 
-    window.addEventListener('scroll', toggleVisible);
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisible);
+    }, []);
 
     return (
         <Button onClick={scrollToTop} style={{display: visible ? 'inline' : 'none'}}>
