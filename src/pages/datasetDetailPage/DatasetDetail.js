@@ -771,13 +771,12 @@ const DatasetDetail = ({
                                         return (
                                           <span key={prokey} className="itemSpan">
                                             {pro.p_k}
-                                            ,&nbsp;
+                                            &nbsp;
                                             {pro.p_v.map((prov, providx) => {
                                               const provkey = `prov_${providx}`;
                                               return (
                                                 <span key={provkey} className="itemSpan">
-                                                  {prov.k}
-                                                  &nbsp;(
+                                                  (
                                                   {prov.v && prov.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                                   {proidx === content.projects.length - 1 ? ")" : "); "}
                                                 </span>
