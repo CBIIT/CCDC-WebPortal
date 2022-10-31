@@ -14,6 +14,7 @@ import Header from "../components/common/Header";
 import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
 import PageNotFound from '../components/common/PageNotFound';
+import ScrollButton from '../components/common/ScrollButton';
 import "react-toastify/dist/ReactToastify.css";
 import '../index.css';
 
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer autoClose={3000} hideProgressBar />
+      <ScrollButton />
       <Footer />
     </>
   );
