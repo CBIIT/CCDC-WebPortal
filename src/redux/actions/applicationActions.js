@@ -13,6 +13,10 @@ export function loadSiteUpdatesSuccess(siteUpdates) {
     return { type: types.LOAD_SITE_UPDATE_SUCCESS, siteUpdates };
 }
 
+export function addSiteUpdatesSuccess(siteUpdates) {
+    return { type: types.ADD_SITE_UPDATE_SUCCESS, siteUpdates };
+}
+
 export function switchPage(pageInfo) {
   return { type: types.SWITCH_PAGE, pageInfo};
 }
@@ -43,11 +47,25 @@ export function loadWidgetUpdates() {
     return func;
 }
 
-export function loadSiteUpdates() {
+export function loadSiteUpdates(pageInfo) {
     const func = function func(dispatch) {
-        return applicationApi.getSiteUpdates()
+        return applicationApi.getSiteUpdates(pageInfo)
         .then(result => {
             dispatch(loadSiteUpdatesSuccess(result.data));
+        })
+        .catch(error => {
+            throw error;
+        });
+    };
+    return func;
+}
+
+export function addSiteUpdates(pageInfo) {
+    const func = function func(dispatch) {
+        return applicationApi.getSiteUpdates(pageInfo)
+        .then(result => {
+            dispatch(addSiteUpdatesSuccess(result.data));
+            return result;
         })
         .catch(error => {
             throw error;

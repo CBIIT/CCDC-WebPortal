@@ -1,9 +1,10 @@
 // import React from 'react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
+import Spinner from 'react-bootstrap/Spinner';
 import ccdcLogoExport from "../../../assets/img/ccdc_logo_export.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 
@@ -130,17 +131,99 @@ const SiteUpdateCardDescription = styled.div`
     }
 `;
 
+const SpinnerContainer = styled.div`
+  position: relative; 
+  left: 50%;
+  width: 100%;
+  bottom: 45px;
+  font-size: 1.5rem;
+  color: grey;
+`;
+
+const BottomInfo = styled.div`
+  Button {
+    left: 50%;
+    width: 100px;
+    position: relative;
+    font-size: 15px;
+    bottom: 50px;
+    background-color: #2DC799;
+    border-width: 0px;
+  }
+
+  Button:hover {
+    background-color: #059268;
+    cursor: pointer;
+   }
+
+  Button:active {
+    background-color: #2DC799;
+  }
+
+  p {
+    left: 45%;
+    position: relative;
+    color: grey;
+    bottom: 50px;
+    font-size: 1.5rem;
+  }
+`;
+
 const SiteUpdateResult = ({
   siteUpdateList,
   onLoadSiteUpdates,
+  onAddSiteUpdates,
 }) => {
     const { hash } = window.location;
+    const [isTotal, setIsTotal] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
+    const pageSize = 3;
+
+    const handleScroll = () => {
+      if (window.innerHeight + document.documentElement.scrollTop + 300 < document.documentElement.offsetHeight || isFetching) return;
+      setIsFetching(true);
+    };
+
+    const handleLoadMore = async () => {
+      const content = {
+        pageInfo: {
+          page: Math.ceil(siteUpdateList.length / pageSize) + 1,
+          pageSize,
+        }
+      };
+      if (isTotal) {
+        return;
+      }
+      setLoading(true);
+      const result = await onAddSiteUpdates(content).catch(error => {
+        throw new Error(`Loading site updates failed: ${error}`);
+      });
+      setLoading(false);
+      if (result.data.length < pageSize) {
+        setIsTotal(true);
+      }
+    };
+
     useEffect(() => {
-      if (siteUpdateList.length === 0) {
-        onLoadSiteUpdates().catch(error => {
+      const f = async () => {
+        const content = {
+          pageInfo: {
+            page: 1,
+            pageSize,
+          }
+        };
+        setLoading(true);
+        await onLoadSiteUpdates(content).catch(error => {
           throw new Error(`Loading site updates failed: ${error}`);
         });
-      }
+        setLoading(false);
+      };
+      f();
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+    useEffect(() => {
       if (siteUpdateList.length > 0) {
         if (hash !== '') {
           const id = hash.replace('#', '');
@@ -149,6 +232,15 @@ const SiteUpdateResult = ({
         }
       }
     }, [siteUpdateList]);
+
+    useEffect(() => {
+      const f = async () => {
+        if (!isFetching) return;
+        await handleLoadMore();
+        setIsFetching(false);
+      };
+      f();
+    }, [isFetching]);
 
     const handleExport = (idx) => {
       const img = document.createElement("img");
@@ -267,6 +359,12 @@ const SiteUpdateResult = ({
           })
         }
       </SiteUpdateResultContainer>
+      <SpinnerContainer>
+        {loading && <Spinner animation="border" />}
+      </SpinnerContainer>
+      <BottomInfo>
+        {isTotal && <p>no more data</p>}
+      </BottomInfo>
     </>
   );
 };
@@ -274,6 +372,7 @@ const SiteUpdateResult = ({
 SiteUpdateResult.propTypes = {
     siteUpdateList: PropTypes.array.isRequired,
     onLoadSiteUpdates: PropTypes.func.isRequired,
+    onAddSiteUpdates: PropTypes.func.isRequired,
 };
 
 export default SiteUpdateResult;
