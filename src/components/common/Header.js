@@ -37,6 +37,15 @@ const Header = () => {
         <a href="/"><img src={logo} alt="ccdc logo" /></a>
       </LogoContainer>
     </LogoBanner>
+    <div
+      id="siteToolTip"
+      style={{
+        position: 'absolute',
+        visibility: 'hidden',
+        maxWidth: '220px',
+        fontSize: 12
+      }}
+    />
     </>
   );
 };

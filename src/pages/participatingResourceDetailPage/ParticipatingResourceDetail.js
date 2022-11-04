@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -286,12 +286,11 @@ const ParticipatingResourceDetail = ({
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
-    Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
+    Program: "A coherent assembly.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
-  window.scrollTo(0, 0);
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
@@ -299,7 +298,22 @@ const ParticipatingResourceDetail = ({
   let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
   if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
   const defaultCollapsed = "show";
+
+  const [pos, setPos] = useState('bottom');
+  const onHover = (event) => {
+    const siteToolTip = document.getElementById('siteToolTip');
+    siteToolTip.innerText = tooltips[detail.resource_type];
+    const targetHeight = siteToolTip.offsetHeight;
+    siteToolTip.innerText = '';
+    if (window.innerHeight - event.target.getBoundingClientRect().bottom < targetHeight + 40) {
+      setPos('top');
+    } else {
+      setPos('bottom');
+    }
+  };
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
         throw new Error(`Loading participating resource detail page failed ${error}`);
@@ -357,7 +371,7 @@ const ParticipatingResourceDetail = ({
                   </HeaderLinks>
                   <DatasetType>
                     <OverlayTrigger
-                      placement="right"
+                      placement={pos}
                       overlay={
                         (
                           <Popover
@@ -371,7 +385,7 @@ const ParticipatingResourceDetail = ({
                         )
                       }
                     >
-                      <span>{detail.resource_type}</span>
+                      <span onMouseEnter={onHover}>{detail.resource_type}</span>
                     </OverlayTrigger>
                   </DatasetType>
                 </div>
@@ -585,7 +599,7 @@ const ParticipatingResourceDetail = ({
                   </DatasetDesc>
                   <SummaryDatasetType>
                     <OverlayTrigger
-                      placement="right"
+                      placement={pos}
                       overlay={
                         (
                           <Popover
@@ -599,7 +613,7 @@ const ParticipatingResourceDetail = ({
                         )
                       }
                     >
-                      <span>{detail.resource_type}</span>
+                      <span onMouseEnter={onHover}>{detail.resource_type}</span>
                     </OverlayTrigger>
                   </SummaryDatasetType>
                 </DatasetCard>
