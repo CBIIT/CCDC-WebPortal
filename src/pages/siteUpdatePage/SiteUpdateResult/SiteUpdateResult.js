@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
 import Spinner from 'react-bootstrap/Spinner';
-import ccdcLogoExport from "../../../assets/img/ccdc_logo_export.png";
+import NCILogoExport from "../../../assets/img/NCI_Logo.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 
 const SiteUpdateResultContainer = styled.div`
@@ -244,7 +244,7 @@ const SiteUpdateResult = ({
 
     const handleExport = (idx) => {
       const img = document.createElement("img");
-      img.src = ccdcLogoExport;
+      img.src = NCILogoExport;
       img.width = '1';
       const element = document.getElementById(`${idx}_desc`);
       const elementClone = element.cloneNode(true);
@@ -300,7 +300,7 @@ const SiteUpdateResult = ({
         const totalPages = pdf.internal.getNumberOfPages();
         for (let i = 1; i <= totalPages; i += 1) {
             pdf.setPage(i);
-            pdf.addImage(img, 'PNG', 15, 7, 100, 15);
+            pdf.addImage(img, 'PNG', 13, 7, 120, 15);
             pdf.setDrawColor("#606061");
             pdf.setLineWidth(1.0);
             pdf.line(15, 27, 195, 27);
