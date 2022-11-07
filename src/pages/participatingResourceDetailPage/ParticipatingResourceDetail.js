@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { Tooltip } from 'bootstrap';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -312,18 +313,32 @@ const ParticipatingResourceDetail = ({
     }
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (!detail.data_resource_id || detail.data_resource_id !== id) {
-      onPageLoadDataresourceDetail(id).catch(error => {
-        throw new Error(`Loading participating resource detail page failed ${error}`);
-      });
+  const initializeTooltip = () => {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map((tooltipTriggerEl) => {
+      return new Tooltip(tooltipTriggerEl);
+    });
+  };
 
-      onPageLoadDataresourceDetailDatasets(id).catch(error => {
-        throw new Error(`Loading participating resource detail datasets failed ${error}`);
-      });
+  // general useEffect
+  useEffect(() => {
+    if (Object.keys(detail).length === 0) {
+      window.scrollTo(0, 0);
+      console.log("frist time");
+      if (!detail.data_resource_id || detail.data_resource_id !== id) {
+        onPageLoadDataresourceDetail(id).catch(error => {
+          throw new Error(`Loading participating resource detail page failed ${error}`);
+        });
+
+        onPageLoadDataresourceDetailDatasets(id).catch(error => {
+          throw new Error(`Loading participating resource detail datasets failed ${error}`);
+        });
+      }
+    } else {
+      console.log("second time");
+      initializeTooltip();
     }
-  }, []);
+  }, [detail]);
 
   return (
     <>
@@ -369,7 +384,7 @@ const ParticipatingResourceDetail = ({
                     </span>
                   </div>
                   </HeaderLinks>
-                  <DatasetType>
+                  {/* <DatasetType>
                     <OverlayTrigger
                       placement={pos}
                       overlay={
@@ -387,6 +402,11 @@ const ParticipatingResourceDetail = ({
                     >
                       <span onMouseEnter={onHover}>{detail.resource_type}</span>
                     </OverlayTrigger>
+                  </DatasetType> */}
+                  <DatasetType>
+                    <button type="button" className="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[detail.resource_type]}>
+                      {detail.resource_type}
+                    </button>
                   </DatasetType>
                 </div>
                 <br />
