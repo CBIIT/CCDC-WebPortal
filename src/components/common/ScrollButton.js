@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { ReactComponent as ScrollToTopButton } from '../../assets/img/Scroll_to_top.svg';
+import { ReactComponent as ScrollToTopButtonActive } from '../../assets/img/Scroll_to_top_active.svg';
 
 const Button = styled.div`
    position: fixed; 
-   width: 46px;
-   left: 95%;
-   bottom: 50px;
-   height: 46px;
-   border-radius:24px;
+   right: 25px;
+   bottom: 25px;
+   height: 50px;
+   width: 50px;
    font-size: 3rem;
    z-index: 1;
    cursor: pointer;
-   color: #2DC799;
-   background-color: #333333;
-   :hover {
-    color: #059268;
-    cursor: pointer;
-    background-color: #fff;
-   }
-   .icon-style {
-    transform: translate(-1px, -14.5px);
-   } 
 `;
 
 const ScrollButton = () => {
     const [visible, setVisible] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
         if (scrolled > 200) {
@@ -46,8 +38,9 @@ const ScrollButton = () => {
     }, []);
 
     return (
-        <Button onClick={scrollToTop} style={{display: visible ? 'inline' : 'none'}}>
-            <i className="fas fa-arrow-circle-up icon-style" />
+        <Button onClick={scrollToTop} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} style={{display: visible ? 'inline' : 'none'}}>
+            {!isHovering && <ScrollToTopButton style={{ display: 'block' }} />}
+            {isHovering && <ScrollToTopButtonActive style={{ display: 'block' }} />}
         </Button>
     );
 };
