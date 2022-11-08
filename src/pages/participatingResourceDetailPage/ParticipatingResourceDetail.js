@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-import { Tooltip } from 'bootstrap';
+import { Popover } from 'bootstrap';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -107,36 +105,6 @@ const DatasetType = styled.div`
     color: #212529;
     text-decoration: none;
   }
-
-  .tooltips {
-    position: relative;
-  }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
-  }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
-  }
 `;
 
 const SummaryDatasetType = styled.div`
@@ -159,36 +127,6 @@ const SummaryDatasetType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-  }
-
-  .tooltips {
-    position: relative;
-  }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
-  }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
   }
 `;
 
@@ -287,11 +225,12 @@ const ParticipatingResourceDetail = ({
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
-    Program: "A coherent assembly.",
+    Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
+  window.scrollTo(0, 0);
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
@@ -300,45 +239,28 @@ const ParticipatingResourceDetail = ({
   if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
   const defaultCollapsed = "show";
 
-  const [pos, setPos] = useState('bottom');
-  const onHover = (event) => {
-    const siteToolTip = document.getElementById('siteToolTip');
-    siteToolTip.innerText = tooltips[detail.resource_type];
-    const targetHeight = siteToolTip.offsetHeight;
-    siteToolTip.innerText = '';
-    if (window.innerHeight - event.target.getBoundingClientRect().bottom < targetHeight + 40) {
-      setPos('top');
-    } else {
-      setPos('bottom');
-    }
-  };
-
-  const initializeTooltip = () => {
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map((tooltipTriggerEl) => {
-      return new Tooltip(tooltipTriggerEl);
+  const initializePopover = () => {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+      return new Popover(popoverTriggerEl);
     });
   };
 
-  // general useEffect
   useEffect(() => {
-    if (Object.keys(detail).length === 0) {
-      window.scrollTo(0, 0);
-      console.log("frist time");
-      if (!detail.data_resource_id || detail.data_resource_id !== id) {
-        onPageLoadDataresourceDetail(id).catch(error => {
-          throw new Error(`Loading participating resource detail page failed ${error}`);
-        });
+    if (!detail.data_resource_id || detail.data_resource_id !== id) {
+      onPageLoadDataresourceDetail(id).catch(error => {
+        throw new Error(`Loading participating resource detail page failed ${error}`);
+      });
 
-        onPageLoadDataresourceDetailDatasets(id).catch(error => {
-          throw new Error(`Loading participating resource detail datasets failed ${error}`);
-        });
-      }
-    } else {
-      console.log("second time");
-      initializeTooltip();
+      onPageLoadDataresourceDetailDatasets(id).catch(error => {
+        throw new Error(`Loading participating resource detail datasets failed ${error}`);
+      });
     }
-  }, [detail]);
+  }, []);
+
+  useEffect(() => {
+    initializePopover();
+  }, [detail, datasets]);
 
   return (
     <>
@@ -384,29 +306,10 @@ const ParticipatingResourceDetail = ({
                     </span>
                   </div>
                   </HeaderLinks>
-                  {/* <DatasetType>
-                    <OverlayTrigger
-                      placement={pos}
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltips[detail.resource_type]}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span onMouseEnter={onHover}>{detail.resource_type}</span>
-                    </OverlayTrigger>
-                  </DatasetType> */}
                   <DatasetType>
-                    <button type="button" className="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title={tooltips[detail.resource_type]}>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[detail.resource_type]}>
                       {detail.resource_type}
-                    </button>
+                    </span>
                   </DatasetType>
                 </div>
                 <br />
@@ -618,23 +521,9 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <OverlayTrigger
-                      placement={pos}
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltips[detail.resource_type]}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span onMouseEnter={onHover}>{detail.resource_type}</span>
-                    </OverlayTrigger>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[detail.resource_type]}>
+                      {detail.resource_type}
+                    </span>
                   </SummaryDatasetType>
                 </DatasetCard>
               );

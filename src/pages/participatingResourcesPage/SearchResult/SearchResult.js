@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import { Popover } from 'bootstrap';
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 import datasetsIcon from "../../../assets/img/datasets_icon.svg";
 import DataResourceIcons from '../../../components/DataResourceIcons';
@@ -138,36 +137,6 @@ const ResourceType = styled.div`
     color: #212529;
     text-decoration: none;
   }
-  
-  .tooltips {
-    position: relative;
-  }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
-  }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
-  }
 `;
 
 const DatasetsSummary = styled.div`
@@ -230,6 +199,16 @@ const SearchResult = ({
   // const handleLoadMore = (error) => {
   //   throw error;
   // };
+  const initializePopover = () => {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+      return new Popover(popoverTriggerEl);
+    });
+  };
+
+  useEffect(() => {
+    initializePopover();
+  }, [resultList]);
 
   return (
     <>
@@ -277,23 +256,9 @@ const SearchResult = ({
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
-                    <OverlayTrigger
-                      placement="right"
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltip}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span>{rst.resource_type}</span>
-                    </OverlayTrigger>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
+                      {rst.resource_type}
+                    </span>
                   </ResourceType>
                 </ResourceContact>
                 <DatasetsSummary>
