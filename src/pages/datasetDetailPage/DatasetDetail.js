@@ -98,10 +98,10 @@ const sortingAdditionalElement = (content) => {
   }
   const result = [];
   if (content.published_in) {
-    result.push("published in");
+    result.push("PUBLISHED IN");
   }
   if (content.projects) {
-    result.push("projects");
+    result.push("PROJECTS");
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
@@ -724,7 +724,7 @@ const DatasetDetail = ({
                         {
                           sortedAdditonals.map((ad, adIdx) => {
                             const adkey = `ad_${adIdx}`;
-                            if (ad === "published in") {
+                            if (ad === "PUBLISHED IN") {
                               let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
                               if (content.published_in) {
                                 publishedLinks = publishedLinks.split(';');
@@ -746,7 +746,7 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
-                            if (ad === "projects") {
+                            if (ad === "PROJECTS") {
                               return (
                                 <>
                                   <div className="dataElementLabel">Projects</div>
