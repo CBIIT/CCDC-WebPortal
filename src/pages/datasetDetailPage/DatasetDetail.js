@@ -151,7 +151,6 @@ const DatasetDetail = ({
       });
     }
   }
-  const sortedGrants = new Map([...grants].sort());
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -788,7 +787,7 @@ const DatasetDetail = ({
                                           <tbody>
                                             <tr>
                                               {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
-                                              {sortedGrants.get(item) ? <td><div className="grantNameDataContainer">{sortedGrants.get(item)}</div></td> : null}
+                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
                                             </tr>
                                           </tbody>
                                         </table>
