@@ -105,7 +105,7 @@ const sortingAdditionalElement = (content) => {
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      result.push(ade.attr_name.toLowerCase());
+      result.push(ade.attr_name.toUpperCase());
     });
   }
   return result.sort();
@@ -135,7 +135,7 @@ const DatasetDetail = ({
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
-      additionalDict[adt.attr_name.toLowerCase()] = adt.attr_set;
+      additionalDict[adt.attr_name.toUpperCase()] = adt.attr_set;
     });
   }
   let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
@@ -145,18 +145,17 @@ const DatasetDetail = ({
   const grantNames = [];
   const grants = new Map();
   if (sortedAdditonals) {
-    sortedAdditonals.forEach((ad) => {
-      if (ad.toUpperCase() === "GRANT ID") {
-        additionalDict[ad].forEach((item, i) => {
-          grantIDs[i] = item.k;
-        });
-      }
-      if (ad.toUpperCase() === "GRANT NAME") {
-        additionalDict[ad].forEach((item, i) => {
-          grantNames[i] = item.k;
-        });
-      }
-    });
+    console.log('sortedAdditonals:', sortedAdditonals);
+    if (sortedAdditonals.includes("GRANT ID")) {
+      additionalDict["GRANT ID"].forEach((item, i) => {
+        grantIDs[i] = item.k;
+      });
+    }
+    if (sortedAdditonals.includes("GRANT NAME")) {
+      additionalDict["GRANT NAME"].forEach((item, i) => {
+        grantNames[i] = item.k;
+      });
+    }
   }
   for (let i = 0; i < grantIDs.length; i += 1) {
     if (grantNames[i] === null) {
@@ -790,7 +789,7 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
-                            if (ad.toUpperCase() === "GRANT ID") {
+                            if (ad === "GRANT ID") {
                               return (
                                 <>
                                   <div className="dataElementLabel">Grant Information</div>
@@ -814,10 +813,10 @@ const DatasetDetail = ({
                             return (
                               <div>
                                 <div key={adkey} className="dataElementLabel">
-                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : ad.toUpperCase()}
-                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : <br />}
+                                  {ad === "GRANT ID" || ad === "GRANT NAME" ? null : ad}
+                                  {ad === "GRANT ID" || ad === "GRANT NAME" ? null : <br />}
                                   {additionalDict[ad].map((adee, adeeidx) => {
-                                    if (ad.toUpperCase() !== "GRANT ID" && ad.toUpperCase() !== "GRANT NAME") {
+                                    if (ad !== "GRANT ID" && ad !== "GRANT NAME") {
                                       const adeekey = `adee_${adeeidx}`;
                                       let additonalText = adee.k === undefined ? "" : adee.k;
                                       if (adee.k) { additonalText = additonalText.split(';'); }
