@@ -417,6 +417,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="m">
+                    <h2 className="glossaryItemHeader">MCI</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Molecular Characterization Initiative</p>
+                    <br />
+                  </div>
+                  <div className="m">
                     <h2 className="glossaryItemHeader">Mixed</h2>
                     <span className="glossaryItemType">Pediatric Specific</span>
                     <p className="glossaryItemDescription">A data resource hosts pediatric, young adult, and adult oncology research data</p>
@@ -432,6 +438,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">MR</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Magnetic Resonance</p>
+                    <br />
+                  </div>
+                  <div className="m">
+                    <h2 className="glossaryItemHeader">MSKCC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Memorial Sloan Kettering Cancer Center</p>
                     <br />
                   </div>
                   <div className="m">
@@ -494,6 +506,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">OG</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Osteosarcoma Genomics</p>
+                    <br />
+                  </div>
+                  <div className="o">
+                    <h2 className="glossaryItemHeader">OHSU</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Oregon Health & Science University</p>
                     <br />
                   </div>
                   <div className="o">
@@ -721,6 +739,12 @@ const Glossary = () => {
             {
               key === 'U' && (
                 <>
+                  <div className="u">
+                    <h2 className="glossaryItemHeader">UCSF</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">University of California, San Francisco</p>
+                    <br />
+                  </div>
                   <div className="u">
                     <h2 className="glossaryItemHeader">US</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
