@@ -98,14 +98,14 @@ const sortingAdditionalElement = (content) => {
   }
   const result = [];
   if (content.published_in) {
-    result.push("published in");
+    result.push("PUBLISHED IN");
   }
   if (content.projects) {
-    result.push("projects");
+    result.push("PROJECTS");
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      result.push(ade.attr_name.toLowerCase());
+      result.push(ade.attr_name.toUpperCase());
     });
   }
   return result.sort();
@@ -135,36 +135,22 @@ const DatasetDetail = ({
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
-      additionalDict[adt.attr_name.toLowerCase()] = adt.attr_set;
+      additionalDict[adt.attr_name.toUpperCase()] = adt.attr_set;
     });
   }
   let pocLinks = !content || content.poc_email === undefined || content.poc_email === null ? "" : content.poc_email;
   if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
   const grantIDs = [];
-  const grantNames = [];
   const grants = new Map();
   if (sortedAdditonals) {
-    sortedAdditonals.forEach((ad) => {
-      if (ad.toUpperCase() === "GRANT ID") {
-        additionalDict[ad].forEach((item, i) => {
-          grantIDs[i] = item.k;
-        });
-      }
-      if (ad.toUpperCase() === "GRANT NAME") {
-        additionalDict[ad].forEach((item, i) => {
-          grantNames[i] = item.k;
-        });
-      }
-    });
-  }
-  for (let i = 0; i < grantIDs.length; i += 1) {
-    if (grantNames[i] === null) {
-      grants.set(grantIDs[i], grantNames[i - 1]);
+    if (sortedAdditonals.includes("GRANT ID")) {
+      additionalDict["GRANT ID"].forEach((item, i) => {
+        grantIDs[i] = item.k;
+        grants.set(item.k, additionalDict["GRANT NAME"][i].k);
+      });
     }
-    grants.set(grantIDs[i], grantNames[i]);
   }
-  const sortedGrants = new Map([...grants].sort());
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -738,7 +724,7 @@ const DatasetDetail = ({
                         {
                           sortedAdditonals.map((ad, adIdx) => {
                             const adkey = `ad_${adIdx}`;
-                            if (ad === "published in") {
+                            if (ad === "PUBLISHED IN") {
                               let publishedLinks = content.published_in === undefined || content.published_in === null ? "" : content.published_in;
                               if (content.published_in) {
                                 publishedLinks = publishedLinks.split(';');
@@ -752,15 +738,17 @@ const DatasetDetail = ({
                                 <>
                                   <div className="dataElementLabel">Published In</div>
                                   <div className="dataElementContentPublished">
-                                    {publishedLinks[0] ? <a href={publishedLinks[0]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a> : null}
-                                    <div>{publishedLinks[1] ? <a href={publishedLinks[1]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a> : null}</div>
-                                    <div>{publishedLinks[2] ? <a href={publishedLinks[2]} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a> : null}</div>
-                                    {/* <a href={content.published_in} target="_blank" rel="noreferrer noopener">{content.published_in}</a> */}
+                                    { publishedLinks ? publishedLinks.map((item, idx) => {
+                                      const key = `sort_${idx}`;
+                                      return (
+                                        <div key={key}><a href={item} className="dataElementContentPublished" target="_blank" rel="noreferrer noopener">{item}</a></div>
+                                      );
+                                    }) : null}
                                   </div>
                                 </>
                               );
                             }
-                            if (ad === "projects") {
+                            if (ad === "PROJECTS") {
                               return (
                                 <>
                                   <div className="dataElementLabel">Projects</div>
@@ -790,7 +778,7 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
-                            if (ad.toUpperCase() === "GRANT ID") {
+                            if (ad === "GRANT ID") {
                               return (
                                 <>
                                   <div className="dataElementLabel">Grant Information</div>
@@ -801,7 +789,7 @@ const DatasetDetail = ({
                                           <tbody>
                                             <tr>
                                               {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
-                                              {sortedGrants.get(item) ? <td><div className="grantNameDataContainer">{sortedGrants.get(item)}</div></td> : null}
+                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
                                             </tr>
                                           </tbody>
                                         </table>
@@ -814,10 +802,10 @@ const DatasetDetail = ({
                             return (
                               <div>
                                 <div key={adkey} className="dataElementLabel">
-                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : ad.toUpperCase()}
-                                  {ad.toUpperCase() === "GRANT ID" || ad.toUpperCase() === "GRANT NAME" ? null : <br />}
+                                  {ad === "GRANT ID" || ad === "GRANT NAME" ? null : ad}
+                                  {ad === "GRANT ID" || ad === "GRANT NAME" ? null : <br />}
                                   {additionalDict[ad].map((adee, adeeidx) => {
-                                    if (ad.toUpperCase() !== "GRANT ID" && ad.toUpperCase() !== "GRANT NAME") {
+                                    if (ad !== "GRANT ID" && ad !== "GRANT NAME") {
                                       const adeekey = `adee_${adeeidx}`;
                                       let additonalText = adee.k === undefined ? "" : adee.k;
                                       if (adee.k) { additonalText = additonalText.split(';'); }
