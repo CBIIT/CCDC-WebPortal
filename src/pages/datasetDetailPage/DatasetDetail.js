@@ -142,13 +142,24 @@ const DatasetDetail = ({
   if (pocLinks) { pocLinks = pocLinks.split(';'); }
   const sortedAdditonals = sortingAdditionalElement(content);
   const grantIDs = [];
+  const grantNames = [];
   const grants = new Map();
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
         grantIDs[i] = item.k;
-        grants.set(item.k, additionalDict["GRANT NAME"][i].k);
       });
+    }
+    if (sortedAdditonals.includes("GRANT NAME")) {
+      additionalDict["GRANT NAME"].forEach((item, i) => {
+        grantNames[i] = item.k;
+      });
+    }
+    for (let i = 0; i < grantIDs.length; i += 1) {
+      if (grantNames[i] === null) {
+        grants.set(grantIDs[i], "");
+      }
+      grants.set(grantIDs[i], grantNames[i]);
     }
   }
   useEffect(() => {
@@ -788,8 +799,14 @@ const DatasetDetail = ({
                                         <table className="table table-borderless">
                                           <tbody>
                                             <tr>
-                                              {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
-                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
+                                              <td width="210px" style={{paddingLeft: "0px"}}>
+                                                <div>
+                                                {
+                                                  item.split(',').join(",\n")
+                                                }
+                                                </div>
+                                              </td>
+                                              <td><div className="grantNameDataContainer">{grants.get(item)}</div></td>
                                             </tr>
                                           </tbody>
                                         </table>
