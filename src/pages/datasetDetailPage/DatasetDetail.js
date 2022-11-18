@@ -799,8 +799,14 @@ const DatasetDetail = ({
                                         <table className="table table-borderless">
                                           <tbody>
                                             <tr>
-                                              {item ? <td width="210px"><div className="grantIDDataContainer">{item}</div></td> : null}
-                                              {grants.get(item) ? <td><div className="grantNameDataContainer">{grants.get(item)}</div></td> : null}
+                                              <td width="210px" style={{paddingLeft: "0px"}}>
+                                                <div>
+                                                {
+                                                  item.split(',').join(",\n")
+                                                }
+                                                </div>
+                                              </td>
+                                              <td><div className="grantNameDataContainer">{grants.get(item)}</div></td>
                                             </tr>
                                           </tbody>
                                         </table>
