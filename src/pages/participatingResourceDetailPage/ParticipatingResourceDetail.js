@@ -430,7 +430,16 @@ const ParticipatingResourceDetail = ({
                         <br />
                           {
                             detail.api
-                            ? <a href={detail.api} target="_blank" rel="noreferrer noopener">{detail.api}</a>
+                            ? detail.api.split(',').map((item, idx) => {
+                              const key = `sort_${idx}`;
+                              let newItem = item.trim();
+                              if (!newItem.startsWith("http")) {
+                                newItem = "".concat("https://", newItem);
+                              }
+                              return (
+                                <div key={key}><a href={newItem} target="_blank" rel="noreferrer noopener">{newItem}</a></div>
+                              );
+                            })
                             : null
                           }
                       </div>
