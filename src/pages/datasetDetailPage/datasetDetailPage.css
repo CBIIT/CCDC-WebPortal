@@ -60,6 +60,7 @@ ul.breadcrumb li a:hover {
   font-family: Inter;
   width: 95%;
   inline-size: 960px;
+  min-height: 120px;
 }
 
 .datasetDetailHeaderLabelLong {
@@ -71,6 +72,7 @@ ul.breadcrumb li a:hover {
   width: 95%;
   inline-size: 960px;
   line-height: 36px;
+  min-height: 120px;
 }
 
 .datasetDetailHeaderLabel2 {
@@ -82,6 +84,7 @@ ul.breadcrumb li a:hover {
   width: 95%;
   inline-size: 960px;
   line-height: 36px;
+  min-height: 120px;
 }
 
 .datasetDetailHeaderLabel3 {
@@ -93,6 +96,7 @@ ul.breadcrumb li a:hover {
   width: 95%;
   inline-size: 960px;
   line-height: 33px;
+  min-height: 120px;
 }
 
 .datasetDetailHeaderLabel4 {
@@ -104,6 +108,7 @@ ul.breadcrumb li a:hover {
   width: 95%;
   inline-size: 960px;
   line-height: 24px;
+  min-height: 120px;
 }
 
 .datasetDetailHeaderContent {

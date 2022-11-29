@@ -90,7 +90,7 @@ const UpdateCardDescription = styled.div`
     font-family: Lato;
     font-size: 14px;
     line-height: 17px;
-    word-break: break-all;
+    word-break: normal;
 
     @media (min-width: 530px) {
         height: 57px;
@@ -112,7 +112,7 @@ const CardDescription = styled.div`
     font-family: Lato;
     font-size: 14px;
     line-height: 17px;
-    word-break: break-all;
+    word-break: normal;
 
     @media (min-width: 530px) {
         height: 57px;
