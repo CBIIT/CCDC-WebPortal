@@ -131,8 +131,6 @@ const DatasetDetail = ({
       grants.set(grantIDs[i], grantNames[i]);
     }
   }
- 
-  const sortedGrants = new Map([...grants].sort());
 
   const initializePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
