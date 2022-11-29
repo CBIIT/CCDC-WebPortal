@@ -576,7 +576,7 @@ const SearchResult = ({
 
   useEffect(() => {
     initializePopover();
-  }, [resultList]);
+  }, [resultList, viewType]);
 
   return (
     <>
@@ -623,10 +623,8 @@ const SearchResult = ({
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
                   </div>
                   <div className="col-sm-4">
-                    <span className="typeBlock">
-                      <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
-                        {rst.content.primary_dataset_scope}
-                      </span>
+                    <span className="typeBlock" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
+                      {rst.content.primary_dataset_scope}
                     </span>
                   </div>
                 </div>
