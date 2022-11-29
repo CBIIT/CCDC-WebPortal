@@ -7,6 +7,8 @@ import DataResourceIcons from '../../components/DataResourceIcons';
 import headerExternalIcon from "../../assets/img/dataset-header.svg";
 import externalIcon from "../../assets/img/dataset-body.svg";
 import './datasetDetailPage.css';
+import DonutChart from '../../components/common/DonutChart';
+import Histogram from '../../components/common/Histogram';
 
 const DatasetResultContainer = styled.div`
   margin: 0 auto;
@@ -61,6 +63,10 @@ const ResourceType = styled.div`
   }
 `;
 
+const GraphicsContainer = styled.div`
+  width: 100%;
+`;
+
 const sortingAdditionalElement = (content) => {
   if (content === undefined) {
     return [];
@@ -113,6 +119,48 @@ const DatasetDetail = ({
   const grantIDs = [];
   const grantNames = [];
   const grants = new Map();
+  const tmp = [{
+    name: 'Asian',
+    value: 5,
+  }, {
+    name: 'Black or African American',
+    value: 3,
+  },
+  {
+    name: 'Native Hawaiian or Other Pacific Islander',
+    value: 2,
+  }, {
+    name: 'Not Reported',
+    value: 1,
+  },
+  {
+    name: 'Other',
+    value: 4,
+  }, {
+    name: 'Unknown',
+    value: 33,
+  }, {
+    name: 'White',
+    value: 81,
+  }];
+  const tmp1 = [
+    {
+      name: "0 to 4 years",
+      value: 105
+    },
+    {
+      name: "5 to 9 years",
+      value: 62
+    },
+    {
+      name: "10 to 14 years",
+      value: 66
+    },
+    {
+      name: "15 to 19 years",
+      value: 20
+    }
+  ];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -131,8 +179,6 @@ const DatasetDetail = ({
       grants.set(grantIDs[i], grantNames[i]);
     }
   }
- 
-  const sortedGrants = new Map([...grants].sort());
 
   const initializePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -823,6 +869,18 @@ const DatasetDetail = ({
                             );
                           })
                         }
+                        <GraphicsContainer>
+                          <DonutChart
+                            data={tmp}
+                            innerRadiusP={65}
+                            outerRadiusP={115}
+                            paddingSpace={2}
+                            textColor="black"
+                          />
+                          <Histogram
+                            data={tmp1}
+                          />
+                        </GraphicsContainer>
                     </div>
                   </div>
                   <br />
