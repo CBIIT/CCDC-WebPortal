@@ -524,8 +524,8 @@ const ParticipatingResourceDetail = ({
                     {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[detail.resource_type]}>
-                      {detail.resource_type}
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[ds.primary_dataset_scope]}>
+                      {ds.primary_dataset_scope}
                     </span>
                   </SummaryDatasetType>
                 </DatasetCard>
