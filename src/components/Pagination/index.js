@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import BSPagination from 'react-bootstrap/Pagination';
 import styled from 'styled-components';
+import { Dropdown } from 'bootstrap';
 import './Pagination.css';
 
 const PaginationContainer = styled.div`
@@ -98,6 +99,17 @@ const Pagination = ({
       sizeClick(size);
     }
   };
+
+  const initializeDropdown = () => {
+    const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+    dropdownElementList.map((dropdownToggleEl) => {
+      return new Dropdown(dropdownToggleEl);
+    });
+  };
+
+  useEffect(() => {
+    initializeDropdown();
+  }, [pageInfo]);
 
   return (
     <PaginationContainer>
