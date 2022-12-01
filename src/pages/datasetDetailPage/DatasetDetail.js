@@ -106,7 +106,7 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
-  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal'];
+  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   window.scrollTo(0, 0);
   const additionalDict = {};
@@ -938,7 +938,35 @@ const DatasetDetail = ({
                         {coreDataElementsMap.size > 0 && (
                           <GraphicsContainer>
                             <div className="coreDataLabel">Charts</div>
-                              {coreDataElementsMap.size}
+                              {
+                                Array.from(coreDataElementsMap.keys()).map((key) => {
+                                  return (
+                                    <div>
+                                      <div className="dataElementLabel">{key}</div>
+                                      {
+                                        coreDataElementsMap.get(key).map((item) => {
+                                          return (
+                                            <p>{item.value}</p>
+                                          );
+                                        })
+                                      }
+                                      {
+                                        (key === 'case_age' || key === 'case_age_at_diagnosis')
+                                        ? (<Histogram data={coreDataElementsMap.get(key)} />)
+                                        : (
+                                            <DonutChart
+                                              data={coreDataElementsMap.get(key)}
+                                              innerRadiusP={65}
+                                              outerRadiusP={115}
+                                              paddingSpace={2}
+                                              textColor="black"
+                                            />
+                                          )
+                                      }
+                                    </div>
+                                  );
+                                })
+                              }
                             <DonutChart
                               data={tmp}
                               innerRadiusP={65}
