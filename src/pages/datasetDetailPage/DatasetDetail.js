@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -106,6 +106,8 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
+  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal'];
+  const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   window.scrollTo(0, 0);
   const additionalDict = {};
   if (content && content.additional) {
@@ -187,6 +189,63 @@ const DatasetDetail = ({
     });
   };
 
+  const generateChartData = (map) => {
+    const chartData = [];
+    let otherValue = 0;
+    if (map.size <= 10) {
+      map.forEach((value, key) => {
+        const obj = {};
+        obj.name = key;
+        obj.value = value;
+        chartData.push(obj);
+      });
+    } else {
+      let i = 0;
+      map.forEach((value, key) => {
+        if (i < 9) {
+          const obj = {};
+          obj.name = key;
+          obj.value = value;
+          chartData.push(obj);
+        } else {
+          otherValue += value;
+        }
+        i += 1;
+      });
+      const obj = {};
+      obj.name = "Other";
+      obj.value = otherValue;
+      chartData.push(obj);
+    }
+    return chartData;
+  };
+
+  const buildChartData = (element) => {
+    const nameValueMap = new Map();
+    let chartData = [];
+    content[element].forEach((item) => {
+      nameValueMap.set(item.n, item.v);
+    });
+    const sortedMap = new Map([...nameValueMap.entries()].sort((a, b) => b[1] - a[1]));
+    if (element === 'case_age' || element === 'case_age_at_diagnosis') {
+      chartData = generateChartData(nameValueMap);
+    } else {
+      chartData = generateChartData(sortedMap);
+    }
+    return chartData;
+  };
+
+  const buildCoreDataElementsList = () => {
+    const elementMap = new Map();
+    coreDataElementsAll.forEach((element) => {
+      if (content[element] !== undefined) {
+        console.log("element", element);
+        elementMap.set(element, buildChartData(element));
+      }
+    });
+    setCoreDataElementsMap(elementMap);
+  };
+
   useEffect(() => {
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
@@ -197,7 +256,14 @@ const DatasetDetail = ({
 
   useEffect(() => {
     initializePopover();
+    if (content) {
+      buildCoreDataElementsList();
+    }
   }, [content]);
+
+  useEffect(() => {
+    console.log("coreDataElementsMap", coreDataElementsMap);
+  }, [coreDataElementsMap]);
 
   return (
     <>
@@ -869,18 +935,22 @@ const DatasetDetail = ({
                             );
                           })
                         }
-                        <GraphicsContainer>
-                          <DonutChart
-                            data={tmp}
-                            innerRadiusP={65}
-                            outerRadiusP={115}
-                            paddingSpace={2}
-                            textColor="black"
-                          />
-                          <Histogram
-                            data={tmp1}
-                          />
-                        </GraphicsContainer>
+                        {coreDataElementsMap.size > 0 && (
+                          <GraphicsContainer>
+                            <div className="coreDataLabel">Charts</div>
+                              {coreDataElementsMap.size}
+                            <DonutChart
+                              data={tmp}
+                              innerRadiusP={65}
+                              outerRadiusP={115}
+                              paddingSpace={2}
+                              textColor="black"
+                            />
+                            <Histogram
+                              data={tmp1}
+                            />
+                          </GraphicsContainer>
+                        )}
                     </div>
                   </div>
                   <br />
