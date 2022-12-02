@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
+import Collapse from 'react-bootstrap/Collapse';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -219,6 +220,7 @@ const ParticipatingResourceDetail = ({
   onPageLoadDataresourceDetailDatasets,
 }) => {
   const { id } = useParams();
+  const [open, setOpen] = useState(true);
   const tooltips = {
     Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
@@ -230,14 +232,13 @@ const ParticipatingResourceDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "resource type": "resource type"
   };
-  window.scrollTo(0, 0);
+
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
   let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
   if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
-  const defaultCollapsed = "show";
 
   const initializePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -247,6 +248,7 @@ const ParticipatingResourceDetail = ({
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
         throw new Error(`Loading participating resource detail page failed ${error}`);
@@ -327,59 +329,58 @@ const ParticipatingResourceDetail = ({
                   <div className="prAboutResourceContainer">
                     <div className="accordion-item-pr">
                       <h2 className="accordion-header-pr">
-                        <div className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
-                        <span>About This Resource</span>
+                        <div aria-hidden="true" onClick={() => setOpen(!open)} className={`accordion-button-pr accordion-button-ccdc-pr ${open ? "" : "collapsed"}`}>
+                          About This Resource
                         </div>
                       </h2>
-                      <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
-                        <div className="prAboutResourceContent">
-                          {detail.description}
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="collapse show" id="collapseExample"> */}
-                    <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
-                      <div className="prResourceToolsContainer">
-                        <div className="prCoreDataLabel">Resource Description</div>
-                        <div className="prDataElementLabel">Resource Type</div>
-                        <div className="prDataElementContent">{detail.resource_type}</div>
-                        <div className="prDataElementLabel">Specialization</div>
-                        <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
-                        <br />
-                        <div className="prDataElementLabel">Data Update Date</div>
-                        {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
-                      </div>
-                      <div className="prDataAccessContainer">
-                        <div className="prAdditionalDataLabel">Data Content Type</div>
+                      <Collapse in={open}>
+                        <div id="collapse1">
+                          <div className="prAboutResourceContent">
+                            {detail.description}
+                          </div>
+                          <div className="prResourceToolsContainer">
+                          <div className="prCoreDataLabel">Resource Description</div>
+                          <div className="prDataElementLabel">Resource Type</div>
+                          <div className="prDataElementContent">{detail.resource_type}</div>
+                          <div className="prDataElementLabel">Specialization</div>
+                          <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
                           <br />
-                          {dataContentTypes}
-                      </div>
-                      <div className="prResourceToolsContainer">
-                        <div className="prCoreDataLabel">Resource Tools</div>
-                        <div className="prDataElementLabel">Visualization Tools</div>
-                        <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                        <div className="prDataElementLabel">Analytic Tools</div>
-                        <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
-                      </div>
-                      <div className="prDataAccessContainer">
-                        <div className="prAdditionalDataLabel">Data Access</div>
-                        {/* <div className="prDataElementLabel">API (Internal)</div> */}
-                        <br />
-                          {
-                            detail.api
-                            ? detail.api.split(',').map((item, idx) => {
-                              const key = `sort_${idx}`;
-                              let newItem = item.trim();
-                              if (!newItem.startsWith("http")) {
-                                newItem = "".concat("https://", newItem);
+                          <div className="prDataElementLabel">Data Update Date</div>
+                          {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
+                          </div>
+                          <div className="prDataAccessContainer">
+                            <div className="prAdditionalDataLabel">Data Content Type</div>
+                              <br />
+                              {dataContentTypes}
+                          </div>
+                          <div className="prResourceToolsContainer">
+                            <div className="prCoreDataLabel">Resource Tools</div>
+                            <div className="prDataElementLabel">Visualization Tools</div>
+                            <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
+                            <div className="prDataElementLabel">Analytic Tools</div>
+                            <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
+                          </div>
+                          <div className="prDataAccessContainer">
+                            <div className="prAdditionalDataLabel">Data Access</div>
+                            {/* <div className="prDataElementLabel">API (Internal)</div> */}
+                            <br />
+                              {
+                                detail.api
+                                ? detail.api.split(',').map((item, idx) => {
+                                  const key = `sort_${idx}`;
+                                  let newItem = item.trim();
+                                  if (!newItem.startsWith("http")) {
+                                    newItem = "".concat("https://", newItem);
+                                  }
+                                  return (
+                                    <div key={key}><a href={newItem} target="_blank" rel="noreferrer noopener">{newItem}</a></div>
+                                  );
+                                })
+                                : null
                               }
-                              return (
-                                <div key={key}><a href={newItem} target="_blank" rel="noreferrer noopener">{newItem}</a></div>
-                              );
-                            })
-                            : null
-                          }
-                      </div>
+                          </div>
+                        </div>
+                      </Collapse>
                     </div>
                   </div>
                 </div>
