@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import headerExternalIcon from "../../assets/img/dataset-header.svg";
 import externalIcon from "../../assets/img/dataset-body.svg";
@@ -65,6 +66,78 @@ const ResourceType = styled.div`
 
 const GraphicsContainer = styled.div`
   width: 100%;
+
+  .show > .customizedToggle  {
+    color: #b98e2f;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: transparent;
+  }
+
+  .show > .customizedToggle:focus  {
+    box-shadow: none;
+  }
+
+  .customizedToggle:focus  {
+    box-shadow: none;
+  }
+
+  .customizedToggle {
+    padding: 5px 5px 5px 5px;
+    margin-top: 10px;
+    color: #b98e2f;
+    /* color: goldenrod; */
+    /* color: #25b39a; */
+    font-size: 16px;
+    font-family: Lato;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .customizedToggle::before {
+    display: inline-block;
+    margin-right: 17px;
+    margin-bottom: -2.5px;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    color: #7A9ABD;
+    font-size: 23px;
+  }
+
+  .show > .customizedToggle::before {
+    border-bottom: 0.3em solid;
+    border-top: 0;
+  }
+
+  .customizedToggle::after {
+    display: none;
+  }
+
+  .dropdownElementLabel {
+    padding: 5px 5px 5px 5px;
+    color: #b98e2f;
+    /* color: goldenrod; */
+    /* color: #25b39a; */
+    font-size: 16px;
+    font-family: Lato;
+    text-transform: uppercase;
+  }
+
+  .dropdownElementLabel:hover {
+    color: black;
+    background-color: #F3F3F3;
+  }
+
+  .customizedDropdownMenu {
+    background-color: #F3F3F3;
+    padding: 5px 30px;
+    box-shadow: 5px 10px 18px #888888;
+  }
 `;
 
 const sortingAdditionalElement = (content) => {
@@ -90,6 +163,7 @@ const DatasetDetail = ({
   details,
   onPageLoadDatasetDetail,
 }) => {
+  console.log("details:", details);
   const { id } = useParams();
   const content = details[id];
   const tooltips = {
@@ -108,7 +182,7 @@ const DatasetDetail = ({
   };
   const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
-  window.scrollTo(0, 0);
+  const [selectedKey, setSelectedKey] = useState("please Select");
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -224,7 +298,9 @@ const DatasetDetail = ({
     const nameValueMap = new Map();
     let chartData = [];
     content[element].forEach((item) => {
-      nameValueMap.set(item.n, item.v);
+      if (/^\d+$/.test(item.v)) {
+        nameValueMap.set(item.n, item.v);
+      }
     });
     const sortedMap = new Map([...nameValueMap.entries()].sort((a, b) => b[1] - a[1]));
     if (element === 'case_age' || element === 'case_age_at_diagnosis') {
@@ -240,13 +316,16 @@ const DatasetDetail = ({
     coreDataElementsAll.forEach((element) => {
       if (content[element] !== undefined) {
         console.log("element", element);
-        elementMap.set(element, buildChartData(element));
+        if (/^\d+$/.test(content[element][0].v)) {
+          elementMap.set(element, buildChartData(element));
+        }
       }
     });
     setCoreDataElementsMap(elementMap);
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
         throw new Error(`Loading dataset detail page failed ${error}`);
@@ -938,7 +1017,37 @@ const DatasetDetail = ({
                         {coreDataElementsMap.size > 0 && (
                           <GraphicsContainer>
                             <div className="coreDataLabel">Charts</div>
+                            <Dropdown>
+                              <Dropdown.Toggle variant="light" className="customizedToggle">
+                                {selectedKey.split('_').join(' ')}
+                              </Dropdown.Toggle>
+                              <Dropdown.Menu className="customizedDropdownMenu">
                               {
+                                Array.from(coreDataElementsMap.keys()).map((key) => {
+                                  return (
+                                    key !== selectedKey && <Dropdown.Item className="dropdownElementLabel" onClick={() => setSelectedKey(key)}>{key.split('_').join(' ')}</Dropdown.Item>
+                                  );
+                                })
+                              }
+                              </Dropdown.Menu>
+                            </Dropdown>
+                            {
+                              (selectedKey === 'case_age' || selectedKey === 'case_age_at_diagnosis')
+                              ? (coreDataElementsMap.get(selectedKey) && <Histogram data={coreDataElementsMap.get(selectedKey)} />)
+                              : (
+                                coreDataElementsMap.get(selectedKey)
+                                && (
+                                    <DonutChart
+                                      data={coreDataElementsMap.get(selectedKey)}
+                                      innerRadiusP={65}
+                                      outerRadiusP={115}
+                                      paddingSpace={2}
+                                      textColor="black"
+                                    />
+                                  )
+                                )
+                            }
+                            {/* {
                                 Array.from(coreDataElementsMap.keys()).map((key) => {
                                   return (
                                     <div>
@@ -966,7 +1075,7 @@ const DatasetDetail = ({
                                     </div>
                                   );
                                 })
-                              }
+                              } */}
                             <DonutChart
                               data={tmp}
                               innerRadiusP={65}
