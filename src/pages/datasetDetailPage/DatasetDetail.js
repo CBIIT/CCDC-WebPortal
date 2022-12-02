@@ -86,8 +86,6 @@ const GraphicsContainer = styled.div`
     padding: 5px 5px 5px 5px;
     margin-top: 10px;
     color: #b98e2f;
-    /* color: goldenrod; */
-    /* color: #25b39a; */
     font-size: 16px;
     font-family: Lato;
     text-transform: uppercase;
@@ -121,8 +119,6 @@ const GraphicsContainer = styled.div`
   .dropdownElementLabel {
     padding: 5px 5px 5px 5px;
     color: #b98e2f;
-    /* color: goldenrod; */
-    /* color: #25b39a; */
     font-size: 16px;
     font-family: Lato;
     text-transform: uppercase;
@@ -163,7 +159,6 @@ const DatasetDetail = ({
   details,
   onPageLoadDatasetDetail,
 }) => {
-  console.log("details:", details);
   const { id } = useParams();
   const content = details[id];
   const tooltips = {
@@ -182,7 +177,7 @@ const DatasetDetail = ({
   };
   const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
-  const [selectedKey, setSelectedKey] = useState("please Select");
+  const [selectedKey, setSelectedKey] = useState("");
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -195,48 +190,48 @@ const DatasetDetail = ({
   const grantIDs = [];
   const grantNames = [];
   const grants = new Map();
-  const tmp = [{
-    name: 'Asian',
-    value: 5,
-  }, {
-    name: 'Black or African American',
-    value: 3,
-  },
-  {
-    name: 'Native Hawaiian or Other Pacific Islander',
-    value: 2,
-  }, {
-    name: 'Not Reported',
-    value: 1,
-  },
-  {
-    name: 'Other',
-    value: 4,
-  }, {
-    name: 'Unknown',
-    value: 33,
-  }, {
-    name: 'White',
-    value: 81,
-  }];
-  const tmp1 = [
-    {
-      name: "0 to 4 years",
-      value: 105
-    },
-    {
-      name: "5 to 9 years",
-      value: 62
-    },
-    {
-      name: "10 to 14 years",
-      value: 66
-    },
-    {
-      name: "15 to 19 years",
-      value: 20
-    }
-  ];
+  // const tmp = [{
+  //   name: 'Asian',
+  //   value: 5,
+  // }, {
+  //   name: 'Black or African American',
+  //   value: 3,
+  // },
+  // {
+  //   name: 'Native Hawaiian or Other Pacific Islander',
+  //   value: 2,
+  // }, {
+  //   name: 'Not Reported',
+  //   value: 1,
+  // },
+  // {
+  //   name: 'Other',
+  //   value: 4,
+  // }, {
+  //   name: 'Unknown',
+  //   value: 33,
+  // }, {
+  //   name: 'White',
+  //   value: 81,
+  // }];
+  // const tmp1 = [
+  //   {
+  //     name: "0 to 4 years",
+  //     value: 105
+  //   },
+  //   {
+  //     name: "5 to 9 years",
+  //     value: 62
+  //   },
+  //   {
+  //     name: "10 to 14 years",
+  //     value: 66
+  //   },
+  //   {
+  //     name: "15 to 19 years",
+  //     value: 20
+  //   }
+  // ];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -315,7 +310,6 @@ const DatasetDetail = ({
     const elementMap = new Map();
     coreDataElementsAll.forEach((element) => {
       if (content[element] !== undefined) {
-        console.log("element", element);
         if (/^\d+$/.test(content[element][0].v)) {
           elementMap.set(element, buildChartData(element));
         }
@@ -341,7 +335,7 @@ const DatasetDetail = ({
   }, [content]);
 
   useEffect(() => {
-    console.log("coreDataElementsMap", coreDataElementsMap);
+    setSelectedKey(coreDataElementsMap.keys().next().value);
   }, [coreDataElementsMap]);
 
   return (
@@ -1017,20 +1011,48 @@ const DatasetDetail = ({
                         {coreDataElementsMap.size > 0 && (
                           <GraphicsContainer>
                             <div className="coreDataLabel">Charts</div>
-                            <Dropdown>
-                              <Dropdown.Toggle variant="light" className="customizedToggle">
-                                {selectedKey.split('_').join(' ')}
-                              </Dropdown.Toggle>
-                              <Dropdown.Menu className="customizedDropdownMenu">
-                              {
-                                Array.from(coreDataElementsMap.keys()).map((key) => {
-                                  return (
-                                    key !== selectedKey && <Dropdown.Item className="dropdownElementLabel" onClick={() => setSelectedKey(key)}>{key.split('_').join(' ')}</Dropdown.Item>
-                                  );
-                                })
-                              }
-                              </Dropdown.Menu>
-                            </Dropdown>
+                            <div onKeyDown={e => e.stopPropagation()} aria-hidden="true">
+                              <Dropdown>
+                                {
+                                  selectedKey
+                                  && (
+                                  <Dropdown.Toggle variant="light" className="customizedToggle">
+                                    {selectedKey.split('_').join(' ')}
+                                  </Dropdown.Toggle>
+                                  )
+                                }
+                                <Dropdown.Menu className="customizedDropdownMenu">
+                                {
+                                  Array.from(coreDataElementsMap.keys()).map((key, idx) => {
+                                    const dropdownKey = `dropdown_${idx}`;
+                                    return (
+                                      key !== selectedKey && <Dropdown.Item key={dropdownKey} className="dropdownElementLabel" onClick={() => setSelectedKey(key)}>{key.split('_').join(' ')}</Dropdown.Item>
+                                    );
+                                  })
+                                }
+                                </Dropdown.Menu>
+                              </Dropdown>
+                            </div>
+                            {
+                              coreDataElementsMap.get(selectedKey)
+                              && (
+                                <div className="dataElementContent">
+                                {
+                                  coreDataElementsMap.get(selectedKey).map((item, idx) => {
+                                    const coreDataKey = `coreDataKey_${idx}`;
+                                    return (
+                                      <span key={coreDataKey} className="itemSpan">
+                                        {item.name}
+                                        &nbsp;(
+                                        {item.value}
+                                        {idx === coreDataElementsMap.get(selectedKey).length - 1 ? ")" : "); "}
+                                      </span>
+                                    );
+                                  })
+                                }
+                                </div>
+                              )
+                            }
                             {
                               (selectedKey === 'case_age' || selectedKey === 'case_age_at_diagnosis')
                               ? (coreDataElementsMap.get(selectedKey) && <Histogram data={coreDataElementsMap.get(selectedKey)} />)
@@ -1047,36 +1069,7 @@ const DatasetDetail = ({
                                   )
                                 )
                             }
-                            {/* {
-                                Array.from(coreDataElementsMap.keys()).map((key) => {
-                                  return (
-                                    <div>
-                                      <div className="dataElementLabel">{key}</div>
-                                      {
-                                        coreDataElementsMap.get(key).map((item) => {
-                                          return (
-                                            <p>{item.value}</p>
-                                          );
-                                        })
-                                      }
-                                      {
-                                        (key === 'case_age' || key === 'case_age_at_diagnosis')
-                                        ? (<Histogram data={coreDataElementsMap.get(key)} />)
-                                        : (
-                                            <DonutChart
-                                              data={coreDataElementsMap.get(key)}
-                                              innerRadiusP={65}
-                                              outerRadiusP={115}
-                                              paddingSpace={2}
-                                              textColor="black"
-                                            />
-                                          )
-                                      }
-                                    </div>
-                                  );
-                                })
-                              } */}
-                            <DonutChart
+                            {/* <DonutChart
                               data={tmp}
                               innerRadiusP={65}
                               outerRadiusP={115}
@@ -1085,7 +1078,7 @@ const DatasetDetail = ({
                             />
                             <Histogram
                               data={tmp1}
-                            />
+                            /> */}
                           </GraphicsContainer>
                         )}
                     </div>
