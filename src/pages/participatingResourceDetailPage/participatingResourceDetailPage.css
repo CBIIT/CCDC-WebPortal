@@ -1,4 +1,3 @@
-
 .prBreadcrumbContainer {
   /* padding: 5px 0px 0px 0px; */
   /* width: 100%; */
@@ -157,6 +156,7 @@
   font-weight: 400;
   background-color: transparent;
   box-shadow: none;
+  cursor: pointer;
 }
 
 .accordion-button-ccdc-pr:focus {
