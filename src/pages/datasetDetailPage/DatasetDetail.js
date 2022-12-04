@@ -134,6 +134,10 @@ const GraphicsContainer = styled.div`
     padding: 5px 30px;
     box-shadow: 5px 10px 18px #888888;
   }
+
+  .chartContainer {
+    padding: 25px 0px;
+  }
 `;
 
 const sortingAdditionalElement = (content) => {
@@ -1044,7 +1048,7 @@ const DatasetDetail = ({
                                       <span key={coreDataKey} className="itemSpan">
                                         {item.name}
                                         &nbsp;(
-                                        {item.value}
+                                        {item.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                         {idx === coreDataElementsMap.get(selectedKey).length - 1 ? ")" : "); "}
                                       </span>
                                     );
@@ -1053,6 +1057,7 @@ const DatasetDetail = ({
                                 </div>
                               )
                             }
+                            <div className="chartContainer">
                             {
                               (selectedKey === 'case_age' || selectedKey === 'case_age_at_diagnosis')
                               ? (coreDataElementsMap.get(selectedKey) && <Histogram data={coreDataElementsMap.get(selectedKey)} />)
@@ -1063,12 +1068,13 @@ const DatasetDetail = ({
                                       data={coreDataElementsMap.get(selectedKey)}
                                       innerRadiusP={65}
                                       outerRadiusP={115}
-                                      paddingSpace={2}
+                                      paddingSpace={coreDataElementsMap.get(selectedKey).length === 1 ? 0 : 2}
                                       textColor="black"
                                     />
                                   )
                                 )
                             }
+                            </div>
                             {/* <DonutChart
                               data={tmp}
                               innerRadiusP={65}

@@ -5,25 +5,21 @@ import {
 } from 'recharts';
 
 const COLORS_EVEN = [
-  '#ffbf17',
-  '#0052b3',
-  '#e6c54f',
-  '#25b39a',
-  '#004187',
-  '#00a272',
+  '#059268',
+  '#1f4c87',
+  '#99afbe',
+  '#e6c44d',
+  '#da6b2e',
   '#0776c6',
-  '#99AFBE',
 ];
 
 const COLORS_ODD = [
-    '#99AFBE',
-    '#ffbf17',
-    '#0052b3',
-    '#e6c54f',
-    '#25b39a',
-    '#004187',
-    '#00a272',
-    '#0776c6',
+  '#0776c6',
+  '#059268',
+  '#1f4c87',
+  '#99afbe',
+  '#e6c44d',
+  '#da6b2e',
 ];
 
 const DonutChart = ({
@@ -91,7 +87,7 @@ const DonutChart = ({
     };
 
     return (
-      <ResponsiveContainer height={400} width="100%">
+      <ResponsiveContainer height={255} width="100%">
         <PieChart>
             <Pie
               activeIndex={activeIndex}
