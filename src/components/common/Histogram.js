@@ -9,7 +9,7 @@ const Histogram = ({
 }) => {
     return (
       <ResponsiveContainer height={300} width="100%">
-        <BarChart width={350} height={250} data={data}>
+        <BarChart width={350} height={250} maxBarSize={80} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
