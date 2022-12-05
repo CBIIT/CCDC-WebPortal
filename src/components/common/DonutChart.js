@@ -14,12 +14,12 @@ const COLORS_EVEN = [
 ];
 
 const COLORS_ODD = [
-  '#0776c6',
   '#059268',
   '#1f4c87',
   '#99afbe',
   '#e6c44d',
   '#da6b2e',
+  '#0776c6',
 ];
 
 const DonutChart = ({

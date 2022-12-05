@@ -133,6 +133,7 @@ const GraphicsContainer = styled.div`
     background-color: #F3F3F3;
     padding: 5px 30px;
     box-shadow: 5px 10px 18px #888888;
+    z-index: 99;
   }
 
   .chartContainer {
