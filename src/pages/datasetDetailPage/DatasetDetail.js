@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import headerExternalIcon from "../../assets/img/dataset-header.svg";
 import externalIcon from "../../assets/img/dataset-body.svg";
@@ -139,6 +139,58 @@ const GraphicsContainer = styled.div`
   .chartContainer {
     padding: 25px 0px;
   }
+
+  .newDropToggle {
+    width: fit-content;
+    padding: 5px 5px;
+    margin-top: 10px;
+    color: #b98e2f;
+    font-size: 16px;
+    font-family: Lato;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .newDropDownMenu {
+    position: absolute;
+    background-color: #F3F3F3;
+    border: 0.5px solid #7A9ABD;
+    border-radius: 5px;
+    padding: 5px 30px;
+    box-shadow: 5px 10px 18px #888888;
+    z-index: 99;
+  }
+
+  .newDropToggle:hover {
+    cursor:pointer;
+  }
+
+  .dropArrowClose {
+    display: inline-block;
+    margin-right: 17px;
+    margin-bottom: -2.5px;
+    vertical-align: 0.255em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    color: #7A9ABD;
+    font-size: 23px;
+  }
+
+  .dropArrowOpen {
+    display: inline-block;
+    margin-right: 17px;
+    margin-bottom: -2.5px;
+    vertical-align: 0.255em;
+    border-top: 0;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.3em solid;
+    border-left: 0.3em solid transparent;
+    color: #7A9ABD;
+    font-size: 23px;
+  }
 `;
 
 const sortingAdditionalElement = (content) => {
@@ -183,6 +235,7 @@ const DatasetDetail = ({
   const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   const [selectedKey, setSelectedKey] = useState("");
+  const [showDropDownMenu, setShowDropDownMenu] = useState(false);
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -195,48 +248,6 @@ const DatasetDetail = ({
   const grantIDs = [];
   const grantNames = [];
   const grants = new Map();
-  // const tmp = [{
-  //   name: 'Asian',
-  //   value: 5,
-  // }, {
-  //   name: 'Black or African American',
-  //   value: 3,
-  // },
-  // {
-  //   name: 'Native Hawaiian or Other Pacific Islander',
-  //   value: 2,
-  // }, {
-  //   name: 'Not Reported',
-  //   value: 1,
-  // },
-  // {
-  //   name: 'Other',
-  //   value: 4,
-  // }, {
-  //   name: 'Unknown',
-  //   value: 33,
-  // }, {
-  //   name: 'White',
-  //   value: 81,
-  // }];
-  // const tmp1 = [
-  //   {
-  //     name: "0 to 4 years",
-  //     value: 105
-  //   },
-  //   {
-  //     name: "5 to 9 years",
-  //     value: 62
-  //   },
-  //   {
-  //     name: "10 to 14 years",
-  //     value: 66
-  //   },
-  //   {
-  //     name: "15 to 19 years",
-  //     value: 20
-  //   }
-  // ];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -342,6 +353,10 @@ const DatasetDetail = ({
   useEffect(() => {
     setSelectedKey(coreDataElementsMap.keys().next().value);
   }, [coreDataElementsMap]);
+
+  useEffect(() => {
+    setShowDropDownMenu(false);
+  }, [selectedKey]);
 
   return (
     <>
@@ -1016,7 +1031,7 @@ const DatasetDetail = ({
                         {coreDataElementsMap.size > 0 && (
                           <GraphicsContainer>
                             <div className="coreDataLabel">Charts</div>
-                            <div onKeyDown={e => e.stopPropagation()} aria-hidden="true">
+                            {/* <div onKeyDown={e => e.stopPropagation()} aria-hidden="true">
                               <Dropdown>
                                 {
                                   selectedKey
@@ -1037,7 +1052,26 @@ const DatasetDetail = ({
                                 }
                                 </Dropdown.Menu>
                               </Dropdown>
+                            </div> */}
+                            <div className="newDropToggle" onClick={() => setShowDropDownMenu(!showDropDownMenu)} aria-hidden="true">
+                              <div className={showDropDownMenu ? "dropArrowOpen" : 'dropArrowClose'} />
+                              {selectedKey && selectedKey.split('_').join(' ')}
                             </div>
+                            {
+                              showDropDownMenu
+                              && (
+                                <div className="newDropDownMenu">
+                                {
+                                  Array.from(coreDataElementsMap.keys()).map((key, idx) => {
+                                    const dropdownKey = `dropdown_${idx}`;
+                                    return (
+                                      key !== selectedKey && <div key={dropdownKey} className="dropdownElementLabel" onClick={() => setSelectedKey(key)} aria-hidden="true">{key.split('_').join(' ')}</div>
+                                    );
+                                  })
+                                }
+                                </div>
+                              )
+                            }
                             {
                               coreDataElementsMap.get(selectedKey)
                               && (
@@ -1076,16 +1110,6 @@ const DatasetDetail = ({
                                 )
                             }
                             </div>
-                            {/* <DonutChart
-                              data={tmp}
-                              innerRadiusP={65}
-                              outerRadiusP={115}
-                              paddingSpace={2}
-                              textColor="black"
-                            />
-                            <Histogram
-                              data={tmp1}
-                            /> */}
                           </GraphicsContainer>
                         )}
                     </div>
