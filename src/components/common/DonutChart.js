@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import {
   ResponsiveContainer, PieChart, Pie, Cell, Sector
@@ -31,6 +31,10 @@ const DonutChart = ({
 }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
+    useEffect(() => {
+      setActiveIndex(0);
+    }, [data]);
+
     const renderActiveShape1 = ({
       cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill, payload, value
     }) => {
@@ -58,7 +62,8 @@ const DonutChart = ({
                     fontWeight="light"
                     fontFamily="Nunito"
                   >
-                      {payload.name}
+                      {payload.name.length > 23 ? <title>{payload.name}</title> : null}
+                      {payload.name.length > 23 ? `${payload.name.substring(0, 23)}...` : payload.name}
                   </text>
                   <Sector
                     cx={cx}
