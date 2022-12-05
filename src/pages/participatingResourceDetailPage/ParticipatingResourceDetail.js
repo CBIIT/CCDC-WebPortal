@@ -355,10 +355,14 @@ const ParticipatingResourceDetail = ({
                           </div>
                           <div className="prResourceToolsContainer">
                             <div className="prCoreDataLabel">Resource Tools</div>
-                            <div className="prDataElementLabel">Visualization Tools</div>
-                            <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                            <div className="prDataElementLabel">Analytic Tools</div>
-                            <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
+                            <div>
+                              <div className="prDataElementLabel">Visualization Tools</div>
+                              <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : ''}</div>
+                            </div>
+                            <div>
+                              <div className="prDataElementLabel">Analytic Tools</div>
+                              <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : ''}</div>
+                            </div>
                           </div>
                           <div className="prDataAccessContainer">
                             <div className="prAdditionalDataLabel">Data Access</div>
