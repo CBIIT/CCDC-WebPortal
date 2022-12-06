@@ -783,6 +783,18 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad === "GEO STUDY IDENTIFIER") {
+                              const geoId = additionalDict["GEO STUDY IDENTIFIER"][0].k;
+                              const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                              return (
+                                <>
+                                  <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
+                                  <div className="additionalDataContent">
+                                    <a href={geoLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{geoId}</a>
+                                  </div>
+                                </>
+                              );
+                            }
                             return (
                               <div>
                                 <div key={adkey} className="dataElementLabel">
