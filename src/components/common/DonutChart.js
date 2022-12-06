@@ -103,6 +103,7 @@ const DonutChart = ({
               outerRadius={outerRadiusP}
               dataKey="value"
               onMouseEnter={onPieEnter}
+              animationBegin={100}
               paddingAngle={paddingSpace}
             >
                 {
