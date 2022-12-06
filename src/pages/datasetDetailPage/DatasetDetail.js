@@ -1032,7 +1032,7 @@ const DatasetDetail = ({
                                       data={coreDataElementsMap.get(selectedKey)}
                                       innerRadiusP={65}
                                       outerRadiusP={115}
-                                      paddingSpace={coreDataElementsMap.get(selectedKey).length === 1 ? 0 : 2}
+                                      paddingSpace={coreDataElementsMap.get(selectedKey).length === 1 ? 0 : 1}
                                       textColor="black"
                                     />
                                   )
