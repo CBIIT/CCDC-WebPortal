@@ -100,7 +100,7 @@ const HomePage = () => {
                                 National Cancer Institute and other pediatric cancer resources.
                                 <br />
                                 <br />
-                                Resources include repositories, registries, programs, knowledgebases,
+                                Resources include repositories, registries, programs, knowledgebases, analytic tools
                                 and catalogs that either manage or refer to data. Users can browse
                                 and filter the list of data resources or enter search terms to identify
                                 data of interest.
