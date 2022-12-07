@@ -57,7 +57,7 @@ const AboutPage = () => {
                     <br />
                     <h2 className="aboutContentHeader1">CCDI Data Catalog</h2>
                     <p style={{ paddingBottom: '10px' }}>
-                        The Childhood Cancer Data Catalog (CCDC) is an inventory of pediatric oncology data resources, including childhood cancer repositories, registries, knowledgebases, analytic tools and catalogs that either
+                        The Childhood Cancer Data Catalog (CCDC) is an inventory of pediatric oncology data resources, including childhood cancer repositories, registries, programs, knowledgebases, analytic tools and catalogs that either
                         manage or refer to data. The data catalog is intended to help researchers, clinicians, and citizen scientists learn about existing pediatric data resources to develop new biomedical hypotheses,
                         analyze the data for clinical or therapeutic efficacy, and foster connections within the community to existing pediatric oncology research sites.
                     </p>
