@@ -227,6 +227,7 @@ const ParticipatingResourceDetail = ({
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
+    AnalyticTool: "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
     "resource type": "resource type"
   };
 
@@ -306,7 +307,7 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[detail.resource_type]}>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={detail.resource_type && tooltips[detail.resource_type.split(' ').join('')]}>
                       {detail.resource_type}
                     </span>
                   </DatasetType>
