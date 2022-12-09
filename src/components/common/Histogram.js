@@ -12,9 +12,9 @@ const Histogram = ({
       const newArr = [];
       for (let i = 0; i < data.length; i += 1) {
         const newItem = {};
-        if (data[i].name.includes("<40")) {
+        if (data[i].name.toLowerCase().includes("pediatric and young adult (<40 years)")) {
           newItem.name = "<40";
-        } else if (data[i].name.toUpperCase().includes("GREATER")) {
+        } else if (data[i].name.toUpperCase().includes("GREATER THAN 39 YEARS")) {
           newItem.name = ">39";
         } else {
           newItem.name = data[i].name.replace("years", "").trim();
