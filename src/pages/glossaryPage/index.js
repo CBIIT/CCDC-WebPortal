@@ -74,6 +74,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="a">
+                    <h2 className="glossaryItemHeader">Analytic Tool</h2>
+                    <span className="glossaryItemType">Data Content Type</span>
+                    <p className="glossaryItemDescription">Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.</p>
+                    <br />
+                  </div>
+                  <div className="a">
                     <h2 className="glossaryItemHeader">Assay</h2>
                     <span className="glossaryItemType">Primary Dataset Scope</span>
                     <p className="glossaryItemDescription">A laboratory test to find and measure the amount of a specific substance.</p>
@@ -205,7 +211,7 @@ const Glossary = () => {
                   </div>
                   <div className="c">
                     <h2 className="glossaryItemHeader">CR</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Computed Radiography</p>
                     <br />
                   </div>
@@ -217,7 +223,7 @@ const Glossary = () => {
                   </div>
                   <div className="c">
                     <h2 className="glossaryItemHeader">CT</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Computed Tomography</p>
                     <br />
                     <br />
@@ -248,7 +254,7 @@ const Glossary = () => {
                   </div>
                   <div className="d">
                     <h2 className="glossaryItemHeader">DX</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Digital Radiography</p>
                     <br />
                   </div>
@@ -321,6 +327,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Genomics/Omics</h2>
                     <span className="glossaryItemType">Data Content Type</span>
                     <p className="glossaryItemDescription">Includes DNA/RNA sequence data, proteomic data, transcriptomic data, etc.</p>
+                    <br />
+                  </div>
+                  <div className="g">
+                    <h2 className="glossaryItemHeader">GEO</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Gene Expression Omnibus</p>
                     <br />
                     <br />
                   </div>
@@ -436,7 +448,7 @@ const Glossary = () => {
                   </div>
                   <div className="m">
                     <h2 className="glossaryItemHeader">MR</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Magnetic Resonance</p>
                     <br />
                   </div>
@@ -485,7 +497,7 @@ const Glossary = () => {
                   </div>
                   <div className="n">
                     <h2 className="glossaryItemHeader">NM</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Nuclear Medicine</p>
                     <br />
                   </div>
@@ -516,7 +528,7 @@ const Glossary = () => {
                   </div>
                   <div className="o">
                     <h2 className="glossaryItemHeader">OT</h2>
-                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Other</p>
                     <br />
                     <br />
@@ -612,8 +624,14 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
+                    <h2 className="glossaryItemHeader">PROSPR</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Population-based Research to Optimize the Screening Process</p>
+                    <br />
+                  </div>
+                  <div className="p">
                     <h2 className="glossaryItemHeader">PT</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Positrom Emission Tomography (PET)</p>
                     <br />
                     <br />
@@ -664,13 +682,13 @@ const Glossary = () => {
                   </div>
                   <div className="r">
                     <h2 className="glossaryItemHeader">RTIMAGE</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Radiotherapy Image</p>
                     <br />
                   </div>
                   <div className="r">
                     <h2 className="glossaryItemHeader">RTSTRUCT</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Radiotherapy Structure Set</p>
                     <br />
                     <br />
@@ -691,8 +709,14 @@ const Glossary = () => {
                   </div>
                   <div className="s">
                     <h2 className="glossaryItemHeader">SC</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Secondary Capture for Diagnostic Use</p>
+                    <br />
+                  </div>
+                  <div className="s">
+                    <h2 className="glossaryItemHeader">ScPCA</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Single-cell Pediatric Cancer Atlas</p>
                     <br />
                   </div>
                   <div className="s">
@@ -747,7 +771,7 @@ const Glossary = () => {
                   </div>
                   <div className="u">
                     <h2 className="glossaryItemHeader">US</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Ultrasound</p>
                     <br />
                   </div>
@@ -766,7 +790,7 @@ const Glossary = () => {
                 <>
                   <div className="x">
                     <h2 className="glossaryItemHeader">XA</h2>
-                    <span className="glossaryItemType">General Abbreviation</span>
+                    <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">X-Ray Angiography</p>
                     <br />
                   </div>

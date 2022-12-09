@@ -111,8 +111,6 @@ const DatasetType = styled.div`
 const SummaryDatasetType = styled.div`
   width: 98%;
   text-align: right;
-  margin-top: -30px;
-  margin-bottom: -5px;
   text-transform: uppercase;
   font-size: 11px;
   font-family: Inter;
@@ -183,7 +181,7 @@ const DatasetCard = styled.div`
 const DatasetHeader = styled.div`
   width: 100%;
   display: flex;
-  height: 60px;
+  height: 40px;
 `;
 
 const DatasetTitle = styled.div`
@@ -206,7 +204,6 @@ const DatasetTitle = styled.div`
 const DatasetDesc = styled.div`
   width: 100%;
   // display: inline;
-  margin-top: -15px;
   word-wrap: break-word;
   hyphens: auto;
   line-height: 32px;
@@ -230,6 +227,7 @@ const ParticipatingResourceDetail = ({
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
+    AnalyticTool: "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
     "resource type": "resource type"
   };
 
@@ -309,7 +307,7 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[detail.resource_type]}>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={detail.resource_type && tooltips[detail.resource_type.split(' ').join('')]}>
                       {detail.resource_type}
                     </span>
                   </DatasetType>
@@ -355,10 +353,14 @@ const ParticipatingResourceDetail = ({
                           </div>
                           <div className="prResourceToolsContainer">
                             <div className="prCoreDataLabel">Resource Tools</div>
-                            <div className="prDataElementLabel">Visualization Tools</div>
-                            <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                            <div className="prDataElementLabel">Analytic Tools</div>
-                            <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
+                            <div>
+                              <div className="prDataElementLabel">Visualization Tools</div>
+                              <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : ''}</div>
+                            </div>
+                            <div>
+                              <div className="prDataElementLabel">Analytic Tools</div>
+                              <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : ''}</div>
+                            </div>
                           </div>
                           <div className="prDataAccessContainer">
                             <div className="prAdditionalDataLabel">Data Access</div>
@@ -416,8 +418,6 @@ const ParticipatingResourceDetail = ({
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
               const linkto = `/dataset/${ds.dataset_id}`;
-              let publishedLinks = ds.published_in === undefined || ds.published_in === null ? "" : ds.published_in;
-              if (ds.published_in) { publishedLinks = publishedLinks.split(';'); }
               return (
                 <DatasetCard key={key}>
                   <DatasetHeader>
@@ -519,10 +519,15 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
-                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
-                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
-                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
-                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
+                    {
+                      ds.published_in && ds.published_in.split(";").map((link, linkidx) => {
+                        const newlink = link.trim();
+                        const linkkey = `link_${linkidx}`;
+                        return (
+                          <div key={linkkey} className={linkidx === 0 ? "summaryDataElementPublished" : null}><DataLink><a href={newlink} target="_blank" rel="noreferrer noopener">{newlink}</a></DataLink></div>
+                        );
+                      })
+                    }
                   </DatasetDesc>
                   <SummaryDatasetType>
                     <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[ds.primary_dataset_scope]}>
