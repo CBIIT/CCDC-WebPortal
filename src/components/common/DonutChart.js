@@ -48,7 +48,7 @@ const DonutChart = ({
                     fill={textColor}
                     fontSize="12px"
                     fontWeight="bold"
-                    fontFamily="Nunito"
+                    fontFamily="Lato"
                   >
                       {value}
                   </text>
@@ -60,7 +60,7 @@ const DonutChart = ({
                     fill={textColor}
                     fontSize="12px"
                     fontWeight="light"
-                    fontFamily="Nunito"
+                    fontFamily="Lato"
                   >
                       {payload.name.length > 20 ? <title>{payload.name}</title> : null}
                       {payload.name.length > 20 ? `${payload.name.substring(0, 20)}...` : payload.name}
