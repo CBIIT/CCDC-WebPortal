@@ -34,11 +34,11 @@ const Histogram = ({
           margin={{left: 15, bottom: 20}}
         >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" tick={{fontSize: 11}}>
+            <XAxis dataKey="name" tick={{fontSize: 12}}>
               <Label value="Age (Years)" fill="#666" offset={-15} position="insideBottom" />
             </XAxis>
-            <YAxis tick={{fontSize: 11}}>
-              <Label value="Cases" fill="#666" angle={-90} position="insideLeft" style={{textAnchor: 'middle'}} />
+            <YAxis tick={{fontSize: 12}}>
+              <Label value="Cases" fill="#666" offset={-3} angle={-90} position="insideLeft" style={{textAnchor: 'middle'}} />
             </YAxis>
             <Tooltip />
             <Bar dataKey="Cases" fill="#00a272" />
