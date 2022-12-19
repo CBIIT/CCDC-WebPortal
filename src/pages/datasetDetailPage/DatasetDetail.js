@@ -38,6 +38,14 @@ const DatasetBody = styled.div`
     padding-right: 30px;
     background-size: 32px;
   }
+
+  .datasetDesLinks {
+    margin-top: 10px;
+    color: #00a272;
+    text-transform: none;
+    max-width: 95%;
+    word-break: break-all;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -187,6 +195,7 @@ const DatasetDetail = ({
   const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   const [selectedKey, setSelectedKey] = useState("");
+  const [datasetDes, setDatasetDes] = useState([]);
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -285,6 +294,33 @@ const DatasetDetail = ({
     setCoreDataElementsMap(elementMap);
   };
 
+  const buildDatasetDescArr = () => {
+    const arr = content.desc.split("http");
+    let newArr = [];
+    if (arr.length > 1) {
+      newArr.push(arr[0]);
+      for (let i = 1; i < arr.length; i += 1) {
+          const urlArr = arr[i].split(" ");
+          const url = urlArr[0];
+          const urlLastChar = url[url.length - 1];
+          if (",;.()<>{}".includes(urlLastChar)) {
+              const newUrl = "http".concat(url.substring(0, url.length - 1));
+              newArr.push(newUrl);
+              newArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+          } else {
+            const newUrl = "http".concat(url);
+            newArr.push(newUrl);
+            if (urlArr.length !== 1) {
+                newArr.push(arr[i].split(url)[1]);
+            }
+          }
+      }
+  } else {
+      newArr = arr;
+  }
+    setDatasetDes(newArr);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!content) {
@@ -298,6 +334,7 @@ const DatasetDetail = ({
     initializePopover();
     if (content) {
       buildCoreDataElementsList();
+      buildDatasetDescArr();
     }
   }, [content]);
 
@@ -368,7 +405,20 @@ const DatasetDetail = ({
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
-                    <div className="aboutDatasetContent">{content.desc ? content.desc : null}</div>
+                    {content.desc && (
+                      <div className="aboutDatasetContent">
+                        {
+                          datasetDes.map((item, desidx) => {
+                            const deskey = `des_${desidx}`;
+                            return (
+                              item.includes("http")
+                              ? <a key={deskey} href={item} className="datasetDesLinks" target="_blank" rel="noreferrer noopener">{item}</a>
+                              : <a key={deskey}>{item}</a>
+                            );
+                          })
+                        }
+                      </div>
+                    )}
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
