@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
 import Spinner from 'react-bootstrap/Spinner';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
 import NCILogoExport from "../../../assets/img/NCI_Logo.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
@@ -17,10 +17,6 @@ const SiteUpdateResultContainer = styled.div`
   width: 100%;
   display: grid;
   padding: 0 0 50px 0;
-
-  .contentTypeTooltips {
-    color: red;
-  }
 `;
 
 const ResultInfo = styled.div`
@@ -386,14 +382,13 @@ const SiteUpdateResult = ({
                               placement="bottom"
                               overlay={
                                 (
-                                  <Tooltip
-                                    className="contentTypeTooltips"
+                                  <Popover
                                     style={{
                                       marginLeft: '0px', padding: '10px', fontSize: '12px'
                                     }}
                                   >
-                                      {newTooltip}
-                                  </Tooltip>
+                                    {newTooltip}
+                                  </Popover>
                                 )
                               }
                             >
