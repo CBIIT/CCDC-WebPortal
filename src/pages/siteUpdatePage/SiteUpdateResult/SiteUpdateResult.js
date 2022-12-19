@@ -5,17 +5,22 @@ import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
 import Spinner from 'react-bootstrap/Spinner';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import NCILogoExport from "../../../assets/img/NCI_Logo.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
-import { ReactComponent as ClinicalTrialsIcon } from '../../../assets/img/ClinicalTrials.icon.svg';
-import { ReactComponent as GenomicsIcon } from '../../../assets/img/Genomics.icon.svg';
-import { ReactComponent as ImagingIcon } from '../../../assets/img/Imaging.icon.svg';
-import { ReactComponent as XenograftIcon } from '../../../assets/img/Xenograft.icon.svg';
+import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
+import GenomicsIcon from '../../../assets/img/Genomics.icon.svg';
+import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
+import XenograftIcon from '../../../assets/img/Xenograft.icon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
   display: grid;
   padding: 0 0 50px 0;
+
+  .contentTypeTooltips {
+    color: red;
+  }
 `;
 
 const ResultInfo = styled.div`
@@ -200,6 +205,12 @@ const SiteUpdateResult = ({
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const pageSize = 3;
+    const iconSrc = {
+                      Clinical: ClinicalTrialsIcon,
+                      GenomicsOmics: GenomicsIcon,
+                      Imaging: ImagingIcon,
+                      Xenograft: XenograftIcon
+                    };
 
     const handleScroll = () => {
       if (window.innerHeight + document.documentElement.scrollTop + 300 < document.documentElement.offsetHeight || isFetching) return;
@@ -364,10 +375,33 @@ const SiteUpdateResult = ({
                   { item.content_type
                   && (
                     <DataContentType>
-                      { item.content_type.includes("Clinical") && <ClinicalTrialsIcon className="typeIcon" />}
-                      { item.content_type.includes("Genomics/Omics") && <GenomicsIcon className="typeIcon" /> }
-                      { item.content_type.includes("Imaging") && <ImagingIcon className="typeIcon" /> }
-                      { item.content_type.includes("Xenograft") && <XenograftIcon className="typeIcon" /> }
+                      {
+                        item.content_type.split(",").map((type, typeidx) => {
+                          const typekey = `update_${typeidx}`;
+                          const newType = type.trim().replace("/", "");
+                          const newTooltip = type.trim();
+                          return (
+                            <OverlayTrigger
+                              key={typekey}
+                              placement="bottom"
+                              overlay={
+                                (
+                                  <Tooltip
+                                    className="contentTypeTooltips"
+                                    style={{
+                                      marginLeft: '0px', padding: '10px', fontSize: '12px'
+                                    }}
+                                  >
+                                      {newTooltip}
+                                  </Tooltip>
+                                )
+                              }
+                            >
+                              <img src={iconSrc[newType]} className="typeIcon" alt="typeIcon" />
+                            </OverlayTrigger>
+                          );
+                        })
+                      }
                     </DataContentType>
                   )}
                   <SiteUpdateExport>
