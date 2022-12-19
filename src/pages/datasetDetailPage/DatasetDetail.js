@@ -298,38 +298,26 @@ const DatasetDetail = ({
     const arr = content.desc.split("http");
     let newArr = [];
     if (arr.length > 1) {
-        newArr.push(arr[0]);
-        for (let i = 1; i < arr.length; i += 1) {
-            let linkStr = "http";
-            for (let j = 0; j < arr[i].length; j += 1) {
-                if (',; '.includes(arr[i][j])) {
-                    console.log(arr[i][j]);
-                    newArr.push(linkStr);
-                    newArr.push(arr[i].substring(j, arr[i].length));
-                    break;
-                } else if (arr[i][j] === '.') {
-                    if (j === arr[i].length - 1) {
-                        newArr.push(linkStr);
-                        newArr.push('.');
-                        break;
-                    } else if (arr[i][j + 1] === ' ') {
-                        newArr.push(linkStr);
-                        newArr.push(arr[i].substring(j, arr[i].length));
-                        break;
-                    } else {
-                        linkStr = linkStr.concat(arr[i][j]);
-                    }
-                } else if (j === arr[i].length - 1) {
-                    linkStr = linkStr.concat(arr[i][j]);
-                    newArr.push(linkStr);
-                } else {
-                    linkStr = linkStr.concat(arr[i][j]);
-                }
+      newArr.push(arr[0]);
+      for (let i = 1; i < arr.length; i += 1) {
+          const urlArr = arr[i].split(" ");
+          const url = urlArr[0];
+          const urlLastChar = url[url.length - 1];
+          if (",;.()<>{}".includes(urlLastChar)) {
+              const newUrl = "http".concat(url.substring(0, url.length - 1));
+              newArr.push(newUrl);
+              newArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+          } else {
+            const newUrl = "http".concat(url);
+            newArr.push(newUrl);
+            if (urlArr.length !== 1) {
+                newArr.push(arr[i].split(url)[1]);
             }
-        }
-    } else {
-        newArr = arr;
-    }
+          }
+      }
+  } else {
+      newArr = arr;
+  }
     setDatasetDes(newArr);
   };
 
