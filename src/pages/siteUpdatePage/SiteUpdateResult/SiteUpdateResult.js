@@ -384,7 +384,7 @@ const SiteUpdateResult = ({
                                 (
                                   <Popover
                                     style={{
-                                      marginLeft: '0px', padding: '10px', fontSize: '12px'
+                                      marginLeft: '0px', padding: '10px', fontSize: '12px', zIndex: 99
                                     }}
                                   >
                                     {newTooltip}
