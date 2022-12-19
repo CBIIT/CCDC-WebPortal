@@ -7,6 +7,10 @@ import html2pdf from "html2pdf.js";
 import Spinner from 'react-bootstrap/Spinner';
 import NCILogoExport from "../../../assets/img/NCI_Logo.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
+import { ReactComponent as ClinicalTrialsIcon } from '../../../assets/img/ClinicalTrials.icon.svg';
+import { ReactComponent as GenomicsIcon } from '../../../assets/img/Genomics.icon.svg';
+import { ReactComponent as ImagingIcon } from '../../../assets/img/Imaging.icon.svg';
+import { ReactComponent as XenograftIcon } from '../../../assets/img/Xenograft.icon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
@@ -52,8 +56,25 @@ const SiteUpdateCardTitle = styled.div`
     line-height: 23px;
     height: 38px;
     border-bottom: 2px solid #004187;
-    margin: 5px 0px 20px 0px;
+    margin: 5px 0px 5px 0px;
     padding-bottom: 10px;
+`;
+
+const DataContentType = styled.div`
+  font-size: 3rem;
+  line-height: 23px;
+  border-bottom: 2px solid lightgray;
+  margin: 0px 0px 10px 0px;
+  padding-bottom: 5px;
+
+  .typeIcon {
+    height: 30px;
+    margin: 0px 8px 0px 8px;
+  }
+
+  .typeIcon:hover {
+    cursor: pointer;
+  }
 `;
 
 const SiteUpdateExport = styled.div`
@@ -340,6 +361,15 @@ const SiteUpdateResult = ({
                   <SiteUpdateCardTitle id={`post${item.id}_title`} title={item.title}>
                     {item.title}
                   </SiteUpdateCardTitle>
+                  { item.content_type
+                  && (
+                    <DataContentType>
+                      { item.content_type.includes("Clinical") && <ClinicalTrialsIcon className="typeIcon" />}
+                      { item.content_type.includes("Genomics/Omics") && <GenomicsIcon className="typeIcon" /> }
+                      { item.content_type.includes("Imaging") && <ImagingIcon className="typeIcon" /> }
+                      { item.content_type.includes("Xenograft") && <XenograftIcon className="typeIcon" /> }
+                    </DataContentType>
+                  )}
                   <SiteUpdateExport>
                     <a href="#" role="button" className="buttonStyle" onClick={() => handleExport(`post${item.id}`)}>
                       <span className="spanText">
