@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Accordion from '../../../components/Accordion';
+import clearAllIcon from '../../../assets/img/clearAllIcon.svg';
 
 const FilterSection = styled.div`
   padding-top: 5px;
@@ -18,6 +19,23 @@ const FilterLabel = styled.div`
 
   span {
     font-size: 21px;
+  }
+
+  .clearAllButtonContainer {
+    width: 22px;
+    height: 22px;
+    margin-left: 40px;
+  }
+
+  .clearAllButton {
+    width: 22px;
+    height: 22px;
+  }
+
+  .clearAllButton:hover {
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
   }
 `;
 
@@ -42,6 +60,9 @@ const Filters = ({
     <FilterSection>
       <FilterLabel>
         <span>Resource Filter</span>
+        <span className="clearAllButtonContainer">
+            <img className="clearAllButton" src={clearAllIcon} alt="clear-all" />
+        </span>
       </FilterLabel>
       <FilterBlock>
         <Accordion domain="dataresource" fields={["Resource Type", "Data Content Type"]} />
