@@ -5,6 +5,7 @@ import Accordion from '../../../components/Accordion';
 
 const FilterSection = styled.div`
   padding-top: 5px;
+  border-top: 3px solid #c3d5e0;
 `;
 
 const FilterLabel = styled.div`
@@ -12,7 +13,7 @@ const FilterLabel = styled.div`
   margin: 0 5px;
   padding: 5px 10px 5px 10px;
   color: #004187;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.4rem;
 
   span {
@@ -40,7 +41,7 @@ const Filters = ({
   return (
     <FilterSection>
       <FilterLabel>
-        <span>Research Description</span>
+        <span>Resource Filter</span>
       </FilterLabel>
       <FilterBlock>
         <Accordion domain="dataresource" fields={["Resource Type", "Data Content Type"]} />
