@@ -65,7 +65,7 @@ const DataContentType = styled.div`
   line-height: 23px;
   border-bottom: 2px solid lightgray;
   margin: 0px 0px 10px 0px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 
   .typeIcon {
     height: 30px;
@@ -73,6 +73,15 @@ const DataContentType = styled.div`
   }
 
   .typeIcon:hover {
+    cursor: pointer;
+  }
+
+  .clinicalIcon {
+    height: 35px;
+    margin: 0px 8px 0px 8px;
+  }
+
+  .clinicalIcon:hover {
     cursor: pointer;
   }
 `;
@@ -391,7 +400,7 @@ const SiteUpdateResult = ({
                                 )
                               }
                             >
-                              <img src={iconSrc[newType]} className="typeIcon" alt="typeIcon" />
+                              <img src={iconSrc[newType]} className={newType === "Clinical" ? "clinicalIcon" : "typeIcon"} alt="typeIcon" />
                             </OverlayTrigger>
                           );
                         })
