@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Accordion from '../../../components/Accordion';
@@ -21,21 +25,23 @@ const FilterLabel = styled.div`
     font-size: 21px;
   }
 
-  .clearAllButtonContainer {
-    width: 22px;
-    height: 22px;
-    margin-left: 40px;
-  }
-
   .clearAllButton {
     width: 22px;
     height: 22px;
+    margin-left: 42px;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
   }
 
   .clearAllButton:hover {
     width: 23px;
     height: 23px;
     cursor: pointer;
+  }
+
+  .clearAllButton img {
+    padding-bottom: 4px;
   }
 `;
 
@@ -44,10 +50,26 @@ const FilterBlock = styled.div`
   margin: 0 5px;
 `;
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const replaceResourceFilter = (query) => {
+  let str = "";
+  str += "&page=1";
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  return str;
+};
+
 const Filters = ({
   searchFilters,
   onLoadSearchFilters
 }) => {
+  const query = useQuery();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (Object.keys(searchFilters).length === 0) {
       onLoadSearchFilters().catch(error => {
@@ -56,13 +78,18 @@ const Filters = ({
     }
   }, []);
 
+  const handleResourceClick = (filter) => {
+    const queryStr = replaceResourceFilter(query, filter);
+    navigate(`/participatingresources?${queryStr}`);
+  };
+
   return (
     <FilterSection>
       <FilterLabel>
         <span>Resource Filter</span>
-        <span className="clearAllButtonContainer">
-            <img className="clearAllButton" src={clearAllIcon} alt="clear-all" />
-        </span>
+        <button type="button" className="clearAllButton" onClick={() => handleResourceClick()}>
+            <img src={clearAllIcon} alt="clear-all" />
+        </button>
       </FilterLabel>
       <FilterBlock>
         <Accordion domain="dataresource" fields={["Resource Type", "Data Content Type"]} />
