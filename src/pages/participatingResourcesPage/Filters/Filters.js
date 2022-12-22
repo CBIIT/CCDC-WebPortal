@@ -26,17 +26,17 @@ const FilterLabel = styled.div`
   }
 
   .clearAllButton {
-    width: 22px;
-    height: 22px;
-    margin-left: 42px;
+    width: 20px;
+    height: 20px;
+    margin-left: 44px;
     border: 0;
     padding: 0;
     background-color: transparent;
   }
 
   .clearAllButton:hover {
-    width: 23px;
-    height: 23px;
+    width: 21px;
+    height: 21px;
     cursor: pointer;
   }
 
