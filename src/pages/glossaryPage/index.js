@@ -75,7 +75,7 @@ const Glossary = () => {
                   </div>
                   <div className="a">
                     <h2 className="glossaryItemHeader">Analytic Tool</h2>
-                    <span className="glossaryItemType">Data Content Type</span>
+                    <span className="glossaryItemType">Resource Type</span>
                     <p className="glossaryItemDescription">Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.</p>
                     <br />
                   </div>
