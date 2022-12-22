@@ -49,7 +49,7 @@ const Glossary = () => {
                   <a className={key === 'S' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('S')}>S</a>
                   <a className={key === 'T' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('T')}>T</a>
                   <a className={key === 'U' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('U')}>U</a>
-                  <a className="nav-link disabled" href="#" aria-disabled="true">V</a>
+                  <a className={key === 'V' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('V')}>V</a>
                   <a className="nav-link disabled" href="#" aria-disabled="true">W</a>
                   <a className={key === 'X' ? "nav-link nav-link-active" : "nav-link"} href="#" onClick={() => setKey('X')}>X</a>
                   <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Y</a>
@@ -166,6 +166,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="c">
+                    <h2 className="glossaryItemHeader">CGC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Cancer Genomics Cloud</p>
+                    <br />
+                  </div>
+                  <div className="c">
                     <h2 className="glossaryItemHeader">CGCI</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Cancer Genome Characterization Initiative</p>
@@ -181,6 +187,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">CLIA</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Clinical Laboratory Improvement Amendments</p>
+                    <br />
+                  </div>
+                  <div className="c">
+                    <h2 className="glossaryItemHeader">CLIC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Childhood Leukemia International Consortium</p>
                     <br />
                   </div>
                   <div className="c">
@@ -779,6 +791,19 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">USCS</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">United States Cancer Statistics</p>
+                    <br />
+                    <br />
+                  </div>
+                </>
+              )
+            }
+            {
+              key === 'V' && (
+                <>
+                  <div className="v">
+                    <h2 className="glossaryItemHeader">VPCC</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Victorian Paediatric Cancer Consortium</p>
                     <br />
                     <br />
                   </div>
