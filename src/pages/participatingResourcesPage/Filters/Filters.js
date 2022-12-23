@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react';
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Accordion from '../../../components/Accordion';
+import clearAllIcon from '../../../assets/img/clearAllIcon.svg';
 
 const FilterSection = styled.div`
   padding-top: 5px;
+  border-top: 3px solid #c3d5e0;
 `;
 
 const FilterLabel = styled.div`
@@ -12,11 +18,30 @@ const FilterLabel = styled.div`
   margin: 0 5px;
   padding: 5px 10px 5px 10px;
   color: #004187;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.4rem;
 
   span {
     font-size: 21px;
+  }
+
+  .clearAllButton {
+    width: 20px;
+    height: 20px;
+    margin-left: 44px;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .clearAllButton:hover {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+  }
+
+  .clearAllButton img {
+    padding-bottom: 4px;
   }
 `;
 
@@ -25,10 +50,26 @@ const FilterBlock = styled.div`
   margin: 0 5px;
 `;
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const replaceResourceFilter = (query) => {
+  let str = "";
+  str += "&page=1";
+  if (query.get("pageSize")) {
+    str += `&pageSize=${query.get("pageSize")}`;
+  }
+  return str;
+};
+
 const Filters = ({
   searchFilters,
   onLoadSearchFilters
 }) => {
+  const query = useQuery();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (Object.keys(searchFilters).length === 0) {
       onLoadSearchFilters().catch(error => {
@@ -37,10 +78,18 @@ const Filters = ({
     }
   }, []);
 
+  const handleResourceClick = (filter) => {
+    const queryStr = replaceResourceFilter(query, filter);
+    navigate(`/participatingresources?${queryStr}`);
+  };
+
   return (
     <FilterSection>
       <FilterLabel>
-        <span>Research Description</span>
+        <span>Resource Filter</span>
+        <button type="button" className="clearAllButton" onClick={() => handleResourceClick()}>
+            <img src={clearAllIcon} alt="clear-all" />
+        </button>
       </FilterLabel>
       <FilterBlock>
         <Accordion domain="dataresource" fields={["Resource Type", "Data Content Type"]} />
