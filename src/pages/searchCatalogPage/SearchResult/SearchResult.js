@@ -844,6 +844,15 @@ const SearchResult = ({
                                   </span>
                                 );
                               }
+                              if (am.name === "GEO Study Identifier") {
+                                const geoId = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                                const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                                return (
+                                  <span className="itemSpan">
+                                    <a href={geoLink} target="_blank" rel="noreferrer noopener">{geoId}</a>
+                                  </span>
+                                );
+                              }
                               return (
                                 <span className="itemSpan additionalItemSpan">{ReactHtmlParser(m)}</span>
                               );
