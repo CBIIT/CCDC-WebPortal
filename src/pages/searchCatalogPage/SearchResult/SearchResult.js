@@ -853,6 +853,15 @@ const SearchResult = ({
                                   </span>
                                 );
                               }
+                              if (am.name === "dbGaP Study Identifier") {
+                                const dbId = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                                const dbLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', dbId);
+                                return (
+                                  <span className="itemSpan">
+                                    <a href={dbLink} target="_blank" rel="noreferrer noopener">{dbId}</a>
+                                  </span>
+                                );
+                              }
                               return (
                                 <span className="itemSpan additionalItemSpan">{ReactHtmlParser(m)}</span>
                               );
