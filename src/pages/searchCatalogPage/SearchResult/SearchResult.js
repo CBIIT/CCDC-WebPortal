@@ -167,6 +167,16 @@ const SearchResultContainer = styled.div`
     color: #004187;
   }
 
+  .descLink {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #DFEEF9;
+    color: #004187;
+  }
+
   a[target="_blank"] {
     color: #004187;
     background: url(${externalIcon}) right center no-repeat #DFEEF9;
@@ -597,6 +607,30 @@ const SearchResult = ({
             } else {
               desc = desc.replace(/<(?![b/])/g, "&lt;");
             }
+            desc = desc.replace("<b>", "").replace("</b>", "");
+            const arr = desc.split("http");
+            let descArr = [];
+            if (arr.length > 1) {
+              descArr.push(arr[0]);
+                for (let i = 1; i < arr.length; i += 1) {
+                    const urlArr = arr[i].split(" ");
+                    const url = urlArr[0];
+                    const urlLastChar = url[url.length - 1];
+                    if (",;.()<>{}".includes(urlLastChar)) {
+                        const newUrl = "http".concat(url.substring(0, url.length - 1));
+                        descArr.push(newUrl);
+                        descArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+                    } else {
+                        const newUrl = "http".concat(url);
+                        descArr.push(newUrl);
+                        if (urlArr.length !== 1) {
+                          descArr.push(arr[i].split(url)[1]);
+                        }
+                    }
+                }
+            } else {
+              descArr = arr;
+            }
             const otherMatches = [];
             if (rst.highlight) {
               Object.keys(rst.highlight).forEach((hl) => {
@@ -725,7 +759,20 @@ const SearchResult = ({
                       <div className="col">
                         <label>Description:</label>
                         <span className="textSpan">
-                          {ReactHtmlParser(desc)}
+                        {
+                          descArr.map((item, desidx) => {
+                            const deskey = `des_${desidx}`;
+                            return (
+                              item.includes("http")
+                              ? (
+                              <span key={deskey} className="descLink">
+                                <a href={item} target="_blank" rel="noreferrer noopener">{item}</a>
+                              </span>
+                              )
+                              : <span key={deskey}>{item}</span>
+                            );
+                          })
+                        }
                         </span>
                       </div>
                     </div>
