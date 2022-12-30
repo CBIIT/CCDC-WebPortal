@@ -607,24 +607,37 @@ const SearchResult = ({
             } else {
               desc = desc.replace(/<(?![b/])/g, "&lt;");
             }
-            desc = desc.replace("<b>", "").replace("</b>", "");
             const arr = desc.split("http");
             let descArr = [];
             if (arr.length > 1) {
-              descArr.push(arr[0]);
+              if (arr[0].endsWith("<b>")) {
+                descArr.push(arr[0].substring(0, arr[0].length - 3));
+              } else {
+                descArr.push(arr[0]);
+              }
                 for (let i = 1; i < arr.length; i += 1) {
                     const urlArr = arr[i].split(" ");
-                    const url = urlArr[0];
+                    const url = urlArr[0].replace("</b>", "");
                     const urlLastChar = url[url.length - 1];
                     if (",;.()<>{}".includes(urlLastChar)) {
                         const newUrl = "http".concat(url.substring(0, url.length - 1));
                         descArr.push(newUrl);
-                        descArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+                        const restText = arr[i].split(url.substring(0, url.length - 1))[1];
+                        if (restText.endsWith("<b>")) {
+                          descArr.push(restText.substring(0, restText.length - 3));
+                        } else {
+                          descArr.push(restText);
+                        }
                     } else {
                         const newUrl = "http".concat(url);
                         descArr.push(newUrl);
                         if (urlArr.length !== 1) {
-                          descArr.push(arr[i].split(url)[1]);
+                          const restText = arr[i].split(url)[1];
+                          if (restText.endsWith("<b>")) {
+                            descArr.push(restText.substring(0, restText.length - 3));
+                          } else {
+                            descArr.push(restText);
+                          }
                         }
                     }
                 }
@@ -769,7 +782,7 @@ const SearchResult = ({
                                 <a href={item} target="_blank" rel="noreferrer noopener">{item}</a>
                               </span>
                               )
-                              : <span key={deskey}>{item}</span>
+                              : <span key={deskey}>{ReactHtmlParser(item)}</span>
                             );
                           })
                         }
