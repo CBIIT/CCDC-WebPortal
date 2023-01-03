@@ -175,6 +175,7 @@ const SearchResultContainer = styled.div`
     font-weight: bold;
     background-color: #DFEEF9;
     color: #004187;
+    line-height: 2.5;
   }
 
   a[target="_blank"] {
