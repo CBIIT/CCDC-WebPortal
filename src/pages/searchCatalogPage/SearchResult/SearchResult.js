@@ -610,14 +610,22 @@ const SearchResult = ({
             }
             const arr = desc.split("http");
             let descArr = [];
+            const isSearchArr = [];
             if (arr.length > 1) {
               if (arr[0].endsWith("<b>")) {
                 descArr.push(arr[0].substring(0, arr[0].length - 3));
+                isSearchArr.push(0);
               } else {
                 descArr.push(arr[0]);
+                isSearchArr.push(0);
               }
                 for (let i = 1; i < arr.length; i += 1) {
                     const urlArr = arr[i].split(" ");
+                    if (urlArr[0].includes("</b>")) {
+                      isSearchArr.push(1);
+                    } else {
+                      isSearchArr.push(0);
+                    }
                     const url = urlArr[0].replace("</b>", "");
                     const urlLastChar = url[url.length - 1];
                     if (",;.()<>{}".includes(urlLastChar)) {
@@ -629,6 +637,7 @@ const SearchResult = ({
                         } else {
                           descArr.push(restText);
                         }
+                        isSearchArr.push(0);
                     } else {
                         const newUrl = "http".concat(url);
                         descArr.push(newUrl);
@@ -639,11 +648,13 @@ const SearchResult = ({
                           } else {
                             descArr.push(restText);
                           }
+                          isSearchArr.push(0);
                         }
                     }
                 }
             } else {
               descArr = arr;
+              isSearchArr.push(0);
             }
             const otherMatches = [];
             if (rst.highlight) {
@@ -779,8 +790,12 @@ const SearchResult = ({
                             return (
                               item.includes("http")
                               ? (
-                              <span key={deskey} className="descLink">
-                                <a href={item} target="_blank" rel="noreferrer noopener">{item}</a>
+                              <span key={deskey} className={isSearchArr[desidx] === 1 ? "descLink" : null}>
+                                {
+                                  isSearchArr[desidx] === 1
+                                  ? <a href={item} target="_blank" rel="noreferrer noopener">{item}</a>
+                                  : <a href={item} target="_blank" rel="noreferrer noopener" style={{backgroundColor: "white", fontWeight: "bold", textDecoration: "underline"}}>{item}</a>
+                                }
                               </span>
                               )
                               : <span key={deskey}>{ReactHtmlParser(item)}</span>
