@@ -36,10 +36,10 @@ nav {
 }
 
 .custom-popover.popover {
-  max-width: 220px;
   border-radius: 6px;
   font-size: 12px;
   word-wrap: normal;
+  z-index: 99;
 }
 
 .popover-body {
