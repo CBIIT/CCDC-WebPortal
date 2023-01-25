@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import { Popover } from 'bootstrap';
+import Collapse from 'react-bootstrap/Collapse';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
@@ -106,43 +106,11 @@ const DatasetType = styled.div`
     color: #212529;
     text-decoration: none;
   }
-
-  .tooltips {
-    position: relative;
-  }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
-  }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
-  }
 `;
 
 const SummaryDatasetType = styled.div`
   width: 98%;
   text-align: right;
-  margin-top: -30px;
-  margin-bottom: -5px;
   text-transform: uppercase;
   font-size: 11px;
   font-family: Inter;
@@ -158,36 +126,6 @@ const SummaryDatasetType = styled.div`
   a {
     color: #212529;
     text-decoration: none;
-  }
-
-  .tooltips {
-    position: relative;
-  }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
-    padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
-  }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
   }
 `;
 
@@ -243,7 +181,7 @@ const DatasetCard = styled.div`
 const DatasetHeader = styled.div`
   width: 100%;
   display: flex;
-  height: 60px;
+  height: 40px;
 `;
 
 const DatasetTitle = styled.div`
@@ -266,7 +204,6 @@ const DatasetTitle = styled.div`
 const DatasetDesc = styled.div`
   width: 100%;
   // display: inline;
-  margin-top: -15px;
   word-wrap: break-word;
   hyphens: auto;
   line-height: 32px;
@@ -280,26 +217,37 @@ const ParticipatingResourceDetail = ({
   onPageLoadDataresourceDetailDatasets,
 }) => {
   const { id } = useParams();
+  const [open, setOpen] = useState(true);
   const tooltips = {
     Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
+    "Cell Line": "A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
+    AnalyticTool: "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
     "resource type": "resource type"
   };
-  window.scrollTo(0, 0);
+
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
   let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
   if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
-  const defaultCollapsed = "show";
+
+  const initializePopover = () => {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+      return new Popover(popoverTriggerEl);
+    });
+  };
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!detail.data_resource_id || detail.data_resource_id !== id) {
       onPageLoadDataresourceDetail(id).catch(error => {
         throw new Error(`Loading participating resource detail page failed ${error}`);
@@ -310,6 +258,10 @@ const ParticipatingResourceDetail = ({
       });
     }
   }, []);
+
+  useEffect(() => {
+    initializePopover();
+  }, [detail, datasets]);
 
   return (
     <>
@@ -356,23 +308,9 @@ const ParticipatingResourceDetail = ({
                   </div>
                   </HeaderLinks>
                   <DatasetType>
-                    <OverlayTrigger
-                      placement="right"
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltips[detail.resource_type]}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span>{detail.resource_type}</span>
-                    </OverlayTrigger>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={detail.resource_type && tooltips[detail.resource_type.split(' ').join('')]}>
+                      {detail.resource_type}
+                    </span>
                   </DatasetType>
                 </div>
                 <br />
@@ -390,59 +328,62 @@ const ParticipatingResourceDetail = ({
                   <div className="prAboutResourceContainer">
                     <div className="accordion-item-pr">
                       <h2 className="accordion-header-pr">
-                        <div className={`accordion-button-pr accordion-button-ccdc-pr ${defaultCollapsed ? "" : "collapsed"}`} type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded={defaultCollapsed ? "true" : "false"} aria-controls="collapse1">
-                        <span>About This Resource</span>
+                        <div aria-hidden="true" onClick={() => setOpen(!open)} className={`accordion-button-pr accordion-button-ccdc-pr ${open ? "" : "collapsed"}`}>
+                          About This Resource
                         </div>
                       </h2>
-                      <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
-                        <div className="prAboutResourceContent">
-                          {detail.description}
-                        </div>
-                      </div>
-                    </div>
-                    {/* <div className="collapse show" id="collapseExample"> */}
-                    <div id="collapse1" className={`collapse ${defaultCollapsed ? "show" : ""}`}>
-                      <div className="prResourceToolsContainer">
-                        <div className="prCoreDataLabel">Resource Description</div>
-                        <div className="prDataElementLabel">Resource Type</div>
-                        <div className="prDataElementContent">{detail.resource_type}</div>
-                        <div className="prDataElementLabel">Specialization</div>
-                        <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
-                        <br />
-                        <div className="prDataElementLabel">Data Update Date</div>
-                        {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
-                      </div>
-                      <div className="prDataAccessContainer">
-                        <div className="prAdditionalDataLabel">Data Content Type</div>
+                      <Collapse in={open}>
+                        <div id="collapse1">
+                          <div className="prAboutResourceContent">
+                            {detail.description}
+                          </div>
+                          <div className="prResourceToolsContainer">
+                          <div className="prCoreDataLabel">Resource Description</div>
+                          <div className="prDataElementLabel">Resource Type</div>
+                          <div className="prDataElementContent">{detail.resource_type}</div>
+                          <div className="prDataElementLabel">Specialization</div>
+                          <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
                           <br />
-                          {dataContentTypes}
-                      </div>
-                      <div className="prResourceToolsContainer">
-                        <div className="prCoreDataLabel">Resource Tools</div>
-                        <div className="prDataElementLabel">Visualization Tools</div>
-                        <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : 'NO'}</div>
-                        <div className="prDataElementLabel">Analytic Tools</div>
-                        <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : 'NO'}</div>
-                      </div>
-                      <div className="prDataAccessContainer">
-                        <div className="prAdditionalDataLabel">Data Access</div>
-                        {/* <div className="prDataElementLabel">API (Internal)</div> */}
-                        <br />
-                          {
-                            detail.api
-                            ? detail.api.split(',').map((item, idx) => {
-                              const key = `sort_${idx}`;
-                              let newItem = item.trim();
-                              if (!newItem.startsWith("http")) {
-                                newItem = "".concat("https://", newItem);
+                          <div className="prDataElementLabel">Data Update Date</div>
+                          {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
+                          </div>
+                          <div className="prDataAccessContainer">
+                            <div className="prAdditionalDataLabel">Data Content Type</div>
+                              <br />
+                              {dataContentTypes}
+                          </div>
+                          <div className="prResourceToolsContainer">
+                            <div className="prCoreDataLabel">Resource Tools</div>
+                            <div>
+                              <div className="prDataElementLabel">Visualization Tools</div>
+                              <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : ''}</div>
+                            </div>
+                            <div>
+                              <div className="prDataElementLabel">Analytic Tools</div>
+                              <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : ''}</div>
+                            </div>
+                          </div>
+                          <div className="prDataAccessContainer">
+                            <div className="prAdditionalDataLabel">Data Access</div>
+                            {/* <div className="prDataElementLabel">API (Internal)</div> */}
+                            <br />
+                              {
+                                detail.api
+                                ? detail.api.split(',').map((item, idx) => {
+                                  const key = `sort_${idx}`;
+                                  let newItem = item.trim();
+                                  if (!newItem.startsWith("http")) {
+                                    newItem = "".concat("https://", newItem);
+                                  }
+                                  return (
+                                    <div key={key}><a href={newItem} target="_blank" rel="noreferrer noopener">{newItem}</a></div>
+                                  );
+                                })
+                                : null
                               }
-                              return (
-                                <div key={key}><a href={newItem} target="_blank" rel="noreferrer noopener">{newItem}</a></div>
-                              );
-                            })
-                            : null
-                          }
-                      </div>
+                          </div>
+                        </div>
+                      </Collapse>
                     </div>
                   </div>
                 </div>
@@ -478,8 +419,6 @@ const ParticipatingResourceDetail = ({
             datasets.map((ds, idx) => {
               const key = `sr_${idx}`;
               const linkto = `/dataset/${ds.dataset_id}`;
-              let publishedLinks = ds.published_in === undefined || ds.published_in === null ? "" : ds.published_in;
-              if (ds.published_in) { publishedLinks = publishedLinks.split(';'); }
               return (
                 <DatasetCard key={key}>
                   <DatasetHeader>
@@ -581,29 +520,20 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
-                    {publishedLinks[0] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[0]} target="_blank" rel="noreferrer noopener">{publishedLinks[0]}</a></DataLink></div> : null}
-                    <div>{publishedLinks[1] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[1]} target="_blank" rel="noreferrer noopener">{publishedLinks[1]}</a></DataLink></div> : null}</div>
-                    <div>{publishedLinks[2] ? <div className="summaryDataElementPublished"><DataLink><a href={publishedLinks[2]} target="_blank" rel="noreferrer noopener">{`${publishedLinks[2]}`}</a></DataLink></div> : null}</div>
-                    {ds.published_in ? <span className="summaryPublishedLinkBreak">&nbsp;</span> : null}
+                    {
+                      ds.published_in && ds.published_in.split(";").map((link, linkidx) => {
+                        const newlink = link.trim();
+                        const linkkey = `link_${linkidx}`;
+                        return (
+                          <div key={linkkey} className={linkidx === 0 ? "summaryDataElementPublished" : null}><DataLink><a href={newlink} target="_blank" rel="noreferrer noopener">{newlink}</a></DataLink></div>
+                        );
+                      })
+                    }
                   </DatasetDesc>
                   <SummaryDatasetType>
-                    <OverlayTrigger
-                      placement="right"
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltips[detail.resource_type]}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span>{detail.resource_type}</span>
-                    </OverlayTrigger>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[ds.primary_dataset_scope]}>
+                      {ds.primary_dataset_scope}
+                    </span>
                   </SummaryDatasetType>
                 </DatasetCard>
               );

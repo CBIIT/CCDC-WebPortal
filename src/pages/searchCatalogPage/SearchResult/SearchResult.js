@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   useLocation,
   useNavigate,
@@ -6,8 +6,7 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import { Popover } from 'bootstrap';
 import ReactHtmlParser from "react-html-parser";
 import externalIcon from "../../../assets/img/resource.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
@@ -385,6 +384,14 @@ const SearchResult = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
+
+  const initializePopover = () => {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+      return new Popover(popoverTriggerEl);
+    });
+  };
+
   const caseDiseaseDiagnosisList = resultList.map((rt) => {
     const tmp = {labels: [], matched: []};
     if (rt.highlight && rt.highlight["case_disease_diagnosis.k"]) {
@@ -567,6 +574,10 @@ const SearchResult = ({
     return matched.concat(result);
   });
 
+  useEffect(() => {
+    initializePopover();
+  }, [resultList, viewType]);
+
   return (
     <>
       <SearchResultContainer>
@@ -612,24 +623,8 @@ const SearchResult = ({
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
                   </div>
                   <div className="col-sm-4">
-                    <span className="typeBlock">
-                      <OverlayTrigger
-                        placement="right"
-                        overlay={
-                          (
-                            <Popover
-                              id="tooltip-auto"
-                              style={{
-                                marginLeft: '10px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                              }}
-                            >
-                              {tooltip}
-                            </Popover>
-                          )
-                        }
-                      >
-                        <span>{rst.content.primary_dataset_scope}</span>
-                      </OverlayTrigger>
+                    <span className="typeBlock" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
+                      {rst.content.primary_dataset_scope}
                     </span>
                   </div>
                 </div>
@@ -935,23 +930,9 @@ const SearchResult = ({
                         <td><Link to={`/resource/${rst.content.data_resource_id}`}>{rst.content.data_resource_id}</Link></td>
                         <td>
                           <span className="typeBlock">
-                            <OverlayTrigger
-                              placement="right"
-                              overlay={
-                                (
-                                  <Popover
-                                    id="tooltip-auto"
-                                    style={{
-                                      marginLeft: '5px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                                    }}
-                                  >
-                                    {tooltip}
-                                  </Popover>
-                                )
-                              }
-                            >
-                              <span>{rst.content.primary_dataset_scope}</span>
-                            </OverlayTrigger>
+                            <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
+                              {rst.content.primary_dataset_scope}
+                            </span>
                           </span>
                         </td>
                       </tr>

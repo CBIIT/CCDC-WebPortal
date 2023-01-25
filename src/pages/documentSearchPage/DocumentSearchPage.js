@@ -8,6 +8,7 @@ import {InputGroup, FormControl, Button} from 'react-bootstrap';
 import styled from 'styled-components';
 import SearchResult from './SearchResult';
 import xIcon from "../../assets/img/xmark-solid.svg";
+import img from '../../assets/img/Document_Search.png';
 
 const PageHeaderContainer = styled.div`
   width: 100%;
@@ -114,18 +115,12 @@ const SearchIcon = styled.div`
 `;
 
 const PageLogoArea = styled.div`
-  width: 800px;
+  width: 720px;
   height: 160px;
   position: absolute;
   right: 20px;
-  background-image: linear-gradient(to right, #e7c54d ,#43c897);
-`;
-
-const PageLogoCover = styled.div`
-  position: absolute;
-  right: 660px;
-  border-left: 160px solid white;
-  border-bottom: 160px solid transparent;
+  background-image: url(${img});
+  background-size: 100% 100%
 `;
 
 const SearchContainer = styled.div`
@@ -239,7 +234,6 @@ const ParticipatingResourcesPage = ({
             </SearchBoxArea>
           </PageLabelArea>
           <PageLogoArea />
-          <PageLogoCover />
         </PageHeaderArea>
       </PageHeaderContainer>
       <SearchContainer>

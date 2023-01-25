@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
+import { Popover } from 'bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import headerExternalIcon from "../../assets/img/dataset-header.svg";
 import externalIcon from "../../assets/img/dataset-body.svg";
 import './datasetDetailPage.css';
+import DonutChart from '../../components/common/DonutChart';
+import Histogram from '../../components/common/Histogram';
 
 const DatasetResultContainer = styled.div`
   margin: 0 auto;
@@ -36,6 +38,14 @@ const DatasetBody = styled.div`
     padding-right: 30px;
     background-size: 32px;
   }
+
+  .datasetDesLinks {
+    margin-top: 10px;
+    color: #00a272;
+    text-transform: none;
+    max-width: 95%;
+    word-break: break-all;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -60,35 +70,86 @@ const ResourceType = styled.div`
     color: #212529;
     text-decoration: none;
   }
+`;
 
-  .tooltips {
-    position: relative;
+const GraphicsContainer = styled.div`
+  width: 100%;
+
+  .show > .customizedToggle  {
+    color: #b98e2f;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: transparent;
   }
-  
-  .tooltips .tooltiptext {
-    visibility: hidden;
-    color: white;
-    background-color: rgb(80, 80, 80);
-    width: 300px;
-    border: 1px solid #004187;
-    border-radius: 6px;
+
+  .show > .customizedToggle:focus  {
+    box-shadow: none;
+  }
+
+  .customizedToggle:focus  {
+    box-shadow: none;
+  }
+
+  .dropdown {
+    position: inherit;
+  }
+
+  .customizedToggle {
     padding: 5px 5px 5px 5px;
-    
-    text-align: left;
-    text-transform: none;
-    font-size: 12px;
-    line-height: normal;
-  
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: -100%;
-    margin: 10px 0px 0px 0;
+    margin-top: 10px;
+    color: #b98e2f;
+    font-size: 16px;
+    font-family: Lato;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-color: transparent;
   }
-  
-  .tooltips:hover .tooltiptext {
-    visibility: visible;
+
+  .customizedToggle::before {
+    display: inline-block;
+    margin-right: 17px;
+    margin-bottom: -2.5px;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    color: #7A9ABD;
+    font-size: 23px;
+  }
+
+  .show > .customizedToggle::before {
+    border-bottom: 0.3em solid;
+    border-top: 0;
+  }
+
+  .customizedToggle::after {
+    display: none;
+  }
+
+  .dropdownElementLabel {
+    padding: 5px 5px 5px 5px;
+    color: #b98e2f;
+    font-size: 16px;
+    font-family: Lato;
+    text-transform: uppercase;
+  }
+
+  .dropdownElementLabel:hover {
+    color: black;
+    background-color: #F3F3F3;
+  }
+
+  .customizedDropdownMenu {
+    background-color: #F3F3F3;
+    padding: 5px 30px;
+    box-shadow: 5px 10px 18px #888888;
+    z-index: 99;
+  }
+
+  .chartContainer {
+    padding: 25px 0px;
   }
 `;
 
@@ -131,7 +192,10 @@ const DatasetDetail = ({
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
     "primary dataset scope": "primary dataset scope"
   };
-  window.scrollTo(0, 0);
+  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
+  const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
+  const [selectedKey, setSelectedKey] = useState("");
+  const [datasetDes, setDatasetDes] = useState([]);
   const additionalDict = {};
   if (content && content.additional) {
     content.additional.forEach((adt) => {
@@ -162,13 +226,121 @@ const DatasetDetail = ({
       grants.set(grantIDs[i], grantNames[i]);
     }
   }
+
+  const initializePopover = () => {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map((popoverTriggerEl) => {
+      return new Popover(popoverTriggerEl);
+    });
+  };
+
+  const generateChartData = (map) => {
+    const chartData = [];
+    let otherValue = 0;
+    if (map.size <= 10) {
+      map.forEach((value, key) => {
+        const obj = {};
+        obj.name = key;
+        obj.value = value;
+        chartData.push(obj);
+      });
+    } else {
+      let i = 0;
+      map.forEach((value, key) => {
+        if (i < 9) {
+          const obj = {};
+          obj.name = key;
+          obj.value = value;
+          chartData.push(obj);
+        } else {
+          otherValue += value;
+        }
+        i += 1;
+      });
+      const obj = {};
+      obj.name = "Other";
+      obj.value = otherValue;
+      chartData.push(obj);
+    }
+    return chartData;
+  };
+
+  const buildChartData = (element) => {
+    const nameValueMap = new Map();
+    let chartData = [];
+    content[element].forEach((item) => {
+      if (/^\d+$/.test(item.v)) {
+        nameValueMap.set(item.n, item.v);
+      }
+    });
+    const sortedMap = new Map([...nameValueMap.entries()].sort((a, b) => b[1] - a[1]));
+    if (element === 'case_age' || element === 'case_age_at_diagnosis') {
+      chartData = generateChartData(nameValueMap);
+    } else {
+      chartData = generateChartData(sortedMap);
+    }
+    return chartData;
+  };
+
+  const buildCoreDataElementsList = () => {
+    const elementMap = new Map();
+    coreDataElementsAll.forEach((element) => {
+      if (content[element] !== undefined) {
+        if (/^\d+$/.test(content[element][0].v)) {
+          elementMap.set(element, buildChartData(element));
+        }
+      }
+    });
+    setCoreDataElementsMap(elementMap);
+  };
+
+  const buildDatasetDescArr = () => {
+    const arr = content.desc.split("http");
+    let newArr = [];
+    if (arr.length > 1) {
+      newArr.push(arr[0]);
+      for (let i = 1; i < arr.length; i += 1) {
+          const urlArr = arr[i].split(" ");
+          const url = urlArr[0];
+          const urlLastChar = url[url.length - 1];
+          if (",;.()<>{}".includes(urlLastChar)) {
+              const newUrl = "http".concat(url.substring(0, url.length - 1));
+              newArr.push(newUrl);
+              newArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+          } else {
+            const newUrl = "http".concat(url);
+            newArr.push(newUrl);
+            if (urlArr.length !== 1) {
+                newArr.push(arr[i].split(url)[1]);
+            }
+          }
+      }
+  } else {
+      newArr = arr;
+  }
+    setDatasetDes(newArr);
+  };
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (!content) {
       onPageLoadDatasetDetail(id).catch(error => {
         throw new Error(`Loading dataset detail page failed ${error}`);
       });
     }
   }, []);
+
+  useEffect(() => {
+    initializePopover();
+    if (content) {
+      buildCoreDataElementsList();
+      buildDatasetDescArr();
+    }
+  }, [content]);
+
+  useEffect(() => {
+    setSelectedKey(coreDataElementsMap.keys().next().value);
+  }, [coreDataElementsMap]);
 
   return (
     <>
@@ -214,23 +386,9 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <OverlayTrigger
-                      placement="right"
-                      overlay={
-                        (
-                          <Popover
-                            id="tooltip-auto"
-                            style={{
-                              marginLeft: '0px', padding: '10px', fontSize: '12px', maxWidth: '220px'
-                            }}
-                          >
-                            {tooltips[content.primary_dataset_scope]}
-                          </Popover>
-                        )
-                      }
-                    >
-                      <span>{content.primary_dataset_scope}</span>
-                    </OverlayTrigger>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[content.primary_dataset_scope]}>
+                      {content.primary_dataset_scope}
+                    </span>
                   </ResourceType>
                 </div>
                 <br />
@@ -247,7 +405,20 @@ const DatasetDetail = ({
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
-                    <div className="aboutDatasetContent">{content.desc ? content.desc : null}</div>
+                    {content.desc && (
+                      <div className="aboutDatasetContent">
+                        {
+                          datasetDes.map((item, desidx) => {
+                            const deskey = `des_${desidx}`;
+                            return (
+                              item.includes("http")
+                              ? <a key={deskey} href={item} className="datasetDesLinks" target="_blank" rel="noreferrer noopener">{item}</a>
+                              : <a key={deskey}>{item}</a>
+                            );
+                          })
+                        }
+                      </div>
+                    )}
                     <div className="coreDataContainer">
                       <div className="coreDataLabel">Core Data Elements</div>
                       {/* <div className="dataElementLabel">Case Age</div> */}
@@ -816,6 +987,18 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad === "GEO STUDY IDENTIFIER") {
+                              const geoId = additionalDict["GEO STUDY IDENTIFIER"][0].k;
+                              const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                              return (
+                                <>
+                                  <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
+                                  <div className="additionalDataContent">
+                                    <a href={geoLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{geoId}</a>
+                                  </div>
+                                </>
+                              );
+                            }
                             return (
                               <div>
                                 <div key={adkey} className="dataElementLabel">
@@ -854,6 +1037,72 @@ const DatasetDetail = ({
                             );
                           })
                         }
+                        {coreDataElementsMap.size > 0 && (
+                          <GraphicsContainer>
+                            <div className="coreDataLabel">Charts</div>
+                            <div onKeyDown={e => e.stopPropagation()} aria-hidden="true">
+                              <Dropdown>
+                                {
+                                  selectedKey
+                                  && (
+                                  <Dropdown.Toggle variant="light" className="customizedToggle">
+                                    {selectedKey.split('_').join(' ')}
+                                  </Dropdown.Toggle>
+                                  )
+                                }
+                                <Dropdown.Menu className="customizedDropdownMenu" flip={false}>
+                                {
+                                  Array.from(coreDataElementsMap.keys()).map((key, idx) => {
+                                    const dropdownKey = `dropdown_${idx}`;
+                                    return (
+                                      key !== selectedKey && <Dropdown.Item key={dropdownKey} className="dropdownElementLabel" onClick={() => setSelectedKey(key)}>{key.split('_').join(' ')}</Dropdown.Item>
+                                    );
+                                  })
+                                }
+                                </Dropdown.Menu>
+                              </Dropdown>
+                            </div>
+                            {
+                              coreDataElementsMap.get(selectedKey)
+                              && (
+                                <div className="dataElementContent">
+                                {
+                                  coreDataElementsMap.get(selectedKey).map((item, idx) => {
+                                    const coreDataKey = `coreDataKey_${idx}`;
+                                    return (
+                                      <span key={coreDataKey} className="itemSpan">
+                                        {item.name}
+                                        &nbsp;(
+                                        {item.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                        {idx === coreDataElementsMap.get(selectedKey).length - 1 ? ")" : "); "}
+                                      </span>
+                                    );
+                                  })
+                                }
+                                </div>
+                              )
+                            }
+                            <div className="chartContainer">
+                            {
+                              (selectedKey === 'case_age' || selectedKey === 'case_age_at_diagnosis')
+                              ? (coreDataElementsMap.get(selectedKey) && <Histogram key={selectedKey} data={coreDataElementsMap.get(selectedKey)} />)
+                              : (
+                                coreDataElementsMap.get(selectedKey)
+                                && (
+                                    <DonutChart
+                                      key={selectedKey}
+                                      data={coreDataElementsMap.get(selectedKey)}
+                                      innerRadiusP={65}
+                                      outerRadiusP={115}
+                                      paddingSpace={coreDataElementsMap.get(selectedKey).length === 1 ? 0 : 0.5}
+                                      textColor="black"
+                                    />
+                                  )
+                                )
+                            }
+                            </div>
+                          </GraphicsContainer>
+                        )}
                     </div>
                   </div>
                   <br />

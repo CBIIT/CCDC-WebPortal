@@ -34,3 +34,14 @@ nav {
 .no-margin {
   margin: 0;
 }
+
+.custom-popover.popover {
+  border-radius: 6px;
+  font-size: 12px;
+  word-wrap: normal;
+  z-index: 99;
+}
+
+.popover-body {
+  padding: 10px;
+}

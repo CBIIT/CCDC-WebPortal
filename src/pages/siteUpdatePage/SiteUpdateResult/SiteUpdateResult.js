@@ -4,9 +4,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from "react-html-parser";
 import html2pdf from "html2pdf.js";
-import Spinner from 'react-bootstrap/Spinner';
+import { OverlayTrigger, Popover, Spinner } from 'react-bootstrap';
 import NCILogoExport from "../../../assets/img/NCI_Logo.png";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
+import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
+import GenomicsIcon from '../../../assets/img/Genomics.icon.svg';
+import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
+import XenograftIcon from '../../../assets/img/Xenograft.icon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
@@ -52,8 +56,34 @@ const SiteUpdateCardTitle = styled.div`
     line-height: 23px;
     height: 38px;
     border-bottom: 2px solid #004187;
-    margin: 5px 0px 20px 0px;
+    margin: 5px 0px 5px 0px;
     padding-bottom: 10px;
+`;
+
+const DataContentType = styled.div`
+  font-size: 3rem;
+  line-height: 23px;
+  border-bottom: 2px solid lightgray;
+  margin: 0px 0px 10px 0px;
+  padding-bottom: 6px;
+
+  .typeIcon {
+    height: 30px;
+    margin: 0px 8px 0px 8px;
+  }
+
+  .typeIcon:hover {
+    cursor: pointer;
+  }
+
+  .clinicalIcon {
+    height: 35px;
+    margin: 0px 8px 0px 8px;
+  }
+
+  .clinicalIcon:hover {
+    cursor: pointer;
+  }
 `;
 
 const SiteUpdateExport = styled.div`
@@ -179,6 +209,12 @@ const SiteUpdateResult = ({
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const pageSize = 3;
+    const iconSrc = {
+                      Clinical: ClinicalTrialsIcon,
+                      GenomicsOmics: GenomicsIcon,
+                      Imaging: ImagingIcon,
+                      Xenograft: XenograftIcon
+                    };
 
     const handleScroll = () => {
       if (window.innerHeight + document.documentElement.scrollTop + 300 < document.documentElement.offsetHeight || isFetching) return;
@@ -340,6 +376,37 @@ const SiteUpdateResult = ({
                   <SiteUpdateCardTitle id={`post${item.id}_title`} title={item.title}>
                     {item.title}
                   </SiteUpdateCardTitle>
+                  { item.content_type
+                  && (
+                    <DataContentType>
+                      {
+                        item.content_type.split(",").map((type, typeidx) => {
+                          const typekey = `update_${typeidx}`;
+                          const newType = type.trim().replace("/", "");
+                          const newTooltip = type.trim();
+                          return (
+                            <OverlayTrigger
+                              key={typekey}
+                              placement="bottom"
+                              overlay={
+                                (
+                                  <Popover
+                                    style={{
+                                      marginLeft: '0px', padding: '10px', fontSize: '12px', zIndex: 99
+                                    }}
+                                  >
+                                    {newTooltip}
+                                  </Popover>
+                                )
+                              }
+                            >
+                              <img src={iconSrc[newType]} className={newType === "Clinical" ? "clinicalIcon" : "typeIcon"} alt="typeIcon" />
+                            </OverlayTrigger>
+                          );
+                        })
+                      }
+                    </DataContentType>
+                  )}
                   <SiteUpdateExport>
                     <a href="#" role="button" className="buttonStyle" onClick={() => handleExport(`post${item.id}`)}>
                       <span className="spanText">
