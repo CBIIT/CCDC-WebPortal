@@ -92,6 +92,10 @@ const SearchCatalogPage = ({
   const [searchText, setSearchText] = useState(searchTerm);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const options = {};
     if (query.get("page")) {
       options.page = parseInt(query.get("page").trim(), 10);
@@ -116,7 +120,6 @@ const SearchCatalogPage = ({
       });
   }, [searchParams]);
 
-  window.scrollTo(0, 0);
   const handleBubbleSearchTextRemoveClick = () => {
     setSearchText("");
     const queryStr = replaceQueryStr(query, "");
