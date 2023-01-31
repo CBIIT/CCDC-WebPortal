@@ -285,6 +285,12 @@ const Glossary = () => {
             {
               key === 'E' && (
                 <>
+                  <div className="E">
+                    <h2 className="glossaryItemHeader">Epidemiologic</h2>
+                    <span className="glossaryItemType">Data Content Type</span>
+                    <p className="glossaryItemDescription">Relating to the study of the distribution and determinants of health-related states or events (including disease) in populations, and the application of this study to the control of diseases and other health problems.</p>
+                    <br />
+                  </div>
                   <div className="e">
                     <h2 className="glossaryItemHeader">ES</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
@@ -621,6 +627,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">Primary Dataset Scope</h2>
                     <span className="glossaryItemType">Dataset Structure</span>
                     <p className="glossaryItemDescription">A classification of common administrative or physical construct to which a researcher associates data. For example, a dataset whose scope is a project contains information belonging to one project. A typical dataset scope is Project, Program, or Collection. Collection is a generic scope whose scoping criteria are not built into the term.</p>
+                    <br />
+                  </div>
+                  <div className="p">
+                    <h2 className="glossaryItemHeader">Proband</h2>
+                    <span className="glossaryItemType">Data Element</span>
+                    <p className="glossaryItemDescription">A proband is a person in a family to receive genetic counseling and/or testing for a suspected hereditary risk or diagnosed disease. A proband may or may not be affected with the disease in question. If the value is true, then the case subject may have been diagnosed with the disease under studied. If the value is false, then the case subject is a member of the family of a proband study participant. The proband indicator for the case carries over to a sample taken from a case subject. (Definition based on https://www.cancer.gov/publications/dictionaries/genetics-dictionary/def/proband.)</p>
                     <br />
                   </div>
                   <div className="p">
