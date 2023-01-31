@@ -685,7 +685,7 @@ const DatasetDetail = ({
                                 <span key={cpkey} className="itemSpan">
                                   {cp.n ? cp.n : null}
                                   &nbsp;(
-                                  {cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
+                                  {cp.v >= 0 ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
                               );
