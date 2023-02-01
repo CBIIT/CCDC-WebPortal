@@ -632,7 +632,9 @@ const Glossary = () => {
                   <div className="p">
                     <h2 className="glossaryItemHeader">Proband</h2>
                     <span className="glossaryItemType">Data Element</span>
-                    <p className="glossaryItemDescription">A proband is a person in a family to receive genetic counseling and/or testing for a suspected hereditary risk or diagnosed disease. A proband may or may not be affected with the disease in question. If the value is true, then the case subject may have been diagnosed with the disease under studied. If the value is false, then the case subject is a member of the family of a proband study participant. The proband indicator for the case carries over to a sample taken from a case subject. (Definition based on https://www.cancer.gov/publications/dictionaries/genetics-dictionary/def/proband.)</p>
+                    <p className="glossaryItemDescription">A proband is a person in a family to receive genetic counseling and/or testing for a suspected hereditary risk or diagnosed disease. A proband may or may not be affected with the disease in question. If the value is true, then the case subject may have been diagnosed with the disease under studied. If the value is false, then the case subject is a member of the family of a proband study participant. The proband indicator for the case carries over to a sample taken from a case subject.</p>
+                    <p className="glossaryItemLink">NCI Dictionary</p>
+                    <p className="glossaryItemLink"><a href="https://www.cancer.gov/publications/dictionaries/genetics-dictionary/def/proband" target="_blank" rel="noreferrer noopener">https://www.cancer.gov/publications/dictionaries/genetics-dictionary/def/proband</a></p>
                     <br />
                   </div>
                   <div className="p">
