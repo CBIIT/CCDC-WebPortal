@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -11,6 +10,8 @@ import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
 import GenomicsIcon from '../../../assets/img/Genomics.icon.svg';
 import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
 import XenograftIcon from '../../../assets/img/Xenograft.icon.svg';
+import EpidemiologicIcon from '../../../assets/img/Epidemiologic.icon.svg';
+import CellLinesIcon from '../../../assets/img/CellLines.icon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
@@ -211,9 +212,11 @@ const SiteUpdateResult = ({
     const pageSize = 3;
     const iconSrc = {
                       Clinical: ClinicalTrialsIcon,
-                      GenomicsOmics: GenomicsIcon,
+                      'Genomics/Omics': GenomicsIcon,
                       Imaging: ImagingIcon,
-                      Xenograft: XenograftIcon
+                      Xenograft: XenograftIcon,
+                      Epidemiologic: EpidemiologicIcon,
+                      'Cell Lines': CellLinesIcon,
                     };
 
     const handleScroll = () => {
@@ -382,7 +385,7 @@ const SiteUpdateResult = ({
                       {
                         item.content_type.split(",").map((type, typeidx) => {
                           const typekey = `update_${typeidx}`;
-                          const newType = type.trim().replace("/", "");
+                          const newType = type.trim();
                           const newTooltip = type.trim();
                           return (
                             <OverlayTrigger
@@ -392,7 +395,7 @@ const SiteUpdateResult = ({
                                 (
                                   <Popover
                                     style={{
-                                      marginLeft: '0px', padding: '10px', fontSize: '12px', zIndex: 99
+                                      marginLeft: '0px', padding: '10px', fontSize: '12px', zIndex: 98
                                     }}
                                   >
                                     {newTooltip}
