@@ -229,7 +229,6 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("GEO STUDY IDENTIFIER")) {
       additionalDict["GEO STUDY IDENTIFIER"].forEach(geoStudyItem => {
         geoStudyIdArr.push(geoStudyItem.k);
-        console.log("geoStudyItem.k:", geoStudyItem.k);
       });
     }
   }
