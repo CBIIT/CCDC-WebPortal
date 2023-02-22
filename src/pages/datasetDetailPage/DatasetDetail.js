@@ -208,6 +208,7 @@ const DatasetDetail = ({
   const grantIDs = [];
   const grantNames = [];
   const grants = new Map();
+  const geoStudyIdArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -224,6 +225,11 @@ const DatasetDetail = ({
         grants.set(grantIDs[i], "");
       }
       grants.set(grantIDs[i], grantNames[i]);
+    }
+    if (sortedAdditonals.includes("GEO STUDY IDENTIFIER")) {
+      additionalDict["GEO STUDY IDENTIFIER"].forEach(geoStudyItem => {
+        geoStudyIdArr.push(geoStudyItem.k);
+      });
     }
   }
 
@@ -685,7 +691,7 @@ const DatasetDetail = ({
                                 <span key={cpkey} className="itemSpan">
                                   {cp.n ? cp.n : null}
                                   &nbsp;(
-                                  {cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
+                                  {cp.v >= 0 ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
                                   {cpidx === content.case_proband.length - 1 ? ")" : "); "}
                                 </span>
                               );
@@ -988,14 +994,20 @@ const DatasetDetail = ({
                               );
                             }
                             if (ad === "GEO STUDY IDENTIFIER") {
-                              const geoId = additionalDict["GEO STUDY IDENTIFIER"][0].k;
-                              const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                              const html = geoStudyIdArr.map((geoId, idx) => {
+                                const geokey = `geo_${idx}`;
+                                const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                                return (
+                                  <div className="additionalDataContent" key={geokey}>
+                                    <a href={geoLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{geoId}</a>
+                                  </div>
+                                );
+                              });
+
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  <div className="additionalDataContent">
-                                    <a href={geoLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{geoId}</a>
-                                  </div>
+                                  {html}
                                 </>
                               );
                             }

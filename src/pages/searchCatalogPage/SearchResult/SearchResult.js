@@ -167,6 +167,17 @@ const SearchResultContainer = styled.div`
     color: #004187;
   }
 
+  .descLink {
+    margin: 0 3px 0 3px;
+    padding: 1px 5px 1px 5px;
+    border: 1px solid #9EC1DB;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #DFEEF9;
+    color: #004187;
+    line-height: 2.5em;
+  }
+
   a[target="_blank"] {
     color: #004187;
     background: url(${externalIcon}) right center no-repeat #DFEEF9;
@@ -597,6 +608,54 @@ const SearchResult = ({
             } else {
               desc = desc.replace(/<(?![b/])/g, "&lt;");
             }
+            const arr = desc.split("http");
+            let descArr = [];
+            const isSearchArr = [];
+            if (arr.length > 1) {
+              if (arr[0].endsWith("<b>")) {
+                descArr.push(arr[0].substring(0, arr[0].length - 3));
+                isSearchArr.push(0);
+              } else {
+                descArr.push(arr[0]);
+                isSearchArr.push(0);
+              }
+                for (let i = 1; i < arr.length; i += 1) {
+                    const urlArr = arr[i].split(" ");
+                    if (urlArr[0].includes("</b>")) {
+                      isSearchArr.push(1);
+                    } else {
+                      isSearchArr.push(0);
+                    }
+                    const url = urlArr[0].replace("</b>", "");
+                    const urlLastChar = url[url.length - 1];
+                    if (",;.()<>{}".includes(urlLastChar)) {
+                        const newUrl = "http".concat(url.substring(0, url.length - 1));
+                        descArr.push(newUrl);
+                        const restText = arr[i].split(url.substring(0, url.length - 1))[1];
+                        if (restText.endsWith("<b>")) {
+                          descArr.push(restText.substring(0, restText.length - 3));
+                        } else {
+                          descArr.push(restText);
+                        }
+                        isSearchArr.push(0);
+                    } else {
+                        const newUrl = "http".concat(url);
+                        descArr.push(newUrl);
+                        if (urlArr.length !== 1) {
+                          const restText = arr[i].split(url)[1];
+                          if (restText.endsWith("<b>")) {
+                            descArr.push(restText.substring(0, restText.length - 3));
+                          } else {
+                            descArr.push(restText);
+                          }
+                          isSearchArr.push(0);
+                        }
+                    }
+                }
+            } else {
+              descArr = arr;
+              isSearchArr.push(0);
+            }
             const otherMatches = [];
             if (rst.highlight) {
               Object.keys(rst.highlight).forEach((hl) => {
@@ -725,7 +784,24 @@ const SearchResult = ({
                       <div className="col">
                         <label>Description:</label>
                         <span className="textSpan">
-                          {ReactHtmlParser(desc)}
+                        {
+                          descArr.map((item, desidx) => {
+                            const deskey = `des_${desidx}`;
+                            return (
+                              item.includes("http")
+                              ? (
+                              <span key={deskey} className={isSearchArr[desidx] === 1 ? "descLink" : null}>
+                                {
+                                  isSearchArr[desidx] === 1
+                                  ? <a href={item} target="_blank" rel="noreferrer noopener">{item}</a>
+                                  : <a href={item} target="_blank" rel="noreferrer noopener" style={{backgroundColor: "white", fontWeight: "bold", textDecoration: "underline"}}>{item}</a>
+                                }
+                              </span>
+                              )
+                              : <span key={deskey}>{ReactHtmlParser(item)}</span>
+                            );
+                          })
+                        }
                         </span>
                       </div>
                     </div>
@@ -841,6 +917,24 @@ const SearchResult = ({
                                 return (
                                   <span key={amkey} className="itemSpan">
                                     <a href={mraw} target="_blank" rel="noreferrer noopener">{mraw}</a>
+                                  </span>
+                                );
+                              }
+                              if (am.name === "GEO Study Identifier") {
+                                const geoId = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                                const geoLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', geoId);
+                                return (
+                                  <span className="itemSpan">
+                                    <a href={geoLink} target="_blank" rel="noreferrer noopener">{geoId}</a>
+                                  </span>
+                                );
+                              }
+                              if (am.name === "dbGaP Study Identifier") {
+                                const dbId = m.replace(/<b>/g, "").replace(/<\/b>/g, "");
+                                const dbLink = ''.concat('https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=', dbId);
+                                return (
+                                  <span className="itemSpan">
+                                    <a href={dbLink} target="_blank" rel="noreferrer noopener">{dbId}</a>
                                   </span>
                                 );
                               }
