@@ -431,11 +431,13 @@ const DatasetDetail = ({
                       {content.case_id
                         ? <div className="dataElementLabel">Number of Cases</div>
                         : null}
-                      {
-                        content.case_id
-                        ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                        : null
-                      }
+                      <span id="number_of_cases">
+                        {
+                          content.case_id
+                          ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                          : null
+                        }
+                      </span>
                       {content.case_sex
                           ? <div className="dataElementLabel">Case Sex</div>
                           : null}
