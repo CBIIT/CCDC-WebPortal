@@ -36,17 +36,12 @@ const ResourceTitle = styled.div`
   color: #004187;
   font-weight: 600;
   font-size: 1.28rem;
-  line-height: 1.28rem;
+  height: 40px;
+  border-bottom: 3px solid #004187;;
+
   a {
     color: inherit;
     text-decoration: inherit;
-  }
-
-  .titleUnderLine {
-    content:'';
-    display:inline-block;
-    width: 100%;
-    border-top: 3px solid #004187;
   }
 `;
 
@@ -240,7 +235,6 @@ const SearchResult = ({
                       {rst.data_resource_id}
                       )
                     </a>
-                    <div className="titleUnderLine" />
                   </ResourceTitle>
                   <ResourceLogo>
                     <ResourceIcon>
