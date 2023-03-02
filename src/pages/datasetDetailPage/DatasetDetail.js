@@ -1030,7 +1030,7 @@ const DatasetDetail = ({
                               );
                             }
                             return (
-                              <div>
+                              <div id={ad.toLocaleLowerCase().split(' ').join('_')}>
                                 <div key={adkey} className="dataElementLabel">
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : ad}
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : <br />}
