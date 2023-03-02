@@ -225,16 +225,15 @@ const SearchResult = ({
             const linkto = `/resource/${rst.data_resource_id}`;
             const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
             const tooltip = tooltips[rst.resource_type.split(' ').join('')];
+            let fullTitle = "".concat(rst.resource_name, ' (', rst.data_resource_id, ')');
+            if (fullTitle.length > 77) {
+              fullTitle = fullTitle.substring(0, 77).concat('...');
+            }
             return (
               <ResourceCard key={key}>
                 <ResourceHeader>
                   <ResourceTitle>
-                    <a href={linkto}>
-                      {rst.resource_name}
-                      &nbsp;(
-                      {rst.data_resource_id}
-                      )
-                    </a>
+                      <a href={linkto}>{fullTitle}</a>
                   </ResourceTitle>
                   <ResourceLogo>
                     <ResourceIcon>
