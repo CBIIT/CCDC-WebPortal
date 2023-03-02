@@ -943,7 +943,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContentPublished">
+                                  <div className="dataElementContentPublished" id="published_in">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
                                       return (
@@ -958,7 +958,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Projects</div>
-                                  <div className="dataElementContent">
+                                  <div className="dataElementContent" id="projects">
                                     {
                                       content.projects.map((pro, proidx) => {
                                         const prokey = `pro_${proidx}`;
@@ -988,7 +988,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Grant Information</div>
-                                  <div className="grantInfoContainer">
+                                  <div className="grantInfoContainer" id="grant_information">
                                     {grantIDs.sort().map((item) => {
                                       return (
                                         <table className="table table-borderless">
@@ -1025,7 +1025,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  {html}
+                                  <div id="geo_study_identifier">{html}</div>
                                 </>
                               );
                             }
