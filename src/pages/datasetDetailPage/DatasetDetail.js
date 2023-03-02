@@ -431,15 +431,17 @@ const DatasetDetail = ({
                       {content.case_id
                         ? <div className="dataElementLabel">Number of Cases</div>
                         : null}
-                      {
-                        content.case_id
-                        ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                        : null
-                      }
+                      <span id="number_of_cases">
+                        {
+                          content.case_id
+                          ? content.case_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                          : null
+                        }
+                      </span>
                       {content.case_sex
                           ? <div className="dataElementLabel">Case Sex</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_sex">
                           {
                             content.case_sex
                             ? content.case_sex.map((cs, csidx) => {
@@ -461,7 +463,7 @@ const DatasetDetail = ({
                         {content.case_sex_at_birth
                           ? <div className="dataElementLabel">Case Sex At Birth</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_sex_at_birth">
                           {
                             content.case_sex_at_birth
                             ? content.case_sex_at_birth.map((csab, csabidx) => {
@@ -482,7 +484,7 @@ const DatasetDetail = ({
                         {content.case_gender
                           ? <div className="dataElementLabel">Case Gender</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_gender">
                           {
                             content.case_gender
                             ? content.case_gender.map((cg, cgidx) => {
@@ -502,7 +504,7 @@ const DatasetDetail = ({
                         {content.case_age
                           ? <div className="dataElementLabel">Case Age</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_age">
                           {
                             content.case_age
                             ? content.case_age.map((ca, caidx) => {
@@ -522,7 +524,7 @@ const DatasetDetail = ({
                         {content.case_age_at_diagnosis
                           ? <div className="dataElementLabel">Case Age At Diagnosis</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_age_at_diagnosis">
                           {
                             content.case_age_at_diagnosis
                             ? content.case_age_at_diagnosis.map((cad, cadidx) => {
@@ -542,7 +544,7 @@ const DatasetDetail = ({
                         {content.case_age_at_trial
                           ? <div className="dataElementLabel">Case Age At Trial</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_age_at_trial">
                           {
                             content.case_age_at_trial
                             ? content.case_age_at_trial.map((caat, caatidx) => {
@@ -562,7 +564,7 @@ const DatasetDetail = ({
                         {content.case_race
                           ? <div className="dataElementLabel">Case Race</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_race">
                           {
                             content.case_race
                             ? content.case_race.map((cr, cridx) => {
@@ -582,7 +584,7 @@ const DatasetDetail = ({
                         {content.case_ethnicity
                           ? <div className="dataElementLabel">Case Ethnicity</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_ethnicity">
                           {
                             content.case_ethnicity
                             ? content.case_ethnicity.map((ce, ceidx) => {
@@ -602,7 +604,7 @@ const DatasetDetail = ({
                         {content.case_disease_diagnosis
                           ? <div className="dataElementLabel">Case Disease Diagnosis</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_disease_diagnosis">
                           {
                             content.case_disease_diagnosis
                             ? content.case_disease_diagnosis.map((cdd, cddidx) => {
@@ -622,7 +624,7 @@ const DatasetDetail = ({
                         {content.case_tumor_site
                           ? <div className="dataElementLabel">Case Tumor Site</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_tumor_site">
                           {
                             content.case_tumor_site
                             ? content.case_tumor_site.map((cts, ctsidx) => {
@@ -642,7 +644,7 @@ const DatasetDetail = ({
                         {content.case_treatment_administered
                           ? <div className="dataElementLabel">Case Treatment Administered</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_treatment_administered">
                           {
                             content.case_treatment_administered
                             ? content.case_treatment_administered.map((cta, ctaidx) => {
@@ -662,7 +664,7 @@ const DatasetDetail = ({
                         {content.case_treatment_outcome
                           ? <div className="dataElementLabel">Case Treatment Outcome</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_treatment_outcome">
                           {
                             content.case_treatment_outcome
                             ? content.case_treatment_outcome.map((cto, ctoidx) => {
@@ -682,7 +684,7 @@ const DatasetDetail = ({
                         {content.case_proband
                           ? <div className="dataElementLabel">Case Proband</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="case_proband">
                           {
                             content.case_proband
                             ? content.case_proband.map((cp, cpidx) => {
@@ -702,71 +704,87 @@ const DatasetDetail = ({
                         {content.sample_id
                           ? <div className="dataElementLabel">Number of Samples</div>
                           : null}
+                        <span id="number_of_samples">
                         {
                           content.sample_id
                           ? content.sample_id.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                           : null
                         }
+                        </span>
                         {content.program_name
                           ? <div className="dataElementLabel">Program Name</div>
                           : null}
+                        <span id="program_name">
                         {
                           content.program_name
                           ? content.program_name
                           : null
                         }
+                        </span>
                         {content.program_id
                           ? <div className="dataElementLabel">Program ID</div>
                           : null}
+                        <span id="program_id">
                         {
                           content.program_id
                           ? content.program_id
                           : null
                         }
+                        </span>
                         {content.donor_age
                           ? <div className="dataElementLabel">Donor Age</div>
                           : null}
+                        <span id="donor_age">
                         {
                           content.donor_age
                           ? content.donor_age
                           : null
                         }
+                        </span>
                         {content.donor_disease
                           ? <div className="dataElementLabel">Donor Disease</div>
                           : null}
+                        <span id="donor_disease">
                         {
                           content.donor_disease
                           ? content.donor_disease
                           : null
                         }
+                        </span>
                         {content.donor_sex
                           ? <div className="dataElementLabel">Donor Sex</div>
                           : null}
+                        <span id="donor_sex">
                         {
                           content.donor_sex
                           ? content.donor_sex
                           : null
                         }
+                        </span>
                         {content.donor_id
                           ? <div className="dataElementLabel">Donor ID</div>
                           : null}
+                        <span id="donor_id">
                         {
                           content.donor_id
                           ? content.donor_id
                           : null
                         }
+                        </span>
                         {content.cell_line_id
                           ? <div className="dataElementLabel">Cell Line ID</div>
                           : null}
+                        <span id="cell_line_id">
                         {
                           content.cell_line_id
                           ? content.cell_line_id
                           : null
                         }
+                        </span>
                         {content.sample_repository_name
                           ? <div className="dataElementLabel">Sample Repository Name</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_repository_name">
                           {
                             content.sample_repository_name
                             ? content.sample_repository_name.map((srn, srnidx) => {
@@ -785,7 +803,7 @@ const DatasetDetail = ({
                         {content.sample_assay_method
                           ? <div className="dataElementLabel">Sample Assay Method</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_assay_method">
                           {
                             content.sample_assay_method
                             ? content.sample_assay_method.map((sam, samidx) => {
@@ -806,7 +824,7 @@ const DatasetDetail = ({
                         {content.sample_analyte_type
                           ? <div className="dataElementLabel">Sample Analyte Type</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_analyte_type">
                           {
                             content.sample_analyte_type
                             ? content.sample_analyte_type.map((sat, satidx) => {
@@ -826,7 +844,7 @@ const DatasetDetail = ({
                         {content.sample_anatomic_site
                           ? <div className="dataElementLabel">Sample Anatomic Type</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_anatomic_type">
                           {
                             content.sample_anatomic_site
                             ? content.sample_anatomic_site.map((sat, satidx) => {
@@ -846,7 +864,7 @@ const DatasetDetail = ({
                         {content.sample_composition_type
                           ? <div className="dataElementLabel">Sample Composition Type</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_composition_type">
                           {
                             content.sample_composition_type
                             ? content.sample_composition_type.map((sct, sctidx) => {
@@ -867,7 +885,7 @@ const DatasetDetail = ({
                         {content.sample_is_normal
                           ? <div className="dataElementLabel">Sample Is Normal</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_is_normal">
                           {
                             content.sample_is_normal
                             ? content.sample_is_normal.map((sin, sinidx) => {
@@ -888,7 +906,7 @@ const DatasetDetail = ({
                         {content.sample_is_xenograft
                           ? <div className="dataElementLabel">Sample Is Xenograft</div>
                           : null}
-                        <div className="dataElementContent">
+                        <div className="dataElementContent" id="sample_is_xenograft">
                           {
                             content.sample_is_xenograft
                             ? content.sample_is_xenograft.map((six, sixidx) => {
@@ -925,7 +943,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContentPublished">
+                                  <div className="dataElementContentPublished" id="published_in">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
                                       return (
@@ -940,7 +958,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Projects</div>
-                                  <div className="dataElementContent">
+                                  <div className="dataElementContent" id="projects">
                                     {
                                       content.projects.map((pro, proidx) => {
                                         const prokey = `pro_${proidx}`;
@@ -970,7 +988,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Grant Information</div>
-                                  <div className="grantInfoContainer">
+                                  <div className="grantInfoContainer" id="grant_information">
                                     {grantIDs.sort().map((item) => {
                                       return (
                                         <table className="table table-borderless">
@@ -1007,12 +1025,12 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  {html}
+                                  <div id="geo_study_identifier">{html}</div>
                                 </>
                               );
                             }
                             return (
-                              <div>
+                              <div id={ad.toLocaleLowerCase().split(' ').join('_')}>
                                 <div key={adkey} className="dataElementLabel">
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : ad}
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : <br />}

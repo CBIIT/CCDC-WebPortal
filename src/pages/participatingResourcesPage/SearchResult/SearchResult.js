@@ -269,7 +269,7 @@ const SearchResult = ({
                   </SummaryIcon>
                   <a href={linktoDatasetSummaries}>
                     DATASET SUMMARIES (
-                    {rst.datasets_total}
+                    <span id="dataset_summaries_count">{rst.datasets_total}</span>
                     )
                   </a>
                 </DatasetsSummary>
