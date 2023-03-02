@@ -404,6 +404,7 @@ const NavBar = () => {
                   <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
                   <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
                   <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources" onClick={handleMobileMenuClick}>Participating Resources</NavLink></MobileLiSection>
+                  <MobileLiSection><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick} end>CCDI Studies</NavLink></MobileLiSection>
                   <MobileLiSection>
                     <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
                       About&nbsp;
@@ -421,6 +422,7 @@ const NavBar = () => {
                   <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/resource/CCDI">&nbsp; &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection>
                       <span style={path === "/about" || path === "/glossary" || path === "/siteupdate" ? activeStyle : null}>
                         &nbsp; &nbsp; About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
