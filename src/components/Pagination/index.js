@@ -137,7 +137,7 @@ const Pagination = ({
         -
         {pageInfo.total < pageInfo.page * pageInfo.pageSize ? pageInfo.total : pageInfo.page * pageInfo.pageSize}
         &nbsp;of&nbsp;
-        <span id="search_catalog_total_count">{pageInfo.total}</span>
+        <span id="participating_resource_total_count">{pageInfo.total}</span>
       </PageSummary>
       <PageSelect>
         <BSPagination className="pagination-ccdc">
