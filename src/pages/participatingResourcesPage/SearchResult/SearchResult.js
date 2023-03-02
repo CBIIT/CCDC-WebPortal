@@ -233,7 +233,7 @@ const SearchResult = ({
               <ResourceCard key={key}>
                 <ResourceHeader>
                   <ResourceTitle>
-                      <a href={linkto}>{fullTitle}</a>
+                    <a href={linkto}>{fullTitle}</a>
                   </ResourceTitle>
                   <ResourceLogo>
                     <ResourceIcon>
