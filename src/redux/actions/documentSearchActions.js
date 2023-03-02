@@ -16,7 +16,6 @@ export function switchPage(pageInfo) {
 export function startDocumentSearch(searchKeyword) {
   const func = function func(dispatch, getState) {
       dispatch(putSearchKeyword(searchKeyword));
-      dispatch(switchPage({page: 1, pageSize: 10, total: 0}));
       const { documentSearch } = getState();
       const body = {keyword: documentSearch.keyword, pageInfo: documentSearch.pageInfo};
       return documentSearchApi.searchDocument(body)
