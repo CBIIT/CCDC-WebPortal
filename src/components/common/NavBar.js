@@ -421,8 +421,8 @@ const NavBar = () => {
                 <UlContainer id="primary-navigation" className="primary-navigation">
                   <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/resource/CCDI">&nbsp; &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection>
                       <span style={path === "/about" || path === "/glossary" || path === "/siteupdate" ? activeStyle : null}>
                         &nbsp; &nbsp; About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
