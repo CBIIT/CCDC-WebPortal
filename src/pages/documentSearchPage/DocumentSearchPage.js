@@ -242,12 +242,12 @@ const DocumentSearchPage = ({
             pageInfo.total >= 0 ? (
               <SearchSummary>
                 {pageInfo.total}
-                &nbsp;Resultse
+                &nbsp;Results
               </SearchSummary>
             ) : (
               <SearchSummary>
                 {" "}
-                &nbsp;Resultse
+                &nbsp;Results
               </SearchSummary>
             )
           }
