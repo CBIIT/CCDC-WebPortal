@@ -848,9 +848,9 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_anatomic_site
-                          ? <div className="dataElementLabel">Sample Anatomic Type</div>
+                          ? <div className="dataElementLabel">Sample Anatomic Site</div>
                           : null}
-                        <div className="dataElementContent" id="sample_anatomic_type">
+                        <div className="dataElementContent" id="sample_anatomic_site">
                           {
                             content.sample_anatomic_site
                             ? content.sample_anatomic_site.map((sat, satidx) => {
