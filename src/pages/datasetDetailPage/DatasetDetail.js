@@ -209,6 +209,7 @@ const DatasetDetail = ({
   const grantNames = [];
   const grants = new Map();
   const geoStudyIdArr = [];
+  const dataRepositoryArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -229,6 +230,11 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("GEO STUDY IDENTIFIER")) {
       additionalDict["GEO STUDY IDENTIFIER"].forEach(geoStudyItem => {
         geoStudyIdArr.push(geoStudyItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("DATA REPOSITORY")) {
+      additionalDict["DATA REPOSITORY"].forEach(dataRepositoryItem => {
+        dataRepositoryArr.push(dataRepositoryItem.k);
       });
     }
   }
@@ -1026,6 +1032,23 @@ const DatasetDetail = ({
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
                                   <div id="geo_study_identifier">{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "DATA REPOSITORY") {
+                              const html = dataRepositoryArr.map((repositoryItem, idx) => {
+                                const repositorykey = `repository_${idx}`;
+                                return (
+                                  <div className="additionalDataContent" key={repositorykey}>
+                                    <a href={repositoryItem} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{repositoryItem}</a>
+                                  </div>
+                                );
+                              });
+
+                              return (
+                                <>
+                                  <div className="dataElementLabel">DATA REPOSITORY</div>
+                                  <div id="data_repository">{html}</div>
                                 </>
                               );
                             }
