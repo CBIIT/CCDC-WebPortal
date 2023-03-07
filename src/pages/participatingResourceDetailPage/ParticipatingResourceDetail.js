@@ -257,7 +257,7 @@ const ParticipatingResourceDetail = ({
         throw new Error(`Loading participating resource detail datasets failed ${error}`);
       });
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     initializePopover();
