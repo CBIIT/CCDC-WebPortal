@@ -257,7 +257,7 @@ const ParticipatingResourceDetail = ({
         throw new Error(`Loading participating resource detail datasets failed ${error}`);
       });
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     initializePopover();
@@ -405,7 +405,7 @@ const ParticipatingResourceDetail = ({
                     </SummaryIcon>
                     <span>
                       DATASET SUMMARIES (
-                      {detail.datasets_total}
+                      <span id="dataset_summaries_detail_count" style={{marginLeft: 0}}>{detail.datasets_total}</span>
                       )
                     </span>
                   </DatasetsSummary>

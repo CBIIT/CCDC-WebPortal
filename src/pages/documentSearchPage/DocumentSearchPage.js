@@ -164,7 +164,7 @@ const getSearchableText = (searchString) => {
   return result.length > 0;
 };
 
-const ParticipatingResourcesPage = ({
+const DocumentSearchPage = ({
   pageInfo,
   onStartDocumentSearch,
 }) => {
@@ -238,10 +238,19 @@ const ParticipatingResourcesPage = ({
       </PageHeaderContainer>
       <SearchContainer>
         <SearchContent>
-          <SearchSummary>
-            {pageInfo.total}
-            &nbsp;Results
-          </SearchSummary>
+          {
+            pageInfo.total >= 0 ? (
+              <SearchSummary>
+                {pageInfo.total}
+                &nbsp;Results
+              </SearchSummary>
+            ) : (
+              <SearchSummary>
+                {" "}
+                &nbsp;Results
+              </SearchSummary>
+            )
+          }
           <SearchResult />
         </SearchContent>
       </SearchContainer>
@@ -249,9 +258,9 @@ const ParticipatingResourcesPage = ({
   );
 };
 
-ParticipatingResourcesPage.propTypes = {
+DocumentSearchPage.propTypes = {
   pageInfo: PropTypes.object.isRequired,
   onStartDocumentSearch: PropTypes.func.isRequired,
 };
 
-export default ParticipatingResourcesPage;
+export default DocumentSearchPage;
