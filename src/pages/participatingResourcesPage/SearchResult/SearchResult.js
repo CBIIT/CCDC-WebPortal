@@ -248,7 +248,16 @@ const SearchResult = ({
                   <ContactInfo>
                     <POCInfo>
                       <label>Point of Contact:</label>
-                      <a href={mailto}>{rst.poc}</a>
+                      {
+                        rst.poc_email.includes("http")
+                        ? (
+                            <a href={rst.poc_email} target="_blank" rel="noreferrer noopener">
+                              {rst.poc}
+                              <SiteIcon />
+                            </a>
+                          )
+                          : <a href={mailto}>{rst.poc}</a>
+                        }
                     </POCInfo>
                     <SiteInfo>
                       <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">
