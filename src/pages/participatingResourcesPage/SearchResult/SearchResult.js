@@ -221,7 +221,8 @@ const SearchResult = ({
             <ResultInfo>No Results</ResultInfo>
           ) : resultList.map((rst, idx) => {
             const key = `sr_${idx}`;
-            const mailto = `mailto:${rst.poc_email}`;
+            const pocArray = rst.poc.split(" ; ");
+            const pocEmailArray = rst.poc_email.split(" ; ");
             const linkto = `/resource/${rst.data_resource_id}`;
             const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
             const tooltip = tooltips[rst.resource_type.split(' ').join('')];
@@ -256,7 +257,19 @@ const SearchResult = ({
                               <SiteIcon />
                             </a>
                           )
-                          : <a href={mailto}>{rst.poc}</a>
+                          : (
+                            <div>
+                              {
+                                pocArray.map((pocitem, pocidx) => {
+                                  const pockey = `poc_${pocidx}`;
+                                  const mailto = `mailto:${pocEmailArray[pocidx]}`;
+                                  return (
+                                    <a key={pockey} href={mailto}>{pocitem}</a>
+                                  );
+                                })
+                              }
+                            </div>
+                          )
                         }
                     </POCInfo>
                     <SiteInfo>
