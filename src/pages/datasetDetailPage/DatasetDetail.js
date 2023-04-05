@@ -1068,7 +1068,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
+                                  <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
                                   <div id="geo_study_identifier">{html}</div>
                                 </>
                               );
