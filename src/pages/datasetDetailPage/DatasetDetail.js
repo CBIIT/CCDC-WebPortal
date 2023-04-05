@@ -210,6 +210,7 @@ const DatasetDetail = ({
   const grants = new Map();
   const geoStudyIdArr = [];
   const dataRepositoryArr = [];
+  const sraIdArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -235,6 +236,11 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("DATA REPOSITORY")) {
       additionalDict["DATA REPOSITORY"].forEach(dataRepositoryItem => {
         dataRepositoryArr.push(dataRepositoryItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("SRA STUDY IDENTIFIER")) {
+      additionalDict["SRA STUDY IDENTIFIER"].forEach(sraItem => {
+        sraIdArr.push(sraItem.k);
       });
     }
   }
@@ -1027,7 +1033,6 @@ const DatasetDetail = ({
                                   </div>
                                 );
                               });
-
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
@@ -1044,11 +1049,27 @@ const DatasetDetail = ({
                                   </div>
                                 );
                               });
-
                               return (
                                 <>
                                   <div className="dataElementLabel">DATA REPOSITORY</div>
                                   <div id="data_repository">{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "SRA STUDY IDENTIFIER") {
+                              const html = sraIdArr.map((sraId, idx) => {
+                                const srakey = `sra_${idx}`;
+                                const sraLink = ''.concat('https://trace.ncbi.nlm.nih.gov/Traces/?view=study&acc=', sraId);
+                                return (
+                                  <div className="additionalDataContent" key={srakey}>
+                                    <a href={sraLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{sraId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
+                                  <div id="geo_study_identifier">{html}</div>
                                 </>
                               );
                             }
