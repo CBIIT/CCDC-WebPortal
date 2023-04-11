@@ -1113,7 +1113,7 @@ const DatasetDetail = ({
                         }
                         {coreDataElementsMap.size > 0 && (
                           <GraphicsContainer>
-                            <div className="coreDataLabel">Charts</div>
+                            <div className="coreDataLabel" style={{marginTop: '12px'}}>Charts</div>
                             <div onKeyDown={e => e.stopPropagation()} aria-hidden="true">
                               <Dropdown>
                                 {
