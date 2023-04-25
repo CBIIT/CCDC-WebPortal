@@ -110,7 +110,7 @@ const HomePage = () => {
                                 <br />
                                 <br />
                             </p>
-                            <a href="/search#top" className="headerLink2">
+                            <a href="/search" className="headerLink2">
                                 <Button className="buttonText color-white">
                                     <span className="buttonLabel">EXPLORE THE CATALOG&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                                     <span className="buttonIcon">
