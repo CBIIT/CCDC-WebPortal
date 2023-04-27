@@ -154,10 +154,11 @@ const GraphicsContainer = styled.div`
 `;
 
 const sortingAdditionalElement = (content) => {
+  const idArray = [];
+  const result = [];
   if (content === undefined) {
     return [];
   }
-  const result = [];
   if (content.published_in) {
     result.push("PUBLISHED IN");
   }
@@ -166,10 +167,14 @@ const sortingAdditionalElement = (content) => {
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      result.push(ade.attr_name.toUpperCase());
+      if (ade.attr_name === 'Clinical Trial' || ade.attr_name === 'dbGaP Study Identifier' || ade.attr_name === 'GEO Study Identifier' || ade.attr_name === 'SRA Study Identifier') {
+        idArray.push(ade.attr_name.toUpperCase());
+      } else {
+        result.push(ade.attr_name.toUpperCase());
+      }
     });
   }
-  return result.sort();
+  return idArray.sort().concat(result.sort());
 };
 
 const DatasetDetail = ({
