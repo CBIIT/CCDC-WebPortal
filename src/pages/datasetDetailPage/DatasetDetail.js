@@ -167,7 +167,7 @@ const sortingAdditionalElement = (content) => {
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      if (ade.attr_name === 'Clinical Trial' || ade.attr_name === 'dbGaP Study Identifier' || ade.attr_name === 'GEO Study Identifier' || ade.attr_name === 'SRA Study Identifier') {
+      if (ade.attr_name === 'Clinical Trial Identifier' || ade.attr_name === 'dbGaP Study Identifier' || ade.attr_name === 'GEO Study Identifier' || ade.attr_name === 'SRA Study Identifier') {
         idArray.push(ade.attr_name.toUpperCase());
       } else {
         result.push(ade.attr_name.toUpperCase());
