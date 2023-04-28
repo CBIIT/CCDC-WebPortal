@@ -216,6 +216,7 @@ const DatasetDetail = ({
   const geoStudyIdArr = [];
   const dataRepositoryArr = [];
   const sraIdArr = [];
+  const clinicalArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -246,6 +247,11 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("SRA STUDY IDENTIFIER")) {
       additionalDict["SRA STUDY IDENTIFIER"].forEach(sraItem => {
         sraIdArr.push(sraItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("CLINICAL TRIAL IDENTIFIER")) {
+      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(sraItem => {
+        clinicalArr.push(sraItem.k);
       });
     }
   }
@@ -1074,7 +1080,24 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <div id="sra_study_identifier">{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "CLINICAL TRIAL IDENTIFIER") {
+                              const html = clinicalArr.map((clinicalId, idx) => {
+                                const clinicalkey = `clinical_${idx}`;
+                                const clinicalLink = ''.concat('https://clinicaltrials.gov/ct2/show/', clinicalId);
+                                return (
+                                  <div className="additionalDataContent" key={clinicalkey}>
+                                    <a href={clinicalLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{clinicalId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
+                                  <div id="clinical_trail_identifier">{html}</div>
                                 </>
                               );
                             }
