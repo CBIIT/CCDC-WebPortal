@@ -968,7 +968,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContentPublished" id="published_in">
+                                  <span id="published_in" style={{ position: 'absolute', visibility: 'hidden'}}>{content.published_in}</span>
+                                  <div className="dataElementContentPublished">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
                                       return (
