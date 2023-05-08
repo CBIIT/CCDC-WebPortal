@@ -217,6 +217,7 @@ const DatasetDetail = ({
   const dataRepositoryArr = [];
   const sraIdArr = [];
   const clinicalArr = [];
+  const dbgapStudyIdArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -250,8 +251,13 @@ const DatasetDetail = ({
       });
     }
     if (sortedAdditonals.includes("CLINICAL TRIAL IDENTIFIER")) {
-      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(sraItem => {
-        clinicalArr.push(sraItem.k);
+      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(clinicalItem => {
+        clinicalArr.push(clinicalItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("DBGAP STUDY IDENTIFIER")) {
+      additionalDict["DBGAP STUDY IDENTIFIER"].forEach(dbgapItem => {
+        dbgapStudyIdArr.push(dbgapItem.k);
       });
     }
   }
@@ -1034,6 +1040,24 @@ const DatasetDetail = ({
                                       );
                                     })}
                                   </div>
+                                </>
+                              );
+                            }
+                            if (ad === "DBGAP STUDY IDENTIFIER") {
+                              const html = dbgapStudyIdArr.map((dbgapId, idx) => {
+                                const dbgapkey = `dbgap_${idx}`;
+                                const dbgapLink = ''.concat('https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=', dbgapId);
+                                return (
+                                  <div className="additionalDataContent" key={dbgapkey}>
+                                    <a href={dbgapLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{dbgapId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
+                                  <span id="dbgap_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{dbgapStudyIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
