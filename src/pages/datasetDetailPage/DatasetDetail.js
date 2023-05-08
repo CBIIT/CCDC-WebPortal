@@ -437,6 +437,7 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
                       <div className="aboutDatasetContent">
+                        <span id="desc" style={{ position: 'absolute', visibility: 'hidden'}}>{content.desc}</span>
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
