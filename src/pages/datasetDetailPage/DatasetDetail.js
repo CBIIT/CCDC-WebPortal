@@ -401,6 +401,7 @@ const DatasetDetail = ({
                   <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
+                    <span id="poc_email" style={{ position: 'absolute', visibility: 'hidden'}}>{content.poc_email}</span>
                     <span className="datasetDetailHeaderText">
                       {content.poc ? content.poc : null}
                       {content.poc ? ', ' : null}
