@@ -1050,7 +1050,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <span id="geo_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{geoStudyIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
@@ -1083,7 +1084,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
-                                  <div id="sra_study_identifier">{html}</div>
+                                  <span id="sra_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{sraIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
@@ -1100,7 +1102,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
-                                  <div id="clinical_trail_identifier">{html}</div>
+                                  <span id="clinical_trail_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{clinicalArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
