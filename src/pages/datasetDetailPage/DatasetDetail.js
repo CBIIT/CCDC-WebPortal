@@ -154,10 +154,11 @@ const GraphicsContainer = styled.div`
 `;
 
 const sortingAdditionalElement = (content) => {
+  const idArray = [];
+  const result = [];
   if (content === undefined) {
     return [];
   }
-  const result = [];
   if (content.published_in) {
     result.push("PUBLISHED IN");
   }
@@ -166,10 +167,14 @@ const sortingAdditionalElement = (content) => {
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      result.push(ade.attr_name.toUpperCase());
+      if (ade.attr_name === 'Clinical Trial Identifier' || ade.attr_name === 'dbGaP Study Identifier' || ade.attr_name === 'GEO Study Identifier' || ade.attr_name === 'SRA Study Identifier') {
+        idArray.push(ade.attr_name.toUpperCase());
+      } else {
+        result.push(ade.attr_name.toUpperCase());
+      }
     });
   }
-  return result.sort();
+  return idArray.sort().concat(result.sort());
 };
 
 const DatasetDetail = ({
@@ -211,6 +216,7 @@ const DatasetDetail = ({
   const geoStudyIdArr = [];
   const dataRepositoryArr = [];
   const sraIdArr = [];
+  const clinicalArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -241,6 +247,11 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("SRA STUDY IDENTIFIER")) {
       additionalDict["SRA STUDY IDENTIFIER"].forEach(sraItem => {
         sraIdArr.push(sraItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("CLINICAL TRIAL IDENTIFIER")) {
+      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(sraItem => {
+        clinicalArr.push(sraItem.k);
       });
     }
   }
@@ -1069,7 +1080,24 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <div id="sra_study_identifier">{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "CLINICAL TRIAL IDENTIFIER") {
+                              const html = clinicalArr.map((clinicalId, idx) => {
+                                const clinicalkey = `clinical_${idx}`;
+                                const clinicalLink = ''.concat('https://clinicaltrials.gov/ct2/show/', clinicalId);
+                                return (
+                                  <div className="additionalDataContent" key={clinicalkey}>
+                                    <a href={clinicalLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{clinicalId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
+                                  <div id="clinical_trail_identifier">{html}</div>
                                 </>
                               );
                             }
