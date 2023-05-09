@@ -217,6 +217,7 @@ const DatasetDetail = ({
   const dataRepositoryArr = [];
   const sraIdArr = [];
   const clinicalArr = [];
+  const dbgapStudyIdArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -250,8 +251,13 @@ const DatasetDetail = ({
       });
     }
     if (sortedAdditonals.includes("CLINICAL TRIAL IDENTIFIER")) {
-      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(sraItem => {
-        clinicalArr.push(sraItem.k);
+      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(clinicalItem => {
+        clinicalArr.push(clinicalItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("DBGAP STUDY IDENTIFIER")) {
+      additionalDict["DBGAP STUDY IDENTIFIER"].forEach(dbgapItem => {
+        dbgapStudyIdArr.push(dbgapItem.k);
       });
     }
   }
@@ -401,6 +407,7 @@ const DatasetDetail = ({
                   <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
+                    <span id="poc_email" style={{ position: 'absolute', visibility: 'hidden'}}>{content.poc_email}</span>
                     <span className="datasetDetailHeaderText">
                       {content.poc ? content.poc : null}
                       {content.poc ? ', ' : null}
@@ -436,6 +443,7 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
                       <div className="aboutDatasetContent">
+                        <span id="desc" style={{ position: 'absolute', visibility: 'hidden'}}>{content.desc}</span>
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
@@ -966,7 +974,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContentPublished" id="published_in">
+                                  <span id="published_in" style={{ position: 'absolute', visibility: 'hidden'}}>{content.published_in}</span>
+                                  <div className="dataElementContentPublished">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
                                       return (
@@ -1034,6 +1043,24 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad === "DBGAP STUDY IDENTIFIER") {
+                              const html = dbgapStudyIdArr.map((dbgapId, idx) => {
+                                const dbgapkey = `dbgap_${idx}`;
+                                const dbgapLink = ''.concat('https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=', dbgapId);
+                                return (
+                                  <div className="additionalDataContent" key={dbgapkey}>
+                                    <a href={dbgapLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{dbgapId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
+                                  <span id="dbgap_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{dbgapStudyIdArr.join(' ')}</span>
+                                  <div>{html}</div>
+                                </>
+                              );
+                            }
                             if (ad === "GEO STUDY IDENTIFIER") {
                               const html = geoStudyIdArr.map((geoId, idx) => {
                                 const geokey = `geo_${idx}`;
@@ -1047,7 +1074,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <span id="geo_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{geoStudyIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
@@ -1080,7 +1108,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
-                                  <div id="sra_study_identifier">{html}</div>
+                                  <span id="sra_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{sraIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
@@ -1097,7 +1126,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
-                                  <div id="clinical_trail_identifier">{html}</div>
+                                  <span id="clinical_trail_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{clinicalArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
