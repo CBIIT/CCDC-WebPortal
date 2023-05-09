@@ -418,7 +418,7 @@ const DatasetDetail = ({
                       {pocLinks[2] ? ', ' : null}
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
-                    <div id="poc_email" style={{ position: 'absolute', opacity: 0}}>{content.poc_email}</div>
+                    <div id="poc_email">{content.poc_email}</div>
                   </div>
                   </HeaderLinks>
                   <ResourceType>
@@ -443,7 +443,7 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
                       <div className="aboutDatasetContent">
-                        <div id="desc" style={{ position: 'absolute', opacity: 0}}>{content.desc}</div>
+                        <div id="desc" className="hiddenElement">{content.desc}</div>
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
@@ -982,7 +982,7 @@ const DatasetDetail = ({
                                       );
                                     }) : null}
                                   </div>
-                                  <div id="published_in" style={{ position: 'absolute', opacity: 0}}>{content.published_in}</div>
+                                  <span id="published_in" style={{ position: 'absolute', opacity: 0}}>{content.published_in}</span>
                                 </>
                               );
                             }
@@ -1056,7 +1056,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
-                                  <div id="dbgap_study_identifier" style={{ position: 'absolute', opacity: 0}}>{dbgapStudyIdArr.join(' ')}</div>
+                                  <span id="dbgap_study_identifier">{dbgapStudyIdArr.join(' ')}</span>
                                   <div>{html}</div>
                                 </>
                               );

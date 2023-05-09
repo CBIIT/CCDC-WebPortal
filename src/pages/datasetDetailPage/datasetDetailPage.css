@@ -208,6 +208,11 @@ ul.breadcrumb li a:hover {
   inline-size: 1160px;
 }
 
+.hiddenElement {
+  position: absolute;
+  opacity: 0;
+}
+
 .coreDataContainer {
   padding: 0px 30px 10px 20px;
   /* margin-top: 10px; */
