@@ -407,7 +407,6 @@ const DatasetDetail = ({
                   <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
                     Point of Contact: &nbsp;
-                    <span id="poc_email" style={{ position: 'absolute', visibility: 'hidden'}}>{content.poc_email}</span>
                     <span className="datasetDetailHeaderText">
                       {content.poc ? content.poc : null}
                       {content.poc ? ', ' : null}
@@ -419,6 +418,7 @@ const DatasetDetail = ({
                       {pocLinks[2] ? ', ' : null}
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
+                    <span id="poc_email">{content.poc_email}</span>
                   </div>
                   </HeaderLinks>
                   <ResourceType>
@@ -443,7 +443,7 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
                       <div className="aboutDatasetContent">
-                        <span id="desc" style={{ position: 'absolute', visibility: 'hidden'}}>{content.desc}</span>
+                        <span id="desc">{content.desc}</span>
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
@@ -974,7 +974,6 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <span id="published_in" style={{ position: 'absolute', visibility: 'hidden'}}>{content.published_in}</span>
                                   <div className="dataElementContentPublished">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
@@ -983,6 +982,7 @@ const DatasetDetail = ({
                                       );
                                     }) : null}
                                   </div>
+                                  <span id="published_in">{content.published_in}</span>
                                 </>
                               );
                             }
@@ -1056,7 +1056,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
-                                  <span id="dbgap_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{dbgapStudyIdArr.join(' ')}</span>
+                                  <span id="dbgap_study_identifier">{dbgapStudyIdArr.join(' ')}</span>
                                   <div>{html}</div>
                                 </>
                               );
