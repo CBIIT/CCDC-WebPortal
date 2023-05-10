@@ -121,6 +121,11 @@ ul.breadcrumb li a:hover {
   width: 80%;
 }
 
+.datasetDetailHeaderContent #poc_email {
+  position:absolute;
+  top: -700px;
+}
+
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
   color: #7bcbd9;
@@ -208,6 +213,16 @@ ul.breadcrumb li a:hover {
   inline-size: 1160px;
 }
 
+.aboutDatasetContent #desc {
+  position: absolute;
+  top: -200px;
+}
+
+.hiddenElement {
+  position: absolute;
+  opacity: 0;
+}
+
 .coreDataContainer {
   padding: 0px 30px 10px 20px;
   /* margin-top: 10px; */
@@ -241,6 +256,16 @@ ul.breadcrumb li a:hover {
   width: 48%;
   border-left: 1px solid #BFD3E1;
   display: inline-table;
+}
+
+.additionalDataContainer #dbgap_study_identifier {
+  position: absolute;
+  top: -100px;
+}
+
+.additionalDataContainer #published_in {
+  position: absolute;
+  top: -100px;
 }
 
 .additionalDataLabel {
