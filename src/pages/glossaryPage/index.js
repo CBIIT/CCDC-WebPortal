@@ -259,6 +259,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="d">
+                    <h2 className="glossaryItemHeader">DepMap</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Dependency Map</p>
+                    <br />
+                  </div>
+                  <div className="d">
                     <h2 className="glossaryItemHeader">DIPG</h2>
                     <span className="glossaryItemType">General Abbreviation</span>
                     <p className="glossaryItemDescription">Functionally-defined Therapeutic Targets in Diffuse Intrinsic Pontine Glioma</p>
@@ -621,6 +627,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">PPTC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Preclinical Testing Consortium</p>
+                    <br />
+                  </div>
+                  <div className="p">
+                    <h2 className="glossaryItemHeader">PPTP</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Pediatric Preclinical Testing Program</p>
                     <br />
                   </div>
                   <div className="p">
