@@ -418,7 +418,7 @@ const DatasetDetail = ({
                       {pocLinks[2] ? ', ' : null}
                       {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
                     </span>
-                    <span id="poc_email">{content.poc_email}</span>
+                    <div id="poc_email" data-testid="poc_email">{content.poc_email.toString()}</div>
                   </div>
                   </HeaderLinks>
                   <ResourceType>
@@ -443,7 +443,7 @@ const DatasetDetail = ({
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
                       <div className="aboutDatasetContent">
-                        <span id="desc">{content.desc}</span>
+                        <span id="desc" data-testid="desc">{content.desc}</span>
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
@@ -982,7 +982,7 @@ const DatasetDetail = ({
                                       );
                                     }) : null}
                                   </div>
-                                  <span id="published_in">{content.published_in}</span>
+                                  <div id="published_in" data-testid="published_in">{content.published_in.toString()}</div>
                                 </>
                               );
                             }
@@ -1056,7 +1056,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
-                                  <span id="dbgap_study_identifier">{dbgapStudyIdArr.join(' ')}</span>
+                                  <div id="dbgap_study_identifier" data-testid="dbgap_study_identifier">{dbgapStudyIdArr.join(' ')}</div>
                                   <div>{html}</div>
                                 </>
                               );
