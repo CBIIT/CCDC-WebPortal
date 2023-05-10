@@ -998,6 +998,7 @@ const DatasetDetail = ({
                                       );
                                     }) : null}
                                   </div>
+                                  <span id="published_in">{content.published_in}</span>
                                 </>
                               );
                             }
