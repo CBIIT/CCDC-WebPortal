@@ -119,6 +119,7 @@ ul.breadcrumb li a:hover {
   font-weight: bold;
   font-family: Lato;
   width: 80%;
+  display: -webkit-inline-box;
 }
 
 .datasetDetailHeaderContent #poc_email {
@@ -132,6 +133,7 @@ ul.breadcrumb li a:hover {
   font-size: 17px;
   font-family: Lato;
   width: 100%;
+  display: flex;
   /* text-decoration: none; */
 }
 
@@ -211,11 +213,6 @@ ul.breadcrumb li a:hover {
   font-family: Lato;
   border-bottom: 3px solid #BFD3E1;
   inline-size: 1160px;
-}
-
-.aboutDatasetContent #desc {
-  position: absolute;
-  top: -200px;
 }
 
 .hiddenElement {
