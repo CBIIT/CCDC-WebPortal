@@ -154,10 +154,11 @@ const GraphicsContainer = styled.div`
 `;
 
 const sortingAdditionalElement = (content) => {
+  const idArray = [];
+  const result = [];
   if (content === undefined) {
     return [];
   }
-  const result = [];
   if (content.published_in) {
     result.push("PUBLISHED IN");
   }
@@ -166,10 +167,14 @@ const sortingAdditionalElement = (content) => {
   }
   if (content.additional) {
     content.additional.forEach((ade) => {
-      result.push(ade.attr_name.toUpperCase());
+      if (ade.attr_name === 'Clinical Trial Identifier' || ade.attr_name === 'dbGaP Study Identifier' || ade.attr_name === 'GEO Study Identifier' || ade.attr_name === 'SRA Study Identifier') {
+        idArray.push(ade.attr_name.toUpperCase());
+      } else {
+        result.push(ade.attr_name.toUpperCase());
+      }
     });
   }
-  return result.sort();
+  return idArray.sort().concat(result.sort());
 };
 
 const DatasetDetail = ({
@@ -211,6 +216,8 @@ const DatasetDetail = ({
   const geoStudyIdArr = [];
   const dataRepositoryArr = [];
   const sraIdArr = [];
+  const clinicalArr = [];
+  const dbgapStudyIdArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -241,6 +248,16 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("SRA STUDY IDENTIFIER")) {
       additionalDict["SRA STUDY IDENTIFIER"].forEach(sraItem => {
         sraIdArr.push(sraItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("CLINICAL TRIAL IDENTIFIER")) {
+      additionalDict["CLINICAL TRIAL IDENTIFIER"].forEach(clinicalItem => {
+        clinicalArr.push(clinicalItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("DBGAP STUDY IDENTIFIER")) {
+      additionalDict["DBGAP STUDY IDENTIFIER"].forEach(dbgapItem => {
+        dbgapStudyIdArr.push(dbgapItem.k);
       });
     }
   }
@@ -389,18 +406,36 @@ const DatasetDetail = ({
                   </div>
                   <HeaderLinks>
                   <div className="datasetDetailHeaderContent">
-                    Point of Contact: &nbsp;
-                    <span className="datasetDetailHeaderText">
-                      {content.poc ? content.poc : null}
+                    <span>Point of Contact: &nbsp;</span>
+                    <div className="datasetDetailHeaderText">
+                      <span testid="poc_name">{content.poc ? content.poc : null}</span>
                       {content.poc ? ', ' : null}
                       &nbsp;
-                      {/* {content.poc_email ? <a href={`mailto:${content.poc_email}`} className="datasetDetailHeaderLink" target="_blank" rel="noreferrer noopener">{content.poc_email}</a> : null} */}
-                      {pocLinks[0] && pocLinks[0].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a>}
-                      {pocLinks[1] ? ', ' : null}
-                      {pocLinks[1] && pocLinks[1].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a>}
-                      {pocLinks[2] ? ', ' : null}
-                      {pocLinks[2] && pocLinks[2].includes("@") ? <a className="datasetDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a> : <a className="datasetDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a>}
-                    </span>
+                      <div testid="poc_email">
+                        {
+                          pocLinks.map((pl, idx) => {
+                            if (pl && pl.includes("@")) {
+                              return (
+                                <>
+                                  <a className="datasetDetailHeaderLink" href={`mailto:${pl}`}>
+                                      {pl}
+                                  </a>
+                                  {idx < pocLinks.length - 1 ? ", " : ""}
+                                </>
+                              );
+                            }
+                            return (
+                              <>
+                                <a className="datasetDetailHeaderLink" href={pl} target="_blank" rel="noreferrer noopener">
+                                  {pl}
+                                </a>
+                                {idx < pocLinks.length - 1 ? ", " : ""}
+                              </>
+                            );
+                          })
+                        }
+                      </div>
+                    </div>
                   </div>
                   </HeaderLinks>
                   <ResourceType>
@@ -424,7 +459,7 @@ const DatasetDetail = ({
                   <div className="aboutDatasetContainer">
                     <div className="aboutDatasetLabel">About This Dataset</div>
                     {content.desc && (
-                      <div className="aboutDatasetContent">
+                      <div className="aboutDatasetContent" testid="desc">
                         {
                           datasetDes.map((item, desidx) => {
                             const deskey = `des_${desidx}`;
@@ -955,7 +990,7 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">Published In</div>
-                                  <div className="dataElementContentPublished" id="published_in">
+                                  <div className="dataElementContentPublished" testid="published_in">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
                                       return (
@@ -963,6 +998,7 @@ const DatasetDetail = ({
                                       );
                                     }) : null}
                                   </div>
+                                  <span id="published_in">{content.published_in}</span>
                                 </>
                               );
                             }
@@ -1023,6 +1059,23 @@ const DatasetDetail = ({
                                 </>
                               );
                             }
+                            if (ad === "DBGAP STUDY IDENTIFIER") {
+                              const html = dbgapStudyIdArr.map((dbgapId, idx) => {
+                                const dbgapkey = `dbgap_${idx}`;
+                                const dbgapLink = ''.concat('https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=', dbgapId);
+                                return (
+                                  <div className="additionalDataContent" key={dbgapkey}>
+                                    <a href={dbgapLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{dbgapId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
+                                  <div testid="dbgap_study_identifier">{html}</div>
+                                </>
+                              );
+                            }
                             if (ad === "GEO STUDY IDENTIFIER") {
                               const html = geoStudyIdArr.map((geoId, idx) => {
                                 const geokey = `geo_${idx}`;
@@ -1036,7 +1089,8 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <span id="geo_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{geoStudyIdArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }
@@ -1069,7 +1123,26 @@ const DatasetDetail = ({
                               return (
                                 <>
                                   <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
-                                  <div id="geo_study_identifier">{html}</div>
+                                  <span id="sra_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{sraIdArr.join(' ')}</span>
+                                  <div>{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "CLINICAL TRIAL IDENTIFIER") {
+                              const html = clinicalArr.map((clinicalId, idx) => {
+                                const clinicalkey = `clinical_${idx}`;
+                                const clinicalLink = ''.concat('https://clinicaltrials.gov/ct2/show/', clinicalId);
+                                return (
+                                  <div className="additionalDataContent" key={clinicalkey}>
+                                    <a href={clinicalLink} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{clinicalId}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
+                                  <span id="clinical_trail_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{clinicalArr.join(' ')}</span>
+                                  <div>{html}</div>
                                 </>
                               );
                             }

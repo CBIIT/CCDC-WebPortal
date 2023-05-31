@@ -369,7 +369,7 @@ const ParticipatingResourceDetail = ({
                             <br />
                               {
                                 detail.api
-                                ? detail.api.split(',').map((item, idx) => {
+                                ? detail.api.replace(';', ',').split(',').map((item, idx) => {
                                   const key = `sort_${idx}`;
                                   let newItem = item.trim();
                                   if (!newItem.startsWith("http")) {
