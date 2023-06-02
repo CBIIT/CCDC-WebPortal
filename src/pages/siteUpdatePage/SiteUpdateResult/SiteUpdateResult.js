@@ -403,7 +403,7 @@ const SiteUpdateResult = ({
                                 )
                               }
                             >
-                              <img src={iconSrc[newType]} className={newType === "Clinical" ? "clinicalIcon" : "typeIcon"} alt="typeIcon" />
+                              <img src={iconSrc[newType]} className={newType === "Clinical" ? "clinicalIcon" : "typeIcon"} alt={`${newType} icon`} />
                             </OverlayTrigger>
                           );
                         })
