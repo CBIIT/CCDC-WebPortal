@@ -62,12 +62,12 @@ const FilterItem = ({
     <OptionContainer>
       {
         highlight ? (
-          <>
+          <label>
             <input className="form-check-input" onClick={handleResourceClick} type="checkbox" value={item.data_resource_id} checked={checked} readOnly />
             <SearchableOption title={`${item.resource_name} , ${item.resource_type}`} onClick={handleResourceClick}>
               {item.data_resource_id}
             </SearchableOption>
-          </>
+          </label>
         )
         : (
           <>

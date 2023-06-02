@@ -247,7 +247,7 @@ const LiSection = styled.li`
   }
 `;
 
-const SearchArea = styled.div`
+const SearchArea = styled.label`
   float: right;
   display: flex;
   border: 2px solid #2DC799;
@@ -440,6 +440,7 @@ const NavBar = () => {
                   path !== "/sitesearch"
                   && (
                   <SearchArea>
+                    <div style={{display: 'none'}}>Documentation Search</div>
                     <SearchInput type="text" value={localText} placeholder="Documentation Search" onChange={handleTextInputChange} onKeyPress={handleKeyPress} />
                     <SearchIcon onClick={handleSearch}>
                       <i className="fas fa-search" />
