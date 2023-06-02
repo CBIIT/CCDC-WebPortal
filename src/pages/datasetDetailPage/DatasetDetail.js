@@ -185,6 +185,7 @@ const DatasetDetail = ({
   const content = details[id];
   const tooltips = {
     Aliquot: "Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight. [NCIt C25414]",
+    "Analytic Tool": "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
     Assay: "An examination or analysis of material, or of its prior assay, to determine the material's features or components.",
     Case: "A collection of data related to a specific individual in the context of a specific project.",
     "Cell Line": "A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.",
