@@ -115,7 +115,10 @@ const AccordionItem = ({
 
   return (
     <OptionContainer>
-      <input className="form-check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
+      <label>
+        <span style={{display: 'none'}}>{item.name}</span>
+        <input className="form-check-input" name="check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
+      </label>
       <OptionLabel type="button" title={item.label ? item.label : ""} onClick={handleItemClick} value={item.name} checked={checked} readOnly>
         {item.name}
       </OptionLabel>
