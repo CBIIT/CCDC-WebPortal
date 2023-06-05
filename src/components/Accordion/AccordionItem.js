@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const OptionContainer = styled.label`
+const OptionContainer = styled.div`
   display: flex;
   padding: 5px 0 5px 10px;
   
