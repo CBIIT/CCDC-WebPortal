@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const OptionContainer = styled.label`
+const OptionContainer = styled.div`
   display: flex;
   padding: 5px 0 5px 10px;
   
@@ -115,7 +115,10 @@ const AccordionItem = ({
 
   return (
     <OptionContainer>
-      <input className="form-check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
+      <label>
+        <span style={{display: 'none'}}>{item.name}</span>
+        <input className="form-check-input" name="check-input" onClick={handleItemClick} type="checkbox" value={item.name} checked={checked} readOnly />
+      </label>
       <OptionLabel type="button" title={item.label ? item.label : ""} onClick={handleItemClick} value={item.name} checked={checked} readOnly>
         {item.name}
       </OptionLabel>
