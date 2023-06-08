@@ -231,10 +231,10 @@ const SearchResult = ({
             let pocArray = [];
             let pocEmailArray = [];
             if (rst.poc) {
-              pocArray = rst.poc.split(" ; ");
+              pocArray = rst.poc.split(";");
             }
             if (rst.poc_email) {
-              pocEmailArray = rst.poc_email.split(" ; ");
+              pocEmailArray = rst.poc_email.split(";");
             }
             return (
               <ResourceCard key={key}>
@@ -268,10 +268,10 @@ const SearchResult = ({
                               {
                                 pocArray.map((pocitem, pocidx) => {
                                   const pockey = `poc_${pocidx}`;
-                                  const mailto = `mailto:${pocEmailArray[pocidx]}`;
+                                  const mailto = `mailto:${pocEmailArray[pocidx].trim()}`;
                                   return (
                                     <>
-                                      <a key={pockey} href={mailto}>{pocitem}</a>
+                                      <a key={pockey} href={mailto}>{pocitem.trim()}</a>
                                       {pocidx !== pocArray.length - 1 && <span style={{color: '#00a272'}}>,</span>}
                                     </>
                                   );
