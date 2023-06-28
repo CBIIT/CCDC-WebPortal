@@ -493,17 +493,10 @@ const DatasetDetail = ({
                           {
                             content.case_sex
                             ? content.case_sex.map((cs, csidx) => {
-                              const cskey = `cs_${csidx}`;
-                              return (
-                                <span key={cskey} className="itemSpan">
-                                  {cs.n ? cs.n : null}
-                                  &nbsp;(
-                                  {/* {" ("} */}
-                                  {cs.v ? cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
-                                  {csidx === content.case_sex.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cs.n} (`;
+                              let v = cs.v ? cs.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += csidx === content.case_sex.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -515,16 +508,10 @@ const DatasetDetail = ({
                           {
                             content.case_sex_at_birth
                             ? content.case_sex_at_birth.map((csab, csabidx) => {
-                              const csabkey = `csab_${csabidx}`;
-                              return (
-                                <span key={csabkey} className="itemSpan">
-                                  {csab.n ? csab.n : null}
-                                  &nbsp;(
-                                  {csab.v ? csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
-                                  {csabidx === content.case_sex_at_birth.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${csab.n} (`;
+                              let v = csab.v ? csab.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += csabidx === content.case_sex_at_birth.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -536,15 +523,10 @@ const DatasetDetail = ({
                           {
                             content.case_gender
                             ? content.case_gender.map((cg, cgidx) => {
-                              const cgkey = `cg_${cgidx}`;
-                              return (
-                                <span key={cgkey} className="itemSpan">
-                                  {cg.n ? cg.n : null}
-                                  &nbsp;(
-                                  {cg.v ? cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {cgidx === content.case_gender.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cg.n} (`;
+                              let v = cg.v ? cg.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += cgidx === content.case_gender.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -556,15 +538,10 @@ const DatasetDetail = ({
                           {
                             content.case_age
                             ? content.case_age.map((ca, caidx) => {
-                              const cakey = `ca_${caidx}`;
-                              return (
-                                <span key={cakey} className="itemSpan">
-                                  {ca.n ? ca.n : null}
-                                  &nbsp;(
-                                  {ca.v ? ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {caidx === content.case_age.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${ca.n} (`;
+                              let v = ca.v ? ca.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += caidx === content.case_age.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -576,15 +553,10 @@ const DatasetDetail = ({
                           {
                             content.case_age_at_diagnosis
                             ? content.case_age_at_diagnosis.map((cad, cadidx) => {
-                              const cadkey = `cad_${cadidx}`;
-                              return (
-                                <span key={cadkey} className="itemSpan">
-                                  {cad.n ? cad.n : null}
-                                  &nbsp;(
-                                  {cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cad.n} (`;
+                              let v = cad.v ? cad.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += cadidx === content.case_age_at_diagnosis.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -596,15 +568,10 @@ const DatasetDetail = ({
                           {
                             content.case_age_at_trial
                             ? content.case_age_at_trial.map((caat, caatidx) => {
-                              const caatkey = `caat_${caatidx}`;
-                              return (
-                                <span key={caatkey} className="itemSpan">
-                                  {caat.n ? caat.n : null}
-                                  &nbsp;(
-                                  {caat.v ? caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {caatidx === content.case_age_at_trial.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${caat.n} (`;
+                              let v = caat.v ? caat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += caatidx === content.case_age_at_trial.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -616,15 +583,10 @@ const DatasetDetail = ({
                           {
                             content.case_race
                             ? content.case_race.map((cr, cridx) => {
-                              const crkey = `cr_${cridx}`;
-                              return (
-                                <span key={crkey} className="itemSpan">
-                                  {cr.n ? cr.n : null}
-                                  &nbsp;(
-                                  {cr.v ? cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {cridx === content.case_race.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cr.n} (`;
+                              let v = cr.v ? cr.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += cridx === content.case_race.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -636,15 +598,10 @@ const DatasetDetail = ({
                           {
                             content.case_ethnicity
                             ? content.case_ethnicity.map((ce, ceidx) => {
-                              const cekey = `ce_${ceidx}`;
-                              return (
-                                <span key={cekey} className="itemSpan">
-                                  {ce.n ? ce.n : null}
-                                  &nbsp;(
-                                  {ce.v ? ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {ceidx === content.case_ethnicity.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${ce.n} (`;
+                              let v = ce.v ? ce.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += ceidx === content.case_ethnicity.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -656,15 +613,10 @@ const DatasetDetail = ({
                           {
                             content.case_disease_diagnosis
                             ? content.case_disease_diagnosis.map((cdd, cddidx) => {
-                              const cddkey = `cdd_${cddidx}`;
-                              return (
-                                <span key={cddkey} className="itemSpan">
-                                  {cdd.n ? cdd.n : null}
-                                  &nbsp;(
-                                  {cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cdd.n} (`;
+                              let v = cdd.v ? cdd.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += cddidx === content.case_disease_diagnosis.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -676,15 +628,10 @@ const DatasetDetail = ({
                           {
                             content.case_tumor_site
                             ? content.case_tumor_site.map((cts, ctsidx) => {
-                              const ctskey = `cts_${ctsidx}`;
-                              return (
-                                <span key={ctskey} className="itemSpan">
-                                  {cts.n ? cts.n : null}
-                                  &nbsp;(
-                                  {cts.v ? cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {ctsidx === content.case_tumor_site.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cts.n} (`;
+                              let v = cts.v ? cts.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += ctsidx === content.case_tumor_site.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -696,15 +643,10 @@ const DatasetDetail = ({
                           {
                             content.case_treatment_administered
                             ? content.case_treatment_administered.map((cta, ctaidx) => {
-                              const ctakey = `cta_${ctaidx}`;
-                              return (
-                                <span key={ctakey} className="itemSpan">
-                                  {cta.n ? cta.n : null}
-                                  &nbsp;(
-                                  {cta.v ? cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cta.n} (`;
+                              let v = cta.v ? cta.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += ctaidx === content.case_treatment_administered.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -716,15 +658,10 @@ const DatasetDetail = ({
                           {
                             content.case_treatment_outcome
                             ? content.case_treatment_outcome.map((cto, ctoidx) => {
-                              const ctokey = `cto_${ctoidx}`;
-                              return (
-                                <span key={ctokey} className="itemSpan">
-                                  {cto.n ? cto.n : null}
-                                  &nbsp;(
-                                  {cto.v ? cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cto.n} (`;
+                              let v = cto.v ? cto.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += ctoidx === content.case_treatment_outcome.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -736,15 +673,10 @@ const DatasetDetail = ({
                           {
                             content.case_proband
                             ? content.case_proband.map((cp, cpidx) => {
-                              const cpkey = `cp_${cpidx}`;
-                              return (
-                                <span key={cpkey} className="itemSpan">
-                                  {cp.n ? cp.n : null}
-                                  &nbsp;(
-                                  {cp.v >= 0 ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {cpidx === content.case_proband.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${cp.n} (`;
+                              let v = cp.v ? cp.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += cpidx === content.case_proband.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -836,13 +768,9 @@ const DatasetDetail = ({
                           {
                             content.sample_repository_name
                             ? content.sample_repository_name.map((srn, srnidx) => {
-                              const srnkey = `srn_${srnidx}`;
-                              return (
-                                <span key={srnkey} className="itemSpan">
-                                  {srn.n ? srn.n : null}
-                                  {srnidx === content.sample_repository_name.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${srn.n}`;
+                              const v = srnidx === content.sample_repository_name.length - 1 ? "" : "; ";
+                              return n + v;
                             })
                             : null
                           }
@@ -855,16 +783,10 @@ const DatasetDetail = ({
                           {
                             content.sample_assay_method
                             ? content.sample_assay_method.map((sam, samidx) => {
-                              const samkey = `sam_${samidx}`;
-                              return (
-                                <span key={samkey} className="itemSpan">
-                                  {sam.n ? sam.n : null}
-                                  &nbsp;(
-                                  {sam.v ? sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
-                                  {samidx === content.sample_assay_method.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${sam.n} (`;
+                              let v = sam.v ? sam.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += samidx === content.sample_assay_method.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -876,15 +798,10 @@ const DatasetDetail = ({
                           {
                             content.sample_analyte_type
                             ? content.sample_analyte_type.map((sat, satidx) => {
-                              const satkey = `sat_${satidx}`;
-                              return (
-                                <span key={satkey} className="itemSpan">
-                                  {sat.n ? sat.n : null}
-                                  &nbsp;(
-                                  {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {satidx === content.sample_analyte_type.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${sat.n} (`;
+                              let v = sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += satidx === content.sample_analyte_type.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -896,15 +813,10 @@ const DatasetDetail = ({
                           {
                             content.sample_anatomic_site
                             ? content.sample_anatomic_site.map((sat, satidx) => {
-                              const satkey = `sat_${satidx}`;
-                              return (
-                                <span key={satkey} className="itemSpan">
-                                  {sat.n ? sat.n : null}
-                                  &nbsp;(
-                                  {sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {satidx === content.sample_anatomic_site.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${sat.n} (`;
+                              let v = sat.v ? sat.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += satidx === content.sample_anatomic_site.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -916,16 +828,10 @@ const DatasetDetail = ({
                           {
                             content.sample_composition_type
                             ? content.sample_composition_type.map((sct, sctidx) => {
-                              const sctkey = `sct_${sctidx}`;
-                              return (
-                                <span key={sctkey} className="itemSpan">
-                                  {sct.n ? sct.n : null}
-                                  &nbsp;(
-                                  {sct.v ? sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {/* )&#59;&nbsp; */}
-                                  {sctidx === content.sample_composition_type.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${sct.n} (`;
+                              let v = sct.v ? sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += sctidx === content.sample_composition_type.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -937,16 +843,10 @@ const DatasetDetail = ({
                           {
                             content.sample_is_normal
                             ? content.sample_is_normal.map((sin, sinidx) => {
-                              const sinkey = `sin_${sinidx}`;
-                              return (
-                                <span key={sinkey} className="itemSpan">
-                                  {/* {sin.n > 0 ? 'YES ' : 'NO '} */}
-                                  {sin.n ? sin.n : null}
-                                  &nbsp;(
-                                  {sin.v ? sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {sinidx === content.sample_is_normal.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${sin.n} (`;
+                              let v = sin.v ? sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += sinidx === content.sample_is_normal.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
@@ -958,16 +858,10 @@ const DatasetDetail = ({
                           {
                             content.sample_is_xenograft
                             ? content.sample_is_xenograft.map((six, sixidx) => {
-                              const sixkey = `six_${sixidx}`;
-                              return (
-                                <span key={sixkey} className="itemSpan">
-                                  {/* {six.n > 0 ? 'YES' : 'NO'} */}
-                                  {six.n ? six.n : null}
-                                  &nbsp;(
-                                  {six.v ? six.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null}
-                                  {sixidx === content.sample_is_xenograft.length - 1 ? ")" : "); "}
-                                </span>
-                              );
+                              const n = `${six.n} (`;
+                              let v = six.v ? six.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += sixidx === content.sample_is_xenograft.length - 1 ? ")" : "); ";
+                              return n + v;
                             })
                             : null
                           }
