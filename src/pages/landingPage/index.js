@@ -59,6 +59,7 @@ const HomePage = () => {
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
                                       >
+                                      <title>Search</title>
                                           <path
                                             fill="#FFBF17"
                                             d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0
