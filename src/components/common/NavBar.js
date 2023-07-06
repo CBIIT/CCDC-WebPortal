@@ -424,7 +424,7 @@ const NavBar = () => {
                   </MobileLiSection>
                   <MobileSubUl data-visible={mobileStudiesMenuData}>
                     <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick}>CCDI Resource & Datasets</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf">Accessing CCDI Data (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                   <MobileLiSection>
                     <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
@@ -436,7 +436,7 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/User Guide for CCDC v1.3.5.pdf">User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.3.5.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
