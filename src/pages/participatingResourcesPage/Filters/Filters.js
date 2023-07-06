@@ -26,8 +26,8 @@ const FilterLabel = styled.div`
   }
 
   .clearAllButton {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     margin-left: 44px;
     border: 0;
     padding: 0;
@@ -35,8 +35,8 @@ const FilterLabel = styled.div`
   }
 
   .clearAllButton:hover {
-    width: 21px;
-    height: 21px;
+    width: 19px;
+    height: 19px;
     cursor: pointer;
   }
 

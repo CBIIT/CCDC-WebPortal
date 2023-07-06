@@ -344,6 +344,8 @@ const NavBar = () => {
   const [mobileMenuData, setMobileMenuData] = useState("false");
   const [mobileAboutMenuExpanded, setMobileAboutMenuExpanded] = useState("true");
   const [mobileAboutMenuData, setMobileAboutMenuData] = useState("true");
+  const [mobileStudiesMenuExpanded, setMobileStudiesMenuExpanded] = useState("true");
+  const [mobileStudiesMenuData, setMobileStudiesMenuData] = useState("true");
 
   const handleTextInputChange = (event) => {
     const text = event.target.value;
@@ -383,6 +385,16 @@ const NavBar = () => {
     }
   };
 
+  const handleStudiesAboutClick = () => {
+    if (mobileStudiesMenuExpanded === "false") {
+      setMobileStudiesMenuExpanded("true");
+      setMobileStudiesMenuData("true");
+    } else {
+      setMobileStudiesMenuExpanded("false");
+      setMobileStudiesMenuData("false");
+    }
+  };
+
   const handleMobileMenuClick = () => {
     const toggle = document.querySelector(".mobile-nav-toggle");
     if (toggle.getAttribute("aria-expanded") === "true") {
@@ -404,7 +416,16 @@ const NavBar = () => {
                   <MobileLiSection style={path === "/" || path.startsWith("/?") ? mobileActiveStyle : null}><NavLink to="/" onClick={handleMobileMenuClick} end>Home</NavLink></MobileLiSection>
                   <MobileLiSection style={path === "/search" || path === "/dataset" || path.startsWith("/search?") || path.startsWith("/dataset?") ? mobileActiveStyle : null}><NavLink to="/search" onClick={handleMobileMenuClick}>Search Catalog</NavLink></MobileLiSection>
                   <MobileLiSection style={path === "/participatingresources" || path === "/resource" || path.startsWith("/participatingresources?") || path.startsWith("/resource?") ? mobileActiveStyle : null}><NavLink to="/participatingresources" onClick={handleMobileMenuClick}>Participating Resources</NavLink></MobileLiSection>
-                  <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick} end>CCDI Studies</NavLink></MobileLiSection>
+                  <MobileLiSection>
+                    <MenuHeader aria-expanded={mobileStudiesMenuExpanded} onClick={handleStudiesAboutClick}>
+                      CCDI Studies&nbsp;
+                      <i className="fas fa-sort-down" />
+                    </MenuHeader>
+                  </MobileLiSection>
+                  <MobileSubUl data-visible={mobileStudiesMenuData}>
+                    <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick}>CCDI Resource & Datasets</NavLink></MobileLiSection>
+                    <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
+                  </MobileSubUl>
                   <MobileLiSection>
                     <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
                       About&nbsp;
@@ -415,14 +436,23 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/User Guide for CCDC v1.3.5.pdf">User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.3.5.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
                   <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection>
+                      <span style={path === "/resource/CCDI" ? activeStyle : null}>
+                        &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <i className="fas fa-sort-down" />
+                      </span>
+                      <ul className="dropdown">
+                          <li><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; CCDI Resource & Datasets</NavLink></li>
+                          <li><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
+                      </ul>
+                  </LiSection>
                   <LiSection>
                       <span style={path === "/about" || path === "/glossary" || path === "/siteupdate" ? activeStyle : null}>
                         &nbsp; &nbsp; About &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
