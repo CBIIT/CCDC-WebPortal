@@ -178,6 +178,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="c">
+                    <h2 className="glossaryItemHeader">CHoP</h2>
+                    <span className="glossaryItemType">General Abbreviation</span>
+                    <p className="glossaryItemDescription">Children&apos;s Hospital of Philadelphia</p>
+                    <br />
+                  </div>
+                  <div className="c">
                     <h2 className="glossaryItemHeader">CIViC</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Clinical Interpretations of Variants in Cancer</p>
@@ -225,6 +231,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">CR</h2>
                     <span className="glossaryItemType">Image Type</span>
                     <p className="glossaryItemDescription">Computed Radiography</p>
+                    <br />
+                  </div>
+                  <div className="c">
+                    <h2 className="glossaryItemHeader">CRI iAtlas</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Cancer Research Institute iAtlas</p>
                     <br />
                   </div>
                   <div className="c">
@@ -600,6 +612,12 @@ const Glossary = () => {
                     <br />
                   </div>
                   <div className="p">
+                    <h2 className="glossaryItemHeader">PeCan</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">Pediatric Cancer Knowledge Base</p>
+                    <br />
+                  </div>
+                  <div className="p">
                     <h2 className="glossaryItemHeader">PedBrain</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">Pediatric Brain Tumor Project</p>
@@ -786,6 +804,12 @@ const Glossary = () => {
                     <h2 className="glossaryItemHeader">TCIA</h2>
                     <span className="glossaryItemType">Resource Abbreviation</span>
                     <p className="glossaryItemDescription">The Cancer Imaging Archive</p>
+                    <br />
+                  </div>
+                  <div className="t">
+                    <h2 className="glossaryItemHeader">TCPA</h2>
+                    <span className="glossaryItemType">Resource Abbreviation</span>
+                    <p className="glossaryItemDescription">The Cancer Proteome Atlas</p>
                     <br />
                   </div>
                   <div className="t">
