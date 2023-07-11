@@ -14,6 +14,7 @@ const FilterSection = styled.div`
 `;
 
 const FilterLabel = styled.div`
+  position: relative;
   background-color: #f7f8fa;
   margin: 0 5px;
   padding: 5px 10px 5px 10px;
@@ -26,9 +27,11 @@ const FilterLabel = styled.div`
   }
 
   .clearAllButton {
+    position: absolute;
     width: 18px;
     height: 18px;
-    margin-left: 44px;
+    right: 10px;
+    top: 5px;
     border: 0;
     padding: 0;
     background-color: transparent;
