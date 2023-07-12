@@ -37,6 +37,10 @@ const HeaderCover = styled.div`
   height: 24px;
   z-index: 9999;
   background: white;
+
+  @media (max-width: 1200px) {
+    position: absolute;
+  }
 `;
 
 const Header = () => {
