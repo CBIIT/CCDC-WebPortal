@@ -234,7 +234,7 @@ const ParticipatingResourceDetail = ({
   };
 
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
-  dataContentTypes = dataContentTypes.replace(/,(?=[^\s])/g, ", ");
+  dataContentTypes = dataContentTypes.split(',').sort().join(', ');
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
   let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;

@@ -29,9 +29,24 @@ const LogoContainer = styled.div`
   }
 `;
 
+const HeaderCover = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  z-index: 9999;
+  background: white;
+
+  @media (max-width: 1200px) {
+    position: absolute;
+  }
+`;
+
 const Header = () => {
   return (
     <>
+    <HeaderCover />
     <LogoBanner role="banner">
       <LogoContainer>
         <a href="/"><img src={logo} alt="ccdc logo" /></a>
