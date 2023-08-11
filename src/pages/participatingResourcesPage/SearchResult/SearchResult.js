@@ -197,7 +197,7 @@ const SearchResult = ({
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
-    AnalyticTool: "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
+    "Analytic Tool": "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
     "resource type": "resource type"
   };
   // const handleLoadMore = (error) => {
@@ -224,7 +224,7 @@ const SearchResult = ({
             const key = `sr_${idx}`;
             const linkto = `/resource/${rst.data_resource_id}`;
             const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
-            const tooltip = tooltips[rst.resource_type.split(' ').join('')];
+            const tooltip = tooltips[rst.resource_type];
             let fullTitle = "".concat(rst.resource_name, ' (', rst.data_resource_id, ')');
             if (fullTitle.length > 77) {
               fullTitle = fullTitle.substring(0, 77).concat('...');
