@@ -191,13 +191,15 @@ const SearchResult = ({
     Repository: "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model.",
     Catalog: "A data catalog is not a data repository but rather a place where data is described with an index to what is available. A collection of digests and references (e.g., URL or POC) to corresponding research artifacts. There is a consistent structure across the collection of digests to facilitate filtering and identifying research artifacts of interest. A catalog contains some combination of Summary Research Data, Summary Clinical Data, Data Overview, and Resource Metadata.",
     Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
+    Biorepository: "A biorepository is a facility that acts as a library for biospecimens, allowing the biospecimens to be available for use in future research. A biospecimen may be from people, animals, or other living organisms. A biorepository will be involved in collecting, cataloguing, and storing biospecimens. The biorepository will also be involved in managing access to and distributing biospecimens to researchers. Some biorepositories store medical information associated with biospecimens.",
     Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
     Registry: "A cancer registry is an information system designed for the collection, storage, and management of data on persons with cancer. An inventory of individuals or samples, usually focused on a specific diagnosis or condition. In some cases, public health laws require collecting information in registries about individuals who have a specific disease or condition. In other cases, individuals provide information about themselves to these registries voluntarily. Thus, a registry contains Individual Clinical Data, but not Individual Research Data.",
     Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
     Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
     Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
-    AnalyticTool: "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
-    "resource type": "resource type"
+    "Analytic Tool": "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
+    "resource type": "resource type",
+    "Data Repository": "Biomedical data repositories store, organize, validate, archive, preserve, and distribute data, in compliance with the FAIR Data Principles. It is a system for storing multiple research artifacts, provided at least some of the research artifacts contain Individual Research Data. A data repository often contains artifacts from multiple studies. Some data repositories accept research datasets irrespective of the structure of those datasets; other data repositories require all research datasets to conform to a standard reference model."
   };
   // const handleLoadMore = (error) => {
   //   throw error;
@@ -223,7 +225,7 @@ const SearchResult = ({
             const key = `sr_${idx}`;
             const linkto = `/resource/${rst.data_resource_id}`;
             const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
-            const tooltip = tooltips[rst.resource_type.split(' ').join('')];
+            const tooltip = tooltips[rst.resource_type];
             let fullTitle = "".concat(rst.resource_name, ' (', rst.data_resource_id, ')');
             if (fullTitle.length > 77) {
               fullTitle = fullTitle.substring(0, 77).concat('...');
