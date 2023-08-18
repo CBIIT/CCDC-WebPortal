@@ -7,7 +7,7 @@ import {
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import externalIcon from "../../../assets/img/resource.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
