@@ -69,7 +69,7 @@ const SearchResult = ({
         {
           resultList.length === 0 ? (
             <ResultInfo>Result not found</ResultInfo>
-          ) : resultList.map(({content, highlight}, idx) => {
+          ) : resultList.map(({ content, highlight }, idx) => {
             const key = `sr_${idx}`;
             const linkFullPath = domain + content.link;
             const title = highlight && highlight.title ? highlight.title : content.title;
@@ -84,11 +84,15 @@ const SearchResult = ({
               }
             }
             const link = highlight && highlight.content ? `<b>${linkFullPath}</b>` : linkFullPath;
+            let updatedTitle = title;
+            if (Array.isArray(title)) {
+              [updatedTitle] = title;
+            }
             return (
               <DocumentCard key={key}>
                 <DocumentHeader>
                   <Link to={content.link}>
-                    {ReactHtmlParser(title)}
+                    {ReactHtmlParser(updatedTitle)}
                   </Link>
                 </DocumentHeader>
                 <DocumentDesc>
