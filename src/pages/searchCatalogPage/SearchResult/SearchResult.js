@@ -893,7 +893,7 @@ const SearchResult = ({
                                   </span>
                                 );
                               })
-                              : ReactHtmlParser(rst.highlight[hl])
+                              : ReactHtmlParser(rst.highlight[hl][0])
                             }
                           </div>
                         </div>
