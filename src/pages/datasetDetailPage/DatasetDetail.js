@@ -46,6 +46,16 @@ const DatasetBody = styled.div`
     max-width: 95%;
     word-break: break-all;
   }
+
+  .tablecell {
+    width: 210px;
+    paddingLeft: 0px;
+    background: transparent;
+  }
+
+  .tabelcellRight {
+    background: transparent;
+  }
 `;
 
 const ResourceType = styled.div`
@@ -938,14 +948,14 @@ const DatasetDetail = ({
                                         <table className="table table-borderless">
                                           <tbody>
                                             <tr>
-                                              <td width="210px" style={{paddingLeft: "0px"}}>
+                                              <td className="tablecell">
                                                 <div>
                                                 {
                                                   item.split(',').join(",\n")
                                                 }
                                                 </div>
                                               </td>
-                                              <td><div className="grantNameDataContainer">{grants.get(item)}</div></td>
+                                              <td className="tabelcellRight"><div className="grantNameDataContainer">{grants.get(item)}</div></td>
                                             </tr>
                                           </tbody>
                                         </table>
