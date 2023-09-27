@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import html2pdf from "html2pdf.js";
 import { OverlayTrigger, Popover, Spinner } from 'react-bootstrap';
 import NCILogoExport from "../../../assets/img/NCI_Logo.png";

@@ -35,6 +35,7 @@ module.exports = {
     "no-unused-expressions": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/img-redundant-alt": "off"
+    "jsx-a11y/img-redundant-alt": "off",
+    "react/no-unknown-property": "off"
   },
 };

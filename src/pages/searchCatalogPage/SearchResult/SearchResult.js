@@ -7,7 +7,7 @@ import {
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import externalIcon from "../../../assets/img/resource.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
@@ -693,7 +693,7 @@ const SearchResult = ({
                   <div className="col-sm">
                     <img src={dataResourceIcon} alt="data-resource" />
                     &nbsp;
-                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name) : rst.content.data_resource_id}</Link>
+                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name[0]) : rst.content.data_resource_id}</Link>
                   </div>
                 </div>
                 {
@@ -893,7 +893,7 @@ const SearchResult = ({
                                   </span>
                                 );
                               })
-                              : ReactHtmlParser(rst.highlight[hl])
+                              : ReactHtmlParser(rst.highlight[hl][0])
                             }
                           </div>
                         </div>

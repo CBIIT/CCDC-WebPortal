@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Carousel from 'react-bootstrap/Carousel';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
 
 const WidgetContainer = styled.div`

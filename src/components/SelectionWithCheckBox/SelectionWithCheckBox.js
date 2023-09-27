@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import CheckBoxItem from './CheckBoxItem';
 
 const SelectionContainer = styled.div`
