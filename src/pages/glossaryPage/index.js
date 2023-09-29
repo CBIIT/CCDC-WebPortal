@@ -716,12 +716,6 @@ const Glossary = () => {
                       <br />
                     </div>
                     <div className="p">
-                      <h2 className="glossaryItemHeader">PROSPR</h2>
-                      <span className="glossaryItemType">Resource Abbreviation</span>
-                      <p className="glossaryItemDescription">Population-based Research to Optimize the Screening Process</p>
-                      <br />
-                    </div>
-                    <div className="p">
                       <h2 className="glossaryItemHeader">PT</h2>
                       <span className="glossaryItemType">Image Type</span>
                       <p className="glossaryItemDescription">Positrom Emission Tomography (PET)</p>
