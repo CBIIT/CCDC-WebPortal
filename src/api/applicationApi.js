@@ -23,4 +23,28 @@ export function getSiteUpdates(body) {
     .catch(handleError);
 }
 
+export function getGlossaryTerms(body) {
+  return fetch(`${baseUrl}/glossaryTerms`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  }).then(handleResponse)
+    .catch(handleError);
+}
+
+export function getGlossaryTermsByFirstLetter(body) {
+  return fetch(`${baseUrl}/glossaryTermsByFirstLetter`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  }).then(handleResponse)
+    .catch(handleError);
+}
+
+export function getGlossaryLetters() {
+  return fetch(`${baseUrl}/glossaryLetters`)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export default getApplicationVersionInfo;

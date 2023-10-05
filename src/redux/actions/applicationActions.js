@@ -21,6 +21,18 @@ export function switchPage(pageInfo) {
   return { type: types.SWITCH_PAGE, pageInfo};
 }
 
+export function loadGlossaryTermsSuccess(glossaryTerms) {
+  return { type: types.LOAD_GLOSSARY_TERMS_SUCCESS, glossaryTerms};
+}
+
+export function loadGlossaryTermsByFirstLetterSuccess(firstLetterList) {
+  return { type: types.LOAD_GLOSSARY_BY_FIRST_LETTER_SUCCESS, firstLetterList};
+}
+
+export function loadGlossaryLettersSuccess(glossaryLetters) {
+    return { type: types.LOAD_GLOSSARY_LETTERS_SUCCESS, glossaryLetters};
+  }
+
 export function loadApplicationVersionInfo() {
   const func = function func(dispatch) {
       return applicationApi.getApplicationVersionInfo()
@@ -77,6 +89,45 @@ export function addSiteUpdates(pageInfo) {
 export function pageSelect(pageInfo) {
     const func = function func(dispatch) {
         dispatch(switchPage(pageInfo));
+    };
+    return func;
+}
+
+export function loadGlossaryTerms(termNames) {
+    const func = function func(dispatch) {
+        return applicationApi.getGlossaryTerms(termNames)
+        .then(result => {
+            dispatch(loadGlossaryTermsSuccess(result.definitions));
+        })
+        .catch(error => {
+            throw error;
+        });
+    };
+    return func;
+}
+
+export function loadGlossaryTermsByFirstLetter(firstLetter) {
+    const func = function func(dispatch) {
+        return applicationApi.getGlossaryTerms(firstLetter)
+        .then(result => {
+            dispatch(loadGlossaryTermsByFirstLetterSuccess(result.terms));
+        })
+        .catch(error => {
+            throw error;
+        });
+    };
+    return func;
+}
+
+export function loadGlossaryLetters() {
+    const func = function func(dispatch) {
+        return applicationApi.getGlossaryLetters()
+        .then(result => {
+            dispatch(loadGlossaryLettersSuccess(result.letters));
+        })
+        .catch(error => {
+            throw error;
+        });
     };
     return func;
 }
