@@ -35,6 +35,11 @@ export default function applicationReducer(state = initialState.application, act
               total: action.pageInfo.total,
             },
           };
+        case types.LOAD_GLOSSARY_TERMS_SUCCESS:
+          return {
+            ...state,
+            glossaryTerms: {...state.glossaryTerms, ...action.glossaryTerms},
+          };
         default:
             return state;
     }
