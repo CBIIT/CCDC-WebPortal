@@ -54,5 +54,6 @@ export default {
         pageSize: 3,
         total: 0,
       },
+      glossaryTerms: {},
     },
 };

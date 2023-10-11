@@ -190,25 +190,11 @@ const sortingAdditionalElement = (content) => {
 const DatasetDetail = ({
   details,
   onPageLoadDatasetDetail,
+  onLoadGlossaryTerms,
+  glossaryTerms,
 }) => {
   const { id } = useParams();
   const content = details[id];
-  const tooltips = {
-    Aliquot: "Pertaining to a portion of the whole; any one of two or more samples of something, of the same volume or weight. [NCIt C25414]",
-    "Analytic Tool": "Any platform, methodology, framework or other software designed for the use of and interpretation of biomedical research data.",
-    Assay: "An examination or analysis of material, or of its prior assay, to determine the material's features or components.",
-    Case: "A collection of data related to a specific individual in the context of a specific project.",
-    "Cell Line": "A cell culture developed from a single cell or group of similar cells and therefore consisting of cells with a uniform genetic makeup that can be reproduced for various types of research. A cell line is different than a tissue sample in that it is grown as a culture of identical cells and can be reproduced indefinitely.",
-    Collection: "A group of datasets collected together for any reason by an organization of researchers, stewards, or stakeholders either pertaining to a common theme or for a common purpose. For example, the Treehouse Childhood Cancer Initiative maintains a collection of cell line data as part of their repository of pediatric cancer genomic data.",
-    Biorepository: "A biorepository is a facility that acts as a library for biospecimens, allowing the biospecimens to be available for use in future research. A biospecimen may be from people, animals, or other living organisms. A biorepository will be involved in collecting, cataloguing, and storing biospecimens. The biorepository will also be involved in managing access to and distributing biospecimens to researchers. Some biorepositories store medical information associated with biospecimens.",
-    Donor: "A donor is an individual (either human or animal) from which tissue for grafting, tissue for creating a cell line, or tumor sample for studying was taken. In these contexts the datasets are not associated with clinical or project cases. Minimal information about a donor helps describe the grafted tissue, the cell line, or the tumor sample.",
-    Knowledgebase: "Biomedical knowledgebases extract, accumulate, organize, annotate, and link the growing body of information that is related to and relies on core datasets.",
-    Program: "A coherent assembly of plans, project activities, and supporting resources contained within an administrative framework, the purpose of which is to implement an organization's mission or some specific program-related aspect of that mission.",
-    Project: "Any specifically defined piece of work that is undertaken or attempted to meet the goals of a program and that involves one or more case studies. Also known as a Study or Trial.",
-    Sample: "Material taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes, including a sample obtained from a living organism or taken from the biological object after halting of all its life functions. A sample, also known as a biospecimen, can contain one or more components including but not limited to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory products. {Based on the GDC definition of Sample. (https://docs.gdc.cancer.gov/Data_Dictionary/viewer/#?view=table-definition-view&id=sample)}",
-    Xenograft: "Cells, tissues, or organs from a donor that are transplanted into a recipient of another species.",
-    "primary dataset scope": "primary dataset scope"
-  };
   const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   const [selectedKey, setSelectedKey] = useState("");
@@ -382,12 +368,23 @@ const DatasetDetail = ({
     if (content) {
       buildCoreDataElementsList();
       buildDatasetDescArr();
+      // if term is not in glossaryTerms in redux, call api
+      if (!(content.primary_dataset_scope in glossaryTerms)) {
+        const termPara = {termNames: [content.primary_dataset_scope]};
+        onLoadGlossaryTerms(termPara).catch(error => {
+          throw new Error(`Loading Glossary Terms from url query failed: ${error}`);
+        });
+      }
     }
   }, [content]);
 
   useEffect(() => {
     setSelectedKey(coreDataElementsMap.keys().next().value);
   }, [coreDataElementsMap]);
+
+  useEffect(() => {
+    initializePopover();
+  }, [content, glossaryTerms]);
 
   return (
     <>
@@ -451,7 +448,7 @@ const DatasetDetail = ({
                   </div>
                   </HeaderLinks>
                   <ResourceType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltips[content.primary_dataset_scope]}>
+                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={glossaryTerms[content.primary_dataset_scope]}>
                       {content.primary_dataset_scope}
                     </span>
                   </ResourceType>
@@ -1172,6 +1169,8 @@ const DatasetDetail = ({
 DatasetDetail.propTypes = {
   details: PropTypes.object.isRequired,
   onPageLoadDatasetDetail: PropTypes.func.isRequired,
+  onLoadGlossaryTerms: PropTypes.func.isRequired,
+  glossaryTerms: PropTypes.object.isRequired,
 };
 
 export default DatasetDetail;
