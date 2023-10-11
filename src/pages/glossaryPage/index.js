@@ -440,6 +440,12 @@ const Glossary = () => {
                       <br />
                     </div>
                     <div className="i">
+                      <h2 className="glossaryItemHeader">IDC</h2>
+                      <span className="glossaryItemType">Resource Abbreviation</span>
+                      <p className="glossaryItemDescription">Imaging Data Commons</p>
+                      <br />
+                    </div>
+                    <div className="i">
                       <h2 className="glossaryItemHeader">Imaging</h2>
                       <span className="glossaryItemType">Data Content Type</span>
                       <p className="glossaryItemDescription">A process that makes pictures of areas inside the body. Imaging uses methods such as x-rays (high-energy radiation), ultrasound (high-energy sound waves), and radio waves.</p>
