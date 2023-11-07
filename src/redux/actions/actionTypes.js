@@ -28,3 +28,7 @@ export const LOAD_APPLICATION_VERSION_INFO_SUCCESS = "load_application_version_i
 export const LOAD_WIDGET_UPDATE_SUCCESS = "load_widget_update_success";
 export const LOAD_SITE_UPDATE_SUCCESS = "load_site_update_success";
 export const ADD_SITE_UPDATE_SUCCESS = "add_site_update_success";
+
+export const LOAD_GLOSSARY_TERMS_SUCCESS = "load_glossary_terms_success";
+export const LOAD_GLOSSARY_BY_FIRST_LETTER_SUCCESS = "load_glossary_by_first_letter_success";
+export const LOAD_GLOSSARY_LETTERS_SUCCESS = "load_glossary_letters_success";
