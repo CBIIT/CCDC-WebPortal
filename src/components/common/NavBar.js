@@ -7,7 +7,7 @@ import logo from '../../assets/img/CCDC_Logo.svg';
 import './NavBar.css';
 
 const HeaderContainer = styled.div`
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 `;
@@ -27,7 +27,7 @@ const LogoContainer = styled.div`
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 
