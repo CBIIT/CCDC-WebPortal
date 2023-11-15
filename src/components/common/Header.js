@@ -35,6 +35,17 @@ const LogoContainer = styled.div`
   }
 `;
 
+const HeaderCover = styled.div`
+  width: 100%;
+  height: 24px;
+  z-index: 9999;
+  background: white;
+
+  @media (max-width: 1200px) {
+    position: absolute;
+  }
+`;
+
 const Header = () => {
   return (
     <>
@@ -42,6 +53,7 @@ const Header = () => {
       <include-html src="https://cbiit.github.io/ccdi-alert-elements/banners/government-shutdown.html" data='{"banner_width": "1024px", "lower_tier_identifier": ["localhost:", "-dev.", "-dev2.", "-qa.", "-qa2."]}' />
     </HeaderContainer>
     <LogoBanner role="banner">
+      <HeaderCover />
       <LogoContainer>
         <a href="/"><img src={logo} alt="ccdc logo" /></a>
       </LogoContainer>
