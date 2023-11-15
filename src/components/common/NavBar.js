@@ -6,6 +6,12 @@ import mobileClose from '../../assets/img/mobile-close.svg';
 import logo from '../../assets/img/CCDC_Logo.svg';
 import './NavBar.css';
 
+const HeaderContainer = styled.div`
+  @media (max-width: 1200px) {
+    display: none;
+  }
+`;
+
 const LogoBanner = styled.div`
   @media (min-width: 1200px) {
     width: 100%;
@@ -404,6 +410,9 @@ const NavBar = () => {
 
   return (
       <div className="sticky-nav">
+        <HeaderContainer>
+          <include-html src="https://cbiit.github.io/ccdi-alert-elements/banners/government-shutdown.html" data='{"banner_width": "1024px", "lower_tier_identifier": ["localhost:", "-dev.", "-dev2.", "-qa.", "-qa2."]}' />
+        </HeaderContainer>
         <LogoBanner role="banner">
           <LogoContainer>
             <a href="/"><img src={logo} alt="ccdc logo" /></a>

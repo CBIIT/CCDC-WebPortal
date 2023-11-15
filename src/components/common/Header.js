@@ -2,6 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from '../../assets/img/CCDC_Logo.svg';
 
+const HeaderContainer = styled.div`
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
 const LogoBanner = styled.div`
   width: 100%;
 `;
@@ -29,24 +35,12 @@ const LogoContainer = styled.div`
   }
 `;
 
-const HeaderCover = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 24px;
-  z-index: 9999;
-  background: white;
-
-  @media (max-width: 1200px) {
-    position: absolute;
-  }
-`;
-
 const Header = () => {
   return (
     <>
-    <HeaderCover />
+    <HeaderContainer>
+      <include-html src="https://cbiit.github.io/ccdi-alert-elements/banners/government-shutdown.html" data='{"banner_width": "1024px", "lower_tier_identifier": ["localhost:", "-dev.", "-dev2.", "-qa.", "-qa2."]}' />
+    </HeaderContainer>
     <LogoBanner role="banner">
       <LogoContainer>
         <a href="/"><img src={logo} alt="ccdc logo" /></a>
