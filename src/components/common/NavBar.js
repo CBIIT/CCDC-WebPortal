@@ -22,6 +22,7 @@ const LogoContainer = styled.div`
   @media (min-width: 1200px) {
     width: 1200px;
     margin: 0 auto;
+    margin-top: 24px;
     img {
       width: 473px;
     }

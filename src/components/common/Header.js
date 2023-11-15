@@ -41,7 +41,7 @@ const HeaderCover = styled.div`
   z-index: 9999;
   background: white;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     position: absolute;
   }
 `;
