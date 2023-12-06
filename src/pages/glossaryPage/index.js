@@ -605,6 +605,12 @@ const Glossary = () => {
                       <br />
                     </div>
                     <div className="o">
+                      <h2 className="glossaryItemHeader">OSE</h2>
+                      <span className="glossaryItemType">Resource Abbreviation</span>
+                      <p className="glossaryItemDescription">Osteosarcoma Explorer</p>
+                      <br />
+                    </div>
+                    <div className="o">
                       <h2 className="glossaryItemHeader">OT</h2>
                       <span className="glossaryItemType">Image Type</span>
                       <p className="glossaryItemDescription">Other</p>
