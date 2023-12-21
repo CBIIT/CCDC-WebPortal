@@ -40,6 +40,11 @@ export default function applicationReducer(state = initialState.application, act
             ...state,
             glossaryTerms: {...state.glossaryTerms, ...action.glossaryTerms},
           };
+        case types.LOAD_GLOSSARY_LETTERS_SUCCESS:
+          return {
+            ...state,
+            glossaryLetters: {...action.glossaryLetters},
+          };
         default:
             return state;
     }

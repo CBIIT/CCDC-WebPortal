@@ -55,5 +55,6 @@ export default {
         total: 0,
       },
       glossaryTerms: {},
+      glossaryLetters: {},
     },
 };
