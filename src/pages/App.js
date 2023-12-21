@@ -8,7 +8,7 @@ import ParticipatingResourcesPage from './participatingResourcesPage';
 import ParticipatingResourceDetailPage from './participatingResourceDetailPage';
 import AboutPage from './aboutPage';
 import DocumentSearchPage from './documentSearchPage';
-import Glossary from './glossaryPage';
+import Glossary from './glossaryPage/glossaryPageController';
 import SiteUpdatePage from './siteUpdatePage';
 import Header from "../components/common/Header";
 import NavBar from "../components/common/NavBar";
