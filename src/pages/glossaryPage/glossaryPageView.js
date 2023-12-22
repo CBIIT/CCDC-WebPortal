@@ -112,6 +112,20 @@ const GlossaryContainer = styled.div`
         font-family: Lato;
         font-size: 17px;
     }
+
+    .glossaryItemLink {
+        margin-top: -10px;
+        color: #00a272;
+    }
+
+    .glossaryItemLink a {
+        margin-top: -10px;
+        font-weight: 500;
+        font-family: Lato;
+        font-size: 17px;
+        color: #00a272;
+        text-decoration: none;
+    }
 `;
 
 const Glossary = ({
@@ -178,16 +192,27 @@ const Glossary = ({
                         {
                             glossaryDetails[key] && glossaryDetails[key].map((glossaryItem, idx) => {
                                 const glossaryItemIdx = `glossaryItem_${idx}`;
+                                const linkArr = glossaryItem.reference.split("http");
                                 return (
                                     <div key={glossaryItemIdx}>
                                         <h2 className="glossaryItemHeader">{glossaryItem.name}</h2>
                                         <span className="glossaryItemType">{glossaryItem.category}</span>
                                         <p className="glossaryItemDescription">{glossaryItem.definition}</p>
+                                        {
+                                            glossaryItem.reference.includes("http")
+                                            && (
+                                                <>
+                                                    <p className="glossaryItemLink">{linkArr[0].trim()}</p>
+                                                    <p className="glossaryItemLink"><a href={'http'.concat(linkArr[1])} target="_blank" rel="noreferrer noopener">{'http'.concat(linkArr[1])}</a></p>
+                                                </>
+                                            )
+                                        }
                                         <br />
                                     </div>
                                 );
                             })
                         }
+                        <br />
                     </div>
                 </div>
             </div>
