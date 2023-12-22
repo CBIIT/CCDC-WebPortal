@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 import Glossary from './glossaryPageView';
-import { loadGlossaryLetters } from '../../redux/actions/applicationActions';
+import { loadGlossaryLetters, loadGlossaryTermsByFirstLetter } from '../../redux/actions/applicationActions';
 
-const ReduxSearchResult = (() => {
+const ReduxResult = (() => {
   const mapStateToProps = (state) => ({
     glossaryLetters: state.application.glossaryLetters,
+    glossaryDetails: state.application.glossaryDetails,
   });
 
   const mapDispatchToProps = {
     onLoadGlossaryLetters: loadGlossaryLetters,
+    onLoadGlossaryTermsByFirstLetter: loadGlossaryTermsByFirstLetter,
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(Glossary);
 })();
 
-export default ReduxSearchResult;
+export default ReduxResult;

@@ -61,11 +61,64 @@ const GlossaryContainer = styled.div`
         text-underline-offset: 3px;
         text-decoration-thickness: 3px;
     }
+
+    .glossaryGrid{
+        color: white;
+        border-bottom: 1px solid lightgray;
+    }
+
+    .glossaryPageSection1 {
+        margin: 0 auto;
+        width: 1250px;
+        border-left: 1px solid lightgray;
+        border-right: 1px solid lightgray;
+    }
+
+    .glossaryContent1 {
+        width: 83%;
+        padding: 40px 0px 60px 0px;
+        text-align: left;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .filter-sections {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+    }
+
+    .filter-sections div {
+        min-height: 50px;
+        margin: 0.5em;
+    }
+
+    .glossaryItemHeader {
+        color: #00a272;
+        font-family: Inter;
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+
+    .glossaryItemType {
+        color: #838383;
+        font-size: 85%;
+        font-family: Inter;
+        font-weight: 600;
+    }
+
+    .glossaryItemDescription {
+        padding-top: 5px;
+        font-family: Lato;
+        font-size: 17px;
+    }
 `;
 
 const Glossary = ({
     glossaryLetters,
+    glossaryDetails,
     onLoadGlossaryLetters,
+    onLoadGlossaryTermsByFirstLetter,
 }) => {
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     const [key, setKey] = useState('A');
@@ -86,6 +139,15 @@ const Glossary = ({
             });
         }
     }, []);
+
+    useEffect(() => {
+        if (!glossaryDetails[key]) {
+            const termPara = {firstLetter: key};
+            onLoadGlossaryTermsByFirstLetter(termPara).catch(error => {
+                throw new Error(`Loading Glossary Terms By First Letter from url query failed: ${error}`);
+            });
+        }
+    }, [key]);
 
     return (
         <GlossaryContainer>
@@ -109,14 +171,35 @@ const Glossary = ({
                     </div>
                 </div>
             </div>
-            <div>{key}</div>
+            <div className="glossaryGrid" />
+            <div className="glossaryPageSection1">
+                <div className="glossaryContent1">
+                    <div className="filter-sections">
+                        {
+                            glossaryDetails[key] && glossaryDetails[key].map((glossaryItem, idx) => {
+                                const glossaryItemIdx = `glossaryItem_${idx}`;
+                                return (
+                                    <div key={glossaryItemIdx}>
+                                        <h2 className="glossaryItemHeader">{glossaryItem.name}</h2>
+                                        <span className="glossaryItemType">{glossaryItem.category}</span>
+                                        <p className="glossaryItemDescription">{glossaryItem.definition}</p>
+                                        <br />
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
         </GlossaryContainer>
     );
 };
 
 Glossary.propTypes = {
     glossaryLetters: PropTypes.object.isRequired,
+    glossaryDetails: PropTypes.object.isRequired,
     onLoadGlossaryLetters: PropTypes.func.isRequired,
+    onLoadGlossaryTermsByFirstLetter: PropTypes.func.isRequired,
   };
 
 export default Glossary;
