@@ -108,7 +108,7 @@ export function loadGlossaryTerms(termNames) {
 
 export function loadGlossaryTermsByFirstLetter(firstLetter) {
     const func = function func(dispatch) {
-        return applicationApi.getGlossaryTerms(firstLetter)
+        return applicationApi.getGlossaryTermsByFirstLetter(firstLetter)
         .then(result => {
             dispatch(loadGlossaryTermsByFirstLetterSuccess(result.terms));
         })
