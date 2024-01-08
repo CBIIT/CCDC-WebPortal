@@ -7,7 +7,8 @@ import Collapse from 'react-bootstrap/Collapse';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
-import externalIcon from "../../assets/img/resource.svg";
+// import externalIcon from "../../assets/img/resource.svg";
+import externalIcon from "../../assets/img/dataset-body.svg";
 import './participatingResourceDetailPage.css';
 
 const ParticipatingResourceResultContainer = styled.div`
@@ -48,12 +49,20 @@ const HeaderLinks = styled.div`
 
 const ResourceBody = styled.div`
   a[target="_blank"] {
-    color: #004187;
+    color: #00a272;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
     background-size: 32px;
     // display: inline-table;
+  }
+
+  .datasetDesLinks {
+    margin-top: 10px;
+    color: #00a272;
+    text-transform: none;
+    max-width: 95%;
+    word-break: break-all;
   }
 `;
 
@@ -220,6 +229,7 @@ const ParticipatingResourceDetail = ({
 }) => {
   const { id } = useParams();
   const [open, setOpen] = useState(true);
+  const [datasetDes, setDatasetDes] = useState([]);
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.split(',').sort().join(', ');
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
@@ -230,6 +240,33 @@ const ParticipatingResourceDetail = ({
   const getTooltipTermList = datasets.map((dt) => {
     return dt.primary_dataset_scope;
   });
+
+  const buildDatasetDescArr = () => {
+    const arr = detail.description.split("http");
+    let newArr = [];
+    if (arr.length > 1) {
+      newArr.push(arr[0]);
+      for (let i = 1; i < arr.length; i += 1) {
+          const urlArr = arr[i].split(" ");
+          const url = urlArr[0];
+          const urlLastChar = url[url.length - 1];
+          if (",;.()<>{}".includes(urlLastChar)) {
+              const newUrl = "http".concat(url.substring(0, url.length - 1));
+              newArr.push(newUrl);
+              newArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
+          } else {
+            const newUrl = "http".concat(url);
+            newArr.push(newUrl);
+            if (urlArr.length !== 1) {
+                newArr.push(arr[i].split(url)[1]);
+            }
+          }
+      }
+  } else {
+      newArr = arr;
+  }
+    setDatasetDes(newArr);
+  };
 
   const initializePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -257,6 +294,9 @@ const ParticipatingResourceDetail = ({
 
   useEffect(() => {
     if (detail && datasets) {
+      if (detail.description) {
+        buildDatasetDescArr();
+      }
       const termSet = [...new Set(getTooltipTermList)].filter((term) => !(term in glossaryTerms));
       if (!(detail.resource_type in glossaryTerms)) {
         termSet.push(detail.resource_type);
@@ -342,7 +382,16 @@ const ParticipatingResourceDetail = ({
                       <Collapse in={open}>
                         <div id="collapse1">
                           <div className="prAboutResourceContent">
-                            {detail.description}
+                          {
+                            datasetDes.map((item, desidx) => {
+                              const deskey = `description_${desidx}`;
+                              return (
+                                item.includes("http")
+                                ? <a key={deskey} href={item} className="datasetDesLinks" target="_blank" rel="noreferrer noopener">{item}</a>
+                                : <a key={deskey}>{item}</a>
+                              );
+                            })
+                          }
                           </div>
                           <div className="prResourceToolsContainer">
                           <div className="prCoreDataLabel">Resource Description</div>
