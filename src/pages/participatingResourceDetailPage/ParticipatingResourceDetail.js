@@ -7,8 +7,8 @@ import Collapse from 'react-bootstrap/Collapse';
 import DataResourceIcons from '../../components/DataResourceIcons';
 import datasetsIcon from "../../assets/img/datasets_icon.svg";
 import headerExternalIcon from "../../assets/img/resource-header.svg";
-// import externalIcon from "../../assets/img/resource.svg";
-import externalIcon from "../../assets/img/dataset-body.svg";
+import externalIcon from "../../assets/img/resource.svg";
+import externalIconGreen from "../../assets/img/dataset-body.svg";
 import './participatingResourceDetailPage.css';
 
 const ParticipatingResourceResultContainer = styled.div`
@@ -49,7 +49,7 @@ const HeaderLinks = styled.div`
 
 const ResourceBody = styled.div`
   a[target="_blank"] {
-    color: #00a272;
+    color: #004187;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
@@ -57,6 +57,14 @@ const ResourceBody = styled.div`
     // display: inline-table;
   }
 
+  .prAboutResourceContent {
+    a[target="_blank"] {
+      color: #00a272;
+      background: url(${externalIconGreen}) right center no-repeat;
+      padding-right: 30px;
+      background-size: 32px;
+    }
+  }
   .datasetDesLinks {
     margin-top: 10px;
     color: #00a272;
