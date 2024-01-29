@@ -50,7 +50,7 @@ const DonutChart = ({
                     fontWeight="bold"
                     fontFamily="Lato"
                   >
-                      {value}
+                      {value.toLocaleString('en-US')}
                   </text>
                   <text
                     x={cx}
