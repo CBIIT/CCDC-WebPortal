@@ -287,10 +287,20 @@ const SearchResult = ({
                         }
                     </POCInfo>
                     <SiteInfo>
-                      <a href={rst.resource_uri} target="_blank" rel="noreferrer noopener">
-                        {rst.resource_uri && rst.resource_uri.length > 70 ? `${rst.resource_uri.substring(0, 70)}...` : rst.resource_uri}
-                        <SiteIcon />
-                      </a>
+                      {
+                        rst.resource_uri.split(";").map((uriItem, uriindex) => {
+                          const urikey = `uri_${uriindex}`;
+                          const uri = uriItem.trim();
+                          return (
+                            <>
+                              <a key={urikey} href={uri} target="_blank" rel="noreferrer noopener">
+                                {uri && uri.length > 70 ? `${uri.substring(0, 70)}...` : uri}
+                                <SiteIcon />
+                              </a>
+                            </>
+                          );
+                        })
+                      }
                     </SiteInfo>
                   </ContactInfo>
                   <ResourceType>
