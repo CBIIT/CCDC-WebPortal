@@ -424,7 +424,7 @@ const NavBar = () => {
                   </MobileLiSection>
                   <MobileSubUl data-visible={mobileStudiesMenuData}>
                     <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick}>CCDI Resource & Datasets</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                   <MobileLiSection>
                     <MenuHeader aria-expanded={mobileAboutMenuExpanded} onClick={handleMobileAboutClick}>
@@ -436,7 +436,7 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/User Guide for CCDC v1.4.3.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.4.4.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
@@ -450,7 +450,7 @@ const NavBar = () => {
                       </span>
                       <ul className="dropdown">
                           <li><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; CCDI Resource & Datasets</NavLink></li>
-                          <li><a href="/CCDI_CGC_Data_Access_Instructions_1.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
+                          <li><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
                       </ul>
                   </LiSection>
                   <LiSection>
@@ -462,7 +462,7 @@ const NavBar = () => {
                           <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
                           <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
-                          <li><a href="/User Guide for CCDC v1.4.3.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
+                          <li><a href="/User Guide for CCDC v1.4.4.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                       </ul>
                   </LiSection>
                 </UlContainer>
