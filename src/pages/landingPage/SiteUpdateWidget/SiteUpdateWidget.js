@@ -51,6 +51,10 @@ const WidgetContent = styled.div`
         top: 90px;
         left: 410px;
         z-index: 10;
+        @media (max-width: 530px) {
+            top: 106px;
+            left: calc(100vw - 120px);
+        }
     }
 
     .carousel-indicators {
