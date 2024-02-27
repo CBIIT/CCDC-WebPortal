@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Carousel from 'react-bootstrap/Carousel';
 import ReactHtmlParser from "html-react-parser";
 import externalIcon from "../../../assets/img/resource-00a272.svg";
+import startIcon from "../../../assets/img/StartButtonIcon.svg";
+import PauseIcon from "../../../assets/img/PauseButtonIcon.svg";
 
 const WidgetContainer = styled.div`
   box-sizing: border-box;
@@ -42,16 +44,25 @@ const WidgetContent = styled.div`
     width: 100%;
     margin-bottom: 15px;
 
+    .pauseButton {
+        width: 14px;
+        height: 14px;
+        position: relative;
+        top: 90px;
+        left: 410px;
+        z-index: 10;
+    }
+
     .carousel-indicators {
         padding: 0;
         margin: 0;
-        right: 0;
+        right: 35px;
         bottom: -7px;
         left: auto;
     }
 
     .carousel-indicators button {
-        width: 55px;
+        width: 39px;
         height: 5px;
         margin-left: 5px;
         cursor: pointer;
@@ -148,6 +159,8 @@ const SiteUpdateWidget = ({
     onLoadWidgetUpdates,
 }) => {
     const showArrows = false;
+    const [pause, setPause] = useState(2000);
+    const [iconUrl, setIconUrl] = useState(PauseIcon);
     useEffect(() => {
         if (widgetUpdates.length === 0) {
             onLoadWidgetUpdates().catch(error => {
@@ -156,13 +169,26 @@ const SiteUpdateWidget = ({
         }
     }, []);
 
+    const handleClickPauseButton = () => {
+        if (pause === null) {
+            setPause(2000);
+            setIconUrl(PauseIcon);
+        } else {
+            setPause(null);
+            setIconUrl(startIcon);
+        }
+    };
+
     return (
         <WidgetContainer>
             <WidgetHeader>FEATURED ITEMS</WidgetHeader>
             <WidgetContent>
+                <div className="pauseButton" role="button" tabindex={0} onClick={handleClickPauseButton} onKeyDown={handleClickPauseButton}>
+                    <img src={iconUrl} alt="pausebutton" />
+                </div>
                 {
                     widgetUpdates.length > 0 && (
-                        <Carousel controls={showArrows} interval={20000}>
+                        <Carousel controls={showArrows} interval={pause}>
                             {
                                 widgetUpdates.map((item, idx) => {
                                     const itemKey = `update_${idx}`;
