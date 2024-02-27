@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
+import ReactHtmlParser from 'html-react-parser';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
@@ -237,7 +238,6 @@ const ParticipatingResourceDetail = ({
 }) => {
   const { id } = useParams();
   const [open, setOpen] = useState(true);
-  const [datasetDes, setDatasetDes] = useState([]);
   let dataContentTypes = detail.data_content_type === undefined || detail.data_content_type === null ? "" : detail.data_content_type;
   dataContentTypes = dataContentTypes.split(',').sort().join(', ');
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
@@ -248,33 +248,6 @@ const ParticipatingResourceDetail = ({
   const getTooltipTermList = datasets.map((dt) => {
     return dt.primary_dataset_scope;
   });
-
-  const buildDatasetDescArr = () => {
-    const arr = detail.description.split("http");
-    let newArr = [];
-    if (arr.length > 1) {
-      newArr.push(arr[0]);
-      for (let i = 1; i < arr.length; i += 1) {
-          const urlArr = arr[i].split(" ");
-          const url = urlArr[0];
-          const urlLastChar = url[url.length - 1];
-          if (",;.()<>{}".includes(urlLastChar)) {
-              const newUrl = "http".concat(url.substring(0, url.length - 1));
-              newArr.push(newUrl);
-              newArr.push(arr[i].split(url.substring(0, url.length - 1))[1]);
-          } else {
-            const newUrl = "http".concat(url);
-            newArr.push(newUrl);
-            if (urlArr.length !== 1) {
-                newArr.push(arr[i].split(url)[1]);
-            }
-          }
-      }
-  } else {
-      newArr = arr;
-  }
-    setDatasetDes(newArr);
-  };
 
   const initializePopover = () => {
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
@@ -302,9 +275,6 @@ const ParticipatingResourceDetail = ({
 
   useEffect(() => {
     if (detail && datasets) {
-      if (detail.description) {
-        buildDatasetDescArr();
-      }
       const termSet = [...new Set(getTooltipTermList)].filter((term) => !(term in glossaryTerms));
       if (!(detail.resource_type in glossaryTerms)) {
         termSet.push(detail.resource_type);
@@ -390,16 +360,7 @@ const ParticipatingResourceDetail = ({
                       <Collapse in={open}>
                         <div id="collapse1">
                           <div className="prAboutResourceContent">
-                          {
-                            datasetDes.map((item, desidx) => {
-                              const deskey = `description_${desidx}`;
-                              return (
-                                item.includes("http")
-                                ? <a key={deskey} href={item} className="datasetDesLinks" target="_blank" rel="noreferrer noopener">{item}</a>
-                                : <a key={deskey}>{item}</a>
-                              );
-                            })
-                          }
+                            {detail.description && ReactHtmlParser(detail.description)}
                           </div>
                           <div className="prResourceToolsContainer">
                           <div className="prCoreDataLabel">Resource Description</div>
