@@ -163,7 +163,7 @@ const SiteUpdateWidget = ({
     onLoadWidgetUpdates,
 }) => {
     const showArrows = false;
-    const [pause, setPause] = useState(2000);
+    const [pause, setPause] = useState(20000);
     const [iconUrl, setIconUrl] = useState(PauseIcon);
     useEffect(() => {
         if (widgetUpdates.length === 0) {
@@ -175,7 +175,7 @@ const SiteUpdateWidget = ({
 
     const handleClickPauseButton = () => {
         if (pause === null) {
-            setPause(2000);
+            setPause(20000);
             setIconUrl(PauseIcon);
         } else {
             setPause(null);
