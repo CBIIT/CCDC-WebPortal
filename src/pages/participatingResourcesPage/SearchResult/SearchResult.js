@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ReactHtmlParser from 'html-react-parser';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
@@ -58,12 +59,19 @@ const ResourceIcon = styled.div`
 
 const ResourceDesc = styled.div`
   width: 100%;
-  display: flex;
+  // display: flex;
   margin-top: 15px;
   word-wrap: break-word;
   hyphens: auto;
   font-size: 0.9rem;
   font-weight: 500;
+
+  a {
+    color: #00a272;
+    background: url(${externalIcon}) right center no-repeat;
+    padding-right: 30px;
+    background-size: 32px;
+  }
 `;
 
 const ResourceContact = styled.div`
@@ -254,7 +262,7 @@ const SearchResult = ({
                   </ResourceLogo>
                 </ResourceHeader>
                 <ResourceDesc>
-                  {rst.description}
+                  {rst.description && ReactHtmlParser(rst.description)}
                 </ResourceDesc>
                 <ResourceContact>
                   <ContactInfo>
