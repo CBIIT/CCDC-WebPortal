@@ -437,6 +437,7 @@ const NavBar = () => {
                   </MobileLiSection>
                   <MobileSubUl data-visible={mobileAboutMenuData}>
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
+                    <MobileLiSection style={path === "/contribute" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>Contribute to the CCDC</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
                     <MobileLiSection><a href="/User Guide for CCDC v1.4.5.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
@@ -466,6 +467,7 @@ const NavBar = () => {
                       </span>
                       <ul className="dropdown">
                           <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog &nbsp; &nbsp;</NavLink></li>
+                          <li><NavLink to="/contribute" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Contribute to the CCDC &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
                           <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
                           <li><a href="/User Guide for CCDC v1.4.5.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>

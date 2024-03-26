@@ -10,6 +10,7 @@ import AboutPage from './aboutPage';
 import DocumentSearchPage from './documentSearchPage';
 import Glossary from './glossaryPage/glossaryPageController';
 import SiteUpdatePage from './siteUpdatePage';
+import ContributePage from './contributePage';
 import Header from "../components/common/Header";
 import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/sitesearch" element={<DocumentSearchPage />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/siteupdate" element={<SiteUpdatePage />} />
+        <Route path="/contribute" element={<ContributePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer autoClose={3000} hideProgressBar />
