@@ -45,17 +45,25 @@ const ContributeContainer = styled.div`
     }
     .contributePageSection1 {
         margin: 0 auto;
-        width: 1250px;
-        padding: 0px 0px 40px 110px;
-        border-left: 1px solid lightgray;
-        border-right: 1px solid lightgray;
+        width: 100%;
+        @media (min-width: 1260px){
+            width: 1250px;
+        }
     }
     .contributeContent1 {
-        width: 83%;
-        padding: 40px 0px 0px 0px;
+        padding: 40px 30px 40px 300px;
         text-align: left;
-        margin-left: 100px;
-        margin-right: 100px;
+        margin: 0 10px;
+        border-left: 1px solid lightgray;
+        border-right: 1px solid lightgray;
+
+        @media (max-width: 1269px){
+            padding-left: calc(100vw - 970px);
+        }
+
+        @media (max-width: 1000px){
+            padding-left: 30px;
+        }
     }
     .contributeContentHeader1 {
         padding-bottom: 10px;
@@ -115,8 +123,6 @@ const ContributePage = () => {
                     <img className="contributeFlow" src={contributeFlowImg} alt="contribute Flow Image" />
                 </div>
             </div>
-            {/* <br /> */}
-            <div className="grid" />
         </ContributeContainer>
     </>
   );
