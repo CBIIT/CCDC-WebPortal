@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import contributeHeaderrImage from "../../assets/img/contributeHeader.svg";
 import contributeHeaderTablet from "../../assets/img/contributeHeaderTablet.svg";
-import contributeHeaderMobile from "../../assets/img/contributeHeaderMobile.png";
+import contributeHeaderMobile from "../../assets/img/contributeHeaderMobile.svg";
 import externalIcon from "../../assets/img/resource.svg";
 import contributeFlowImg from "../../assets/img/contributeFlow.svg";
 import contributeFlowMobile from "../../assets/img/contributeFlowMobile.svg";
@@ -85,6 +85,7 @@ const ContributeContainer = styled.div`
             background-color: #003D75CC;
             display: block;
             object-fit: cover;
+            background: url(${contributeHeaderMobile});
         }
     }
 
@@ -96,7 +97,7 @@ const ContributeContainer = styled.div`
             display: none;
             margin-top: -321px;
             float: right;
-            background-color: #003D75CC;
+            // background-color: #003D75CC;
             display: block;
             .contributeHeaderText {
                 color: #FFFFFF;
@@ -188,7 +189,7 @@ const ContributePage = () => {
                     </h2>
                     <img className="contributeHeaderImage" src={contributeHeaderrImage} alt="contribute Header Image" />
                     <img className="contributeHeaderTablet" src={contributeHeaderTablet} alt="contribute Header Tablet" />
-                    <img className="contributeHeaderMobile" src={contributeHeaderMobile} alt="contribute Header Mobile" />
+                    <div className="contributeHeaderMobile" />
                     <div className="contributeHeaderMobileCover">
                         <div className="contributeHeaderText">Contribute to the CCDI Data Catalog</div>
                     </div>
