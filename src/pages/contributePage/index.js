@@ -124,10 +124,11 @@ const ContributeContainer = styled.div`
         }
     }
     .contributeContent1 {
-        // font-family: Open Sans;
+        font-family: 'Open Sans', sans-serif;
         padding: 40px 30px 40px 300px;
         text-align: left;
         margin: 0 10px;
+        line-height: 24px;
         border-left: 1px solid lightgray;
         border-right: 1px solid lightgray;
 
@@ -213,7 +214,7 @@ const ContributePage = () => {
                         Review the&nbsp;
                         <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer">CCDC Submission Template</a>
                         , complete it, and send it to&nbsp;
-                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">Participating Resources</a>
+                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">NCIChildhoodCancerDataInitiative@mail.nih.gov</a>
                         . All submitted templates will undergo review by the CCDC team. The CCDC team will collaborate closely with resource and data owners to summarize data and integrate it into periodic releases of the CCDC site.
                     </p>
                     <img className="contributeFlow" src={contributeFlowImg} alt="contribute Flow Image" />
