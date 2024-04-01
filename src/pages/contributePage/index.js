@@ -80,12 +80,16 @@ const ContributeContainer = styled.div`
         display: none;
         margin-top: -200px;
         float: right;
+        object-fit: cover;
+        background: url(${contributeHeaderMobile});
 
         @media (max-width: 768px){
-            background-color: #003D75CC;
             display: block;
-            object-fit: cover;
-            background: url(${contributeHeaderMobile});
+            background-position: calc(100vw - 770px);
+        }
+
+        @media (max-width: 658px){
+            background-position: -110px;
         }
     }
 
@@ -120,6 +124,7 @@ const ContributeContainer = styled.div`
         }
     }
     .contributeContent1 {
+        // font-family: Open Sans;
         padding: 40px 30px 40px 300px;
         text-align: left;
         margin: 0 10px;
