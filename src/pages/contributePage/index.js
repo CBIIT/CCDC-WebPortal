@@ -39,14 +39,15 @@ const ContributeContainer = styled.div`
     }
     .contributeHeaderText {
         color: #004187;
-        font-family: Inter;
+        font-family: Poppins;
         font-size: 42px;
         font-weight: 600;
         line-height: 40px;
         padding: 0 10px 0 28px;
+        letter-spacing: -0.03em;
 
         @media (max-width: 768px){
-            color: #FFFFFF;
+            color: transparent;
         }
     }
     .contributeHeaderImage {
@@ -97,6 +98,16 @@ const ContributeContainer = styled.div`
             float: right;
             background-color: #003D75CC;
             display: block;
+            .contributeHeaderText {
+                color: #FFFFFF;
+                padding: 70px 0 0 50px;
+                font-family: Poppins;
+                font-size: 42px;
+                font-weight: 600;
+                line-height: 41px;
+                width: 270px;
+                letter-spacing: -0.03em;
+            }
         }
 
     }
@@ -178,7 +189,9 @@ const ContributePage = () => {
                     <img className="contributeHeaderImage" src={contributeHeaderrImage} alt="contribute Header Image" />
                     <img className="contributeHeaderTablet" src={contributeHeaderTablet} alt="contribute Header Tablet" />
                     <img className="contributeHeaderMobile" src={contributeHeaderMobile} alt="contribute Header Mobile" />
-                    <div className="contributeHeaderMobileCover" />
+                    <div className="contributeHeaderMobileCover">
+                        <div className="contributeHeaderText">Contribute to the CCDI Data Catalog</div>
+                    </div>
                 </div>
             </div>
             <div className="contributeGrid" />
