@@ -1,8 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
 import contributeHeaderrImage from "../../assets/img/contributeHeader.svg";
+import contributeHeaderTablet from "../../assets/img/contributeHeaderTablet.svg";
+import contributeHeaderMobile from "../../assets/img/contributeHeaderMobile.png";
 import externalIcon from "../../assets/img/resource.svg";
 import contributeFlowImg from "../../assets/img/contributeFlow.svg";
+import contributeFlowMobile from "../../assets/img/contributeFlowMobile.svg";
 
 const ContributeContainer = styled.div`
 //   display: inline-flex;
@@ -29,7 +32,10 @@ const ContributeContainer = styled.div`
     .contributePageHeader {
         /* margin: 0 auto; */
         /* width: 1250px; */
-        padding: 28px 10px 30px 28px;
+        padding: 28px 0 30px 0;
+        @media (max-width: 768px){
+            padding-bottom: 130px;
+        }
     }
     .contributeHeaderText {
         color: #004187;
@@ -37,11 +43,62 @@ const ContributeContainer = styled.div`
         font-size: 42px;
         font-weight: 600;
         line-height: 40px;
+        padding: 0 10px 0 28px;
+
+        @media (max-width: 768px){
+            color: #FFFFFF;
+        }
     }
     .contributeHeaderImage {
         margin-top: -170px;
         float: right;
-        width: 700px;
+        width: 770px;
+        display: block;
+
+        @media (max-width: 1000px){
+            display: none;
+        }
+    }
+    .contributeHeaderTablet {
+        margin-top: -170px;
+        float: right;
+        width: 550px;
+        display: none;
+
+        @media (max-width: 1000px){
+            display: block;
+        }
+
+        @media (max-width: 768px){
+            display: none;
+        }
+    }
+    .contributeHeaderMobile {
+        height: 322px;
+        width: 100%;
+        display: none;
+        margin-top: -200px;
+        float: right;
+
+        @media (max-width: 768px){
+            background-color: #003D75CC;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    .contributeHeaderMobileCover {
+        display: none;
+        @media (max-width: 768px){
+            height: 322px;
+            width: 100%;
+            display: none;
+            margin-top: -321px;
+            float: right;
+            background-color: #003D75CC;
+            display: block;
+        }
+
     }
     .contributePageSection1 {
         margin: 0 auto;
@@ -83,6 +140,23 @@ const ContributeContainer = styled.div`
         color: white;
         border-bottom: 1px solid lightgray;
     }
+
+    .contributeFlow {
+        display: block;
+
+        @media (max-width: 1000px){
+            display: none;
+        }
+    }
+
+    .contributeFlowMobile {
+        display: none;
+
+        @media (max-width: 1000px){
+            display: block;
+            margin: 0 auto;
+        }
+    }
 `;
 
 const ContributePage = () => {
@@ -102,6 +176,9 @@ const ContributePage = () => {
                         Catalog
                     </h2>
                     <img className="contributeHeaderImage" src={contributeHeaderrImage} alt="contribute Header Image" />
+                    <img className="contributeHeaderTablet" src={contributeHeaderTablet} alt="contribute Header Tablet" />
+                    <img className="contributeHeaderMobile" src={contributeHeaderMobile} alt="contribute Header Mobile" />
+                    <div className="contributeHeaderMobileCover" />
                 </div>
             </div>
             <div className="contributeGrid" />
@@ -121,6 +198,7 @@ const ContributePage = () => {
                         . All submitted templates will undergo review by the CCDC team. The CCDC team will collaborate closely with resource and data owners to summarize data and integrate it into periodic releases of the CCDC site.
                     </p>
                     <img className="contributeFlow" src={contributeFlowImg} alt="contribute Flow Image" />
+                    <img className="contributeFlowMobile" src={contributeFlowMobile} alt="contribute Flow Image Mobile" />
                 </div>
             </div>
         </ContributeContainer>
