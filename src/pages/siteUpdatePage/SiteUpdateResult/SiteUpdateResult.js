@@ -141,8 +141,9 @@ const SiteUpdateCardDescription = styled.div`
     padding: 0px 0px 20px 0px;
 
     a {
-        text-decoration: none;
-        color: #00a272;
+        // color: #00a272;
+        // text-decoration: none;
+        text-decoration-color: #0563C1;
         font-weight: 500;
     }
 
