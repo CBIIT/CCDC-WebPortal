@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import usePageVisibility from "./PageVisibility";
-import DataResourceIcons from '../DataResourceIcons';
+// import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
 import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
 
@@ -36,6 +36,7 @@ const Carousel = ({
     const [touchPosition, setTouchPosition] = useState(null);
     const [transform, setTransform] = useState({ transform: "translateX(0%)" });
     const [btnDisabled, setBtnDisabled] = useState(false);
+    const [pause, setPause] = useState(false);
     const isVisible = usePageVisibility();
 
     const startTimer = () => {
@@ -53,7 +54,9 @@ const Carousel = ({
     };
 
     const nextSlide = () => {
-        resetTimer();
+        if (!pause) {
+            resetTimer();
+        }
         const ts = `translateX(-${(cardIdx + 1) * (100 / showCount)}%)`;
         cardIdx += 1;
         if (cardIdx === (participatingResources.length + showCount)) {
@@ -67,7 +70,9 @@ const Carousel = ({
     };
 
     const prevSlide = () => {
-        resetTimer();
+        if (!pause) {
+            resetTimer();
+        }
         const ts = `translateX(-${(cardIdx - 1) * (100 / showCount)}%)`;
         cardIdx -= 1;
         if (cardIdx === 0) {
@@ -78,6 +83,15 @@ const Carousel = ({
         }
         setCurrentIndex(cardIdx);
         setTransform({transform: ts, transition: "0.5s ease-out"});
+    };
+
+    const clickPause = () => {
+        if (pause) {
+            resetTimer();
+        } else {
+            clearInterval(timer);
+        }
+        setPause(!pause);
     };
 
     useEffect(() => {
@@ -170,24 +184,26 @@ const Carousel = ({
                             }
                             return (
                                 <div key={key} className={withLine ? "carousel-card-with-line" : "carousel-card"} title={key}>
-                                    <div className="cardTitle">
-                                        <div className="cardInfo">
-                                            <div className="cardLabel">
-                                                <span style={{ color: 'gray' }}> Participating Resources </span>
+                                    <div className="cardContianer">
+                                        <div className="cardTitle">
+                                            <div className="cardInfo">
+                                                <div className="cardLabel">
+                                                    <span> Participating Resources </span>
+                                                </div>
+                                                <div className="cardHeader">
+                                                <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                                </div>
                                             </div>
-                                            <div className="cardHeader">
-                                              <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                            {/* <div className="cardIcon">
+                                            <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
+                                            </div> */}
+                                        </div>
+                                        <div className="cardContent">
+                                            <div>
+                                                {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
+                                                {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
+                                                <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                             </div>
-                                        </div>
-                                        <div className="cardIcon">
-                                          <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
-                                        </div>
-                                    </div>
-                                    <div className="cardContent">
-                                        <div>
-                                            {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
-                                            {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
-                                            <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -205,24 +221,26 @@ const Carousel = ({
                             }
                             return (
                                 <div key={key} className={withLine ? "carousel-card-with-line" : "carousel-card"}>
-                                    <div className="cardTitle">
-                                        <div className="cardInfo">
-                                            <div className="cardLabel">
-                                                <span style={{ color: 'gray' }}> Participating Resources </span>
+                                    <div className="cardContianer">
+                                        <div className="cardTitle">
+                                            <div className="cardInfo">
+                                                <div className="cardLabel">
+                                                    <span> Participating Resources </span>
+                                                </div>
+                                                <div className="cardHeader">
+                                                <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                                </div>
                                             </div>
-                                            <div className="cardHeader">
-                                              <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                            {/* <div className="cardIcon">
+                                            <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
+                                            </div> */}
+                                        </div>
+                                        <div className="cardContent">
+                                            <div>
+                                                {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
+                                                {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
+                                                <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                             </div>
-                                        </div>
-                                        <div className="cardIcon">
-                                          <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
-                                        </div>
-                                    </div>
-                                    <div className="cardContent">
-                                        <div>
-                                            {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
-                                            {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
-                                            <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -240,24 +258,26 @@ const Carousel = ({
                             }
                             return (
                                 <div key={key} className={withLine ? "carousel-card-with-line" : "carousel-card"} title={key}>
-                                    <div className="cardTitle">
-                                        <div className="cardInfo">
-                                            <div className="cardLabel">
-                                                <span style={{ color: 'gray' }}> Participating Resources </span>
+                                    <div className="cardContianer">
+                                        <div className="cardTitle">
+                                            <div className="cardInfo">
+                                                <div className="cardLabel">
+                                                    <span> Participating Resources </span>
+                                                </div>
+                                                <div className="cardHeader">
+                                                <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                                </div>
                                             </div>
-                                            <div className="cardHeader">
-                                              <a className="cardHeader" href={`/resource/${pr.data_resource_id}`}><h4>{pr.resource_name.length > 55 ? `${pr.resource_name.substring(0, 55)} ...` : pr.resource_name}</h4></a>
+                                            {/* <div className="cardIcon">
+                                            <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
+                                            </div> */}
+                                        </div>
+                                        <div className="cardContent">
+                                            <div>
+                                                {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
+                                                {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
+                                                <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                             </div>
-                                        </div>
-                                        <div className="cardIcon">
-                                          <DataResourceIcons participatingResource={pr.data_resource_id} type="white" />
-                                        </div>
-                                    </div>
-                                    <div className="cardContent">
-                                        <div>
-                                            {pr.description.length > 80 ? `${pr.description.substring(0, 80)}...` : pr.description}
-                                            {/* <span style={{ color: '#FFBF17' }}> READ MORE &#62; </span> */}
-                                            <span><a href={`/resource/${pr.data_resource_id}`} style={{ color: '#FFBF17', textDecoration: 'none' }}> READ MORE &#62; </a></span>
                                         </div>
                                     </div>
                                 </div>
@@ -270,6 +290,9 @@ const Carousel = ({
                         <img src={arrowRightGold} alt="arrow-right" />
                     </button>
                 </div>
+            </div>
+            <div className="controlPanel">
+                <button type="button" style={{color: 'red'}} onClick={clickPause}>pause</button>
             </div>
         </div>
     );

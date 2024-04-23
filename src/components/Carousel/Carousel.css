@@ -49,6 +49,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  position: relative;
 }
 
 .carousel-wrapper {
@@ -120,15 +121,24 @@
 
 .carousel-card {
   display: grid;
-  padding: 0 20px;
-  background-color: #212121;
+  padding: 0 10px;
 }
 
 .carousel-card-with-line {
   display: grid;
-  padding: 0 20px;
-  background-color: #212121;
-  border-right: 2px double gray;
+  padding: 0 10px;
+}
+
+.cardContianer {
+  margin: 40px 0;
+  padding: 15px 25px; 
+  border-radius: 15px;
+  border: 1px solid #5A5A5A;
+}
+
+.cardContianer:hover {
+  border-radius: 15px;
+  border: 1px solid #C1C1C1;
 }
 
 .carousel-card:last-child {
@@ -137,12 +147,12 @@
 
 .cardTitle {
   display: flex;
-  height: 100px;
+  height: 90px;
 }
 
 .cardInfo {
-  width: calc(100% - 56px);
-  padding-top: 10px;
+  width: 100%;
+  /* padding-top: 10px; */
 }
 
 .cardIcon {
@@ -154,6 +164,8 @@
 }
 
 .cardLabel {
+  font-family: Lato;
+  color: #ADADAD;
   width: 100%;
   font-size:14px;
 }
@@ -178,8 +190,25 @@
   color: white;
   font-size: 90%;
   margin-top: 10px;
-  height: 100px;
+  height: 60px;
   /* line-height: 18pt; */
-  padding-top: 16px;
+  /* padding-top: 16px; */
   width: 100%;
+}
+
+.controlPanel {
+  position: absolute;
+  top: 260px;
+  left: 910px;
+  background-color: #212121;
+  color: red;
+  width: 238px;
+  height: 49px;
+  border-radius: 50px;
+}
+
+@media (max-width: 1200px) {
+  .controlPanel{
+    left: calc(100vw - 300px);
+  }
 }
