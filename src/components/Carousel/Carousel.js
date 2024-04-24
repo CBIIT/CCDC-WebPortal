@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import usePageVisibility from "./PageVisibility";
 // import DataResourceIcons from '../DataResourceIcons';
 import './Carousel.css';
-import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
+// import arrowRightGold from '../../assets/img/arrow_right_gold.svg';
+import startIcon from "../../assets/img/StartButtonIconGrey.svg";
+import PauseIcon from "../../assets/img/PauseButtonIconGrey.svg";
+import LeftIcon from "../../assets/img/carouselLeftButton.svg";
+import MiddleIcon from "../../assets/img/carouselMiddleButton.svg";
+import RightIcon from "../../assets/img/carouselRightButton.svg";
 
 let cardIdx = 0;
 let timer = null;
@@ -37,6 +42,7 @@ const Carousel = ({
     const [transform, setTransform] = useState({ transform: "translateX(0%)" });
     const [btnDisabled, setBtnDisabled] = useState(false);
     const [pause, setPause] = useState(false);
+    const [iconUrl, setIconUrl] = useState(PauseIcon);
     const isVisible = usePageVisibility();
 
     const startTimer = () => {
@@ -88,8 +94,10 @@ const Carousel = ({
     const clickPause = () => {
         if (pause) {
             resetTimer();
+            setIconUrl(PauseIcon);
         } else {
             clearInterval(timer);
+            setIconUrl(startIcon);
         }
         setPause(!pause);
     };
@@ -166,9 +174,9 @@ const Carousel = ({
         <div className="carousel-container">
             <div className="carousel-wrapper">
                 <div className="carousel-action-wrapper">
-                    <button type="button" onClick={prevSlide} className="left-arrow" disabled={btnDisabled}>
+                    {/* <button type="button" onClick={prevSlide} className="left-arrow" disabled={btnDisabled}>
                         <img src={arrowRightGold} alt="arrow-right" />
-                    </button>
+                    </button> */}
                 </div>
                 <div className="carousel-content-wrapper" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}>
                     <div className={`carousel-content show-${showCount}`} onTransitionEnd={handleTransitionEnd} style={transform}>
@@ -286,13 +294,24 @@ const Carousel = ({
                     </div>
                 </div>
                 <div className="carousel-action-wrapper">
-                    <button type="button" onClick={nextSlide} className="right-arrow" disabled={btnDisabled}>
+                    {/* <button type="button" onClick={nextSlide} className="right-arrow" disabled={btnDisabled}>
                         <img src={arrowRightGold} alt="arrow-right" />
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="controlPanel">
-                <button type="button" style={{color: 'red'}} onClick={clickPause}>pause</button>
+                <div className="carouselButton" role="button" tabindex={0} onClick={prevSlide} onKeyDown={clickPause} disabled={btnDisabled}>
+                    <img src={LeftIcon} alt="leftbutton" />
+                </div>
+                <div className="carouselButton">
+                    <img src={MiddleIcon} alt="middlebutton" />
+                </div>
+                <div className="carouselButton" role="button" tabindex={0} onClick={nextSlide} onKeyDown={clickPause} disabled={btnDisabled}>
+                    <img src={RightIcon} alt="righttbutton" />
+                </div>
+                <div className="carouselPauseButton" role="button" tabindex={0} onClick={clickPause} onKeyDown={clickPause}>
+                    <img src={iconUrl} alt="pausebutton" />
+                </div>
             </div>
         </div>
     );

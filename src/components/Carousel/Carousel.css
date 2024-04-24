@@ -68,6 +68,7 @@
 .carousel-action-wrapper {
   overflow: hidden;
   background: #212121;
+  width: 29px;
 }
 
 .carousel-content-wrapper {
@@ -198,6 +199,7 @@
 
 .controlPanel {
   position: absolute;
+  display: flex;
   top: 260px;
   left: 910px;
   background-color: #212121;
@@ -205,6 +207,15 @@
   width: 238px;
   height: 49px;
   border-radius: 50px;
+  padding: 8px 40px;
+}
+
+.carouselButton {
+  margin: 0 2px;
+}
+
+.carouselPauseButton {
+  margin-left: 20px;
 }
 
 @media (max-width: 1200px) {
