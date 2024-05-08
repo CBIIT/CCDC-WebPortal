@@ -67,6 +67,7 @@ const Filters = ({
           <SelectionWithCheckBox selectionLabel="Sample Composition Type" selectionField="sample_composition_type" />
         </div>
         <div className="advancedFilterBlock">
+        <SelectionWithCheckBox selectionLabel="Sample Is Cell Line" selectionField="sample_is_cell_line" />
           <SelectionWithCheckBox selectionLabel="Sample Is Normal" selectionField="sample_is_normal" />
         </div>
       </div>
