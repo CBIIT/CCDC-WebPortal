@@ -195,7 +195,7 @@ const DatasetDetail = ({
 }) => {
   const { id } = useParams();
   const content = details[id];
-  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_proband', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_normal', 'sample_is_xenograft'];
+  const coreDataElementsAll = ['case_sex', 'case_gender', 'case_age', 'case_age_at_diagnosis', 'case_race', 'case_ethnicity', 'case_disease_diagnosis', 'case_proband', 'case_tumor_site', 'case_treatment_administered', 'case_treatment_outcome', 'sample_assay_method', 'sample_analyte_type', 'sample_anatomic_site', 'sample_composition_type', 'sample_is_cell_line', 'sample_is_normal', 'sample_is_xenograft'];
   const [coreDataElementsMap, setCoreDataElementsMap] = useState(new Map());
   const [selectedKey, setSelectedKey] = useState("");
   const [datasetDes, setDatasetDes] = useState([]);
@@ -839,6 +839,21 @@ const DatasetDetail = ({
                               const n = `${sct.n} (`;
                               let v = sct.v ? sct.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
                               v += sctidx === content.sample_composition_type.length - 1 ? ")" : "); ";
+                              return n + v;
+                            })
+                            : null
+                          }
+                        </div>
+                        {content.sample_is_cell_line
+                          ? <div className="dataElementLabel">Sample Is Cell Line</div>
+                          : null}
+                        <div className="dataElementContent" id="sample_is_cell_line">
+                          {
+                            content.sample_is_cell_line
+                            ? content.sample_is_cell_line.map((sin, sinidx) => {
+                              const n = `${sin.n} (`;
+                              let v = sin.v ? sin.v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : "";
+                              v += sinidx === content.sample_is_cell_line.length - 1 ? ")" : "); ";
                               return n + v;
                             })
                             : null

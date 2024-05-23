@@ -238,8 +238,8 @@ const SearchResult = ({
             const linktoDatasetSummaries = `/resource/${rst.data_resource_id}#dataset_summaries`;
             const tooltip = glossaryTerms[rst.resource_type];
             let fullTitle = "".concat(rst.resource_name, ' (', rst.data_resource_id, ')');
-            if (fullTitle.length > 77) {
-              fullTitle = fullTitle.substring(0, 77).concat('...');
+            if (fullTitle.length > 72) {
+              fullTitle = fullTitle.substring(0, 72).concat('...');
             }
             let pocArray = [];
             let pocEmailArray = [];
