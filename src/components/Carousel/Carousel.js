@@ -213,8 +213,8 @@ const CarouselContainer = styled.div`
     .controlPanel {
         position: absolute;
         display: flex;
-        top: 260px;
-        left: 910px;
+        top: 235px;
+        left: 888px;
         background-color: #212121;
         color: red;
         width: 238px;
