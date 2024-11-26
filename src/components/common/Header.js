@@ -39,7 +39,7 @@ const HeaderCover = styled.div`
   background: white;
 
   @media (max-width: 1200px) {
-    position: absolute;
+    display: none;
   }
 `;
 
