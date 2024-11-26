@@ -50,9 +50,14 @@ const AboutPage = () => {
                         <a href="https://www.cancer.gov/research/areas/childhood/childhood-cancer-data-initiative" target="_blank" rel="noreferrer noopener">NCI’s Childhood Cancer Data Initiative (CCDI)</a>
                         , which the Childhood Cancer Data Catalog is part of, is an initiative seeking to build a community centered around childhood cancer care and research. Through enhanced data sharing,
                         the initiative works to improve understanding of cancer biology, preventive measures, treatment, quality of life, and survivorship, as well as ensure that the community can learn from
-                        every child with cancer.&nbsp;
-                        <a href="https://public.govdelivery.com/accounts/USNIHNCI/subscriber/new?topic_id=USNIHNCI_223" target="_blank" rel="noreferrer noopener">Sign-up for email updates</a>
-                        &nbsp;from NCI about CCDI.
+                        every child with cancer.
+                    </p>
+                    <p>
+                        The Childhood Cancer Data Catalog is part of the CCDI Data Ecosystem. Learn more about other CCDI data and resources on the&nbsp;
+                        <a href="https://ccdi.cancer.gov" target="_blank" rel="noreferrer noopener">CCDI  Hub</a>
+                        , and&nbsp;
+                        <a href="https://public.govdelivery.com/accounts/USNIHNCI/subscriber/new?topic_id=USNIHNCI_223" target="_blank" rel="noreferrer noopener">sign up</a>
+                        for email updates about CCDI.
                     </p>
                     <br />
                     <h2 className="aboutContentHeader1">CCDI Data Catalog</h2>
