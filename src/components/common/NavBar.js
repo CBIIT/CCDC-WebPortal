@@ -48,7 +48,7 @@ const NavContainer = styled.div`
       width: 1200px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 892px) {
       display: flex;
       .mobile-nav-toggle {
         display: block;
@@ -262,7 +262,7 @@ const SearchArea = styled.label`
   top: -70px;
   right: 25px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 892px) {
     top: 7px;
     border: 0;
     input {
@@ -424,7 +424,6 @@ const NavBar = () => {
                   </MobileLiSection>
                   <MobileSubUl data-visible={mobileStudiesMenuData}>
                     <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick}>CCDI Resource & Datasets</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
                     <MobileLiSection><a href="https://clinicalcommons.ccdi.cancer.gov" target="_blank" rel="noreferrer">Childhood Cancer Clinical Data Commons</a></MobileLiSection>
                     <MobileLiSection><a href="https://moleculartargets.ccdi.cancer.gov" target="_blank" rel="noreferrer">Molecular Targets Platform</a></MobileLiSection>
                     <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
@@ -442,6 +441,7 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
                     <MobileLiSection><a href="/User Guide for CCDC v1.4.10.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
+                  <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
                   <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
@@ -454,7 +454,6 @@ const NavBar = () => {
                       </span>
                       <ul className="dropdown">
                           <li><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; CCDI Resource & Datasets</NavLink></li>
-                          <li><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">&nbsp; &nbsp; CCDI Hub</a></li>
                           <li><a href="https://clinicalcommons.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Childhood Cancer Clinical Data Commons &nbsp; &nbsp;</a></li>
                           <li><a href="https://moleculartargets.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Molecular Targets Platform</a></li>
                           <li><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
@@ -473,6 +472,7 @@ const NavBar = () => {
                           <li><a href="/User Guide for CCDC v1.4.10.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                       </ul>
                   </LiSection>
+                  <LiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">&nbsp; CCDI Hub &nbsp;</a></LiSection>
                 </UlContainer>
                 {
                   path !== "/sitesearch"
