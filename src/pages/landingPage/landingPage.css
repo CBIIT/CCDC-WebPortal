@@ -57,13 +57,12 @@
   .heroTextWrapper2 .row .column1 {
     width: 100%;
   }
+  .heroTextWrapper2 .row .column1 .headerContent2 {
+    margin-left: 0;
+  }
   .heroTextWrapper2 .row .column2 {
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  .heroTextWrapper2 .headerLink2 {
-    float: none;
+    padding: 50px 30px;
   }
   .heroImage2 {
     background-image: url("../../assets/img/WhattoExpect.png");
@@ -141,9 +140,7 @@
 .column2 {
   float: right;
   width: 50%;
-  padding: 10px;
-  padding-top: 100px;
-  padding-bottom: 70px;
+  padding: 100px 67px 70px 40px;
   font-size: 90%;
 }
 
@@ -301,7 +298,7 @@
 
 .headerLink2 {
   text-decoration: none;
-  float: left;
+  float: right;
 }
 
 .cards {
@@ -500,7 +497,7 @@
 }
 
 .buttonText {
-  margin: 60px 0 0 240px;
+  /* margin: 60px 0 0 240px; */
   padding: 5px 0;
   position: relative;
   width: 259px;
@@ -582,15 +579,11 @@
 }
 
 .infoSection {
-  margin: 0px 0 0px 30px;
   color: #FFFFFF;
   font-family: Lato;
   font-size: 18px;
   line-height: 28px;
-  height: 294px;
-  width: 474px;
   text-align: justify;
-  inline-size: 465px;
 }
 
 .search {
