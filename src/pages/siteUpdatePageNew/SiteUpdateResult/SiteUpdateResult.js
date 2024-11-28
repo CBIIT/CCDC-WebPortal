@@ -220,6 +220,12 @@ const SiteUpdateResult = ({
       for (let i = 0; i < siteUpdateList.length; i += 1) {
         const currYear = siteUpdateList[i].post_date.split("-")[0];
         const yearObj = {};
+        let date = siteUpdateList[i].post_date;
+        date = `${date.substring(5, 7)}/${date.substring(8, 10)}/${date.substring(0, 4)}`;
+        const newDate = new Date(date);
+        const newDateArr = newDate.toDateString().split(' ');
+        const month = newDate.toLocaleString('default', { month: 'long' });
+        const newDateFormat = month.concat(' ', newDateArr[2], ', ', newDateArr[3]);
         if (prevYear !== currYear) {
           if (SubObj) {
             SubObj.list = SubList;
@@ -230,7 +236,7 @@ const SiteUpdateResult = ({
           SubObj.year = currYear;
           prevYear = currYear;
         }
-        yearObj.date = siteUpdateList[i].post_date;
+        yearObj.date = newDateFormat;
         yearObj.index = i;
         SubList.push(yearObj);
         if (i === siteUpdateList.length - 1) {
