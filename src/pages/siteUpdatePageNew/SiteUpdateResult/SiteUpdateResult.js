@@ -42,13 +42,6 @@ const SiteUpdateCard = styled.div`
   position: relative;
 `;
 
-const SiteUpdateDate = styled.div`
-    color: #00A272;
-    font-family: Lato;
-    font-weight: bold;
-    margin: 0px 0px 0px 130px;
-`;
-
 const SiteUpdateCardTitle = styled.div`
     color: #00A272;
     font-family: Inter;
@@ -335,7 +328,6 @@ const SiteUpdateResult = ({
           )
           : (
               <SiteUpdateItem id={`post${siteUpdateList[selectedIdx].id}`}>
-                <SiteUpdateDate id={`post${siteUpdateList[selectedIdx].id}_date`}>{siteUpdateList[selectedIdx].post_date}</SiteUpdateDate>
                 <SiteUpdateCard>
                   <SiteUpdateCardTitle id={`post${siteUpdateList[selectedIdx].id}_title`} title={siteUpdateList[selectedIdx].title}>
                     {siteUpdateList[selectedIdx].title}
@@ -382,7 +374,7 @@ const SiteUpdateResult = ({
                     </a>
                   </SiteUpdateExport>
                   <SiteUpdateCardDescription id={`post${siteUpdateList[selectedIdx].id}_desc`}>
-                    <div>{siteUpdateList[selectedIdx].post_date}</div>
+                    <div id={`post${siteUpdateList[selectedIdx].id}_date`}>{siteUpdateList[selectedIdx].post_date}</div>
                     {ReactHtmlParser(siteUpdateList[selectedIdx].description)}
                   </SiteUpdateCardDescription>
                 </SiteUpdateCard>
