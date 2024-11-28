@@ -181,6 +181,7 @@ const SiteUpdateResult = ({
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const [siteUpdateNav, setSiteUpdateNav] = useState([]);
+    const [selectedIdx, setSelectedIdx] = useState(1);
     const pageSize = 100;
     const iconSrc = {
                       Clinical: ClinicalTrialsIcon,
@@ -218,6 +219,7 @@ const SiteUpdateResult = ({
       let prevYear = 0;
       for (let i = 0; i < siteUpdateList.length; i += 1) {
         const currYear = siteUpdateList[i].post_date.split("-")[0];
+        const yearObj = {};
         if (prevYear !== currYear) {
           if (SubObj) {
             SubObj.list = SubList;
@@ -228,7 +230,9 @@ const SiteUpdateResult = ({
           SubObj.year = currYear;
           prevYear = currYear;
         }
-        SubList.push(siteUpdateList[i].post_date);
+        yearObj.date = siteUpdateList[i].post_date;
+        yearObj.index = i;
+        SubList.push(yearObj);
         if (i === siteUpdateList.length - 1) {
           SubObj.list = SubList;
           NavList.push(SubObj);
@@ -349,7 +353,7 @@ const SiteUpdateResult = ({
         })
         .save();
     };
-  const selectedIdx = 1;
+
   return (
     <>
       <SiteUpdateResultContainer>
@@ -366,7 +370,9 @@ const SiteUpdateResult = ({
                     subObj.list.map((navItem, yearidx) => {
                       const yearkey = `obj_${yearidx}`;
                       return (
-                        <li key={yearkey}>{navItem}</li>
+                        <li key={yearkey}>
+                          <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>{navItem.date}</a>
+                        </li>
                       );
                     })
                   }
