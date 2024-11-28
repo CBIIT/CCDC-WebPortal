@@ -15,17 +15,23 @@ import CellLinesIcon from '../../../assets/img/CellLines.icon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
-  display: grid;
+  display: flex;
+  padding: 20px 20px 50px 0;
+`;
+
+const NavContainer = styled.div`
+  width: 420px;
+  display: flex;
   padding: 0 0 50px 0;
 `;
 
 const ResultInfo = styled.div`
+  margin-left: 20px;
   padding: 25px;
   font-weight: bold;
 `;
 
 const SiteUpdateItem = styled.div`
-  display: grid;
   margin: 0px 0px 50px 0px;
   scroll-margin: 200px;
 `;
@@ -35,9 +41,9 @@ const SiteUpdateCard = styled.div`
   border: 1px solid #b6dffd;
   box-shadow: 3px 3px 10px lightgray;
   // margin-top: 20px;
-  margin: -44px 30px 0px 370px;
+  // margin: -44px 30px 0px 370px;
   padding: 15px 29px;
-  max-height: 360px;
+  max-height: 1138px;
   overflow-y: auto;
   position: relative;
 `;
@@ -319,6 +325,9 @@ const SiteUpdateResult = ({
   return (
     <>
       <SiteUpdateResultContainer>
+        <NavContainer>
+          hello
+        </NavContainer>
         <ResultInfo />
         {
             siteUpdateList.length === 0 ? (
