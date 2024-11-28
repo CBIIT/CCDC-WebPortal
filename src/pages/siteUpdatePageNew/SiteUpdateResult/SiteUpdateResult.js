@@ -180,6 +180,7 @@ const SiteUpdateResult = ({
     const [isTotal, setIsTotal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
+    const [siteUpdateNav, setSiteUpdateNav] = useState([]);
     const pageSize = 100;
     const iconSrc = {
                       Clinical: ClinicalTrialsIcon,
@@ -210,6 +211,32 @@ const SiteUpdateResult = ({
       }
     };
 
+    const createNav = () => {
+      const NavList = [];
+      let SubObj = null;
+      let SubList = [];
+      let prevYear = 0;
+      for (let i = 0; i < siteUpdateList.length; i += 1) {
+        const currYear = siteUpdateList[i].post_date.split("-")[0];
+        if (prevYear !== currYear) {
+          if (SubObj) {
+            SubObj.list = SubList;
+            NavList.push(SubObj);
+          }
+          SubList = [];
+          SubObj = {};
+          SubObj.year = currYear;
+          prevYear = currYear;
+        }
+        SubList.push(siteUpdateList[i].post_date);
+        if (i === siteUpdateList.length - 1) {
+          SubObj.list = SubList;
+          NavList.push(SubObj);
+        }
+      }
+      return NavList;
+    };
+
     useEffect(() => {
       const f = async () => {
         const content = {
@@ -234,6 +261,7 @@ const SiteUpdateResult = ({
           if (element) element.scrollIntoView({ behavior: 'smooth'});
         }
       }
+      setSiteUpdateNav(createNav());
     }, [siteUpdateList]);
 
     useEffect(() => {
@@ -326,7 +354,28 @@ const SiteUpdateResult = ({
     <>
       <SiteUpdateResultContainer>
         <NavContainer>
-          hello
+          <ul>
+          {
+            siteUpdateNav.map((subObj, objidx) => {
+              const objkey = `obj_${objidx}`;
+              return (
+                <li key={objkey}>
+                  <div>{subObj.year}</div>
+                  <ul>
+                  {
+                    subObj.list.map((navItem, yearidx) => {
+                      const yearkey = `obj_${yearidx}`;
+                      return (
+                        <li key={yearkey}>{navItem}</li>
+                      );
+                    })
+                  }
+                  </ul>
+                </li>
+              );
+            })
+          }
+          </ul>
         </NavContainer>
         <ResultInfo />
         {
