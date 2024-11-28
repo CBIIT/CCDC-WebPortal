@@ -20,14 +20,13 @@ const SiteUpdateResultContainer = styled.div`
 `;
 
 const NavContainer = styled.div`
-  width: 420px;
+  width: 300px;
   display: flex;
   padding: 0 0 50px 0;
 `;
 
 const ResultInfo = styled.div`
   margin-left: 20px;
-  padding: 25px;
   font-weight: bold;
 `;
 
@@ -43,6 +42,7 @@ const SiteUpdateCard = styled.div`
   // margin-top: 20px;
   // margin: -44px 30px 0px 370px;
   padding: 15px 29px;
+  width: 910px;
   max-height: 1138px;
   overflow-y: auto;
   position: relative;
@@ -139,6 +139,16 @@ const SiteUpdateCardDescription = styled.div`
     line-height: 17px;
     padding: 0px 0px 20px 0px;
 
+    .dateContainer {
+      color: #707F8D;
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 24px */
+      margin-bottom: 10px;
+    }
+
     a {
         // color: #00a272;
         // text-decoration: none;
@@ -212,6 +222,15 @@ const SiteUpdateResult = ({
       }
     };
 
+    const formatDate = (date) => {
+      const dateData = `${date.substring(5, 7)}/${date.substring(8, 10)}/${date.substring(0, 4)}`;
+      const newDate = new Date(dateData);
+      const newDateArr = newDate.toDateString().split(' ');
+      const month = newDate.toLocaleString('default', { month: 'long' });
+      const newDateFormat = month.concat(' ', newDateArr[2], ', ', newDateArr[3]);
+      return newDateFormat;
+    };
+
     const createNav = () => {
       const NavList = [];
       let SubObj = null;
@@ -220,12 +239,8 @@ const SiteUpdateResult = ({
       for (let i = 0; i < siteUpdateList.length; i += 1) {
         const currYear = siteUpdateList[i].post_date.split("-")[0];
         const yearObj = {};
-        let date = siteUpdateList[i].post_date;
-        date = `${date.substring(5, 7)}/${date.substring(8, 10)}/${date.substring(0, 4)}`;
-        const newDate = new Date(date);
-        const newDateArr = newDate.toDateString().split(' ');
-        const month = newDate.toLocaleString('default', { month: 'long' });
-        const newDateFormat = month.concat(' ', newDateArr[2], ', ', newDateArr[3]);
+        const date = siteUpdateList[i].post_date;
+        const newDateFormat = formatDate(date);
         if (prevYear !== currYear) {
           if (SubObj) {
             SubObj.list = SubList;
@@ -444,7 +459,7 @@ const SiteUpdateResult = ({
                     </a>
                   </SiteUpdateExport>
                   <SiteUpdateCardDescription id={`post${siteUpdateList[selectedIdx].id}_desc`}>
-                    <div id={`post${siteUpdateList[selectedIdx].id}_date`}>{siteUpdateList[selectedIdx].post_date}</div>
+                    <div className="dateContainer" id={`post${siteUpdateList[selectedIdx].id}_date`}>{formatDate(siteUpdateList[selectedIdx].post_date)}</div>
                     {ReactHtmlParser(siteUpdateList[selectedIdx].description)}
                   </SiteUpdateCardDescription>
                 </SiteUpdateCard>
