@@ -90,6 +90,14 @@ const NavContainer = styled.div`
       background-color: #e9e2bc;
     }
   }
+
+  .dateListItemText {
+    width: 100%;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const ResultInfo = styled.div`
@@ -459,7 +467,9 @@ const SiteUpdateResult = ({
                       const yearkey = `obj_${yearidx}`;
                       return (
                         <li key={yearkey} className="dateListItem">
-                          <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>{navItem.date}</a>
+                          <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>
+                            <div className="dateListItemText">{navItem.date}</div>
+                          </a>
                         </li>
                       );
                     })
