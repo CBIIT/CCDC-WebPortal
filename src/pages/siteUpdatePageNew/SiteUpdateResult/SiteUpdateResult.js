@@ -16,13 +16,80 @@ import CellLinesIcon from '../../../assets/img/CellLines.icon.svg';
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
   display: flex;
-  padding: 20px 20px 50px 0;
+  padding: 0 20px 50px 0;
 `;
 
 const NavContainer = styled.div`
-  width: 300px;
   display: flex;
   padding: 0 0 50px 0;
+  border-right: 1px solid #E0E4E7;
+  border-top: 3px solid #C3D5E0;
+
+  .navListContainer {
+    background: #F7F8FA;
+    width: 230px;
+    margin: 5px;
+    padding-left: 0;
+  }
+
+  .navTitle {
+    color: #004187;
+    font-family: Lato;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 150%; /* 31.5px */
+    letter-spacing: 0.105px;
+    margin: 7px 0 6px 10px;
+  }
+
+  .dateSubListContainer {
+    list-style-type: none;
+  }
+
+  .yearTitle {
+    color: #8A9296;
+    font-family: Lato;
+    font-size: 12.8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15.36px; /* 120% */
+    text-transform: uppercase;
+    border-top: 1px solid #4BA4E3;
+    padding: 10px;
+    margin-top: 2px;
+  }
+
+  .dateSubList {
+    padding: 0;
+  }
+
+  .dateListItem {
+    list-style-type: none;
+    padding: 5px 10px;
+
+    a {
+      text-decoration: none;
+      color: #004187;
+      font-family: Lato;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 25.5px */
+    }
+
+    :nth-child(6n+1) {
+    background-color: #e9e9e9;
+  }
+
+    :nth-child(6n+3) {
+      background-color: #d6e6f3;
+    }
+
+    :nth-child(6n+5) {
+      background-color: #e9e2bc;
+    }
+  }
 `;
 
 const ResultInfo = styled.div`
@@ -31,7 +98,6 @@ const ResultInfo = styled.div`
 `;
 
 const SiteUpdateItem = styled.div`
-  margin: 0px 0px 50px 0px;
   scroll-margin: 200px;
 `;
 
@@ -379,19 +445,20 @@ const SiteUpdateResult = ({
     <>
       <SiteUpdateResultContainer>
         <NavContainer>
-          <ul>
+          <ul className="navListContainer">
+            <div className="navTitle">Release Note</div>
           {
             siteUpdateNav.map((subObj, objidx) => {
               const objkey = `obj_${objidx}`;
               return (
-                <li key={objkey}>
-                  <div>{subObj.year}</div>
-                  <ul>
+                <li key={objkey} className="dateSubListContainer">
+                  <div className="yearTitle">{subObj.year}</div>
+                  <ul className="dateSubList">
                   {
                     subObj.list.map((navItem, yearidx) => {
                       const yearkey = `obj_${yearidx}`;
                       return (
-                        <li key={yearkey}>
+                        <li key={yearkey} className="dateListItem">
                           <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>{navItem.date}</a>
                         </li>
                       );
