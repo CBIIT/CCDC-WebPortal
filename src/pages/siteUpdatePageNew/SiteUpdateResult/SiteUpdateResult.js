@@ -64,6 +64,30 @@ const NavContainer = styled.div`
     background: #F7F8FA;
   }
 
+  .yearTitle:not(.collapsed)::after {
+    background-image: none;
+    transform: rotate(-180deg);
+  }
+
+  .yearTitle::after {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 0;
+    display: inline-block;
+    vertical-align: .5em;
+    content: "";
+    border-top: .6em solid;
+    border-right: .5em solid transparent;
+    border-bottom: 0;
+    border-left: .5em solid transparent;
+    font-size: 1rem;
+    background-image: none;
+    transition: transform .2s ease-in-out;
+    color: #4ba4e3;
+    text-align: right;
+    float:right;
+  }
+
   .dateSubList {
     padding: 0;
   }
@@ -270,7 +294,7 @@ const SiteUpdateResult = ({
     const [isFetching, setIsFetching] = useState(false);
     const [siteUpdateNav, setSiteUpdateNav] = useState([]);
     const [open, setOpen] = useState([]);
-    const [selectedIdx, setSelectedIdx] = useState(1);
+    const [selectedIdx, setSelectedIdx] = useState(0);
     const pageSize = 100;
     const iconSrc = {
                       Clinical: ClinicalTrialsIcon,
@@ -478,7 +502,7 @@ const SiteUpdateResult = ({
               const objkey = `obj_${objidx}`;
               return (
                 <li key={objkey} className="dateSubListContainer">
-                  <button type="button" className="yearTitle" onClick={() => handleClick(objidx)}>{subObj.year}</button>
+                  <button type="button" className={`yearTitle ${open[objidx] ? "" : "collapsed"}`} onClick={() => handleClick(objidx)}>{subObj.year}</button>
                   <Collapse in={open[objidx]}>
                     <ul className="dateSubList">
                     {
