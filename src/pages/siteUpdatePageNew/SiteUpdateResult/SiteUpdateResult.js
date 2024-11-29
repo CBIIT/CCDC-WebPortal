@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Collapse from 'react-bootstrap/Collapse';
 import ReactHtmlParser from "html-react-parser";
 import html2pdf from "html2pdf.js";
 import { OverlayTrigger, Popover, Spinner } from 'react-bootstrap';
@@ -48,16 +49,19 @@ const NavContainer = styled.div`
   }
 
   .yearTitle {
+    width: 100%;
+    padding: 10px;
+    margin-top: 2px;
+    border: none;
     color: #8A9296;
     font-family: Lato;
     font-size: 12.8px;
     font-style: normal;
     font-weight: 600;
     line-height: 15.36px; /* 120% */
-    text-transform: uppercase;
+    text-align: left;
     border-top: 1px solid #4BA4E3;
-    padding: 10px;
-    margin-top: 2px;
+    background: #F7F8FA;
   }
 
   .dateSubList {
@@ -93,7 +97,7 @@ const NavContainer = styled.div`
 
   .dateListItemText {
     width: 100%;
-    
+
     &:hover {
       text-decoration: underline;
     }
@@ -265,6 +269,7 @@ const SiteUpdateResult = ({
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const [siteUpdateNav, setSiteUpdateNav] = useState([]);
+    const [open, setOpen] = useState([]);
     const [selectedIdx, setSelectedIdx] = useState(1);
     const pageSize = 100;
     const iconSrc = {
@@ -352,6 +357,7 @@ const SiteUpdateResult = ({
       };
       f();
     }, []);
+
     useEffect(() => {
       if (siteUpdateList.length > 0) {
         if (hash !== '') {
@@ -361,6 +367,12 @@ const SiteUpdateResult = ({
         }
       }
       setSiteUpdateNav(createNav());
+      const openArr = [];
+      openArr[0] = true;
+      for (let i = 1; i < siteUpdateNav.length; i += 1) {
+        openArr[i] = false;
+      }
+      setOpen(openArr);
     }, [siteUpdateList]);
 
     useEffect(() => {
@@ -449,6 +461,12 @@ const SiteUpdateResult = ({
         .save();
     };
 
+  const handleClick = (idx) => {
+    const newOpen = Object.assign([], open);
+    newOpen[idx] = !newOpen[idx];
+    setOpen(newOpen);
+  };
+
   return (
     <>
       <SiteUpdateResultContainer>
@@ -460,21 +478,23 @@ const SiteUpdateResult = ({
               const objkey = `obj_${objidx}`;
               return (
                 <li key={objkey} className="dateSubListContainer">
-                  <div className="yearTitle">{subObj.year}</div>
-                  <ul className="dateSubList">
-                  {
-                    subObj.list.map((navItem, yearidx) => {
-                      const yearkey = `obj_${yearidx}`;
-                      return (
-                        <li key={yearkey} className="dateListItem">
-                          <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>
-                            <div className="dateListItemText">{navItem.date}</div>
-                          </a>
-                        </li>
-                      );
-                    })
-                  }
-                  </ul>
+                  <button type="button" className="yearTitle" onClick={() => handleClick(objidx)}>{subObj.year}</button>
+                  <Collapse in={open[objidx]}>
+                    <ul className="dateSubList">
+                    {
+                      subObj.list.map((navItem, yearidx) => {
+                        const yearkey = `obj_${yearidx}`;
+                        return (
+                          <li key={yearkey} className="dateListItem" style={selectedIdx === navItem.index ? {border: '3px solid #676767', padding: '2px 7px'} : null}>
+                            <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>
+                              <div className="dateListItemText">{navItem.date}</div>
+                            </a>
+                          </li>
+                        );
+                      })
+                    }
+                    </ul>
+                  </Collapse>
                 </li>
               );
             })
