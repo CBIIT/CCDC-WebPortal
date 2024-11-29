@@ -27,7 +27,6 @@ const NavContainer = styled.div`
   border-top: 3px solid #C3D5E0;
 
   .navListContainer {
-    background: #F7F8FA;
     width: 230px;
     margin: 5px;
     padding-left: 0;
@@ -41,17 +40,24 @@ const NavContainer = styled.div`
     font-weight: 900;
     line-height: 150%; /* 31.5px */
     letter-spacing: 0.105px;
-    margin: 7px 0 6px 10px;
+    padding: 7px 0 6px 10px;
+    background: #F7F8FA;
   }
 
   .dateSubListContainer {
     list-style-type: none;
+    margin-bottom: 2px;
+  }
+
+  .yearTitleContainer {
+    background: #F7F8FA;  
+    padding: 0 10px;
   }
 
   .yearTitle {
     width: 100%;
-    padding: 10px;
-    margin-top: 2px;
+    padding: 7px 0;
+    // margin-top: 2px;
     border: none;
     color: #8A9296;
     font-family: Lato;
@@ -502,7 +508,9 @@ const SiteUpdateResult = ({
               const objkey = `obj_${objidx}`;
               return (
                 <li key={objkey} className="dateSubListContainer">
-                  <button type="button" className={`yearTitle ${open[objidx] ? "" : "collapsed"}`} onClick={() => handleClick(objidx)}>{subObj.year}</button>
+                  <div className="yearTitleContainer">
+                    <button type="button" className={`yearTitle ${open[objidx] ? "" : "collapsed"}`} onClick={() => handleClick(objidx)}>{subObj.year}</button>
+                  </div>
                   <Collapse in={open[objidx]}>
                     <ul className="dateSubList">
                     {
