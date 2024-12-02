@@ -149,8 +149,8 @@ const SiteUpdateCard = styled.div`
   box-shadow: 3px 3px 10px lightgray;
   // margin-top: 20px;
   // margin: -44px 30px 0px 370px;
-  padding: 15px 29px;
-  width: 910px;
+  padding: 2px 29px 15px 29px;
+  width: 918px;
   max-height: 1138px;
   overflow-y: auto;
   position: relative;
@@ -159,10 +159,10 @@ const SiteUpdateCard = styled.div`
 const SiteUpdateCardTitle = styled.div`
     color: #00A272;
     font-family: Inter;
-    font-size: 23px;
-    font-weight: 600;
-    line-height: 23px;
-    height: 38px;
+    font-size: 33px;
+    font-weight: 300;
+    line-height: 39.6px;
+    letter-spacing: -0.165px;
     border-bottom: 2px solid #004187;
     margin: 5px 0px 5px 0px;
     padding-bottom: 10px;
@@ -277,6 +277,14 @@ const SiteUpdateCardDescription = styled.div`
       width: 17px;
       height: 17px;
       display: inline-table;
+    }
+
+    p {
+      font-family: Lato;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
     }
 `;
 
