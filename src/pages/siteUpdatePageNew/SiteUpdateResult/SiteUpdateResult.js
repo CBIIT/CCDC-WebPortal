@@ -411,6 +411,11 @@ const SiteUpdateResult = ({
         openArr[i] = false;
       }
       setOpen(openArr);
+      const currentUrl = window.location.href;
+      const urlArr = currentUrl.split("#post");
+      if (urlArr.length > 1) {
+        setSelectedIdx(urlArr[1] - 1);
+      }
     }, [siteUpdateList]);
 
     useEffect(() => {
