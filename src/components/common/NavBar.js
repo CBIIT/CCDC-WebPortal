@@ -48,7 +48,7 @@ const NavContainer = styled.div`
       width: 1200px;
     }
 
-    @media (max-width: 892px) {
+    @media (max-width: 880px) {
       display: flex;
       .mobile-nav-toggle {
         display: block;
@@ -262,7 +262,7 @@ const SearchArea = styled.label`
   top: -70px;
   right: 25px;
 
-  @media (max-width: 892px) {
+  @media (max-width: 880px) {
     top: 7px;
     border: 0;
     input {
@@ -445,9 +445,9 @@ const NavBar = () => {
                   <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
-                  <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; Home &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Search Catalog &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Participating Resources &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection>
                       <span style={path === "/resource/CCDI" ? activeStyle : null}>
                         &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
