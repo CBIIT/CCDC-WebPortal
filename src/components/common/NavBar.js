@@ -48,7 +48,7 @@ const NavContainer = styled.div`
       width: 1200px;
     }
 
-    @media (max-width: 892px) {
+    @media (max-width: 880px) {
       display: flex;
       .mobile-nav-toggle {
         display: block;
@@ -262,7 +262,7 @@ const SearchArea = styled.label`
   top: -70px;
   right: 25px;
 
-  @media (max-width: 892px) {
+  @media (max-width: 880px) {
     top: 7px;
     border: 0;
     input {
@@ -438,15 +438,16 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/contribute" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>Contribute to the CCDC</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
+                    <MobileLiSection><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.0.zip" target="_blank" rel="noreferrer">Metadata files</a></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/User Guide for CCDC v1.4.10.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.5.0.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                   <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
                 </MobileUlContainer>
                 <UlContainer id="primary-navigation" className="primary-navigation">
-                  <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; &nbsp; Home &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Search Catalog &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
-                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; &nbsp; Participating Resources &nbsp; &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/" style={({ isActive }) => (isActive ? activeStyle : null)} end>&nbsp; &nbsp; Home &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/search" style={path.startsWith("/dataset") ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Search Catalog &nbsp; &nbsp;</NavLink></LiSection>
+                  <LiSection><NavLink to="/participatingresources" style={path.startsWith("/resource") && path !== "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Participating Resources &nbsp; &nbsp;</NavLink></LiSection>
                   <LiSection>
                       <span style={path === "/resource/CCDI" ? activeStyle : null}>
                         &nbsp; &nbsp; CCDI Studies &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -468,8 +469,9 @@ const NavBar = () => {
                           <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/contribute" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Contribute to the CCDC &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
+                          <li><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.0.zip" target="_blank" rel="noreferrer">&nbsp; &nbsp; Metadata files</a></li>
                           <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
-                          <li><a href="/User Guide for CCDC v1.4.10.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
+                          <li><a href="/User Guide for CCDC v1.5.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                       </ul>
                   </LiSection>
                   <LiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">&nbsp; CCDI Hub &nbsp;</a></LiSection>
