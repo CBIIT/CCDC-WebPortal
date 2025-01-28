@@ -55,7 +55,7 @@ const USGovBanner = styled.div`
     align-items: center;
   }
   .bannerText {
-    font-family: "Open Sans";
+    // font-family: "Open Sans";
     font-size: 12px;
     font-weight: 400;
     color: #000000;
@@ -70,7 +70,7 @@ const USGovBanner = styled.div`
       width: 72px;
       height: 30px;
       border-radius: 5px;
-      font-family: "Open Sans", sans-serif;
+      // font-family: "Open Sans", sans-serif;
       font-size: 15px;
       font-weight: 700;
       color: white;
