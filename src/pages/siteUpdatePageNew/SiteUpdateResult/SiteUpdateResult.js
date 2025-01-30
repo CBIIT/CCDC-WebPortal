@@ -302,7 +302,7 @@ const SiteUpdateResult = ({
   onLoadSiteUpdates,
   onAddSiteUpdates,
 }) => {
-    const { hash } = window.location;
+    // const { hash } = window.location;
     const [isTotal, setIsTotal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
@@ -398,25 +398,36 @@ const SiteUpdateResult = ({
 
     useEffect(() => {
       if (siteUpdateList.length > 0) {
-        if (hash !== '') {
-          const id = hash.replace('#', '');
-          const element = document.getElementById(id);
-          if (element) element.scrollIntoView({ behavior: 'smooth'});
-        }
+        // if (hash !== '') {
+        //   const id = hash.replace('#', '');
+        //   const element = document.getElementById(id);
+        //   if (element) element.scrollIntoView({ behavior: 'smooth'});
+        // }
       }
       setSiteUpdateNav(createNav());
-      const openArr = [];
-      openArr[0] = true;
-      for (let i = 1; i < siteUpdateNav.length; i += 1) {
-        openArr[i] = false;
-      }
-      setOpen(openArr);
-      const currentUrl = window.location.href;
-      const urlArr = currentUrl.split("#post");
-      if (urlArr.length > 1) {
-        setSelectedIdx(urlArr[1] - 1);
-      }
     }, [siteUpdateList]);
+
+    useEffect(() => {
+      if (siteUpdateNav.length > 0) {
+        const openArr = [];
+        const currentUrl = window.location.href;
+        const urlArr = currentUrl.split("#post");
+        let openYear = siteUpdateNav[0].year;
+        if (urlArr.length > 1) {
+          const jumpToIndex = urlArr[1] - 1;
+          openYear = siteUpdateList[jumpToIndex].post_date.substring(0, 4);
+          setSelectedIdx(jumpToIndex);
+        }
+        for (let i = 0; i < siteUpdateNav.length; i += 1) {
+          if (openYear === siteUpdateNav[i].year) {
+            openArr[i] = true;
+          } else {
+            openArr[i] = false;
+          }
+        }
+        setOpen(openArr);
+      }
+    }, [siteUpdateNav]);
 
     useEffect(() => {
       const f = async () => {
