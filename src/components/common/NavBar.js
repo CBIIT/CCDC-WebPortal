@@ -3,8 +3,67 @@ import {useLocation, NavLink, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import mobileHamburger from '../../assets/img/mobile-hamburger.svg';
 import mobileClose from '../../assets/img/mobile-close.svg';
+import usFlagSmall from '../../assets/img/us_flag_small.png';
 import logo from '../../assets/img/CCDC_Logo.svg';
 import './NavBar.css';
+
+const USGovBanner = styled.div`
+  background-color: #f0f0f0;
+  height: 46px;
+  width: 100%;
+  align-items: center;
+
+  .USGovBannerInner {
+    padding: 8px 32px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  img {
+    height: 11px;
+    width: 16px;
+  }
+
+  .bannerLeft {
+    width: 50%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .bannerText {
+    // font-family: "Open Sans";
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    margin-left: 15px;
+  }
+  .bannerRight {
+    width: 50%;
+    text-align: right;
+    .bannerButton {
+      display: inline-block;
+      background-color: #3b7f84;
+      width: 72px;
+      height: 30px;
+      border-radius: 5px;
+      // font-family: "Open Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0em;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+`;
 
 const LogoBanner = styled.div`
   @media (min-width: 1200px) {
@@ -21,7 +80,7 @@ const LogoContainer = styled.div`
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 
@@ -404,6 +463,20 @@ const NavBar = () => {
 
   return (
       <div className="sticky-nav">
+        <USGovBanner>
+          <div className="USGovBannerInner">
+            <div className="bannerLeft">
+              <img src={usFlagSmall} alt="US Flag logo" />
+              <span className="bannerText">An official website of the United States government</span>
+            </div>
+
+            <div className="bannerRight">
+              {/*
+              <span className='bannerButton'>Español</span>
+              */}
+            </div>
+          </div>
+        </USGovBanner>
         <LogoBanner role="banner">
           <LogoContainer>
             <a href="/"><img src={logo} alt="ccdc logo" /></a>
@@ -425,7 +498,7 @@ const NavBar = () => {
                   <MobileSubUl data-visible={mobileStudiesMenuData}>
                     <MobileLiSection style={path === "/resource/CCDI" ? mobileActiveStyle : null}><NavLink to="/resource/CCDI" onClick={handleMobileMenuClick}>CCDI Resource & Datasets</NavLink></MobileLiSection>
                     <MobileLiSection><a href="https://clinicalcommons.ccdi.cancer.gov" target="_blank" rel="noreferrer">Childhood Cancer Clinical Data Commons</a></MobileLiSection>
-                    <MobileLiSection><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.0.zip" target="_blank" rel="noreferrer">Metadata Files</a></MobileLiSection>
+                    <MobileLiSection><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.1.zip" target="_blank" rel="noreferrer">Metadata Files</a></MobileLiSection>
                     <MobileLiSection><a href="https://moleculartargets.ccdi.cancer.gov" target="_blank" rel="noreferrer">Molecular Targets Platform</a></MobileLiSection>
                     <MobileLiSection><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">Accessing CCDI Data (PDF)</a></MobileLiSection>
                   </MobileSubUl>
@@ -440,7 +513,7 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/contribute" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>Contribute to the CCDC</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
-                    <MobileLiSection><a href="/User Guide for CCDC v1.5.0.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
+                    <MobileLiSection><a href="/User Guide for CCDC v1.5.1.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                   <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
                 </MobileUlContainer>
@@ -456,7 +529,7 @@ const NavBar = () => {
                       <ul className="dropdown">
                           <li><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; CCDI Resource & Datasets</NavLink></li>
                           <li><a href="https://clinicalcommons.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Childhood Cancer Clinical Data Commons &nbsp; &nbsp;</a></li>
-                          <li><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.0.zip" target="_blank" rel="noreferrer">&nbsp; &nbsp; Metadata Files</a></li>
+                          <li><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.1.zip" target="_blank" rel="noreferrer">&nbsp; &nbsp; Metadata Files</a></li>
                           <li><a href="https://moleculartargets.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Molecular Targets Platform</a></li>
                           <li><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
                       </ul>
@@ -471,7 +544,7 @@ const NavBar = () => {
                           <li><NavLink to="/contribute" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Contribute to the CCDC &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
                           <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
-                          <li><a href="/User Guide for CCDC v1.5.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
+                          <li><a href="/User Guide for CCDC v1.5.1.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                       </ul>
                   </LiSection>
                   <LiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">&nbsp; CCDI Hub &nbsp;</a></LiSection>

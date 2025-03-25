@@ -524,7 +524,7 @@ const DatasetDetail = ({
                             : null
                           }
                         </div>
-                        {content.case_gender
+                        {/* {content.case_gender
                           ? <div className="dataElementLabel">Case Gender</div>
                           : null}
                         <div className="dataElementContent" id="case_gender">
@@ -538,7 +538,7 @@ const DatasetDetail = ({
                             })
                             : null
                           }
-                        </div>
+                        </div> */}
                         {content.case_age
                           ? <div className="dataElementLabel">Case Age</div>
                           : null}
