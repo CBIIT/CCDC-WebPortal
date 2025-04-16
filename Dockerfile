@@ -10,7 +10,8 @@ RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build --silent
 
 FROM nginx:1.26.3-alpine-slim AS fnl_base_image
 
-RUN ls -al /usr/src/app/
+COPY --from=build /usr/src/app /app
+RUN ls -al /app
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 COPY --from=build /usr/src/app/config/inject.template.js /usr/share/nginx/html/inject.template.js
