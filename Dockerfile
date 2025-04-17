@@ -8,6 +8,7 @@ RUN NODE_OPTIONS="--max-old-space-size=4096" npm set progress=false
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm ci --legacy-peer-deps
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build --silent
 
+
 FROM nginx:1.26.3-alpine-slim AS fnl_base_image
 
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
