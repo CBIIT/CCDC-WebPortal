@@ -79,6 +79,14 @@ const AboutPage = () => {
                         <a href="/participatingresources">Participating Resources</a>
                         &nbsp; page.
                     </p>
+                    <p>
+                        Users are encouraged to appropriately cite and acknowledge both the original data sources and the&nbsp;
+                        <a href="/">CCDI Data Catalog</a>
+                        <br />
+                        (
+                        <a href="https://doi.org/10.18121/r5k8-rf55" target="_blank" rel="noreferrer noopener">https://doi.org/10.18121/r5k8-rf55</a>
+                        ), established by the National Cancer Institute’s Childhood Cancer Data Initiative (CCDI).
+                    </p>
                 </div>
             </div>
             {/* <br /> */}
