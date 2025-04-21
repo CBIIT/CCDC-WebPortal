@@ -8,23 +8,19 @@ import startIcon from "../../../assets/img/StartButtonIcon.svg";
 import PauseIcon from "../../../assets/img/PauseButtonIcon.svg";
 
 const WidgetContainer = styled.div`
+  height: 239px;
   box-sizing: border-box;
-  display: grid;
   margin-top: 17px;
   background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
   padding: 11px 25px 12px 25px;
   text-align: left;
 
-  @media (max-width: 640px) {
-    margin: 17px auto;
-  }
-
-  @media (min-width: 530px) {
-    width: 480px;
+  @media (min-width: 768px) {
+    width: 547px;
   }
   
-  @media (max-width: 529px) {
+  @media (max-width: 767px) {
     width: calc(100vw - 50px);
   }
 }
@@ -36,21 +32,21 @@ const WidgetHeader = styled.div`
     font-size: 13px;
     font-weight: 700;
     line-height: 13px;
-    padding-bottom: 3px;
 `;
 
 const WidgetContent = styled.div`
     width: 100%;
     margin-bottom: 15px;
+    margin-top: -6px;
 
     .pauseButton {
         width: 14px;
         height: 14px;
         position: relative;
-        top: 131px;
-        left: 410px;
+        top: 171px;
+        left: 490px;
         z-index: 10;
-        @media (max-width: 530px) {
+        @media (max-width: 767px) {
             top: 106px;
             left: calc(100vw - 120px);
         }
@@ -59,8 +55,8 @@ const WidgetContent = styled.div`
     .carousel-indicators {
         padding: 0;
         margin: 0;
-        right: 35px;
-        bottom: -7px;
+        right: 20px;
+        bottom: -37px;
         left: auto;
     }
 
@@ -69,20 +65,21 @@ const WidgetContent = styled.div`
         height: 5px;
         margin-left: 5px;
         cursor: pointer;
-        background-color: #A8E2D1;
+        background-color: #476A74;
         border: 0;
         transition: opacity .6s ease;
+        opacity: 0.9;
     }
     .carousel-indicators button:hover {
         opacity: 1;
     }
     .carousel-indicators button.active {
-        background-color: #2DC799;
+        background-color: #0F936C;
     }
 `;
 
 const WidgetCard = styled.div`
-    display: grid;
+    // display: grid;
 `;
 
 const CardTitle = styled.div`
@@ -92,6 +89,7 @@ const CardTitle = styled.div`
     line-height: 23px;
     height: 28px;
     overflow-y: auto;
+    margin-bottom: 10px;
 
     a {
         text-decoration: none;
@@ -103,6 +101,7 @@ const UpdateCardDescription = styled.div`
     color: #000000;
     font-family: Inter;
     font-size: 18px;
+    line-height: 100%;
     font-weight: 400;
     word-break: normal;
 
@@ -130,6 +129,7 @@ const CardDescription = styled.div`
     color: #000000;
     font-family: Inter;
     font-size: 18px;
+    line-height: 100%;
     font-weight: 400;
     word-break: normal;
 
@@ -205,7 +205,7 @@ const SiteUpdateWidget = ({
                                     if (item.log_type === 0) {
                                         desc = desc.replace(/<a /g, "<a target=\"_blank\" ");
                                     } else {
-                                        desc = desc.length > 100 ? `${desc.substr(0, 120)}...` : desc;
+                                        desc = desc.length > 150 ? `${desc.substr(0, 150)}...` : desc;
                                     }
                                     const hl = `${desc} <a href="${link}">Read More > </a>`;
                                     return (
