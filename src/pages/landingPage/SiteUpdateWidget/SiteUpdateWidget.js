@@ -11,9 +11,8 @@ const WidgetContainer = styled.div`
   box-sizing: border-box;
   display: grid;
   margin-top: 17px;
-  background-color: #FFFFFF;
+  background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
-  opacity: 0.85;
   padding: 11px 25px 12px 25px;
   text-align: left;
 
@@ -25,14 +24,14 @@ const WidgetContainer = styled.div`
     width: 480px;
   }
   
-  @media (max-width: 530px) {
+  @media (max-width: 529px) {
     width: calc(100vw - 50px);
   }
 }
 `;
 
 const WidgetHeader = styled.div`
-    color: #213963;
+    color: #004187;
     font-family: Lato;
     font-size: 13px;
     font-weight: 700;
@@ -48,7 +47,7 @@ const WidgetContent = styled.div`
         width: 14px;
         height: 14px;
         position: relative;
-        top: 90px;
+        top: 131px;
         left: 410px;
         z-index: 10;
         @media (max-width: 530px) {
@@ -88,27 +87,27 @@ const WidgetCard = styled.div`
 
 const CardTitle = styled.div`
     font-family: Lato;
-    font-size: 23px;
-    font-weight: 900;
+    font-size: 24px;
+    font-weight: 600;
     line-height: 23px;
     height: 28px;
     overflow-y: auto;
 
     a {
         text-decoration: none;
-        color: #00a272;
+        color: #00855D;
     }
 `;
 
 const UpdateCardDescription = styled.div`
     color: #000000;
-    font-family: Lato;
-    font-size: 14px;
-    line-height: 17px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
     word-break: normal;
 
     @media (min-width: 530px) {
-        height: 57px;
+        height: 99px;
     }
     
     @media (max-width: 530px) {
@@ -117,16 +116,21 @@ const UpdateCardDescription = styled.div`
 
     a {
         text-decoration: none;
-        color: #00a272;
-        font-weight: 500;
+        color: #00855D;
+        font-family: Lato;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 100%;
+        letter-spacing: 3%;
+        text-transform: uppercase;
     }
 `;
 
 const CardDescription = styled.div`
     color: #000000;
-    font-family: Lato;
-    font-size: 14px;
-    line-height: 17px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
     word-break: normal;
 
     @media (min-width: 530px) {

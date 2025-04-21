@@ -12,16 +12,9 @@
   }
 }
 
-@media (min-width: 768px) {
-  .headerTitle {
-    padding-top: 104px;
-  }
-}
-
 @media (max-width: 768px) {
   .headerTitle {
     display: flex;
-    padding-top: 50px;
   }
 }
 
@@ -40,13 +33,9 @@
   }
   .headerTitle {
     display: grid;
-    padding-top: 25px;
   }
   .headerDesc {
     word-break: break-word;
-  }
-  .headerDesc br {
-    display: none;
   }
   .heroSearchBox {
     display: inline-block;
@@ -86,7 +75,7 @@
     font-size: 30px;
   }
   .heroSearchBox {
-    margin-top: 60px;
+    margin-top: 20px;
   }
   .headerDesc {
     line-height: 28px;
@@ -116,6 +105,18 @@
 
 :focus::-webkit-input-placeholder {
   opacity: 0.5;
+}
+
+.headerContainer {
+  box-sizing: border-box;
+  display: grid;
+  margin-top: 40px;
+  background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
+  box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
+  padding: 11px 25px 12px 25px;
+  text-align: left;
+  width: 480px;
+  height: 187px;
 }
 
 .searchIcon {
@@ -241,8 +242,8 @@
   font-family: Inter;
   font-size: 42px;
   font-weight: 600;
-  line-height: 38px;
-  color: #01FFB3;
+  line-height: 40px;
+  color: #108461;
   letter-spacing: 0;
 }
 
@@ -251,12 +252,12 @@
 }
 
 .headerDesc {
-  color: #FFFFFF;
-  font-family: Lato;
+  font-family: Inter;
+  font-weight: 400;
   font-size: 18px;
-  margin: 20px 0;
-  display: grid;
-}
+  line-height: 100%;
+  letter-spacing: 0%;
+  }
 
 .headerTitle2 {
   padding-top: 90px;
@@ -593,9 +594,9 @@
 
 .searchTerm {
   height: 65px;
-  border: 2px solid white;
+  border: 3px solid white;
   border-right: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: #03794ABF;
   padding: 5px;
   /* border-radius: 5px 0 0 5px; */
   outline: none;
@@ -611,9 +612,9 @@
 .searchButton {
   width: 60px;
   height: 65px;
-  border: 2px solid white;
+  border: 3px solid white;
   border-left: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: #03794ABF;
   text-align: center;
   color: white;
   /* border-radius: 0 5px 5px 0; */
