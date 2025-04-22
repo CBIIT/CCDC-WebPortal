@@ -12,12 +12,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .headerTitle {
-    display: flex;
-  }
-}
-
 @media (min-width: 640px) {
   .heroImage2 {
     background-image: url("../../assets/img/Featured.png");
@@ -64,23 +58,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  .searchTerm {
-    width: calc(100vw - 110px);
-    font-size: 25px;
-  }
-  .searchTerm::-webkit-input-placeholder {
-    font-size: 20px;
-    font-weight: 400;
-  }
-  .heroSearchBox {
-    margin-top: 20px;
-  }
-  .headerDesc {
-    line-height: 20px;
-  }
-}
-
 @media (min-width: 768px) {
   .searchTerm {
     font-size: 30px;
@@ -104,7 +81,6 @@
 
 .headerContainer {
   box-sizing: border-box;
-  display: grid;
   margin-top: 50px;
   background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
@@ -116,7 +92,34 @@
 
 @media (max-width: 767px) {
   .headerContainer {
+    position: relative;
     width: calc(100vw - 50px);
+    height: 575px;
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    background: linear-gradient(180.28deg, #FFFFFF 51.1%, rgba(255, 255, 255, 0) 106.36%);
+    z-index: 2;
+    border: 1.25px solid #FFFFFF;
+  }
+
+  .upperImg {
+    position: absolute;
+    top: 336px;
+    left: 25px;
+    width: calc(100vw - 50px);
+    height: 290px;
+    background-image: url("../../assets/img/HeroImg.png");
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../../assets/img/CCDC.Hero.png");
+    border-bottom: 2px solid white;
+    background-position: center;
   }
 }
 
@@ -193,7 +196,7 @@
 @media (max-width: 767px) {
   .heroImage {
     width: 100%;
-    height: 1000px;
+    height: 1150px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     -webkit-background-size: cover;
@@ -262,7 +265,8 @@
   line-height: 40px;
   color: #108461;
   letter-spacing: 0;
-  width: 390px;
+  max-width: 390px;
+  margin-bottom: 10px;
 }
 
 .headerTitle span {
@@ -654,5 +658,40 @@
   .searchButton {
     border: 2px solid #FFFFFF;
     border-left: none;
+  }
+
+  .searchTerm {
+    width: calc(100vw - 110px);
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .searchTerm::-webkit-input-placeholder {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .headerTitle {
+    margin-bottom: 15px;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 43px;
+    line-height: 45px;
+    letter-spacing: 0%;
+  }
+
+  .heroSearchBox {
+    margin-top: 20px;
+  }
+
+  .headerDesc {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 28px;
+    letter-spacing: 0%;
   }
 }

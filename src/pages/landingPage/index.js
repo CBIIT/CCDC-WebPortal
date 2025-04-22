@@ -28,6 +28,7 @@ const HomePage = () => {
               <div className="heroImage" />
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
+                  <div className="upperImg" />
                       <div className="headerContainer">
                         <div className="headerTitle">
                             Childhood Cancer Data Catalog
