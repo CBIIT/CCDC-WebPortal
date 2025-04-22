@@ -216,6 +216,7 @@ const DatasetDetail = ({
   const sraIdArr = [];
   const clinicalArr = [];
   const dbgapStudyIdArr = [];
+  const availableFileArr = [];
   if (sortedAdditonals) {
     if (sortedAdditonals.includes("GRANT ID")) {
       additionalDict["GRANT ID"].forEach((item, i) => {
@@ -256,6 +257,11 @@ const DatasetDetail = ({
     if (sortedAdditonals.includes("DBGAP STUDY IDENTIFIER")) {
       additionalDict["DBGAP STUDY IDENTIFIER"].forEach(dbgapItem => {
         dbgapStudyIdArr.push(dbgapItem.k);
+      });
+    }
+    if (sortedAdditonals.includes("AVAILABLE FILES")) {
+      additionalDict["AVAILABLE FILES"].forEach(dbgapItem => {
+        availableFileArr.push(dbgapItem.k);
       });
     }
   }
@@ -1025,6 +1031,22 @@ const DatasetDetail = ({
                                 <>
                                   <div className="dataElementLabel">DATA REPOSITORY</div>
                                   <div id="data_repository">{html}</div>
+                                </>
+                              );
+                            }
+                            if (ad === "AVAILABLE FILES") {
+                              const html = availableFileArr.map((availableFileItem, idx) => {
+                                const availablefilekey = `availablefile_${idx}`;
+                                return (
+                                  <div className="additionalDataContent" key={availablefilekey}>
+                                    <a href={availableFileItem} className="additionalDataLinks" target="_blank" rel="noreferrer noopener">{availableFileItem}</a>
+                                  </div>
+                                );
+                              });
+                              return (
+                                <>
+                                  <div className="dataElementLabel">AVAILABLE FILES</div>
+                                  <div id="available_file">{html}</div>
                                 </>
                               );
                             }
