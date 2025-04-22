@@ -12,7 +12,7 @@ const WidgetContainer = styled.div`
   box-sizing: border-box;
   margin-top: 17px;
   background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
-  box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
+  //box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
   padding: 22px 25px 12px 25px;
   text-align: left;
 
