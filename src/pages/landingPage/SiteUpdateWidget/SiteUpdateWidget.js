@@ -13,7 +13,7 @@ const WidgetContainer = styled.div`
   margin-top: 17px;
   background: linear-gradient(266.35deg, rgba(255, 255, 255, 0.5) -14.82%, #FFFFFF 59.59%);
   box-shadow: -4px 11px 27px 6px rgba(28,29,29,0.5);
-  padding: 11px 25px 12px 25px;
+  padding: 22px 25px 12px 25px;
   text-align: left;
 
   @media (min-width: 768px) {
@@ -22,6 +22,9 @@ const WidgetContainer = styled.div`
   
   @media (max-width: 767px) {
     width: calc(100vw - 50px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 44.07%, #FFFFFF 52.85%);
+    border: 1.25px solid #0C325E;
+    height: 370px;
   }
 }
 `;
@@ -47,8 +50,15 @@ const WidgetContent = styled.div`
         left: 490px;
         z-index: 10;
         @media (max-width: 767px) {
-            top: 106px;
-            left: calc(100vw - 120px);
+            top: 286px;
+            left: calc(100vw - 130px);
+        }
+    }
+
+    .pauseButtonImg {
+        @media (max-width: 767px) {
+            width: 26px;
+            height: 26px;
         }
     }
 
@@ -58,6 +68,10 @@ const WidgetContent = styled.div`
         right: 20px;
         bottom: -37px;
         left: auto;
+
+        @media (max-width: 767px) {
+            right: 45px;
+        }
     }
 
     .carousel-indicators button {
@@ -69,6 +83,11 @@ const WidgetContent = styled.div`
         border: 0;
         transition: opacity .6s ease;
         opacity: 0.9;
+
+        @media (max-width: 767px) {
+            width: 64px;
+            height: 8px;
+        }
     }
     .carousel-indicators button:hover {
         opacity: 1;
@@ -105,12 +124,14 @@ const UpdateCardDescription = styled.div`
     font-weight: 400;
     word-break: normal;
 
-    @media (min-width: 530px) {
+    @media (min-width: 768px) {
         height: 99px;
     }
-    
-    @media (max-width: 530px) {
-        height: 74px;
+
+    @media (max-width: 767px) {
+        height: 215px;
+        font-size: 19px;
+        line-height: 28px;
     }
 
     a {
@@ -133,12 +154,14 @@ const CardDescription = styled.div`
     font-weight: 400;
     word-break: normal;
 
-    @media (min-width: 530px) {
-        height: 57px;
+    @media (min-width: 768px) {
+        height: 99px;
     }
     
-    @media (max-width: 530px) {
-        height: 74px;
+    @media (max-width: 767px) {
+        height: 215px;
+        font-size: 19px;
+        line-height: 28px;
     }
 
     a {
@@ -192,7 +215,7 @@ const SiteUpdateWidget = ({
             <WidgetHeader>FEATURED ITEMS</WidgetHeader>
             <WidgetContent>
                 <div className="pauseButton" role="button" tabindex={0} onClick={handleClickPauseButton} onKeyDown={handleClickPauseButton}>
-                    <img src={iconUrl} alt="pausebutton" />
+                    <img className="pauseButtonImg" src={iconUrl} alt="pausebutton" />
                 </div>
                 {
                     widgetUpdates.length > 0 && (

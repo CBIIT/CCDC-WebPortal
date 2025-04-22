@@ -67,10 +67,21 @@
 @media (max-width: 767px) {
   .searchTerm {
     width: calc(100vw - 110px);
+    font-size: 25px;
+  }
+  .searchTerm::-webkit-input-placeholder {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .heroSearchBox {
+    margin-top: 20px;
+  }
+  .headerDesc {
+    line-height: 20px;
   }
 }
 
-@media (min-width: 420px) {
+@media (min-width: 768px) {
   .searchTerm {
     font-size: 30px;
   }
@@ -79,22 +90,6 @@
   }
   .headerDesc {
     line-height: 28px;
-  }
-}
-
-@media (max-width: 420px) {
-  .searchTerm {
-    font-size: 20px;
-  }
-  .searchTerm::-webkit-input-placeholder {
-    font-size: 20px;
-    font-weight: 400;
-  }
-  .heroSearchBox {
-    margin-top: 30px;
-  }
-  .headerDesc {
-    line-height: 20px;
   }
 }
 
@@ -117,6 +112,12 @@
   text-align: left;
   width: 547px;
   height: 187px;
+}
+
+@media (max-width: 767px) {
+  .headerContainer {
+    width: calc(100vw - 50px);
+  }
 }
 
 .searchIcon {
@@ -177,6 +178,22 @@
   .heroImage {
     width: 100%;
     height: 632px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../../assets/img/CCDC.Hero.png");
+    border-bottom: 2px solid white;
+    background-position: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroImage {
+    width: 100%;
+    height: 1000px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     -webkit-background-size: cover;
@@ -595,7 +612,7 @@
 
 .searchTerm {
   height: 65px;
-  border: 3px solid white;
+  border: 3px solid #FFFFFF;
   border-right: none;
   background: #03794ABF;
   padding: 5px;
@@ -613,7 +630,7 @@
 .searchButton {
   width: 60px;
   height: 65px;
-  border: 3px solid white;
+  border: 3px solid #FFFFFF;
   border-left: none;
   background: #03794ABF;
   text-align: center;
@@ -626,4 +643,16 @@
 .headerWidget {
   width: 100%;
   position: relative;
+}
+
+@media (max-width: 767px) {
+  .searchTerm {
+    border: 2px solid #FFFFFF;
+    border-right: none;
+  }
+
+  .searchButton {
+    border: 2px solid #FFFFFF;
+    border-left: none;
+  }
 }
