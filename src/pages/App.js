@@ -13,7 +13,7 @@ import SiteUpdatePage from './siteUpdatePageNew';
 import ContributePage from './contributePage';
 import Header from "../components/common/Header";
 import NavBar from "../components/common/NavBar";
-import Footer from "../components/common/Footer";
+import Footer from "../components/common/ResponsiveFooter";
 import PageNotFound from '../components/common/PageNotFound';
 import ScrollButton from '../components/common/ScrollButton';
 import "react-toastify/dist/ReactToastify.css";
