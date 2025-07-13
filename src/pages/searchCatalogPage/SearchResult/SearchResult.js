@@ -200,7 +200,7 @@ const SearchResultContainer = styled.div`
   .bodyRow .sampleCountHighlight {
     font-family: 'Inter';
     font-weight: 600;
-    color: #11a78b;
+    color: #0D826C;
   }
 
   .bodyRow .itemContinued {
@@ -217,7 +217,7 @@ const SearchResultContainer = styled.div`
   }
 
   .datasetTableRow a {
-    color: #6199d0;
+    color: #3069A1;
     font-weight: 600;
     text-decoration: none;
   }
