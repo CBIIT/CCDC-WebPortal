@@ -19,7 +19,7 @@ const SortingContainer = styled.div`
 const SortingLabel = styled.div`
   line-height: 37.5px;
   padding-right: 10px;
-  color: #748895;
+  color: #667985;
   font-size: 13px;
   font-family: Inter;
   font-weight: 600;

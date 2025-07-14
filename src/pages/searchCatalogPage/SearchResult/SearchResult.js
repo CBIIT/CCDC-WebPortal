@@ -50,6 +50,7 @@ const SearchResultContainer = styled.div`
     color: #046ab2;
     font-weight: bold;
     padding: 5px 0;
+    font-size: 14px;
   }
 
   .headerRow .piBlock {
@@ -200,7 +201,7 @@ const SearchResultContainer = styled.div`
   .bodyRow .sampleCountHighlight {
     font-family: 'Inter';
     font-weight: 600;
-    color: #11a78b;
+    color: #0D826C;
   }
 
   .bodyRow .itemContinued {
@@ -217,7 +218,7 @@ const SearchResultContainer = styled.div`
   }
 
   .datasetTableRow a {
-    color: #6199d0;
+    color: #3069A1;
     font-weight: 600;
     text-decoration: none;
   }
@@ -680,9 +681,9 @@ const SearchResult = ({
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
-                  <div className="col-sm-8 resultTitle">
+                  <h5 className="col-sm-8 resultTitle">
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
-                  </div>
+                  </h5>
                   <div className="col-sm-4">
                     <span className="typeBlock" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
                       {rst.content.primary_dataset_scope}
