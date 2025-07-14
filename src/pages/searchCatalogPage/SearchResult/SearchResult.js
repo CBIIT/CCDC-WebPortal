@@ -50,6 +50,7 @@ const SearchResultContainer = styled.div`
     color: #046ab2;
     font-weight: bold;
     padding: 5px 0;
+    font-size: 14px;
   }
 
   .headerRow .piBlock {
@@ -680,9 +681,9 @@ const SearchResult = ({
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
-                  <div className="col-sm-8 resultTitle">
+                  <h5 className="col-sm-8 resultTitle">
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
-                  </div>
+                  </h5>
                   <div className="col-sm-4">
                     <span className="typeBlock" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
                       {rst.content.primary_dataset_scope}

@@ -153,10 +153,10 @@ const SearchCatalogPage = ({
     <>
       <div id="top" className="searchBarContainer">
         <div className="searchBarArea">
-          <div className="searchBarLabel">
-            <span>
+          <div>
+            <h1 className="searchBarLabel">
               Search Results
-            </span>
+            </h1>
             <div className="searchTooltip">
               <OverlayTrigger
                 placement="right-start"
