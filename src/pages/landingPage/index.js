@@ -25,7 +25,7 @@ const HomePage = () => {
   return (
       <>
           <div className="searchContainer">
-              <div className="heroImage" title="Father holding toddler in lap while toddler pretends to listen to the heartbeat of a toy bear" />
+              <div className="heroImage" role="img" aria-label="Father holding toddler in lap while toddler pretends to listen to the heartbeat of a toy bear" />
               <div className="heroTextContainer">
                   <div className="heroTextWrapper">
                   <div className="upperImg" />
