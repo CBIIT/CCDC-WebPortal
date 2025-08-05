@@ -102,13 +102,15 @@ const WidgetCard = styled.div`
 `;
 
 const CardTitle = styled.div`
-    font-family: Lato;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 23px;
-    height: 28px;
-    overflow-y: auto;
-    margin-bottom: 10px;
+    h4 {
+        font-family: Lato;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 23px;
+        height: 28px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+    }
 
     a {
         text-decoration: none;
@@ -237,9 +239,11 @@ const SiteUpdateWidget = ({
                                                 item.log_type === 1 ? (
                                                     <WidgetCard>
                                                         <CardTitle>
+                                                            <h4>
                                                             <a href={link}>
                                                                 {item.title}
                                                             </a>
+                                                            </h4>
                                                         </CardTitle>
                                                         <UpdateCardDescription>{ReactHtmlParser(hl)}</UpdateCardDescription>
                                                     </WidgetCard>

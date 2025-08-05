@@ -344,7 +344,7 @@ const SearchIcon = styled.div`
 const SearchInput = styled.input`
   border: none;
   padding: 0;
-  color: #00996b;
+  color: #0B835F;
   font-size: 1rem;
   font-family: Lato;
   font-weight: 600;
@@ -352,7 +352,7 @@ const SearchInput = styled.input`
   margin-left: 5px;
 
   ::placeholder {
-    color: #00996b;
+    color: #0B835F;
     font-size: 15px;
     font-weight: 600;
   }
@@ -368,7 +368,7 @@ const mobileActiveStyle = {
 
 const activeStyle = {
   color: "#ffffff",
-  backgroundColor: "#059268",
+  backgroundColor: "#0B835F",
 };
 
 // const activeStyleMenuItem = {
