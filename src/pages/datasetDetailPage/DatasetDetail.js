@@ -59,20 +59,25 @@ const DatasetBody = styled.div`
 `;
 
 const ResourceType = styled.div`
-  width: 96%;
+  width: 95%;
   text-align: right;
   margin-top: -44px;
   text-transform: uppercase;
-  font-size: 11px;
-  font-family: Inter;
   // padding-top: 50px;
   // padding-right: 10px;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19.31px; /* 148.538% */
+  text-transform: capitalize;
 
   span {
-    background-color: white;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
     line-height: 52px;
   }
 

@@ -135,9 +135,16 @@ const ResourceType = styled.div`
   padding-right: 10px;
 
   span {
+    color: #108461;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 5px 23px 7px 23px;
+    border: 1px solid #108461;
+    padding: 5px 10px;
     line-height: 52px;
   }
 
