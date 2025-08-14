@@ -147,7 +147,7 @@
 }
 .accordion-button-ccdc-pr {
   padding: 8px 0 14px 10px;
-  color: #99AFBE;
+  color: #457799;
   font-size: 26px;
   font-family: Inter;
   text-transform: uppercase;
@@ -197,7 +197,7 @@
   /* font-size: 1.5rem; */
   background-image: none;
   transition: transform .2s ease-in-out;
-  color: #7397b0;
+  color: #6089A6;
 }
 
 .prAboutResourceContent {
