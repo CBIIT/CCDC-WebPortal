@@ -29,7 +29,7 @@ const GlossaryContainer = styled.div`
     }
 
     .filterLinks a:hover {
-        color: #00a272;
+        color: #00875E;
     }
 
     .nav {
@@ -47,7 +47,7 @@ const GlossaryContainer = styled.div`
         width: 3%;
         color: black;
         position: relative;
-        top: -20px;
+        top: -22px;
     }
 
     .disabled {
@@ -94,7 +94,7 @@ const GlossaryContainer = styled.div`
     }
 
     .glossaryItemHeader {
-        color: #00a272;
+        color: #008059;
         font-family: Inter;
         font-weight: 600;
         margin-bottom: 0px;
@@ -115,7 +115,7 @@ const GlossaryContainer = styled.div`
 
     .glossaryItemLink {
         margin-top: -10px;
-        color: #00a272;
+        color: #00875E;
     }
 
     .glossaryItemLink a {
@@ -123,7 +123,7 @@ const GlossaryContainer = styled.div`
         font-weight: 500;
         font-family: Lato;
         font-size: 17px;
-        color: #00a272;
+        color: #00875E;
         text-decoration: none;
     }
 `;
@@ -138,10 +138,10 @@ const Glossary = ({
     const [key, setKey] = useState('A');
 
     const activeStyle = {
-        color: '#00a272',
+        color: '#00875E',
         fontWeight: 'bold',
         textDecoration: 'underline',
-        textUnderlineOffset: '3px',
+        textUnderlineOffset: '6px',
         textDecorationThickness: '3px',
     };
 
