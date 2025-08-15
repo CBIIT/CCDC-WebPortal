@@ -50,7 +50,7 @@ const HeaderLinks = styled.div`
 
 const ResourceBody = styled.div`
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
@@ -83,7 +83,7 @@ const DatasetSummaryContainer = styled.div`
   margin-bottom: 80px;
 
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right top no-repeat;
     // padding-left: 30px;
     padding-right: 30px;
@@ -113,10 +113,17 @@ const DatasetType = styled.div`
   font-family: Inter;
 
   span {
-    background-color: white;
+    color: #FFF;
+    text-align: right;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
     line-height: 52px;
   }
 
@@ -134,10 +141,18 @@ const SummaryDatasetType = styled.div`
   font-family: Inter;
 
   span {
-    background-color: white;
+    color: #108461;
+    text-align: right;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
+    border: 1px solid #108461;
+    padding: 5px 10px;
     line-height: 52px;
   }
 

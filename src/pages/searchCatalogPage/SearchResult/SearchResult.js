@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
 import ReactHtmlParser from "html-react-parser";
-import externalIcon from "../../../assets/img/resource.svg";
+import externalIcon from "../../../assets/img/resource-blue.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
 const SearchResultContainer = styled.div`
@@ -43,7 +43,7 @@ const SearchResultContainer = styled.div`
   }
 
   .container .headerRow {
-    margin: 5px 5px 5px 0;
+    margin: 8px 5px 5px 0;
   }
 
   .container .headerRow .resultTitle {
@@ -59,7 +59,15 @@ const SearchResultContainer = styled.div`
   }
 
   .headerRow .typeBlock {
-    background-color: #dcdcdc;
+    color: #108461;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
+    border: 1px solid #108461;
+    background-color: transparent;
     border-radius: 20px;
     padding: 5px 10px;
     float: right;
@@ -112,7 +120,7 @@ const SearchResultContainer = styled.div`
 
   .subHeaderRow .col-sm a {
     font-weight: bold;
-    color: #0075c7;
+    color: #00875E;
   }
 
   .subHeaderRow .fa-file {

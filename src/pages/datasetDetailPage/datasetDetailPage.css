@@ -1,4 +1,3 @@
-
 .datasetBreadcrumbContainer {
   padding: 10px 0px 0px 0px;
   margin-bottom: -5px;
@@ -44,6 +43,7 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderContainer {
+  display: flex;
   /* padding: 0px 0 20px 20px; */
   padding: 16px 0 10px 0px;
   width: 100%;
@@ -51,6 +51,21 @@ ul.breadcrumb li a:hover {
   background: linear-gradient(.25turn, #0c3561, 66%, #1b83d2);
   /* border-bottom: 1px solid lightgray; */
   position: relative;
+}
+
+.leftContainer {
+  display: flex;
+  width: 1030px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rightContainer {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 .datasetDetailHeaderLabel {
@@ -129,8 +144,9 @@ ul.breadcrumb li a:hover {
 
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  color: #7bcbd9;
-  font-size: 17px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
   font-family: Lato;
   width: 100%;
   display: flex;
@@ -138,20 +154,21 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLink {
-  color: #7bcbd9;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   /* text-decoration-line: underline; */
 }
 
 .datasetDetailHeaderLink:hover {
-  color: #7bcbd9;
+  color: #FFFFFF;
   /* font-size: 21px; */
 }
 
 .datasetIcon {
   width: 130px;
-  position: absolute;
-  right: 30px;
-  top: 30px;
   border: 1px solid #FFBF17;
   padding: 10px;
   height: 106px;

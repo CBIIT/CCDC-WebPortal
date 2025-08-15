@@ -34,30 +34,36 @@
 
 .prDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  color: #25B39A;
+  color: #FFF;
   font-size: 16px;
   width: 100%;
   /* text-decoration: none; */
 }
 
 .prDetailExternalLink {
-  color: #25B39A;
+  color: #FFF;
+  font-size: 16px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   /* color: white; */
   /* display: inline; */
 }
 
 .prDetailExternalLink:hover {
-  color: #00f5ca;
+  color: #FFF;
 }
 
 .prDetailHeaderLink {
-  color: #25B39A;
+  color: #FFF;
+  font-size: 16px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   /* color: white; */
   /* text-decoration: none; */
 }
 
 .prDetailHeaderLink:hover {
-  color: #00f5ca;
+  color: #FFF;
 }
 
 .prIcon {
@@ -147,7 +153,7 @@
 }
 .accordion-button-ccdc-pr {
   padding: 8px 0 14px 10px;
-  color: #99AFBE;
+  color: #457799;
   font-size: 26px;
   font-family: Inter;
   text-transform: uppercase;
@@ -197,10 +203,11 @@
   /* font-size: 1.5rem; */
   background-image: none;
   transition: transform .2s ease-in-out;
-  color: #7397b0;
+  color: #6089A6;
 }
 
 .prAboutResourceContent {
+  color: #66727F;
   padding: 30px 0px 30px 10px;
   /* border-bottom: 2px solid rgb(163, 163, 163); */
   font-family: Lato;
@@ -230,6 +237,7 @@
 }
 
 .prDataAccessContainer {
+  color: #66727F;
   padding: 0px 0 10px 30px;
   width: 48%;
   display: inline-table;
@@ -250,7 +258,7 @@
 .prDataElementLabel {
   padding: 20px 0 0px 0px;
   /* color: #2dc799; */
-  color: #25b39a;
+  color: #8E6D25;
   font-size: 16px;
   font-family: Lato;
   text-transform: uppercase;
@@ -261,6 +269,7 @@
 .prDataElementContent {
   /* padding: 30px 0 10px 0px; */
   /* color: #25b39a; */
+  color: #66727F;
   font-size: 16px;
   font-family: Lato;
   display: inline-table;
@@ -270,7 +279,7 @@
   padding: 20px 20px 10px 0px;
   display: inline;
   /* color: #2dc799; */
-  color: #25b39a;
+  color: #8E6D25;
   font-size: 16px;
   font-family: Lato;
   text-transform: uppercase;

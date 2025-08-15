@@ -29,12 +29,12 @@ const GlossaryContainer = styled.div`
     }
 
     .filterLinks a:hover {
-        color: #00a272;
+        color: #00875E;
     }
 
     .nav {
         width: 920px;
-        height: 40px;
+        padding: 0;
         text-align: center;
         margin-left: 140px;
         margin-top: 40px;
@@ -44,10 +44,9 @@ const GlossaryContainer = styled.div`
     }
 
     .nav-link {
-        width: 3%;
+        padding: 1px;
+        margin: 4px 8px 6px 10px;
         color: black;
-        position: relative;
-        top: -20px;
     }
 
     .disabled {
@@ -94,7 +93,7 @@ const GlossaryContainer = styled.div`
     }
 
     .glossaryItemHeader {
-        color: #00a272;
+        color: #008059;
         font-family: Inter;
         font-weight: 600;
         margin-bottom: 0px;
@@ -115,7 +114,7 @@ const GlossaryContainer = styled.div`
 
     .glossaryItemLink {
         margin-top: -10px;
-        color: #00a272;
+        color: #00875E;
     }
 
     .glossaryItemLink a {
@@ -123,7 +122,7 @@ const GlossaryContainer = styled.div`
         font-weight: 500;
         font-family: Lato;
         font-size: 17px;
-        color: #00a272;
+        color: #00875E;
         text-decoration: none;
     }
 `;
@@ -138,11 +137,12 @@ const Glossary = ({
     const [key, setKey] = useState('A');
 
     const activeStyle = {
-        color: '#00a272',
+        color: '#00875E',
         fontWeight: 'bold',
-        textDecoration: 'underline',
-        textUnderlineOffset: '3px',
-        textDecorationThickness: '3px',
+        borderBottom: '3px solid #00875E',
+        // textDecoration: 'underline',
+        // textUnderlineOffset: '6px',
+        // textDecorationThickness: '3px',
     };
 
     useEffect(() => {
