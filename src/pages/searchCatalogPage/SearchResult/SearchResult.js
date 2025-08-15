@@ -43,7 +43,7 @@ const SearchResultContainer = styled.div`
   }
 
   .container .headerRow {
-    margin: 7px 5px 5px 0;
+    margin: 8px 5px 5px 0;
   }
 
   .container .headerRow .resultTitle {
