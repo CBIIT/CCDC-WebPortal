@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
 import ReactHtmlParser from "html-react-parser";
-import externalIcon from "../../../assets/img/resource.svg";
+import externalIcon from "../../../assets/img/resource-blue.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
 const SearchResultContainer = styled.div`
@@ -120,7 +120,7 @@ const SearchResultContainer = styled.div`
 
   .subHeaderRow .col-sm a {
     font-weight: bold;
-    color: #0075c7;
+    color: #00875E;
   }
 
   .subHeaderRow .fa-file {

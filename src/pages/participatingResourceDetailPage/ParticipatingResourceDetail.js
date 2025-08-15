@@ -50,7 +50,7 @@ const HeaderLinks = styled.div`
 
 const ResourceBody = styled.div`
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
@@ -83,7 +83,7 @@ const DatasetSummaryContainer = styled.div`
   margin-bottom: 80px;
 
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right top no-repeat;
     // padding-left: 30px;
     padding-right: 30px;

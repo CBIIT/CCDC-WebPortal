@@ -129,8 +129,9 @@ ul.breadcrumb li a:hover {
 
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  color: #7bcbd9;
-  font-size: 17px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
   font-family: Lato;
   width: 100%;
   display: flex;
@@ -138,12 +139,16 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLink {
-  color: #7bcbd9;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   /* text-decoration-line: underline; */
 }
 
 .datasetDetailHeaderLink:hover {
-  color: #7bcbd9;
+  color: #FFFFFF;
   /* font-size: 21px; */
 }
 

@@ -67,7 +67,7 @@ const ResourceDesc = styled.div`
   font-weight: 500;
 
   a {
-    color: #00a272;
+    color: #00875E;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     background-size: 32px;
@@ -97,7 +97,7 @@ const POCInfo = styled.div`
   a {
     margin-left: 5px;
     text-decoration: none;
-    color: #00a272;
+    color: #008059;
     font-weight: 500;
   }
 `;
@@ -109,7 +109,7 @@ const SiteInfo = styled.div`
 
   a {
     text-decoration: none;
-    color: #00a272;
+    color: #00875E;
     font-weight: 500;
   }
 `;
@@ -162,7 +162,7 @@ const DatasetsSummary = styled.div`
   height: 60px;
   line-height: 60px;
   background-color: #25b39a;
-  background-image: linear-gradient(to right, #25b39a ,#0c3561); 
+  background-image: linear-gradient(to right, #1B8370 ,#0C3561); 
   border-radius: 5px;
 
   a {
@@ -292,7 +292,7 @@ const SearchResult = ({
                                   return (
                                     <>
                                       <a key={pockey} href={mailto}>{pocitem.trim()}</a>
-                                      {pocidx !== pocArray.length - 1 && <span style={{color: '#00a272'}}>,</span>}
+                                      {pocidx !== pocArray.length - 1 && <span style={{color: '#00875E'}}>,</span>}
                                     </>
                                   );
                                 })

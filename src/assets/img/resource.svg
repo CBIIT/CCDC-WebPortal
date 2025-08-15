@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 1200 1200">
   <g transform="translate(600 600) scale(0.69 0.69) rotate(0) translate(-600 -600)" style="fill:#000000">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="#004187" data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#00875E" data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px">
       <path d="M48.26,86.86A35.15,35.15,0,0,0,83.37,51.74a5,5,0,0,0-10,0A25.12,25.12,0,1,1,48.26,26.63a5,5,0,0,0,0-10,35.12,35.12,0,0,0,0,70.23Z"/>
       <polygon points="63.24 15.18 70.44 22.37 45.05 47.76 52.24 54.95 77.63 29.56 84.82 36.76 86.86 13.14 63.24 15.18"/>
     </svg>
