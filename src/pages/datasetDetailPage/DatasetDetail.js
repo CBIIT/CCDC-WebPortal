@@ -59,12 +59,8 @@ const DatasetBody = styled.div`
 `;
 
 const ResourceType = styled.div`
-  width: 95%;
-  text-align: right;
-  margin-top: -44px;
+  margin-top: 19px;
   text-transform: uppercase;
-  // padding-top: 50px;
-  // padding-right: 10px;
   color: #FFF;
   font-family: Poppins;
   font-size: 13px;
@@ -78,7 +74,6 @@ const ResourceType = styled.div`
     border-radius: 20px;
     border: 1px solid #FFFFFF;
     padding: 5px 10px;
-    line-height: 52px;
   }
 
   a {
@@ -411,60 +406,57 @@ const DatasetDetail = ({
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                  {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <h1 className="datasetDetailHeaderLabel">{content.dataset_name}</h1> : null}
-                  {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <h1 className="datasetDetailHeaderLabelLong">{content.dataset_name}</h1> : null}
-                  {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <h1 className="datasetDetailHeaderLabel2">{content.dataset_name}</h1> : null}
-                  {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <h1 className="datasetDetailHeaderLabel3">{content.dataset_name}</h1> : null}
-                  {content.dataset_name.length > 170 ? <h1 className="datasetDetailHeaderLabel4">{content.dataset_name}</h1> : null}
-                  {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
-                  <div className="datasetIcon">
-                    {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
-                  </div>
-                  <div className="datasetDetailHeaderContent">
-                    Data Resource: &nbsp;
-                    <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
-                  </div>
-                  <HeaderLinks>
-                  <div className="datasetDetailHeaderContent">
-                    <span>Point of Contact: &nbsp;</span>
-                    <div className="datasetDetailHeaderText">
-                      <span testid="poc_name">{content.poc ? content.poc : null}</span>
-                      {content.poc ? ', ' : null}
-                      &nbsp;
-                      <div testid="poc_email">
-                        {
-                          pocLinks.map((pl, idx) => {
-                            if (pl && pl.includes("@")) {
+                  <div className="leftContainer">
+                    {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <h1 className="datasetDetailHeaderLabel">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <h1 className="datasetDetailHeaderLabelLong">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <h1 className="datasetDetailHeaderLabel2">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <h1 className="datasetDetailHeaderLabel3">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 170 ? <h1 className="datasetDetailHeaderLabel4">{content.dataset_name}</h1> : null}
+                    {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
+                    <div className="datasetDetailHeaderContent">
+                      Data Resource: &nbsp;
+                      <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
+                    </div>
+                    <HeaderLinks>
+                      <div className="datasetDetailHeaderContent">
+                        <span>Point of Contact: &nbsp;</span>
+                        <div className="datasetDetailHeaderText">
+                          <span testid="poc_name">{content.poc ? content.poc : null}</span>
+                          {content.poc ? ', ' : null}
+                          &nbsp;
+                          <div testid="poc_email">
+                            {pocLinks.map((pl, idx) => {
+                              if (pl && pl.includes("@")) {
+                                return (
+                                  <>
+                                    <a className="datasetDetailHeaderLink" href={`mailto:${pl}`}>{pl}</a>
+                                    {idx < pocLinks.length - 1 ? ", " : ""}
+                                  </>
+                                );
+                              }
                               return (
                                 <>
-                                  <a className="datasetDetailHeaderLink" href={`mailto:${pl}`}>
-                                      {pl}
-                                  </a>
+                                  <a className="datasetDetailHeaderLink" href={pl} target="_blank" rel="noreferrer noopener">{pl}</a>
                                   {idx < pocLinks.length - 1 ? ", " : ""}
                                 </>
                               );
-                            }
-                            return (
-                              <>
-                                <a className="datasetDetailHeaderLink" href={pl} target="_blank" rel="noreferrer noopener">
-                                  {pl}
-                                </a>
-                                {idx < pocLinks.length - 1 ? ", " : ""}
-                              </>
-                            );
-                          })
-                        }
+                            })}
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </HeaderLinks>
                   </div>
-                  </HeaderLinks>
-                  <ResourceType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={glossaryTerms[content.primary_dataset_scope]}>
-                      {content.primary_dataset_scope}
-                    </span>
-                  </ResourceType>
+                  <div className="rightContainer">
+                    <div className="datasetIcon">
+                      {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
+                    </div>
+                    <ResourceType>
+                      <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={glossaryTerms[content.primary_dataset_scope]}>
+                        {content.primary_dataset_scope}
+                      </span>
+                    </ResourceType>
+                  </div>
                 </div>
-                <br />
               </div>
             )
         }

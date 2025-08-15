@@ -1,4 +1,3 @@
-
 .datasetBreadcrumbContainer {
   padding: 10px 0px 0px 0px;
   margin-bottom: -5px;
@@ -44,6 +43,7 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderContainer {
+  display: flex;
   /* padding: 0px 0 20px 20px; */
   padding: 16px 0 10px 0px;
   width: 100%;
@@ -51,6 +51,21 @@ ul.breadcrumb li a:hover {
   background: linear-gradient(.25turn, #0c3561, 66%, #1b83d2);
   /* border-bottom: 1px solid lightgray; */
   position: relative;
+}
+
+.leftContainer {
+  display: flex;
+  width: 1030px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rightContainer {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 .datasetDetailHeaderLabel {
@@ -154,9 +169,6 @@ ul.breadcrumb li a:hover {
 
 .datasetIcon {
   width: 130px;
-  position: absolute;
-  right: 30px;
-  top: 30px;
   border: 1px solid #FFBF17;
   padding: 10px;
   height: 106px;
