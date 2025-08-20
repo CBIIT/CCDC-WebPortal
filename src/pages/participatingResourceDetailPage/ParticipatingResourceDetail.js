@@ -96,6 +96,11 @@ const DataLink = styled.li`
   text-decoration: none;
   list-style-type: none;
   display: inline;
+
+  a {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
 `;
 
 const ExternalLink = styled.li`
@@ -469,7 +474,7 @@ const ParticipatingResourceDetail = ({
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
-                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis</div> : null}
+                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis:</div> : null}
                       <div className="summaryDataElementContent">
                         {
                           ds.case_disease_diagnosis
@@ -495,7 +500,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_id
-                      ? <div className="summaryDataElementLabel">Number of Cases</div>
+                      ? <div className="summaryDataElementLabel">Number of Cases:</div>
                       : null}
                     {
                       ds.case_id
@@ -508,7 +513,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_sex
-                        ? <div className="summaryDataElementLabel">Case Sex</div>
+                        ? <div className="summaryDataElementLabel">Case Sex:</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
@@ -534,7 +539,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_age_at_diagnosis
-                        ? <div className="summaryDataElementLabel">Case Age At Diagnosis</div>
+                        ? <div className="summaryDataElementLabel">Case Age At Diagnosis:</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
@@ -559,7 +564,7 @@ const ParticipatingResourceDetail = ({
                       ? <br />
                       : null
                     }
-                    {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
+                    {ds.published_in ? <div className="summaryDataElementLabel">Published In:</div> : null}
                     {
                       ds.published_in && ds.published_in.split(";").map((link, linkidx) => {
                         const newlink = link.trim();

@@ -51,6 +51,7 @@ ul.breadcrumb li a:hover {
   background: linear-gradient(.25turn, #0c3561, 66%, #1b83d2);
   /* border-bottom: 1px solid lightgray; */
   position: relative;
+  margin-bottom: 23px;
 }
 
 .leftContainer {
@@ -69,7 +70,7 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLabel {
-  padding: 0px 0px 60px 26px;
+  padding: 0px 0px 19px 26px;
   color: white;
   font-size: 34px;
   font-weight: medium;
@@ -133,7 +134,7 @@ ul.breadcrumb li a:hover {
   font-size: 17px;
   font-weight: bold;
   font-family: Lato;
-  width: 80%;
+  /* width: 80%; */
   display: -webkit-inline-box;
 }
 
@@ -342,7 +343,7 @@ ul.breadcrumb li a:hover {
 }
 
 .dataElementContentPublished {
-  color: #0B835F;
+  color: #00875E;
   font-family: Lato;
   font-weight: normal;
   max-height: 200px;
@@ -370,7 +371,7 @@ ul.breadcrumb li a:hover {
 
 .additionalDataLinks {
   margin-top: 10px;
-  color: #0B835F;
+  color: #00875E;
   /* color: black; */
   text-transform: none;
   max-width: 95%;
@@ -378,7 +379,7 @@ ul.breadcrumb li a:hover {
 }
 
 .additionalDataLinks:hover {
-  color: #0B835F;
+  color: #00875E;
 }
 
 .additionalDataContent {

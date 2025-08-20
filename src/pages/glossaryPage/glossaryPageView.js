@@ -93,9 +93,13 @@ const GlossaryContainer = styled.div`
     }
 
     .glossaryItemHeader {
-        color: #008059;
+        color: #0052B3;
         font-family: Inter;
-        font-weight: 600;
+        font-size: 33px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 120%; /* 39.6px */
+        letter-spacing: -0.165px;
         margin-bottom: 0px;
     }
 
@@ -115,15 +119,23 @@ const GlossaryContainer = styled.div`
     .glossaryItemLink {
         margin-top: -10px;
         color: #00875E;
+        font-family: Lato;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 25.5px */
     }
 
     .glossaryItemLink a {
         margin-top: -10px;
-        font-weight: 500;
+        color: #00875E;
         font-family: Lato;
         font-size: 17px;
-        color: #00875E;
-        text-decoration: none;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 25.5px */
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
     }
 `;
 

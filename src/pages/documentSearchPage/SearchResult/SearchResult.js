@@ -20,7 +20,7 @@ const DocumentCard = styled.div`
   padding: 0 20px 40px 20px;
 
   b {
-    color: #00A272;
+    color: #00875E;
   }
 `;
 
@@ -31,7 +31,9 @@ const DocumentHeader = styled.div`
   font-size: 25px;
 
   a {
-    color: #00A272;
+    color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
 `;
 
@@ -53,8 +55,9 @@ const DocumentLink = styled.div`
   font-size: 19px;
 
   a {
-    color: #00A272;
-    text-decoration: none;
+    color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
 `;
 

@@ -96,8 +96,9 @@ const POCInfo = styled.div`
 
   a {
     margin-left: 5px;
-    text-decoration: none;
-    color: #008059;
+    color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
     font-weight: 500;
   }
 `;
@@ -108,8 +109,9 @@ const SiteInfo = styled.div`
   margin-bottom: 10px;
 
   a {
-    text-decoration: none;
     color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
     font-weight: 500;
   }
 `;
