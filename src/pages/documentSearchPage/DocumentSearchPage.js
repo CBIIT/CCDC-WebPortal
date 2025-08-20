@@ -140,9 +140,14 @@ const SearchContent = styled.div`
 
 const SearchSummary = styled.div`
   width: 100%;
-  color: #004187;
-  font-size: 30px;
   padding: 20px;
+  color: #686868;
+  font-family: Lato;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  text-transform: uppercase;
 `;
 
 const useQuery = () => {

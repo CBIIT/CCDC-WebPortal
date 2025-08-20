@@ -143,7 +143,7 @@ const ContributeContainer = styled.div`
     .contributeContentHeader1 {
         padding-bottom: 10px;
         /* color: #2dc799; */
-        color: #00a272;
+        color: #0052B3;
         font-weight: 300;
         font-family: Inter;
         font-size: 33px;

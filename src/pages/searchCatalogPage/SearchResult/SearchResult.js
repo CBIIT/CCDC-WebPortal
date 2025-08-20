@@ -209,7 +209,7 @@ const SearchResultContainer = styled.div`
   .bodyRow .sampleCountHighlight {
     font-family: 'Inter';
     font-weight: 600;
-    color: #0D826C;
+    color: #0C79CC;
   }
 
   .bodyRow .itemContinued {
@@ -700,9 +700,11 @@ const SearchResult = ({
                 </div>
                 <div className="row align-items-start subHeaderRow">
                   <div className="col-sm">
-                    <img src={dataResourceIcon} alt="data-resource" />
-                    &nbsp;
-                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name[0]) : rst.content.data_resource_id}</Link>
+                    <Link to={`/resource/${rst.content.data_resource_id}`}>
+                      <img src={dataResourceIcon} alt="data-resource" />
+                      &nbsp;
+                      {rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name[0]) : rst.content.data_resource_id}
+                    </Link>
                   </div>
                 </div>
                 {
