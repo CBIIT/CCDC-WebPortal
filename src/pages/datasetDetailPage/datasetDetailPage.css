@@ -134,7 +134,7 @@ ul.breadcrumb li a:hover {
   font-size: 17px;
   font-weight: bold;
   font-family: Lato;
-  width: 80%;
+  /* width: 80%; */
   display: -webkit-inline-box;
 }
 
