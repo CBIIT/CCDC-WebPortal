@@ -153,8 +153,8 @@ const SearchCatalogPage = ({
     <>
       <div id="top" className="searchBarContainer">
         <div className="searchBarArea">
-          <div>
-            <h1 className="searchBarLabel">
+          <div className="searchBarLabel">
+            <h1 style={{ fontSize: "42px", fontWeight: "bold"}}>
               Search Results
             </h1>
             <div className="searchTooltip">
