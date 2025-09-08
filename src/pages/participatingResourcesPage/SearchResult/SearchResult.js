@@ -67,7 +67,7 @@ const ResourceDesc = styled.div`
   font-weight: 500;
 
   a {
-    color: #00a272;
+    color: #00875E;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     background-size: 32px;
@@ -96,8 +96,9 @@ const POCInfo = styled.div`
 
   a {
     margin-left: 5px;
-    text-decoration: none;
-    color: #00a272;
+    color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
     font-weight: 500;
   }
 `;
@@ -108,8 +109,9 @@ const SiteInfo = styled.div`
   margin-bottom: 10px;
 
   a {
-    text-decoration: none;
-    color: #00a272;
+    color: #00875E;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
     font-weight: 500;
   }
 `;
@@ -135,9 +137,16 @@ const ResourceType = styled.div`
   padding-right: 10px;
 
   span {
+    color: #108461;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 5px 23px 7px 23px;
+    border: 1px solid #108461;
+    padding: 5px 10px;
     line-height: 52px;
   }
 
@@ -155,7 +164,7 @@ const DatasetsSummary = styled.div`
   height: 60px;
   line-height: 60px;
   background-color: #25b39a;
-  background-image: linear-gradient(to right, #25b39a ,#0c3561); 
+  background-image: linear-gradient(to right, #1B8370 ,#0C3561); 
   border-radius: 5px;
 
   a {
@@ -285,7 +294,7 @@ const SearchResult = ({
                                   return (
                                     <>
                                       <a key={pockey} href={mailto}>{pocitem.trim()}</a>
-                                      {pocidx !== pocArray.length - 1 && <span style={{color: '#00a272'}}>,</span>}
+                                      {pocidx !== pocArray.length - 1 && <span style={{color: '#00875E'}}>,</span>}
                                     </>
                                   );
                                 })

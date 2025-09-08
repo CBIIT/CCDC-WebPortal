@@ -8,7 +8,7 @@ import './aboutPage.css';
 const AboutContainer = styled.div`
 //   display: inline-flex;
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     font-weight: bold;
     text-underline-offset: 2px;
     background: url(${externalIcon}) right center no-repeat;

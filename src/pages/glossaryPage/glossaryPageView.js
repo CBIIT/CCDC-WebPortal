@@ -29,12 +29,12 @@ const GlossaryContainer = styled.div`
     }
 
     .filterLinks a:hover {
-        color: #00a272;
+        color: #00875E;
     }
 
     .nav {
         width: 920px;
-        height: 40px;
+        padding: 0;
         text-align: center;
         margin-left: 140px;
         margin-top: 40px;
@@ -44,10 +44,9 @@ const GlossaryContainer = styled.div`
     }
 
     .nav-link {
-        width: 3%;
+        padding: 1px;
+        margin: 4px 8px 6px 10px;
         color: black;
-        position: relative;
-        top: -20px;
     }
 
     .disabled {
@@ -94,9 +93,13 @@ const GlossaryContainer = styled.div`
     }
 
     .glossaryItemHeader {
-        color: #00a272;
+        color: #0052B3;
         font-family: Inter;
-        font-weight: 600;
+        font-size: 33px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 120%; /* 39.6px */
+        letter-spacing: -0.165px;
         margin-bottom: 0px;
     }
 
@@ -115,16 +118,24 @@ const GlossaryContainer = styled.div`
 
     .glossaryItemLink {
         margin-top: -10px;
-        color: #00a272;
+        color: #00875E;
+        font-family: Lato;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 25.5px */
     }
 
     .glossaryItemLink a {
         margin-top: -10px;
-        font-weight: 500;
+        color: #00875E;
         font-family: Lato;
         font-size: 17px;
-        color: #00a272;
-        text-decoration: none;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 25.5px */
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
     }
 `;
 
@@ -138,11 +149,12 @@ const Glossary = ({
     const [key, setKey] = useState('A');
 
     const activeStyle = {
-        color: '#00a272',
+        color: '#00875E',
         fontWeight: 'bold',
-        textDecoration: 'underline',
-        textUnderlineOffset: '3px',
-        textDecorationThickness: '3px',
+        borderBottom: '3px solid #00875E',
+        // textDecoration: 'underline',
+        // textUnderlineOffset: '6px',
+        // textDecorationThickness: '3px',
     };
 
     useEffect(() => {

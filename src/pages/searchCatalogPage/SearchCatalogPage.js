@@ -154,9 +154,9 @@ const SearchCatalogPage = ({
       <div id="top" className="searchBarContainer">
         <div className="searchBarArea">
           <div className="searchBarLabel">
-            <span>
+            <h1 style={{ fontSize: "42px", fontWeight: "bold"}}>
               Search Results
-            </span>
+            </h1>
             <div className="searchTooltip">
               <OverlayTrigger
                 placement="right-start"

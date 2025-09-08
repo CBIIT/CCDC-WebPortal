@@ -1,4 +1,3 @@
-
 .datasetBreadcrumbContainer {
   padding: 10px 0px 0px 0px;
   margin-bottom: -5px;
@@ -30,7 +29,7 @@ ul.breadcrumb li+li:before {
 /* Add a color to all links inside the list */
 ul.breadcrumb li a {
   /* color: goldenrod; */
-  color: #1783d8;
+  color: #1579C6;
   text-decoration: none;
   font-size: 14px;
   font-family: Lato;
@@ -44,6 +43,7 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderContainer {
+  display: flex;
   /* padding: 0px 0 20px 20px; */
   padding: 16px 0 10px 0px;
   width: 100%;
@@ -51,10 +51,26 @@ ul.breadcrumb li a:hover {
   background: linear-gradient(.25turn, #0c3561, 66%, #1b83d2);
   /* border-bottom: 1px solid lightgray; */
   position: relative;
+  margin-bottom: 23px;
+}
+
+.leftContainer {
+  display: flex;
+  width: 1030px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rightContainer {
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 .datasetDetailHeaderLabel {
-  padding: 0px 0px 60px 26px;
+  padding: 0px 0px 19px 26px;
   color: white;
   font-size: 34px;
   font-weight: medium;
@@ -118,7 +134,7 @@ ul.breadcrumb li a:hover {
   font-size: 17px;
   font-weight: bold;
   font-family: Lato;
-  width: 80%;
+  /* width: 80%; */
   display: -webkit-inline-box;
 }
 
@@ -129,8 +145,9 @@ ul.breadcrumb li a:hover {
 
 .datasetDetailHeaderText {
   /* padding: 0px 0 5px 30px; */
-  color: #7bcbd9;
-  font-size: 17px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
   font-family: Lato;
   width: 100%;
   display: flex;
@@ -138,20 +155,21 @@ ul.breadcrumb li a:hover {
 }
 
 .datasetDetailHeaderLink {
-  color: #7bcbd9;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
   /* text-decoration-line: underline; */
 }
 
 .datasetDetailHeaderLink:hover {
-  color: #7bcbd9;
+  color: #FFFFFF;
   /* font-size: 21px; */
 }
 
 .datasetIcon {
   width: 130px;
-  position: absolute;
-  right: 30px;
-  top: 30px;
   border: 1px solid #FFBF17;
   padding: 10px;
   height: 106px;
@@ -281,7 +299,7 @@ ul.breadcrumb li a:hover {
 
 .dataElementLabel {
   padding: 20px 0 0px 0px;
-  color: #b98e2f;
+  color: #8E6D25;
   /* color: goldenrod; */
   /* color: #25b39a; */
   font-size: 16px;
@@ -325,7 +343,7 @@ ul.breadcrumb li a:hover {
 }
 
 .dataElementContentPublished {
-  color: #00a272;
+  color: #00875E;
   font-family: Lato;
   font-weight: normal;
   max-height: 200px;
@@ -335,7 +353,7 @@ ul.breadcrumb li a:hover {
 }
 
 .dataElementContentPublished:hover {
-  color: #00a272;
+  color: #0B835F;
 }
 
 .dataElementContentAllCaps {
@@ -353,7 +371,7 @@ ul.breadcrumb li a:hover {
 
 .additionalDataLinks {
   margin-top: 10px;
-  color: #00a272;
+  color: #00875E;
   /* color: black; */
   text-transform: none;
   max-width: 95%;
@@ -361,7 +379,7 @@ ul.breadcrumb li a:hover {
 }
 
 .additionalDataLinks:hover {
-  color: #00a272;
+  color: #00875E;
 }
 
 .additionalDataContent {

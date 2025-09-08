@@ -41,7 +41,7 @@ const DatasetBody = styled.div`
 
   .datasetDesLinks {
     margin-top: 10px;
-    color: #00a272;
+    color: #0B835F;
     text-transform: none;
     max-width: 95%;
     word-break: break-all;
@@ -59,21 +59,21 @@ const DatasetBody = styled.div`
 `;
 
 const ResourceType = styled.div`
-  width: 96%;
-  text-align: right;
-  margin-top: -44px;
+  margin-top: 19px;
   text-transform: uppercase;
-  font-size: 11px;
-  font-family: Inter;
-  // padding-top: 50px;
-  // padding-right: 10px;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 19.31px; /* 148.538% */
+  text-transform: capitalize;
 
   span {
-    background-color: white;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
-    line-height: 52px;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
   }
 
   a {
@@ -406,60 +406,57 @@ const DatasetDetail = ({
                   </ul>
                 </div>
                 <div className="datasetDetailHeaderContainer">
-                  {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <div className="datasetDetailHeaderLabel">{content.dataset_name}</div> : null}
-                  {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <div className="datasetDetailHeaderLabelLong">{content.dataset_name}</div> : null}
-                  {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <div className="datasetDetailHeaderLabel2">{content.dataset_name}</div> : null}
-                  {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <div className="datasetDetailHeaderLabel3">{content.dataset_name}</div> : null}
-                  {content.dataset_name.length > 170 ? <div className="datasetDetailHeaderLabel4">{content.dataset_name}</div> : null}
-                  {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
-                  <div className="datasetIcon">
-                    {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
-                  </div>
-                  <div className="datasetDetailHeaderContent">
-                    Data Resource: &nbsp;
-                    <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
-                  </div>
-                  <HeaderLinks>
-                  <div className="datasetDetailHeaderContent">
-                    <span>Point of Contact: &nbsp;</span>
-                    <div className="datasetDetailHeaderText">
-                      <span testid="poc_name">{content.poc ? content.poc : null}</span>
-                      {content.poc ? ', ' : null}
-                      &nbsp;
-                      <div testid="poc_email">
-                        {
-                          pocLinks.map((pl, idx) => {
-                            if (pl && pl.includes("@")) {
+                  <div className="leftContainer">
+                    {content.dataset_name.length > 0 && content.dataset_name.length <= 60 ? <h1 className="datasetDetailHeaderLabel">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 60 && content.dataset_name.length <= 65 ? <h1 className="datasetDetailHeaderLabelLong">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 65 && content.dataset_name.length <= 100 ? <h1 className="datasetDetailHeaderLabel2">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 100 && content.dataset_name.length <= 170 ? <h1 className="datasetDetailHeaderLabel3">{content.dataset_name}</h1> : null}
+                    {content.dataset_name.length > 170 ? <h1 className="datasetDetailHeaderLabel4">{content.dataset_name}</h1> : null}
+                    {/* <div className="datasetDetailHeaderLabel">{content.dataset_name.substring(0, 180)}</div> */}
+                    <div className="datasetDetailHeaderContent">
+                      Data Resource: &nbsp;
+                      <Link to={`/resource/${content.data_resource_id}`} className="datasetDetailHeaderLink">{content.data_resource_id}</Link>
+                    </div>
+                    <HeaderLinks>
+                      <div className="datasetDetailHeaderContent">
+                        <span>Point of Contact: &nbsp;</span>
+                        <div className="datasetDetailHeaderText">
+                          <span testid="poc_name">{content.poc ? content.poc : null}</span>
+                          {content.poc ? ', ' : null}
+                          &nbsp;
+                          <div testid="poc_email">
+                            {pocLinks.map((pl, idx) => {
+                              if (pl && pl.includes("@")) {
+                                return (
+                                  <>
+                                    <a className="datasetDetailHeaderLink" href={`mailto:${pl}`}>{pl}</a>
+                                    {idx < pocLinks.length - 1 ? ", " : ""}
+                                  </>
+                                );
+                              }
                               return (
                                 <>
-                                  <a className="datasetDetailHeaderLink" href={`mailto:${pl}`}>
-                                      {pl}
-                                  </a>
+                                  <a className="datasetDetailHeaderLink" href={pl} target="_blank" rel="noreferrer noopener">{pl}</a>
                                   {idx < pocLinks.length - 1 ? ", " : ""}
                                 </>
                               );
-                            }
-                            return (
-                              <>
-                                <a className="datasetDetailHeaderLink" href={pl} target="_blank" rel="noreferrer noopener">
-                                  {pl}
-                                </a>
-                                {idx < pocLinks.length - 1 ? ", " : ""}
-                              </>
-                            );
-                          })
-                        }
+                            })}
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </HeaderLinks>
                   </div>
-                  </HeaderLinks>
-                  <ResourceType>
-                    <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={glossaryTerms[content.primary_dataset_scope]}>
-                      {content.primary_dataset_scope}
-                    </span>
-                  </ResourceType>
+                  <div className="rightContainer">
+                    <div className="datasetIcon">
+                      {content.data_resource_id ? <DataResourceIcons participatingResource={content.data_resource_id} type="white" /> : null}
+                    </div>
+                    <ResourceType>
+                      <span data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={glossaryTerms[content.primary_dataset_scope]}>
+                        {content.primary_dataset_scope}
+                      </span>
+                    </ResourceType>
+                  </div>
                 </div>
-                <br />
               </div>
             )
         }
@@ -472,7 +469,7 @@ const DatasetDetail = ({
               <div className="datasetContainer">
                 <div className="aboutContentContainer">
                   <div className="aboutDatasetContainer">
-                    <div className="aboutDatasetLabel">About This Dataset</div>
+                    <h2 className="aboutDatasetLabel">About This Dataset</h2>
                     {content.desc && (
                       <div className="aboutDatasetContent" testid="desc">
                         {
@@ -488,10 +485,10 @@ const DatasetDetail = ({
                       </div>
                     )}
                     <div className="coreDataContainer">
-                      <div className="coreDataLabel">Core Data Elements</div>
+                      <h3 className="coreDataLabel">Core Data Elements</h3>
                       {/* <div className="dataElementLabel">Case Age</div> */}
                       {content.case_id
-                        ? <div className="dataElementLabel">Number of Cases</div>
+                        ? <h4 className="dataElementLabel">Number of Cases</h4>
                         : null}
                       <span id="number_of_cases">
                         {
@@ -501,7 +498,7 @@ const DatasetDetail = ({
                         }
                       </span>
                       {content.case_sex
-                          ? <div className="dataElementLabel">Case Sex</div>
+                          ? <h4 className="dataElementLabel">Case Sex</h4>
                           : null}
                         <div className="dataElementContent" id="case_sex">
                           {
@@ -516,7 +513,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_sex_at_birth
-                          ? <div className="dataElementLabel">Case Sex At Birth</div>
+                          ? <h4 className="dataElementLabel">Case Sex At Birth</h4>
                           : null}
                         <div className="dataElementContent" id="case_sex_at_birth">
                           {
@@ -546,7 +543,7 @@ const DatasetDetail = ({
                           }
                         </div> */}
                         {content.case_age
-                          ? <div className="dataElementLabel">Case Age</div>
+                          ? <h4 className="dataElementLabel">Case Age</h4>
                           : null}
                         <div className="dataElementContent" id="case_age">
                           {
@@ -561,7 +558,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_age_at_diagnosis
-                          ? <div className="dataElementLabel">Case Age At Diagnosis</div>
+                          ? <h4 className="dataElementLabel">Case Age At Diagnosis</h4>
                           : null}
                         <div className="dataElementContent" id="case_age_at_diagnosis">
                           {
@@ -576,7 +573,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_age_at_trial
-                          ? <div className="dataElementLabel">Case Age At Trial</div>
+                          ? <h4 className="dataElementLabel">Case Age At Trial</h4>
                           : null}
                         <div className="dataElementContent" id="case_age_at_trial">
                           {
@@ -591,7 +588,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_race
-                          ? <div className="dataElementLabel">Case Race</div>
+                          ? <h4 className="dataElementLabel">Case Race</h4>
                           : null}
                         <div className="dataElementContent" id="case_race">
                           {
@@ -606,7 +603,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_ethnicity
-                          ? <div className="dataElementLabel">Case Ethnicity</div>
+                          ? <h4 className="dataElementLabel">Case Ethnicity</h4>
                           : null}
                         <div className="dataElementContent" id="case_ethnicity">
                           {
@@ -621,7 +618,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_disease_diagnosis
-                          ? <div className="dataElementLabel">Case Disease Diagnosis</div>
+                          ? <h4 className="dataElementLabel">Case Disease Diagnosis</h4>
                           : null}
                         <div className="dataElementContent" id="case_disease_diagnosis">
                           {
@@ -636,7 +633,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_tumor_site
-                          ? <div className="dataElementLabel">Case Tumor Site</div>
+                          ? <h4 className="dataElementLabel">Case Tumor Site</h4>
                           : null}
                         <div className="dataElementContent" id="case_tumor_site">
                           {
@@ -651,7 +648,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_treatment_administered
-                          ? <div className="dataElementLabel">Case Treatment Administered</div>
+                          ? <h4 className="dataElementLabel">Case Treatment Administered</h4>
                           : null}
                         <div className="dataElementContent" id="case_treatment_administered">
                           {
@@ -666,7 +663,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_treatment_outcome
-                          ? <div className="dataElementLabel">Case Treatment Outcome</div>
+                          ? <h4 className="dataElementLabel">Case Treatment Outcome</h4>
                           : null}
                         <div className="dataElementContent" id="case_treatment_outcome">
                           {
@@ -681,7 +678,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.case_proband
-                          ? <div className="dataElementLabel">Case Proband</div>
+                          ? <h4 className="dataElementLabel">Case Proband</h4>
                           : null}
                         <div className="dataElementContent" id="case_proband">
                           {
@@ -696,7 +693,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_id
-                          ? <div className="dataElementLabel">Number of Samples</div>
+                          ? <h4 className="dataElementLabel">Number of Samples</h4>
                           : null}
                         <span id="number_of_samples">
                         {
@@ -706,7 +703,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.program_name
-                          ? <div className="dataElementLabel">Program Name</div>
+                          ? <h4 className="dataElementLabel">Program Name</h4>
                           : null}
                         <span id="program_name">
                         {
@@ -716,7 +713,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.program_id
-                          ? <div className="dataElementLabel">Program ID</div>
+                          ? <h4 className="dataElementLabel">Program ID</h4>
                           : null}
                         <span id="program_id">
                         {
@@ -726,7 +723,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.donor_age
-                          ? <div className="dataElementLabel">Donor Age</div>
+                          ? <h4 className="dataElementLabel">Donor Age</h4>
                           : null}
                         <span id="donor_age">
                         {
@@ -736,7 +733,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.donor_disease
-                          ? <div className="dataElementLabel">Donor Disease</div>
+                          ? <h4 className="dataElementLabel">Donor Disease</h4>
                           : null}
                         <span id="donor_disease">
                         {
@@ -746,7 +743,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.donor_sex
-                          ? <div className="dataElementLabel">Donor Sex</div>
+                          ? <h4 className="dataElementLabel">Donor Sex</h4>
                           : null}
                         <span id="donor_sex">
                         {
@@ -756,7 +753,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.donor_id
-                          ? <div className="dataElementLabel">Donor ID</div>
+                          ? <h4 className="dataElementLabel">Donor ID</h4>
                           : null}
                         <span id="donor_id">
                         {
@@ -766,7 +763,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.cell_line_id
-                          ? <div className="dataElementLabel">Cell Line ID</div>
+                          ? <h4 className="dataElementLabel">Cell Line ID</h4>
                           : null}
                         <span id="cell_line_id">
                         {
@@ -776,7 +773,7 @@ const DatasetDetail = ({
                         }
                         </span>
                         {content.sample_repository_name
-                          ? <div className="dataElementLabel">Sample Repository Name</div>
+                          ? <h4 className="dataElementLabel">Sample Repository Name</h4>
                           : null}
                         <div className="dataElementContent" id="sample_repository_name">
                           {
@@ -791,7 +788,7 @@ const DatasetDetail = ({
                         </div>
                         {/* <div className="dataElementLabel">Sample Assay Method</div> */}
                         {content.sample_assay_method
-                          ? <div className="dataElementLabel">Sample Assay Method</div>
+                          ? <h4 className="dataElementLabel">Sample Assay Method</h4>
                           : null}
                         <div className="dataElementContent" id="sample_assay_method">
                           {
@@ -806,7 +803,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_analyte_type
-                          ? <div className="dataElementLabel">Sample Analyte Type</div>
+                          ? <h4 className="dataElementLabel">Sample Analyte Type</h4>
                           : null}
                         <div className="dataElementContent" id="sample_analyte_type">
                           {
@@ -821,7 +818,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_anatomic_site
-                          ? <div className="dataElementLabel">Sample Anatomic Site</div>
+                          ? <h4 className="dataElementLabel">Sample Anatomic Site</h4>
                           : null}
                         <div className="dataElementContent" id="sample_anatomic_site">
                           {
@@ -836,7 +833,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_composition_type
-                          ? <div className="dataElementLabel">Sample Composition Type</div>
+                          ? <h4 className="dataElementLabel">Sample Composition Type</h4>
                           : null}
                         <div className="dataElementContent" id="sample_composition_type">
                           {
@@ -851,7 +848,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_is_cell_line
-                          ? <div className="dataElementLabel">Sample Is Cell Line</div>
+                          ? <h4 className="dataElementLabel">Sample Is Cell Line</h4>
                           : null}
                         <div className="dataElementContent" id="sample_is_cell_line">
                           {
@@ -866,7 +863,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_is_normal
-                          ? <div className="dataElementLabel">Sample Is Normal</div>
+                          ? <h4 className="dataElementLabel">Sample Is Normal</h4>
                           : null}
                         <div className="dataElementContent" id="sample_is_normal">
                           {
@@ -881,7 +878,7 @@ const DatasetDetail = ({
                           }
                         </div>
                         {content.sample_is_xenograft
-                          ? <div className="dataElementLabel">Sample Is Xenograft</div>
+                          ? <h4 className="dataElementLabel">Sample Is Xenograft</h4>
                           : null}
                         <div className="dataElementContent" id="sample_is_xenograft">
                           {
@@ -913,7 +910,7 @@ const DatasetDetail = ({
                               }
                               return (
                                 <>
-                                  <div className="dataElementLabel">Published In</div>
+                                  <h4 className="dataElementLabel">Published In</h4>
                                   <div className="dataElementContentPublished" testid="published_in">
                                     { publishedLinks ? publishedLinks.map((item, idx) => {
                                       const key = `sort_${idx}`;
@@ -929,7 +926,7 @@ const DatasetDetail = ({
                             if (ad === "PROJECTS") {
                               return (
                                 <>
-                                  <div className="dataElementLabel">Projects</div>
+                                  <h4 className="dataElementLabel">Projects</h4>
                                   <div className="dataElementContent" id="projects">
                                     {
                                       content.projects.map((pro, proidx) => {
@@ -959,7 +956,7 @@ const DatasetDetail = ({
                             if (ad === "GRANT ID") {
                               return (
                                 <>
-                                  <div className="dataElementLabel">Grant Information</div>
+                                  <h4 className="dataElementLabel">Grant Information</h4>
                                   <div className="grantInfoContainer" id="grant_information">
                                     {grantIDs.sort().map((item) => {
                                       return (
@@ -995,7 +992,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">DBGAP STUDY IDENTIFIER</div>
+                                  <h4 className="dataElementLabel">DBGAP STUDY IDENTIFIER</h4>
                                   <div testid="dbgap_study_identifier">{html}</div>
                                 </>
                               );
@@ -1012,7 +1009,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">GEO STUDY IDENTIFIER</div>
+                                  <h4 className="dataElementLabel">GEO STUDY IDENTIFIER</h4>
                                   <span id="geo_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{geoStudyIdArr.join(' ')}</span>
                                   <div>{html}</div>
                                 </>
@@ -1029,7 +1026,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">DATA REPOSITORY</div>
+                                  <h4 className="dataElementLabel">DATA REPOSITORY</h4>
                                   <div id="data_repository">{html}</div>
                                 </>
                               );
@@ -1045,7 +1042,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">AVAILABLE FILES</div>
+                                  <h4 className="dataElementLabel">AVAILABLE FILES</h4>
                                   <div id="available_file">{html}</div>
                                 </>
                               );
@@ -1062,7 +1059,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">SRA STUDY IDENTIFIER</div>
+                                  <h4 className="dataElementLabel">SRA STUDY IDENTIFIER</h4>
                                   <span id="sra_study_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{sraIdArr.join(' ')}</span>
                                   <div>{html}</div>
                                 </>
@@ -1080,7 +1077,7 @@ const DatasetDetail = ({
                               });
                               return (
                                 <>
-                                  <div className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</div>
+                                  <h4 className="dataElementLabel">CLINICAL TRIAL IDENTIFIER</h4>
                                   <span id="clinical_trail_identifier" style={{ position: 'absolute', visibility: 'hidden'}}>{clinicalArr.join(' ')}</span>
                                   <div>{html}</div>
                                 </>
@@ -1088,7 +1085,7 @@ const DatasetDetail = ({
                             }
                             return (
                               <div id={ad.toLocaleLowerCase().split(' ').join('_')}>
-                                <div key={adkey} className="dataElementLabel">
+                                <h4 key={adkey} className="dataElementLabel">
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : ad}
                                   {ad === "GRANT ID" || ad === "GRANT NAME" ? null : <br />}
                                   {additionalDict[ad].map((adee, adeeidx) => {
@@ -1119,7 +1116,7 @@ const DatasetDetail = ({
                                       null
                                     );
                                   })}
-                                </div>
+                                </h4>
                               </div>
                             );
                           })

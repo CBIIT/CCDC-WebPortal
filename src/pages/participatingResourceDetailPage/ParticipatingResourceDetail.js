@@ -50,7 +50,7 @@ const HeaderLinks = styled.div`
 
 const ResourceBody = styled.div`
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
@@ -83,7 +83,7 @@ const DatasetSummaryContainer = styled.div`
   margin-bottom: 80px;
 
   a[target="_blank"] {
-    color: #004187;
+    color: #00875E;
     background: url(${externalIcon}) right top no-repeat;
     // padding-left: 30px;
     padding-right: 30px;
@@ -96,6 +96,11 @@ const DataLink = styled.li`
   text-decoration: none;
   list-style-type: none;
   display: inline;
+
+  a {
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
 `;
 
 const ExternalLink = styled.li`
@@ -113,10 +118,17 @@ const DatasetType = styled.div`
   font-family: Inter;
 
   span {
-    background-color: white;
+    color: #FFF;
+    text-align: right;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
+    border: 1px solid #FFFFFF;
+    padding: 5px 10px;
     line-height: 52px;
   }
 
@@ -134,10 +146,18 @@ const SummaryDatasetType = styled.div`
   font-family: Inter;
 
   span {
-    background-color: white;
+    color: #108461;
+    text-align: right;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
+    background-color: transparent;
     border-radius: 20px;
-    border: 1px solid #FFBF17;
-    padding: 8px 16px;
+    border: 1px solid #108461;
+    padding: 5px 10px;
     line-height: 52px;
   }
 
@@ -454,7 +474,7 @@ const ParticipatingResourceDetail = ({
                     </DatasetTitle>
                   </DatasetHeader>
                   <DatasetDesc>
-                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis</div> : null}
+                      {ds.case_disease_diagnosis ? <div className="summaryDataElementLabel">Case Disease Diagnosis:</div> : null}
                       <div className="summaryDataElementContent">
                         {
                           ds.case_disease_diagnosis
@@ -480,7 +500,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_id
-                      ? <div className="summaryDataElementLabel">Number of Cases</div>
+                      ? <div className="summaryDataElementLabel">Number of Cases:</div>
                       : null}
                     {
                       ds.case_id
@@ -493,7 +513,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_sex
-                        ? <div className="summaryDataElementLabel">Case Sex</div>
+                        ? <div className="summaryDataElementLabel">Case Sex:</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
@@ -519,7 +539,7 @@ const ParticipatingResourceDetail = ({
                       : null
                     }
                     {ds.case_age_at_diagnosis
-                        ? <div className="summaryDataElementLabel">Case Age At Diagnosis</div>
+                        ? <div className="summaryDataElementLabel">Case Age At Diagnosis:</div>
                         : null}
                       <div className="summaryDataElementContent">
                         {
@@ -544,7 +564,7 @@ const ParticipatingResourceDetail = ({
                       ? <br />
                       : null
                     }
-                    {ds.published_in ? <div className="summaryDataElementLabel">Published In</div> : null}
+                    {ds.published_in ? <div className="summaryDataElementLabel">Published In:</div> : null}
                     {
                       ds.published_in && ds.published_in.split(";").map((link, linkidx) => {
                         const newlink = link.trim();

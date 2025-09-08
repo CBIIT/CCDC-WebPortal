@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Popover } from 'bootstrap';
 import ReactHtmlParser from "html-react-parser";
-import externalIcon from "../../../assets/img/resource.svg";
+import externalIcon from "../../../assets/img/resource-blue.svg";
 import dataResourceIcon from "../../../assets/img/DataResource.svg";
 
 const SearchResultContainer = styled.div`
@@ -43,13 +43,14 @@ const SearchResultContainer = styled.div`
   }
 
   .container .headerRow {
-    margin: 5px 5px 5px 0;
+    margin: 8px 5px 5px 0;
   }
 
   .container .headerRow .resultTitle {
     color: #046ab2;
     font-weight: bold;
     padding: 5px 0;
+    font-size: 14px;
   }
 
   .headerRow .piBlock {
@@ -58,7 +59,15 @@ const SearchResultContainer = styled.div`
   }
 
   .headerRow .typeBlock {
-    background-color: #dcdcdc;
+    color: #108461;
+    font-family: Poppins;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19.31px; /* 148.538% */
+    text-transform: capitalize;
+    border: 1px solid #108461;
+    background-color: transparent;
     border-radius: 20px;
     padding: 5px 10px;
     float: right;
@@ -111,7 +120,7 @@ const SearchResultContainer = styled.div`
 
   .subHeaderRow .col-sm a {
     font-weight: bold;
-    color: #0075c7;
+    color: #00875E;
   }
 
   .subHeaderRow .fa-file {
@@ -200,7 +209,7 @@ const SearchResultContainer = styled.div`
   .bodyRow .sampleCountHighlight {
     font-family: 'Inter';
     font-weight: 600;
-    color: #11a78b;
+    color: #0C79CC;
   }
 
   .bodyRow .itemContinued {
@@ -217,7 +226,7 @@ const SearchResultContainer = styled.div`
   }
 
   .datasetTableRow a {
-    color: #6199d0;
+    color: #3069A1;
     font-weight: 600;
     text-decoration: none;
   }
@@ -680,9 +689,9 @@ const SearchResult = ({
             return (
               <div key={key} className="container">
                 <div className="row align-items-start headerRow">
-                  <div className="col-sm-8 resultTitle">
+                  <h5 className="col-sm-8 resultTitle">
                     <Link to={`/dataset/${rst.content.dataset_id}`}>{rst.content.dataset_name}</Link>
-                  </div>
+                  </h5>
                   <div className="col-sm-4">
                     <span className="typeBlock" data-bs-custom-class="custom-popover" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content={tooltip}>
                       {rst.content.primary_dataset_scope}
@@ -691,9 +700,11 @@ const SearchResult = ({
                 </div>
                 <div className="row align-items-start subHeaderRow">
                   <div className="col-sm">
-                    <img src={dataResourceIcon} alt="data-resource" />
-                    &nbsp;
-                    <Link to={`/resource/${rst.content.data_resource_id}`}>{rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name[0]) : rst.content.data_resource_id}</Link>
+                    <Link to={`/resource/${rst.content.data_resource_id}`}>
+                      <img src={dataResourceIcon} alt="data-resource" />
+                      &nbsp;
+                      {rst.highlight && rst.highlight.data_resource_name ? ReactHtmlParser(rst.highlight.data_resource_name[0]) : rst.content.data_resource_id}
+                    </Link>
                   </div>
                 </div>
                 {
