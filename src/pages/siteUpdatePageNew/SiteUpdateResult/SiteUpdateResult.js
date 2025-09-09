@@ -124,14 +124,21 @@ const NavContainer = styled.div`
     :nth-child(6n+5) {
       background-color: #e9e2bc;
     }
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   .dateListItemText {
-    width: 100%;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    color: #004187;
+    text-align: right;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    float: right;
+    display: inline-block;
   }
 `;
 
@@ -344,7 +351,7 @@ const SiteUpdateResult = ({
       const dateData = `${date.substring(5, 7)}/${date.substring(8, 10)}/${date.substring(0, 4)}`;
       const newDate = new Date(dateData);
       const newDateArr = newDate.toDateString().split(' ');
-      const month = newDate.toLocaleString('default', { month: 'long' });
+      const month = newDate.toLocaleString('default', { month: 'short' });
       const newDateFormat = month.concat(' ', newDateArr[2], ', ', newDateArr[3]);
       return newDateFormat;
     };
@@ -357,6 +364,7 @@ const SiteUpdateResult = ({
       for (let i = 0; i < siteUpdateList.length; i += 1) {
         const currYear = siteUpdateList[i].post_date.split("-")[0];
         const yearObj = {};
+        const newVersion = siteUpdateList[i].version;
         const date = siteUpdateList[i].post_date;
         const newDateFormat = formatDate(date);
         if (prevYear !== currYear) {
@@ -369,6 +377,7 @@ const SiteUpdateResult = ({
           SubObj.year = currYear;
           prevYear = currYear;
         }
+        yearObj.version = newVersion;
         yearObj.date = newDateFormat;
         yearObj.index = i;
         SubList.push(yearObj);
@@ -544,7 +553,13 @@ const SiteUpdateResult = ({
                         return (
                           <li key={yearkey} className="dateListItem" style={selectedIdx === navItem.index ? {border: '3px solid #676767', padding: '2px 7px'} : null}>
                             <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>
-                              <div className="dateListItemText">{navItem.date}</div>
+                              <div>
+                                <span>
+                                  Version:&nbsp;
+                                  {navItem.version}
+                                </span>
+                                <span className="dateListItemText">{navItem.date}</span>
+                              </div>
                             </a>
                           </li>
                         );
