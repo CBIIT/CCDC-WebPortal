@@ -512,7 +512,7 @@ const NavBar = () => {
                     <MobileLiSection style={path === "/about" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>About CCDI Data Catalog</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/contribute" || path.startsWith("/about?") ? mobileActiveStyle : null}><NavLink to="/about" onClick={handleMobileMenuClick}>Contribute to the CCDC</NavLink></MobileLiSection>
                     <MobileLiSection style={path === "/glossary" || path.startsWith("/glossary?") ? mobileActiveStyle : null}><NavLink to="/glossary" onClick={handleMobileMenuClick}>Glossary</NavLink></MobileLiSection>
-                    <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><NavLink to="/siteupdate" onClick={handleMobileMenuClick}>Site Updates</NavLink></MobileLiSection>
+                    <MobileLiSection style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? mobileActiveStyle : null}><a href="/siteupdate" onClick={handleMobileMenuClick} target="_blank" rel="noreferrer">Release Notes</a></MobileLiSection>
                     <MobileLiSection><a href="/User Guide for CCDC v1.5.4.pdf" target="_blank" rel="noreferrer">User Guide (PDF)</a></MobileLiSection>
                   </MobileSubUl>
                   <MobileLiSection><a href="https://ccdi.cancer.gov/home" target="_blank" rel="noreferrer">CCDI Hub</a></MobileLiSection>
@@ -543,7 +543,7 @@ const NavBar = () => {
                           <li><NavLink to="/about" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; About CCDI Data Catalog &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/contribute" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Contribute to the CCDC &nbsp; &nbsp;</NavLink></li>
                           <li><NavLink to="/glossary" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Glossary</NavLink></li>
-                          <li><NavLink to="/siteupdate" style={({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; Site Updates</NavLink></li>
+                          <li><a href="/siteupdate" target="_blank" rel="noreferrer" style={path === "/siteupdate" || path.startsWith("/siteupdate?") ? activeStyle : null}>&nbsp; &nbsp; Release Notes</a></li>
                           <li><a href="/User Guide for CCDC v1.5.4.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; User Guide (PDF)</a></li>
                       </ul>
                   </LiSection>

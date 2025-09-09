@@ -62,9 +62,8 @@ const SiteUpdatePage = () => {
         <PageHeaderArea>
           <PageLabelArea>
             <PageLabel>
-                <span>Updates</span>
-                <span>to the</span>
-                <span>Data Catalog Site</span>
+                <span>Release</span>
+                <span>Notes</span>
             </PageLabel>
           </PageLabelArea>
           <img src={siteUpdateGraphic} alt="site update page" />

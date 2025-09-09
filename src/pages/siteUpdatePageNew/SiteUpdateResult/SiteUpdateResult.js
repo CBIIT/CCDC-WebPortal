@@ -13,6 +13,7 @@ import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
 import XenograftIcon from '../../../assets/img/Xenograft.icon.svg';
 import EpidemiologicIcon from '../../../assets/img/Epidemiologic.icon.svg';
 import CellLinesIcon from '../../../assets/img/CellLines.icon.svg';
+import ReleaseNoteDownloadIcon from '../../../assets/img/ReleaseNoteDownloadIcon.svg';
 
 const SiteUpdateResultContainer = styled.div`
   width: 100%;
@@ -123,14 +124,21 @@ const NavContainer = styled.div`
     :nth-child(6n+5) {
       background-color: #e9e2bc;
     }
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   .dateListItemText {
-    width: 100%;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    color: #004187;
+    text-align: right;
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    float: right;
+    display: inline-block;
   }
 `;
 
@@ -201,7 +209,7 @@ const SiteUpdateExport = styled.div`
     z-index: 9;
 
     .spanText {
-      padding-right: 30px;
+      padding-right: 15px;
       display: flex;
     }
     
@@ -343,7 +351,7 @@ const SiteUpdateResult = ({
       const dateData = `${date.substring(5, 7)}/${date.substring(8, 10)}/${date.substring(0, 4)}`;
       const newDate = new Date(dateData);
       const newDateArr = newDate.toDateString().split(' ');
-      const month = newDate.toLocaleString('default', { month: 'long' });
+      const month = newDate.toLocaleString('default', { month: 'short' });
       const newDateFormat = month.concat(' ', newDateArr[2], ', ', newDateArr[3]);
       return newDateFormat;
     };
@@ -356,6 +364,7 @@ const SiteUpdateResult = ({
       for (let i = 0; i < siteUpdateList.length; i += 1) {
         const currYear = siteUpdateList[i].post_date.split("-")[0];
         const yearObj = {};
+        const newVersion = siteUpdateList[i].version;
         const date = siteUpdateList[i].post_date;
         const newDateFormat = formatDate(date);
         if (prevYear !== currYear) {
@@ -368,6 +377,7 @@ const SiteUpdateResult = ({
           SubObj.year = currYear;
           prevYear = currYear;
         }
+        yearObj.version = newVersion;
         yearObj.date = newDateFormat;
         yearObj.index = i;
         SubList.push(yearObj);
@@ -526,7 +536,7 @@ const SiteUpdateResult = ({
       <SiteUpdateResultContainer>
         <NavContainer>
           <ul className="navListContainer">
-            <div className="navTitle">Release Note</div>
+            <div className="navTitle">Release</div>
           {
             siteUpdateNav.map((subObj, objidx) => {
               const objkey = `obj_${objidx}`;
@@ -543,7 +553,13 @@ const SiteUpdateResult = ({
                         return (
                           <li key={yearkey} className="dateListItem" style={selectedIdx === navItem.index ? {border: '3px solid #676767', padding: '2px 7px'} : null}>
                             <a href="#" role="button" onClick={() => setSelectedIdx(navItem.index)}>
-                              <div className="dateListItemText">{navItem.date}</div>
+                              <div>
+                                <span>
+                                  Version:&nbsp;
+                                  {navItem.version}
+                                </span>
+                                <span className="dateListItemText">{navItem.date}</span>
+                              </div>
                             </a>
                           </li>
                         );
@@ -604,10 +620,9 @@ const SiteUpdateResult = ({
                   <SiteUpdateExport>
                     <a href="#" role="button" className="buttonStyle" onClick={() => handleExport(`post${siteUpdateList[selectedIdx].id}`)}>
                       <span className="spanText">
-                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="svg-inline--fa fa-arrow-from-bottom fa-w-12 fa-lg">
-                          <path fill="currentColor" d="M360 480H24c-13.3 0-24-10.7-24-24v-24c0-13.3 10.7-24 24-24h336c13.3 0 24 10.7 24 24v24c0 13.3-10.7 24-24 24zM90.4 216.5l65.6-65.6V360c0 13.3 10.7 24 24 24h24c13.3 0 24-10.7 24-24V150.9l65.6 65.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L209 30.1c-9.4-9.4-24.6-9.4-33.9 0L39.5 165.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0z" className="" />
-                        </svg>
-                        &nbsp;&nbsp;export
+                        <img src={ReleaseNoteDownloadIcon} alt="download icon" />
+                        &nbsp;&nbsp;
+                        <span style={{ paddingTop: '3px' }}>DOWNLOAD</span>
                       </span>
                     </a>
                   </SiteUpdateExport>
