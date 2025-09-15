@@ -20,7 +20,7 @@ const DocumentCard = styled.div`
   padding: 0 20px 40px 20px;
 
   b {
-    color: #00875E;
+    color: #036EED;
   }
 `;
 
@@ -32,6 +32,7 @@ const DocumentHeader = styled.div`
 
   a {
     color: #00875E;
+    font-weight: 500;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
@@ -56,6 +57,7 @@ const DocumentLink = styled.div`
 
   a {
     color: #00875E;
+    font-weight: 500;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
@@ -75,7 +77,6 @@ const SearchResult = ({
           ) : resultList.map(({ content, highlight }, idx) => {
             const key = `sr_${idx}`;
             const linkFullPath = domain + content.link;
-            const title = highlight && highlight.title ? highlight.title : content.title;
             let desc = content.description;
             if (highlight && highlight.description) {
               const [arrDesc] = highlight.description;
@@ -86,10 +87,10 @@ const SearchResult = ({
                 desc = `${desc.substring(0, 600)} ...`;
               }
             }
-            const link = highlight && highlight.content ? `<b>${linkFullPath}</b>` : linkFullPath;
-            let updatedTitle = title;
-            if (Array.isArray(title)) {
-              [updatedTitle] = title;
+            const link = linkFullPath;
+            let updatedTitle = content.title;
+            if (Array.isArray(content.title)) {
+              [updatedTitle] = content.title;
             }
             return (
               <DocumentCard key={key}>

@@ -151,7 +151,7 @@ const ContributeContainer = styled.div`
     .contributeContent1 a {
         /* color: rgb(0, 150, 255); */
         color: #00875E;
-        font-weight: bold;
+        font-weight: 500;
         text-underline-offset: 2px;
     }
     .contributeGrid{
