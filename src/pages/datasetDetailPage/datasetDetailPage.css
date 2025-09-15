@@ -345,7 +345,7 @@ ul.breadcrumb li a:hover {
 .dataElementContentPublished {
   color: #00875E;
   font-family: Lato;
-  font-weight: normal;
+  font-weight: 500;
   max-height: 200px;
   max-width: 540px;
   overflow: auto;
@@ -372,6 +372,7 @@ ul.breadcrumb li a:hover {
 .additionalDataLinks {
   margin-top: 10px;
   color: #00875E;
+  font-weight: 500;
   /* color: black; */
   text-transform: none;
   max-width: 95%;

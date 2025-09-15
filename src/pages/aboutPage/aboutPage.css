@@ -46,7 +46,7 @@
 .aboutContent1 a {
     /* color: rgb(0, 150, 255); */
     color: #00875E;
-    font-weight: bold;
+    font-weight: 500;
     text-underline-offset: 2px;
 }
 .aboutPageSection2Container {
@@ -79,7 +79,7 @@
 .aboutContent2 a {
     /* color: white; */
     color: #004187;
-    font-weight: bold;
+    font-weight: 500;
     text-underline-offset: 2px;
 }
 .aboutGrid{

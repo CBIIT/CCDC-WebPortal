@@ -41,6 +41,7 @@ const ParticipatingResourceGridContainer = styled.div`
 const HeaderLinks = styled.div`
   a[target="_blank"] {
     background: url(${headerExternalIcon}) right center no-repeat;
+    font-weight: 500;
     padding-right: 30px;
     // margin-left: -5px;
     background-size: 32px;
@@ -51,6 +52,7 @@ const HeaderLinks = styled.div`
 const ResourceBody = styled.div`
   a[target="_blank"] {
     color: #00875E;
+    font-weight: 500;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     // margin-left: -5px;
@@ -84,6 +86,7 @@ const DatasetSummaryContainer = styled.div`
 
   a[target="_blank"] {
     color: #00875E;
+    font-weight: 500;
     background: url(${externalIcon}) right top no-repeat;
     // padding-left: 30px;
     padding-right: 30px;
