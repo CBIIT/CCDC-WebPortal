@@ -214,8 +214,7 @@ const Glossary = ({
                                             glossaryItem.reference.includes("http")
                                             && (
                                                 <>
-                                                    <p className="glossaryItemLink">{linkArr[0].trim()}</p>
-                                                    <p className="glossaryItemLink"><a href={'http'.concat(linkArr[1])} target="_blank" rel="noreferrer noopener">{'http'.concat(linkArr[1])}</a></p>
+                                                    <p className="glossaryItemLink"><a href={'http'.concat(linkArr[1])} target="_blank" rel="noreferrer noopener">{linkArr[0].trim()}</a></p>
                                                 </>
                                             )
                                         }
