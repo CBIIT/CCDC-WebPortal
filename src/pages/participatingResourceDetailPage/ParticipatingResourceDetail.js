@@ -98,6 +98,7 @@ const DataLink = styled.li`
   display: inline;
 
   a {
+    font-weight: 500;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
