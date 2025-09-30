@@ -67,7 +67,7 @@ const SiteUpdatePage = () => {
                 <span>Data Catalog Site</span>
             </PageLabel>
           </PageLabelArea>
-          <img src={siteUpdateGraphic} alt="site update page" />
+          <img src={siteUpdateGraphic} alt="Keyboard with a button that says, website update" />
         </PageHeaderArea>
       </PageHeaderContainer>
       <SiteUpdateContainer>
