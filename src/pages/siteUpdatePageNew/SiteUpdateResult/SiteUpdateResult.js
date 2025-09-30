@@ -43,6 +43,7 @@ const NavContainer = styled.div`
     letter-spacing: 0.105px;
     padding: 7px 0 6px 10px;
     background: #F7F8FA;
+    margin-bottom: 0;
   }
 
   .dateSubListContainer {
@@ -60,7 +61,7 @@ const NavContainer = styled.div`
     padding: 7px 0;
     // margin-top: 2px;
     border: none;
-    color: #8A9296;
+    color: #6B7276;
     font-family: Lato;
     font-size: 12.8px;
     font-style: normal;
@@ -165,15 +166,19 @@ const SiteUpdateCard = styled.div`
 `;
 
 const SiteUpdateCardTitle = styled.div`
-    color: #00A272;
-    font-family: Inter;
-    font-size: 33px;
-    font-weight: 300;
-    line-height: 39.6px;
-    letter-spacing: -0.165px;
     border-bottom: 2px solid #004187;
     margin: 5px 0px 5px 0px;
     padding-bottom: 10px;
+
+    h2 {
+      color: #00A272;
+      font-family: Inter;
+      font-size: 33px;
+      font-weight: 300;
+      line-height: 39.6px;
+      letter-spacing: -0.165px;
+      margin-bottom: 0;
+    }
 `;
 
 const DataContentType = styled.div`
@@ -256,7 +261,7 @@ const SiteUpdateCardDescription = styled.div`
     padding: 0px 0px 20px 0px;
 
     .dateContainer {
-      color: #707F8D;
+      color: #6B7276;
       font-family: Lato;
       font-size: 16px;
       font-style: normal;
@@ -536,7 +541,7 @@ const SiteUpdateResult = ({
       <SiteUpdateResultContainer>
         <NavContainer>
           <ul className="navListContainer">
-            <div className="navTitle">Release</div>
+            <h4 className="navTitle">Release</h4>
           {
             siteUpdateNav.map((subObj, objidx) => {
               const objkey = `obj_${objidx}`;
@@ -583,8 +588,8 @@ const SiteUpdateResult = ({
           : (
               <SiteUpdateItem id={`post${siteUpdateList[selectedIdx].id}`}>
                 <SiteUpdateCard>
-                  <SiteUpdateCardTitle id={`post${siteUpdateList[selectedIdx].id}_title`} title={siteUpdateList[selectedIdx].title}>
-                    {siteUpdateList[selectedIdx].title}
+                  <SiteUpdateCardTitle>
+                    <h2 id={`post${siteUpdateList[selectedIdx].id}_title`} title={siteUpdateList[selectedIdx].title}>{siteUpdateList[selectedIdx].title}</h2>
                   </SiteUpdateCardTitle>
                   { siteUpdateList[selectedIdx].content_type
                   && (
