@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/sitesearch" element={<DocumentSearchPage />} />
         <Route path="/glossary" element={<Glossary />} />
-        <Route path="/siteupdate" element={<SiteUpdatePage />} />
+        <Route path="/releasenotes" element={<SiteUpdatePage />} />
         <Route path="/contribute" element={<ContributePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
