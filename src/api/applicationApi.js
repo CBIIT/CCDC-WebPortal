@@ -15,7 +15,7 @@ export function getWidgetUpdates() {
 }
 
 export function getSiteUpdates(body) {
-  return fetch(`${baseUrl}/siteupdate`, {
+  return fetch(`${baseUrl}/releasenotes`, {
     method: 'POST',
     body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' }
