@@ -172,7 +172,7 @@ const SearchCatalogPage = ({
                         A minimum of 3 character are needed for a term search.
                       </li>
                       <li>
-                        Searches will return both full and partial word results (i.e. leuk will returns results for leukemia).
+                        Searches will return both full and partial word results (i.e. leuk will return results for leukemia).
                       </li>
                       <li>
                         If you search multiple terms (i.e. lymphocytic survivors) the search results will return sources that contain all the specified terms (AND Boolean operator).
