@@ -6,7 +6,7 @@ COPY . .
 
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm set progress=false
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm ci --legacy-peer-deps
-RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build --silent
+RUN NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run build --silent
 
 
 FROM nginx:1.26.3-alpine-slim AS fnl_base_image
