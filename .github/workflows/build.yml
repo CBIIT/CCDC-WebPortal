@@ -35,11 +35,14 @@ jobs:
       run: |
         # Get all tags for the repo and find the latest tag for the branch being built
         git fetch --tags --force --quiet
-        tag=$(git tag -l "$BRANCH_NAME.[0-9]*" | sort -V | tail -1)
-        if  [ ! -z "$tag" ];
+        # Match tags like BRANCH.NUMBER or BRANCH.NUMBER.SUBNUMBER and extract the first build number
+        build_num=$(git tag -l "$BRANCH_NAME.*" | \
+          sed -n "s/^$BRANCH_NAME\.\([0-9]\+\).*/\1/p" | \
+          sort -n | \
+          tail -1)
+        if  [ ! -z "$build_num" ];
         then
           # Increment the build number if a tag is found
-          build_num=$(echo "${tag##*.}")
           build_num=$((build_num+1))
           echo "IMAGE_TAG=$GITHUB_REF_NAME.$build_num" >> $GITHUB_ENV
         else
