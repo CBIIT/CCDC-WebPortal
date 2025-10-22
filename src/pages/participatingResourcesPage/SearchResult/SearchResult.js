@@ -68,6 +68,7 @@ const ResourceDesc = styled.div`
 
   a {
     color: #00875E;
+    font-weight: 500;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;
     background-size: 32px;

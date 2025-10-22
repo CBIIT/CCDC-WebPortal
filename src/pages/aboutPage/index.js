@@ -9,7 +9,7 @@ const AboutContainer = styled.div`
 //   display: inline-flex;
   a[target="_blank"] {
     color: #00875E;
-    font-weight: bold;
+    font-weight: 500;
     text-underline-offset: 2px;
     background: url(${externalIcon}) right center no-repeat;
     padding-right: 30px;

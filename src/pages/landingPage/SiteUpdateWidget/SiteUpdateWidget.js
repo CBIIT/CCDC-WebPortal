@@ -225,7 +225,7 @@ const SiteUpdateWidget = ({
                             {
                                 widgetUpdates.map((item, idx) => {
                                     const itemKey = `update_${idx}`;
-                                    const link = `/siteupdate#post${item.id}`;
+                                    const link = `/releasenotes#post${item.id}`;
                                     let desc = item.description;
                                     if (item.log_type === 0) {
                                         desc = desc.replace(/<a /g, "<a target=\"_blank\" ");

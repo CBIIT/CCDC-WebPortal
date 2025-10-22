@@ -29,13 +29,17 @@ const PageLabelArea = styled.div`
 
 const PageLabel = styled.div`
   display: grid;
-  color: #004187;
-  font-family: Inter;
-  font-size: 42px;
-  font-weight: 600;
-  line-height: 42px;
-  padding-left: 25px;
   margin: 10px 0px 50px 0px;
+  padding-left: 25px;
+
+  h1 {
+    width: 150px;
+    color: #004187;
+    font-family: Inter;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 42px;
+  }
 `;
 
 const SiteUpdateContainer = styled.div`
@@ -62,12 +66,10 @@ const SiteUpdatePage = () => {
         <PageHeaderArea>
           <PageLabelArea>
             <PageLabel>
-                <span>Updates</span>
-                <span>to the</span>
-                <span>Data Catalog Site</span>
+                <h1>Release Notes</h1>
             </PageLabel>
           </PageLabelArea>
-          <img src={siteUpdateGraphic} alt="site update page" />
+          <img src={siteUpdateGraphic} alt="Keyboard with a button that says, website update" />
         </PageHeaderArea>
       </PageHeaderContainer>
       <SiteUpdateContainer>
