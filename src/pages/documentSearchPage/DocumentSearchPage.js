@@ -32,11 +32,14 @@ const PageLabelArea = styled.div`
 `;
 
 const PageLabel = styled.div`
-  color: #004187;
-  font-size: 40px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 20px;
+  h1 {
+    color: #004187;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    line-height: 60px;
+  }
 `;
 
 const SearchBoxArea = styled.div`
@@ -209,7 +212,7 @@ const DocumentSearchPage = ({
       <PageHeaderContainer>
         <PageHeaderArea>
           <PageLabelArea>
-            <PageLabel>Documentation Search</PageLabel>
+            <PageLabel><h1>Documentation Search</h1></PageLabel>
             <SearchBoxArea>
               <InputGroup className="searchBoxInputGroup">
                 <FormControl
@@ -238,7 +241,7 @@ const DocumentSearchPage = ({
               </InputGroup>
             </SearchBoxArea>
           </PageLabelArea>
-          <PageLogoArea />
+          <PageLogoArea role="img" aria-label="Young boy playing on swing set" />
         </PageHeaderArea>
       </PageHeaderContainer>
       <SearchContainer>
