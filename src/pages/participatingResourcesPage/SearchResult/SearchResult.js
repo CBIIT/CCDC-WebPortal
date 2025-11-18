@@ -258,7 +258,7 @@ const SearchResult = ({
             }
             if (rst.poc_email) {
               pocEmailArray = rst.poc_email.split(";");
-            } else {
+            } else if (rst.resource_contact_url) {
                 pocEmailArray = rst.resource_contact_url.split(";");
             }
             return (
