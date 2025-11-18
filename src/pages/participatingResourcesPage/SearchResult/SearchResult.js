@@ -258,6 +258,8 @@ const SearchResult = ({
             }
             if (rst.poc_email) {
               pocEmailArray = rst.poc_email.split(";");
+            } else {
+                pocEmailArray = rst.resource_contact_url.split(";");
             }
             return (
               <ResourceCard key={key}>
@@ -277,11 +279,11 @@ const SearchResult = ({
                 <ResourceContact>
                   <ContactInfo>
                     <POCInfo>
-                      <label>Point of Contact:</label>
+                      <label>Contact:</label>
                       {
-                        rst.poc_email.includes("http")
+                        (rst.poc_email && rst.poc_email.includes("http")) || (rst.resource_contact_url && rst.resource_contact_url.includes("http"))
                         ? (
-                            <a href={rst.poc_email} target="_blank" rel="noreferrer noopener">
+                            <a href={rst.poc_email ? rst.poc_email : rst.resource_contact_url} target="_blank" rel="noreferrer noopener">
                               {rst.poc}
                               <SiteIcon />
                             </a>
