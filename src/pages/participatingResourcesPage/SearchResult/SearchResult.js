@@ -259,7 +259,7 @@ const SearchResult = ({
             if (rst.poc_email) {
               pocEmailArray = rst.poc_email.split(";");
             } else if (rst.resource_contact_url) {
-                pocEmailArray = rst.resource_contact_url.split(";");
+              pocEmailArray = rst.resource_contact_url.split(";");
             }
             return (
               <ResourceCard key={key}>
