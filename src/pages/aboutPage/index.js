@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import * as downloadApi from "../../api/downloadApi";
+// import * as downloadApi from "../../api/downloadApi";
 import aboutHeaderImage from "../../assets/img/About.png";
 import externalIcon from "../../assets/img/resource.svg";
 import './aboutPage.css';
@@ -16,13 +16,22 @@ const AboutContainer = styled.div`
     background-size: 32px;
     display: inline-table;
   }
+
+  .aboutPageSection2Container {
+    a[target="_blank"] {
+      color: #004187;
+      font-weight: 500;
+      text-underline-offset: 2px;
+      background: none;
+      padding-right: 0px;
+  }
 `;
 
 const AboutPage = () => {
-  const handleDownloadTemplate = (event) => {
-    event.preventDefault();
-    downloadApi.getSubmissionTemplate();
-  };
+//   const handleDownloadTemplate = (event) => {
+//     event.preventDefault();
+//     downloadApi.getSubmissionTemplate();
+//   };
   window.scrollTo(0, 0);
   return (
     <>
@@ -101,7 +110,7 @@ const AboutPage = () => {
                         </p>
                         <p style={{ paddingBottom: '10px' }}>
                             If you would like to include your resource in this data catalog, complete the&nbsp;
-                            <a href="#" onClick={handleDownloadTemplate}>summary submission template</a>
+                            <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer">summary submission template</a>
                             &nbsp;and&nbsp;
                             <br />
                             <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">email to Childhood Cancer Data Initiative</a>
