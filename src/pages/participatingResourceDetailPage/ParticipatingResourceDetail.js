@@ -266,8 +266,12 @@ const ParticipatingResourceDetail = ({
   dataContentTypes = dataContentTypes.split(',').sort().join(', ');
   let resourseLinks = detail.resource_uri === undefined || detail.resource_uri === null ? "" : detail.resource_uri;
   if (detail.resource_uri) { resourseLinks = resourseLinks.split(';'); }
-  let pocLinks = detail.poc_email === undefined || detail.poc_email === null ? "" : detail.poc_email;
-  if (detail.poc_email) { pocLinks = pocLinks.split(';'); }
+  let pocLinks = [];
+  if (detail.poc_email) {
+    pocLinks = detail.poc_email.split(';');
+  } else if (detail.resource_contact_url) {
+    pocLinks = detail.resource_contact_url.split(';');
+  }
 
   const getTooltipTermList = datasets.map((dt) => {
     return dt.primary_dataset_scope;
@@ -342,17 +346,28 @@ const ParticipatingResourceDetail = ({
                   </HeaderLinks>
                   <HeaderLinks>
                   <div className="prDetailHeaderContent">
-                    Point of Contact: &nbsp;
+                    Contact: &nbsp;
                     <span className="prDetailHeaderText">
                       {detail.poc ? detail.poc : null}
                       {detail.poc ? ', ' : null}
                       &nbsp;
                       {/* {detail.poc_email ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${detail.poc_email}`}>{detail.poc_email}</a></DataLink> : null} */}
-                      {pocLinks[0] && pocLinks[0].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[0]}`}>{pocLinks[0]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[0]} target="_blank" rel="noreferrer noopener">{pocLinks[0]}</a></DataLink>}
-                      {pocLinks[1] ? ', ' : null}
-                      {pocLinks[1] && pocLinks[1].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[1]}`}>{pocLinks[1]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[1]} target="_blank" rel="noreferrer noopener">{pocLinks[1]}</a></DataLink>}
-                      {pocLinks[2] ? ', ' : null}
-                      {pocLinks[2] && pocLinks[2].includes("@") ? <DataLink><a className="prDetailHeaderLink" href={`mailto:${pocLinks[2]}`}>{pocLinks[2]}</a></DataLink> : <DataLink><a className="prDetailHeaderLink" href={pocLinks[2]} target="_blank" rel="noreferrer noopener">{pocLinks[2]}</a></DataLink>}
+                      {pocLinks && pocLinks.map((link, index) => (
+                        link && (
+                          <>
+                            {index > 0 && ', '}
+                            {link.includes("@") ? (
+                              <DataLink>
+                                <a className="prDetailHeaderLink" href={`mailto:${link}`}>{link}</a>
+                              </DataLink>
+                            ) : (
+                              <DataLink>
+                                <a className="prDetailHeaderLink" href={link} target="_blank" rel="noreferrer noopener">{link}</a>
+                              </DataLink>
+                            )}
+                          </>
+                        )
+                      ))}
                     </span>
                   </div>
                   </HeaderLinks>

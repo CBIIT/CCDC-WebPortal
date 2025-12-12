@@ -419,7 +419,7 @@ const DatasetDetail = ({
                     </div>
                     <HeaderLinks>
                       <div className="datasetDetailHeaderContent">
-                        <span>Point of Contact: &nbsp;</span>
+                        <span>Contact: &nbsp;</span>
                         <div className="datasetDetailHeaderText">
                           <span testid="poc_name">{content.poc ? content.poc : null}</span>
                           {content.poc ? ', ' : null}

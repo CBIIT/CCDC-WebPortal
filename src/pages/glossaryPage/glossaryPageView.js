@@ -104,7 +104,7 @@ const GlossaryContainer = styled.div`
     }
 
     .glossaryItemType {
-        color: #838383;
+        color: #757575;
         font-size: 85%;
         font-family: Inter;
         font-weight: 600;
@@ -149,9 +149,9 @@ const Glossary = ({
     const [key, setKey] = useState('A');
 
     const activeStyle = {
-        color: '#00875E',
+        color: '#008059',
         fontWeight: 'bold',
-        borderBottom: '3px solid #00875E',
+        borderBottom: '3px solid #008059',
         // textDecoration: 'underline',
         // textUnderlineOffset: '6px',
         // textDecorationThickness: '3px',
