@@ -44,6 +44,12 @@ const ResourceTitle = styled.div`
     color: inherit;
     text-decoration: inherit;
   }
+
+  h4 {
+    color: #004187;
+    font-weight: 600;
+    font-size: 1.28rem;
+  }
 `;
 
 const ResourceLogo = styled.div`
@@ -265,7 +271,7 @@ const SearchResult = ({
               <ResourceCard key={key}>
                 <ResourceHeader>
                   <ResourceTitle>
-                    <a href={linkto}>{fullTitle}</a>
+                    <a href={linkto}><h4>{fullTitle}</h4></a>
                   </ResourceTitle>
                   <ResourceLogo>
                     <ResourceIcon>

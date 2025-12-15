@@ -22,8 +22,12 @@ const FilterLabel = styled.div`
   font-weight: 900;
   font-size: 1.4rem;
 
-  span {
+  h3 {
     font-size: 21px;
+    color: #004187;
+    font-weight: 900;
+    line-height: 33px;
+    margin-bottom: 0;
   }
 
   .clearAllButton {
@@ -89,7 +93,7 @@ const Filters = ({
   return (
     <FilterSection>
       <FilterLabel>
-        <span>Resource Filter</span>
+        <h3>Resource Filter</h3>
         <button type="button" className="clearAllButton" onClick={() => handleResourceClick()}>
             <img src={clearAllIcon} alt="clear-all" />
         </button>
