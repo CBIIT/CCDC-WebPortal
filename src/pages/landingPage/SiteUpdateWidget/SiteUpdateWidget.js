@@ -232,7 +232,7 @@ const SiteUpdateWidget = ({
                                     } else {
                                         desc = desc.length > 150 ? `${desc.substr(0, 150)}...` : desc;
                                     }
-                                    const hl = `${desc} <a href="${link}">Read More > </a>`;
+                                    const hl = `${desc} <a href="${link}" target="_blank" rel="noreferrer">Read More > </a>`;
                                     return (
                                         <Carousel.Item key={itemKey}>
                                             {
@@ -240,7 +240,7 @@ const SiteUpdateWidget = ({
                                                     <WidgetCard>
                                                         <CardTitle>
                                                             <h4>
-                                                            <a href={link}>
+                                                            <a href={link} target="_blank" rel="noreferrer">
                                                                 {item.title}
                                                             </a>
                                                             </h4>
