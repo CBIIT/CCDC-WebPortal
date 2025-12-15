@@ -28,7 +28,7 @@ const Accordion = ({
           return (
             <div key={key} className="accordion-item">
               <h2 className="accordion-header">
-                <button type="button" onClick={() => handleClick(idx)} className={`accordion-button accordion-button-ccdc ${open[idx] ? "" : "collapsed"}`}>
+                <button type="button" style={{color: '#6B7276'}} onClick={() => handleClick(idx)} className={`accordion-button accordion-button-ccdc ${open[idx] ? "" : "collapsed"}`}>
                   {field}
                 </button>
               </h2>
