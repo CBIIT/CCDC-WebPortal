@@ -25,7 +25,7 @@ const PageLabelArea = styled.div`
   width: 500px;
 `;
 
-const PageLabel = styled.div`
+const PageLabel = styled.h1`
   color: #004187;
   font-size: 42px;
   line-height: 42px;
@@ -122,7 +122,7 @@ const ParticipatingResourcesPage = ({
               </PageLabelMore>
             )}
           </PageLabelArea>
-          <PageLogoArea />
+          <PageLogoArea aria-label="Doctor smiling and leaning over child in hospital bed" />
         </PageHeaderArea>
       </PageHeaderContainer>
       <SearchContainer>
