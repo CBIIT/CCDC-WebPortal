@@ -35,7 +35,7 @@ export default {
         },
         {
           text: 'Release Notes',
-          link: '/siteupdate',
+          link: '/releasenotes',
         }
       ],
     },
