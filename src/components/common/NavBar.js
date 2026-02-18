@@ -529,7 +529,7 @@ const NavBar = () => {
                       <ul className="dropdown">
                           <li><NavLink to="/resource/CCDI" style={path === "/resource/CCDI" ? activeStyle : ({ isActive }) => (isActive ? activeStyle : null)}>&nbsp; &nbsp; CCDI Resource & Datasets</NavLink></li>
                           <li><a href="https://clinicalcommons.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Childhood Cancer Clinical Data Commons &nbsp; &nbsp;</a></li>
-                          <li><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.6.zip" target="_blank" rel="noreferrer">&nbsp; &nbsp; Metadata Files</a></li>
+                          <li><a href="https://d2xnga7irezzit.cloudfront.net/ccdc_files/digests/digest_1.5.7.zip" target="_blank" rel="noreferrer">&nbsp; &nbsp; Metadata Files</a></li>
                           <li><a href="https://moleculartargets.ccdi.cancer.gov" target="_blank" rel="noreferrer">&nbsp; &nbsp; Molecular Targets Platform</a></li>
                           <li><a href="/CCDI_CGC_Data_Access_Instructions_2.0.pdf" target="_blank" rel="noreferrer">&nbsp; &nbsp; Accessing CCDI Data (PDF)</a></li>
                       </ul>
