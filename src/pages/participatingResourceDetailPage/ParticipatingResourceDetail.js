@@ -330,7 +330,7 @@ const ParticipatingResourceDetail = ({
                   </ul>
                 </div>
                 <div className="prDetailHeaderContainer">
-                  <div className="prDetailHeaderLabel">{detail.resource_name}</div>
+                  <h1 className="prDetailHeaderLabel">{detail.resource_name}</h1>
                   <div className="prIcon">
                     {detail.data_resource_id ? <DataResourceIcons participatingResource={detail.data_resource_id} type="white" /> : null}
                   </div>
@@ -391,24 +391,24 @@ const ParticipatingResourceDetail = ({
                 <div className="prAboutContentContainer">
                   <div className="prAboutResourceContainer">
                     <div className="accordion-item-pr">
-                      <h2 className="accordion-header-pr">
-                        <div aria-hidden="true" onClick={() => setOpen(!open)} className={`accordion-button-pr accordion-button-ccdc-pr ${open ? "" : "collapsed"}`}>
+                      <div className="accordion-header-pr">
+                        <h2 aria-hidden="true" onClick={() => setOpen(!open)} className={`accordion-button-pr accordion-button-ccdc-pr ${open ? "" : "collapsed"}`}>
                           About This Resource
-                        </div>
-                      </h2>
+                        </h2>
+                      </div>
                       <Collapse in={open}>
                         <div id="collapse1">
                           <div className="prAboutResourceContent">
                             {detail.description && ReactHtmlParser(detail.description)}
                           </div>
                           <div className="prResourceToolsContainer">
-                          <div className="prCoreDataLabel">Resource Description</div>
-                          <div className="prDataElementLabel">Resource Type</div>
+                          <h3 className="prCoreDataLabel">Resource Description</h3>
+                          <h4 className="prDataElementLabel">Resource Type</h4>
                           <div className="prDataElementContent">{detail.resource_type}</div>
-                          <div className="prDataElementLabel">Specialization</div>
+                          <h4 className="prDataElementLabel">Specialization</h4>
                           <div className="prDataElementContent">{detail.pediatric_specific > 0 ? "Pediatric" : "Mixed Adult and Pediatric"}</div>
                           <br />
-                          <div className="prDataElementLabel">Data Update Date</div>
+                          <h4 className="prDataElementLabel">Data Update Date</h4>
                           {detail.data_update_date ? <div className="prDataElementContent">{detail.data_update_date}</div> : null}
                           </div>
                           <div className="prDataAccessContainer">
@@ -417,19 +417,19 @@ const ParticipatingResourceDetail = ({
                               {dataContentTypes}
                           </div>
                           <div className="prResourceToolsContainer">
-                            <div className="prCoreDataLabel">Resource Tools</div>
+                            <h3 className="prCoreDataLabel">Resource Tools</h3>
                             <div>
-                              <div className="prDataElementLabel">Visualization Tools</div>
+                              <h4 className="prDataElementLabel">Visualization Tools</h4>
                               <div className="prDataElementContent">{detail.visualization > 0 ? 'YES' : ''}</div>
                             </div>
                             <div>
-                              <div className="prDataElementLabel">Analytic Tools</div>
+                              <h4 className="prDataElementLabel">Analytic Tools</h4>
                               <div className="prDataElementContent">{detail.analytics > 0 ? 'YES' : ''}</div>
                             </div>
                           </div>
                           <div className="prDataAccessContainer">
                             <div className="prAdditionalDataLabel">Data Access</div>
-                            {/* <div className="prDataElementLabel">API (Internal)</div> */}
+                            {/* <h4 className="prDataElementLabel">API (Internal)</h4> */}
                             <br />
                               {
                                 detail.api
