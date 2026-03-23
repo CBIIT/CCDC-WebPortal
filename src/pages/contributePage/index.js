@@ -193,7 +193,7 @@ const ContributePage = () => {
                         <br />
                         Catalog
                     </h2>
-                    <img className="contributeHeaderImage" src={contributeHeaderrImage} alt="contribute Header Image" />
+                    <img className="contributeHeaderImage" src={contributeHeaderrImage} alt="Toddler holds stuffed bear in hospital" />
                     <img className="contributeHeaderTablet" src={contributeHeaderTablet} alt="contribute Header Tablet" />
                     <div className="contributeHeaderMobile" />
                     <div className="contributeHeaderMobileCover">
@@ -211,11 +211,10 @@ const ContributePage = () => {
                     <br />
                     <h2 className="contributeContentHeader1">How to Contribute?</h2>
                     <p style={{ paddingBottom: '10px' }}>
-                        Review the&nbsp;
-                        <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer">CCDC Submission Template</a>
-                        , complete it, and send it to&nbsp;
-                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">NCIChildhoodCancerDataInitiative@mail.nih.gov</a>
-                        . All submitted templates will undergo review by the CCDC team. The CCDC team will collaborate closely with resource and data owners to summarize data and integrate it into periodic releases of the CCDC site.
+                        <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer" title="Download the summary submission template">Download the summary submission template</a>
+                        &nbsp;and send the completed form via&nbsp;
+                        <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">email to Childhood Cancer Data Initiative</a>
+                        . The CCDC team will collaborate closely with resource and data owners to summarize data and integrate it into periodic releases of the CCDC site.
                     </p>
                     <img className="contributeFlow" src={contributeFlowImg} alt="contribute Flow Image" />
                     <img className="contributeFlowMobile" src={contributeFlowMobile} alt="contribute Flow Image Mobile" />
