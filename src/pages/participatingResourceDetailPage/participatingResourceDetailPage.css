@@ -234,6 +234,7 @@
   font-family: Lato;
   border-bottom: 1px solid #004187;
   width: 100%;
+  margin-bottom: 0;
 }
 
 .prDataAccessContainer {
@@ -256,6 +257,7 @@
 }
 
 .prDataElementLabel {
+  margin: 0;
   padding: 20px 0 0px 0px;
   /* color: #2dc799; */
   color: #8E6D25;
