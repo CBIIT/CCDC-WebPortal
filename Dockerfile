@@ -10,6 +10,9 @@ RUN NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run b
 
 FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
 
+# Patch OS-level CVEs (openssl, musl) against base image package versions
+RUN apk update && apk upgrade openssl musl && rm -rf /var/cache/apk/*
+
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 COPY --from=build /usr/src/app/config/inject.template.js /usr/share/nginx/html/inject.template.js
 COPY --from=build /usr/src/app/config/nginx.conf /etc/nginx/conf.d/configfile.template
