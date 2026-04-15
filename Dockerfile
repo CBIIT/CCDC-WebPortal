@@ -10,11 +10,12 @@ RUN NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run b
 
 FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
 
-# Pin openssl/musl; bump zlib to latest in v3.23 main (plain `apk upgrade` can keep slim-base revisions)
+# Pin openssl + musl family; bump zlib (pin musl-utils too — slim base can keep r21 while musl is r23)
 RUN apk update \
     && apk add --no-cache --upgrade \
         openssl=3.5.6-r0 \
         musl=1.2.5-r23 \
+        musl-utils=1.2.5-r23 \
         zlib \
     && rm -rf /var/cache/apk/*
 
