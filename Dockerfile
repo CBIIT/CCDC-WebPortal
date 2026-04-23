@@ -10,6 +10,15 @@ RUN NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run b
 
 FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
 
+# Pin openssl + musl family; bump zlib (pin musl-utils too — slim base can keep r21 while musl is r23)
+RUN apk update \
+    && apk add --no-cache --upgrade \
+        openssl=3.5.6-r0 \
+        musl=1.2.5-r23 \
+        musl-utils=1.2.5-r23 \
+        zlib \
+    && rm -rf /var/cache/apk/*
+
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 COPY --from=build /usr/src/app/config/inject.template.js /usr/share/nginx/html/inject.template.js
 COPY --from=build /usr/src/app/config/nginx.conf /etc/nginx/conf.d/configfile.template
