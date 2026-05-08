@@ -47,7 +47,7 @@ const AboutPage = () => {
                         <br />
                         Data Catalog
                     </h2>
-                    <img className="aboutHeaderImage" src={aboutHeaderImage} alt="about page" />
+                    <img className="aboutHeaderImage" src={aboutHeaderImage} alt="Young girl with cancer and woman smile for picture in front of landscape" />
                 </div>
             </div>
             <div className="aboutGrid" />
@@ -110,9 +110,9 @@ const AboutPage = () => {
                         </p>
                         <p style={{ paddingBottom: '10px' }}>
                             If you would like to include your resource in this data catalog, complete the&nbsp;
-                            <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer">summary submission template</a>
-                            &nbsp;and&nbsp;
-                            <br />
+                            If you would like to include your resource in this data catalog,&nbsp;
+                            <a href="/Childhood_Cancer_Data_Catalog_Submission_Template.xlsx" target="_blank" rel="noreferrer">download the summary submission template</a>
+                            &nbsp;and send the completed form via&nbsp;
                             <a href="mailto:NCIChildhoodCancerDataInitiative@mail.nih.gov">email to Childhood Cancer Data Initiative</a>
                             . All submitted templates will be reviewed by the CCDC team.  Any accepted data submissions or suggested changes will be incorporated as
                             part of periodic releases of the CCDC site.
