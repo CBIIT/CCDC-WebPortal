@@ -1,6 +1,6 @@
 import parseReleaseNotesMarkdown from '../utils/parseReleaseNotesMarkdown';
 
-const markdownUrl = `${process.env.REACT_APP_RELEASE_NOTES_MARKDOWN_URL}/site_announcement_log.md`;
+const markdownUrl = `${process.env.REACT_APP_STATIC_CONTENTS_URL}/site_announcement_log.md`;
 
 let cachedReleaseNotes = null;
 
