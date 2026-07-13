@@ -39,11 +39,11 @@ configureMarkedRenderer();
 const markdownToHtml = (markdown) => marked.parse(markdown || '');
 
 const parseReleaseNoteSection = (section) => {
-  const titleMatch = section.match(/^# CCDI Data Catalog Release (.+)/m);
+  const titleMatch = section.match(/^# (.+)/m);
   const dateMatch = section.match(/^### (.+?) \| Release Notes/m);
   const metadataStart = section.search(/\n\| Property \| Value \|\s*\n/);
 
-  if (!titleMatch || metadataStart === -1) {
+  if (!titleMatch || !dateMatch || metadataStart === -1) {
     return null;
   }
 
@@ -54,11 +54,11 @@ const parseReleaseNoteSection = (section) => {
 
   const bodyMarkdown = section.substring(headerEnd, metadataStart).trim();
   const version = normalizeVersion(getMetadataValue(section, 'version'));
-  const dateStr = dateMatch ? dateMatch[1].trim() : '';
+  const dateStr = dateMatch[1].trim();
 
   return {
     release_key: getMetadataValue(section, 'id'),
-    title: titleMatch[0].replace(/^# /, '').trim(),
+    title: titleMatch[1].trim(),
     version,
     post_date: parsePostDate(dateStr),
     content_type: getMetadataValue(section, 'contentType'),
@@ -69,7 +69,7 @@ const parseReleaseNoteSection = (section) => {
 };
 
 export default function parseReleaseNotesMarkdown(markdownText) {
-  const sections = markdownText.split(/\n(?=# CCDI Data Catalog Release )/);
+  const sections = markdownText.split(/\n(?=# )/);
 
   return sections
     .map(parseReleaseNoteSection)
