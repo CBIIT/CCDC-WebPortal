@@ -301,6 +301,43 @@ const SiteUpdateCardDescription = styled.div`
       font-weight: 400;
       line-height: 150%;
     }
+
+    .fullText {
+      h3, h4 {
+        color: #004187;
+        font-family: Lato;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%;
+        margin: 20px 0 10px;
+      }
+
+      h4 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      ul {
+        margin: 0 0 16px;
+        padding-left: 24px;
+      }
+
+      li {
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        margin-bottom: 6px;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+
+      p {
+        margin-bottom: 16px;
+      }
+    }
 `;
 
 const SpinnerContainer = styled.div`
@@ -431,9 +468,12 @@ const SiteUpdateResult = ({
         const urlArr = currentUrl.split("#post");
         let openYear = siteUpdateNav[0].year;
         if (urlArr.length > 1) {
-          const jumpToIndex = urlArr[1] - 1;
-          openYear = siteUpdateList[jumpToIndex].post_date.substring(0, 4);
-          setSelectedIdx(jumpToIndex);
+          const targetId = parseInt(urlArr[1], 10);
+          const jumpToIndex = siteUpdateList.findIndex((item) => item.id === targetId);
+          if (jumpToIndex >= 0) {
+            openYear = siteUpdateList[jumpToIndex].post_date.substring(0, 4);
+            setSelectedIdx(jumpToIndex);
+          }
         }
         for (let i = 0; i < siteUpdateNav.length; i += 1) {
           if (openYear === siteUpdateNav[i].year) {
@@ -639,7 +679,7 @@ const SiteUpdateResult = ({
                   </SiteUpdateExport>
                   <SiteUpdateCardDescription id={`post${siteUpdateList[selectedIdx].id}_desc`}>
                     <div className="dateContainer" id={`post${siteUpdateList[selectedIdx].id}_date`}>{formatDate(siteUpdateList[selectedIdx].post_date)}</div>
-                    {ReactHtmlParser(siteUpdateList[selectedIdx].description)}
+                    <div className="fullText">{ReactHtmlParser(siteUpdateList[selectedIdx].description)}</div>
                   </SiteUpdateCardDescription>
                 </SiteUpdateCard>
               </SiteUpdateItem>
