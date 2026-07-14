@@ -1,6 +1,7 @@
 import parseReleaseNotesMarkdown from '../utils/parseReleaseNotesMarkdown';
+import { getEnv } from '../utils/env';
 
-const markdownUrl = `${process.env.REACT_APP_STATIC_CONTENTS_URL}/site_announcement_log.md`;
+const getMarkdownUrl = () => `${getEnv('REACT_APP_STATIC_CONTENTS_URL') || ''}/site_announcement_log.md`;
 
 let cachedReleaseNotes = null;
 
@@ -9,7 +10,7 @@ const fetchAndNormalizeReleaseNotes = async () => {
     return cachedReleaseNotes;
   }
 
-  const response = await fetch(markdownUrl);
+  const response = await fetch(getMarkdownUrl());
   if (!response.ok) {
     throw new Error(`Failed to fetch release notes markdown: ${response.status}`);
   }
