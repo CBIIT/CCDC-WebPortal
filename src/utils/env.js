@@ -3,10 +3,9 @@
  * then fall back to Create React App build-time process.env (local .env).
  */
 export function getEnv(key) {
-  const injected =
-    typeof window !== 'undefined' && window.injectedEnv
-      ? window.injectedEnv[key]
-      : undefined;
+  const injected = typeof window !== 'undefined' && window.injectedEnv
+    ? window.injectedEnv[key]
+    : undefined;
 
   if (
     typeof injected === 'string'
