@@ -302,7 +302,7 @@ const SiteUpdateCardDescription = styled.div`
       }
 
       ul {
-        padding-left: 24px;
+        padding-left: 32px;
       }
 
       li {
