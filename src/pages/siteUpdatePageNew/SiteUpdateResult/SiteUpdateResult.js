@@ -295,47 +295,46 @@ const SiteUpdateCardDescription = styled.div`
     }
 
     p {
-      font-family: Lato;
-      font-size: 16px;
-      font-style: normal;
+      font-family: "Calibri Light", sans-serif;
+      font-size: 11pt;
       font-weight: 400;
-      line-height: 150%;
+      line-height: 107%;
     }
 
     .fullText {
-      h3, h4 {
-        color: #004187;
-        font-family: Lato;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 150%;
-        margin: 20px 0 10px;
+      font-family: "Calibri Light", sans-serif;
+
+      h3 {
+        color: #2F5496;
+        font-size: 16pt;
+        line-height: 107%;
+        margin-top: 25px;
       }
 
       h4 {
-        font-size: 16px;
-        font-weight: 600;
+        color: #2F5496;
+        font-size: 13pt;
+        line-height: 107%;
+        margin-top: 25px;
       }
 
       ul {
-        margin: 0 0 16px;
         padding-left: 24px;
       }
 
       li {
-        font-family: Lato;
-        font-size: 16px;
+        font-size: 11pt;
         font-weight: 400;
-        line-height: 150%;
+        line-height: 107%;
         margin-bottom: 6px;
+
+        p {
+          margin-bottom: 3px;
+        }
       }
 
       strong {
         font-weight: 700;
-      }
-
-      p {
-        margin-bottom: 16px;
       }
     }
 `;
