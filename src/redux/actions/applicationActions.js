@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as applicationApi from "../../api/applicationApi";
+import * as releaseNotesMarkdownApi from "../../api/releaseNotesMarkdownApi";
 
 export function loadApplicationVersionInfoSuccess(versionInfo) {
     return { type: types.LOAD_APPLICATION_VERSION_INFO_SUCCESS, versionInfo };
@@ -48,7 +49,7 @@ export function loadApplicationVersionInfo() {
 
 export function loadWidgetUpdates() {
     const func = function func(dispatch) {
-        return applicationApi.getWidgetUpdates()
+        return releaseNotesMarkdownApi.getWidgetUpdates()
         .then(result => {
             dispatch(loadWidgetUpdatesSuccess(result.data));
         })
@@ -61,7 +62,7 @@ export function loadWidgetUpdates() {
 
 export function loadSiteUpdates(pageInfo) {
     const func = function func(dispatch) {
-        return applicationApi.getSiteUpdates(pageInfo)
+        return releaseNotesMarkdownApi.getSiteUpdates(pageInfo)
         .then(result => {
             dispatch(loadSiteUpdatesSuccess(result.data));
         })
@@ -74,7 +75,7 @@ export function loadSiteUpdates(pageInfo) {
 
 export function addSiteUpdates(pageInfo) {
     const func = function func(dispatch) {
-        return applicationApi.getSiteUpdates(pageInfo)
+        return releaseNotesMarkdownApi.getSiteUpdates(pageInfo)
         .then(result => {
             dispatch(addSiteUpdatesSuccess(result.data));
             return result;
