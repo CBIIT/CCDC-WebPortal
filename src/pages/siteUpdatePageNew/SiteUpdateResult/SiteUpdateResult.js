@@ -6,7 +6,6 @@ import ReactHtmlParser from "html-react-parser";
 // import html2pdf from "html2pdf.js";
 import { OverlayTrigger, Popover, Spinner } from 'react-bootstrap';
 // import NCILogoExport from "../../../assets/img/NCI_Logo.png";
-import externalIcon from "../../../assets/img/resource-00a272.svg";
 import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
 import GenomicsIcon from '../../../assets/img/Genomics.icon.svg';
 import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
@@ -273,25 +272,9 @@ const SiteUpdateCardDescription = styled.div`
     }
 
     a {
-        // color: #00a272;
-        // text-decoration: none;
+        color: #0563C1;
         text-decoration-color: #0563C1;
         font-weight: 500;
-    }
-
-    a[target="_blank"]::after {
-      content: " ";
-      font-weight: bold;
-      color: #004187;
-      font-size: 14px;
-      background-image: url(${externalIcon});
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position-y: 4px;
-      background-position-x: -2px;
-      width: 17px;
-      height: 17px;
-      display: inline-table;
     }
 
     p {
