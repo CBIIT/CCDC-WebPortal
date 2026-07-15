@@ -10,7 +10,7 @@ const fetchAndNormalizeReleaseNotes = async () => {
     return cachedReleaseNotes;
   }
 
-  const response = await fetch(getMarkdownUrl());
+  const response = await fetch(`${getMarkdownUrl()}?t=${Date.now()}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch release notes markdown: ${response.status}`);
   }
