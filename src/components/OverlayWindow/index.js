@@ -1,6 +1,33 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import OverlayText from './OverlayText';
+
+export const OVERLAY_LOAD_KEY = 'overlayLoad';
+
+export const hasGovernmentUsageConsent = () => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  try {
+    return window.localStorage?.getItem(OVERLAY_LOAD_KEY) === 'true';
+  } catch (error) {
+    return false;
+  }
+};
+
+const persistGovernmentUsageConsent = () => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    window.localStorage?.setItem(OVERLAY_LOAD_KEY, 'true');
+  } catch (error) {
+    // Storage may be disabled or unavailable. Consent still applies to the current page.
+  }
+};
 
 const OverlayWindowRoot = styled.div`
   position: fixed;
@@ -145,16 +172,20 @@ const Button = styled.button`
 /**
  * Provides the Government Usage Warning banner and related logic.
  *
- * @returns The Government Usage banner component, which is conditionally rendered based on session storage.
+ * @param {object} props Component properties.
+ * @param {boolean|null} props.consentRequired Controls initial visibility when provided.
+ * @param {Function} props.onContinue Called after the user consents for the current page.
+ * @returns The Government Usage banner component, conditionally rendered based on local storage.
  */
-const OverlayWindow = () => {
-  const [open, setOpen] = useState(false);
+const OverlayWindow = ({ consentRequired, onContinue }) => {
+  const [open, setOpen] = useState(() => (
+    consentRequired === null ? !hasGovernmentUsageConsent() : consentRequired
+  ));
 
   const handleClose = () => {
+    persistGovernmentUsageConsent();
     setOpen(false);
-    if (typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined') {
-      window.sessionStorage.setItem('overlayLoad', 'true');
-    }
+    onContinue();
   };
 
   const content = useMemo(() => OverlayText.content.map((item) => (
@@ -171,16 +202,6 @@ const OverlayWindow = () => {
       <span>{item}</span>
     </ListItem>
   )), []);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    if (window.sessionStorage?.getItem('overlayLoad') !== 'true') {
-      setOpen(true);
-    }
-  }, []);
 
   if (!open) {
     return null;
@@ -223,6 +244,16 @@ const OverlayWindow = () => {
       </Container>
     </OverlayWindowRoot>
   );
+};
+
+OverlayWindow.propTypes = {
+  consentRequired: PropTypes.bool,
+  onContinue: PropTypes.func,
+};
+
+OverlayWindow.defaultProps = {
+  consentRequired: null,
+  onContinue: () => {},
 };
 
 export default OverlayWindow;
