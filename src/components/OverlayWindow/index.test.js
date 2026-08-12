@@ -1,14 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import OverlayWindow from './index';
+import OverlayWindow, { OVERLAY_LOAD_KEY } from './index';
 import OverlayText from './OverlayText';
-
-const OVERLAY_LOAD_KEY = 'overlayLoad';
 
 describe('OverlayWindow', () => {
   beforeEach(() => {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   });
 
   test('renders the government usage warning dialog when overlay has not been dismissed', () => {
@@ -19,11 +17,32 @@ describe('OverlayWindow', () => {
   });
 
   test('does not render when overlay was previously dismissed', () => {
-    window.sessionStorage.setItem(OVERLAY_LOAD_KEY, 'true');
+    window.localStorage.setItem(OVERLAY_LOAD_KEY, 'true');
 
     render(<OverlayWindow />);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  test('renders the dialog when local storage cannot be read', () => {
+    const getItem = jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('Storage unavailable');
+    });
+
+    render(<OverlayWindow />);
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    getItem.mockRestore();
+  });
+
+  test('renders a required consent gate without reading local storage again', () => {
+    const getItem = jest.spyOn(Storage.prototype, 'getItem');
+
+    render(<OverlayWindow consentRequired />);
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(getItem).not.toHaveBeenCalled();
+    getItem.mockRestore();
   });
 
   test('renders all warning content paragraphs', () => {
@@ -46,13 +65,27 @@ describe('OverlayWindow', () => {
     });
   });
 
-  test('closes the dialog and persists dismissal in session storage when Continue is clicked', () => {
+  test('closes the dialog and persists dismissal in local storage when Continue is clicked', () => {
     render(<OverlayWindow />);
 
     userEvent.click(screen.getByRole('button', { name: /continue/i }));
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    expect(window.sessionStorage.getItem(OVERLAY_LOAD_KEY)).toBe('true');
+    expect(window.localStorage.getItem(OVERLAY_LOAD_KEY)).toBe('true');
+  });
+
+  test('closes for the current page when local storage persistence fails', () => {
+    const onContinue = jest.fn();
+    const setItem = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('Storage unavailable');
+    });
+
+    render(<OverlayWindow onContinue={onContinue} />);
+    userEvent.click(screen.getByRole('button', { name: /continue/i }));
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(onContinue).toHaveBeenCalledTimes(1);
+    setItem.mockRestore();
   });
 
   test('has expected accessibility attributes', () => {
