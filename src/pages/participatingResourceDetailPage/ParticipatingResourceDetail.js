@@ -40,12 +40,17 @@ const ParticipatingResourceGridContainer = styled.div`
 
 const HeaderLinks = styled.div`
   a[target="_blank"] {
-    background: url(${headerExternalIcon}) right center no-repeat;
     font-weight: 500;
-    padding-right: 30px;
-    // margin-left: -5px;
-    background-size: 32px;
-    display: inline-table;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+      background: url(${headerExternalIcon}) center no-repeat;
+      background-size: 32px;
+    }
   }
 `;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import LandingPage from './landingPage';
@@ -16,13 +16,19 @@ import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/ResponsiveFooter";
 import PageNotFound from '../components/common/PageNotFound';
 import ScrollButton from '../components/common/ScrollButton';
+import OverlayWindow, { hasGovernmentUsageConsent } from '../components/OverlayWindow';
 import "react-toastify/dist/ReactToastify.css";
 import '../index.css';
 
 export default function App() {
+  const [hasConsent, setHasConsent] = useState(hasGovernmentUsageConsent);
+
   return (
     <>
       <Header />
+      {!hasConsent && (
+        <OverlayWindow consentRequired onContinue={() => setHasConsent(true)} />
+      )}
       <NavBar />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />

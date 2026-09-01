@@ -6,7 +6,6 @@ import ReactHtmlParser from "html-react-parser";
 // import html2pdf from "html2pdf.js";
 import { OverlayTrigger, Popover, Spinner } from 'react-bootstrap';
 // import NCILogoExport from "../../../assets/img/NCI_Logo.png";
-import externalIcon from "../../../assets/img/resource-00a272.svg";
 import ClinicalTrialsIcon from '../../../assets/img/ClinicalTrials.icon.svg';
 import GenomicsIcon from '../../../assets/img/Genomics.icon.svg';
 import ImagingIcon from '../../../assets/img/Imaging.icon.svg';
@@ -273,33 +272,53 @@ const SiteUpdateCardDescription = styled.div`
     }
 
     a {
-        // color: #00a272;
-        // text-decoration: none;
+        color: #0563C1;
         text-decoration-color: #0563C1;
         font-weight: 500;
     }
 
-    a[target="_blank"]::after {
-      content: " ";
-      font-weight: bold;
-      color: #004187;
-      font-size: 14px;
-      background-image: url(${externalIcon});
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position-y: 4px;
-      background-position-x: -2px;
-      width: 17px;
-      height: 17px;
-      display: inline-table;
+    p {
+      font-family: "Calibri Light", sans-serif;
+      font-size: 11pt;
+      font-weight: 400;
+      line-height: 107%;
     }
 
-    p {
-      font-family: Lato;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%;
+    .fullText {
+      font-family: "Calibri Light", sans-serif;
+
+      h3 {
+        color: #2F5496;
+        font-size: 16pt;
+        line-height: 107%;
+        margin-top: 25px;
+      }
+
+      h4 {
+        color: #2F5496;
+        font-size: 13pt;
+        line-height: 107%;
+        margin-top: 25px;
+      }
+
+      ul {
+        padding-left: 32px;
+      }
+
+      li {
+        font-size: 11pt;
+        font-weight: 400;
+        line-height: 107%;
+        margin-bottom: 6px;
+
+        p {
+          margin-bottom: 3px;
+        }
+      }
+
+      strong {
+        font-weight: 700;
+      }
     }
 `;
 
@@ -431,9 +450,12 @@ const SiteUpdateResult = ({
         const urlArr = currentUrl.split("#post");
         let openYear = siteUpdateNav[0].year;
         if (urlArr.length > 1) {
-          const jumpToIndex = urlArr[1] - 1;
-          openYear = siteUpdateList[jumpToIndex].post_date.substring(0, 4);
-          setSelectedIdx(jumpToIndex);
+          const targetId = parseInt(urlArr[1], 10);
+          const jumpToIndex = siteUpdateList.findIndex((item) => item.id === targetId);
+          if (jumpToIndex >= 0) {
+            openYear = siteUpdateList[jumpToIndex].post_date.substring(0, 4);
+            setSelectedIdx(jumpToIndex);
+          }
         }
         for (let i = 0; i < siteUpdateNav.length; i += 1) {
           if (openYear === siteUpdateNav[i].year) {
@@ -639,7 +661,7 @@ const SiteUpdateResult = ({
                   </SiteUpdateExport>
                   <SiteUpdateCardDescription id={`post${siteUpdateList[selectedIdx].id}_desc`}>
                     <div className="dateContainer" id={`post${siteUpdateList[selectedIdx].id}_date`}>{formatDate(siteUpdateList[selectedIdx].post_date)}</div>
-                    {ReactHtmlParser(siteUpdateList[selectedIdx].description)}
+                    <div className="fullText">{ReactHtmlParser(siteUpdateList[selectedIdx].description)}</div>
                   </SiteUpdateCardDescription>
                 </SiteUpdateCard>
               </SiteUpdateItem>
