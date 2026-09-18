@@ -43,6 +43,10 @@
 .prDetailExternalLink {
   color: #FFF;
   font-size: 16px;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   /* color: white; */

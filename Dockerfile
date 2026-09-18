@@ -13,7 +13,7 @@ FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
 # Pin openssl + musl family; bump zlib (pin musl-utils too — slim base can keep r21 while musl is r23)
 RUN apk update \
     && apk add --no-cache --upgrade \
-        openssl=3.5.6-r0 \
+        openssl=3.5.7-r0 \
         musl=1.2.5-r23 \
         musl-utils=1.2.5-r23 \
         zlib \
@@ -24,9 +24,9 @@ COPY --from=build /usr/src/app/config/inject.template.js /usr/share/nginx/html/i
 COPY --from=build /usr/src/app/config/nginx.conf /etc/nginx/conf.d/configfile.template
 COPY --from=build /usr/src/app/config/entrypoint.sh /
 
-ENV PORT 80
+ENV PORT=80
 
-ENV HOST 0.0.0.0
+ENV HOST=0.0.0.0
 
 RUN sh -c "envsubst '\$PORT'  < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf"
 

@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   env: {
     browser: true,
@@ -36,6 +38,9 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/img-redundant-alt": "off",
-    "react/no-unknown-property": "off"
+    "react/no-unknown-property": "off",
+    "import/no-extraneous-dependencies": ["error", {
+      packageDir: [path.join(__dirname)],
+    }],
   },
 };
