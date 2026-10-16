@@ -13,9 +13,9 @@ FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
 # Pin openssl + musl family; bump zlib (pin musl-utils too — slim base can keep r21 while musl is r23)
 RUN apk update \
     && apk add --no-cache --upgrade \
-        openssl=3.5.8-r0 \
-        musl=1.2.5-r23 \
-        musl-utils=1.2.5-r23 \
+        openssl \
+        musl \
+        musl-utils \
         zlib \
     && rm -rf /var/cache/apk/*
 
