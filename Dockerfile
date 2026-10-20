@@ -8,9 +8,9 @@ RUN NODE_OPTIONS="--max-old-space-size=4096" npm set progress=false
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm ci --legacy-peer-deps
 RUN NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run build --silent
 
-FROM nginx:1.29.4-alpine3.23-slim AS fnl_base_image
+FROM nginx:1.30.6-alpine3.24-slim AS fnl_base_image
 
-# Pin openssl + musl family; bump zlib (pin musl-utils too — slim base can keep r21 while musl is r23)
+# Upgrade selected runtime packages from the Alpine 3.24 repository.
 RUN apk update \
     && apk add --no-cache --upgrade \
         openssl \
